@@ -2,24 +2,34 @@
 
 ## Job Properties
 
-*Commit(s):* [maleadt/julia@master](https://github.com/maleadt/julia/commit/master)
+*Commit(s):* [maleadt/julia@9babbf5dc6d2d08b9ed422386830460516cb8aed](https://github.com/maleadt/julia/commit/9babbf5dc6d2d08b9ed422386830460516cb8aed)
 
-*Triggered By:* [link](https://www.test.com)
+*Triggered By:* [link](https://github.com/maleadt/julia/commit/9babbf5dc6d2d08b9ed422386830460516cb8aed#commitcomment-36243991)
 
 *Package Selection:* `ALL`
 
 *Daily Job:* 2019-12-03 vs 2019-12-02
 
-## Summary
+## Error
 
-In total, 4 packages were tested, out of which 2 succeeded, 0 were skipped, 2 failed and 0 got killed.
-
-
-## Version Info
-
-#### Primary Build
+The build could not finish due to an error:
 
 ```
-retrieving versioninfo() failed: Requested Julia version 1.4.0-DEV-9babbf5dc6 not found
+NanosoldierError: failed to run package tests: TaskFailedException:
+MethodError: no method matching getindex(::DataFrames.DataFrame, ::typeof(!), ::Symbol)
+Closest candidates are:
+  getindex(::DataFrames.DataFrame, !Matched::Integer, ::Symbol) at /home/maleadt/.julia/packages/DataFrames/0Em9Q/src/dataframe/dataframe.jl:327
+  getindex(::DataFrames.DataFrame, !Matched::AbstractArray{T,1} where T, ::Union{Signed, Symbol, Unsigned}) at /home/maleadt/.julia/packages/DataFrames/0Em9Q/src/dataframe/dataframe.jl:337
+  getindex(::DataFrames.DataFrame, !Matched::Colon, ::Union{Signed, Symbol, Unsigned}) at /home/maleadt/.julia/packages/DataFrames/0Em9Q/src/dataframe/dataframe.jl:358
+  ...
+Stacktrace:
+ [1] (::NewPkgEval.var"#update_output#39"{Int64,Array{Union{Nothing, NamedTuple{(:julia, :pkg),Tuple{VersionNumber,NamedTuple{(:name, :uuid, :path, :registry),Tuple{String,Base.UUID,String,String}}}}},1},Array{Dates.DateTime,1},Dates.DateTime,IOContext{Base.GenericIOBuffer{Array{UInt8,1}}},Bool,ProgressMeter.Progress})() at /home/maleadt/Julia/pkg/NewPkgEval/src/run.jl:232
+ [2] macro expansion at /home/maleadt/Julia/pkg/NewPkgEval/src/run.jl:298 [inlined]
+ [3] (::NewPkgEval.var"#34#41"{Array{NamedTuple{(:julia, :pkg),Tuple{VersionNumber,NamedTuple{(:name, :uuid, :path, :registry),Tuple{String,Base.UUID,String,String}}}},1},Array{Union{Nothing, NamedTuple{(:julia, :pkg),Tuple{VersionNumber,NamedTuple{(:name, :uuid, :path, :registry),Tuple{String,Base.UUID,String,String}}}}},1},NewPkgEval.var"#stop_work#38"{Array{Union{Nothing, NamedTuple{(:julia, :pkg),Tuple{VersionNumber,NamedTuple{(:name, :uuid, :path, :registry),Tuple{String,Base.UUID,String,String}}}}},1},Array{Task,1}},NewPkgEval.var"#update_output#39"{Int64,Array{Union{Nothing, NamedTuple{(:julia, :pkg),Tuple{VersionNumber,NamedTuple{(:name, :uuid, :path, :registry),Tuple{String,Base.UUID,String,String}}}}},1},Array{Dates.DateTime,1},Dates.DateTime,IOContext{Base.GenericIOBuffer{Array{UInt8,1}}},Bool,ProgressMeter.Progress}})() at ./task.jl:333
+
+...and 2 more exception(s).
+
 ```
-<!-- Generated on 2019-12-03T12:21:45.251 -->
+
+Check the logs folder in this directory for more detailed output.
+
