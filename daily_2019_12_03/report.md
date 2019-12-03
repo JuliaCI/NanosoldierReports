@@ -16,7 +16,7 @@
 
 ## Summary
 
-In total, 2 packages were tested, out of which 1 succeeded, 0 were skipped, 1 failed and 0 got killed.
+In total, 4 packages were tested, out of which 2 succeeded, 0 were skipped, 2 failed and 0 got killed.
 
 
 ## Version Info
@@ -26,4 +26,4 @@ In total, 2 packages were tested, out of which 1 succeeded, 0 were skipped, 1 fa
 ```
 retrieving versioninfo() failed: Requested Julia version 1.4.0-DEV-9babbf5dc6 not found
 ```
-<!-- Generated on 2019-12-03T12:12:19.529 -->
+<!-- Generated on 2019-12-03T12:15:23.257 -->
