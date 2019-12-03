@@ -13,7 +13,7 @@
 The build could not finish due to an error:
 
 ```
-NanosoldierError: failed to build secondary commit: UndefVarError: against not defined
+NanosoldierError: failed to build secondary commit: InterruptException:
 ```
 
 Check the logs folder in this directory for more detailed output.
