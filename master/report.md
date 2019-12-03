@@ -24,4 +24,4 @@ In total, 2 packages were tested, out of which 1 succeeded, 0 were skipped, 1 fa
 ```
 retrieving versioninfo() failed: Requested Julia version 1.4.0-DEV-9babbf5dc6 not found
 ```
-<!-- Generated on 2019-12-03T11:52:22.251 -->
+<!-- Generated on 2019-12-03T11:57:04.054 -->
