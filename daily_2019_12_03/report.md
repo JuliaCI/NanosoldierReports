@@ -4,7 +4,7 @@
 
 *Commit(s):* [maleadt/julia@9babbf5dc6d2d08b9ed422386830460516cb8aed](https://github.com/maleadt/julia/commit/9babbf5dc6d2d08b9ed422386830460516cb8aed)
 
-*Triggered By:* [link](https://github.com/maleadt/julia/commit/9babbf5dc6d2d08b9ed422386830460516cb8aed#commitcomment-36245172)
+*Triggered By:* [link](https://github.com/maleadt/julia/commit/9babbf5dc6d2d08b9ed422386830460516cb8aed#commitcomment-36246010)
 
 *Package Selection:* `ALL`
 
@@ -20,7 +20,7 @@ In total, 4 packages were tested, out of which 2 succeeded, 0 were skipped, 2 fa
 #### Primary Build
 
 ```
-retrieving versioninfo() failed: failed process: Process(`docker attach b975efe1649eefc10d00b843b4d00dd19b79e6817bec624d67f7e9db8b52b335`, ProcessExited(1)) [1]
+retrieving versioninfo() failed: failed process: Process(`docker attach 8510b66a26428307dbdbc6c210f284a48702d9cf31b86226ca4e4522f39e991a`, ProcessExited(1)) [1]
 
 ```
-<!-- Generated on 2019-12-03T08:43:07.513 -->
+<!-- Generated on 2019-12-03T09:20:16.317 -->
