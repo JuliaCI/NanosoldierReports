@@ -4,7 +4,7 @@
 
 *Commit(s):* [maleadt/julia@9babbf5dc6d2d08b9ed422386830460516cb8aed](https://github.com/maleadt/julia/commit/9babbf5dc6d2d08b9ed422386830460516cb8aed)
 
-*Triggered By:* [link](https://github.com/maleadt/julia/commit/9babbf5dc6d2d08b9ed422386830460516cb8aed#commitcomment-36244645)
+*Triggered By:* [link](https://github.com/maleadt/julia/commit/9babbf5dc6d2d08b9ed422386830460516cb8aed#commitcomment-36244672)
 
 *Package Selection:* `ALL`
 
@@ -16,7 +16,7 @@ The build could not finish due to an error:
 
 ```
 NanosoldierError: failed to run package tests: TaskFailedException:
-failed process: Process(`docker run --detach --mount type=bind,source=/home/maleadt/Julia/pkg/NewPkgEval/deps/usr/julia-1.4.0-DEV-9babbf5dc6,target=/opt/julia,readonly --mount type=bind,source=/home/maleadt/.julia/registries,target=/root/.julia/registries,readonly --name Julia_v1.4.0-DEV-9babbf5dc6-Example --rm newpkgeval /opt/julia/bin/julia -e '    using Pkg
+failed process: Process(`docker run --detach --mount type=bind,source=/home/maleadt/Julia/pkg/NewPkgEval/deps/usr/julia-1.4.0-DEV-9babbf5dc6,target=/opt/julia,readonly --mount type=bind,source=/home/maleadt/.julia/registries,target=/root/.julia/registries,readonly --name Julia_v1.4.0-DEV-9babbf5dc6-JSON --rm newpkgeval /opt/julia/bin/julia -e '    using Pkg
 
     println("Running tests on $(gethostname()) with Julia v$VERSION")
 
@@ -28,7 +28,7 @@ failed process: Process(`docker run --detach --mount type=bind,source=/home/male
 
     Pkg.add(ARGS...)
     Pkg.test(ARGS...)
-' Example`, ProcessExited(127)) [127]
+' JSON`, ProcessExited(127)) [127]
 
 Stacktrace:
  [1] pipeline_error at ./process.jl:525 [inlined]
