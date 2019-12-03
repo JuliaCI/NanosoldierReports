@@ -10,6 +10,22 @@
 
 *Daily Job:* 2019-12-03 vs 2019-12-02
 
+## Packages that now failed
+
+- JSON v0.21.0: testing [was unsuccessful](logs/JSON/1.4.0-DEV-9babbf5dc6.log) because there were unidentified errors, whereas previously v0.21.0 testing [was unsuccessful](logs/JSON/1.4.0-DEV-9babbf5dc6.log)
+
+## Packages that now got killed
+
+- JSON v0.21.0: testing [was unsuccessful](logs/JSON/1.4.0-DEV-9babbf5dc6.log) because there were unidentified errors, whereas previously v0.21.0 testing [was unsuccessful](logs/JSON/1.4.0-DEV-9babbf5dc6.log)
+
+## Packages that now were skipped
+
+- JSON v0.21.0: testing [was unsuccessful](logs/JSON/1.4.0-DEV-9babbf5dc6.log) because there were unidentified errors, whereas previously v0.21.0 testing [was unsuccessful](logs/JSON/1.4.0-DEV-9babbf5dc6.log)
+
+## Packages that now succeeded
+
+- JSON v0.21.0: testing [was unsuccessful](logs/JSON/1.4.0-DEV-9babbf5dc6.log) because there were unidentified errors, whereas previously v0.21.0 testing [was unsuccessful](logs/JSON/1.4.0-DEV-9babbf5dc6.log)
+
 ## Summary
 
 In total, 4 packages were tested, out of which 2 succeeded, 0 were skipped, 2 failed and 0 got killed.
@@ -22,4 +38,4 @@ In total, 4 packages were tested, out of which 2 succeeded, 0 were skipped, 2 fa
 ```
 retrieving versioninfo() failed: Requested Julia version 1.4.0-DEV-9babbf5dc6 not found
 ```
-<!-- Generated on 2019-12-03T12:18:12.601 -->
+<!-- Generated on 2019-12-03T12:18:36.097 -->
