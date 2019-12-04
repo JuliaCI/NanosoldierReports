@@ -10,7 +10,7 @@
 
 ## Packages that now succeeded
 
-0 packages succeeded on the current version.
+0 packages succeeded only on the current version.
 
 <details><summary>1 packages succeeded on the previous version too.</summary>
 <p>
@@ -37,14 +37,14 @@ Platform Info:
   uname: Linux 5.3.13-arch1-1 #1 SMP PREEMPT Sun, 24 Nov 2019 10:15:50 +0000 x86_64 x86_64
   CPU: Intel(R) Core(TM) i5-6600K CPU @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3636 MHz     583389 s     156917 s     227941 s    4139927 s      41620 s
-       #2  3634 MHz     659884 s     156704 s     164186 s     499800 s      18802 s
-       #3  3703 MHz     659677 s     159793 s     162956 s     501114 s      19030 s
-       #4  3642 MHz     622485 s     158307 s     166538 s     499931 s      41330 s
+       #1  1545 MHz     591517 s     162478 s     231110 s    4201484 s      42166 s
+       #2  1969 MHz     668270 s     162137 s     166674 s     562217 s      19094 s
+       #3  1478 MHz     667529 s     166388 s     165477 s     562821 s      19318 s
+       #4  1592 MHz     630821 s     163427 s     169136 s     562502 s      41635 s
        
-  Memory: 31.25226593017578 GB (11507.12890625 MB free)
-  Uptime: 124687.0 sec
-  Load Avg:  1.9140625  1.52197265625  1.39208984375
+  Memory: 31.25226593017578 GB (11487.4296875 MB free)
+  Uptime: 125464.0 sec
+  Load Avg:  2.66162109375  1.6689453125  1.431640625
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-8.0.1 (ORCJIT, skylake)
@@ -61,17 +61,17 @@ Platform Info:
   uname: Linux 5.3.13-arch1-1 #1 SMP PREEMPT Sun, 24 Nov 2019 10:15:50 +0000 x86_64 x86_64
   CPU: Intel(R) Core(TM) i5-6600K CPU @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3781 MHz     583929 s     156930 s     228022 s    4140683 s      41630 s
-       #2  3764 MHz     660109 s     156819 s     164260 s     500769 s      18806 s
-       #3  3764 MHz     659890 s     159993 s     163017 s     502049 s      19034 s
-       #4  3796 MHz     622657 s     158318 s     166622 s     501056 s      41335 s
+       #1  3641 MHz     591710 s     162692 s     231192 s    4202271 s      42176 s
+       #2  3681 MHz     668592 s     162254 s     166746 s     562991 s      19099 s
+       #3  3622 MHz     667949 s     166489 s     165542 s     563514 s      19323 s
+       #4  3710 MHz     631021 s     163503 s     169221 s     563411 s      41640 s
        
-  Memory: 31.25226593017578 GB (11464.15234375 MB free)
-  Uptime: 124701.0 sec
-  Load Avg:  1.91455078125  1.54443359375  1.4013671875
+  Memory: 31.25226593017578 GB (11420.50390625 MB free)
+  Uptime: 125477.0 sec
+  Load Avg:  2.57080078125  1.701171875  1.44677734375
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-8.0.1 (ORCJIT, skylake)
 
 ```
-<!-- Generated on 2019-12-04T08:42:55.543 -->
+<!-- Generated on 2019-12-04T08:55:50.074 -->
