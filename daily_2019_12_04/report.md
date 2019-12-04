@@ -12,7 +12,7 @@
 
 ## Packages that now succeeded
 
-0 packages succeeded on the current version.
+0 packages succeeded only on the current version.
 
 <details><summary>2 packages succeeded on the previous version too.</summary>
 <p>
@@ -40,17 +40,17 @@ Platform Info:
   uname: Linux 5.3.13-arch1-1 #1 SMP PREEMPT Sun, 24 Nov 2019 10:15:50 +0000 x86_64 x86_64
   CPU: Intel(R) Core(TM) i5-6600K CPU @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3767 MHz     582973 s     156812 s     227873 s    4138787 s      41612 s
-       #2  3787 MHz     659718 s     156578 s     164110 s     498426 s      18796 s
-       #3  3653 MHz     659386 s     159721 s     162895 s     499797 s      19024 s
-       #4  3674 MHz     622296 s     158047 s     166477 s     498699 s      41324 s
+       #1  3654 MHz     591360 s     162358 s     231039 s    4200106 s      42159 s
+       #2  3674 MHz     668007 s     162059 s     166611 s     560904 s      19088 s
+       #3  3735 MHz     667280 s     166323 s     165400 s     561491 s      19312 s
+       #4  3787 MHz     630422 s     163294 s     169070 s     561380 s      41628 s
        
-  Memory: 31.25226593017578 GB (11484.5078125 MB free)
-  Uptime: 124670.0 sec
-  Load Avg:  1.880859375  1.48876953125  1.37939453125
+  Memory: 31.25226593017578 GB (11515.41015625 MB free)
+  Uptime: 125447.0 sec
+  Load Avg:  2.3916015625  1.56591796875  1.39453125
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-8.0.1 (ORCJIT, skylake)
 
 ```
-<!-- Generated on 2019-12-04T08:42:24.654 -->
+<!-- Generated on 2019-12-04T08:55:20.253 -->
