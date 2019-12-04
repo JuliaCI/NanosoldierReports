@@ -30,17 +30,17 @@ Platform Info:
   uname: Linux 5.3.13-arch1-1 #1 SMP PREEMPT Sun, 24 Nov 2019 10:15:50 +0000 x86_64 x86_64
   CPU: Intel(R) Core(TM) i5-6600K CPU @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3744 MHz     582798 s     156639 s     227800 s    4137429 s      41605 s
-       #2  3651 MHz     659552 s     156444 s     164030 s     497020 s      18790 s
-       #3  3667 MHz     658822 s     159607 s     162833 s     498762 s      19018 s
-       #4  3696 MHz     622131 s     157873 s     166388 s     497339 s      41318 s
+       #1  1603 MHz     591036 s     162350 s     230969 s    4198703 s      42152 s
+       #2  1774 MHz     667638 s     161955 s     166549 s     559634 s      19081 s
+       #3  1645 MHz     667068 s     166252 s     165324 s     560037 s      19306 s
+       #4  1891 MHz     630205 s     163264 s     169004 s     559893 s      41621 s
        
-  Memory: 31.25226593017578 GB (11512.58203125 MB free)
-  Uptime: 124652.0 sec
-  Load Avg:  2.140625  1.51416015625  1.38623046875
+  Memory: 31.25226593017578 GB (11542.765625 MB free)
+  Uptime: 125429.0 sec
+  Load Avg:  2.9111328125  1.603515625  1.4033203125
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-8.0.1 (ORCJIT, skylake)
 
 ```
-<!-- Generated on 2019-12-04T08:42:06.699 -->
+<!-- Generated on 2019-12-04T08:55:02.504 -->
