@@ -4,9 +4,9 @@
 
 *Commit(s):* [maleadt/julia@9babbf5dc6d2d08b9ed422386830460516cb8aed](https://github.com/maleadt/julia/commit/9babbf5dc6d2d08b9ed422386830460516cb8aed) vs [maleadt/julia@e2cd1ff1e31873878d8adabcc79a51fd54ae9ae7](https://github.com/maleadt/julia/commit/e2cd1ff1e31873878d8adabcc79a51fd54ae9ae7)
 
-*Triggered By:* [link](https://www.test.com)
+*Triggered By:* [link](https://github.com/maleadt/julia/commit/9babbf5dc6d2d08b9ed422386830460516cb8aed#commitcomment-36260882)
 
-*Package Selection:* `["Example"]`
+*Package Selection:* `["Example", "JSON"]`
 
 ## Packages that now succeeded
 
@@ -20,9 +20,21 @@
 </details>
 
 
+## Packages that now failed
+
+0 packages failed only on the current version.
+
+<details><summary>1 packages failed on the previous version too.</summary>
+<p>
+
+- JSON v0.21.0: testing [was unsuccessful](logs/JSON/1.4.0-DEV-9babbf5dc6.log) because there were unidentified errors
+</p>
+</details>
+
+
 ## Summary
 
-In total, 1 packages were tested, out of which 1 succeeded, 0 were skipped, 0 failed and 0 got killed.
+In total, 2 packages were tested, out of which 1 succeeded, 0 were skipped, 1 failed and 0 got killed.
 
 
 ## Version Info
@@ -37,14 +49,14 @@ Platform Info:
   uname: Linux 5.3.13-arch1-1 #1 SMP PREEMPT Sun, 24 Nov 2019 10:15:50 +0000 x86_64 x86_64
   CPU: Intel(R) Core(TM) i5-6600K CPU @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3634 MHz     592886 s     163055 s     231459 s    4205676 s      42210 s
-       #2  3761 MHz     669761 s     162416 s     167015 s     566625 s      19117 s
-       #3  3751 MHz     668592 s     167008 s     165781 s     567361 s      19339 s
-       #4  3754 MHz     631931 s     163776 s     169496 s     567183 s      41659 s
+       #1  3798 MHz     663779 s     200700 s     250154 s    4596088 s      45918 s
+       #2  3734 MHz     734854 s     202169 s     181479 s     966991 s      20951 s
+       #3  3685 MHz     745290 s     202158 s     180482 s     960369 s      21204 s
+       #4  3410 MHz     705305 s     198275 s     183822 s     963794 s      43654 s
        
-  Memory: 31.25226593017578 GB (11357.625 MB free)
-  Uptime: 125529.0 sec
-  Load Avg:  2.1083984375  1.6904296875  1.4560546875
+  Memory: 31.25226593017578 GB (9871.08203125 MB free)
+  Uptime: 130770.0 sec
+  Load Avg:  2.3466796875  1.5224609375  1.26416015625
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-8.0.1 (ORCJIT, skylake)
@@ -61,17 +73,17 @@ Platform Info:
   uname: Linux 5.3.13-arch1-1 #1 SMP PREEMPT Sun, 24 Nov 2019 10:15:50 +0000 x86_64 x86_64
   CPU: Intel(R) Core(TM) i5-6600K CPU @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3705 MHz     593138 s     163199 s     231511 s    4206537 s      42213 s
-       #2  3295 MHz     669854 s     162480 s     167076 s     567712 s      19121 s
-       #3  3518 MHz     668757 s     167074 s     165840 s     568383 s      19343 s
-       #4  3544 MHz     632290 s     163799 s     169546 s     568054 s      41663 s
+       #1  3405 MHz     664136 s     200962 s     250247 s    4597404 s      45924 s
+       #2  3156 MHz     735342 s     202410 s     181563 s     968221 s      20957 s
+       #3  3524 MHz     746285 s     202202 s     180538 s     961277 s      21211 s
+       #4  3600 MHz     705898 s     198509 s     183903 s     964906 s      43660 s
        
-  Memory: 31.25226593017578 GB (11305.4375 MB free)
-  Uptime: 125542.0 sec
-  Load Avg:  1.94287109375  1.6728515625  1.4541015625
+  Memory: 31.25226593017578 GB (9773.82421875 MB free)
+  Uptime: 130790.0 sec
+  Load Avg:  2.33984375  1.5712890625  1.2861328125
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-8.0.1 (ORCJIT, skylake)
 
 ```
-<!-- Generated on 2019-12-04T08:56:55.04 -->
+<!-- Generated on 2019-12-04T10:24:27.349 -->
