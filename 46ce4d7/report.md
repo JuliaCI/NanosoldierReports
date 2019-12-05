@@ -13,13 +13,13 @@
 The build could not finish due to an error:
 
 ```
-NanosoldierError: failed to run tests against primary commit: ArgumentError: cannot reinterpret `Symbol` `UInt8`, type `Symbol` is not a bits type
+NanosoldierError: failed to run tests against primary commit: ArgumentError: collection must be non-empty
 Stacktrace:
- [1] (::Base.var"#throwbits#204")(::Type{Symbol}, ::Type{UInt8}, ::Type{Symbol}) at ./reinterpretarray.jl:16
- [2] reinterpret(::Type{UInt8}, ::Array{Symbol,1}) at ./reinterpretarray.jl:34
- [3] Arrow.Primitive(::Array{Symbol,1}) at /home/tim/Julia/depot/packages/Arrow/q3tEJ/src/primitives.jl:48
- [4] arrowformat(::Array{Symbol,1}) at /home/tim/Julia/depot/packages/Arrow/q3tEJ/src/arrowvectors.jl:242
- [5] getarrow(::Array{Symbol,1}) at /home/tim/Julia/depot/packages/Feather/R3KXg/src/sink.jl:37
+ [1] first at ./abstractarray.jl:343 [inlined]
+ [2] replace_missing_vals(::Array{Union{Missing, Symbol},1}) at /home/tim/Julia/depot/packages/Arrow/q3tEJ/src/utils.jl:103
+ [3] Arrow.NullablePrimitive(::Array{Union{Missing, Symbol},1}) at /home/tim/Julia/depot/packages/Arrow/q3tEJ/src/primitives.jl:169
+ [4] arrowformat(::Array{Union{Missing, Symbol},1}) at /home/tim/Julia/depot/packages/Arrow/q3tEJ/src/arrowvectors.jl:242
+ [5] getarrow(::Array{Union{Missing, Symbol},1}) at /home/tim/Julia/depot/packages/Feather/R3KXg/src/sink.jl:40
  [6] #write#18(::String, ::String, ::typeof(Feather.write), ::IOStream, ::DataFrames.DataFrame) at /home/tim/Julia/depot/packages/Feather/R3KXg/src/sink.jl:18
  [7] #write at ./none:0 [inlined]
  [8] #20 at /home/tim/Julia/depot/packages/Feather/R3KXg/src/sink.jl:32 [inlined]
@@ -27,10 +27,10 @@ Stacktrace:
  [10] open at ./io.jl:296 [inlined]
  [11] #write#19 at /home/tim/Julia/depot/packages/Feather/R3KXg/src/sink.jl:31 [inlined]
  [12] write at /home/tim/Julia/depot/packages/Feather/R3KXg/src/sink.jl:31 [inlined]
- [13] (::Nanosoldier.var"#102#106"{DataFrames.DataFrame})() at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:168
- [14] cd(::Nanosoldier.var"#102#106"{DataFrames.DataFrame}, ::String) at ./file.jl:104
+ [13] (::Nanosoldier.var"#115#119"{DataFrames.DataFrame})() at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:166
+ [14] cd(::Nanosoldier.var"#115#119"{DataFrames.DataFrame}, ::String) at ./file.jl:104
  [15] execute_tests!(::PkgEvalJob, ::BuildRef) at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:206
- [16] run(::PkgEvalJob) at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:253
+ [16] run(::PkgEvalJob) at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:251
  [17] main() at /home/tim/Julia/pkg/Nanosoldier/wip.jl:18
  [18] top-level scope at REPL[16]:1
  [19] eval(::Module, ::Any) at ./boot.jl:330
