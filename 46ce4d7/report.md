@@ -13,20 +13,30 @@
 The build could not finish due to an error:
 
 ```
-NanosoldierError: failed to run tests against primary commit: ArgumentError: column name :julia_version not found in the data frame
+NanosoldierError: failed to run tests against primary commit: ArgumentError: cannot reinterpret `Symbol` `UInt8`, type `Symbol` is not a bits type
 Stacktrace:
- [1] getindex(::DataFrames.DataFrame, ::typeof(!), ::Symbol) at /home/tim/Julia/depot/packages/DataFrames/yH0f6/src/other/index.jl:238
- [2] getindex(::DataFrames.DataFrame, ::Symbol) at ./deprecated.jl:67
- [3] (::Nanosoldier.var"#91#95"{DataFrames.DataFrame})() at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:166
- [4] cd(::Nanosoldier.var"#91#95"{DataFrames.DataFrame}, ::String) at ./file.jl:104
- [5] execute_tests!(::PkgEvalJob, ::BuildRef) at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:206
- [6] run(::PkgEvalJob) at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:253
- [7] main() at /home/tim/Julia/pkg/Nanosoldier/wip.jl:18
- [8] top-level scope at REPL[16]:1
- [9] eval(::Module, ::Any) at ./boot.jl:330
- [10] eval_user_input(::Any, ::REPL.REPLBackend) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.3/REPL/src/REPL.jl:86
- [11] run_backend(::REPL.REPLBackend) at /home/tim/Julia/depot/packages/Revise/0KQ7U/src/Revise.jl:1033
- [12] (::Revise.var"#85#87"{REPL.REPLBackend})() at ./task.jl:333
+ [1] (::Base.var"#throwbits#204")(::Type{Symbol}, ::Type{UInt8}, ::Type{Symbol}) at ./reinterpretarray.jl:16
+ [2] reinterpret(::Type{UInt8}, ::Array{Symbol,1}) at ./reinterpretarray.jl:34
+ [3] Arrow.Primitive(::Array{Symbol,1}) at /home/tim/Julia/depot/packages/Arrow/q3tEJ/src/primitives.jl:48
+ [4] arrowformat(::Array{Symbol,1}) at /home/tim/Julia/depot/packages/Arrow/q3tEJ/src/arrowvectors.jl:242
+ [5] getarrow(::Array{Symbol,1}) at /home/tim/Julia/depot/packages/Feather/R3KXg/src/sink.jl:37
+ [6] #write#18(::String, ::String, ::typeof(Feather.write), ::IOStream, ::DataFrames.DataFrame) at /home/tim/Julia/depot/packages/Feather/R3KXg/src/sink.jl:18
+ [7] #write at ./none:0 [inlined]
+ [8] #20 at /home/tim/Julia/depot/packages/Feather/R3KXg/src/sink.jl:32 [inlined]
+ [9] #open#271(::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}, ::typeof(open), ::Feather.var"#20#21"{String,String,DataFrames.DataFrame}, ::String, ::Vararg{String,N} where N) at ./io.jl:298
+ [10] open at ./io.jl:296 [inlined]
+ [11] #write#19 at /home/tim/Julia/depot/packages/Feather/R3KXg/src/sink.jl:31 [inlined]
+ [12] write at /home/tim/Julia/depot/packages/Feather/R3KXg/src/sink.jl:31 [inlined]
+ [13] (::Nanosoldier.var"#102#106"{DataFrames.DataFrame})() at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:168
+ [14] cd(::Nanosoldier.var"#102#106"{DataFrames.DataFrame}, ::String) at ./file.jl:104
+ [15] execute_tests!(::PkgEvalJob, ::BuildRef) at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:206
+ [16] run(::PkgEvalJob) at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:253
+ [17] main() at /home/tim/Julia/pkg/Nanosoldier/wip.jl:18
+ [18] top-level scope at REPL[16]:1
+ [19] eval(::Module, ::Any) at ./boot.jl:330
+ [20] eval_user_input(::Any, ::REPL.REPLBackend) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.3/REPL/src/REPL.jl:86
+ [21] run_backend(::REPL.REPLBackend) at /home/tim/Julia/depot/packages/Revise/0KQ7U/src/Revise.jl:1033
+ [22] (::Revise.var"#85#87"{REPL.REPLBackend})() at ./task.jl:333
 ```
 
 Check the logs folder in this directory for more detailed output.
