@@ -8,12 +8,19 @@
 
 *Package Selection:* `["Example"]`
 
-*Daily Job:* 2019-12-05
+*Daily Job:* 2019-12-05 vs 2019-12-04
 
-## Packages that succeeded
+## Packages that now succeeded
 
-1 packages succeeded.
+0 packages succeeded only on the current version.
+
+<details><summary>1 packages succeeded on the previous version too.</summary>
+<p>
+
 - Example v0.5.3: testing [was successful](logs/Example/1.3.0.log)
+</p>
+</details>
+
 
 ## Summary
 
@@ -32,17 +39,17 @@ Platform Info:
   uname: Linux 5.4.1-arch1-1 #1 SMP PREEMPT Fri, 29 Nov 2019 13:37:24 +0000 x86_64 x86_64
   CPU: Intel(R) Core(TM) i5-6600K CPU @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3216 MHz     330153 s      27266 s     124902 s    2755534 s      25129 s
-       #2  3259 MHz     359981 s      30802 s      96431 s    2651771 s      12084 s
-       #3  3443 MHz     377210 s      25251 s      94495 s    2642414 s      12029 s
-       #4  3355 MHz     357100 s      23632 s      97609 s    2652794 s      14772 s
+       #1  1293 MHz     332594 s      27294 s     125846 s    2773307 s      25335 s
+       #2  1332 MHz     362646 s      30839 s      97413 s    2669380 s      12174 s
+       #3  1646 MHz     379438 s      25283 s      95230 s    2660732 s      12123 s
+       #4  1322 MHz     360001 s      23672 s      98334 s    2670389 s      14879 s
        
-  Memory: 31.25225067138672 GB (8199.3359375 MB free)
-  Uptime: 67146.0 sec
-  Load Avg:  0.68505859375  0.724609375  0.64599609375
+  Memory: 31.25225067138672 GB (8105.6953125 MB free)
+  Uptime: 67363.0 sec
+  Load Avg:  0.6875  0.6376953125  0.62451171875
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-6.0.1 (ORCJIT, skylake)
 
 ```
-<!-- Generated on 2019-12-05T16:30:49.747 -->
+<!-- Generated on 2019-12-05T16:34:27.215 -->
