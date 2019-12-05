@@ -27,12 +27,12 @@ Stacktrace:
  [10] open at ./io.jl:296 [inlined]
  [11] #write#19 at /home/tim/Julia/depot/packages/Feather/R3KXg/src/sink.jl:31 [inlined]
  [12] write at /home/tim/Julia/depot/packages/Feather/R3KXg/src/sink.jl:31 [inlined]
- [13] (::Nanosoldier.var"#115#119"{DataFrames.DataFrame})() at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:166
- [14] cd(::Nanosoldier.var"#115#119"{DataFrames.DataFrame}, ::String) at ./file.jl:104
- [15] execute_tests!(::PkgEvalJob, ::BuildRef) at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:206
- [16] run(::PkgEvalJob) at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:251
+ [13] (::Nanosoldier.var"#123#127"{DataFrames.DataFrame})() at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:166
+ [14] cd(::Nanosoldier.var"#123#127"{DataFrames.DataFrame}, ::String) at ./file.jl:104
+ [15] execute_tests!(::PkgEvalJob, ::BuildRef) at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:207
+ [16] run(::PkgEvalJob) at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:253
  [17] main() at /home/tim/Julia/pkg/Nanosoldier/wip.jl:18
- [18] top-level scope at REPL[16]:1
+ [18] top-level scope at REPL[23]:1
  [19] eval(::Module, ::Any) at ./boot.jl:330
  [20] eval_user_input(::Any, ::REPL.REPLBackend) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.3/REPL/src/REPL.jl:86
  [21] run_backend(::REPL.REPLBackend) at /home/tim/Julia/depot/packages/Revise/0KQ7U/src/Revise.jl:1033
