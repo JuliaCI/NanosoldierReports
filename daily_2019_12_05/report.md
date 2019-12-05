@@ -25,7 +25,8 @@ Stacktrace:
  [6] eval(::Module, ::Any) at ./boot.jl:330
  [7] eval_user_input(::Any, ::REPL.REPLBackend) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.3/REPL/src/REPL.jl:86
  [8] run_backend(::REPL.REPLBackend) at /home/tim/Julia/depot/packages/Revise/0KQ7U/src/Revise.jl:1033
- [9] (::Revise.var"#85#87"{REPL.REPLBackend})() at ./task.jl:333```
+ [9] (::Revise.var"#85#87"{REPL.REPLBackend})() at ./task.jl:333
+```
 
 Check the logs folder in this directory for more detailed output.
 
