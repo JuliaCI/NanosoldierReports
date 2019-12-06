@@ -17,7 +17,7 @@
 <details><summary>1 packages succeeded on the previous version too.</summary>
 <p>
 
-- Example v0.5.3: testing [was successful](logs/Example/1.3.0.log)
+- [Example v0.5.3](logs/Example/1.3.0.log)
 </p>
 </details>
 
@@ -39,17 +39,17 @@ Platform Info:
   uname: Linux 5.4.1-arch1-1 #1 SMP PREEMPT Fri, 29 Nov 2019 13:37:24 +0000 x86_64 x86_64
   CPU: Intel(R) Core(TM) i5-6600K CPU @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3578 MHz      27512 s       2303 s      11232 s     271439 s       1617 s
-       #2  3559 MHz      30002 s       3159 s       8653 s     271188 s       1448 s
-       #3  3565 MHz      30085 s       3520 s       9336 s     270641 s        931 s
-       #4  3600 MHz      27955 s       3696 s       8506 s     273332 s        997 s
+       #1  3817 MHz      30838 s       2387 s      12914 s     316750 s       1909 s
+       #2  3772 MHz      33845 s       3245 s       9892 s     316516 s       1737 s
+       #3  3815 MHz      33756 s       3769 s      10517 s     316053 s       1101 s
+       #4  3693 MHz      32152 s       3797 s       9839 s     318294 s       1160 s
        
-  Memory: 31.25225067138672 GB (15901.7265625 MB free)
-  Uptime: 3163.0 sec
-  Load Avg:  0.93603515625  0.67138671875  0.60546875
+  Memory: 31.25225067138672 GB (15615.2734375 MB free)
+  Uptime: 3675.0 sec
+  Load Avg:  0.91748046875  0.6142578125  0.57421875
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-6.0.1 (ORCJIT, skylake)
 
 ```
-<!-- Generated on 2019-12-06T08:42:45.321 -->
+<!-- Generated on 2019-12-06T08:51:17.534 -->
