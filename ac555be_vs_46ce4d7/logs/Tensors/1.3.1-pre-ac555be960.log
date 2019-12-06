@@ -1,19 +1,27 @@
-Running tests with Julia v1.3.1-pre.12
+Julia Version 1.3.1-pre.12
+Commit ac555be960 (2019-12-04 10:45 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-6.0.1 (ORCJIT, skylake)
+
    Cloning default registries into `~/.julia`
    Cloning registry from "https://github.com/JuliaRegistries/General.git"
-[?25l    Fetching: [>                                        ]  0.0 %    Fetching: [============>                            ]  29.2 %    Fetching: [============================>            ]  68.4 %[2K[?25h     Added registry `General` to `~/.julia/registries/General`
+[?25l    Fetching: [>                                        ]  0.0 %    Fetching: [==============>                          ]  33.4 %    Fetching: [==================================>      ]  84.6 %[2K[?25h     Added registry `General` to `~/.julia/registries/General`
  Resolving package versions...
- Installed SIMD ───────────────── v2.8.0
- Installed NaNMath ────────────── v0.3.3
  Installed OpenSpecFun_jll ────── v0.5.3+1
  Installed Compat ─────────────── v2.2.0
+ Installed CommonSubexpressions ─ v0.2.0
+ Installed DiffResults ────────── v0.0.4
  Installed DiffRules ──────────── v0.1.0
  Installed SpecialFunctions ───── v0.9.0
- Installed Tensors ────────────── v1.4.0
- Installed ForwardDiff ────────── v0.10.7
- Installed CommonSubexpressions ─ v0.2.0
  Installed StaticArrays ───────── v0.12.1
- Installed DiffResults ────────── v0.0.4
+ Installed Tensors ────────────── v1.4.0
+ Installed NaNMath ────────────── v0.3.3
+ Installed ForwardDiff ────────── v0.10.7
+ Installed SIMD ───────────────── v2.8.0
   Updating `~/.julia/environments/v1.3/Project.toml`
   [48a634ad] + Tensors v1.4.0
   Updating `~/.julia/environments/v1.3/Manifest.toml`
@@ -55,7 +63,7 @@ Running tests with Julia v1.3.1-pre.12
    Testing Tensors
  Resolving package versions...
  Installed TimerOutputs ─ v0.5.3
-    Status `/tmp/jl_neZz8u/Manifest.toml`
+    Status `/tmp/jl_CixPEy/Manifest.toml`
   [bbf7d656] CommonSubexpressions v0.2.0
   [34da2185] Compat v2.2.0
   [163ba53b] DiffResults v0.0.4
@@ -134,47 +142,47 @@ AD            |  401    401
  ──────────────────────────────────────────────────────────────────────────────
                                        Time                   Allocations      
                                ──────────────────────   ───────────────────────
-       Tot / % measured:             414s / 96.8%           23.7GiB / 99.1%    
+       Tot / % measured:             432s / 96.9%           23.7GiB / 99.1%    
 
  Section               ncalls     time   %tot     avg     alloc   %tot      avg
  ──────────────────────────────────────────────────────────────────────────────
- tensor ops                 1     135s  33.7%    135s   9.08GiB  38.6%  9.08GiB
-   outer products (...      9    50.6s  12.6%   5.63s   3.91GiB  16.6%   445MiB
-   double contraction       9    39.7s  9.91%   4.41s   2.06GiB  8.78%   235MiB
-   transpose                9    19.0s  4.74%   2.11s   1.58GiB  6.71%   179MiB
-   tovoigt/fromvoigt        9    11.1s  2.77%   1.23s    423MiB  1.76%  47.0MiB
-   symmetric/skew-s...      9    10.2s  2.54%   1.13s   0.94GiB  3.98%   107MiB
-   dot products             9    2.03s  0.51%   226ms   78.1MiB  0.32%  8.68MiB
-   special                  9    1.41s  0.35%   156ms   50.2MiB  0.21%  5.58MiB
-   rotation                 3    806ms  0.20%   269ms   45.6MiB  0.19%  15.2MiB
-   cross product            9    239ms  0.06%  26.5ms   5.28MiB  0.02%   600KiB
- AD                         1    53.8s  13.4%   53.8s   2.85GiB  12.1%  2.85GiB
-   dim 3                    1    24.9s  6.22%   24.9s   1.32GiB  5.61%  1.32GiB
-     hessian                2    12.3s  3.06%   6.13s    597MiB  2.48%   299MiB
-     2nd tensor grad        2    3.91s  0.98%   1.95s    253MiB  1.05%   126MiB
-     scalar grad            2    1.42s  0.35%   709ms   82.2MiB  0.34%  41.1MiB
-   vector calculus ...      1    11.2s  2.79%   11.2s    651MiB  2.71%   651MiB
-   dim 2                    1    9.01s  2.25%   9.01s    498MiB  2.07%   498MiB
-     hessian                2    4.36s  1.09%   2.18s    216MiB  0.90%   108MiB
-     2nd tensor grad        2    1.57s  0.39%   783ms   83.7MiB  0.35%  41.9MiB
-     scalar grad            2    1.08s  0.27%   542ms   52.7MiB  0.22%  26.3MiB
-   dim 1                    1    6.65s  1.66%   6.65s    326MiB  1.35%   326MiB
-     hessian                2    3.31s  0.83%   1.65s    166MiB  0.69%  82.8MiB
-     2nd tensor grad        2    1.02s  0.25%   510ms   42.3MiB  0.18%  21.2MiB
-     scalar grad            2    718ms  0.18%   359ms   25.5MiB  0.11%  12.8MiB
-   f: scalar -> Abs...      1    1.86s  0.46%   1.86s   85.8MiB  0.36%  85.8MiB
-   f: scalar -> scalar      1    122ms  0.03%   122ms   5.26MiB  0.02%  5.26MiB
- constructors               1    47.2s  11.8%   47.2s   2.37GiB  10.1%  2.37GiB
- simple math                1    40.2s  10.0%   40.2s   1.94GiB  8.24%  1.94GiB
- norm, trace, det, ...      1    35.5s  8.87%   35.5s   1.76GiB  7.47%  1.76GiB
- construct from Array       1    26.1s  6.51%   26.1s   1.64GiB  6.96%  1.64GiB
- tensor identities          1    19.9s  4.97%   19.9s   1.31GiB  5.59%  1.31GiB
- eigen(::FourthOrde...      1    10.9s  2.72%   10.9s    613MiB  2.55%   613MiB
- promotion/conversion       1    9.86s  2.46%   9.86s    790MiB  3.28%   790MiB
- indexing                   1    8.95s  2.23%   8.95s    452MiB  1.88%   452MiB
- diagm, one                 1    4.94s  1.23%   4.94s    234MiB  0.97%   234MiB
- construct from fun...      1    4.73s  1.18%   4.73s    411MiB  1.71%   411MiB
- base vectors               1    3.21s  0.80%   3.21s    120MiB  0.50%   120MiB
- exceptions                 1    170ms  0.04%   170ms   6.10MiB  0.03%  6.10MiB
+ tensor ops                 1     144s  34.4%    144s   9.08GiB  38.6%  9.08GiB
+   outer products (...      9    52.4s  12.5%   5.83s   3.91GiB  16.6%   445MiB
+   double contraction       9    43.8s  10.5%   4.86s   2.06GiB  8.78%   235MiB
+   transpose                9    19.7s  4.71%   2.19s   1.58GiB  6.71%   179MiB
+   tovoigt/fromvoigt        9    12.3s  2.95%   1.37s    423MiB  1.76%  47.0MiB
+   symmetric/skew-s...      9    10.6s  2.53%   1.18s   0.94GiB  3.98%   107MiB
+   dot products             9    2.09s  0.50%   232ms   78.5MiB  0.33%  8.72MiB
+   special                  9    1.65s  0.39%   183ms   50.2MiB  0.21%  5.58MiB
+   rotation                 3    904ms  0.22%   301ms   45.6MiB  0.19%  15.2MiB
+   cross product            9    296ms  0.07%  32.9ms   5.28MiB  0.02%   600KiB
+ AD                         1    56.4s  13.5%   56.4s   2.85GiB  12.1%  2.85GiB
+   dim 3                    1    25.9s  6.18%   25.9s   1.32GiB  5.61%  1.32GiB
+     hessian                2    11.9s  2.84%   5.94s    597MiB  2.48%   299MiB
+     2nd tensor grad        2    4.21s  1.01%   2.10s    253MiB  1.05%   126MiB
+     scalar grad            2    1.69s  0.41%   847ms   82.2MiB  0.34%  41.1MiB
+   vector calculus ...      1    11.3s  2.70%   11.3s    651MiB  2.71%   651MiB
+   dim 2                    1    10.1s  2.40%   10.1s    498MiB  2.07%   498MiB
+     hessian                2    4.61s  1.10%   2.31s    216MiB  0.90%   108MiB
+     2nd tensor grad        2    1.86s  0.45%   932ms   83.7MiB  0.35%  41.9MiB
+     scalar grad            2    1.32s  0.32%   660ms   52.7MiB  0.22%  26.3MiB
+   dim 1                    1    7.27s  1.74%   7.27s    326MiB  1.35%   326MiB
+     hessian                2    3.83s  0.92%   1.91s    166MiB  0.69%  82.8MiB
+     2nd tensor grad        2    979ms  0.23%   490ms   42.3MiB  0.18%  21.2MiB
+     scalar grad            2    750ms  0.18%   375ms   25.5MiB  0.11%  12.8MiB
+   f: scalar -> Abs...      1    1.83s  0.44%   1.83s   85.8MiB  0.36%  85.8MiB
+   f: scalar -> scalar      1    111ms  0.03%   111ms   5.27MiB  0.02%  5.27MiB
+ constructors               1    45.5s  10.9%   45.5s   2.37GiB  10.1%  2.37GiB
+ simple math                1    41.1s  9.82%   41.1s   1.94GiB  8.24%  1.94GiB
+ norm, trace, det, ...      1    37.9s  9.06%   37.9s   1.76GiB  7.48%  1.76GiB
+ construct from Array       1    26.7s  6.40%   26.7s   1.64GiB  6.96%  1.64GiB
+ tensor identities          1    22.8s  5.46%   22.8s   1.31GiB  5.59%  1.31GiB
+ eigen(::FourthOrde...      1    12.0s  2.86%   12.0s    612MiB  2.55%   612MiB
+ promotion/conversion       1    9.78s  2.34%   9.78s    790MiB  3.28%   790MiB
+ indexing                   1    8.91s  2.13%   8.91s    452MiB  1.88%   452MiB
+ diagm, one                 1    5.00s  1.20%   5.00s    233MiB  0.97%   233MiB
+ construct from fun...      1    4.95s  1.18%   4.95s    411MiB  1.71%   411MiB
+ base vectors               1    3.03s  0.72%   3.03s    120MiB  0.50%   120MiB
+ exceptions                 1    190ms  0.05%   190ms   6.10MiB  0.03%  6.10MiB
  ──────────────────────────────────────────────────────────────────────────────
    Testing Tensors tests passed 

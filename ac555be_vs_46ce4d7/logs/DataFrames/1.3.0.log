@@ -1,7 +1,15 @@
-Running tests with Julia v1.3.0
+Julia Version 1.3.0
+Commit 46ce4d7933 (2019-11-26 06:09 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-6.0.1 (ORCJIT, skylake)
+
    Cloning default registries into `~/.julia`
    Cloning registry from "https://github.com/JuliaRegistries/General.git"
-[?25l    Fetching: [>                                        ]  0.0 %    Fetching: [============>                            ]  29.4 %    Fetching: [=========================>               ]  61.3 %[2K[?25h     Added registry `General` to `~/.julia/registries/General`
+[?25l    Fetching: [>                                        ]  0.0 %    Fetching: [============>                            ]  29.5 %    Fetching: [======================>                  ]  54.2 %    Fetching: [======================================>  ]  94.3 %[2K[?25h     Added registry `General` to `~/.julia/registries/General`
  Resolving package versions...
  Installed DataAPI ───────────────────── v1.1.0
  Installed Missings ──────────────────── v0.4.3
@@ -11,15 +19,15 @@ Running tests with Julia v1.3.0
  Installed TableTraits ───────────────── v1.0.0
  Installed DataStructures ────────────── v0.17.6
  Installed DataFrames ────────────────── v0.19.4
+ Installed Reexport ──────────────────── v0.2.0
  Installed PooledArrays ──────────────── v0.5.2
  Installed DataValueInterfaces ───────── v1.0.0
- Installed Reexport ──────────────────── v0.2.0
- Installed CategoricalArrays ─────────── v0.7.3
  Installed Compat ────────────────────── v2.2.0
  Installed OrderedCollections ────────── v1.1.0
  Installed InvertedIndices ───────────── v1.0.0
- Installed Parsers ───────────────────── v0.3.10
+ Installed CategoricalArrays ─────────── v0.7.3
  Installed JSON ──────────────────────── v0.21.0
+ Installed Parsers ───────────────────── v0.3.10
   Updating `~/.julia/environments/v1.3/Project.toml`
   [a93c6f00] + DataFrames v0.19.4
   Updating `~/.julia/environments/v1.3/Manifest.toml`
@@ -69,7 +77,7 @@ Running tests with Julia v1.3.0
  Resolving package versions...
  Installed LaTeXStrings ─ v1.0.3
  Installed DataValues ─── v0.4.12
-    Status `/tmp/jl_G1uR4T/Manifest.toml`
+    Status `/tmp/jl_2ipyhO/Manifest.toml`
   [324d7699] CategoricalArrays v0.7.3
   [34da2185] Compat v2.2.0
   [9a962f9c] DataAPI v1.1.0
@@ -752,11 +760,11 @@ DataFrame constructors |   42     42
 ┌ Warning: `colwise(fns::Union{AbstractVector, Tuple}, d::AbstractDataFrame)` is deprecated, use `[f(col) for f = fns, col = eachcol(d)]` instead.
 │   caller = top-level scope at deprecated.jl:197
 └ @ Core ~/.julia/packages/DataFrames/yH0f6/test/deprecated.jl:197
+Test Summary: | Pass  Total
+colwise       |   29     29
 ┌ Warning: `colwise(f, gd::GroupedDataFrame)` is deprecated, use `[[f(col) for col = eachcol(d)] for d = gd]` instead.
 │   caller = top-level scope at deprecated.jl:202
 └ @ Core ~/.julia/packages/DataFrames/yH0f6/test/deprecated.jl:202
-Test Summary: | Pass  Total
-colwise       |   29     29
 ┌ Warning: `empty!(df::DataFrame)` is deprecated, use `select!(df, Int[])` instead.
 │   caller = top-level scope at deprecated.jl:212
 └ @ Core ~/.julia/packages/DataFrames/yH0f6/test/deprecated.jl:212
@@ -806,11 +814,11 @@ deletecols and deletecols! |    7      7
 ┌ Warning: `haskey(df::AbstractDataFrame, key::Symbol)` is deprecated, use `hasproperty(df, key)` instead.
 │   caller = top-level scope at deprecated.jl:242
 └ @ Core ~/.julia/packages/DataFrames/yH0f6/test/deprecated.jl:242
+Test Summary: | Pass  Total
+haskey        |    7      7
 ┌ Warning: `haskey(df::AbstractDataFrame, key::Any)` is deprecated, use `key in 1:ncol(df) || key in names(df)` instead.
 │   caller = top-level scope at deprecated.jl:243
 └ @ Core ~/.julia/packages/DataFrames/yH0f6/test/deprecated.jl:243
-Test Summary: | Pass  Total
-haskey        |    7      7
 ┌ Warning: `getindex(df::DataFrame, col_ind::ColumnIndex)` is deprecated, use `df[!, col_ind]` instead.
 │   caller = top-level scope at deprecated.jl:249
 └ @ Core ~/.julia/packages/DataFrames/yH0f6/test/deprecated.jl:249
@@ -1381,9 +1389,6 @@ haskey        |    7      7
 ┌ Warning: implicit vector broadcasting in setindex! is deprecated; use `df[:, col_inds] .= Ref(v)` broadcasting assignment to change the columns in place
 │   caller = top-level scope at deprecated.jl:496
 └ @ Core ~/.julia/packages/DataFrames/yH0f6/test/deprecated.jl:496
-Test Summary:                                        | Pass  Total
-df[col] and df[col] for getindex, view, and setindex |  132    132
-	[1m[32mPASSED[0m: deprecated.jl
 ┌ Warning: `setindex!(df::DataFrame, v::AbstractVector, col_inds::AbstractVector{<:ColumnIndex})` is deprecated, use `begin
 │     foreach((c->begin
 │                 df[!, c] = copy(v)
@@ -1392,6 +1397,9 @@ df[col] and df[col] for getindex, view, and setindex |  132    132
 │ end` instead.
 │   caller = setindex!(::DataFrame, ::Array{Float64,1}, ::Colon, ::UnitRange{Int64}) at deprecated.jl:1584
 └ @ DataFrames ~/.julia/packages/DataFrames/yH0f6/src/deprecated.jl:1584
+Test Summary:                                        | Pass  Total
+df[col] and df[col] for getindex, view, and setindex |  132    132
+	[1m[32mPASSED[0m: deprecated.jl
 ERROR: LoadError: "Tests failed"
 Stacktrace:
  [1] top-level scope at /home/pkgeval/.julia/packages/DataFrames/yH0f6/test/runtests.jl:53
