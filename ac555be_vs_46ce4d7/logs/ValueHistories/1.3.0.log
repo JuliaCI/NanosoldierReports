@@ -1,0 +1,90 @@
+Running tests with Julia v1.3.0
+   Cloning default registries into `~/.julia`
+   Cloning registry from "https://github.com/JuliaRegistries/General.git"
+[?25l    Fetching: [>                                        ]  0.0 %    Fetching: [============>                            ]  29.9 %    Fetching: [=========================>               ]  61.2 %[2K[?25h     Added registry `General` to `~/.julia/registries/General`
+ Resolving package versions...
+ Installed RecipesBase ──────── v0.7.0
+ Installed ValueHistories ───── v0.5.1
+ Installed OrderedCollections ─ v1.1.0
+ Installed DataStructures ───── v0.17.6
+  Updating `~/.julia/environments/v1.3/Project.toml`
+  [98cad3c8] + ValueHistories v0.5.1
+  Updating `~/.julia/environments/v1.3/Manifest.toml`
+  [864edb3b] + DataStructures v0.17.6
+  [bac558e1] + OrderedCollections v1.1.0
+  [3cdcf5f2] + RecipesBase v0.7.0
+  [98cad3c8] + ValueHistories v0.5.1
+  [2a0f44e3] + Base64 
+  [8ba89e20] + Distributed 
+  [b77e0a4c] + InteractiveUtils 
+  [56ddb016] + Logging 
+  [d6f4376e] + Markdown 
+  [9a3f8284] + Random 
+  [9e88b42a] + Serialization 
+  [6462fe0b] + Sockets 
+  [8dfed614] + Test 
+   Testing ValueHistories
+    Status `/tmp/jl_RHHJ8e/Manifest.toml`
+  [864edb3b] DataStructures v0.17.6
+  [bac558e1] OrderedCollections v1.1.0
+  [3cdcf5f2] RecipesBase v0.7.0
+  [98cad3c8] ValueHistories v0.5.1
+  [2a0f44e3] Base64  [`@stdlib/Base64`]
+  [8ba89e20] Distributed  [`@stdlib/Distributed`]
+  [b77e0a4c] InteractiveUtils  [`@stdlib/InteractiveUtils`]
+  [56ddb016] Logging  [`@stdlib/Logging`]
+  [d6f4376e] Markdown  [`@stdlib/Markdown`]
+  [9a3f8284] Random  [`@stdlib/Random`]
+  [9e88b42a] Serialization  [`@stdlib/Serialization`]
+  [6462fe0b] Sockets  [`@stdlib/Sockets`]
+  [8dfed614] Test  [`@stdlib/Test`]
+100 elements {Int64,Float64}
+History
+  * types: Int64, Float64
+  * length: 100
+History
+  * types: UInt8, String
+  * length: 100
+100 elements {Int64,Float64}
+QHistory
+    types: Int64, Float64
+    length: 100
+QHistory
+    types: UInt8, String
+    length: 100
+Test Summary:       | Pass  Total
+[->] tst_history.jl | 1033   1033
+MVHistory{History}
+  :myint2 => 5 elements {Int64,Int64}
+  :myf => 56 elements {Int64,Int64}
+  :myint => 5 elements {Int64,Int64}
+MVHistory{History}
+  :myint2 => 5 elements {Int64,Int64}
+  :myf => 56 elements {Int64,Int64}
+  :myint => 5 elements {Int64,Int64}
+Test Summary:         | Pass  Total
+[->] tst_mvhistory.jl |  548    548
+   --> Baseline: 100 loops that accumulates a Float64
+  0.014774 seconds (16.68 k allocations: 904.369 KiB)
+  0.000004 seconds (5 allocations: 176 bytes)
+   --> History: 100 loops tracking accumulator as Float64
+  0.016126 seconds (16.85 k allocations: 917.301 KiB)
+  0.000025 seconds (17 allocations: 4.422 KiB)
+   --> History: Converting result into arrays
+  0.000029 seconds (7 allocations: 256 bytes)
+  0.000036 seconds (7 allocations: 256 bytes)
+   --> QHistory: 100 loops tracking accumulator as Float64
+  0.016528 seconds (16.84 k allocations: 912.926 KiB)
+  0.000006 seconds (5 allocations: 176 bytes)
+   --> QHistory: Converting result into arrays
+  0.000337 seconds (911 allocations: 27.047 KiB)
+  0.000255 seconds (911 allocations: 27.047 KiB)
+   --> MVHistory: 100 loops tracking accumulator as Float64 and String
+  0.038114 seconds (42.23 k allocations: 2.138 MiB)
+  0.000147 seconds (633 allocations: 30.891 KiB)
+   --> MVHistory: Converting result into arrays
+  0.102960 seconds (105.58 k allocations: 5.529 MiB)
+  0.000266 seconds (526 allocations: 18.609 KiB)
+Test Summary:      |
+[->] bm_history.jl | No tests
+   Testing ValueHistories tests passed 
