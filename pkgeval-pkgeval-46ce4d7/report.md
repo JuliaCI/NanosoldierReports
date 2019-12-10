@@ -8,25 +8,39 @@
 
 *Package Selection:* `["Example"]`
 
-## Error
+## Packages that passed tests
 
-The build could not finish due to an error:
+1 packages passed tests.
+- [Example v0.5.3](logs/Example/1.3.0.log)
+
+## Summary
+
+In total, 1 packages were tested, out of which 1 succeeded, 0 failed 0 got killed and 0 were skipped.
+
+
+## Version Info
+
+#### Primary Build
 
 ```
-NanosoldierError: failed to run tests against primary commit: KeyError: key 6380 not found
-Stacktrace:
- [1] getindex at ./dict.jl:477 [inlined]
- [2] (::Nanosoldier.var"#31#35"{PkgEvalJob,VersionNumber,Array{Any,1}})() at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:192
- [3] withenv(::Nanosoldier.var"#31#35"{PkgEvalJob,VersionNumber,Array{Any,1}}, ::Pair{String,Bool}) at ./env.jl:161
- [4] execute_tests!(::PkgEvalJob, ::BuildRef, ::Symbol) at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:191
- [5] run(::PkgEvalJob) at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:254
- [6] main() at /home/tim/Julia/pkg/Nanosoldier/wip.jl:19
- [7] top-level scope at REPL[7]:1
- [8] eval(::Module, ::Any) at ./boot.jl:330
- [9] eval_user_input(::Any, ::REPL.REPLBackend) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.3/REPL/src/REPL.jl:86
- [10] run_backend(::REPL.REPLBackend) at /home/tim/Julia/depot/packages/Revise/0KQ7U/src/Revise.jl:1033
- [11] (::Revise.var"#85#87"{REPL.REPLBackend})() at ./task.jl:333
+Julia Version 1.3.0
+Commit 46ce4d7933 (2019-11-26 06:09 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  uname: Linux 5.4.2-arch1-1 #1 SMP PREEMPT Thu, 05 Dec 2019 12:29:40 +0000 x86_64 x86_64
+  CPU: Intel(R) Core(TM) i5-6600K CPU @ 3.50GHz: 
+              speed         user         nice          sys         idle          irq
+       #1  3715 MHz      83888 s       3298 s      21664 s     370132 s       3375 s
+       #2  3682 MHz      88332 s       3783 s      17185 s     264651 s       1738 s
+       #3  3757 MHz      88615 s       3536 s      17017 s     264484 s       1530 s
+       #4  3682 MHz      84876 s       3522 s      16969 s     267616 s       1664 s
+       
+  Memory: 31.25225067138672 GB (17768.25390625 MB free)
+  Uptime: 39883.0 sec
+  Load Avg:  1.89697265625  1.58056640625  1.43505859375
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-6.0.1 (ORCJIT, skylake)
+
 ```
-
-Check the logs folder in this directory for more detailed output.
-
+<!-- Generated on 2019-12-10T08:38:53.008 -->
