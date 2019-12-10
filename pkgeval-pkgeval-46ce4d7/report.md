@@ -20,7 +20,7 @@ Stacktrace:
  [3] withenv(::Nanosoldier.var"#104#108"{PkgEvalJob,VersionNumber,Array{Any,1}}, ::Pair{String,Bool}) at ./env.jl:161
  [4] execute_tests!(::PkgEvalJob, ::BuildRef, ::Symbol) at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:191
  [5] run(::PkgEvalJob) at /home/tim/Julia/pkg/Nanosoldier/src/jobs/PkgEvalJob.jl:254
- [6] main() at /home/tim/Julia/pkg/Nanosoldier/wip.jl:19
+ [6] main() at /home/tim/Julia/pkg/Nanosoldier/wip.jl:20
  [7] top-level scope at REPL[7]:1
  [8] eval(::Module, ::Any) at ./boot.jl:330
  [9] eval_user_input(::Any, ::REPL.REPLBackend) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.3/REPL/src/REPL.jl:86
