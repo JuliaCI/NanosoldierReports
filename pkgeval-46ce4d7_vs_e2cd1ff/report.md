@@ -37,14 +37,14 @@ Platform Info:
   uname: Linux 5.4.2-arch1-1 #1 SMP PREEMPT Thu, 05 Dec 2019 12:29:40 +0000 x86_64 x86_64
   CPU: Intel(R) Core(TM) i5-6600K CPU @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  1582 MHz      95279 s       3472 s      25067 s     414050 s       3861 s
-       #2  2237 MHz      99934 s       3974 s      20139 s     309027 s       1965 s
-       #3  1722 MHz     101979 s       3796 s      19690 s     307288 s       1762 s
-       #4  1669 MHz      95959 s       3709 s      19738 s     312432 s       1937 s
+       #1  3676 MHz     338885 s      77732 s     186860 s    1596160 s      10990 s
+       #2  3648 MHz     424251 s     119095 s     233924 s     869300 s       5465 s
+       #3  3776 MHz     355713 s     191014 s     344516 s     743370 s       5013 s
+       #4  3675 MHz     377176 s     114551 s     225494 s     922368 s       7187 s
        
-  Memory: 31.25225067138672 GB (16929.48046875 MB free)
-  Uptime: 40472.0 sec
-  Load Avg:  2.20166015625  1.5087890625  1.3876953125
+  Memory: 31.25225067138672 GB (9772.265625 MB free)
+  Uptime: 69824.0 sec
+  Load Avg:  2.87744140625  2.05078125  1.8447265625
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-6.0.1 (ORCJIT, skylake)
@@ -61,17 +61,17 @@ Platform Info:
   uname: Linux 5.4.2-arch1-1 #1 SMP PREEMPT Thu, 05 Dec 2019 12:29:40 +0000 x86_64 x86_64
   CPU: Intel(R) Core(TM) i5-6600K CPU @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3730 MHz      96440 s       3478 s      25299 s     415842 s       3887 s
-       #2  3678 MHz     101399 s       3976 s      20437 s     310444 s       1976 s
-       #3  3642 MHz     103183 s       3799 s      19847 s     309114 s       1772 s
-       #4  3731 MHz      96889 s       3713 s      19947 s     314445 s       1963 s
+       #1  3722 MHz     339484 s      77745 s     187048 s    1598406 s      11006 s
+       #2  3655 MHz     424403 s     120073 s     235603 s     869422 s       5468 s
+       #3  3809 MHz     356693 s     191136 s     344897 s     744946 s       5019 s
+       #4  3726 MHz     377681 s     114564 s     225618 s     924743 s       7207 s
        
-  Memory: 31.25225067138672 GB (16139.71875 MB free)
-  Uptime: 40504.0 sec
-  Load Avg:  2.49267578125  1.64501953125  1.43701171875
+  Memory: 31.25225067138672 GB (9374.09765625 MB free)
+  Uptime: 69855.0 sec
+  Load Avg:  2.4169921875  2.013671875  1.83837890625
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-8.0.1 (ORCJIT, skylake)
 
 ```
-<!-- Generated on 2019-12-10T08:49:08.358 -->
+<!-- Generated on 2019-12-10T16:58:23.924 -->
