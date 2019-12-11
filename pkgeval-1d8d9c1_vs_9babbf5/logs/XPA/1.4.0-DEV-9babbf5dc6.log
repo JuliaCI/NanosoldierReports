@@ -1,0 +1,86 @@
+Julia Version 1.4.0-DEV.535
+Commit 9babbf5dc6 (2019-11-30 20:29 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-8.0.1 (ORCJIT, skylake)
+
+   Cloning default registries into `~/.julia`
+   Cloning registry from "https://github.com/JuliaRegistries/General.git"
+[?25l    Fetching: [>                                        ]  0.0 %    Fetching: [=========>                               ]  22.0 %    Fetching: [===================>                     ]  47.0 %    Fetching: [=====================================>   ]  92.0 %[2K[?25h     Added registry `General` to `~/.julia/registries/General`
+ Resolving package versions...
+ Installed XPA ─ v0.0.1
+  Updating `~/.julia/environments/v1.4/Project.toml`
+  [d310a076] + XPA v0.0.1
+  Updating `~/.julia/environments/v1.4/Manifest.toml`
+  [d310a076] + XPA v0.0.1
+  Building XPA → `~/.julia/packages/XPA/DgLur/deps/build.log`
+No changes
+┌ Error: Error building `XPA`: 
+│ if test "" != ""; then \
+│     defs="-DXPA_DLL=\"\\\"\\\"\""; \
+│     libs=""; \
+│ elif test "" != ""; then \
+│     defs="-UXPA_DLL"; \
+│     libs=""; \
+│ else \
+│     defs="-UXPA_DLL"; \
+│     libs="-lxpa"; \
+│ fi; \
+│ cc   $defs  -o "gencode" "gencode.c" $libs 
+│ gencode.c:14:10: fatal error: xpa.h: No such file or directory
+│  #include <xpa.h>
+│           ^~~~~~~
+│ compilation terminated.
+│ Makefile:28: recipe for target 'gencode' failed
+│ make: *** [gencode] Error 1
+│ ERROR: LoadError: failed process: Process(`make`, ProcessExited(2)) [2]
+│ 
+│ Stacktrace:
+│  [1] pipeline_error at ./process.jl:525 [inlined]
+│  [2] run(::Cmd; wait::Bool) at ./process.jl:440
+│  [3] run(::Cmd) at ./process.jl:438
+│  [4] top-level scope at /home/pkgeval/.julia/packages/XPA/DgLur/deps/build.jl:1
+│  [5] include(::String) at ./client.jl:439
+│  [6] top-level scope at none:5
+│ in expression starting at /home/pkgeval/.julia/packages/XPA/DgLur/deps/build.jl:1
+└ @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/backwards_compatible_isolation.jl:601
+   Testing XPA
+No changes
+Status `/tmp/jl_AABbgY/Manifest.toml`
+  [d310a076] XPA v0.0.1
+ERROR: LoadError: XPA not properly installed.  Please run Pkg.build("XPA")
+Stacktrace:
+ [1] error(::String) at ./error.jl:33
+ [2] top-level scope at /home/pkgeval/.julia/packages/XPA/DgLur/src/XPA.jl:25
+ [3] include(::Module, ::String) at ./Base.jl:377
+ [4] top-level scope at none:2
+ [5] eval at ./boot.jl:331 [inlined]
+ [6] eval(::Expr) at ./client.jl:449
+ [7] top-level scope at ./none:3
+in expression starting at /home/pkgeval/.julia/packages/XPA/DgLur/src/XPA.jl:22
+ERROR: LoadError: Failed to precompile XPA [d310a076-6a08-52b6-ab78-79baa254182b] to /home/pkgeval/.julia/compiled/v1.4/XPA/yg1lA_tSE9I.ji.
+Stacktrace:
+ [1] error(::String) at ./error.jl:33
+ [2] compilecache(::Base.PkgId, ::String) at ./loading.jl:1263
+ [3] _require(::Base.PkgId) at ./loading.jl:1022
+ [4] require(::Base.PkgId) at ./loading.jl:920
+ [5] require(::Module, ::Symbol) at ./loading.jl:915
+ [6] include(::String) at ./client.jl:439
+ [7] top-level scope at none:6
+in expression starting at /home/pkgeval/.julia/packages/XPA/DgLur/test/runtests.jl:13
+ERROR: Package XPA errored during testing
+Stacktrace:
+ [1] pkgerror(::String, ::Vararg{String,N} where N) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/Types.jl:54
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/Operations.jl:1391
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:287
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:274
+ [5] #test#56 at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:268 [inlined]
+ [6] test at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:268 [inlined]
+ [7] #test#55 at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:267 [inlined]
+ [8] test at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:267 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:266
+ [10] test(::String) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:266
+ [11] top-level scope at none:12
