@@ -14,35 +14,35 @@
 
 29 packages failed tests only on the current version.
 
-- [AbstractPlotting v0.9.13](logs/AbstractPlotting/1.4.0-DEV-8a47793b37.log) (package could not be installed) vs. [AbstractPlotting v0.9.13](../daily_2019_12_11/logs/AbstractPlotting/1.4.0-DEV-1432c5a085.log) (interrupted, test log exceeded the size limit)
-- [AgnosticBayesEnsemble v0.1.3](logs/AgnosticBayesEnsemble/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [AgnosticBayesEnsemble v0.1.2](../daily_2019_12_11/logs/AgnosticBayesEnsemble/1.4.0-DEV-1432c5a085.log) (successful)
-- [ArrayAllez v0.0.4](logs/ArrayAllez/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [ArrayAllez v0.0.4](../daily_2019_12_11/logs/ArrayAllez/1.4.0-DEV-1432c5a085.log) (successful)
-- [Autologistic v0.4.1](logs/Autologistic/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [Autologistic v0.4.1](../daily_2019_12_11/logs/Autologistic/1.4.0-DEV-1432c5a085.log) (successful)
-- [BeliefUpdaters v0.1.2](logs/BeliefUpdaters/1.4.0-DEV-8a47793b37.log) (package has syntax issues) vs. [BeliefUpdaters v0.1.2](../daily_2019_12_11/logs/BeliefUpdaters/1.4.0-DEV-1432c5a085.log) (successful)
-- [Bijectors v0.4.0](logs/Bijectors/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [Bijectors v0.4.0](../daily_2019_12_11/logs/Bijectors/1.4.0-DEV-1432c5a085.log) (successful)
-- [BoltzmannMachines v1.2.0](logs/BoltzmannMachines/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [BoltzmannMachines v1.2.0](../daily_2019_12_11/logs/BoltzmannMachines/1.4.0-DEV-1432c5a085.log) (successful)
-- [Coulter v0.1.0](logs/Coulter/1.4.0-DEV-8a47793b37.log) (package has syntax issues) vs. [Coulter v0.1.0](../daily_2019_12_11/logs/Coulter/1.4.0-DEV-1432c5a085.log) (successful)
-- [DesignStructureMatrix v0.1.0](logs/DesignStructureMatrix/1.4.0-DEV-8a47793b37.log) (package has syntax issues) vs. [DesignStructureMatrix v0.1.0](../daily_2019_12_11/logs/DesignStructureMatrix/1.4.0-DEV-1432c5a085.log) (successful)
-- [FeedbackNets v0.3.0](logs/FeedbackNets/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [FeedbackNets v0.3.0](../daily_2019_12_11/logs/FeedbackNets/1.4.0-DEV-1432c5a085.log) (successful)
-- [GLMakie v0.0.11](logs/GLMakie/1.4.0-DEV-8a47793b37.log) (package could not be installed) vs. [GLMakie v0.0.11](../daily_2019_12_11/logs/GLMakie/1.4.0-DEV-1432c5a085.log) (interrupted, test log exceeded the size limit)
-- [GlobalSensitivityAnalysis v0.0.6](logs/GlobalSensitivityAnalysis/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [GlobalSensitivityAnalysis v0.0.6](../daily_2019_12_11/logs/GlobalSensitivityAnalysis/1.4.0-DEV-1432c5a085.log) (successful)
-- [Grassmann v0.3.3](logs/Grassmann/1.4.0-DEV-8a47793b37.log) (an unreachable instruction was executed) vs. [Grassmann v0.3.3](../daily_2019_12_11/logs/Grassmann/1.4.0-DEV-1432c5a085.log) (successful)
-- [LLVM v1.3.2](logs/LLVM/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [LLVM v1.3.2](../daily_2019_12_11/logs/LLVM/1.4.0-DEV-1432c5a085.log) (successful)
-- [Makie v0.9.5](logs/Makie/1.4.0-DEV-8a47793b37.log) (package could not be installed) vs. [Makie v0.9.5](../daily_2019_12_11/logs/Makie/1.4.0-DEV-1432c5a085.log) (interrupted, test log exceeded the size limit)
-- [Match v1.0.2](logs/Match/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [Match v1.0.2](../daily_2019_12_11/logs/Match/1.4.0-DEV-1432c5a085.log) (successful)
-- [Mocking v0.7.0](logs/Mocking/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [Mocking v0.7.0](../daily_2019_12_11/logs/Mocking/1.4.0-DEV-1432c5a085.log) (successful)
-- [NLSolversBase v7.5.0](logs/NLSolversBase/1.4.0-DEV-8a47793b37.log) (package could not be installed) vs. [NLSolversBase v7.5.0](../daily_2019_12_11/logs/NLSolversBase/1.4.0-DEV-1432c5a085.log) (successful)
-- [NaiveNASflux v1.0.1](logs/NaiveNASflux/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [NaiveNASflux v1.0.1](../daily_2019_12_11/logs/NaiveNASflux/1.4.0-DEV-1432c5a085.log) (successful)
-- [POMDPModels v0.4.0](logs/POMDPModels/1.4.0-DEV-8a47793b37.log) (package has syntax issues) vs. [POMDPModels v0.4.0](../daily_2019_12_11/logs/POMDPModels/1.4.0-DEV-1432c5a085.log) (successful)
-- [POMDPPolicies v0.2.1](logs/POMDPPolicies/1.4.0-DEV-8a47793b37.log) (package has syntax issues) vs. [POMDPPolicies v0.2.1](../daily_2019_12_11/logs/POMDPPolicies/1.4.0-DEV-1432c5a085.log) (successful)
-- [PowerModels v0.13.0](logs/PowerModels/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [PowerModels v0.13.0](../daily_2019_12_11/logs/PowerModels/1.4.0-DEV-1432c5a085.log) (interrupted, test duration exceeded the time limit)
-- [PushVectors v0.2.0](logs/PushVectors/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [PushVectors v0.2.0](../daily_2019_12_11/logs/PushVectors/1.4.0-DEV-1432c5a085.log) (successful)
-- [RetroCap v0.2.0](logs/RetroCap/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [RetroCap v0.2.0](../daily_2019_12_11/logs/RetroCap/1.4.0-DEV-1432c5a085.log) (successful)
-- [RoME v0.5.2](logs/RoME/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [RoME v0.5.2](../daily_2019_12_11/logs/RoME/1.4.0-DEV-1432c5a085.log) (interrupted, test duration exceeded the time limit)
-- [SingularSpectrumAnalysis v0.2.1](logs/SingularSpectrumAnalysis/1.4.0-DEV-8a47793b37.log) (package could not be installed) vs. [SingularSpectrumAnalysis v0.2.1](../daily_2019_12_11/logs/SingularSpectrumAnalysis/1.4.0-DEV-1432c5a085.log) (successful)
-- [TSMLextra v0.1.4](logs/TSMLextra/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [TSMLextra v0.1.4](../daily_2019_12_11/logs/TSMLextra/1.4.0-DEV-1432c5a085.log) (successful)
-- [TrackedDistributions v1.0.0](logs/TrackedDistributions/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [TrackedDistributions v1.0.0](../daily_2019_12_11/logs/TrackedDistributions/1.4.0-DEV-1432c5a085.log) (successful)
-- [WeightedArrays v0.1.3](logs/WeightedArrays/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [WeightedArrays v0.1.3](../daily_2019_12_11/logs/WeightedArrays/1.4.0-DEV-1432c5a085.log) (successful)
+- [AbstractPlotting v0.9.13](logs/AbstractPlotting/1.4.0-DEV-8a47793b37.log) (package could not be installed) vs. [AbstractPlotting v0.9.13](../pkgeval-daily_2019_12_11/logs/AbstractPlotting/1.4.0-DEV-1432c5a085.log) (interrupted, test log exceeded the size limit)
+- [AgnosticBayesEnsemble v0.1.3](logs/AgnosticBayesEnsemble/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [AgnosticBayesEnsemble v0.1.2](../pkgeval-daily_2019_12_11/logs/AgnosticBayesEnsemble/1.4.0-DEV-1432c5a085.log) (successful)
+- [ArrayAllez v0.0.4](logs/ArrayAllez/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [ArrayAllez v0.0.4](../pkgeval-daily_2019_12_11/logs/ArrayAllez/1.4.0-DEV-1432c5a085.log) (successful)
+- [Autologistic v0.4.1](logs/Autologistic/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [Autologistic v0.4.1](../pkgeval-daily_2019_12_11/logs/Autologistic/1.4.0-DEV-1432c5a085.log) (successful)
+- [BeliefUpdaters v0.1.2](logs/BeliefUpdaters/1.4.0-DEV-8a47793b37.log) (package has syntax issues) vs. [BeliefUpdaters v0.1.2](../pkgeval-daily_2019_12_11/logs/BeliefUpdaters/1.4.0-DEV-1432c5a085.log) (successful)
+- [Bijectors v0.4.0](logs/Bijectors/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [Bijectors v0.4.0](../pkgeval-daily_2019_12_11/logs/Bijectors/1.4.0-DEV-1432c5a085.log) (successful)
+- [BoltzmannMachines v1.2.0](logs/BoltzmannMachines/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [BoltzmannMachines v1.2.0](../pkgeval-daily_2019_12_11/logs/BoltzmannMachines/1.4.0-DEV-1432c5a085.log) (successful)
+- [Coulter v0.1.0](logs/Coulter/1.4.0-DEV-8a47793b37.log) (package has syntax issues) vs. [Coulter v0.1.0](..pkgeval-/daily_2019_12_11/logs/Coulter/1.4.0-DEV-1432c5a085.log) (successful)
+- [DesignStructureMatrix v0.1.0](logs/DesignStructureMatrix/1.4.0-DEV-8a47793b37.log) (package has syntax issues) vs. [DesignStructureMatrix v0.1.0](../pkgeval-daily_2019_12_11/logs/DesignStructureMatrix/1.4.0-DEV-1432c5a085.log) (successful)
+- [FeedbackNets v0.3.0](logs/FeedbackNets/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [FeedbackNets v0.3.0](../pkgeval-daily_2019_12_11/logs/FeedbackNets/1.4.0-DEV-1432c5a085.log) (successful)
+- [GLMakie v0.0.11](logs/GLMakie/1.4.0-DEV-8a47793b37.log) (package could not be installed) vs. [GLMakie v0.0.11](../pkgeval-daily_2019_12_11/logs/GLMakie/1.4.0-DEV-1432c5a085.log) (interrupted, test log exceeded the size limit)
+- [GlobalSensitivityAnalysis v0.0.6](logs/GlobalSensitivityAnalysis/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [GlobalSensitivityAnalysis v0.0.6](../pkgeval-daily_2019_12_11/logs/GlobalSensitivityAnalysis/1.4.0-DEV-1432c5a085.log) (successful)
+- [Grassmann v0.3.3](logs/Grassmann/1.4.0-DEV-8a47793b37.log) (an unreachable instruction was executed) vs. [Grassmann v0.3.3](../pkgeval-daily_2019_12_11/logs/Grassmann/1.4.0-DEV-1432c5a085.log) (successful)
+- [LLVM v1.3.2](logs/LLVM/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [LLVM v1.3.2](..pkgeval-/daily_2019_12_11/logs/LLVM/1.4.0-DEV-1432c5a085.log) (successful)
+- [Makie v0.9.5](logs/Makie/1.4.0-DEV-8a47793b37.log) (package could not be installed) vs. [Makie v0.9.5](..pkgeval-/daily_2019_12_11/logs/Makie/1.4.0-DEV-1432c5a085.log) (interrupted, test log exceeded the size limit)
+- [Match v1.0.2](logs/Match/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [Match v1.0.2](..pkgeval-/daily_2019_12_11/logs/Match/1.4.0-DEV-1432c5a085.log) (successful)
+- [Mocking v0.7.0](logs/Mocking/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [Mocking v0.7.0](..pkgeval-/daily_2019_12_11/logs/Mocking/1.4.0-DEV-1432c5a085.log) (successful)
+- [NLSolversBase v7.5.0](logs/NLSolversBase/1.4.0-DEV-8a47793b37.log) (package could not be installed) vs. [NLSolversBase v7.5.0](../pkgeval-daily_2019_12_11/logs/NLSolversBase/1.4.0-DEV-1432c5a085.log) (successful)
+- [NaiveNASflux v1.0.1](logs/NaiveNASflux/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [NaiveNASflux v1.0.1](../pkgeval-daily_2019_12_11/logs/NaiveNASflux/1.4.0-DEV-1432c5a085.log) (successful)
+- [POMDPModels v0.4.0](logs/POMDPModels/1.4.0-DEV-8a47793b37.log) (package has syntax issues) vs. [POMDPModels v0.4.0](../pkgeval-daily_2019_12_11/logs/POMDPModels/1.4.0-DEV-1432c5a085.log) (successful)
+- [POMDPPolicies v0.2.1](logs/POMDPPolicies/1.4.0-DEV-8a47793b37.log) (package has syntax issues) vs. [POMDPPolicies v0.2.1](../pkgeval-daily_2019_12_11/logs/POMDPPolicies/1.4.0-DEV-1432c5a085.log) (successful)
+- [PowerModels v0.13.0](logs/PowerModels/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [PowerModels v0.13.0](../pkgeval-daily_2019_12_11/logs/PowerModels/1.4.0-DEV-1432c5a085.log) (interrupted, test duration exceeded the time limit)
+- [PushVectors v0.2.0](logs/PushVectors/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [PushVectors v0.2.0](../pkgeval-daily_2019_12_11/logs/PushVectors/1.4.0-DEV-1432c5a085.log) (successful)
+- [RetroCap v0.2.0](logs/RetroCap/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [RetroCap v0.2.0](..pkgeval-/daily_2019_12_11/logs/RetroCap/1.4.0-DEV-1432c5a085.log) (successful)
+- [RoME v0.5.2](logs/RoME/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [RoME v0.5.2](..pkgeval-/daily_2019_12_11/logs/RoME/1.4.0-DEV-1432c5a085.log) (interrupted, test duration exceeded the time limit)
+- [SingularSpectrumAnalysis v0.2.1](logs/SingularSpectrumAnalysis/1.4.0-DEV-8a47793b37.log) (package could not be installed) vs. [SingularSpectrumAnalysis v0.2.1](../pkgeval-daily_2019_12_11/logs/SingularSpectrumAnalysis/1.4.0-DEV-1432c5a085.log) (successful)
+- [TSMLextra v0.1.4](logs/TSMLextra/1.4.0-DEV-8a47793b37.log) (package has test failures) vs. [TSMLextra v0.1.4](../pkgeval-daily_2019_12_11/logs/TSMLextra/1.4.0-DEV-1432c5a085.log) (successful)
+- [TrackedDistributions v1.0.0](logs/TrackedDistributions/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [TrackedDistributions v1.0.0](../pkgeval-daily_2019_12_11/logs/TrackedDistributions/1.4.0-DEV-1432c5a085.log) (successful)
+- [WeightedArrays v0.1.3](logs/WeightedArrays/1.4.0-DEV-8a47793b37.log) (there were unidentified errors) vs. [WeightedArrays v0.1.3](../pkgeval-daily_2019_12_11/logs/WeightedArrays/1.4.0-DEV-1432c5a085.log) (successful)
 <details><summary>912 packages failed tests on the previous version too.</summary>
 <p>
 
@@ -966,16 +966,16 @@
 
 10 packages passed tests only on the current version.
 
-- [BEAST v1.1.0](logs/BEAST/1.4.0-DEV-8a47793b37.log) vs. [BEAST v1.1.0](../daily_2019_12_11/logs/BEAST/1.4.0-DEV-1432c5a085.log) (unsuccessful, there were unidentified errors)
-- [BayesianIntegral v0.1.0](logs/BayesianIntegral/1.4.0-DEV-8a47793b37.log) vs. [BayesianIntegral v0.1.0](../daily_2019_12_11/logs/BayesianIntegral/1.4.0-DEV-1432c5a085.log) (interrupted, test duration exceeded the time limit)
-- [BufferedStreams v1.0.0](logs/BufferedStreams/1.4.0-DEV-8a47793b37.log) vs. [BufferedStreams v1.0.0](../daily_2019_12_11/logs/BufferedStreams/1.4.0-DEV-1432c5a085.log) (interrupted, test duration exceeded the time limit)
-- [IncrementalInference v0.8.2](logs/IncrementalInference/1.4.0-DEV-8a47793b37.log) vs. [IncrementalInference v0.8.2](../daily_2019_12_11/logs/IncrementalInference/1.4.0-DEV-1432c5a085.log) (unsuccessful, package has test failures)
-- [Kahuna v0.1.0](logs/Kahuna/1.4.0-DEV-8a47793b37.log) vs. [Kahuna v0.1.0](../daily_2019_12_11/logs/Kahuna/1.4.0-DEV-1432c5a085.log) (unsuccessful, there were unidentified errors)
-- [MAT v0.7.0](logs/MAT/1.4.0-DEV-8a47793b37.log) vs. [MAT v0.7.0](../daily_2019_12_11/logs/MAT/1.4.0-DEV-1432c5a085.log) (unsuccessful, there were unidentified errors)
-- [Mangal v0.2.0](logs/Mangal/1.4.0-DEV-8a47793b37.log) vs. [Mangal v0.2.0](../daily_2019_12_11/logs/Mangal/1.4.0-DEV-1432c5a085.log) (unsuccessful, there were unidentified errors)
-- [Marconi v0.1.0](logs/Marconi/1.4.0-DEV-8a47793b37.log) vs. [Marconi v0.1.0](../daily_2019_12_11/logs/Marconi/1.4.0-DEV-1432c5a085.log) (unsuccessful, there were unidentified errors)
-- [Reactive v0.8.3](logs/Reactive/1.4.0-DEV-8a47793b37.log) vs. [Reactive v0.8.3](../daily_2019_12_11/logs/Reactive/1.4.0-DEV-1432c5a085.log) (unsuccessful, package has test failures)
-- [UncertainData v0.10.3](logs/UncertainData/1.4.0-DEV-8a47793b37.log) vs. [UncertainData v0.10.3](../daily_2019_12_11/logs/UncertainData/1.4.0-DEV-1432c5a085.log) (unsuccessful, package has test failures)
+- [BEAST v1.1.0](logs/BEAST/1.4.0-DEV-8a47793b37.log) vs. [BEAST v1.1.0](../pkgeval-daily_2019_12_11/logs/BEAST/1.4.0-DEV-1432c5a085.log) (unsuccessful, there were unidentified errors)
+- [BayesianIntegral v0.1.0](logs/BayesianIntegral/1.4.0-DEV-8a47793b37.log) vs. [BayesianIntegral v0.1.0](..pkgeval-/daily_2019_12_11/logs/BayesianIntegral/1.4.0-DEV-1432c5a085.log) (interrupted, test duration exceeded the time limit)
+- [BufferedStreams v1.0.0](logs/BufferedStreams/1.4.0-DEV-8a47793b37.log) vs. [BufferedStreams v1.0.0](..pkgeval-/daily_2019_12_11/logs/BufferedStreams/1.4.0-DEV-1432c5a085.log) (interrupted, test duration exceeded the time limit)
+- [IncrementalInference v0.8.2](logs/IncrementalInference/1.4.0-DEV-8a47793b37.log) vs. [IncrementalInference v0.8.2](../pkgeval-daily_2019_12_11/logs/IncrementalInference/1.4.0-DEV-1432c5a085.log) (unsuccessful, package has test failures)
+- [Kahuna v0.1.0](logs/Kahuna/1.4.0-DEV-8a47793b37.log) vs. [Kahuna v0.1.0](../pkgeval-daily_2019_12_11/logs/Kahuna/1.4.0-DEV-1432c5a085.log) (unsuccessful, there were unidentified errors)
+- [MAT v0.7.0](logs/MAT/1.4.0-DEV-8a47793b37.log) vs. [MAT v0.7.0](../pkgeval-daily_2019_12_11/logs/MAT/1.4.0-DEV-1432c5a085.log) (unsuccessful, there were unidentified errors)
+- [Mangal v0.2.0](logs/Mangal/1.4.0-DEV-8a47793b37.log) vs. [Mangal v0.2.0](../pkgeval-daily_2019_12_11/logs/Mangal/1.4.0-DEV-1432c5a085.log) (unsuccessful, there were unidentified errors)
+- [Marconi v0.1.0](logs/Marconi/1.4.0-DEV-8a47793b37.log) vs. [Marconi v0.1.0](../pkgeval-daily_2019_12_11/logs/Marconi/1.4.0-DEV-1432c5a085.log) (unsuccessful, there were unidentified errors)
+- [Reactive v0.8.3](logs/Reactive/1.4.0-DEV-8a47793b37.log) vs. [Reactive v0.8.3](../pkgeval-daily_2019_12_11/logs/Reactive/1.4.0-DEV-1432c5a085.log) (unsuccessful, package has test failures)
+- [UncertainData v0.10.3](logs/UncertainData/1.4.0-DEV-8a47793b37.log) vs. [UncertainData v0.10.3](..pkgeval-/daily_2019_12_11/logs/UncertainData/1.4.0-DEV-1432c5a085.log) (unsuccessful, package has test failures)
 <details><summary>1610 packages passed tests on the previous version too.</summary>
 <p>
 
@@ -2597,12 +2597,12 @@
 
 6 packages were killed only on the current version.
 
-- [BayesianLinearRegressors v0.1.0](logs/BayesianLinearRegressors/1.4.0-DEV-8a47793b37.log) (test duration exceeded the time limit) vs. [BayesianLinearRegressors v0.1.0](../daily_2019_12_11/logs/BayesianLinearRegressors/1.4.0-DEV-1432c5a085.log) (unsuccessful, there were unidentified errors)
-- [Callbacks v0.1.0](logs/Callbacks/1.4.0-DEV-8a47793b37.log) (test log exceeded the size limit) vs. [Callbacks v0.1.0](../daily_2019_12_11/logs/Callbacks/1.4.0-DEV-1432c5a085.log) (successful, test log exceeded the size limit)
-- [NeuralNetDiffEq v1.0.1](logs/NeuralNetDiffEq/1.4.0-DEV-8a47793b37.log) (test duration exceeded the time limit) vs. [NeuralNetDiffEq v1.0.1](../daily_2019_12_11/logs/NeuralNetDiffEq/1.4.0-DEV-1432c5a085.log) (successful)
-- [OhMyREPL v0.5.3](logs/OhMyREPL/1.4.0-DEV-8a47793b37.log) (test duration exceeded the time limit) vs. [OhMyREPL v0.5.3](../daily_2019_12_11/logs/OhMyREPL/1.4.0-DEV-1432c5a085.log) (successful)
-- [StanBase v1.1.2](logs/StanBase/1.4.0-DEV-8a47793b37.log) (test duration exceeded the time limit) vs. [StanBase v1.1.1](../daily_2019_12_11/logs/StanBase/1.4.0-DEV-1432c5a085.log) (unsuccessful, package has test failures)
-- [StanSample v1.1.1](logs/StanSample/1.4.0-DEV-8a47793b37.log) (test duration exceeded the time limit) vs. [StanSample v1.1.1](../daily_2019_12_11/logs/StanSample/1.4.0-DEV-1432c5a085.log) (unsuccessful, package has test failures)
+- [BayesianLinearRegressors v0.1.0](logs/BayesianLinearRegressors/1.4.0-DEV-8a47793b37.log) (test duration exceeded the time limit) vs. [BayesianLinearRegressors v0.1.0](../pkgeval-daily_2019_12_11/logs/BayesianLinearRegressors/1.4.0-DEV-1432c5a085.log) (unsuccessful, there were unidentified errors)
+- [Callbacks v0.1.0](logs/Callbacks/1.4.0-DEV-8a47793b37.log) (test log exceeded the size limit) vs. [Callbacks v0.1.0](../pkgeval-daily_2019_12_11/logs/Callbacks/1.4.0-DEV-1432c5a085.log) (successful, test log exceeded the size limit)
+- [NeuralNetDiffEq v1.0.1](logs/NeuralNetDiffEq/1.4.0-DEV-8a47793b37.log) (test duration exceeded the time limit) vs. [NeuralNetDiffEq v1.0.1](../pkgeval-daily_2019_12_11/logs/NeuralNetDiffEq/1.4.0-DEV-1432c5a085.log) (successful)
+- [OhMyREPL v0.5.3](logs/OhMyREPL/1.4.0-DEV-8a47793b37.log) (test duration exceeded the time limit) vs. [OhMyREPL v0.5.3](../pkgeval-daily_2019_12_11/logs/OhMyREPL/1.4.0-DEV-1432c5a085.log) (successful)
+- [StanBase v1.1.2](logs/StanBase/1.4.0-DEV-8a47793b37.log) (test duration exceeded the time limit) vs. [StanBase v1.1.1](../pkgeval-daily_2019_12_11/logs/StanBase/1.4.0-DEV-1432c5a085.log) (unsuccessful, package has test failures)
+- [StanSample v1.1.1](logs/StanSample/1.4.0-DEV-8a47793b37.log) (test duration exceeded the time limit) vs. [StanSample v1.1.1](../pkgeval-daily_2019_12_11/logs/StanSample/1.4.0-DEV-1432c5a085.log) (unsuccessful, package has test failures)
 <details><summary>21 packages were killed on the previous version too.</summary>
 <p>
 
@@ -2861,10 +2861,10 @@ Commit 8a47793b37 (2019-12-12 10:31 UTC)
 Platform Info:
   OS: Linux (x86_64-pc-linux-gnu)
   uname: Linux 4.15.0-65-generic #74-Ubuntu SMP Tue Sep 17 17:06:04 UTC 2019 x86_64 x86_64
-  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz: 
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz:
                  speed         user         nice          sys         idle          irq
        #1-40   800 MHz  1348300690 s    8742060 s  394790233 s  20648951455 s          0 s
-       
+
   Memory: 376.59046173095703 GB (61348.46875 MB free)
   Uptime: 5.608266e6 sec
   Load Avg:  0.32177734375  0.17529296875  0.05908203125
