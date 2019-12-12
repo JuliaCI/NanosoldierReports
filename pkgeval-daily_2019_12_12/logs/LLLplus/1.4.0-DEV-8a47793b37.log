@@ -1,0 +1,102 @@
+Julia Version 1.4.0-DEV.591
+Commit 8a47793b37 (2019-12-12 10:31 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-8.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+
+ Resolving package versions...
+ Installed Parsers ──────── v0.3.10
+ Installed BenchmarkTools ─ v0.4.3
+ Installed LLLplus ──────── v1.2.3
+ Installed JSON ─────────── v0.21.0
+  Updating `~/.julia/environments/v1.4/Project.toml`
+  [142c1900] + LLLplus v1.2.3
+  Updating `~/.julia/environments/v1.4/Manifest.toml`
+  [6e4b80f9] + BenchmarkTools v0.4.3
+  [682c06a0] + JSON v0.21.0
+  [142c1900] + LLLplus v1.2.3
+  [69de0a69] + Parsers v0.3.10
+  [2a0f44e3] + Base64 
+  [ade2ca70] + Dates 
+  [8bb1440f] + DelimitedFiles 
+  [8ba89e20] + Distributed 
+  [b77e0a4c] + InteractiveUtils 
+  [8f399da3] + Libdl 
+  [37e2e46d] + LinearAlgebra 
+  [56ddb016] + Logging 
+  [d6f4376e] + Markdown 
+  [a63ad114] + Mmap 
+  [de0858da] + Printf 
+  [9a3f8284] + Random 
+  [9e88b42a] + Serialization 
+  [6462fe0b] + Sockets 
+  [2f01184e] + SparseArrays 
+  [10745b16] + Statistics 
+  [8dfed614] + Test 
+  [4ec0a83e] + Unicode 
+   Testing LLLplus
+Status `/tmp/jl_VA4eG2/Manifest.toml`
+  [6e4b80f9] BenchmarkTools v0.4.3
+  [682c06a0] JSON v0.21.0
+  [142c1900] LLLplus v1.2.3
+  [69de0a69] Parsers v0.3.10
+  [2a0f44e3] Base64  [`@stdlib/Base64`]
+  [ade2ca70] Dates  [`@stdlib/Dates`]
+  [8bb1440f] DelimitedFiles  [`@stdlib/DelimitedFiles`]
+  [8ba89e20] Distributed  [`@stdlib/Distributed`]
+  [b77e0a4c] InteractiveUtils  [`@stdlib/InteractiveUtils`]
+  [8f399da3] Libdl  [`@stdlib/Libdl`]
+  [37e2e46d] LinearAlgebra  [`@stdlib/LinearAlgebra`]
+  [56ddb016] Logging  [`@stdlib/Logging`]
+  [d6f4376e] Markdown  [`@stdlib/Markdown`]
+  [a63ad114] Mmap  [`@stdlib/Mmap`]
+  [de0858da] Printf  [`@stdlib/Printf`]
+  [9a3f8284] Random  [`@stdlib/Random`]
+  [9e88b42a] Serialization  [`@stdlib/Serialization`]
+  [6462fe0b] Sockets  [`@stdlib/Sockets`]
+  [2f01184e] SparseArrays  [`@stdlib/SparseArrays`]
+  [10745b16] Statistics  [`@stdlib/Statistics`]
+  [8dfed614] Test  [`@stdlib/Test`]
+  [4ec0a83e] Unicode  [`@stdlib/Unicode`]
+tests with small matrices...
+...done
+
+In all the following tests, the first time includes the JIT compilation; 
+for the second execution the compilation is already done and the time
+should be faster.
+
+Testing LLL on 1000x1000 real matrix...
+  4.001134 seconds (4.16 M allocations: 708.986 MiB, 8.99% gc time)
+  1.430529 seconds (220.66 k allocations: 525.091 MiB, 17.26% gc time)
+
+Testing LLL on 10x10 complex matrix...
+  7.182876 seconds (11.40 M allocations: 525.379 MiB, 3.35% gc time)
+  0.000615 seconds (522 allocations: 62.922 KiB)
+Testing Seysen on same 10x10 complex matrix...
+  2.237136 seconds (2.66 M allocations: 129.250 MiB, 4.55% gc time)
+  0.000435 seconds (162 allocations: 82.281 KiB)
+Testing VBLAST on same 10x10 complex matrix...
+  2.248657 seconds (2.28 M allocations: 105.649 MiB, 2.82% gc time)
+  0.025207 seconds (240 allocations: 122.375 KiB)
+Testing Brun on real part of same 10x10 matrix...
+  1.534040 seconds (1.80 M allocations: 88.809 MiB, 1.47% gc time)
+  0.000136 seconds (28 allocations: 12.297 KiB)
+
+Testing sphere decoder on 100000 samples of 3x3 BPSK system...
+  2.313216 seconds (4.31 M allocations: 321.820 MiB, 3.79% gc time)
+  0.461786 seconds (2.00 M allocations: 209.819 MiB, 5.53% gc time)
+Error Rate is 0.0. It should be zero or very small.
+
+Testing now with 200x200 matrix from latticechallenge.org.
+The min norm of the input should be 30, min norm of the reduced bases should be smaller.
+min norm of input is 30.0
+  1.119795 seconds (857.22 k allocations: 361.541 MiB, 9.84% gc time)
+min norm of lll-reduced basis is 29.30870177950569
+  5.254985 seconds (5.14 M allocations: 1.251 GiB, 3.61% gc time)
+min norm of seysen-reduced basis is 30.0
+   Testing LLLplus tests passed 
