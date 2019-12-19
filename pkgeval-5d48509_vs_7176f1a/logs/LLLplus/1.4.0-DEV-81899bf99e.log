@@ -1,0 +1,93 @@
+Julia Version 1.4.0-DEV.634
+Commit 81899bf99e (2019-12-18 10:13 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-8.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+
+ Resolving package versions...
+ Installed Parsers ──────── v0.3.10
+ Installed BenchmarkTools ─ v0.4.3
+ Installed LLLplus ──────── v1.2.3
+ Installed JSON ─────────── v0.21.0
+  Updating `~/.julia/environments/v1.4/Project.toml`
+  [142c1900] + LLLplus v1.2.3
+  Updating `~/.julia/environments/v1.4/Manifest.toml`
+  [6e4b80f9] + BenchmarkTools v0.4.3
+  [682c06a0] + JSON v0.21.0
+  [142c1900] + LLLplus v1.2.3
+  [69de0a69] + Parsers v0.3.10
+  [2a0f44e3] + Base64 
+  [ade2ca70] + Dates 
+  [8bb1440f] + DelimitedFiles 
+  [8ba89e20] + Distributed 
+  [b77e0a4c] + InteractiveUtils 
+  [8f399da3] + Libdl 
+  [37e2e46d] + LinearAlgebra 
+  [56ddb016] + Logging 
+  [d6f4376e] + Markdown 
+  [a63ad114] + Mmap 
+  [de0858da] + Printf 
+  [9a3f8284] + Random 
+  [9e88b42a] + Serialization 
+  [6462fe0b] + Sockets 
+  [2f01184e] + SparseArrays 
+  [10745b16] + Statistics 
+  [8dfed614] + Test 
+  [4ec0a83e] + Unicode 
+   Testing LLLplus
+Path `/home/pkgeval/.julia/packages/LLLplus/AhAPL` exists and looks like the correct package. Using existing path.
+  Updating `/tmp/jl_mnL1sO/Project.toml`
+  [142c1900] + LLLplus v1.2.3 [`~/.julia/packages/LLLplus/AhAPL`]
+  Updating `/tmp/jl_mnL1sO/Manifest.toml`
+  [142c1900] ~ LLLplus v1.2.3 ⇒ v1.2.3 [`~/.julia/packages/LLLplus/AhAPL`]
+Running sandbox
+Status `/tmp/jl_mnL1sO/Project.toml`
+  [6e4b80f9] BenchmarkTools v0.4.3
+  [142c1900] LLLplus v1.2.3 [`~/.julia/packages/LLLplus/AhAPL`]
+  [8bb1440f] DelimitedFiles 
+  [37e2e46d] LinearAlgebra 
+  [de0858da] Printf 
+  [9a3f8284] Random 
+  [8dfed614] Test 
+tests with small matrices...
+...done
+
+In all the following tests, the first time includes the JIT compilation; 
+for the second execution the compilation is already done and the time
+should be faster.
+
+Testing LLL on 1000x1000 real matrix...
+  6.091028 seconds (4.30 M allocations: 1014.466 MiB, 6.82% gc time)
+  2.126466 seconds (362.64 k allocations: 830.598 MiB, 2.00% gc time)
+
+Testing LLL on 10x10 complex matrix...
+  8.234999 seconds (11.40 M allocations: 525.250 MiB, 6.94% gc time)
+  0.009794 seconds (881 allocations: 98.469 KiB)
+Testing Seysen on same 10x10 complex matrix...
+  2.357732 seconds (2.66 M allocations: 129.566 MiB, 3.46% gc time)
+  0.012825 seconds (386 allocations: 165.188 KiB)
+Testing VBLAST on same 10x10 complex matrix...
+  2.514369 seconds (2.24 M allocations: 103.591 MiB, 2.41% gc time)
+  0.104091 seconds (230 allocations: 122.219 KiB)
+Testing Brun on real part of same 10x10 matrix...
+  1.768307 seconds (1.80 M allocations: 88.652 MiB, 4.31% gc time)
+  0.000149 seconds (55 allocations: 15.859 KiB)
+
+Testing sphere decoder on 100000 samples of 3x3 BPSK system...
+  2.457192 seconds (4.35 M allocations: 324.767 MiB, 6.27% gc time)
+  0.547205 seconds (2.00 M allocations: 209.810 MiB, 9.34% gc time)
+Error Rate is 0.0. It should be zero or very small.
+
+Testing now with 200x200 matrix from latticechallenge.org.
+The min norm of the input should be 30, min norm of the reduced bases should be smaller.
+min norm of input is 30.0
+  1.226129 seconds (857.22 k allocations: 361.541 MiB, 9.81% gc time)
+min norm of lll-reduced basis is 29.30870177950569
+  6.706844 seconds (5.14 M allocations: 1.251 GiB, 4.39% gc time)
+min norm of seysen-reduced basis is 30.0
+   Testing LLLplus tests passed 
