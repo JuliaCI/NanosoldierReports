@@ -1,0 +1,120 @@
+Julia Version 1.4.0-DEV.622
+Commit b73fc63796 (2019-12-17 04:07 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-8.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+
+ Resolving package versions...
+ Installed CEnum ─ v0.2.0
+ Installed LLVM ── v1.3.2
+  Updating `~/.julia/environments/v1.4/Project.toml`
+  [929cbde3] + LLVM v1.3.2
+  Updating `~/.julia/environments/v1.4/Manifest.toml`
+  [fa961155] + CEnum v0.2.0
+  [929cbde3] + LLVM v1.3.2
+  [8f399da3] + Libdl 
+  [de0858da] + Printf 
+  [4ec0a83e] + Unicode 
+   Testing LLVM
+Path `/home/pkgeval/.julia/packages/LLVM/ICZSf` exists and looks like the correct package. Using existing path.
+  Updating `/tmp/jl_VMa4DC/Project.toml`
+  [929cbde3] + LLVM v1.3.2 [`~/.julia/packages/LLVM/ICZSf`]
+  [b77e0a4c] + InteractiveUtils 
+  [8dfed614] + Test 
+  Updating `/tmp/jl_VMa4DC/Manifest.toml`
+  [929cbde3] ~ LLVM v1.3.2 ⇒ v1.3.2 [`~/.julia/packages/LLVM/ICZSf`]
+  [2a0f44e3] + Base64 
+  [8ba89e20] + Distributed 
+  [b77e0a4c] + InteractiveUtils 
+  [56ddb016] + Logging 
+  [d6f4376e] + Markdown 
+  [9a3f8284] + Random 
+  [9e88b42a] + Serialization 
+  [6462fe0b] + Sockets 
+  [8dfed614] + Test 
+Running sandbox
+Status `/tmp/jl_VMa4DC/Project.toml`
+  [fa961155] CEnum v0.2.0
+  [929cbde3] LLVM v1.3.2 [`~/.julia/packages/LLVM/ICZSf`]
+  [b77e0a4c] InteractiveUtils 
+  [8f399da3] Libdl 
+  [de0858da] Printf 
+  [8dfed614] Test 
+  [4ec0a83e] Unicode 
+pass: Error During Test at /home/pkgeval/.julia/packages/LLVM/ICZSf/test/pass.jl:1
+  Got exception outside of a @test
+  ccall: could not find function LLVMExtraCreateBasicBlockPass
+  Stacktrace:
+   [1] macro expansion at /home/pkgeval/.julia/packages/LLVM/ICZSf/src/base.jl:18 [inlined]
+   [2] LLVMCreateBasicBlockPass(::String, ::Function) at /home/pkgeval/.julia/packages/LLVM/ICZSf/lib/libLLVM_extra.jl:73
+   [3] BasicBlockPass at /home/pkgeval/.julia/packages/LLVM/ICZSf/src/pass.jl:66 [inlined]
+   [4] (::var"#195#201"{Builder,Context})(::LLVM.Module) at /home/pkgeval/.julia/packages/LLVM/ICZSf/test/pass.jl:54
+   [5] LLVM.Module(::var"#195#201"{Builder,Context}, ::String, ::Vararg{Any,N} where N) at /home/pkgeval/.julia/packages/LLVM/ICZSf/src/core/module.jl:27
+   [6] #194 at /home/pkgeval/.julia/packages/LLVM/ICZSf/test/pass.jl:5 [inlined]
+   [7] Builder(::var"#194#200"{Context}, ::Context) at /home/pkgeval/.julia/packages/LLVM/ICZSf/src/irbuilder.jl:21
+   [8] #193 at /home/pkgeval/.julia/packages/LLVM/ICZSf/test/pass.jl:4 [inlined]
+   [9] Context(::var"#193#199") at /home/pkgeval/.julia/packages/LLVM/ICZSf/src/core/context.jl:21
+   [10] top-level scope at /home/pkgeval/.julia/packages/LLVM/ICZSf/test/pass.jl:3
+   [11] top-level scope at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Test/src/Test.jl:1116
+   [12] top-level scope at /home/pkgeval/.julia/packages/LLVM/ICZSf/test/pass.jl:3
+   [13] include(::String) at ./client.jl:439
+   [14] macro expansion at /home/pkgeval/.julia/packages/LLVM/ICZSf/test/runtests.jl:53 [inlined]
+   [15] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Test/src/Test.jl:1116 [inlined]
+   [16] top-level scope at /home/pkgeval/.julia/packages/LLVM/ICZSf/test/runtests.jl:7
+   [17] include(::String) at ./client.jl:439
+   [18] top-level scope at none:6
+   [19] eval(::Module, ::Any) at ./boot.jl:331
+   [20] exec_options(::Base.JLOptions) at ./client.jl:264
+   [21] _start() at ./client.jl:484
+  
+Test Summary:    | Pass  Error  Total
+LLVM             |  456      1    457
+  types          |    5             5
+  pass registry  |              No tests
+  support        |    1             1
+  core           |  267           267
+  linker         |    2             2
+  irbuilder      |   80            80
+  buffer         |    5             5
+  bitcode        |    4             4
+  ir             |    3             3
+  analysis       |    2             2
+  moduleprovider |              No tests
+  passmanager    |    4             4
+  pass           |    2      1      3
+  execution      |   24            24
+  transform      |              No tests
+  target         |   11            11
+  targetmachine  |    6             6
+  datalayout     |   12            12
+  debuginfo      |    2             2
+  Kaleidoscope   |    3             3
+  examples       |    4             4
+  interop        |   19            19
+ERROR: LoadError: Some tests did not pass: 456 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/LLVM/ICZSf/test/runtests.jl:5
+err = ProcessFailedException(Base.Process[Process(`/opt/julia/bin/julia -Cnative -J/opt/julia/lib/julia/sys.so -g1 --code-coverage=none --color=no --compiled-modules=yes --check-bounds=yes --inline=yes --startup-file=no --track-allocation=none --eval 'append!(empty!(Base.DEPOT_PATH), ["/home/pkgeval/.julia", "/opt/julia/local/share/julia", "/opt/julia/share/julia", "/usr/local/share/julia"])
+append!(empty!(Base.DL_LOAD_PATH), String[])
+
+cd("/home/pkgeval/.julia/packages/LLVM/ICZSf/test")
+append!(empty!(ARGS), String[])
+include("/home/pkgeval/.julia/packages/LLVM/ICZSf/test/runtests.jl")
+'`, ProcessExited(1))])
+ERROR: Package LLVM errored during testing
+Stacktrace:
+ [1] pkgerror(::String, ::Vararg{String,N} where N) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/Types.jl:54
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/Operations.jl:1475
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:313
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:300
+ [5] #test#68 at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:294 [inlined]
+ [6] test at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:294 [inlined]
+ [7] #test#67 at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:293 [inlined]
+ [8] test at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:293 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:292
+ [10] test(::String) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:292
+ [11] top-level scope at none:12
