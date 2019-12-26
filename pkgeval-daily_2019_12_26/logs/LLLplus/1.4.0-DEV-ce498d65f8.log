@@ -1,0 +1,92 @@
+Julia Version 1.4.0-DEV.662
+Commit ce498d65f8 (2019-12-25 11:44 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-8.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+
+ Resolving package versions...
+ Installed BenchmarkTools ─ v0.4.3
+ Installed Parsers ──────── v0.3.10
+ Installed LLLplus ──────── v1.2.3
+ Installed JSON ─────────── v0.21.0
+  Updating `~/.julia/environments/v1.4/Project.toml`
+  [142c1900] + LLLplus v1.2.3
+  Updating `~/.julia/environments/v1.4/Manifest.toml`
+  [6e4b80f9] + BenchmarkTools v0.4.3
+  [682c06a0] + JSON v0.21.0
+  [142c1900] + LLLplus v1.2.3
+  [69de0a69] + Parsers v0.3.10
+  [2a0f44e3] + Base64 
+  [ade2ca70] + Dates 
+  [8bb1440f] + DelimitedFiles 
+  [8ba89e20] + Distributed 
+  [b77e0a4c] + InteractiveUtils 
+  [8f399da3] + Libdl 
+  [37e2e46d] + LinearAlgebra 
+  [56ddb016] + Logging 
+  [d6f4376e] + Markdown 
+  [a63ad114] + Mmap 
+  [de0858da] + Printf 
+  [9a3f8284] + Random 
+  [9e88b42a] + Serialization 
+  [6462fe0b] + Sockets 
+  [2f01184e] + SparseArrays 
+  [10745b16] + Statistics 
+  [8dfed614] + Test 
+  [4ec0a83e] + Unicode 
+   Testing LLLplus
+  Updating `/tmp/jl_7ZL4MB/Project.toml`
+ [no changes]
+  Updating `/tmp/jl_7ZL4MB/Manifest.toml`
+ [no changes]
+Running sandbox
+Status `/tmp/jl_7ZL4MB/Project.toml`
+  [6e4b80f9] BenchmarkTools v0.4.3
+  [142c1900] LLLplus v1.2.3
+  [8bb1440f] DelimitedFiles 
+  [37e2e46d] LinearAlgebra 
+  [de0858da] Printf 
+  [9a3f8284] Random 
+  [8dfed614] Test 
+tests with small matrices...
+...done
+
+In all the following tests, the first time includes the JIT compilation; 
+for the second execution the compilation is already done and the time
+should be faster.
+
+Testing LLL on 1000x1000 real matrix...
+  5.638156 seconds (4.22 M allocations: 845.776 MiB, 7.98% gc time)
+  3.862105 seconds (283.31 k allocations: 661.900 MiB, 8.76% gc time)
+
+Testing LLL on 10x10 complex matrix...
+  9.951376 seconds (11.40 M allocations: 525.514 MiB, 3.77% gc time)
+  0.000731 seconds (1.18 k allocations: 122.969 KiB)
+Testing Seysen on same 10x10 complex matrix...
+  2.497395 seconds (2.66 M allocations: 129.509 MiB, 1.16% gc time)
+  0.068462 seconds (258 allocations: 117.812 KiB)
+Testing VBLAST on same 10x10 complex matrix...
+  2.772092 seconds (2.24 M allocations: 103.725 MiB, 3.09% gc time)
+  0.126595 seconds (230 allocations: 122.219 KiB)
+Testing Brun on real part of same 10x10 matrix...
+  1.793506 seconds (1.80 M allocations: 88.663 MiB, 4.73% gc time)
+  0.000164 seconds (28 allocations: 12.297 KiB)
+
+Testing sphere decoder on 100000 samples of 3x3 BPSK system...
+  2.567851 seconds (4.32 M allocations: 321.962 MiB, 5.72% gc time)
+  0.470495 seconds (2.00 M allocations: 209.811 MiB, 7.21% gc time)
+Error Rate is 0.0. It should be zero or very small.
+
+Testing now with 200x200 matrix from latticechallenge.org.
+The min norm of the input should be 30, min norm of the reduced bases should be smaller.
+min norm of input is 30.0
+  1.114160 seconds (857.22 k allocations: 361.541 MiB, 7.82% gc time)
+min norm of lll-reduced basis is 29.30870177950569
+  6.657422 seconds (5.14 M allocations: 1.251 GiB, 4.83% gc time)
+min norm of seysen-reduced basis is 30.0
+   Testing LLLplus tests passed 
