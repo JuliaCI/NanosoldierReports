@@ -1,0 +1,91 @@
+Julia Version 1.4.0-DEV.666
+Commit 2835347ff0 (2019-12-26 15:28 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-8.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+
+ Resolving package versions...
+ Installed OffsetArrays ─ v0.11.4
+ Installed StaticArrays ─ v0.12.1
+ Installed OceanTurb ──── v0.1.3
+  Updating `~/.julia/environments/v1.4/Project.toml`
+  [d848d694] + OceanTurb v0.1.3
+  Updating `~/.julia/environments/v1.4/Manifest.toml`
+  [d848d694] + OceanTurb v0.1.3
+  [6fe1bfb0] + OffsetArrays v0.11.4
+  [90137ffa] + StaticArrays v0.12.1
+  [2a0f44e3] + Base64 
+  [8ba89e20] + Distributed 
+  [b77e0a4c] + InteractiveUtils 
+  [8f399da3] + Libdl 
+  [37e2e46d] + LinearAlgebra 
+  [56ddb016] + Logging 
+  [d6f4376e] + Markdown 
+  [9a3f8284] + Random 
+  [9e88b42a] + Serialization 
+  [6462fe0b] + Sockets 
+  [2f01184e] + SparseArrays 
+  [10745b16] + Statistics 
+  [8dfed614] + Test 
+   Testing OceanTurb
+  Updating `/tmp/jl_qTkPfI/Project.toml`
+ [no changes]
+  Updating `/tmp/jl_qTkPfI/Manifest.toml`
+ [no changes]
+Running sandbox
+Status `/tmp/jl_qTkPfI/Project.toml`
+  [d848d694] OceanTurb v0.1.3
+  [6fe1bfb0] OffsetArrays v0.11.4
+  [90137ffa] StaticArrays v0.12.1
+  [37e2e46d] LinearAlgebra 
+  [10745b16] Statistics 
+  [8dfed614] Test 
+Utils: Error During Test at /home/pkgeval/.julia/packages/OceanTurb/7ArlY/test/runtests.jl:18
+  Test threw exception
+  Expression: test_run_until(stepper)
+  MethodError: ldiv!(::SubArray{Float64,1,OffsetArrays.OffsetArray{Float64,1,Array{Float64,1}},Tuple{UnitRange{Int64}},true}, ::Tridiagonal{Float64,Array{Float64,1}}, ::SubArray{Float64,1,OffsetArrays.OffsetArray{Float64,1,Array{Float64,1}},Tuple{UnitRange{Int64}},true}) is ambiguous. Candidates:
+    ldiv!(Y::AbstractArray, A::AbstractArray{T,2} where T, B::AbstractArray) in LinearAlgebra at /opt/julia/share/julia/stdlib/v1.4/LinearAlgebra/src/generic.jl:247
+    ldiv!(x, A::Tridiagonal, b) in OceanTurb at /home/pkgeval/.julia/packages/OceanTurb/7ArlY/src/solvers.jl:12
+  Possible fix, define
+    ldiv!(::AbstractArray, ::Tridiagonal, ::AbstractArray)
+  Stacktrace:
+   [1] #46 at /home/pkgeval/.julia/packages/OceanTurb/7ArlY/src/timesteppers.jl:238 [inlined]
+   [2] ntuple at ./ntuple.jl:41 [inlined]
+   [3] backward_euler_step!(::OceanTurb.Diffusion.Solution{Array{Float64,1},UniformGrid{Float64,StepRangeLen{Float64,Base.TwicePrecision{Float64},Base.TwicePrecision{Float64}}},Float64}, ::Tuple{Tridiagonal{Float64,Array{Float64,1}}}, ::OceanTurb.Diffusion.Solution{Array{Float64,1},UniformGrid{Float64,StepRangeLen{Float64,Base.TwicePrecision{Float64},Base.TwicePrecision{Float64}}},Float64}, ::Float64) at /home/pkgeval/.julia/packages/OceanTurb/7ArlY/src/timesteppers.jl:228
+   [4] iterate!(::OceanTurb.Diffusion.Model{OceanTurb.Diffusion.Parameters{Float64},BackwardEulerTimestepper{Equation{NamedTuple{(:c,),Tuple{typeof(OceanTurb.Diffusion.Wc)}},NamedTuple{(:c,),Tuple{typeof(OceanTurb.Diffusion.Lc)}},NamedTuple{(:c,),Tuple{typeof(OceanTurb.Diffusion.Kc)}},Tuple{typeof(OceanTurb.minuszero)},typeof(OceanTurb.funkynothing)},OceanTurb.Diffusion.Solution{Array{Float64,1},UniformGrid{Float64,StepRangeLen{Float64,Base.TwicePrecision{Float64},Base.TwicePrecision{Float64}}},Float64},Tuple{Tridiagonal{Float64,Array{Float64,1}}}},UniformGrid{Float64,StepRangeLen{Float64,Base.TwicePrecision{Float64},Base.TwicePrecision{Float64}}},Float64,OceanTurb.Diffusion.Solution{Array{Float64,1},UniformGrid{Float64,StepRangeLen{Float64,Base.TwicePrecision{Float64},Base.TwicePrecision{Float64}}},Float64}}, ::Float64) at /home/pkgeval/.julia/packages/OceanTurb/7ArlY/src/timesteppers.jl:248
+   [5] iterate! at /home/pkgeval/.julia/packages/OceanTurb/7ArlY/src/timesteppers.jl:18 [inlined]
+   [6] run_until!(::OceanTurb.Diffusion.Model{OceanTurb.Diffusion.Parameters{Float64},BackwardEulerTimestepper{Equation{NamedTuple{(:c,),Tuple{typeof(OceanTurb.Diffusion.Wc)}},NamedTuple{(:c,),Tuple{typeof(OceanTurb.Diffusion.Lc)}},NamedTuple{(:c,),Tuple{typeof(OceanTurb.Diffusion.Kc)}},Tuple{typeof(OceanTurb.minuszero)},typeof(OceanTurb.funkynothing)},OceanTurb.Diffusion.Solution{Array{Float64,1},UniformGrid{Float64,StepRangeLen{Float64,Base.TwicePrecision{Float64},Base.TwicePrecision{Float64}}},Float64},Tuple{Tridiagonal{Float64,Array{Float64,1}}}},UniformGrid{Float64,StepRangeLen{Float64,Base.TwicePrecision{Float64},Base.TwicePrecision{Float64}}},Float64,OceanTurb.Diffusion.Solution{Array{Float64,1},UniformGrid{Float64,StepRangeLen{Float64,Base.TwicePrecision{Float64},Base.TwicePrecision{Float64}}},Float64}}, ::Float64, ::Float64) at /home/pkgeval/.julia/packages/OceanTurb/7ArlY/src/utils.jl:118
+   [7] test_run_until(::Symbol) at /home/pkgeval/.julia/packages/OceanTurb/7ArlY/test/utilstests.jl:15
+   [8] macro expansion at /home/pkgeval/.julia/packages/OceanTurb/7ArlY/test/runtests.jl:18 [inlined]
+   [9] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Test/src/Test.jl:1116 [inlined]
+   [10] top-level scope at /home/pkgeval/.julia/packages/OceanTurb/7ArlY/test/runtests.jl:13
+  
+Test Summary: | Pass  Error  Total
+Utils         |    4      1      5
+ERROR: LoadError: Some tests did not pass: 4 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/OceanTurb/7ArlY/test/runtests.jl:12
+err = ProcessFailedException(Base.Process[Process(`/opt/julia/bin/julia -Cnative -J/opt/julia/lib/julia/sys.so -g1 --code-coverage=none --color=no --compiled-modules=yes --check-bounds=yes --inline=yes --startup-file=no --track-allocation=none --eval 'append!(empty!(Base.DEPOT_PATH), ["/home/pkgeval/.julia", "/opt/julia/local/share/julia", "/opt/julia/share/julia", "/usr/local/share/julia"])
+append!(empty!(Base.DL_LOAD_PATH), String[])
+
+cd("/home/pkgeval/.julia/packages/OceanTurb/7ArlY/test")
+append!(empty!(ARGS), String[])
+include("/home/pkgeval/.julia/packages/OceanTurb/7ArlY/test/runtests.jl")
+'`, ProcessExited(1))])
+ERROR: Package OceanTurb errored during testing
+Stacktrace:
+ [1] pkgerror(::String, ::Vararg{String,N} where N) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/Types.jl:54
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/Operations.jl:1471
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:313
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:300
+ [5] #test#66 at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:294 [inlined]
+ [6] test at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:294 [inlined]
+ [7] #test#65 at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:293 [inlined]
+ [8] test at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:293 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:292
+ [10] test(::String) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:292
+ [11] top-level scope at none:12
