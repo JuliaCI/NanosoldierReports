@@ -35,6 +35,12 @@ for (var uuid in db.tests) {
     }
     svg = bf.create(format)
 
-    output = path.join(output_dir, test.name + ".svg")
+    // put the badges in directories grouped by the first letter of its name,
+    // or GitHub prevents viewing the entire listing
+    key = test.name[0].toUpperCase()
+    badge_dir = path.join(output_dir, key)
+    fs.existsSync(badge_dir) || fs.mkdirSync(badge_dir)
+
+    output = path.join(badge_dir, test.name + ".svg")
     fs.writeFileSync(output, svg)
 }
