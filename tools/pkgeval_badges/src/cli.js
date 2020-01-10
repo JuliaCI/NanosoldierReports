@@ -44,3 +44,21 @@ for (var uuid in db.tests) {
     output = path.join(badge_dir, test.name + ".svg")
     fs.writeFileSync(output, svg)
 }
+
+// generate a HTML page that redirects to the actual log
+const latest_date = fs.readlinkSync(input_dir)
+const url = `https://github.com/JuliaCI/NanosoldierReports/blob/master/pkgeval/by_date/${latest_date}/report.md`
+const html = `<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="refresh" content="0;url=${url}" />
+        <link rel="canonical" href="${url}" />
+    </head>
+    <body>
+        Redirecting you to the latest report at <a href="${url}">${url}</a>
+    </body>
+</html>
+`
+output = path.join(output_dir, "report.html")
+fs.writeFileSync(output, html)
