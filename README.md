@@ -14,6 +14,8 @@ If you use Chrome to view these reports, it's recommended that you install the [
 
 PkgEval reports run the tests of all registered packages using the [NewPkgEval.jl](https://github.com/JuliaComputing/NewPkgEval.jl) infrastructure. The reports are grouped in two folder: `by_date`, for daily evaluations of the current Julia master branch, and `by_hash` for specifically requested builds (e.g., on a pull request to determine breakage of a change).
 
+Click [here](https://juliaci.github.io/NanosoldierReports/pkgeval_badges/report.html) to open the latest daily report.
+
 ### Badges
 
 The test results of the latest daily is also used to generate a PkgEval badge. You can use these badges in your package's README to keep track of PkgEval-compatibility, which is important to make sure that your package is taken into account when evaluating changes to Julia itself.
