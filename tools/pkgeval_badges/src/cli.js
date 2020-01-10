@@ -15,9 +15,9 @@ fs.existsSync(output_dir) || fs.mkdirSync(output_dir, { recursive: true })
 
 const bf = new BadgeFactory()
 const formats = {
-    'ok':   ['success', 'green'],
-    'skip': ['skipped', 'blue'],
-    'fail': ['failed',  'red'],
+    'ok':   ['passing', 'brightgreen'],
+    'skip': ['skipped', 'gray'],
+    'fail': ['failing',  'red'],
     'kill': ['killed',  'red'],
 }
 
@@ -29,7 +29,7 @@ for (var uuid in db.tests) {
     [text, color] = formats[test.status]
 
     format = {
-        text: ['pkgeval', text],
+        text: ['PkgEval', text],
         color: color,
         template: 'flat',
     }
