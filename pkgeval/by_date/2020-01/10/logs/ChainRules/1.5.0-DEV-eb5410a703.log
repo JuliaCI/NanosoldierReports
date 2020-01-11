@@ -45,12 +45,12 @@ Environment:
  Installed SpecialFunctions ── v0.9.0
  Installed OpenSpecFun_jll ─── v0.5.3+1
  Installed FiniteDifferences ─ v0.7.2
-  Updating `/tmp/jl_5CCsn0/Project.toml`
+  Updating `/tmp/jl_f1FLec/Project.toml`
   [26cc04aa] + FiniteDifferences v0.7.2
   [77ba4419] + NaNMath v0.3.3
   [276daf66] + SpecialFunctions v0.9.0
   [8dfed614] + Test 
-  Updating `/tmp/jl_5CCsn0/Manifest.toml`
+  Updating `/tmp/jl_f1FLec/Manifest.toml`
   [26cc04aa] + FiniteDifferences v0.7.2
   [77ba4419] + NaNMath v0.3.3
   [efe28fd5] + OpenSpecFun_jll v0.5.3+1
@@ -58,7 +58,7 @@ Environment:
   [8ba89e20] + Distributed 
   [8dfed614] + Test 
 Running sandbox
-Status `/tmp/jl_5CCsn0/Project.toml`
+Status `/tmp/jl_f1FLec/Project.toml`
   [082447d4] ChainRules v0.2.5
   [d360d2e6] ChainRulesCore v0.4.0
   [26cc04aa] FiniteDifferences v0.7.2
@@ -71,58 +71,264 @@ Status `/tmp/jl_5CCsn0/Project.toml`
   [10745b16] Statistics 
   [8dfed614] Test 
 Testing ChainRules.jl
-log2 at 3.5e-323 + 6.92151108928766e-310im, rrule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+log10 at 3.09e-321, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+  Test threw exception
   Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
-   Evaluated: isapprox(NaN - Inf*im, 1.984354870688462e-8 - 216966.37944210513im; rtol = 1.0e-9, atol = 1.0e-9)
+  DomainError with -0.012015324203549341:
+  NaN result for non-NaN input.
+  Stacktrace:
+   [1] nan_dom_err at ./math.jl:404 [inlined]
+   [2] log10 at ./math.jl:550 [inlined]
+   [3] #20 at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:263 [inlined]
+   [4] _mapreduce(::FiniteDifferences.var"#20#22"{typeof(log10),Float64,Array{Int64,1},Array{Float64,1},Float64}, ::typeof(Base.add_sum), ::IndexLinear, ::Base.OneTo{Int64}) at ./reduce.jl:397
+   [5] _mapreduce_dim(::Function, ::Function, ::NamedTuple{(),Tuple{}}, ::Base.OneTo{Int64}, ::Colon) at ./reducedim.jl:312
+   [6] #mapreduce#580 at ./reducedim.jl:307 [inlined]
+   [7] mapreduce at ./reducedim.jl:307 [inlined]
+   [8] _sum at ./reducedim.jl:657 [inlined]
+   [9] #sum#584 at ./reducedim.jl:653 [inlined]
+   [10] sum at ./reducedim.jl:653 [inlined]
+   [11] fdm(::FiniteDifferences.Central{Array{Int64,1},Array{Float64,1}}, ::typeof(log10), ::Float64, ::Val{true}; condition::Int64, bound::Float64, eps::Float64, adapt::Int64, max_step::Float64) at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:263
+   [12] fdm(::FiniteDifferences.Central{Array{Int64,1},Array{Float64,1}}, ::Function, ::Float64, ::Val{false}; kwargs::Base.Iterators.Pairs{Symbol,Real,NTuple{5,Symbol},NamedTuple{(:condition, :eps, :bound, :max_step, :adapt),Tuple{Int64,Float64,Float64,Float64,Int64}}}) at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:274
+   [13] fdm(::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, ::typeof(log10), ::Float64, ::Val{true}; condition::Int64, bound::Float64, eps::Float64, adapt::Int64, max_step::Float64) at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:241
+   [14] fdm(::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, ::typeof(log10), ::Float64, ::Val{true}) at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:222
+   [15] fdm(::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, ::Function, ::Float64, ::Val{false}; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:274
+   [16] fdm at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:274 [inlined] (repeats 2 times)
+   [17] #_#7 at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:93 [inlined]
+   [18] Central at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:93 [inlined]
+   [19] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44 [inlined]
+   [20] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
+   [21] test_scalar(::typeof(log10), ::Float64; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+  
+log10 at 3.09e-321, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+  Test threw exception
+  Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
+  DomainError with -0.012015324203549341:
+  NaN result for non-NaN input.
+  Stacktrace:
+   [1] nan_dom_err at ./math.jl:404 [inlined]
+   [2] log10 at ./math.jl:550 [inlined]
+   [3] #20 at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:263 [inlined]
+   [4] _mapreduce(::FiniteDifferences.var"#20#22"{typeof(log10),Float64,Array{Int64,1},Array{Float64,1},Float64}, ::typeof(Base.add_sum), ::IndexLinear, ::Base.OneTo{Int64}) at ./reduce.jl:397
+   [5] _mapreduce_dim(::Function, ::Function, ::NamedTuple{(),Tuple{}}, ::Base.OneTo{Int64}, ::Colon) at ./reducedim.jl:312
+   [6] #mapreduce#580 at ./reducedim.jl:307 [inlined]
+   [7] mapreduce at ./reducedim.jl:307 [inlined]
+   [8] _sum at ./reducedim.jl:657 [inlined]
+   [9] #sum#584 at ./reducedim.jl:653 [inlined]
+   [10] sum at ./reducedim.jl:653 [inlined]
+   [11] fdm(::FiniteDifferences.Central{Array{Int64,1},Array{Float64,1}}, ::typeof(log10), ::Float64, ::Val{true}; condition::Int64, bound::Float64, eps::Float64, adapt::Int64, max_step::Float64) at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:263
+   [12] fdm(::FiniteDifferences.Central{Array{Int64,1},Array{Float64,1}}, ::Function, ::Float64, ::Val{false}; kwargs::Base.Iterators.Pairs{Symbol,Real,NTuple{5,Symbol},NamedTuple{(:condition, :eps, :bound, :max_step, :adapt),Tuple{Int64,Float64,Float64,Float64,Int64}}}) at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:274
+   [13] fdm(::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, ::typeof(log10), ::Float64, ::Val{true}; condition::Int64, bound::Float64, eps::Float64, adapt::Int64, max_step::Float64) at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:241
+   [14] fdm(::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, ::typeof(log10), ::Float64, ::Val{true}) at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:222
+   [15] fdm(::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, ::Function, ::Float64, ::Val{false}; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:274
+   [16] fdm at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:274 [inlined] (repeats 2 times)
+   [17] #_#7 at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:93 [inlined]
+   [18] Central at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:93 [inlined]
+   [19] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44 [inlined]
+   [20] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
+   [21] test_scalar(::typeof(log10), ::Float64; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+  
+inv at 6.94002910898534e-310 + 2.0e-323im, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+  Got exception outside of a @test
+  ArgumentError: eps must be positive, got NaN
+  Stacktrace:
+   [1] fdm(::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, ::var"#4#6"{typeof(inv),Complex{Float64}}, ::Int64, ::Val{true}; condition::Int64, bound::Float64, eps::Float64, adapt::Int64, max_step::Float64) at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:225
+   [2] fdm(::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, ::var"#4#6"{typeof(inv),Complex{Float64}}, ::Int64, ::Val{true}) at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:222
+   [3] fdm(::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, ::Function, ::Int64, ::Val{false}; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:274
+   [4] fdm at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:274 [inlined] (repeats 2 times)
+   [5] #_#7 at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:93 [inlined]
+   [6] Central at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:93 [inlined]
+   [7] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:50 [inlined]
+   [8] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
+   [9] test_scalar(::typeof(inv), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+   [10] test_scalar at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:24 [inlined]
+   [11] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/rulesets/Base/base.jl:69 [inlined]
+   [12] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1116 [inlined]
+   [13] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/rulesets/Base/base.jl:65 [inlined]
+   [14] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1116 [inlined]
+   [15] top-level scope at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/rulesets/Base/base.jl:2
+   [16] include(::String) at ./client.jl:439
+   [17] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/runtests.jl:27 [inlined]
+   [18] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1116 [inlined]
+   [19] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/runtests.jl:27 [inlined]
+   [20] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1116 [inlined]
+   [21] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/runtests.jl:26 [inlined]
+   [22] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1116 [inlined]
+   [23] top-level scope at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/runtests.jl:23
+   [24] include(::String) at ./client.jl:439
+   [25] top-level scope at none:6
+   [26] eval(::Module, ::Any) at ./boot.jl:331
+   [27] exec_options(::Base.JLOptions) at ./client.jl:264
+   [28] _start() at ./client.jl:484
+  
+inv at 6.94002910898534e-310 + 2.0e-323im, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+  Got exception outside of a @test
+  ArgumentError: eps must be positive, got NaN
+  Stacktrace:
+   [1] fdm(::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, ::var"#4#6"{typeof(inv),Complex{Float64}}, ::Int64, ::Val{true}; condition::Int64, bound::Float64, eps::Float64, adapt::Int64, max_step::Float64) at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:225
+   [2] fdm(::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, ::var"#4#6"{typeof(inv),Complex{Float64}}, ::Int64, ::Val{true}) at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:222
+   [3] fdm(::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, ::Function, ::Int64, ::Val{false}; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:274
+   [4] fdm at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:274 [inlined] (repeats 2 times)
+   [5] #_#7 at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:93 [inlined]
+   [6] Central at /home/pkgeval/.julia/packages/FiniteDifferences/kgtFk/src/methods.jl:93 [inlined]
+   [7] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:50 [inlined]
+   [8] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
+   [9] test_scalar(::typeof(inv), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+   [10] test_scalar at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:24 [inlined]
+   [11] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/rulesets/Base/base.jl:69 [inlined]
+   [12] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1116 [inlined]
+   [13] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/rulesets/Base/base.jl:65 [inlined]
+   [14] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1116 [inlined]
+   [15] top-level scope at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/rulesets/Base/base.jl:2
+   [16] include(::String) at ./client.jl:439
+   [17] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/runtests.jl:27 [inlined]
+   [18] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1116 [inlined]
+   [19] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/runtests.jl:27 [inlined]
+   [20] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1116 [inlined]
+   [21] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/runtests.jl:26 [inlined]
+   [22] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1116 [inlined]
+   [23] top-level scope at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/runtests.jl:23
+   [24] include(::String) at ./client.jl:439
+   [25] top-level scope at none:6
+   [26] eval(::Module, ::Any) at ./boot.jl:331
+   [27] exec_options(::Base.JLOptions) at ./client.jl:264
+   [28] _start() at ./client.jl:484
+  
+sqrt at 6.94003730998337e-310 + 0.0im, rrule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+  Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
+   Evaluated: isapprox(1.8979689431948455e154 - 0.0im, 197.05765340445373 - 197.05765340445367im; rtol = 1.0e-9, atol = 1.0e-9)
+Stacktrace:
+ [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44 [inlined]
+ [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
+ [3] test_scalar(::typeof(sqrt), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+sqrt at 6.94003730998337e-310 + 0.0im, frule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+  Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
+   Evaluated: isapprox(1.8979689431948455e154 - 0.0im, 197.05765340445373 - 197.05765340445367im; rtol = 1.0e-9, atol = 1.0e-9)
+Stacktrace:
+ [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44 [inlined]
+ [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
+ [3] test_scalar(::typeof(sqrt), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+log at 6.94002906705537e-310 + 5.0e-324im, rrule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+  Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
+   Evaluated: isapprox(Inf - 1.0257985433831414e295im, 1.1995600467081383e-8 - 131478.1115045019im; rtol = 1.0e-9, atol = 1.0e-9)
+Stacktrace:
+ [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44 [inlined]
+ [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
+ [3] test_scalar(::typeof(log), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+log at 6.94002906705537e-310 + 5.0e-324im, frule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+  Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
+   Evaluated: isapprox(Inf - 1.0257985433831414e295im, 1.1995600467081383e-8 - 131478.1115045019im; rtol = 1.0e-9, atol = 1.0e-9)
+Stacktrace:
+ [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44 [inlined]
+ [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
+ [3] test_scalar(::typeof(log), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+log2 at 6.9400718076499e-310 + 0.0im, rrule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+  Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
+   Evaluated: isapprox(Inf + NaN*im, 1.9788862846590765e-8 - 216966.15537128603im; rtol = 1.0e-9, atol = 1.0e-9)
 Stacktrace:
  [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44 [inlined]
  [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
  [3] test_scalar(::typeof(log2), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
-log2 at 3.5e-323 + 6.92151108928766e-310im, frule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+log2 at 6.9400718076499e-310 + 0.0im, frule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
   Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
-   Evaluated: isapprox(NaN - Inf*im, 1.984354870688462e-8 - 216966.37944210513im; rtol = 1.0e-9, atol = 1.0e-9)
+   Evaluated: isapprox(Inf + NaN*im, 1.9788862846590765e-8 - 216966.15537128603im; rtol = 1.0e-9, atol = 1.0e-9)
 Stacktrace:
  [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44 [inlined]
  [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
  [3] test_scalar(::typeof(log2), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
-log10 at 6.9215080719774e-310 + 6.92151108928534e-310im, rrule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+log10 at 6.9400718076499e-310 + 0.0im, rrule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
   Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
-   Evaluated: isapprox(NaN + NaN*im, 6.348717278739951e-9 - 69911.0374746137im; rtol = 1.0e-9, atol = 1.0e-9)
+   Evaluated: isapprox(Inf + NaN*im, 6.363857504022605e-9 - 69916.66086502238im; rtol = 1.0e-9, atol = 1.0e-9)
 Stacktrace:
  [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44 [inlined]
  [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
  [3] test_scalar(::typeof(log10), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
-log10 at 6.9215080719774e-310 + 6.92151108928534e-310im, frule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+log10 at 6.9400718076499e-310 + 0.0im, frule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
   Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
-   Evaluated: isapprox(NaN + NaN*im, 6.348717278739951e-9 - 69911.0374746137im; rtol = 1.0e-9, atol = 1.0e-9)
+   Evaluated: isapprox(Inf + NaN*im, 6.363857504022605e-9 - 69916.66086502238im; rtol = 1.0e-9, atol = 1.0e-9)
 Stacktrace:
  [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44 [inlined]
  [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
  [3] test_scalar(::typeof(log10), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
-angle at 1.0e-323 + 1.0e-323im, rrule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:54
+abs at 6.94002690196485e-310 + 2.0e-323im, rrule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:54
   Expression: isapprox(wirtinger_primal(∂x), ∂; rtol = rtol, atol = atol, kwargs...)
-   Evaluated: isapprox(-Inf - Inf*im, -268358.569581767 - 268358.56958176696im; rtol = 1.0e-9, atol = 1.0e-9)
+   Evaluated: isapprox(0.5 - 1.4238147857938918e-14im, 7.792935231611442e-17 - 7.792935231611442e-17im; rtol = 1.0e-9, atol = 1.0e-9)
+Stacktrace:
+ [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:54 [inlined]
+ [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
+ [3] test_scalar(::typeof(abs), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+abs at 6.94002690196485e-310 + 2.0e-323im, rrule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:58
+  Expression: isapprox(wirtinger_conjugate(∂x), ∂̅; rtol = rtol, atol = atol, kwargs...)
+   Evaluated: isapprox(0.5 + 1.4238147857938918e-14im, 7.792935231611442e-17 + 7.792935231611442e-17im; rtol = 1.0e-9, atol = 1.0e-9)
+Stacktrace:
+ [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:58 [inlined]
+ [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
+ [3] test_scalar(::typeof(abs), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+abs at 6.94002690196485e-310 + 2.0e-323im, frule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:54
+  Expression: isapprox(wirtinger_primal(∂x), ∂; rtol = rtol, atol = atol, kwargs...)
+   Evaluated: isapprox(0.5 - 1.4238147857938918e-14im, 7.792935231611442e-17 - 7.792935231611442e-17im; rtol = 1.0e-9, atol = 1.0e-9)
+Stacktrace:
+ [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:54 [inlined]
+ [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
+ [3] test_scalar(::typeof(abs), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+abs at 6.94002690196485e-310 + 2.0e-323im, frule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:58
+  Expression: isapprox(wirtinger_conjugate(∂x), ∂̅; rtol = rtol, atol = atol, kwargs...)
+   Evaluated: isapprox(0.5 + 1.4238147857938918e-14im, 7.792935231611442e-17 + 7.792935231611442e-17im; rtol = 1.0e-9, atol = 1.0e-9)
+Stacktrace:
+ [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:58 [inlined]
+ [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
+ [3] test_scalar(::typeof(abs), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+hypot at 6.94002892007203e-310 + 5.0e-324im, rrule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:54
+  Expression: isapprox(wirtinger_primal(∂x), ∂; rtol = rtol, atol = atol, kwargs...)
+   Evaluated: isapprox(Inf - Inf*im, 7.792935231611442e-17 - 7.792935231611442e-17im; rtol = 1.0e-9, atol = 1.0e-9)
+Stacktrace:
+ [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:54 [inlined]
+ [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
+ [3] test_scalar(::typeof(hypot), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+hypot at 6.94002892007203e-310 + 5.0e-324im, rrule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:58
+  Expression: isapprox(wirtinger_conjugate(∂x), ∂̅; rtol = rtol, atol = atol, kwargs...)
+   Evaluated: isapprox(Inf + Inf*im, 7.792935231611442e-17 + 7.792935231611442e-17im; rtol = 1.0e-9, atol = 1.0e-9)
+Stacktrace:
+ [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:58 [inlined]
+ [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
+ [3] test_scalar(::typeof(hypot), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+hypot at 6.94002892007203e-310 + 5.0e-324im, frule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:54
+  Expression: isapprox(wirtinger_primal(∂x), ∂; rtol = rtol, atol = atol, kwargs...)
+   Evaluated: isapprox(Inf - Inf*im, 7.792935231611442e-17 - 7.792935231611442e-17im; rtol = 1.0e-9, atol = 1.0e-9)
+Stacktrace:
+ [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:54 [inlined]
+ [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
+ [3] test_scalar(::typeof(hypot), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+hypot at 6.94002892007203e-310 + 5.0e-324im, frule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:58
+  Expression: isapprox(wirtinger_conjugate(∂x), ∂̅; rtol = rtol, atol = atol, kwargs...)
+   Evaluated: isapprox(Inf + Inf*im, 7.792935231611442e-17 + 7.792935231611442e-17im; rtol = 1.0e-9, atol = 1.0e-9)
+Stacktrace:
+ [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:58 [inlined]
+ [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
+ [3] test_scalar(::typeof(hypot), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+angle at 6.94002892065937e-310 + 0.0im, rrule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:54
+  Expression: isapprox(wirtinger_primal(∂x), ∂; rtol = rtol, atol = atol, kwargs...)
+   Evaluated: isapprox(NaN - Inf*im, -197517.6414077233 - 197517.6414077233im; rtol = 1.0e-9, atol = 1.0e-9)
 Stacktrace:
  [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:54 [inlined]
  [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
  [3] test_scalar(::typeof(angle), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
-angle at 1.0e-323 + 1.0e-323im, rrule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:58
+angle at 6.94002892065937e-310 + 0.0im, rrule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:58
   Expression: isapprox(wirtinger_conjugate(∂x), ∂̅; rtol = rtol, atol = atol, kwargs...)
-   Evaluated: isapprox(-Inf + Inf*im, -268358.569581767 + 268358.56958176696im; rtol = 1.0e-9, atol = 1.0e-9)
+   Evaluated: isapprox(NaN + Inf*im, -197517.6414077233 + 197517.6414077233im; rtol = 1.0e-9, atol = 1.0e-9)
 Stacktrace:
  [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:58 [inlined]
  [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
  [3] test_scalar(::typeof(angle), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
-angle at 1.0e-323 + 1.0e-323im, frule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:54
+angle at 6.94002892065937e-310 + 0.0im, frule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:54
   Expression: isapprox(wirtinger_primal(∂x), ∂; rtol = rtol, atol = atol, kwargs...)
-   Evaluated: isapprox(-Inf - Inf*im, -268358.569581767 - 268358.56958176696im; rtol = 1.0e-9, atol = 1.0e-9)
+   Evaluated: isapprox(NaN - Inf*im, -197517.6414077233 - 197517.6414077233im; rtol = 1.0e-9, atol = 1.0e-9)
 Stacktrace:
  [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:54 [inlined]
  [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
  [3] test_scalar(::typeof(angle), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
-angle at 1.0e-323 + 1.0e-323im, frule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:58
+angle at 6.94002892065937e-310 + 0.0im, frule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:58
   Expression: isapprox(wirtinger_conjugate(∂x), ∂̅; rtol = rtol, atol = atol, kwargs...)
-   Evaluated: isapprox(-Inf + Inf*im, -268358.569581767 + 268358.56958176696im; rtol = 1.0e-9, atol = 1.0e-9)
+   Evaluated: isapprox(NaN + Inf*im, -197517.6414077233 + 197517.6414077233im; rtol = 1.0e-9, atol = 1.0e-9)
 Stacktrace:
  [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:58 [inlined]
  [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
@@ -152,10 +358,10 @@ Stacktrace:
  [7] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/rulesets/LinearAlgebra/dense.jl:67 [inlined]
  [8] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1116 [inlined]
  [9] top-level scope at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/rulesets/LinearAlgebra/dense.jl:7
- erfcinv at 6.92148988686283e-310, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+ erfcinv at 6.9400096722104e-310, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
   Test threw exception
   Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
-  DomainError with -0.012863449007195427:
+  DomainError with -0.01286345305003031:
   `y` must be nonnegative.
   Stacktrace:
    [1] erfcinv(::Float64) at /home/pkgeval/.julia/packages/SpecialFunctions/O3MVw/src/erf.jl:333
@@ -179,10 +385,10 @@ Stacktrace:
    [19] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
    [20] test_scalar(::typeof(erfcinv), ::Float64; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   
-erfcinv at 6.92148988686283e-310, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+erfcinv at 6.9400096722104e-310, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
   Test threw exception
   Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
-  DomainError with -0.012863449007195427:
+  DomainError with -0.01286345305003031:
   `y` must be nonnegative.
   Stacktrace:
    [1] erfcinv(::Float64) at /home/pkgeval/.julia/packages/SpecialFunctions/O3MVw/src/erf.jl:333
@@ -206,10 +412,10 @@ erfcinv at 6.92148988686283e-310, frule: Error During Test at /home/pkgeval/.jul
    [19] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
    [20] test_scalar(::typeof(erfcinv), ::Float64; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   
-bessely0 at 6.92148988686283e-310, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+bessely0 at 6.9400096722104e-310, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
   Test threw exception
   Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
-  DomainError with -0.012729829123107885:
+  DomainError with -0.012729837085780009:
   NaN result for non-NaN input.
   Stacktrace:
    [1] nan_dom_err at ./math.jl:404 [inlined]
@@ -234,10 +440,10 @@ bessely0 at 6.92148988686283e-310, rrule: Error During Test at /home/pkgeval/.ju
    [20] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
    [21] test_scalar(::typeof(bessely0), ::Float64; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   
-bessely0 at 6.92148988686283e-310, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+bessely0 at 6.9400096722104e-310, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
   Test threw exception
   Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
-  DomainError with -0.012729829123107885:
+  DomainError with -0.012729837085780009:
   NaN result for non-NaN input.
   Stacktrace:
    [1] nan_dom_err at ./math.jl:404 [inlined]
@@ -262,7 +468,7 @@ bessely0 at 6.92148988686283e-310, frule: Error During Test at /home/pkgeval/.ju
    [20] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
    [21] test_scalar(::typeof(bessely0), ::Float64; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   
-bessely1 at 6.92148988686283e-310, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+bessely1 at 6.9400096722104e-310, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
   Test threw exception
   Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
   ArgumentError: eps must be positive, got NaN
@@ -277,7 +483,7 @@ bessely1 at 6.92148988686283e-310, rrule: Error During Test at /home/pkgeval/.ju
    [8] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
    [9] test_scalar(::typeof(bessely1), ::Float64; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   
-bessely1 at 6.92148988686283e-310, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+bessely1 at 6.9400096722104e-310, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
   Test threw exception
   Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
   ArgumentError: eps must be positive, got NaN
@@ -292,7 +498,7 @@ bessely1 at 6.92148988686283e-310, frule: Error During Test at /home/pkgeval/.ju
    [8] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
    [9] test_scalar(::typeof(bessely1), ::Float64; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   
-gamma at 6.92148988686283e-310, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+gamma at 6.9400096722104e-310, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
   Test threw exception
   Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
   ArgumentError: eps must be positive, got NaN
@@ -307,7 +513,7 @@ gamma at 6.92148988686283e-310, rrule: Error During Test at /home/pkgeval/.julia
    [8] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
    [9] test_scalar(::typeof(gamma), ::Float64; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   
-gamma at 6.92148988686283e-310, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+gamma at 6.9400096722104e-310, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
   Test threw exception
   Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
   ArgumentError: eps must be positive, got NaN
@@ -322,7 +528,7 @@ gamma at 6.92148988686283e-310, frule: Error During Test at /home/pkgeval/.julia
    [8] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
    [9] test_scalar(::typeof(gamma), ::Float64; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   
-digamma at 6.92148988686283e-310, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+digamma at 6.9400096722104e-310, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
   Test threw exception
   Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
   ArgumentError: eps must be positive, got NaN
@@ -337,7 +543,7 @@ digamma at 6.92148988686283e-310, rrule: Error During Test at /home/pkgeval/.jul
    [8] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
    [9] test_scalar(::typeof(digamma), ::Float64; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   
-digamma at 6.92148988686283e-310, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+digamma at 6.9400096722104e-310, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
   Test threw exception
   Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
   ArgumentError: eps must be positive, got NaN
@@ -352,7 +558,7 @@ digamma at 6.92148988686283e-310, frule: Error During Test at /home/pkgeval/.jul
    [8] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
    [9] test_scalar(::typeof(digamma), ::Float64; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   
-trigamma at 6.92148988686283e-310, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+trigamma at 6.9400096722104e-310, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
   Test threw exception
   Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
   ArgumentError: eps must be positive, got NaN
@@ -367,7 +573,7 @@ trigamma at 6.92148988686283e-310, rrule: Error During Test at /home/pkgeval/.ju
    [8] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
    [9] test_scalar(::typeof(trigamma), ::Float64; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   
-trigamma at 6.92148988686283e-310, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
+trigamma at 6.9400096722104e-310, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:44
   Test threw exception
   Expression: isapprox(∂x, fdm(f, x); rtol = rtol, atol = atol, kwargs...)
   ArgumentError: eps must be positive, got NaN
@@ -382,7 +588,7 @@ trigamma at 6.92148988686283e-310, frule: Error During Test at /home/pkgeval/.ju
    [8] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
    [9] test_scalar(::typeof(trigamma), ::Float64; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   
-bessely0 at 6.92154627883503e-310 + 0.0im, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+bessely0 at 6.94003851126485e-310 + 0.0im, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   Got exception outside of a @test
   AmosException with id 2: overflow.
   Stacktrace:
@@ -412,7 +618,7 @@ bessely0 at 6.92154627883503e-310 + 0.0im, rrule: Error During Test at /home/pkg
    [24] exec_options(::Base.JLOptions) at ./client.jl:264
    [25] _start() at ./client.jl:484
   
-bessely0 at 6.92154627883503e-310 + 0.0im, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+bessely0 at 6.94003851126485e-310 + 0.0im, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   Got exception outside of a @test
   AmosException with id 2: overflow.
   Stacktrace:
@@ -442,7 +648,7 @@ bessely0 at 6.92154627883503e-310 + 0.0im, frule: Error During Test at /home/pkg
    [24] exec_options(::Base.JLOptions) at ./client.jl:264
    [25] _start() at ./client.jl:484
   
-bessely1 at 6.92154627883503e-310 + 0.0im, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+bessely1 at 6.94003851126485e-310 + 0.0im, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   Got exception outside of a @test
   AmosException with id 2: overflow.
   Stacktrace:
@@ -472,7 +678,7 @@ bessely1 at 6.92154627883503e-310 + 0.0im, rrule: Error During Test at /home/pkg
    [24] exec_options(::Base.JLOptions) at ./client.jl:264
    [25] _start() at ./client.jl:484
   
-bessely1 at 6.92154627883503e-310 + 0.0im, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+bessely1 at 6.94003851126485e-310 + 0.0im, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   Got exception outside of a @test
   AmosException with id 2: overflow.
   Stacktrace:
@@ -502,7 +708,7 @@ bessely1 at 6.92154627883503e-310 + 0.0im, frule: Error During Test at /home/pkg
    [24] exec_options(::Base.JLOptions) at ./client.jl:264
    [25] _start() at ./client.jl:484
   
-gamma at 6.92154627883503e-310 + 0.0im, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+gamma at 6.94003851126485e-310 + 0.0im, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   Got exception outside of a @test
   ArgumentError: eps must be positive, got NaN
   Stacktrace:
@@ -533,7 +739,7 @@ gamma at 6.92154627883503e-310 + 0.0im, rrule: Error During Test at /home/pkgeva
    [25] exec_options(::Base.JLOptions) at ./client.jl:264
    [26] _start() at ./client.jl:484
   
-gamma at 6.92154627883503e-310 + 0.0im, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+gamma at 6.94003851126485e-310 + 0.0im, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   Got exception outside of a @test
   ArgumentError: eps must be positive, got NaN
   Stacktrace:
@@ -564,7 +770,7 @@ gamma at 6.92154627883503e-310 + 0.0im, frule: Error During Test at /home/pkgeva
    [25] exec_options(::Base.JLOptions) at ./client.jl:264
    [26] _start() at ./client.jl:484
   
-digamma at 6.92154627883503e-310 + 0.0im, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+digamma at 6.94003851126485e-310 + 0.0im, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   Got exception outside of a @test
   ArgumentError: eps must be positive, got NaN
   Stacktrace:
@@ -595,7 +801,7 @@ digamma at 6.92154627883503e-310 + 0.0im, rrule: Error During Test at /home/pkge
    [25] exec_options(::Base.JLOptions) at ./client.jl:264
    [26] _start() at ./client.jl:484
   
-digamma at 6.92154627883503e-310 + 0.0im, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+digamma at 6.94003851126485e-310 + 0.0im, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   Got exception outside of a @test
   ArgumentError: eps must be positive, got NaN
   Stacktrace:
@@ -626,14 +832,14 @@ digamma at 6.92154627883503e-310 + 0.0im, frule: Error During Test at /home/pkge
    [25] exec_options(::Base.JLOptions) at ./client.jl:264
    [26] _start() at ./client.jl:484
   
-trigamma at 6.92154627883503e-310 + 0.0im, rrule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:30
+trigamma at 6.94003851126485e-310 + 0.0im, rrule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:30
   Expression: fx == f(x)
    Evaluated: Inf + NaN*im == Inf + NaN*im
 Stacktrace:
  [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:30 [inlined]
  [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
  [3] test_scalar(::typeof(trigamma), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
-trigamma at 6.92154627883503e-310 + 0.0im, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+trigamma at 6.94003851126485e-310 + 0.0im, rrule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   Got exception outside of a @test
   ArgumentError: eps must be positive, got NaN
   Stacktrace:
@@ -664,14 +870,14 @@ trigamma at 6.92154627883503e-310 + 0.0im, rrule: Error During Test at /home/pkg
    [25] exec_options(::Base.JLOptions) at ./client.jl:264
    [26] _start() at ./client.jl:484
   
-trigamma at 6.92154627883503e-310 + 0.0im, frule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:30
+trigamma at 6.94003851126485e-310 + 0.0im, frule: Test Failed at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:30
   Expression: fx == f(x)
    Evaluated: Inf + NaN*im == Inf + NaN*im
 Stacktrace:
  [1] macro expansion at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:30 [inlined]
  [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1189 [inlined]
  [3] test_scalar(::typeof(trigamma), ::Complex{Float64}; rtol::Float64, atol::Float64, fdm::FiniteDifferences.Central{UnitRange{Int64},Array{Float64,1}}, test_wirtinger::Bool, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
-trigamma at 6.92154627883503e-310 + 0.0im, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
+trigamma at 6.94003851126485e-310 + 0.0im, frule: Error During Test at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/test_util.jl:26
   Got exception outside of a @test
   ArgumentError: eps must be positive, got NaN
   Stacktrace:
@@ -783,276 +989,276 @@ trigamma at 6.92154627883503e-310 + 0.0im, frule: Error During Test at /home/pkg
 ┌ Warning: `lgamma(x::Number)` is deprecated, use `loggamma(x)` instead.
 │   caller = frule(::typeof(lgamma), ::Complex{Float64}) at rule_definition_tools.jl:178
 └ @ ChainRules ~/.julia/packages/ChainRulesCore/7Zuuq/src/rule_definition_tools.jl:178
-Test Summary:                                                            | Pass  Fail  Error  Total
-ChainRules                                                               | 7624    12     22   7658
-  helper functions                                                       |   12                  12
-  rulesets                                                               | 7612    12     22   7646
-    Base                                                                 | 1533     9          1542
-      base                                                               | 1361     9          1370
-        Trig                                                             |  564                 564
-        math                                                             |  307     4           311
-          deg2rad at -0.1, rrule                                         |    4                   4
-          deg2rad at -0.1, frule                                         |    3                   3
-          rad2deg at -0.1, rrule                                         |    4                   4
-          rad2deg at -0.1, frule                                         |    3                   3
-          inv at -0.1, rrule                                             |    4                   4
-          inv at -0.1, frule                                             |    3                   3
-          exp at -0.1, rrule                                             |    4                   4
-          exp at -0.1, frule                                             |    3                   3
-          exp2 at -0.1, rrule                                            |    4                   4
-          exp2 at -0.1, frule                                            |    3                   3
-          exp10 at -0.1, rrule                                           |    4                   4
-          exp10 at -0.1, frule                                           |    3                   3
-          cbrt at -0.1, rrule                                            |    4                   4
-          cbrt at -0.1, frule                                            |    3                   3
-          deg2rad at 6.4, rrule                                          |    4                   4
-          deg2rad at 6.4, frule                                          |    3                   3
-          rad2deg at 6.4, rrule                                          |    4                   4
-          rad2deg at 6.4, frule                                          |    3                   3
-          inv at 6.4, rrule                                              |    4                   4
-          inv at 6.4, frule                                              |    3                   3
-          exp at 6.4, rrule                                              |    4                   4
-          exp at 6.4, frule                                              |    3                   3
-          exp2 at 6.4, rrule                                             |    4                   4
-          exp2 at 6.4, frule                                             |    3                   3
-          exp10 at 6.4, rrule                                            |    4                   4
-          exp10 at 6.4, frule                                            |    3                   3
-          cbrt at 6.4, rrule                                             |    4                   4
-          cbrt at 6.4, frule                                             |    3                   3
-          sqrt at 6.4, rrule                                             |    4                   4
-          sqrt at 6.4, frule                                             |    3                   3
-          log at 6.4, rrule                                              |    4                   4
-          log at 6.4, frule                                              |    3                   3
-          log2 at 6.4, rrule                                             |    4                   4
-          log2 at 6.4, frule                                             |    3                   3
-          log10 at 6.4, rrule                                            |    4                   4
-          log10 at 6.4, frule                                            |    3                   3
-          log1p at 6.4, rrule                                            |    4                   4
-          log1p at 6.4, frule                                            |    3                   3
-          deg2rad at 1.0 + 0.5im, rrule                                  |    5                   5
-          deg2rad at 1.0 + 0.5im, frule                                  |    4                   4
-          rad2deg at 1.0 + 0.5im, rrule                                  |    5                   5
-          rad2deg at 1.0 + 0.5im, frule                                  |    4                   4
-          inv at 1.0 + 0.5im, rrule                                      |    5                   5
-          inv at 1.0 + 0.5im, frule                                      |    4                   4
-          exp at 1.0 + 0.5im, rrule                                      |    5                   5
-          exp at 1.0 + 0.5im, frule                                      |    4                   4
-          exp2 at 1.0 + 0.5im, rrule                                     |    5                   5
-          exp2 at 1.0 + 0.5im, frule                                     |    4                   4
-          exp10 at 1.0 + 0.5im, rrule                                    |    5                   5
-          exp10 at 1.0 + 0.5im, frule                                    |    4                   4
-          sqrt at 1.0 + 0.5im, rrule                                     |    4                   4
-          sqrt at 1.0 + 0.5im, frule                                     |    3                   3
-          log at 1.0 + 0.5im, rrule                                      |    4                   4
-          log at 1.0 + 0.5im, frule                                      |    3                   3
-          log2 at 3.5e-323 + 6.92151108928766e-310im, rrule              |    3     1             4
-          log2 at 3.5e-323 + 6.92151108928766e-310im, frule              |    2     1             3
-          log10 at 6.9215080719774e-310 + 6.92151108928534e-310im, rrule |    3     1             4
-          log10 at 6.9215080719774e-310 + 6.92151108928534e-310im, frule |    2     1             3
-          log1p at 6.9215080719774e-310 + 6.92151108928534e-310im, rrule |    4                   4
-          log1p at 6.9215080719774e-310 + 6.92151108928534e-310im, frule |    3                   3
-          deg2rad at -10.0 + 0.0im, rrule                                |    5                   5
-          deg2rad at -10.0 + 0.0im, frule                                |    4                   4
-          rad2deg at -10.0 + 0.0im, rrule                                |    5                   5
-          rad2deg at -10.0 + 0.0im, frule                                |    4                   4
-          inv at -10.0 + 0.0im, rrule                                    |    5                   5
-          inv at -10.0 + 0.0im, frule                                    |    4                   4
-          exp at -10.0 + 0.0im, rrule                                    |    5                   5
-          exp at -10.0 + 0.0im, frule                                    |    4                   4
-          exp2 at -10.0 + 0.0im, rrule                                   |    5                   5
-          exp2 at -10.0 + 0.0im, frule                                   |    4                   4
-          exp10 at -10.0 + 0.0im, rrule                                  |    5                   5
-          exp10 at -10.0 + 0.0im, frule                                  |    4                   4
-          sqrt at -10.0 + 0.0im, rrule                                   |    4                   4
-          sqrt at -10.0 + 0.0im, frule                                   |    3                   3
-          log at -10.0 + 0.0im, rrule                                    |    4                   4
-          log at -10.0 + 0.0im, frule                                    |    3                   3
-          log2 at -10.0 + 0.0im, rrule                                   |    4                   4
-          log2 at -10.0 + 0.0im, frule                                   |    3                   3
-          log10 at -10.0 + 0.0im, rrule                                  |    4                   4
-          log10 at -10.0 + 0.0im, frule                                  |    3                   3
-          log1p at -10.0 + 0.0im, rrule                                  |    4                   4
-          log1p at -10.0 + 0.0im, frule                                  |    3                   3
-        Unary complex functions                                          |  220     4           224
-          real at -4.1, rrule                                            |    4                   4
-          real at -4.1, frule                                            |    3                   3
-          imag at -4.1, rrule                                            |    4                   4
-          imag at -4.1, frule                                            |    3                   3
-          abs at -4.1, rrule                                             |    4                   4
-          abs at -4.1, frule                                             |    3                   3
-          hypot at -4.1, rrule                                           |    4                   4
-          hypot at -4.1, frule                                           |    3                   3
-          angle at -4.1, rrule                                           |    4                   4
-          angle at -4.1, frule                                           |    3                   3
-          abs2 at -4.1, rrule                                            |    4                   4
-          abs2 at -4.1, frule                                            |    3                   3
-          conj at -4.1, rrule                                            |    4                   4
-          conj at -4.1, frule                                            |    3                   3
-          real at 6.4, rrule                                             |    4                   4
-          real at 6.4, frule                                             |    3                   3
-          imag at 6.4, rrule                                             |    4                   4
-          imag at 6.4, frule                                             |    3                   3
-          abs at 6.4, rrule                                              |    4                   4
-          abs at 6.4, frule                                              |    3                   3
-          hypot at 6.4, rrule                                            |    4                   4
-          hypot at 6.4, frule                                            |    3                   3
-          angle at 6.4, rrule                                            |    4                   4
-          angle at 6.4, frule                                            |    3                   3
-          abs2 at 6.4, rrule                                             |    4                   4
-          abs2 at 6.4, frule                                             |    3                   3
-          conj at 6.4, rrule                                             |    4                   4
-          conj at 6.4, frule                                             |    3                   3
-          real at 1.0 + 0.5im, rrule                                     |    5                   5
-          real at 1.0 + 0.5im, frule                                     |    4                   4
-          imag at 1.0 + 0.5im, rrule                                     |    5                   5
-          imag at 1.0 + 0.5im, frule                                     |    4                   4
-          abs at 1.0 + 0.5im, rrule                                      |    5                   5
-          abs at 1.0 + 0.5im, frule                                      |    4                   4
-          hypot at 1.0 + 0.5im, rrule                                    |    5                   5
-          hypot at 1.0 + 0.5im, frule                                    |    4                   4
-          angle at 1.0e-323 + 1.0e-323im, rrule                          |    3     2             5
-          angle at 1.0e-323 + 1.0e-323im, frule                          |    2     2             4
-          abs2 at 1.0e-323 + 1.0e-323im, rrule                           |    5                   5
-          abs2 at 1.0e-323 + 1.0e-323im, frule                           |    4                   4
-          conj at 1.0e-323 + 1.0e-323im, rrule                           |    5                   5
-          conj at 1.0e-323 + 1.0e-323im, frule                           |    4                   4
-          real at -10.0 + 1.5im, rrule                                   |    5                   5
-          real at -10.0 + 1.5im, frule                                   |    4                   4
-          imag at -10.0 + 1.5im, rrule                                   |    5                   5
-          imag at -10.0 + 1.5im, frule                                   |    4                   4
-          abs at -10.0 + 1.5im, rrule                                    |    5                   5
-          abs at -10.0 + 1.5im, frule                                    |    4                   4
-          hypot at -10.0 + 1.5im, rrule                                  |    5                   5
-          hypot at -10.0 + 1.5im, frule                                  |    4                   4
-          angle at -10.0 + 1.5im, rrule                                  |    5                   5
-          angle at -10.0 + 1.5im, frule                                  |    4                   4
-          abs2 at -10.0 + 1.5im, rrule                                   |    5                   5
-          abs2 at -10.0 + 1.5im, frule                                   |    4                   4
-          conj at -10.0 + 1.5im, rrule                                   |    5                   5
-          conj at -10.0 + 1.5im, frule                                   |    4                   4
-        *(x, y)                                                          |   16                  16
-        binary function (hypot)                                          |   15     1            16
-        binary function (atan)                                           |   16                  16
-        binary function (mod)                                            |   16                  16
-        binary function (rem)                                            |   16                  16
-        binary function (^)                                              |   16                  16
-        identity                                                         |   19                  19
-        Constants                                                        |   14                  14
-        Constants                                                        |   14                  14
-        Constants                                                        |   18                  18
-        Constants                                                        |   18                  18
-        Constants                                                        |   18                  18
-        sign                                                             |   30                  30
-        trinary (muladd)                                                 |   22                  22
-        trinary (fma)                                                    |   22                  22
-      reshape                                                            |    9                   9
-      hcat                                                               |    5                   5
-      vcat                                                               |    5                   5
-      fill                                                               |    8                   8
-      Maps and Reductions                                                |  137                 137
-      broadcast                                                          |    8                   8
-    Statistics                                                           |   24                  24
-    LinearAlgebra                                                        | 5185     1          5186
-      linalg                                                             | 1302     1          1303
-        dot                                                              |   66                  66
-        inv                                                              |   13                  13
-        det                                                              |   13                  13
-        logdet                                                           |   13                  13
-        tr                                                               |   13                  13
-        *                                                                |  500                 500
-        /                                                                |  260                 260
-        \                                                                |  359     1           360
-          Matrix                                                         |  179     1           180
-          Vector                                                         |   20                  20
-          Diagonal on LHS                                                |   40                  40
-          UpperTriangular on LHS                                         |   40                  40
-          LowerTriangular on LHS                                         |   40                  40
-          Matrix \ Vector                                                |   20                  20
-          Vector \ Matrix                                                |   20                  20
-        norm                                                             |   65                  65
-      Structured Matrices                                                |  218                 218
-      Factorizations                                                     |  155                 155
-      BLAS                                                               | 3510                3510
-    packages                                                             |  870     2     22    894
-      SpecialFunctions                                                   |  119                 119
-      SpecialFunctions                                                   |   84                  84
-      SpecialFunctions                                                   |   84                  84
-      SpecialFunctions                                                   |  121           12    133
-        erf at 0.5, rrule                                                |    4                   4
-        erf at 0.5, frule                                                |    3                   3
-        erfc at 0.5, rrule                                               |    4                   4
-        erfc at 0.5, frule                                               |    3                   3
-        erfi at 0.5, rrule                                               |    4                   4
-        erfi at 0.5, frule                                               |    3                   3
-        airyai at 0.5, rrule                                             |    4                   4
-        airyai at 0.5, frule                                             |    3                   3
-        airyaiprime at 0.5, rrule                                        |    4                   4
-        airyaiprime at 0.5, frule                                        |    3                   3
-        airybi at 0.5, rrule                                             |    4                   4
-        airybi at 0.5, frule                                             |    3                   3
-        airybiprime at 0.5, rrule                                        |    4                   4
-        airybiprime at 0.5, frule                                        |    3                   3
-        besselj0 at 6.92148586570365e-310, rrule                         |    4                   4
-        besselj0 at 6.92148586570365e-310, frule                         |    3                   3
-        besselj1 at 6.92148586570365e-310, rrule                         |    4                   4
-        besselj1 at 6.92148586570365e-310, frule                         |    3                   3
-        erfcx at 6.92148586570365e-310, rrule                            |    4                   4
-        erfcx at 6.92148586570365e-310, frule                            |    3                   3
-        dawson at 6.92148586570365e-310, rrule                           |    4                   4
-        dawson at 6.92148586570365e-310, frule                           |    3                   3
-        invdigamma at 6.92148586570365e-310, rrule                       |    4                   4
-        invdigamma at 6.92148586570365e-310, frule                       |    3                   3
-        erfinv at 6.92148586570365e-310, rrule                           |    4                   4
-        erfinv at 6.92148586570365e-310, frule                           |    3                   3
-        erfcinv at 6.92148988686283e-310, rrule                          |    3            1      4
-        erfcinv at 6.92148988686283e-310, frule                          |    2            1      3
-        bessely0 at 6.92148988686283e-310, rrule                         |    3            1      4
-        bessely0 at 6.92148988686283e-310, frule                         |    2            1      3
-        bessely1 at 6.92148988686283e-310, rrule                         |    3            1      4
-        bessely1 at 6.92148988686283e-310, frule                         |    2            1      3
-        gamma at 6.92148988686283e-310, rrule                            |    3            1      4
-        gamma at 6.92148988686283e-310, frule                            |    2            1      3
-        digamma at 6.92148988686283e-310, rrule                          |    3            1      4
-        digamma at 6.92148988686283e-310, frule                          |    2            1      3
-        trigamma at 6.92148988686283e-310, rrule                         |    3            1      4
-        trigamma at 6.92148988686283e-310, frule                         |    2            1      3
-      SpecialFunctions                                                   |  119                 119
-      SpecialFunctions                                                   |   84                  84
-      SpecialFunctions                                                   |  112     2     10    124
-        erf at 1.5 + 0.7im, rrule                                        |    5                   5
-        erf at 1.5 + 0.7im, frule                                        |    4                   4
-        erfc at 1.5 + 0.7im, rrule                                       |    5                   5
-        erfc at 1.5 + 0.7im, frule                                       |    4                   4
-        erfi at 1.5 + 0.7im, rrule                                       |    5                   5
-        erfi at 1.5 + 0.7im, frule                                       |    4                   4
-        airyai at 6.9214882116546e-310 + 2.0e-323im, rrule               |    5                   5
-        airyai at 6.9214882116546e-310 + 2.0e-323im, frule               |    4                   4
-        airyaiprime at 6.9214882116546e-310 + 2.0e-323im, rrule          |    5                   5
-        airyaiprime at 6.9214882116546e-310 + 2.0e-323im, frule          |    4                   4
-        airybi at 6.9214882116546e-310 + 2.0e-323im, rrule               |    5                   5
-        airybi at 6.9214882116546e-310 + 2.0e-323im, frule               |    4                   4
-        airybiprime at 6.92148875877816e-310 + 0.0im, rrule              |    5                   5
-        airybiprime at 6.92148875877816e-310 + 0.0im, frule              |    4                   4
-        besselj0 at 6.92148875877816e-310 + 0.0im, rrule                 |    5                   5
-        besselj0 at 6.92148875877816e-310 + 0.0im, frule                 |    4                   4
-        besselj1 at 6.92148875877816e-310 + 0.0im, rrule                 |    5                   5
-        besselj1 at 6.92148875877816e-310 + 0.0im, frule                 |    4                   4
-        erfcx at 6.92154627883503e-310 + 0.0im, rrule                    |    5                   5
-        erfcx at 6.92154627883503e-310 + 0.0im, frule                    |    4                   4
-        dawson at 6.92154627883503e-310 + 0.0im, rrule                   |    5                   5
-        dawson at 6.92154627883503e-310 + 0.0im, frule                   |    4                   4
-        bessely0 at 6.92154627883503e-310 + 0.0im, rrule                 |                 1      1
-        bessely0 at 6.92154627883503e-310 + 0.0im, frule                 |                 1      1
-        bessely1 at 6.92154627883503e-310 + 0.0im, rrule                 |                 1      1
-        bessely1 at 6.92154627883503e-310 + 0.0im, frule                 |                 1      1
-        gamma at 6.92154627883503e-310 + 0.0im, rrule                    |    3            1      4
-        gamma at 6.92154627883503e-310 + 0.0im, frule                    |    2            1      3
-        digamma at 6.92154627883503e-310 + 0.0im, rrule                  |    3            1      4
-        digamma at 6.92154627883503e-310 + 0.0im, frule                  |    2            1      3
-        trigamma at 6.92154627883503e-310 + 0.0im, rrule                 |    2     1      1      4
-        trigamma at 6.92154627883503e-310 + 0.0im, frule                 |    1     1      1      3
-      log gamma and co                                                   |  147                 147
-ERROR: LoadError: Some tests did not pass: 7624 passed, 12 failed, 22 errored, 0 broken.
+Test Summary:                                                   | Pass  Fail  Error  Total
+ChainRules                                                      | 7606    24     26   7656
+  helper functions                                              |   12                  12
+  rulesets                                                      | 7594    24     26   7644
+    Base                                                        | 1515    21      4   1540
+      base                                                      | 1343    21      4   1368
+        Trig                                                    |  564                 564
+        math                                                    |  297     8      4    309
+          deg2rad at -0.1, rrule                                |    4                   4
+          deg2rad at -0.1, frule                                |    3                   3
+          rad2deg at -0.1, rrule                                |    4                   4
+          rad2deg at -0.1, frule                                |    3                   3
+          inv at -0.1, rrule                                    |    4                   4
+          inv at -0.1, frule                                    |    3                   3
+          exp at -0.1, rrule                                    |    4                   4
+          exp at -0.1, frule                                    |    3                   3
+          exp2 at -0.1, rrule                                   |    4                   4
+          exp2 at -0.1, frule                                   |    3                   3
+          exp10 at -0.1, rrule                                  |    4                   4
+          exp10 at -0.1, frule                                  |    3                   3
+          cbrt at -0.1, rrule                                   |    4                   4
+          cbrt at -0.1, frule                                   |    3                   3
+          deg2rad at 6.4, rrule                                 |    4                   4
+          deg2rad at 6.4, frule                                 |    3                   3
+          rad2deg at 6.4, rrule                                 |    4                   4
+          rad2deg at 6.4, frule                                 |    3                   3
+          inv at 6.4, rrule                                     |    4                   4
+          inv at 6.4, frule                                     |    3                   3
+          exp at 6.4, rrule                                     |    4                   4
+          exp at 6.4, frule                                     |    3                   3
+          exp2 at 6.4, rrule                                    |    4                   4
+          exp2 at 6.4, frule                                    |    3                   3
+          exp10 at 6.4, rrule                                   |    4                   4
+          exp10 at 6.4, frule                                   |    3                   3
+          cbrt at 6.4, rrule                                    |    4                   4
+          cbrt at 6.4, frule                                    |    3                   3
+          sqrt at 6.4, rrule                                    |    4                   4
+          sqrt at 6.4, frule                                    |    3                   3
+          log at 6.4, rrule                                     |    4                   4
+          log at 6.4, frule                                     |    3                   3
+          log2 at 6.4, rrule                                    |    4                   4
+          log2 at 6.4, frule                                    |    3                   3
+          log10 at 3.09e-321, rrule                             |    3            1      4
+          log10 at 3.09e-321, frule                             |    2            1      3
+          log1p at 6.940030746643e-310, rrule                   |    4                   4
+          log1p at 6.940030746643e-310, frule                   |    3                   3
+          deg2rad at 1.0 + 0.5im, rrule                         |    5                   5
+          deg2rad at 1.0 + 0.5im, frule                         |    4                   4
+          rad2deg at 1.0 + 0.5im, rrule                         |    5                   5
+          rad2deg at 1.0 + 0.5im, frule                         |    4                   4
+          inv at 6.94002910898534e-310 + 2.0e-323im, rrule      |    3            1      4
+          inv at 6.94002910898534e-310 + 2.0e-323im, frule      |    2            1      3
+          exp at 6.94002910898534e-310 + 2.0e-323im, rrule      |    5                   5
+          exp at 6.94002910898534e-310 + 2.0e-323im, frule      |    4                   4
+          exp2 at 5.0e-324 + 5.0e-324im, rrule                  |    5                   5
+          exp2 at 5.0e-324 + 5.0e-324im, frule                  |    4                   4
+          exp10 at 6.9400290827311e-310 + 5.0e-324im, rrule     |    5                   5
+          exp10 at 6.9400290827311e-310 + 5.0e-324im, frule     |    4                   4
+          sqrt at 6.94003730998337e-310 + 0.0im, rrule          |    3     1             4
+          sqrt at 6.94003730998337e-310 + 0.0im, frule          |    2     1             3
+          log at 6.94002906705537e-310 + 5.0e-324im, rrule      |    3     1             4
+          log at 6.94002906705537e-310 + 5.0e-324im, frule      |    2     1             3
+          log2 at 6.9400718076499e-310 + 0.0im, rrule           |    3     1             4
+          log2 at 6.9400718076499e-310 + 0.0im, frule           |    2     1             3
+          log10 at 6.9400718076499e-310 + 0.0im, rrule          |    3     1             4
+          log10 at 6.9400718076499e-310 + 0.0im, frule          |    2     1             3
+          log1p at 6.94002908056906e-310 + 1.0e-323im, rrule    |    4                   4
+          log1p at 6.94002908056906e-310 + 1.0e-323im, frule    |    3                   3
+          deg2rad at -10.0 + 0.0im, rrule                       |    5                   5
+          deg2rad at -10.0 + 0.0im, frule                       |    4                   4
+          rad2deg at -10.0 + 0.0im, rrule                       |    5                   5
+          rad2deg at -10.0 + 0.0im, frule                       |    4                   4
+          inv at -10.0 + 0.0im, rrule                           |    5                   5
+          inv at -10.0 + 0.0im, frule                           |    4                   4
+          exp at -10.0 + 0.0im, rrule                           |    5                   5
+          exp at -10.0 + 0.0im, frule                           |    4                   4
+          exp2 at -10.0 + 0.0im, rrule                          |    5                   5
+          exp2 at -10.0 + 0.0im, frule                          |    4                   4
+          exp10 at -10.0 + 0.0im, rrule                         |    5                   5
+          exp10 at -10.0 + 0.0im, frule                         |    4                   4
+          sqrt at -10.0 + 0.0im, rrule                          |    4                   4
+          sqrt at -10.0 + 0.0im, frule                          |    3                   3
+          log at -10.0 + 0.0im, rrule                           |    4                   4
+          log at -10.0 + 0.0im, frule                           |    3                   3
+          log2 at -10.0 + 0.0im, rrule                          |    4                   4
+          log2 at -10.0 + 0.0im, frule                          |    3                   3
+          log10 at -10.0 + 0.0im, rrule                         |    4                   4
+          log10 at -10.0 + 0.0im, frule                         |    3                   3
+          log1p at -10.0 + 0.0im, rrule                         |    4                   4
+          log1p at -10.0 + 0.0im, frule                         |    3                   3
+        Unary complex functions                                 |  212    12           224
+          real at -4.1, rrule                                   |    4                   4
+          real at -4.1, frule                                   |    3                   3
+          imag at -4.1, rrule                                   |    4                   4
+          imag at -4.1, frule                                   |    3                   3
+          abs at -4.1, rrule                                    |    4                   4
+          abs at -4.1, frule                                    |    3                   3
+          hypot at -4.1, rrule                                  |    4                   4
+          hypot at -4.1, frule                                  |    3                   3
+          angle at -4.1, rrule                                  |    4                   4
+          angle at -4.1, frule                                  |    3                   3
+          abs2 at -4.1, rrule                                   |    4                   4
+          abs2 at -4.1, frule                                   |    3                   3
+          conj at -4.1, rrule                                   |    4                   4
+          conj at -4.1, frule                                   |    3                   3
+          real at 6.4, rrule                                    |    4                   4
+          real at 6.4, frule                                    |    3                   3
+          imag at 6.4, rrule                                    |    4                   4
+          imag at 6.4, frule                                    |    3                   3
+          abs at 6.4, rrule                                     |    4                   4
+          abs at 6.4, frule                                     |    3                   3
+          hypot at 6.4, rrule                                   |    4                   4
+          hypot at 6.4, frule                                   |    3                   3
+          angle at 6.4, rrule                                   |    4                   4
+          angle at 6.4, frule                                   |    3                   3
+          abs2 at 6.4, rrule                                    |    4                   4
+          abs2 at 6.4, frule                                    |    3                   3
+          conj at 6.4, rrule                                    |    4                   4
+          conj at 6.4, frule                                    |    3                   3
+          real at 1.0 + 0.5im, rrule                            |    5                   5
+          real at 1.0 + 0.5im, frule                            |    4                   4
+          imag at 1.0 + 0.5im, rrule                            |    5                   5
+          imag at 1.0 + 0.5im, frule                            |    4                   4
+          abs at 6.94002690196485e-310 + 2.0e-323im, rrule      |    3     2             5
+          abs at 6.94002690196485e-310 + 2.0e-323im, frule      |    2     2             4
+          hypot at 6.94002892007203e-310 + 5.0e-324im, rrule    |    3     2             5
+          hypot at 6.94002892007203e-310 + 5.0e-324im, frule    |    2     2             4
+          angle at 6.94002892065937e-310 + 0.0im, rrule         |    3     2             5
+          angle at 6.94002892065937e-310 + 0.0im, frule         |    2     2             4
+          abs2 at 6.94002892065937e-310 + 0.0im, rrule          |    5                   5
+          abs2 at 6.94002892065937e-310 + 0.0im, frule          |    4                   4
+          conj at 5.0e-324 + 6.9400269776834e-310im, rrule      |    5                   5
+          conj at 5.0e-324 + 6.9400269776834e-310im, frule      |    4                   4
+          real at -10.0 + 1.5im, rrule                          |    5                   5
+          real at -10.0 + 1.5im, frule                          |    4                   4
+          imag at -10.0 + 1.5im, rrule                          |    5                   5
+          imag at -10.0 + 1.5im, frule                          |    4                   4
+          abs at -10.0 + 1.5im, rrule                           |    5                   5
+          abs at -10.0 + 1.5im, frule                           |    4                   4
+          hypot at -10.0 + 1.5im, rrule                         |    5                   5
+          hypot at -10.0 + 1.5im, frule                         |    4                   4
+          angle at -10.0 + 1.5im, rrule                         |    5                   5
+          angle at -10.0 + 1.5im, frule                         |    4                   4
+          abs2 at -10.0 + 1.5im, rrule                          |    5                   5
+          abs2 at -10.0 + 1.5im, frule                          |    4                   4
+          conj at -10.0 + 1.5im, rrule                          |    5                   5
+          conj at -10.0 + 1.5im, frule                          |    4                   4
+        *(x, y)                                                 |   16                  16
+        binary function (hypot)                                 |   15     1            16
+        binary function (atan)                                  |   16                  16
+        binary function (mod)                                   |   16                  16
+        binary function (rem)                                   |   16                  16
+        binary function (^)                                     |   16                  16
+        identity                                                |   19                  19
+        Constants                                               |   14                  14
+        Constants                                               |   14                  14
+        Constants                                               |   18                  18
+        Constants                                               |   18                  18
+        Constants                                               |   18                  18
+        sign                                                    |   30                  30
+        trinary (muladd)                                        |   22                  22
+        trinary (fma)                                           |   22                  22
+      reshape                                                   |    9                   9
+      hcat                                                      |    5                   5
+      vcat                                                      |    5                   5
+      fill                                                      |    8                   8
+      Maps and Reductions                                       |  137                 137
+      broadcast                                                 |    8                   8
+    Statistics                                                  |   24                  24
+    LinearAlgebra                                               | 5185     1          5186
+      linalg                                                    | 1302     1          1303
+        dot                                                     |   66                  66
+        inv                                                     |   13                  13
+        det                                                     |   13                  13
+        logdet                                                  |   13                  13
+        tr                                                      |   13                  13
+        *                                                       |  500                 500
+        /                                                       |  260                 260
+        \                                                       |  359     1           360
+          Matrix                                                |  179     1           180
+          Vector                                                |   20                  20
+          Diagonal on LHS                                       |   40                  40
+          UpperTriangular on LHS                                |   40                  40
+          LowerTriangular on LHS                                |   40                  40
+          Matrix \ Vector                                       |   20                  20
+          Vector \ Matrix                                       |   20                  20
+        norm                                                    |   65                  65
+      Structured Matrices                                       |  218                 218
+      Factorizations                                            |  155                 155
+      BLAS                                                      | 3510                3510
+    packages                                                    |  870     2     22    894
+      SpecialFunctions                                          |  119                 119
+      SpecialFunctions                                          |   84                  84
+      SpecialFunctions                                          |   84                  84
+      SpecialFunctions                                          |  121           12    133
+        erf at 0.5, rrule                                       |    4                   4
+        erf at 0.5, frule                                       |    3                   3
+        erfc at 0.5, rrule                                      |    4                   4
+        erfc at 0.5, frule                                      |    3                   3
+        erfi at 6.9400098153867e-310, rrule                     |    4                   4
+        erfi at 6.9400098153867e-310, frule                     |    3                   3
+        airyai at 6.9400098153867e-310, rrule                   |    4                   4
+        airyai at 6.9400098153867e-310, frule                   |    3                   3
+        airyaiprime at 6.9400098153867e-310, rrule              |    4                   4
+        airyaiprime at 6.9400098153867e-310, frule              |    3                   3
+        airybi at 6.9400098153867e-310, rrule                   |    4                   4
+        airybi at 6.9400098153867e-310, frule                   |    3                   3
+        airybiprime at 6.9400098153867e-310, rrule              |    4                   4
+        airybiprime at 6.9400098153867e-310, frule              |    3                   3
+        besselj0 at 6.9400098153867e-310, rrule                 |    4                   4
+        besselj0 at 6.9400098153867e-310, frule                 |    3                   3
+        besselj1 at 6.9400098153867e-310, rrule                 |    4                   4
+        besselj1 at 6.9400098153867e-310, frule                 |    3                   3
+        erfcx at 6.9400098153867e-310, rrule                    |    4                   4
+        erfcx at 6.9400098153867e-310, frule                    |    3                   3
+        dawson at 6.9400096722104e-310, rrule                   |    4                   4
+        dawson at 6.9400096722104e-310, frule                   |    3                   3
+        invdigamma at 6.9400096722104e-310, rrule               |    4                   4
+        invdigamma at 6.9400096722104e-310, frule               |    3                   3
+        erfinv at 6.9400096722104e-310, rrule                   |    4                   4
+        erfinv at 6.9400096722104e-310, frule                   |    3                   3
+        erfcinv at 6.9400096722104e-310, rrule                  |    3            1      4
+        erfcinv at 6.9400096722104e-310, frule                  |    2            1      3
+        bessely0 at 6.9400096722104e-310, rrule                 |    3            1      4
+        bessely0 at 6.9400096722104e-310, frule                 |    2            1      3
+        bessely1 at 6.9400096722104e-310, rrule                 |    3            1      4
+        bessely1 at 6.9400096722104e-310, frule                 |    2            1      3
+        gamma at 6.9400096722104e-310, rrule                    |    3            1      4
+        gamma at 6.9400096722104e-310, frule                    |    2            1      3
+        digamma at 6.9400096722104e-310, rrule                  |    3            1      4
+        digamma at 6.9400096722104e-310, frule                  |    2            1      3
+        trigamma at 6.9400096722104e-310, rrule                 |    3            1      4
+        trigamma at 6.9400096722104e-310, frule                 |    2            1      3
+      SpecialFunctions                                          |  119                 119
+      SpecialFunctions                                          |   84                  84
+      SpecialFunctions                                          |  112     2     10    124
+        erf at 1.5 + 0.7im, rrule                               |    5                   5
+        erf at 1.5 + 0.7im, frule                               |    4                   4
+        erfc at 1.5 + 0.7im, rrule                              |    5                   5
+        erfc at 1.5 + 0.7im, frule                              |    4                   4
+        erfi at 1.5 + 0.7im, rrule                              |    5                   5
+        erfi at 1.5 + 0.7im, frule                              |    4                   4
+        airyai at 1.5 + 0.7im, rrule                            |    5                   5
+        airyai at 1.5 + 0.7im, frule                            |    4                   4
+        airyaiprime at 6.9400384995132e-310 + 2.0e-323im, rrule |    5                   5
+        airyaiprime at 6.9400384995132e-310 + 2.0e-323im, frule |    4                   4
+        airybi at 6.9400384995132e-310 + 2.0e-323im, rrule      |    5                   5
+        airybi at 6.9400384995132e-310 + 2.0e-323im, frule      |    4                   4
+        airybiprime at 6.9400384995132e-310 + 2.0e-323im, rrule |    5                   5
+        airybiprime at 6.9400384995132e-310 + 2.0e-323im, frule |    4                   4
+        besselj0 at 6.9400384995132e-310 + 2.0e-323im, rrule    |    5                   5
+        besselj0 at 6.9400384995132e-310 + 2.0e-323im, frule    |    4                   4
+        besselj1 at 6.94003851126485e-310 + 0.0im, rrule        |    5                   5
+        besselj1 at 6.94003851126485e-310 + 0.0im, frule        |    4                   4
+        erfcx at 6.94003851126485e-310 + 0.0im, rrule           |    5                   5
+        erfcx at 6.94003851126485e-310 + 0.0im, frule           |    4                   4
+        dawson at 6.94003851126485e-310 + 0.0im, rrule          |    5                   5
+        dawson at 6.94003851126485e-310 + 0.0im, frule          |    4                   4
+        bessely0 at 6.94003851126485e-310 + 0.0im, rrule        |                 1      1
+        bessely0 at 6.94003851126485e-310 + 0.0im, frule        |                 1      1
+        bessely1 at 6.94003851126485e-310 + 0.0im, rrule        |                 1      1
+        bessely1 at 6.94003851126485e-310 + 0.0im, frule        |                 1      1
+        gamma at 6.94003851126485e-310 + 0.0im, rrule           |    3            1      4
+        gamma at 6.94003851126485e-310 + 0.0im, frule           |    2            1      3
+        digamma at 6.94003851126485e-310 + 0.0im, rrule         |    3            1      4
+        digamma at 6.94003851126485e-310 + 0.0im, frule         |    2            1      3
+        trigamma at 6.94003851126485e-310 + 0.0im, rrule        |    2     1      1      4
+        trigamma at 6.94003851126485e-310 + 0.0im, frule        |    1     1      1      3
+      log gamma and co                                          |  147                 147
+ERROR: LoadError: Some tests did not pass: 7606 passed, 24 failed, 26 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/ChainRules/ssH7Q/test/runtests.jl:22
 err = ProcessFailedException(Base.Process[Process(`/opt/julia/bin/julia -Cnative -J/opt/julia/lib/julia/sys.so -g1 --code-coverage=none --color=no --compiled-modules=yes --check-bounds=yes --inline=yes --startup-file=no --track-allocation=none --eval 'append!(empty!(Base.DEPOT_PATH), ["/home/pkgeval/.julia", "/opt/julia/local/share/julia", "/opt/julia/share/julia", "/usr/local/share/julia"])
 append!(empty!(Base.DL_LOAD_PATH), String[])
