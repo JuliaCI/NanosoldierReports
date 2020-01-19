@@ -1,0 +1,72 @@
+Julia Version 1.5.0-DEV.104
+Commit 372a7a726d (2020-01-18 18:35 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-8.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+ Resolving package versions...
+ Installed TransformUtils ─ v0.2.3
+  Updating `~/.julia/environments/v1.5/Project.toml`
+  [9b8138ad] + TransformUtils v0.2.3
+  Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [9b8138ad] + TransformUtils v0.2.3
+  [8f399da3] + Libdl 
+  [37e2e46d] + LinearAlgebra 
+   Testing TransformUtils
+  Updating `/tmp/jl_ZGUYYm/Project.toml`
+  [8dfed614] + Test 
+  Updating `/tmp/jl_ZGUYYm/Manifest.toml`
+  [2a0f44e3] + Base64 
+  [8ba89e20] + Distributed 
+  [b77e0a4c] + InteractiveUtils 
+  [56ddb016] + Logging 
+  [d6f4376e] + Markdown 
+  [9a3f8284] + Random 
+  [9e88b42a] + Serialization 
+  [6462fe0b] + Sockets 
+  [8dfed614] + Test 
+Running sandbox
+Status `/tmp/jl_ZGUYYm/Project.toml`
+  [9b8138ad] TransformUtils v0.2.3
+  [37e2e46d] LinearAlgebra 
+  [8dfed614] Test 
+Test Summary:                               |
+Constructors SO3, Quaternion, AngleAxis...  | No tests
+Test Summary:                           | Pass  Total
+Ensure basic quaternion operations hold |   10     10
+Test Summary:                                       | Pass  Total
+Comparison functions for SO3, Quaternion, AngleAxis |    5      5
+Test Summary:                                        | Pass  Total
+Trivial case quaterion -> SO3 -> Euler -> quaternion |    2      2
+┌ Warning: Need better coverage on convert function tests
+└ @ Main ~/.julia/packages/TransformUtils/hYnkL/test/runtests.jl:89
+dAA = AngleAxis(0.7853981633974483, [1.0, 0.0, 0.0])
+dAA = so3([0.0 -0.02332496127452106 -0.13663241800391107; 0.02332496127452106 0.0 -0.07902300359309539; 0.13663241800391107 0.07902300359309539 0.0])
+dAA = so3([0.0 0.009707682561903417 0.07582082786710596; -0.009707682561903417 0.0 -0.04297560279329183; -0.07582082786710596 0.04297560279329183 0.0])
+dAA = so3([0.0 0.18441656835387552 0.06868957095390854; -0.18441656835387552 0.0 -0.02916184341318285; -0.06868957095390854 0.02916184341318285 0.0])
+dAA = Quaternion(0.9963673230687037, [-0.0775146022205059, 0.013846151250955825, 0.03243344044405739])
+dAA = SO3([0.994293400559815 -0.10302986546614626 0.027667316914149503; 0.10351798571694065 0.9944852249773526 -0.01682747559357021; -0.025781005339347275 0.019595512847913207 0.999475540290967])
+Test Summary:                        | Pass  Total
+Compare SO3 and quaternion rotations |   24     24
+Test Summary:       | Pass  Total
+Basic SE3 mechanics |    4      4
+Compare operations on two different SE3 transforms
+xi = SE3(SO3([0.9818135246785562 0.034217193184947654 0.1867388188053414; -0.013933343056660698 0.9939581894815519 -0.10887138978547531; -0.18933585162228406 0.10428950691752005 0.9763583532890806]), [0.7902300359309539, -1.3663241800391106, 0.23324961274521058])
+xj = SE3(SO3([0.9846754055929475 -0.1672444774215527 0.04943309005469912; 0.13625774413527808 0.9146963447848213 0.38047920311161876; -0.10884931227862366 -0.3679128723071254 0.9234673495079248]), [0.2916184341318285, 0.6868957095390854, -1.844165683538755])
+Dx = SE3(SO3([0.9854781819751085 -0.10728857082376807 -0.13161274794497874; 0.1577754881353333 0.8650778341531467 0.47617983598694935; 0.06276661688105017 -0.49003010461347585 0.8694428379012696]), [-0.1248226370051877, 1.8071010176372697, -2.344948822253526])
+Test Summary:         | Pass  Total
+SE3 ⊕ and ⊖ mechanics |    6      6
+TransformUtils.convert(Euler, q) = Euler(0.7853981633974484, 0.0, 1.5707963267948963, Quaternion(1.0, [0.0, 0.0, 0.0]))
+Test Summary:              | Pass  Total
+Previous discovered issues |    3      3
+Test Summary:      | Pass  Total
+test SO3 logmap... |  301    301
+Test Summary:                              | Pass  Total
+test in-place and efficient inverse SE3... |    1      1
+   Testing TransformUtils tests passed 
