@@ -1,0 +1,72 @@
+Julia Version 1.5.0-DEV.107
+Commit 248bc460bb (2020-01-19 02:41 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-8.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+ Resolving package versions...
+ Installed TransformUtils ─ v0.2.3
+  Updating `~/.julia/environments/v1.5/Project.toml`
+  [9b8138ad] + TransformUtils v0.2.3
+  Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [9b8138ad] + TransformUtils v0.2.3
+  [8f399da3] + Libdl 
+  [37e2e46d] + LinearAlgebra 
+   Testing TransformUtils
+  Updating `/tmp/jl_lzswby/Project.toml`
+  [8dfed614] + Test 
+  Updating `/tmp/jl_lzswby/Manifest.toml`
+  [2a0f44e3] + Base64 
+  [8ba89e20] + Distributed 
+  [b77e0a4c] + InteractiveUtils 
+  [56ddb016] + Logging 
+  [d6f4376e] + Markdown 
+  [9a3f8284] + Random 
+  [9e88b42a] + Serialization 
+  [6462fe0b] + Sockets 
+  [8dfed614] + Test 
+Running sandbox
+Status `/tmp/jl_lzswby/Project.toml`
+  [9b8138ad] TransformUtils v0.2.3
+  [37e2e46d] LinearAlgebra 
+  [8dfed614] Test 
+Test Summary:                               |
+Constructors SO3, Quaternion, AngleAxis...  | No tests
+Test Summary:                           | Pass  Total
+Ensure basic quaternion operations hold |   10     10
+Test Summary:                                       | Pass  Total
+Comparison functions for SO3, Quaternion, AngleAxis |    5      5
+Test Summary:                                        | Pass  Total
+Trivial case quaterion -> SO3 -> Euler -> quaternion |    2      2
+┌ Warning: Need better coverage on convert function tests
+└ @ Main ~/.julia/packages/TransformUtils/hYnkL/test/runtests.jl:89
+dAA = AngleAxis(0.7853981633974483, [1.0, 0.0, 0.0])
+dAA = so3([0.0 0.15898372266299007 0.0015581822257713304; -0.15898372266299007 0.0 -0.01510476128185919; -0.0015581822257713304 0.01510476128185919 0.0])
+dAA = so3([0.0 0.06354209094558842 -0.04401818279472548; -0.06354209094558842 0.0 -0.004063424180973269; 0.04401818279472548 0.004063424180973269 0.0])
+dAA = so3([0.0 0.07239663801707609 0.03736682308015922; -0.07239663801707609 0.0 0.04332223941923308; -0.03736682308015922 -0.04332223941923308 0.0])
+dAA = Quaternion(0.9955902291685965, [0.07624450058864252, 0.011264280727602771, -0.05347885277097766])
+dAA = SO3([0.9972714187515356 -0.025590853323951404 -0.06924467898295109; 0.022652972515511433 0.9988231569164115 -0.042885242726903375; 0.07026065881780091 0.041199629047916686 0.9966774956769132])
+Test Summary:                        | Pass  Total
+Compare SO3 and quaternion rotations |   24     24
+Test Summary:       | Pass  Total
+Basic SE3 mechanics |    4      4
+Compare operations on two different SE3 transforms
+xi = SE3(SO3([0.9813857052882954 0.15730839932400467 -0.11016426352458597; -0.15842281848222334 0.9873703970739955 -0.0013818705036340694; 0.10855555278263501 0.01880868108240934 0.9939124335050834]), [0.1510476128185919, 0.015581822257713304, -1.5898372266299006])
+xj = SE3(SO3([0.9632896095364037 0.2672992641064653 0.024984626620083213; -0.23890254460299973 0.8959518402344169 -0.3744273950484574; -0.12246918935558683 0.3547131283004676 0.9269195727083777]), [-0.4332223941923307, 0.37366823080159217, -0.7239663801707609])
+Dx = SE3(SO3([0.9699115567610156 0.15889054079580983 0.18445966525785035; -0.08665523769004507 0.9333564297344531 -0.34833409947094907; -0.22751360803764004 0.3218688725536694 0.9190418853560075]), [-0.5361282026351697, 0.2779392284244632, 0.924470646081454])
+Test Summary:         | Pass  Total
+SE3 ⊕ and ⊖ mechanics |    6      6
+TransformUtils.convert(Euler, q) = Euler(0.7853981633974484, 0.0, 1.5707963267948963, Quaternion(1.0, [0.0, 0.0, 0.0]))
+Test Summary:              | Pass  Total
+Previous discovered issues |    3      3
+Test Summary:      | Pass  Total
+test SO3 logmap... |  301    301
+Test Summary:                              | Pass  Total
+test in-place and efficient inverse SE3... |    1      1
+   Testing TransformUtils tests passed 
