@@ -1,0 +1,506 @@
+Julia Version 1.5.0-DEV.145
+Commit 4b2b38a936 (2020-01-21 22:14 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-8.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+ Resolving package versions...
+ Installed MbedTLS ──────── v0.7.0
+ Installed BinaryProvider ─ v0.5.8
+ Installed HTTP ─────────── v0.8.8
+ Installed IniFile ──────── v0.5.0
+  Updating `~/.julia/environments/v1.5/Project.toml`
+  [cd3eb016] + HTTP v0.8.8
+  Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [b99e7846] + BinaryProvider v0.5.8
+  [cd3eb016] + HTTP v0.8.8
+  [83e8ac13] + IniFile v0.5.0
+  [739be429] + MbedTLS v0.7.0
+  [2a0f44e3] + Base64 
+  [ade2ca70] + Dates 
+  [8ba89e20] + Distributed 
+  [b77e0a4c] + InteractiveUtils 
+  [8f399da3] + Libdl 
+  [56ddb016] + Logging 
+  [d6f4376e] + Markdown 
+  [de0858da] + Printf 
+  [9a3f8284] + Random 
+  [ea8e919c] + SHA 
+  [9e88b42a] + Serialization 
+  [6462fe0b] + Sockets 
+  [8dfed614] + Test 
+  [4ec0a83e] + Unicode 
+  Building MbedTLS → `~/.julia/packages/MbedTLS/a1JFn/deps/build.log`
+  Updating `/tmp/jl_DPkzB1/Project.toml`
+ [no changes]
+  Updating `/tmp/jl_DPkzB1/Manifest.toml`
+ [no changes]
+   Testing HTTP
+ Installed Unitful ────────── v0.18.0
+ Installed ConstructionBase ─ v1.0.0
+ Installed Compat ─────────── v2.2.0
+ Installed Parsers ────────── v0.3.10
+ Installed BufferedStreams ── v1.0.0
+ Installed JSON ───────────── v0.21.0
+  Updating `/tmp/jl_gX6agE/Project.toml`
+  [e1450e63] + BufferedStreams v1.0.0
+  [682c06a0] + JSON v0.21.0
+  [1986cc42] + Unitful v0.18.0
+  Updating `/tmp/jl_gX6agE/Manifest.toml`
+  [e1450e63] + BufferedStreams v1.0.0
+  [34da2185] + Compat v2.2.0
+  [187b0558] + ConstructionBase v1.0.0
+  [682c06a0] + JSON v0.21.0
+  [69de0a69] + Parsers v0.3.10
+  [1986cc42] + Unitful v0.18.0
+  [8bb1440f] + DelimitedFiles 
+  [76f85450] + LibGit2 
+  [37e2e46d] + LinearAlgebra 
+  [a63ad114] + Mmap 
+  [44cfe95a] + Pkg 
+  [3fa0cd96] + REPL 
+  [1a1011a3] + SharedArrays 
+  [2f01184e] + SparseArrays 
+  [10745b16] + Statistics 
+  [cf7118a7] + UUIDs 
+Running sandbox
+Status `/tmp/jl_gX6agE/Project.toml`
+  [e1450e63] BufferedStreams v1.0.0
+  [cd3eb016] HTTP v0.8.8
+  [83e8ac13] IniFile v0.5.0
+  [682c06a0] JSON v0.21.0
+  [739be429] MbedTLS v0.7.0
+  [1986cc42] Unitful v0.18.0
+  [2a0f44e3] Base64 
+  [ade2ca70] Dates 
+  [8ba89e20] Distributed 
+  [6462fe0b] Sockets 
+  [8dfed614] Test 
+Running ascii.jl tests...
+Running chunking.jl tests...
+Running utils.jl tests...
+Running client.jl tests...
+client transfer-encoding chunked
+Chunksize: Error During Test at /home/pkgeval/.julia/packages/HTTP/lZVI1/test/client.jl:102
+  Test threw exception
+  Expression: status(HTTP.post("$(sch)://httpbin.org/post"; body = UInt8['h', 'e', 'y'])) == 200
+  HTTP.ExceptionRequest.StatusError(502, "POST", "/post", HTTP.Messages.Response:
+  """
+  HTTP/1.1 502 Bad Gateway
+  Content-Type: text/html
+  Date: Wed, 22 Jan 2020 12:05:09 GMT
+  Server: nginx
+  Content-Length: 166
+  Connection: keep-alive
+  
+  <html>
+  <head><title>502 Bad Gateway</title></head>
+  <body bgcolor="white">
+  <center><h1>502 Bad Gateway</h1></center>
+  <hr><center>nginx</center>
+  </body>
+  </html>
+  """)
+  Stacktrace:
+   [1] request(::Type{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}, ::HTTP.URIs.URI, ::Vararg{Any,N} where N; kw::Base.Iterators.Pairs{Symbol,Nothing,Tuple{Symbol},NamedTuple{(:iofunction,),Tuple{Nothing}}}) at /home/pkgeval/.julia/packages/HTTP/lZVI1/src/ExceptionRequest.jl:22
+   [2] (::Base.var"#58#60"{Base.var"#58#59#61"{ExponentialBackOff,HTTP.RetryRequest.var"#2#3"{Bool,HTTP.Messages.Request},typeof(request)}})(::Type{T} where T, ::Vararg{Any,N} where N; kwargs::Base.Iterators.Pairs{Symbol,Nothing,Tuple{Symbol},NamedTuple{(:iofunction,),Tuple{Nothing}}}) at ./error.jl:288
+   [3] #request#1 at /home/pkgeval/.julia/packages/HTTP/lZVI1/src/RetryRequest.jl:44 [inlined]
+   [4] request(::Type{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}, ::String, ::HTTP.URIs.URI, ::Array{Pair{SubString{String},SubString{String}},1}, ::Array{UInt8,1}; http_version::VersionNumber, target::String, parent::Nothing, iofunction::Nothing, kw::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/HTTP/lZVI1/src/MessageRequest.jl:51
+   [5] request at /home/pkgeval/.julia/packages/HTTP/lZVI1/src/MessageRequest.jl:28 [inlined]
+   [6] request(::Type{RedirectLayer{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}}, ::String, ::HTTP.URIs.URI, ::Array{Pair{SubString{String},SubString{String}},1}, ::Array{UInt8,1}; redirect_limit::Int64, forwardheaders::Bool, kw::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/HTTP/lZVI1/src/RedirectRequest.jl:24
+   [7] request(::Type{RedirectLayer{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}}, ::String, ::HTTP.URIs.URI, ::Array{Pair{SubString{String},SubString{String}},1}, ::Array{UInt8,1}) at /home/pkgeval/.julia/packages/HTTP/lZVI1/src/RedirectRequest.jl:21
+   [8] request(::String, ::String, ::Array{Any,1}, ::String; headers::Array{Any,1}, body::Array{UInt8,1}, query::Nothing, kw::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/HTTP/lZVI1/src/HTTP.jl:308
+   [9] #post#14 at /home/pkgeval/.julia/packages/HTTP/lZVI1/src/HTTP.jl:397 [inlined]
+   [10] top-level scope at /home/pkgeval/.julia/packages/HTTP/lZVI1/test/client.jl:102
+   [11] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [12] top-level scope at /home/pkgeval/.julia/packages/HTTP/lZVI1/test/client.jl:100
+   [13] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188
+  
+client transfer-encoding chunked
+Running multipart.jl tests...
+Running sniff.jl tests...
+Running uri.jl tests...
+Running url.jl tests...
+Running cookies.jl tests...
+Running parser.jl tests...
+WARNING: using Messages.status in module Main conflicts with an existing identifier.
+Running loopback.jl tests...
+📡  GET /echo HTTP/1.1
+📡  GET /echo HTTP/1.1
+📡  GET /echo HTTP/1.1
+📡  GET /echo HTTP/1.1
+📡  GET /delay10 HTTP/1.1
+📡  PUT /delay10 HTTP/1.1
+📡  PUT /abort HTTP/1.1
+📡  GET /echo HTTP/1.1
+📡  GET /abort HTTP/1.1
+📡  GET /delay1 HTTP/1.1
+📡  GET /delay2 HTTP/1.1
+📡  GET /delay3 HTTP/1.1
+📡  GET /delay4 HTTP/1.1
+📡  GET /delay5 HTTP/1.1
+t = 3.0444328784942627
+📡  GET /delay1 HTTP/1.1
+📡  GET /delay2 HTTP/1.1
+📡  GET /delay3 HTTP/1.1
+📡  GET /delay4 HTTP/1.1
+📡  GET /delay5 HTTP/1.1
+📡  GET /delay1 HTTP/1.1
+📡  GET /delay2 HTTP/1.1
+📡  GET /delay3 HTTP/1.1
+📡  GET /delay4 HTTP/1.1
+📡  GET /delay5 HTTP/1.1
+📡  GET /delay1 HTTP/1.1
+📡  GET /delay2 HTTP/1.1
+📡  GET /delay3 HTTP/1.1
+📡  GET /delay4 HTTP/1.1
+📡  GET /delay5 HTTP/1.1
+t = 0.659080982208252
+📡  GET /delay1 HTTP/1.1
+📡  GET /delay2 HTTP/1.1
+📡  GET /delay3 HTTP/1.1
+📡  GET /delay4 HTTP/1.1
+📡  GET /delay5 HTTP/1.1
+t = 0.7349100112915039
+📡  POST /delay1 HTTP/1.1
+📡  GET /delay2 HTTP/1.1
+📡  GET /delay3 HTTP/1.1
+📡  GET /delay4 HTTP/1.1
+📡  GET /delay5 HTTP/1.1
+📡  GET /delay1 HTTP/1.1
+📡  GET /delay2 HTTP/1.1
+📡  POST /delay3 HTTP/1.1
+📡  GET /delay4 HTTP/1.1
+📡  GET /delay5 HTTP/1.1
+Running websockets.jl tests...
+Running messages.jl tests...
+GET /ip HTTP/1.1
+HTTP/1.1 200 OK <= (GET /ip HTTP/1.1)
+HEAD /ip HTTP/1.1
+HTTP/1.1 200 OK <= (HEAD /ip HTTP/1.1)
+OPTIONS /ip HTTP/1.1
+HTTP/1.1 200 OK <= (OPTIONS /ip HTTP/1.1)
+GET /ip HTTP/1.1
+HTTP/1.1 200 OK <= (GET /ip HTTP/1.1)
+HEAD /ip HTTP/1.1
+HTTP/1.1 200 OK <= (HEAD /ip HTTP/1.1)
+OPTIONS /ip HTTP/1.1
+HTTP/1.1 200 OK <= (OPTIONS /ip HTTP/1.1)
+POST /post HTTP/1.1
+HTTP/1.1 200 OK <= (POST /post HTTP/1.1)
+POST /post HTTP/1.1
+HTTP/1.1 200 OK <= (POST /post HTTP/1.1)
+PUT /put HTTP/1.1
+HTTP/1.1 200 OK <= (PUT /put HTTP/1.1)
+PUT /put HTTP/1.1
+HTTP/1.1 200 OK <= (PUT /put HTTP/1.1)
+DELETE /delete HTTP/1.1
+HTTP/1.1 200 OK <= (DELETE /delete HTTP/1.1)
+DELETE /delete HTTP/1.1
+HTTP/1.1 200 OK <= (DELETE /delete HTTP/1.1)
+PATCH /patch HTTP/1.1
+HTTP/1.1 200 OK <= (PATCH /patch HTTP/1.1)
+PATCH /patch HTTP/1.1
+HTTP/1.1 200 OK <= (PATCH /patch HTTP/1.1)
+POST /post HTTP/1.1
+HTTP/1.1 200 OK <= (POST /post HTTP/1.1)
+POST /post HTTP/1.1
+HTTP/1.1 200 OK <= (POST /post HTTP/1.1)
+PUT /put HTTP/1.1
+HTTP/1.1 200 OK <= (PUT /put HTTP/1.1)
+PUT /put HTTP/1.1
+HTTP/1.1 200 OK <= (PUT /put HTTP/1.1)
+DELETE /delete HTTP/1.1
+HTTP/1.1 200 OK <= (DELETE /delete HTTP/1.1)
+DELETE /delete HTTP/1.1
+HTTP/1.1 200 OK <= (DELETE /delete HTTP/1.1)
+PATCH /patch HTTP/1.1
+HTTP/1.1 200 OK <= (PATCH /patch HTTP/1.1)
+PATCH /patch HTTP/1.1
+HTTP/1.1 200 OK <= (PATCH /patch HTTP/1.1)
+POST /post HTTP/1.1
+HTTP/1.1 200 OK <= (POST /post HTTP/1.1)
+POST /post HTTP/1.1
+HTTP/1.1 200 OK <= (POST /post HTTP/1.1)
+PUT /put HTTP/1.1
+HTTP/1.1 200 OK <= (PUT /put HTTP/1.1)
+POST /post HTTP/1.1
+HTTP/1.1 200 OK <= (POST /post HTTP/1.1)
+DELETE /delete HTTP/1.1
+HTTP/1.1 200 OK <= (DELETE /delete HTTP/1.1)
+POST /post HTTP/1.1
+HTTP/1.1 200 OK <= (POST /post HTTP/1.1)
+PATCH /patch HTTP/1.1
+HTTP/1.1 200 OK <= (PATCH /patch HTTP/1.1)
+POST /post HTTP/1.1
+HTTP/1.1 200 OK <= (POST /post HTTP/1.1)
+POST /post HTTP/1.1
+HTTP/1.1 200 OK <= (POST /post HTTP/1.1)
+POST /post HTTP/1.1
+HTTP/1.1 200 OK <= (POST /post HTTP/1.1)
+PUT /put HTTP/1.1
+HTTP/1.1 200 OK <= (PUT /put HTTP/1.1)
+POST /post HTTP/1.1
+HTTP/1.1 200 OK <= (POST /post HTTP/1.1)
+DELETE /delete HTTP/1.1
+HTTP/1.1 200 OK <= (DELETE /delete HTTP/1.1)
+POST /post HTTP/1.1
+HTTP/1.1 200 OK <= (POST /post HTTP/1.1)
+PATCH /patch HTTP/1.1
+HTTP/1.1 200 OK <= (PATCH /patch HTTP/1.1)
+POST /post HTTP/1.1
+HTTP/1.1 200 OK <= (POST /post HTTP/1.1)
+GET /stream/50 HTTP/1.1
+HTTP/1.1 200 OK <= (GET /stream/50 HTTP/1.1)
+Running handlers.jl tests...
+Running server.jl tests...
+length(x) = 100018
+client:
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+
+f
+Body of Request
+0
+
+
+client = "HTTP/1.1 200 OK\r\n\r\nHello"
+Testing server port reuse
+Starting second server listening on same port
+Starting server on same port without port reuse (throws error)
+Running async.jl tests...
+ConnectionPool[
+   🔁   16↑    11↓🔒   0s httpbin.org:443:40580 ≣16
+   ⏸   15↑     7↓    0s httpbin.org:443:53996 ≣16 3344-byte excess
+   ⏸   14↑    14↓    0s httpbin.org:443:46572 ≣16
+   ⏸   13↑    13↓    0s httpbin.org:443:46576 ≣16
+   ⏸   12↑    12↓    0s httpbin.org:443:40596 ≣16
+   ⏸   11↑    11↓    0s httpbin.org:443:40630 ≣16
+   ⏸   10↑    10↓    0s httpbin.org:443:54012 ≣16
+   ⏸    9↑     9↓    0s httpbin.org:443:40602 ≣16
+]
+
+ConnectionPool[
+   ⏸    7↑🔒    7↓    0s httpbin.org:443:60938 ≣16
+   ⏸    6↑🔒    6↓    0s httpbin.org:443:46610 ≣16
+   🔁    6↑     4↓🔒   0s httpbin.org:443:60942 ≣16
+   🔁    5↑     4↓🔒   0s httpbin.org:443:40628 ≣16
+   🔁    4↑     3↓🔒   0s httpbin.org:443:46616 ≣16
+   🔁    3↑     2↓🔒   0s httpbin.org:443:46618 ≣16
+   🔁    2↑     1↓🔒   0s httpbin.org:443:45442 ≣16
+   🔁    1↑     0↓🔒   0s httpbin.org:443:40636 ≣16
+]
+
+ConnectionPool[
+   ⏸    7↑🔒    7↓    0s httpbin.org:443:54066 ≣16
+   ⏸    6↑🔒    6↓    0s httpbin.org:443:60988 ≣16
+   🔁    6↑     5↓🔒   0s httpbin.org:443:40716 ≣16
+   🔁    5↑     4↓🔒   0s httpbin.org:443:45498 ≣16
+   🔁    4↑     3↓🔒   0s httpbin.org:443:40724 ≣16
+   🔁    3↑     2↓🔒   0s httpbin.org:443:46682 ≣16
+   🔁    2↑     1↓🔒   0s httpbin.org:443:40732 ≣16
+   🔁    1↑     0↓🔒   0s httpbin.org:443:40736 ≣16
+]
+
+ConnectionPool[
+   ⏸    7↑🔒    7↓    0s httpbin.org:443:40756 ≣16
+   ⏸    6↑🔒    6↓    0s httpbin.org:443:40728 ≣16
+   🔁    6↑     5↓🔒   0s httpbin.org:443:40730 ≣16
+   🔁    5↑     4↓🔒   0s httpbin.org:443:46720 ≣16
+   🔁    4↑     3↓🔒   0s httpbin.org:443:54148 ≣16
+   🔁    3↑     2↓🔒   0s httpbin.org:443:32822 ≣16
+   🔁    2↑     1↓🔒   0s httpbin.org:443:45548 ≣16
+   🔁    1↑     0↓🔒   0s httpbin.org:443:32826 ≣16
+]
+
+ConnectionPool[
+   🔁    2↑🔒    2↓🔒   0s httpbin.org:80:47198 ≣16
+   ⏸    3↑     3↓    0s httpbin.org:80:42070 ≣16
+   🔁    2↑🔒    2↓🔒   0s httpbin.org:80:47204 ≣16
+   🔁    2↑     2↓    0s httpbin.org:80:35948 ≣16
+   🔁    2↑     2↓    0s httpbin.org:80:41158 ≣16
+   🔁    2↑     2↓    0s httpbin.org:80:53874 ≣16
+   🔁    1↑     1↓    0s httpbin.org:80:41162 ≣16
+   🔁    0↑🔒    0↓🔒   0s httpbin.org:80:53878 ≣16
+]
+
+ConnectionPool[
+   ⏸    7↑🔒    7↓    0s httpbin.org:443:40900 ≣16
+   🔁    6↑🔒    6↓🔒   0s httpbin.org:443:46860 ≣16
+   🔁    5↑🔒    5↓🔒   0s httpbin.org:443:40880 ≣16
+   🔁    3↑🔒    3↓🔒   0s httpbin.org:443:46868 ≣16
+   🔁    3↑🔒    3↓🔒   0s httpbin.org:443:45694 ≣16
+   🔁    2↑🔒    2↓🔒   0s httpbin.org:443:40920 ≣16
+   🔁    1↑🔒    1↓🔒   0s httpbin.org:443:40890 ≣16
+   🔁    0↑🔒    0↓🔒   0s httpbin.org:443:32976 ≣16
+]
+
+ConnectionPool[
+   🔁    1↑🔒    1↓🔒   0s httpbin.org:80:53972 ≣16
+   🔁    2↑🔒    2↓🔒   0s httpbin.org:80:36052 ≣16
+   🔁    2↑🔒    2↓🔒   0s httpbin.org:80:36054 ≣16
+   🔁    2↑🔒    2↓🔒   0s httpbin.org:80:41264 ≣16
+   🔁    1↑🔒    1↓🔒   0s httpbin.org:80:41268 ≣16
+   🔁    1↑🔒    1↓🔒   0s httpbin.org:80:42188 ≣16
+   🔁    1↑🔒    1↓🔒   0s httpbin.org:80:41272 ≣16
+   🔁    0↑🔒    0↓🔒   0s httpbin.org:80:36066 ≣16
+]
+
+ConnectionPool[
+   ⏸    7↑🔒    7↓    0s httpbin.org:443:33066 ≣16
+   🔁    6↑🔒    6↓🔒   0s httpbin.org:443:33072 ≣16
+   🔁    5↑🔒    5↓🔒   0s httpbin.org:443:45802 ≣16
+   🔁    4↑🔒    4↓🔒   0s httpbin.org:443:46988 ≣16
+   🔁    3↑🔒    3↓🔒   0s httpbin.org:443:54420 ≣16
+   🔁    2↑🔒    2↓🔒   0s httpbin.org:443:45828 ≣16
+   🔁    1↑🔒    1↓🔒   0s httpbin.org:443:41034 ≣16
+   🔁    0↑🔒    0↓🔒   0s httpbin.org:443:41046 ≣16
+]
+
+ConnectionPool[
+   🔁    3↑🔒    3↓🔒   0s httpbin.org:80:47510 ≣16
+   🔁    3↑🔒    3↓🔒   0s httpbin.org:80:47330 ≣16
+   🔁    3↑🔒    3↓🔒   0s httpbin.org:80:42388 ≣16
+   🔁    2↑🔒    2↓🔒   0s httpbin.org:80:54190 ≣16
+   🔁    2↑🔒    2↓🔒   0s httpbin.org:80:47344 ≣16
+   🔁    2↑🔒    2↓🔒   0s httpbin.org:80:47532 ≣16
+   🔁    2↑🔒    2↓🔒   0s httpbin.org:80:54204 ≣16
+   🔁    1↑🔒    1↓🔒   0s httpbin.org:80:41492 ≣16
+]
+
+ConnectionPool[
+   ⏸    7↑🔒    7↓    0s httpbin.org:443:33292 ≣16
+   🔁    6↑🔒    6↓🔒   0s httpbin.org:443:54628 ≣16
+   🔁    5↑🔒    5↓🔒   0s httpbin.org:443:47212 ≣16
+   🔁    4↑🔒    4↓🔒   0s httpbin.org:443:46050 ≣16
+   🔁    3↑🔒    3↓🔒   0s httpbin.org:443:33348 ≣16
+   🔁    2↑🔒    2↓🔒   0s httpbin.org:443:33368 ≣16
+   🔁    1↑🔒    1↓🔒   0s httpbin.org:443:54704 ≣16
+   🔁    0↑🔒    0↓🔒   0s httpbin.org:443:41336 ≣16
+]
+
+ConnectionPool[
+   🔁    3↑🔒    3↓    0s httpbin.org:80:54464 ≣16
+   🔁    3↑🔒    2↓🔒   0s httpbin.org:80:47620 ≣16
+   🔁    3↑     2↓🔒   0s httpbin.org:80:47808 ≣16
+   🔁    3↑     2↓🔒   0s httpbin.org:80:42684 ≣16
+   🔁    3↑     1↓🔒   0s httpbin.org:80:47818 ≣16
+   🔁    2↑     1↓🔒   0s httpbin.org:80:41770 ≣16
+   🔁    2↑     1↓🔒   0s httpbin.org:80:41778 ≣16
+   🔁    1↑     0↓🔒   0s httpbin.org:80:47644 ≣16
+]
+
+ConnectionPool[
+   ⏸    7↑🔒    7↓    0s httpbin.org:443:41462 ≣16
+   ⏸    6↑🔒    6↓    0s httpbin.org:443:33524 ≣16
+   🔁    6↑     5↓🔒   0s httpbin.org:443:47438 ≣16
+   🔁    5↑     4↓🔒   0s httpbin.org:443:56456 ≣16
+   🔁    4↑     3↓🔒   0s httpbin.org:443:47458 ≣16
+   🔁    3↑     2↓🔒   0s httpbin.org:443:41508 ≣16
+   🔁    2↑     1↓🔒   0s httpbin.org:443:41514 ≣16
+   🔁    1↑     0↓🔒   0s httpbin.org:443:56490 ≣16
+]
+
+ConnectionPool[
+   🔁   13↑     9↓🔒   0s httpbin.org:80:47916 ≣16
+   🔁   14↑    12↓🔒   0s httpbin.org:80:47918 ≣16
+   🔁   13↑    12↓🔒   0s httpbin.org:80:41870 ≣16
+   🔁   13↑     7↓🔒   0s httpbin.org:80:47736 ≣16
+   🔁   12↑    11↓🔒   0s httpbin.org:80:42792 ≣16
+   🔁   12↑     9↓🔒   0s httpbin.org:80:47926 ≣16
+   🔁   12↑    11↓🔒   0s httpbin.org:80:42556 ≣16
+   🔁   11↑    10↓🔒   0s httpbin.org:80:54594 ≣16
+]
+
+ConnectionPool[
+   ⏸    7↑🔒    7↓    0s httpbin.org:443:33610 ≣16
+   ⏸    6↑🔒    6↓    0s httpbin.org:443:33614 ≣16
+   🔁    6↑     5↓🔒   0s httpbin.org:443:33618 ≣16
+   🔁    5↑     4↓🔒   0s httpbin.org:443:56532 ≣16
+   🔁    4↑     3↓🔒   0s httpbin.org:443:33624 ≣16
+   🔁    3↑     2↓🔒   0s httpbin.org:443:41576 ≣16
+   🔁    2↑     1↓🔒   0s httpbin.org:443:47532 ≣16
+   🔁    1↑     0↓🔒   0s httpbin.org:443:41580 ≣16
+]
+
+ConnectionPool[
+   ⏸    7↑🔒    7↓    0s httpbin.org:443:46374 ≣16
+   ⏸    6↑🔒    6↓    0s httpbin.org:443:46376 ≣16
+   🔁    6↑     5↓🔒   0s httpbin.org:443:33654 ≣16
+   🔁    5↑     4↓🔒   0s httpbin.org:443:54984 ≣16
+   🔁    4↑     3↓🔒   0s httpbin.org:443:41606 ≣16
+   🔁    3↑     2↓🔒   0s httpbin.org:443:47564 ≣16
+   🔁    2↑     1↓🔒   0s httpbin.org:443:41612 ≣16
+   🔁    1↑     0↓🔒   0s httpbin.org:443:33668 ≣16
+]
+
+Running aws4.jl tests...
+Running insert_layers.jl tests...
+WARNING: replacing module TestRequest.
+WARNING: using TestRequest.TestLayer in module Main conflicts with an existing identifier.
+Running mwe.jl tests...
+Test Summary:                                                                    | Pass  Error  Broken  Total
+HTTP                                                                             | 4752      1     107   4860
+  ascii.jl                                                                       |  648                   648
+  Chunking                                                                       |   15                    15
+  utils.jl                                                                       |   26                    26
+  Custom HTTP Stack                                                              |    1                     1
+  Client.jl - http                                                               |   56      1             57
+    GET, HEAD, POST, PUT, DELETE, PATCH                                          |    7                     7
+    ASync Client Requests                                                        |    2                     2
+    Query to URI                                                                 |    1                     1
+    Cookie Requests                                                              |    4                     4
+    Client Streaming Test                                                        |    5                     5
+    Client Body Posting - Vector{UTF8}, String, IOStream, IOBuffer, BufferStream |    5                     5
+    Chunksize                                                                    |    4      1              5
+    ASync Client Request Body                                                    |    1                     1
+    Client Redirect Following - GET                                              |    6                     6
+    Client Redirect Following - HEAD                                             |    6                     6
+    Client Basic Auth                                                            |    3                     3
+    Misc                                                                         |    8                     8
+    openraw client method - wss                                                  |    2                     2
+    openraw client method - ws                                                   |    2                     2
+  Client.jl - https                                                              |   57                    57
+  Public entry point of HTTP.request and friends (e.g. issue #463)               |  205                   205
+  HTTP.Form for multipart/form-data                                              |    4                     4
+  sniff.jl                                                                       |   47                    47
+  HTTP.URI                                                                       |  128                   128
+  HTTP.URL                                                                       |   12                    12
+  Cookies                                                                        |   57                    57
+  HTTP.parser                                                                    |  727            106    833
+  loopback                                                                       |   53                    53
+  websockets.jl                                                                  |    8                     8
+  HTTP.Messages                                                                  |  149                   149
+  Handlers                                                                       |   31                    31
+  HTTP.listen                                                                    |   27                    27
+  ASync                                                                          | 2400                  2400
+  AWS Signature Version 4                                                        |   96                    96
+  HTTP Stack Inserting                                                           |    5                     5
+ERROR: LoadError: Some tests did not pass: 4752 passed, 0 failed, 1 errored, 107 broken.
+in expression starting at /home/pkgeval/.julia/packages/HTTP/lZVI1/test/runtests.jl:8
+err = ProcessFailedException(Base.Process[Process(`/opt/julia/bin/julia -Cnative -J/opt/julia/lib/julia/sys.so -g1 --code-coverage=none --color=no --compiled-modules=yes --check-bounds=yes --inline=yes --startup-file=no --track-allocation=none --eval 'append!(empty!(Base.DEPOT_PATH), ["/home/pkgeval/.julia", "/opt/julia/local/share/julia", "/opt/julia/share/julia", "/usr/local/share/julia"])
+append!(empty!(Base.DL_LOAD_PATH), String[])
+
+cd("/home/pkgeval/.julia/packages/HTTP/lZVI1/test")
+append!(empty!(ARGS), String[])
+include("/home/pkgeval/.julia/packages/HTTP/lZVI1/test/runtests.jl")
+'`, ProcessExited(1))])
+ERROR: Package HTTP errored during testing
+Stacktrace:
+ [1] pkgerror(::String, ::Vararg{String,N} where N) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/Types.jl:54
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/Operations.jl:1471
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:313
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:300
+ [5] #test#66 at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:294 [inlined]
+ [6] test at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:294 [inlined]
+ [7] #test#65 at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:293 [inlined]
+ [8] test at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:293 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:292
+ [10] test(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:292
+ [11] top-level scope at none:13
