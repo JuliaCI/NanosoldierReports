@@ -1,0 +1,72 @@
+Julia Version 1.5.0-DEV.162
+Commit fba188c5ea (2020-01-28 03:57 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-8.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+ Resolving package versions...
+ Installed TransformUtils ─ v0.2.3
+  Updating `~/.julia/environments/v1.5/Project.toml`
+  [9b8138ad] + TransformUtils v0.2.3
+  Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [9b8138ad] + TransformUtils v0.2.3
+  [8f399da3] + Libdl 
+  [37e2e46d] + LinearAlgebra 
+   Testing TransformUtils
+  Updating `/tmp/jl_GRlwPD/Project.toml`
+  [8dfed614] + Test 
+  Updating `/tmp/jl_GRlwPD/Manifest.toml`
+  [2a0f44e3] + Base64 
+  [8ba89e20] + Distributed 
+  [b77e0a4c] + InteractiveUtils 
+  [56ddb016] + Logging 
+  [d6f4376e] + Markdown 
+  [9a3f8284] + Random 
+  [9e88b42a] + Serialization 
+  [6462fe0b] + Sockets 
+  [8dfed614] + Test 
+Running sandbox
+Status `/tmp/jl_GRlwPD/Project.toml`
+  [9b8138ad] TransformUtils v0.2.3
+  [37e2e46d] LinearAlgebra 
+  [8dfed614] Test 
+Test Summary:                               |
+Constructors SO3, Quaternion, AngleAxis...  | No tests
+Test Summary:                           | Pass  Total
+Ensure basic quaternion operations hold |   10     10
+Test Summary:                                       | Pass  Total
+Comparison functions for SO3, Quaternion, AngleAxis |    5      5
+Test Summary:                                        | Pass  Total
+Trivial case quaterion -> SO3 -> Euler -> quaternion |    2      2
+┌ Warning: Need better coverage on convert function tests
+└ @ Main ~/.julia/packages/TransformUtils/hYnkL/test/runtests.jl:89
+dAA = AngleAxis(0.7853981633974483, [1.0, 0.0, 0.0])
+dAA = so3([0.0 0.039311183956477286 -0.22031406725061542; -0.039311183956477286 0.0 0.03539346677531715; 0.22031406725061542 -0.03539346677531715 0.0])
+dAA = so3([0.0 0.046675189380517186 0.04080558587926135; -0.046675189380517186 0.0 0.06254388530347922; -0.04080558587926135 -0.06254388530347922 0.0])
+dAA = so3([0.0 0.0924084689469467 0.0890548072630008; -0.0924084689469467 0.0 0.10473314515742803; -0.0890548072630008 -0.10473314515742803 0.0])
+dAA = Quaternion(0.9973753352562179, [0.06894295887719645, 0.012164424361684158, -0.0184752760129141])
+dAA = SO3([0.9961350002229787 -0.08513669468719544 -0.021605660103443083; 0.08443401221779025 0.9959284075290202 -0.031583297128641045; 0.02420658818529144 0.029636975123133714 0.9992675771753923])
+Test Summary:                        | Pass  Total
+Compare SO3 and quaternion rotations |   24     24
+Test Summary:       | Pass  Total
+Basic SE3 mechanics |    4      4
+Compare operations on two different SE3 transforms
+xi = SE3(SO3([0.9880369732133202 0.10780431180230746 0.11027769457280016; -0.12369086012382345 0.9810445307223912 0.149171712672048; -0.09210597529633824 -0.16102751037171936 0.9826426767743177]), [-0.35393466775317145, -2.203140672506154, -0.39311183956477286])
+xj = SE3(SO3([0.9939479582194081 0.09749147830793517 0.050624776629661694; -0.07468678103544905 0.9376797891755559 -0.33937957762695126; -0.08055644660753492 0.3335446366365653 0.9392862366078559]), [-1.0473314515742802, 0.890548072630008, -0.9240846894694669])
+Dx = SE3(SO3([0.9987151344380123 -0.0503786885646592 0.005483428030715193; 0.04685262159266751 0.8767057680297549 -0.4787398334724743; 0.019310931990902516 0.47838163012584756 0.877939692612072]), [-1.018856909167395, 3.0457964961826116, -0.13673193268262207])
+Test Summary:         | Pass  Total
+SE3 ⊕ and ⊖ mechanics |    6      6
+TransformUtils.convert(Euler, q) = Euler(0.7853981633974484, 0.0, 1.5707963267948963, Quaternion(1.0, [0.0, 0.0, 0.0]))
+Test Summary:              | Pass  Total
+Previous discovered issues |    3      3
+Test Summary:      | Pass  Total
+test SO3 logmap... |  301    301
+Test Summary:                              | Pass  Total
+test in-place and efficient inverse SE3... |    1      1
+   Testing TransformUtils tests passed 
