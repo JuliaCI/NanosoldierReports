@@ -24,7 +24,7 @@ Use the following code to embed the PkgEval badge and a link to the latest repor
 
 ```
 [pkgeval-img]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.svg
-[pkgeval-url]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/report.html
+[pkgeval-url]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.html
 
 [![PkgEval][pkgeval-img]][pkgeval-url]
 ```
@@ -32,6 +32,6 @@ Use the following code to embed the PkgEval badge and a link to the latest repor
 The result will look as follows:
 
 [pkgeval-img]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.svg
-[pkgeval-url]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/report.html
+[pkgeval-url]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.html
 
 [![PkgEval][pkgeval-img]][pkgeval-url]
