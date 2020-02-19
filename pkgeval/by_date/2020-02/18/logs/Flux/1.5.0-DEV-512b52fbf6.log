@@ -1,0 +1,661 @@
+Julia Version 1.5.0-DEV.282
+Commit 512b52fbf6 (2020-02-17 17:51 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed IntelOpenMP_jll ────── v2018.0.3+0
+  Installed ZipFile ────────────── v0.9.1
+  Installed OrderedCollections ─── v1.1.0
+  Installed DiffRules ──────────── v1.0.1
+  Installed BinaryProvider ─────── v0.5.8
+  Installed Flux ───────────────── v0.10.1
+  Installed LLVM ───────────────── v1.3.3
+  Installed CUDAnative ─────────── v2.10.2
+  Installed Zygote ─────────────── v0.4.7
+  Installed OpenSpecFun_jll ────── v0.5.3+1
+  Installed FixedPointNumbers ──── v0.6.1
+  Installed AbstractTrees ──────── v0.3.2
+  Installed FFTW_jll ───────────── v3.3.9+3
+  Installed ColorTypes ─────────── v0.8.1
+  Installed GPUArrays ──────────── v2.0.1
+  Installed NNlib ──────────────── v0.6.4
+  Installed ZygoteRules ────────── v0.2.0
+  Installed CUDAdrv ────────────── v6.0.0
+  Installed Missings ───────────── v0.4.3
+  Installed Reexport ───────────── v0.2.0
+  Installed DataStructures ─────── v0.17.9
+  Installed MKL_jll ────────────── v2019.0.117+2
+  Installed StaticArrays ───────── v0.12.1
+  Installed DataAPI ────────────── v1.1.0
+  Installed StatsBase ──────────── v0.32.1
+  Installed CEnum ──────────────── v0.2.0
+  Installed Juno ───────────────── v0.7.2
+  Installed SpecialFunctions ───── v0.10.0
+  Installed FFTW ───────────────── v1.2.0
+  Installed CuArrays ───────────── v1.7.2
+  Installed TimerOutputs ───────── v0.5.3
+  Installed TranscodingStreams ─── v0.9.5
+  Installed Zlib_jll ───────────── v1.2.11+8
+  Installed Media ──────────────── v0.5.0
+  Installed SortingAlgorithms ──── v0.3.1
+  Installed CodecZlib ──────────── v0.6.0
+  Installed DiffResults ────────── v1.0.2
+  Installed CUDAapi ────────────── v3.1.0
+  Installed Colors ─────────────── v0.9.6
+  Installed IRTools ────────────── v0.3.1
+  Installed Requires ───────────── v1.0.1
+  Installed Adapt ──────────────── v1.0.1
+  Installed FillArrays ─────────── v0.8.4
+  Installed NaNMath ────────────── v0.3.3
+  Installed MacroTools ─────────── v0.5.4
+  Installed AbstractFFTs ───────── v0.5.0
+  Installed ForwardDiff ────────── v0.10.9
+  Installed CommonSubexpressions ─ v0.2.0
+#=#=#                                                                         #######################################                                   55.2%######################################################################## 100.0%
+#=#=#                                                                         ######################################################################## 100.0%
+#=#=#                                                                         ############                                                              17.5%#####################################                                     51.9%#####################################################################     96.4%######################################################################## 100.0%
+#=#=#                                                                         ######################################################################## 100.0%
+   Updating `~/.julia/environments/v1.5/Project.toml`
+  [587475ba] + Flux v0.10.1
+   Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [621f4979] + AbstractFFTs v0.5.0
+  [1520ce14] + AbstractTrees v0.3.2
+  [79e6a3ab] + Adapt v1.0.1
+  [b99e7846] + BinaryProvider v0.5.8
+  [fa961155] + CEnum v0.2.0
+  [3895d2a7] + CUDAapi v3.1.0
+  [c5f51814] + CUDAdrv v6.0.0
+  [be33ccc6] + CUDAnative v2.10.2
+  [944b1d66] + CodecZlib v0.6.0
+  [3da002f7] + ColorTypes v0.8.1
+  [5ae59095] + Colors v0.9.6
+  [bbf7d656] + CommonSubexpressions v0.2.0
+  [3a865a2d] + CuArrays v1.7.2
+  [9a962f9c] + DataAPI v1.1.0
+  [864edb3b] + DataStructures v0.17.9
+  [163ba53b] + DiffResults v1.0.2
+  [b552c78f] + DiffRules v1.0.1
+  [7a1cc6ca] + FFTW v1.2.0
+  [f5851436] + FFTW_jll v3.3.9+3
+  [1a297f60] + FillArrays v0.8.4
+  [53c48c17] + FixedPointNumbers v0.6.1
+  [587475ba] + Flux v0.10.1
+  [f6369f11] + ForwardDiff v0.10.9
+  [0c68f7d7] + GPUArrays v2.0.1
+  [7869d1d1] + IRTools v0.3.1
+  [1d5cc7b8] + IntelOpenMP_jll v2018.0.3+0
+  [e5e0dc1b] + Juno v0.7.2
+  [929cbde3] + LLVM v1.3.3
+  [856f044c] + MKL_jll v2019.0.117+2
+  [1914dd2f] + MacroTools v0.5.4
+  [e89f7d12] + Media v0.5.0
+  [e1d29d7a] + Missings v0.4.3
+  [872c559c] + NNlib v0.6.4
+  [77ba4419] + NaNMath v0.3.3
+  [efe28fd5] + OpenSpecFun_jll v0.5.3+1
+  [bac558e1] + OrderedCollections v1.1.0
+  [189a3867] + Reexport v0.2.0
+  [ae029012] + Requires v1.0.1
+  [a2af1166] + SortingAlgorithms v0.3.1
+  [276daf66] + SpecialFunctions v0.10.0
+  [90137ffa] + StaticArrays v0.12.1
+  [2913bbd2] + StatsBase v0.32.1
+  [a759f4b9] + TimerOutputs v0.5.3
+  [3bb67fe8] + TranscodingStreams v0.9.5
+  [a5390f91] + ZipFile v0.9.1
+  [83775a58] + Zlib_jll v1.2.11+8
+  [e88e6eb3] + Zygote v0.4.7
+  [700de1a5] + ZygoteRules v0.2.0
+  [2a0f44e3] + Base64 
+  [ade2ca70] + Dates 
+  [8bb1440f] + DelimitedFiles 
+  [8ba89e20] + Distributed 
+  [b77e0a4c] + InteractiveUtils 
+  [76f85450] + LibGit2 
+  [8f399da3] + Libdl 
+  [37e2e46d] + LinearAlgebra 
+  [56ddb016] + Logging 
+  [d6f4376e] + Markdown 
+  [a63ad114] + Mmap 
+  [44cfe95a] + Pkg 
+  [de0858da] + Printf 
+  [9abbd945] + Profile 
+  [3fa0cd96] + REPL 
+  [9a3f8284] + Random 
+  [ea8e919c] + SHA 
+  [9e88b42a] + Serialization 
+  [6462fe0b] + Sockets 
+  [2f01184e] + SparseArrays 
+  [10745b16] + Statistics 
+  [8dfed614] + Test 
+  [cf7118a7] + UUIDs 
+  [4ec0a83e] + Unicode 
+   Building NNlib ────→ `~/.julia/packages/NNlib/3krvM/deps/build.log`
+   Building FFTW ─────→ `~/.julia/packages/FFTW/qqcBj/deps/build.log`
+   Building CodecZlib → `~/.julia/packages/CodecZlib/5t9zO/deps/build.log`
+    Testing Flux
+Status `/tmp/jl_AUBp9w/Manifest.toml`
+  [621f4979] AbstractFFTs v0.5.0
+  [1520ce14] AbstractTrees v0.3.2
+  [79e6a3ab] Adapt v1.0.1
+  [b99e7846] BinaryProvider v0.5.8
+  [fa961155] CEnum v0.2.0
+  [3895d2a7] CUDAapi v3.1.0
+  [c5f51814] CUDAdrv v6.0.0
+  [be33ccc6] CUDAnative v2.10.2
+  [944b1d66] CodecZlib v0.6.0
+  [3da002f7] ColorTypes v0.8.1
+  [5ae59095] Colors v0.9.6
+  [bbf7d656] CommonSubexpressions v0.2.0
+  [3a865a2d] CuArrays v1.7.2
+  [9a962f9c] DataAPI v1.1.0
+  [864edb3b] DataStructures v0.17.9
+  [163ba53b] DiffResults v1.0.2
+  [b552c78f] DiffRules v1.0.1
+  [ffbed154] DocStringExtensions v0.8.1
+  [e30172f5] Documenter v0.24.5
+  [7a1cc6ca] FFTW v1.2.0
+  [f5851436] FFTW_jll v3.3.9+3
+  [1a297f60] FillArrays v0.8.4
+  [53c48c17] FixedPointNumbers v0.6.1
+  [587475ba] Flux v0.10.1
+  [f6369f11] ForwardDiff v0.10.9
+  [0c68f7d7] GPUArrays v2.0.1
+  [7869d1d1] IRTools v0.3.1
+  [1d5cc7b8] IntelOpenMP_jll v2018.0.3+0
+  [682c06a0] JSON v0.21.0
+  [e5e0dc1b] Juno v0.7.2
+  [929cbde3] LLVM v1.3.3
+  [856f044c] MKL_jll v2019.0.117+2
+  [1914dd2f] MacroTools v0.5.4
+  [e89f7d12] Media v0.5.0
+  [e1d29d7a] Missings v0.4.3
+  [872c559c] NNlib v0.6.4
+  [77ba4419] NaNMath v0.3.3
+  [efe28fd5] OpenSpecFun_jll v0.5.3+1
+  [bac558e1] OrderedCollections v1.1.0
+  [69de0a69] Parsers v0.3.11
+  [189a3867] Reexport v0.2.0
+  [ae029012] Requires v1.0.1
+  [a2af1166] SortingAlgorithms v0.3.1
+  [276daf66] SpecialFunctions v0.10.0
+  [90137ffa] StaticArrays v0.12.1
+  [2913bbd2] StatsBase v0.32.1
+  [a759f4b9] TimerOutputs v0.5.3
+  [3bb67fe8] TranscodingStreams v0.9.5
+  [a5390f91] ZipFile v0.9.1
+  [83775a58] Zlib_jll v1.2.11+8
+  [e88e6eb3] Zygote v0.4.7
+  [700de1a5] ZygoteRules v0.2.0
+  [2a0f44e3] Base64 
+  [ade2ca70] Dates 
+  [8bb1440f] DelimitedFiles 
+  [8ba89e20] Distributed 
+  [b77e0a4c] InteractiveUtils 
+  [76f85450] LibGit2 
+  [8f399da3] Libdl 
+  [37e2e46d] LinearAlgebra 
+  [56ddb016] Logging 
+  [d6f4376e] Markdown 
+  [a63ad114] Mmap 
+  [44cfe95a] Pkg 
+  [de0858da] Printf 
+  [9abbd945] Profile 
+  [3fa0cd96] REPL 
+  [9a3f8284] Random 
+  [ea8e919c] SHA 
+  [9e88b42a] Serialization 
+  [6462fe0b] Sockets 
+  [2f01184e] SparseArrays 
+  [10745b16] Statistics 
+  [8dfed614] Test 
+  [cf7118a7] UUIDs 
+  [4ec0a83e] Unicode 
+WARNING: could not import Compiler.just_construct_ssa into Wrap
+[ Info: CUDAdrv.jl failed to initialize, GPU functionality unavailable (set JULIA_CUDA_SILENT or JULIA_CUDA_VERBOSE to silence or expand this message)
+[ Info: Testing Basics
+[ Info: Downloading CMUDict dataset
+[ Info: Downloading MNIST dataset
+[ Info: Downloading MNIST dataset
+[ Info: Downloading MNIST dataset
+[ Info: Downloading MNIST dataset
+[ Info: Downloading Fashion-MNIST dataset
+[ Info: Downloading Fashion-MNIST dataset
+[ Info: Downloading Fashion-MNIST dataset
+[ Info: Downloading Fashion-MNIST dataset
+[ Info: Downloading sentiment treebank dataset
+[ Info: Downloading iris dataset.
+┌ Error: Download failed: curl: (28) Operation timed out after 300661 milliseconds with 0 out of 0 bytes received
+└ @ Base download.jl:43
+Flux: Error During Test at /home/pkgeval/.julia/packages/Flux/2i5P1/test/data.jl:18
+  Test threw exception
+  Expression: Iris.features() isa Matrix
+  failed process: Process(`curl -s -S -g -L -f -o /tmp/jl_OqpUxb https://cache.julialang.org/https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`, ProcessExited(28)) [28]
+  
+  Stacktrace:
+   [1] pipeline_error at ./process.jl:525 [inlined]
+   [2] download_curl(::String, ::String, ::String) at ./download.jl:44
+   [3] download(::String, ::String) at ./download.jl:62
+   [4] download_and_verify(::String, ::String, ::String) at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/Data.jl:12
+   [5] load() at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/iris.jl:25
+   [6] features() at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/iris.jl:80
+   [7] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/data.jl:18
+   [8] include(::String) at ./client.jl:441
+   [9] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:13
+   [10] top-level scope at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [11] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:8
+  
+[ Info: Downloading iris dataset.
+┌ Error: Download failed: curl: (28) Operation timed out after 300556 milliseconds with 0 out of 0 bytes received
+└ @ Base download.jl:43
+Flux: Error During Test at /home/pkgeval/.julia/packages/Flux/2i5P1/test/data.jl:19
+  Test threw exception
+  Expression: size(Iris.features()) == (4, 150)
+  failed process: Process(`curl -s -S -g -L -f -o /tmp/jl_hUr71I https://cache.julialang.org/https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`, ProcessExited(28)) [28]
+  
+  Stacktrace:
+   [1] pipeline_error at ./process.jl:525 [inlined]
+   [2] download_curl(::String, ::String, ::String) at ./download.jl:44
+   [3] download(::String, ::String) at ./download.jl:62
+   [4] download_and_verify(::String, ::String, ::String) at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/Data.jl:12
+   [5] load() at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/iris.jl:25
+   [6] features() at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/iris.jl:80
+   [7] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/data.jl:19
+   [8] include(::String) at ./client.jl:441
+   [9] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:13
+   [10] top-level scope at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [11] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:8
+  
+[ Info: Downloading iris dataset.
+┌ Error: Download failed: curl: (28) Operation timed out after 300595 milliseconds with 0 out of 0 bytes received
+└ @ Base download.jl:43
+Flux: Error During Test at /home/pkgeval/.julia/packages/Flux/2i5P1/test/data.jl:21
+  Test threw exception
+  Expression: Iris.labels() isa Vector{String}
+  failed process: Process(`curl -s -S -g -L -f -o /tmp/jl_g26YlT https://cache.julialang.org/https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`, ProcessExited(28)) [28]
+  
+  Stacktrace:
+   [1] pipeline_error at ./process.jl:525 [inlined]
+   [2] download_curl(::String, ::String, ::String) at ./download.jl:44
+   [3] download(::String, ::String) at ./download.jl:62
+   [4] download_and_verify(::String, ::String, ::String) at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/Data.jl:12
+   [5] load() at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/iris.jl:25
+   [6] labels() at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/iris.jl:50
+   [7] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/data.jl:21
+   [8] include(::String) at ./client.jl:441
+   [9] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:13
+   [10] top-level scope at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [11] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:8
+  
+[ Info: Downloading iris dataset.
+┌ Error: Download failed: curl: (28) Operation timed out after 300558 milliseconds with 0 out of 0 bytes received
+└ @ Base download.jl:43
+Flux: Error During Test at /home/pkgeval/.julia/packages/Flux/2i5P1/test/data.jl:22
+  Test threw exception
+  Expression: size(Iris.labels()) == (150,)
+  failed process: Process(`curl -s -S -g -L -f -o /tmp/jl_rdWSmG https://cache.julialang.org/https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`, ProcessExited(28)) [28]
+  
+  Stacktrace:
+   [1] pipeline_error at ./process.jl:525 [inlined]
+   [2] download_curl(::String, ::String, ::String) at ./download.jl:44
+   [3] download(::String, ::String) at ./download.jl:62
+   [4] download_and_verify(::String, ::String, ::String) at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/Data.jl:12
+   [5] load() at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/iris.jl:25
+   [6] labels() at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/iris.jl:50
+   [7] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/data.jl:22
+   [8] include(::String) at ./client.jl:441
+   [9] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:13
+   [10] top-level scope at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [11] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:8
+  
+[ Info: Testing Layers
+┌ Warning: CUDA unavailable, not testing GPU support
+└ @ Main ~/.julia/packages/Flux/2i5P1/test/runtests.jl:25
+[ Info: SetupBuildDirectory: setting up build directory.
+[ Info: Doctest: running doctests.
+┌ Error: doctest failure in ~/.julia/packages/Flux/2i5P1/src/data/iris.jl:63-77
+│ 
+│ ```jldoctest
+│ julia> using Flux
+│ 
+│ julia> features = Flux.Data.Iris.features();
+│ 
+│ julia> summary(features)
+│ "4×150 Array{Float64,2}"
+│ 
+│ julia> features[:, 1]
+│ 4-element Array{Float64,1}:
+│  5.1
+│  3.5
+│  1.4
+│  0.2
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ features = Flux.Data.Iris.features();
+│ 
+│ Evaluated output:
+│ 
+│ [ Info: Downloading iris dataset.
+│ ┌ Error: Download failed: curl: (28) Operation timed out after 300541 milliseconds with 0 out of 0 bytes received
+│ └ @ Base download.jl:43
+│ ERROR: failed process: Process(`curl -s -S -g -L -f -o /tmp/jl_RkCJIf https://cache.julialang.org/https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`, ProcessExited(28)) [28]
+│ 
+│ Stacktrace:
+│  [1] pipeline_error at ./process.jl:525 [inlined]
+│  [2] download_curl(::String, ::String, ::String) at ./download.jl:44
+│  [3] download(::String, ::String) at ./download.jl:62
+│  [4] download_and_verify(::String, ::String, ::String) at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/Data.jl:12
+│  [5] load() at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/iris.jl:25
+│  [6] features() at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/iris.jl:80
+│  [7] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:6
+│ 
+│ Expected output:
+│ 
+│ 
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    [ Info: Downloading iris dataset.
+│    ┌ Error: Download failed: curl: (28) Operation timed out after 300541 milliseconds with 0 out of 0 bytes received
+│    └ @ Base download.jl:43
+│    ERROR: failed process: Process(`curl -s -S -g -L -f -o /tmp/jl_RkCJIf https://cache.julialang.org/https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`, ProcessExited(28)) [28]
+│    
+│    Stacktrace:
+│     [1] pipeline_error at ./process.jl:525 [inlined]
+│     [2] download_curl(::String, ::String, ::String) at ./download.jl:44
+│     [3] download(::String, ::String) at ./download.jl:62
+│     [4] download_and_verify(::String, ::String, ::String) at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/Data.jl:12
+│     [5] load() at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/iris.jl:25
+│     [6] features() at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/iris.jl:80
+│     [7] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:6
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/HmOsT/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/Flux/2i5P1/src/data/iris.jl:63-77
+│ 
+│ ```jldoctest
+│ julia> using Flux
+│ 
+│ julia> features = Flux.Data.Iris.features();
+│ 
+│ julia> summary(features)
+│ "4×150 Array{Float64,2}"
+│ 
+│ julia> features[:, 1]
+│ 4-element Array{Float64,1}:
+│  5.1
+│  3.5
+│  1.4
+│  0.2
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ summary(features)
+│ 
+│ Evaluated output:
+│ 
+│ ERROR: UndefVarError: features not defined
+│ Stacktrace:
+│  [1] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:6
+│ 
+│ Expected output:
+│ 
+│ "4×150 Array{Float64,2}"
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    "4×150 Array{Float64,2}"ERROR: UndefVarError: features not defined
+│    Stacktrace:
+│     [1] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:6
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/HmOsT/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/Flux/2i5P1/src/data/iris.jl:63-77
+│ 
+│ ```jldoctest
+│ julia> using Flux
+│ 
+│ julia> features = Flux.Data.Iris.features();
+│ 
+│ julia> summary(features)
+│ "4×150 Array{Float64,2}"
+│ 
+│ julia> features[:, 1]
+│ 4-element Array{Float64,1}:
+│  5.1
+│  3.5
+│  1.4
+│  0.2
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ features[:, 1]
+│ 
+│ Evaluated output:
+│ 
+│ ERROR: UndefVarError: features not defined
+│ Stacktrace:
+│  [1] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:6
+│ 
+│ Expected output:
+│ 
+│ 4-element Array{Float64,1}:
+│  5.1
+│  3.5
+│  1.4
+│  0.2
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    4-element Array{Float64,1}:
+│     5.1
+│     3.5
+│     1.4
+│     0.2ERROR: UndefVarError: features not defined
+│    Stacktrace:
+│     [1] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:6
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/HmOsT/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/Flux/2i5P1/src/data/iris.jl:37-47
+│ 
+│ ```jldoctest
+│ julia> using Flux
+│ 
+│ julia> labels = Flux.Data.Iris.labels();
+│ 
+│ julia> summary(labels)
+│ "150-element Array{String,1}"
+│ 
+│ julia> labels[1]
+│ "Iris-setosa"
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ labels = Flux.Data.Iris.labels();
+│ 
+│ Evaluated output:
+│ 
+│ [ Info: Downloading iris dataset.
+│ ┌ Error: Download failed: curl: (28) Operation timed out after 300553 milliseconds with 0 out of 0 bytes received
+│ └ @ Base download.jl:43
+│ ERROR: failed process: Process(`curl -s -S -g -L -f -o /tmp/jl_C9g3Ld https://cache.julialang.org/https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`, ProcessExited(28)) [28]
+│ 
+│ Stacktrace:
+│  [1] pipeline_error at ./process.jl:525 [inlined]
+│  [2] download_curl(::String, ::String, ::String) at ./download.jl:44
+│  [3] download(::String, ::String) at ./download.jl:62
+│  [4] download_and_verify(::String, ::String, ::String) at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/Data.jl:12
+│  [5] load() at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/iris.jl:25
+│  [6] labels() at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/iris.jl:50
+│  [7] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:6
+│ 
+│ Expected output:
+│ 
+│ 
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    [ Info: Downloading iris dataset.
+│    ┌ Error: Download failed: curl: (28) Operation timed out after 300553 milliseconds with 0 out of 0 bytes received
+│    └ @ Base download.jl:43
+│    ERROR: failed process: Process(`curl -s -S -g -L -f -o /tmp/jl_C9g3Ld https://cache.julialang.org/https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`, ProcessExited(28)) [28]
+│    
+│    Stacktrace:
+│     [1] pipeline_error at ./process.jl:525 [inlined]
+│     [2] download_curl(::String, ::String, ::String) at ./download.jl:44
+│     [3] download(::String, ::String) at ./download.jl:62
+│     [4] download_and_verify(::String, ::String, ::String) at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/Data.jl:12
+│     [5] load() at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/iris.jl:25
+│     [6] labels() at /home/pkgeval/.julia/packages/Flux/2i5P1/src/data/iris.jl:50
+│     [7] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:6
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/HmOsT/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/Flux/2i5P1/src/data/iris.jl:37-47
+│ 
+│ ```jldoctest
+│ julia> using Flux
+│ 
+│ julia> labels = Flux.Data.Iris.labels();
+│ 
+│ julia> summary(labels)
+│ "150-element Array{String,1}"
+│ 
+│ julia> labels[1]
+│ "Iris-setosa"
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ summary(labels)
+│ 
+│ Evaluated output:
+│ 
+│ ERROR: UndefVarError: labels not defined
+│ Stacktrace:
+│  [1] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:6
+│ 
+│ Expected output:
+│ 
+│ "150-element Array{String,1}"
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    "150-element Array{String,1}"ERROR: UndefVarError: labels not defined
+│    Stacktrace:
+│     [1] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:6
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/HmOsT/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/Flux/2i5P1/src/data/iris.jl:37-47
+│ 
+│ ```jldoctest
+│ julia> using Flux
+│ 
+│ julia> labels = Flux.Data.Iris.labels();
+│ 
+│ julia> summary(labels)
+│ "150-element Array{String,1}"
+│ 
+│ julia> labels[1]
+│ "Iris-setosa"
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ labels[1]
+│ 
+│ Evaluated output:
+│ 
+│ ERROR: UndefVarError: labels not defined
+│ Stacktrace:
+│  [1] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:6
+│ 
+│ Expected output:
+│ 
+│ "Iris-setosa"
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    "Iris-setosa"ERROR: UndefVarError: labels not defined
+│    Stacktrace:
+│     [1] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:6
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/HmOsT/src/DocTests.jl:369
+┌ Error: Doctesting failed
+│   exception =
+│    `makedocs` encountered a doctest error. Terminating build
+│    Stacktrace:
+│     [1] error(::String) at ./error.jl:33
+│     [2] runner(::Type{Documenter.Builder.Doctest}, ::Documenter.Documents.Document) at /home/pkgeval/.julia/packages/Documenter/HmOsT/src/Builder.jl:204
+│     [3] dispatch(::Type{Documenter.Builder.DocumentPipeline}, ::Documenter.Documents.Document) at /home/pkgeval/.julia/packages/Documenter/HmOsT/src/Utilities/Selectors.jl:167
+│     [4] #2 at /home/pkgeval/.julia/packages/Documenter/HmOsT/src/Documenter.jl:237 [inlined]
+│     [5] cd(::Documenter.var"#2#3"{Documenter.Documents.Document}, ::String) at ./file.jl:104
+│     [6] makedocs(; debug::Bool, format::Documenter.Writers.HTMLWriter.HTML, kwargs::Base.Iterators.Pairs{Symbol,Any,NTuple{5,Symbol},NamedTuple{(:root, :source, :sitename, :doctest, :modules),Tuple{String,String,String,Symbol,Array{Module,1}}}}) at /home/pkgeval/.julia/packages/Documenter/HmOsT/src/Documenter.jl:236
+│     [7] (::Documenter.var"#all_doctests#30"{Bool,Array{Module,1}})() at /home/pkgeval/.julia/packages/Documenter/HmOsT/src/Documenter.jl:725
+│     [8] macro expansion at /home/pkgeval/.julia/packages/Documenter/HmOsT/src/Documenter.jl:741 [inlined]
+│     [9] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
+│     [10] doctest(::String, ::Array{Module,1}; fix::Bool, testset::String) at /home/pkgeval/.julia/packages/Documenter/HmOsT/src/Documenter.jl:741
+│     [11] doctest(::Module; manual::Bool, testset::Nothing, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /home/pkgeval/.julia/packages/Documenter/HmOsT/src/Documenter.jl:684
+│     [12] doctest(::Module) at /home/pkgeval/.julia/packages/Documenter/HmOsT/src/Documenter.jl:671
+│     [13] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:29
+│     [14] top-level scope at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+│     [15] top-level scope at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:8
+│     [16] include(::String) at ./client.jl:441
+│     [17] top-level scope at none:6
+│     [18] eval(::Module, ::Any) at ./boot.jl:331
+│     [19] exec_options(::Base.JLOptions) at ./client.jl:264
+│     [20] _start() at ./client.jl:490
+└ @ Documenter ~/.julia/packages/Documenter/HmOsT/src/Documenter.jl:734
+Doctests: Flux: Test Failed at /home/pkgeval/.julia/packages/Documenter/HmOsT/src/Documenter.jl:741
+  Expression: all_doctests()
+Stacktrace:
+ [1] macro expansion at /home/pkgeval/.julia/packages/Documenter/HmOsT/src/Documenter.jl:741 [inlined]
+ [2] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
+ [3] doctest(::String, ::Array{Module,1}; fix::Bool, testset::String) at /home/pkgeval/.julia/packages/Documenter/HmOsT/src/Documenter.jl:741
+Test Summary:                         | Pass  Fail  Error  Total
+Flux                                  |  198     1      4    203
+  Throttle                            |   11                  11
+  Initialization                      |   16                  16
+  Params                              |    4                   4
+  Basic Stacking                      |    1                   1
+  Precision                           |    5                   5
+  Stacking                            |    3                   3
+  onecold                             |    4                   4
+  onehotbatch indexing                |    2                   2
+  Optimise                            |   12                  12
+  Optimiser                           |    3                   3
+  Training Loop                       |    2                   2
+  ExpDecay                            |    3                   3
+  basic                               |   29                  29
+  Dropout                             |   10                  10
+  BatchNorm                           |   12                  12
+  InstanceNorm                        |   13                  13
+  GroupNorm                           |   13                  13
+  losses                              |   24                  24
+  Pooling                             |    2                   2
+  CNN                                 |    1                   1
+  asymmetric padding                  |    7                   7
+  Depthwise Conv                      |    3                   3
+  ConvTranspose                       |    2                   2
+  CrossCor                            |    4                   4
+  Conv with non quadratic window #700 |    4                   4
+  Doctests: Flux                      |          1             1
+ERROR: LoadError: Some tests did not pass: 198 passed, 1 failed, 4 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/Flux/2i5P1/test/runtests.jl:6
+ERROR: Package Flux errored during testing
+Stacktrace:
+ [1] pkgerror(::String, ::Vararg{String,N} where N) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/Types.jl:53
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/Operations.jl:1503
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:316
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:303
+ [5] #test#68 at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:297 [inlined]
+ [6] test at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:297 [inlined]
+ [7] #test#67 at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:296 [inlined]
+ [8] test at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:296 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:295
+ [10] test(::String) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:295
+ [11] top-level scope at none:13
