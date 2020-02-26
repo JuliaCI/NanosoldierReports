@@ -1,0 +1,93 @@
+Julia Version 1.5.0-DEV.343
+Commit c934b94ffe (2020-02-25 17:15 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed LLLplus ─ v1.2.6
+   Updating `~/.julia/environments/v1.5/Project.toml`
+  [142c1900] + LLLplus v1.2.6
+   Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [142c1900] + LLLplus v1.2.6
+  [2a0f44e3] + Base64 
+  [8bb1440f] + DelimitedFiles 
+  [8ba89e20] + Distributed 
+  [b77e0a4c] + InteractiveUtils 
+  [8f399da3] + Libdl 
+  [37e2e46d] + LinearAlgebra 
+  [56ddb016] + Logging 
+  [d6f4376e] + Markdown 
+  [a63ad114] + Mmap 
+  [de0858da] + Printf 
+  [9a3f8284] + Random 
+  [9e88b42a] + Serialization 
+  [6462fe0b] + Sockets 
+  [8dfed614] + Test 
+  [4ec0a83e] + Unicode 
+    Testing LLLplus
+Status `/tmp/jl_kYMfPm/Manifest.toml`
+  [142c1900] LLLplus v1.2.6
+  [2a0f44e3] Base64 
+  [8bb1440f] DelimitedFiles 
+  [8ba89e20] Distributed 
+  [b77e0a4c] InteractiveUtils 
+  [8f399da3] Libdl 
+  [37e2e46d] LinearAlgebra 
+  [56ddb016] Logging 
+  [d6f4376e] Markdown 
+  [a63ad114] Mmap 
+  [de0858da] Printf 
+  [9a3f8284] Random 
+  [9e88b42a] Serialization 
+  [6462fe0b] Sockets 
+  [8dfed614] Test 
+  [4ec0a83e] Unicode 
+tests with small matrices...
+...done
+
+In all the following tests, the first time includes the JIT compilation; 
+for the second execution the compilation is already done and the time
+should be faster.
+
+Testing LLL on 1000x1000 real matrix...
+  4.240112 seconds (2.74 M allocations: 187.031 MiB, 4.63% gc time)
+  4.123719 seconds (6.81 k allocations: 61.654 MiB)
+
+Testing LLL on 10x10 complex matrix...
+  9.822999 seconds (12.04 M allocations: 541.820 MiB, 5.90% gc time)
+  0.000306 seconds (710 allocations: 77.781 KiB)
+Testing Seysen on same 10x10 complex matrix...
+  2.559316 seconds (2.74 M allocations: 132.866 MiB, 3.74% gc time)
+  0.058082 seconds (338 allocations: 147.422 KiB)
+Testing VBLAST on same 10x10 complex matrix...
+  1.929382 seconds (1.95 M allocations: 90.710 MiB, 1.73% gc time)
+  0.037179 seconds (230 allocations: 122.219 KiB)
+Testing Brun on real part of same 10x10 matrix...
+  1.839609 seconds (2.21 M allocations: 108.254 MiB, 5.55% gc time)
+  0.000127 seconds (28 allocations: 12.297 KiB)
+Testing l2 on real part of same 10x10 matrix...
+┌ Warning: l2 is in a raw (alpha) state and may change. See the help text.
+└ @ LLLplus ~/.julia/packages/LLLplus/xy0Oa/src/l2.jl:42
+  1.862366 seconds (1.91 M allocations: 92.819 MiB, 2.09% gc time)
+  0.000148 seconds (288 allocations: 26.672 KiB)
+
+Testing sphere decoder on 100000 samples of 3x3 BPSK system...
+  2.188211 seconds (4.40 M allocations: 324.208 MiB, 4.59% gc time)
+  0.442570 seconds (2.00 M allocations: 209.809 MiB, 6.08% gc time)
+Error Rate is 0.0. It should be zero or very small.
+
+Testing now with 200x200 matrix from latticechallenge.org.
+The min norm of the input should be 30, min norm of the reduced bases is hopefully smaller :-)
+min norm of input is 30.0
+  0.653221 seconds (229.49 k allocations: 80.309 MiB, 3.44% gc time)
+min norm of lll-reduced basis is 29.30870177950569
+  6.274632 seconds (5.16 M allocations: 1.251 GiB, 6.61% gc time)
+min norm of seysen-reduced basis is 30.0
+    Testing LLLplus tests passed 
