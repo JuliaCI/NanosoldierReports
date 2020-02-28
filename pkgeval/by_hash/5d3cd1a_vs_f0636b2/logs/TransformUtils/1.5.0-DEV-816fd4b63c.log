@@ -1,0 +1,68 @@
+Julia Version 1.5.0-DEV.359
+Commit 816fd4b63c (2020-02-27 15:50 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed TransformUtils ─ v0.2.3
+   Updating `~/.julia/environments/v1.5/Project.toml`
+  [9b8138ad] + TransformUtils v0.2.3
+   Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [9b8138ad] + TransformUtils v0.2.3
+  [8f399da3] + Libdl 
+  [37e2e46d] + LinearAlgebra 
+    Testing TransformUtils
+Status `/tmp/jl_6sxpCE/Manifest.toml`
+  [9b8138ad] TransformUtils v0.2.3
+  [2a0f44e3] Base64 
+  [8ba89e20] Distributed 
+  [b77e0a4c] InteractiveUtils 
+  [8f399da3] Libdl 
+  [37e2e46d] LinearAlgebra 
+  [56ddb016] Logging 
+  [d6f4376e] Markdown 
+  [9a3f8284] Random 
+  [9e88b42a] Serialization 
+  [6462fe0b] Sockets 
+  [8dfed614] Test 
+Test Summary:                               |
+Constructors SO3, Quaternion, AngleAxis...  | No tests
+Test Summary:                           | Pass  Total
+Ensure basic quaternion operations hold |   10     10
+Test Summary:                                       | Pass  Total
+Comparison functions for SO3, Quaternion, AngleAxis |    5      5
+Test Summary:                                        | Pass  Total
+Trivial case quaterion -> SO3 -> Euler -> quaternion |    2      2
+┌ Warning: Need better coverage on convert function tests
+└ @ Main ~/.julia/packages/TransformUtils/hYnkL/test/runtests.jl:89
+dAA = AngleAxis(0.7853981633974483, [1.0, 0.0, 0.0])
+dAA = so3([0.0 0.1151803603960358 0.044988697810782005; -0.1151803603960358 0.0 0.09498178828177906; -0.044988697810782005 -0.09498178828177906 0.0])
+dAA = so3([0.0 -0.12028529838359561 -0.048308034287086875; 0.12028529838359561 0.0 -0.12795889150895154; 0.048308034287086875 0.12795889150895154 0.0])
+dAA = so3([0.0 0.0957689630143858 -0.11065675042141665; -0.0957689630143858 0.0 0.12636426636763384; 0.11065675042141665 -0.12636426636763384 0.0])
+dAA = Quaternion(0.9949622545079614, [-0.08401846130877721, -0.032527947223285, -0.043965246652092345])
+dAA = SO3([0.9958290699074543 0.09104959454154 -0.005868122448944922; -0.0906689707923944 0.9947390518040107 0.047679728937005346; 0.010178470548298166 -0.04694880349784799 0.998845437786757])
+Test Summary:                        | Pass  Total
+Compare SO3 and quaternion rotations |   24     24
+Test Summary:       | Pass  Total
+Basic SE3 mechanics |    4      4
+Compare operations on two different SE3 transforms
+xi = SE3(SO3([0.9483940853362516 -0.30941392806324997 -0.06936627436791415; 0.27144287297710246 0.905272559626224 -0.32680324278948225; 0.16391285980407827 0.29110928172810746 0.942543346739339]), [-0.9498178828177904, 0.44988697810782, -1.1518036039603579])
+xj = SE3(SO3([0.963300354573531 0.23405505102010485 -0.13141788299347015; -0.16090808159780687 0.8953823905393087 0.41520954226586176; 0.2148511488333791 -0.37882529984689384 0.9001835235333339]), [-1.2636426636763383, -1.1065675042141665, -0.9576896301438579])
+Dx = SE3(SO3([0.9051278729631788 0.40292725626759607 0.13562138379259497; -0.38117905389056606 0.6278656548697282 0.6785921074622814; 0.18827124703534628 -0.6659086615983265 0.7218861350296744]), [-0.6883002657615643, -1.2554053954931925, 0.7133840624594112])
+Test Summary:         | Pass  Total
+SE3 ⊕ and ⊖ mechanics |    6      6
+TransformUtils.convert(Euler, q) = Euler(0.7853981633974484, 0.0, 1.5707963267948963, Quaternion(1.0, [0.0, 0.0, 0.0]))
+Test Summary:              | Pass  Total
+Previous discovered issues |    3      3
+Test Summary:      | Pass  Total
+test SO3 logmap... |  301    301
+Test Summary:                              | Pass  Total
+test in-place and efficient inverse SE3... |    1      1
+    Testing TransformUtils tests passed 
