@@ -1,0 +1,73 @@
+Julia Version 1.5.0-DEV.606
+Commit 13fa20ef08 (2020-04-09 02:49 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed WinReg ─ v0.3.1
+Updating `~/.julia/environments/v1.5/Project.toml`
+  [1b915085] + WinReg v0.3.1
+Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [1b915085] + WinReg v0.3.1
+  [2a0f44e3] + Base64
+  [8ba89e20] + Distributed
+  [b77e0a4c] + InteractiveUtils
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [8dfed614] + Test
+    Testing WinReg
+Status `/tmp/jl_YpKUE7/Project.toml`
+  [1b915085] WinReg v0.3.1
+  [8dfed614] Test
+Status `/tmp/jl_YpKUE7/Manifest.toml`
+  [1b915085] WinReg v0.3.1
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+Error During Test at /home/pkgeval/.julia/packages/WinReg/vJbAg/test/runtests.jl:8
+  Test threw exception
+  Expression: querykey(WinReg.HKEY_LOCAL_MACHINE, "System\\CurrentControlSet\\Control\\Session Manager\\Environment", "OS") == "Windows_NT"
+  could not load library "advapi32"
+  advapi32.so: cannot open shared object file: No such file or directory
+  Stacktrace:
+   [1] openkey(::UInt32, ::String, ::UInt32) at /home/pkgeval/.julia/packages/WinReg/vJbAg/src/WinReg.jl:52
+   [2] openkey at /home/pkgeval/.julia/packages/WinReg/vJbAg/src/WinReg.jl:51 [inlined]
+   [3] querykey(::UInt32, ::String, ::String) at /home/pkgeval/.julia/packages/WinReg/vJbAg/src/WinReg.jl:111
+   [4] top-level scope at /home/pkgeval/.julia/packages/WinReg/vJbAg/test/runtests.jl:8
+   [5] include(::String) at ./client.jl:442
+   [6] top-level scope at none:6
+   [7] eval(::Module, ::Any) at ./boot.jl:331
+   [8] exec_options(::Base.JLOptions) at ./client.jl:265
+   [9] _start() at ./client.jl:491
+  
+ERROR: LoadError: There was an error during testing
+in expression starting at /home/pkgeval/.julia/packages/WinReg/vJbAg/test/runtests.jl:8
+ERROR: Package WinReg errored during testing
+Stacktrace:
+ [1] pkgerror(::String, ::Vararg{String,N} where N) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/Types.jl:52
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/Operations.jl:1516
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:316
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:303
+ [5] #test#68 at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:297 [inlined]
+ [6] test at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:297 [inlined]
+ [7] #test#67 at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:296 [inlined]
+ [8] test at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:296 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:295
+ [10] test(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:295
+ [11] top-level scope at none:16
