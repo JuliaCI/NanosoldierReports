@@ -1,0 +1,265 @@
+Julia Version 1.5.0-DEV.598
+Commit 9498b7fb58 (2020-04-08 17:36 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed TensorToolbox ─ v1.0.1
+Updating `~/.julia/environments/v1.5/Project.toml`
+  [9c690861] + TensorToolbox v1.0.1
+Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [9c690861] + TensorToolbox v1.0.1
+  [2a0f44e3] + Base64
+  [8ba89e20] + Distributed
+  [b77e0a4c] + InteractiveUtils
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [8dfed614] + Test
+    Testing TensorToolbox
+Status `/tmp/jl_VpoviI/Project.toml`
+  [9c690861] TensorToolbox v1.0.1
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_VpoviI/Manifest.toml`
+  [9c690861] TensorToolbox v1.0.1
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+
+
+
+**** Testing tensor.jl
+
+**Test tensor X of size: (20, 10, 50, 5)
+
+...Testing functions matten and tenmat (by mode).
+Size of 1-mode matricization: [20, 2500]
+Check if it folds back correctly: true
+Size of 2-mode matricization: [10, 5000]
+Check if it folds back correctly: true
+Size of 3-mode matricization: [50, 1000]
+Check if it folds back correctly: true
+Size of 4-mode matricization: [5, 10000]
+Check if it folds back correctly: true
+
+...Testing functions matten and tenmat (by rows and columns).
+Size of R=[2, 1] and C=[4, 3] matricization: [200, 250]
+Check if it folds back correctly: true
+
+...Testing function ttm.
+Created 4 matrices with 5 rows and appropriate number of columns.
+Size of tensor Y=ttm(X,M): (5, 5, 5, 5)
+Multiplication error: 7.429763198840421e-12
+
+...Testing function ttv.
+Multiplying a tensor X by a vector v in mode 2.
+Size of tensor Y=ttv(X,v): (3, 2)
+
+...Testing function krontm.
+Created two tensors X and Y of order 3 and sizes (5, 4, 3) and (2, 5, 4).
+Multiplying tkron(X,Y) by random matrix in mode 3.
+Multiplication error: 1.2952972849050247e-14
+Multiplying tkron(X,Y) by random matrices in modes [3, 2].
+Multiplication error: 1.053474709952821e-13
+Multiplying tkron(X,Y) by random matrices in all modes.
+Multiplication error: 6.255904102613839e-13
+
+...Testing function mkrontv.
+Multiplying mode-1 matricized tkron(X,Y) by a random vector.
+Multiplication error: 2.3832327871173822e-14
+Multiplication error: 2.284782946859855e-15
+
+...Testing function mttkrp.
+Multiplying mode-1 matricized tensor X by Khatri-Rao product of matrices.
+Multiplication error: 0.0
+
+...Testing function dropdims.
+Tensor X of size :(5, 4, 1, 3, 6, 1) squeezed to size :(5, 4, 3, 6).
+
+...Testing contraction (contract).
+Error: 0.0
+
+
+****Testing ttensor.jl
+
+...Test tensor X of size: (20, 10, 50, 5)
+
+...Testing hosvd.
+
+Creating exact decomposition with rank = size(X):
+Results:
+Type of output T: ttensor
+Core tensor size: (20, 10, 50, 5)
+Factor matrices sizes: (20, 20) (10, 10) (50, 50) (5, 5) 
+
+...Testing function full, i.e. n-mode multiplication (ttm): norm(full(T)-X) = 2.1775550615987662e-13
+
+...Testing ttm for ttensor T and array of matrices A : norm(full(ttm(T,A))-ttm(full(T),A)) = 3.4664233536946756e-11
+
+...Testing hosvd with smaller multilinear rank: [5, 5, 5, 5]
+Results:
+Type of output T: ttensor
+Core tensor size: (5, 5, 5, 5)
+Factor matrices sizes: (20, 5) (10, 5) (50, 5) (5, 5) 
+
+...Testing size of ttensor T : (20, 10, 50, 5)
+
+...Testing ndims of ttensor T : 4
+
+...Testing nrank of ttensor T for mode 1: 5
+
+...Testing mrank of ttensor T: (5, 5, 5, 5)
+
+...Testing functions matten and tenmat (by mode).
+
+
+...Testing hosvd for tensor with noise.
+For ttensor T, X=full(T) tensor of size (60, 50, 40) and rank [5, 5, 5] , N noise tensor and S=hosvd(X+N,[5, 5, 5]).
+Error( norm(T-S) ): 0.01478709338081521. Noise norm: 0.1735884440809141.
+
+
+...Testing hosvd with eps_abs=1e-5 on function defined tensor X of size (20, 20, 20) and multlinear rank(13, 13, 13)
+Results:
+Type of output T: ttensor
+Core tensor size: (7, 7, 7)
+Factor matrices sizes: (20, 7) (20, 7) (20, 7) 
+
+...Testing hosvd with eps_rel=1e-5 on function defined tensor X of size (20, 20, 20)
+Results:
+Type of output T: ttensor
+Core tensor size: (6, 6, 6)
+Factor matrices sizes: (20, 6) (20, 6) (20, 6) 
+
+...Testing if factor matrices of ttensor T are orthogonal: true
+
+
+...Recompress Tucker tensor T to smaller rank: [3, 3, 3]
+Results:
+Type of output T: ttensor
+Core tensor size: (3, 3, 3)
+Factor matrices sizes: (20, 3) (20, 3) (20, 3) 
+
+...Testing orthogonal flag and reorthogonalization for random ttensor S of size (4, 5, 2).
+Has orthogonal factor matrices: false
+After reorthogonalization: true
+
+
+...Testing norm of ttensor T.
+|norm(T) - norm(full(T))| = 0.0
+
+
+...Testing scalar multiplication 3*T.
+norm(full(3*T) - 3*full(T)) = 2.762916642284124e-14
+
+
+...Creating two random ttensors X and Y of size (6, 8, 2, 5, 4).
+
+...Testing addition.
+norm(full(X+Y) - (full(X)+full(Y))) = 1.0935621851985433e-13
+
+
+...Testing inner product.
+|innerprod(X,Y) - innerprod(full(X),full(Y))| = 9.094947017729282e-13
+
+
+...Testing Hadamard product.
+norm(full(ewprod(X,Y)) - full(X).*full(Y)) = 7.394917772252193e-13
+
+
+...Testing singular values of matricizations of Tucker Tensor.
+
+Singular values of matricizations of random Tucker tensor of size (10, 9, 8), rank [3, 3, 3] and norm 104.73657518924865.
+Mode-1 singular values error: 5.136098584586421e-14
+Mode-2 singular values error: 1.5888218580782548e-14
+Mode-3 singular values error: 1.4210854715202004e-14
+
+Singular values of matricizations of random Tucker tensor of size (20, 20, 20, 20), rank [5, 5, 5, 5] and norm 11625.591905770794.
+Mode-1 singular values error: 6.926505289687983e-12
+Mode-2 singular values error: 6.760305380939147e-12
+Mode-3 singular values error: 3.150582065370831e-12
+Mode-4 singular values error: 3.150582065370831e-12
+
+...Testing function mhadtv.
+
+
+...Creating two random ttensors X and Y of size (5, 4, 3).
+Multiplying mode-1 matricized ewprod(X,Y) by a random vector.
+Multiplication error: 7.640399661428378e-15
+Multiplication error: 2.8879016353965777e-15
+Multiplication error: 1.2168226684423806e-13
+
+...Testing function mttkrp.
+Multiplying mode-1 matricized tensor X by Khatri-Rao product of matrices.
+Multiplication error: 1.6949517839141708e-15
+
+...Testing cp_als on ttensor.
+Test rank-1 ttensor T of size: (5, 4, 3)
+norm(full(Tcp)-T) = 4.466702420985365e-17
+
+
+****Testing ktensor.jl
+
+**Test rank-1 tensor X of size: (5, 4, 3)
+...Testing cp_als.
+norm(full(Xcp)-X) = 3.305820431932491e-16
+
+**Test ktensors X and Y of size: (4, 3, 2)
+
+...Testing function ndims.
+X is of order: 3
+...Testing function ttensor and full.
+...Testing scalar multiplication.
+norm(full(3*X) - 3*full(X)) = 4.307035781641227e-15
+...Testing functions plus and minus.
+norm(full(Z)-(full(X)+full(Y))) = 7.621420282514214e-16
+norm(full(Z)-(full(X)-full(Y))) = 1.9492735024315028e-15
+...Testing function innerprod.
+norm(innerprod(X,Y)-innerprod(full(X),full(Y))) = 1.2212453270876722e-15
+...Testing function norm.
+...Testing functions arrange and arrange!.
+norm(full(X)-full(Z)) = 2.085596504455877e-15
+...Testing functions normalize and normalize!.
+norm(full(X)-full(Z)) = 2.0183475960220235e-15
+...Testing functions redistribute and redistribute!.
+norm(full(X)-full(Z)) = 2.2030305172320773e-15
+...Testing functions fixsigns, fixsigns! and isequal.
+norm(full(X)-full(Z)) = 0.0
+Test Failed at /home/pkgeval/.julia/packages/TensorToolbox/6LauI/test/ktensorTest.jl:130
+  Expression: ≈(norm(X - Xcopy), 0, atol = 1.0e-7)
+   Evaluated: 1.1920928955078125e-7 ≈ 0 (atol=1.0e-7)
+ERROR: LoadError: LoadError: There was an error during testing
+in expression starting at /home/pkgeval/.julia/packages/TensorToolbox/6LauI/test/ktensorTest.jl:130
+in expression starting at /home/pkgeval/.julia/packages/TensorToolbox/6LauI/test/runtests.jl:9
+ERROR: Package TensorToolbox errored during testing
+Stacktrace:
+ [1] pkgerror(::String, ::Vararg{String,N} where N) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/Types.jl:52
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/Operations.jl:1516
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:316
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:303
+ [5] #test#68 at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:297 [inlined]
+ [6] test at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:297 [inlined]
+ [7] #test#67 at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:296 [inlined]
+ [8] test at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:296 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:295
+ [10] test(::String) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:295
+ [11] top-level scope at none:16
