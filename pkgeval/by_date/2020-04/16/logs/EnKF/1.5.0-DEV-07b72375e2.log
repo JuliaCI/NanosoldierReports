@@ -1,0 +1,668 @@
+Julia Version 1.5.0-DEV.633
+Commit 07b72375e2 (2020-04-15 15:23 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed FFTW_jll ───────────────────── v3.3.9+5
+  Installed AutoHashEquals ─────────────── v0.2.0
+  Installed RecursiveArrayTools ────────── v2.3.1
+  Installed Roots ──────────────────────── v1.0.1
+  Installed Parameters ─────────────────── v0.12.0
+  Installed StaticArrays ───────────────── v0.12.1
+  Installed DocStringExtensions ────────── v0.8.1
+  Installed MKL_jll ────────────────────── v2019.0.117+2
+  Installed Rmath_jll ──────────────────── v0.2.2+0
+  Installed Measures ───────────────────── v0.3.1
+  Installed ParameterizedFunctions ─────── v5.3.0
+  Installed DiffResults ────────────────── v1.0.2
+  Installed IteratorInterfaceExtensions ── v1.0.0
+  Installed EnKF ───────────────────────── v0.1.0
+  Installed DiffEqBase ─────────────────── v6.29.2
+  Installed Arpack_jll ─────────────────── v3.5.0+3
+  Installed PoissonRandom ──────────────── v0.4.0
+  Installed AxisAlgorithms ─────────────── v1.0.0
+  Installed MbedTLS_jll ────────────────── v2.16.0+1
+  Installed Requires ───────────────────── v1.0.1
+  Installed x265_jll ───────────────────── v3.0.0+0
+  Installed RecipesBase ────────────────── v0.8.0
+  Installed StatsBase ──────────────────── v0.33.0
+  Installed Revise ─────────────────────── v2.6.1
+  Installed SortingAlgorithms ──────────── v0.3.1
+  Installed METIS_jll ──────────────────── v5.1.0+3
+  Installed FFMPEG ─────────────────────── v0.3.0
+  Installed FastGaussQuadrature ────────── v0.4.2
+  Installed DiffEqPhysics ──────────────── v3.5.0
+  Installed Sundials ───────────────────── v4.1.1
+  Installed ZeroMQ_jll ─────────────────── v4.3.2+2
+  Installed MappedArrays ───────────────── v0.2.2
+  Installed FixedPointNumbers ──────────── v0.7.1
+  Installed TimeToLive ─────────────────── v0.3.0
+  Installed ArnoldiMethod ──────────────── v0.0.4
+  Installed Colors ─────────────────────── v0.10.2
+  Installed GitHub ─────────────────────── v5.1.5
+  Installed PotentialFlow ──────────────── v0.1.7
+  Installed DataAPI ────────────────────── v1.1.0
+  Installed OpenSSL_jll ────────────────── v1.1.1+2
+  Installed libvorbis_jll ──────────────── v1.3.6+2
+  Installed Arpack ─────────────────────── v0.4.0
+  Installed DiffEqNoiseProcess ─────────── v3.10.0
+  Installed SpecialFunctions ───────────── v0.10.0
+  Installed Tables ─────────────────────── v1.0.4
+  Installed TerminalLoggers ────────────── v0.1.1
+  Installed x264_jll ───────────────────── v2019.5.25+1
+  Installed Adapt ──────────────────────── v1.0.1
+  Installed CodecZlib ──────────────────── v0.7.0
+  Installed LAME_jll ───────────────────── v3.100.0+0
+  Installed JSON ───────────────────────── v0.21.0
+  Installed ProgressLogging ────────────── v0.1.2
+  Installed VersionParsing ─────────────── v1.2.0
+  Installed PlotThemes ─────────────────── v1.0.3
+  Installed MbedTLS ────────────────────── v1.0.2
+  Installed Hiccup ─────────────────────── v0.2.2
+  Installed MuladdMacro ────────────────── v0.2.2
+  Installed MLStyle ────────────────────── v0.3.1
+  Installed ColorTypes ─────────────────── v0.8.1
+  Installed OpenSpecFun_jll ────────────── v0.5.3+3
+  Installed DataValueInterfaces ────────── v1.0.0
+  Installed ArrayInterface ─────────────── v2.8.5
+  Installed FFTW ───────────────────────── v1.2.0
+  Installed ZMQ ────────────────────────── v1.2.0
+  Installed Unitful ────────────────────── v1.1.0
+  Installed GitForge ───────────────────── v0.1.5
+  Installed Rmath ──────────────────────── v0.6.1
+  Installed CodeTracking ───────────────── v0.5.9
+  Installed DiffEqFinancial ────────────── v2.2.1
+  Installed CEnum ──────────────────────── v0.2.0
+  Installed SchwarzChristoffel ─────────── v0.1.5
+  Installed Lazy ───────────────────────── v0.15.0
+  Installed NameResolution ─────────────── v0.1.3
+  Installed FiniteDiff ─────────────────── v2.3.0
+  Installed PlotUtils ──────────────────── v0.6.5
+  Installed OrderedCollections ─────────── v1.1.0
+  Installed Compat ─────────────────────── v3.8.0
+  Installed Parsers ────────────────────── v1.0.1
+  Installed FreeType2_jll ──────────────── v2.10.1+2
+  Installed PDMats ─────────────────────── v0.9.12
+  Installed SparseDiffTools ────────────── v1.6.0
+  Installed GR ─────────────────────────── v0.48.0
+  Installed DelayDiffEq ────────────────── v5.23.0
+  Installed GeneralizedGenerated ───────── v0.2.3
+  Installed OrdinaryDiffEq ─────────────── v5.34.1
+  Installed Conda ──────────────────────── v1.4.1
+  Installed AbstractFFTs ───────────────── v0.5.0
+  Installed DiffRules ──────────────────── v1.0.1
+  Installed RecursiveFactorization ─────── v0.1.0
+  Installed FFMPEG_jll ─────────────────── v4.1.0+2
+  Installed Ogg_jll ────────────────────── v1.3.3+0
+  Installed Mustache ───────────────────── v1.0.2
+  Installed Plots ──────────────────────── v0.27.1
+  Installed MacroTools ─────────────────── v0.5.5
+  Installed Latexify ───────────────────── v0.12.0
+  Installed LeftChildRightSiblingTrees ─── v0.1.2
+  Installed IterativeSolvers ───────────── v0.8.4
+  Installed Distances ──────────────────── v0.8.2
+  Installed ConsoleProgressMonitor ─────── v0.1.2
+  Installed LoggingExtras ──────────────── v0.4.0
+  Installed ConstructionBase ───────────── v1.0.0
+  Installed LoweredCodeUtils ───────────── v0.4.3
+  Installed OffsetArrays ───────────────── v1.0.4
+  Installed DataStructures ─────────────── v0.17.12
+  Installed BandedMatrices ─────────────── v0.15.3
+  Installed ForwardDiff ────────────────── v0.10.10
+  Installed RandomNumbers ──────────────── v1.4.0
+  Installed IJulia ─────────────────────── v1.21.2
+  Installed IntelOpenMP_jll ────────────── v2018.0.3+0
+  Installed SimpleTraits ───────────────── v0.9.1
+  Installed SoftGlobalScope ────────────── v1.0.10
+  Installed JLD2 ───────────────────────── v0.1.3
+  Installed LaTeXStrings ───────────────── v1.1.0
+  Installed ProgressMeter ──────────────── v1.2.0
+  Installed JuliaInterpreter ───────────── v0.7.13
+  Installed Registrator ────────────────── v1.0.0
+  Installed Reexport ───────────────────── v0.2.0
+  Installed AssetRegistry ──────────────── v0.1.0
+  Installed Showoff ────────────────────── v0.3.1
+  Installed SafeTestsets ───────────────── v0.0.1
+  Installed NLSolversBase ──────────────── v7.6.1
+  Installed AbstractTrees ──────────────── v0.3.3
+  Installed DimensionalPlotRecipes ─────── v1.2.0
+  Installed FriBidi_jll ────────────────── v1.0.5+2
+  Installed Pidfile ────────────────────── v1.1.0
+  Installed WoodburyMatrices ───────────── v0.5.2
+  Installed ZygoteRules ────────────────── v0.2.0
+  Installed FileIO ─────────────────────── v1.2.4
+  Installed QuadGK ─────────────────────── v2.3.1
+  Installed Opus_jll ───────────────────── v1.3.1+0
+  Installed ResettableStacks ───────────── v1.0.0
+  Installed MultiScaleArrays ───────────── v1.7.1
+  Installed StatsFuns ──────────────────── v0.9.4
+  Installed DiffEqJump ─────────────────── v6.6.0
+  Installed Distributions ──────────────── v0.23.2
+  Installed ModelingToolkit ────────────── v3.0.1
+  Installed Documenter ─────────────────── v0.24.9
+  Installed Missings ───────────────────── v0.4.3
+  Installed JSON2 ──────────────────────── v0.3.1
+  Installed SteadyStateDiffEq ──────────── v1.5.0
+  Installed LabelledArrays ─────────────── v1.1.0
+  Installed ArrayLayouts ───────────────── v0.2.4
+  Installed DiffEqCallbacks ────────────── v2.13.0
+  Installed ChainRulesCore ─────────────── v0.7.1
+  Installed LibVPX_jll ─────────────────── v1.8.1+1
+  Installed StochasticDiffEq ───────────── v6.19.2
+  Installed TableTraits ────────────────── v1.0.0
+  Installed PrettyPrint ────────────────── v0.1.0
+  Installed CommonSubexpressions ───────── v0.2.0
+  Installed DiffEqDiffTools ────────────── v1.7.0
+  Installed NaNMath ────────────────────── v0.3.3
+  Installed libfdk_aac_jll ─────────────── v0.1.6+1
+  Installed NLsolve ────────────────────── v4.3.0
+  Installed Contour ────────────────────── v0.5.2
+  Installed LightGraphs ────────────────── v1.3.1
+  Installed TranscodingStreams ─────────── v0.9.5
+  Installed WebSockets ─────────────────── v1.5.2
+  Installed UnPack ─────────────────────── v0.1.0
+  Installed IniFile ────────────────────── v0.5.0
+  Installed Mux ────────────────────────── v0.7.0
+  Installed FillArrays ─────────────────── v0.8.7
+  Installed Inflate ────────────────────── v0.1.2
+  Installed HTTP ───────────────────────── v0.8.14
+  Installed Interpolations ─────────────── v0.12.9
+  Installed OpenBLAS_jll ───────────────── v0.3.9+2
+  Installed TreeViews ──────────────────── v0.3.0
+  Installed VertexSafeGraphs ───────────── v0.1.1
+  Installed Zlib_jll ───────────────────── v1.2.11+9
+  Installed Ratios ─────────────────────── v0.4.0
+  Installed FunctionWrappers ───────────── v1.1.1
+  Installed ExponentialUtilities ───────── v1.6.0
+  Installed ColorSchemes ───────────────── v3.5.0
+  Installed BoundaryValueDiffEq ────────── v2.3.0
+  Installed Bzip2_jll ──────────────────── v1.0.6+2
+  Installed JuliaVariables ─────────────── v0.2.0
+  Installed LineSearches ───────────────── v7.0.1
+  Installed DifferentialEquations ──────── v6.13.0
+  Installed CompilerSupportLibraries_jll ─ v0.3.3+0
+  Installed libass_jll ─────────────────── v0.14.0+1
+  Installed SuiteSparse_jll ────────────── v5.4.0+8
+  Installed Sundials_jll ───────────────── v5.2.0+0
+  Installed GenericSVD ─────────────────── v0.3.0
+  Installed CanonicalTraits ────────────── v0.2.1
+  Installed GeometryTypes ──────────────── v0.8.2
+Updating `~/.julia/environments/v1.5/Project.toml`
+  [685896a8] + EnKF v0.1.0
+Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [621f4979] + AbstractFFTs v0.5.0
+  [1520ce14] + AbstractTrees v0.3.3
+  [79e6a3ab] + Adapt v1.0.1
+  [ec485272] + ArnoldiMethod v0.0.4
+  [7d9fca2a] + Arpack v0.4.0
+  [68821587] + Arpack_jll v3.5.0+3
+  [4fba245c] + ArrayInterface v2.8.5
+  [4c555306] + ArrayLayouts v0.2.4
+  [bf4720bc] + AssetRegistry v0.1.0
+  [15f4f7f2] + AutoHashEquals v0.2.0
+  [13072b0f] + AxisAlgorithms v1.0.0
+  [aae01518] + BandedMatrices v0.15.3
+  [764a87c0] + BoundaryValueDiffEq v2.3.0
+  [6e34b625] + Bzip2_jll v1.0.6+2
+  [fa961155] + CEnum v0.2.0
+  [a603d957] + CanonicalTraits v0.2.1
+  [d360d2e6] + ChainRulesCore v0.7.1
+  [da1fd8a2] + CodeTracking v0.5.9
+  [944b1d66] + CodecZlib v0.7.0
+  [35d6a980] + ColorSchemes v3.5.0
+  [3da002f7] + ColorTypes v0.8.1
+  [5ae59095] + Colors v0.10.2
+  [bbf7d656] + CommonSubexpressions v0.2.0
+  [34da2185] + Compat v3.8.0
+  [e66e0078] + CompilerSupportLibraries_jll v0.3.3+0
+  [8f4d0f93] + Conda v1.4.1
+  [88cd18e8] + ConsoleProgressMonitor v0.1.2
+  [187b0558] + ConstructionBase v1.0.0
+  [d38c429a] + Contour v0.5.2
+  [9a962f9c] + DataAPI v1.1.0
+  [864edb3b] + DataStructures v0.17.12
+  [e2d170a0] + DataValueInterfaces v1.0.0
+  [bcd4f6db] + DelayDiffEq v5.23.0
+  [2b5f629d] + DiffEqBase v6.29.2
+  [459566f4] + DiffEqCallbacks v2.13.0
+  [01453d9d] + DiffEqDiffTools v1.7.0
+  [5a0ffddc] + DiffEqFinancial v2.2.1
+  [c894b116] + DiffEqJump v6.6.0
+  [77a26b50] + DiffEqNoiseProcess v3.10.0
+  [055956cb] + DiffEqPhysics v3.5.0
+  [163ba53b] + DiffResults v1.0.2
+  [b552c78f] + DiffRules v1.0.1
+  [0c46a032] + DifferentialEquations v6.13.0
+  [c619ae07] + DimensionalPlotRecipes v1.2.0
+  [b4f34e82] + Distances v0.8.2
+  [31c24e10] + Distributions v0.23.2
+  [ffbed154] + DocStringExtensions v0.8.1
+  [e30172f5] + Documenter v0.24.9
+  [685896a8] + EnKF v0.1.0
+  [d4d017d3] + ExponentialUtilities v1.6.0
+  [c87230d0] + FFMPEG v0.3.0
+  [b22a6f82] + FFMPEG_jll v4.1.0+2
+  [7a1cc6ca] + FFTW v1.2.0
+  [f5851436] + FFTW_jll v3.3.9+5
+  [442a2c76] + FastGaussQuadrature v0.4.2
+  [5789e2e9] + FileIO v1.2.4
+  [1a297f60] + FillArrays v0.8.7
+  [6a86dc24] + FiniteDiff v2.3.0
+  [53c48c17] + FixedPointNumbers v0.7.1
+  [f6369f11] + ForwardDiff v0.10.10
+  [d7e528f0] + FreeType2_jll v2.10.1+2
+  [559328eb] + FriBidi_jll v1.0.5+2
+  [069b7b12] + FunctionWrappers v1.1.1
+  [28b8d3ca] + GR v0.48.0
+  [6b9d7cbe] + GeneralizedGenerated v0.2.3
+  [01680d73] + GenericSVD v0.3.0
+  [4d00f742] + GeometryTypes v0.8.2
+  [8f6bce27] + GitForge v0.1.5
+  [bc5e4493] + GitHub v5.1.5
+  [cd3eb016] + HTTP v0.8.14
+  [9fb69e20] + Hiccup v0.2.2
+  [7073ff75] + IJulia v1.21.2
+  [d25df0c9] + Inflate v0.1.2
+  [83e8ac13] + IniFile v0.5.0
+  [1d5cc7b8] + IntelOpenMP_jll v2018.0.3+0
+  [a98d9a8b] + Interpolations v0.12.9
+  [42fd0dbc] + IterativeSolvers v0.8.4
+  [82899510] + IteratorInterfaceExtensions v1.0.0
+  [033835bb] + JLD2 v0.1.3
+  [682c06a0] + JSON v0.21.0
+  [2535ab7d] + JSON2 v0.3.1
+  [aa1ae85d] + JuliaInterpreter v0.7.13
+  [b14d175d] + JuliaVariables v0.2.0
+  [c1c5ebd0] + LAME_jll v3.100.0+0
+  [b964fa9f] + LaTeXStrings v1.1.0
+  [2ee39098] + LabelledArrays v1.1.0
+  [23fbe1c1] + Latexify v0.12.0
+  [50d2b5c4] + Lazy v0.15.0
+  [1d6d02ad] + LeftChildRightSiblingTrees v0.1.2
+  [dd192d2f] + LibVPX_jll v1.8.1+1
+  [093fc24a] + LightGraphs v1.3.1
+  [d3d80556] + LineSearches v7.0.1
+  [e6f89c97] + LoggingExtras v0.4.0
+  [6f1432cf] + LoweredCodeUtils v0.4.3
+  [d00139f3] + METIS_jll v5.1.0+3
+  [856f044c] + MKL_jll v2019.0.117+2
+  [d8e11817] + MLStyle v0.3.1
+  [1914dd2f] + MacroTools v0.5.5
+  [dbb5928d] + MappedArrays v0.2.2
+  [739be429] + MbedTLS v1.0.2
+  [c8ffd9c3] + MbedTLS_jll v2.16.0+1
+  [442fdcdd] + Measures v0.3.1
+  [e1d29d7a] + Missings v0.4.3
+  [961ee093] + ModelingToolkit v3.0.1
+  [46d2c3a1] + MuladdMacro v0.2.2
+  [f9640e96] + MultiScaleArrays v1.7.1
+  [ffc61752] + Mustache v1.0.2
+  [a975b10e] + Mux v0.7.0
+  [d41bc354] + NLSolversBase v7.6.1
+  [2774e3e8] + NLsolve v4.3.0
+  [77ba4419] + NaNMath v0.3.3
+  [71a1bf82] + NameResolution v0.1.3
+  [6fe1bfb0] + OffsetArrays v1.0.4
+  [e7412a2a] + Ogg_jll v1.3.3+0
+  [4536629a] + OpenBLAS_jll v0.3.9+2
+  [458c3c95] + OpenSSL_jll v1.1.1+2
+  [efe28fd5] + OpenSpecFun_jll v0.5.3+3
+  [91d4177d] + Opus_jll v1.3.1+0
+  [bac558e1] + OrderedCollections v1.1.0
+  [1dea7af3] + OrdinaryDiffEq v5.34.1
+  [90014a1f] + PDMats v0.9.12
+  [65888b18] + ParameterizedFunctions v5.3.0
+  [d96e819e] + Parameters v0.12.0
+  [69de0a69] + Parsers v1.0.1
+  [fa939f87] + Pidfile v1.1.0
+  [ccf2f8ad] + PlotThemes v1.0.3
+  [995b91a9] + PlotUtils v0.6.5
+  [91a5bcdd] + Plots v0.27.1
+  [e409e4f3] + PoissonRandom v0.4.0
+  [73af2aaf] + PotentialFlow v0.1.7
+  [8162dcfd] + PrettyPrint v0.1.0
+  [33c8b6b6] + ProgressLogging v0.1.2
+  [92933f4c] + ProgressMeter v1.2.0
+  [1fd47b50] + QuadGK v2.3.1
+  [e6cf234a] + RandomNumbers v1.4.0
+  [c84ed2f1] + Ratios v0.4.0
+  [3cdcf5f2] + RecipesBase v0.8.0
+  [731186ca] + RecursiveArrayTools v2.3.1
+  [f2c3362d] + RecursiveFactorization v0.1.0
+  [189a3867] + Reexport v0.2.0
+  [4418983a] + Registrator v1.0.0
+  [ae029012] + Requires v1.0.1
+  [ae5879a3] + ResettableStacks v1.0.0
+  [295af30f] + Revise v2.6.1
+  [79098fc4] + Rmath v0.6.1
+  [f50d1b31] + Rmath_jll v0.2.2+0
+  [f2b01f46] + Roots v1.0.1
+  [1bc83da4] + SafeTestsets v0.0.1
+  [6e93f119] + SchwarzChristoffel v0.1.5
+  [992d4aef] + Showoff v0.3.1
+  [699a6c99] + SimpleTraits v0.9.1
+  [b85f4697] + SoftGlobalScope v1.0.10
+  [a2af1166] + SortingAlgorithms v0.3.1
+  [47a9eef4] + SparseDiffTools v1.6.0
+  [276daf66] + SpecialFunctions v0.10.0
+  [90137ffa] + StaticArrays v0.12.1
+  [2913bbd2] + StatsBase v0.33.0
+  [4c63d2b9] + StatsFuns v0.9.4
+  [9672c7b4] + SteadyStateDiffEq v1.5.0
+  [789caeaf] + StochasticDiffEq v6.19.2
+  [bea87d4a] + SuiteSparse_jll v5.4.0+8
+  [c3572dad] + Sundials v4.1.1
+  [fb77eaff] + Sundials_jll v5.2.0+0
+  [3783bdb8] + TableTraits v1.0.0
+  [bd369af6] + Tables v1.0.4
+  [5d786b92] + TerminalLoggers v0.1.1
+  [37f0c46e] + TimeToLive v0.3.0
+  [3bb67fe8] + TranscodingStreams v0.9.5
+  [a2a6695c] + TreeViews v0.3.0
+  [3a884ed6] + UnPack v0.1.0
+  [1986cc42] + Unitful v1.1.0
+  [81def892] + VersionParsing v1.2.0
+  [19fa3120] + VertexSafeGraphs v0.1.1
+  [104b5d7c] + WebSockets v1.5.2
+  [efce3f68] + WoodburyMatrices v0.5.2
+  [c2297ded] + ZMQ v1.2.0
+  [8f1865be] + ZeroMQ_jll v4.3.2+2
+  [83775a58] + Zlib_jll v1.2.11+9
+  [700de1a5] + ZygoteRules v0.2.0
+  [0ac62f75] + libass_jll v0.14.0+1
+  [f638f0a6] + libfdk_aac_jll v0.1.6+1
+  [f27f6e37] + libvorbis_jll v1.3.6+2
+  [1270edf5] + x264_jll v2019.5.25+1
+  [dfaa095f] + x265_jll v3.0.0+0
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [8bb1440f] + DelimitedFiles
+  [8ba89e20] + Distributed
+  [7b1f6079] + FileWatching
+  [9fa8497b] + Future
+  [b77e0a4c] + InteractiveUtils
+  [76f85450] + LibGit2
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [a63ad114] + Mmap
+  [44cfe95a] + Pkg
+  [de0858da] + Printf
+  [3fa0cd96] + REPL
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [1a1011a3] + SharedArrays
+  [6462fe0b] + Sockets
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [4607b0f0] + SuiteSparse
+  [8dfed614] + Test
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+   Building GR ────→ `~/.julia/packages/GR/yMV3y/deps/build.log`
+   Building FFTW ──→ `~/.julia/packages/FFTW/qqcBj/deps/build.log`
+   Building Conda ─→ `~/.julia/packages/Conda/3rPhK/deps/build.log`
+   Building Plots ─→ `~/.julia/packages/Plots/WwFyB/deps/build.log`
+   Building IJulia → `~/.julia/packages/IJulia/DrVMH/deps/build.log`
+    Testing EnKF
+Status `/tmp/jl_TmcVVS/Project.toml`
+  [35d6a980] ColorSchemes v3.5.0
+  [0c46a032] DifferentialEquations v6.13.0
+  [31c24e10] Distributions v0.23.2
+  [ffbed154] DocStringExtensions v0.8.1
+  [e30172f5] Documenter v0.24.9
+  [685896a8] EnKF v0.1.0
+  [7a1cc6ca] FFTW v1.2.0
+  [5789e2e9] FileIO v1.2.4
+  [7073ff75] IJulia v1.21.2
+  [a98d9a8b] Interpolations v0.12.9
+  [033835bb] JLD2 v0.1.3
+  [b964fa9f] LaTeXStrings v1.1.0
+  [50d2b5c4] Lazy v0.15.0
+  [65888b18] ParameterizedFunctions v5.3.0
+  [91a5bcdd] Plots v0.27.1
+  [73af2aaf] PotentialFlow v0.1.7
+  [92933f4c] ProgressMeter v1.2.0
+  [731186ca] RecursiveArrayTools v2.3.1
+  [189a3867] Reexport v0.2.0
+  [4418983a] Registrator v1.0.0
+  [295af30f] Revise v2.6.1
+  [37e2e46d] LinearAlgebra
+  [9a3f8284] Random
+  [10745b16] Statistics
+  [8dfed614] Test
+Status `/tmp/jl_TmcVVS/Manifest.toml`
+  [621f4979] AbstractFFTs v0.5.0
+  [1520ce14] AbstractTrees v0.3.3
+  [79e6a3ab] Adapt v1.0.1
+  [ec485272] ArnoldiMethod v0.0.4
+  [7d9fca2a] Arpack v0.4.0
+  [68821587] Arpack_jll v3.5.0+3
+  [4fba245c] ArrayInterface v2.8.5
+  [4c555306] ArrayLayouts v0.2.4
+  [bf4720bc] AssetRegistry v0.1.0
+  [15f4f7f2] AutoHashEquals v0.2.0
+  [13072b0f] AxisAlgorithms v1.0.0
+  [aae01518] BandedMatrices v0.15.3
+  [764a87c0] BoundaryValueDiffEq v2.3.0
+  [6e34b625] Bzip2_jll v1.0.6+2
+  [fa961155] CEnum v0.2.0
+  [a603d957] CanonicalTraits v0.2.1
+  [d360d2e6] ChainRulesCore v0.7.1
+  [da1fd8a2] CodeTracking v0.5.9
+  [944b1d66] CodecZlib v0.7.0
+  [35d6a980] ColorSchemes v3.5.0
+  [3da002f7] ColorTypes v0.8.1
+  [5ae59095] Colors v0.10.2
+  [bbf7d656] CommonSubexpressions v0.2.0
+  [34da2185] Compat v3.8.0
+  [e66e0078] CompilerSupportLibraries_jll v0.3.3+0
+  [8f4d0f93] Conda v1.4.1
+  [88cd18e8] ConsoleProgressMonitor v0.1.2
+  [187b0558] ConstructionBase v1.0.0
+  [d38c429a] Contour v0.5.2
+  [9a962f9c] DataAPI v1.1.0
+  [864edb3b] DataStructures v0.17.12
+  [e2d170a0] DataValueInterfaces v1.0.0
+  [bcd4f6db] DelayDiffEq v5.23.0
+  [2b5f629d] DiffEqBase v6.29.2
+  [459566f4] DiffEqCallbacks v2.13.0
+  [01453d9d] DiffEqDiffTools v1.7.0
+  [5a0ffddc] DiffEqFinancial v2.2.1
+  [c894b116] DiffEqJump v6.6.0
+  [77a26b50] DiffEqNoiseProcess v3.10.0
+  [055956cb] DiffEqPhysics v3.5.0
+  [163ba53b] DiffResults v1.0.2
+  [b552c78f] DiffRules v1.0.1
+  [0c46a032] DifferentialEquations v6.13.0
+  [c619ae07] DimensionalPlotRecipes v1.2.0
+  [b4f34e82] Distances v0.8.2
+  [31c24e10] Distributions v0.23.2
+  [ffbed154] DocStringExtensions v0.8.1
+  [e30172f5] Documenter v0.24.9
+  [685896a8] EnKF v0.1.0
+  [d4d017d3] ExponentialUtilities v1.6.0
+  [c87230d0] FFMPEG v0.3.0
+  [b22a6f82] FFMPEG_jll v4.1.0+2
+  [7a1cc6ca] FFTW v1.2.0
+  [f5851436] FFTW_jll v3.3.9+5
+  [442a2c76] FastGaussQuadrature v0.4.2
+  [5789e2e9] FileIO v1.2.4
+  [1a297f60] FillArrays v0.8.7
+  [6a86dc24] FiniteDiff v2.3.0
+  [53c48c17] FixedPointNumbers v0.7.1
+  [f6369f11] ForwardDiff v0.10.10
+  [d7e528f0] FreeType2_jll v2.10.1+2
+  [559328eb] FriBidi_jll v1.0.5+2
+  [069b7b12] FunctionWrappers v1.1.1
+  [28b8d3ca] GR v0.48.0
+  [6b9d7cbe] GeneralizedGenerated v0.2.3
+  [01680d73] GenericSVD v0.3.0
+  [4d00f742] GeometryTypes v0.8.2
+  [8f6bce27] GitForge v0.1.5
+  [bc5e4493] GitHub v5.1.5
+  [cd3eb016] HTTP v0.8.14
+  [9fb69e20] Hiccup v0.2.2
+  [7073ff75] IJulia v1.21.2
+  [d25df0c9] Inflate v0.1.2
+  [83e8ac13] IniFile v0.5.0
+  [1d5cc7b8] IntelOpenMP_jll v2018.0.3+0
+  [a98d9a8b] Interpolations v0.12.9
+  [42fd0dbc] IterativeSolvers v0.8.4
+  [82899510] IteratorInterfaceExtensions v1.0.0
+  [033835bb] JLD2 v0.1.3
+  [682c06a0] JSON v0.21.0
+  [2535ab7d] JSON2 v0.3.1
+  [aa1ae85d] JuliaInterpreter v0.7.13
+  [b14d175d] JuliaVariables v0.2.0
+  [c1c5ebd0] LAME_jll v3.100.0+0
+  [b964fa9f] LaTeXStrings v1.1.0
+  [2ee39098] LabelledArrays v1.1.0
+  [23fbe1c1] Latexify v0.12.0
+  [50d2b5c4] Lazy v0.15.0
+  [1d6d02ad] LeftChildRightSiblingTrees v0.1.2
+  [dd192d2f] LibVPX_jll v1.8.1+1
+  [093fc24a] LightGraphs v1.3.1
+  [d3d80556] LineSearches v7.0.1
+  [e6f89c97] LoggingExtras v0.4.0
+  [6f1432cf] LoweredCodeUtils v0.4.3
+  [d00139f3] METIS_jll v5.1.0+3
+  [856f044c] MKL_jll v2019.0.117+2
+  [d8e11817] MLStyle v0.3.1
+  [1914dd2f] MacroTools v0.5.5
+  [dbb5928d] MappedArrays v0.2.2
+  [739be429] MbedTLS v1.0.2
+  [c8ffd9c3] MbedTLS_jll v2.16.0+1
+  [442fdcdd] Measures v0.3.1
+  [e1d29d7a] Missings v0.4.3
+  [961ee093] ModelingToolkit v3.0.1
+  [46d2c3a1] MuladdMacro v0.2.2
+  [f9640e96] MultiScaleArrays v1.7.1
+  [ffc61752] Mustache v1.0.2
+  [a975b10e] Mux v0.7.0
+  [d41bc354] NLSolversBase v7.6.1
+  [2774e3e8] NLsolve v4.3.0
+  [77ba4419] NaNMath v0.3.3
+  [71a1bf82] NameResolution v0.1.3
+  [6fe1bfb0] OffsetArrays v1.0.4
+  [e7412a2a] Ogg_jll v1.3.3+0
+  [4536629a] OpenBLAS_jll v0.3.9+2
+  [458c3c95] OpenSSL_jll v1.1.1+2
+  [efe28fd5] OpenSpecFun_jll v0.5.3+3
+  [91d4177d] Opus_jll v1.3.1+0
+  [bac558e1] OrderedCollections v1.1.0
+  [1dea7af3] OrdinaryDiffEq v5.34.1
+  [90014a1f] PDMats v0.9.12
+  [65888b18] ParameterizedFunctions v5.3.0
+  [d96e819e] Parameters v0.12.0
+  [69de0a69] Parsers v1.0.1
+  [fa939f87] Pidfile v1.1.0
+  [ccf2f8ad] PlotThemes v1.0.3
+  [995b91a9] PlotUtils v0.6.5
+  [91a5bcdd] Plots v0.27.1
+  [e409e4f3] PoissonRandom v0.4.0
+  [73af2aaf] PotentialFlow v0.1.7
+  [8162dcfd] PrettyPrint v0.1.0
+  [33c8b6b6] ProgressLogging v0.1.2
+  [92933f4c] ProgressMeter v1.2.0
+  [1fd47b50] QuadGK v2.3.1
+  [e6cf234a] RandomNumbers v1.4.0
+  [c84ed2f1] Ratios v0.4.0
+  [3cdcf5f2] RecipesBase v0.8.0
+  [731186ca] RecursiveArrayTools v2.3.1
+  [f2c3362d] RecursiveFactorization v0.1.0
+  [189a3867] Reexport v0.2.0
+  [4418983a] Registrator v1.0.0
+  [ae029012] Requires v1.0.1
+  [ae5879a3] ResettableStacks v1.0.0
+  [295af30f] Revise v2.6.1
+  [79098fc4] Rmath v0.6.1
+  [f50d1b31] Rmath_jll v0.2.2+0
+  [f2b01f46] Roots v1.0.1
+  [1bc83da4] SafeTestsets v0.0.1
+  [6e93f119] SchwarzChristoffel v0.1.5
+  [992d4aef] Showoff v0.3.1
+  [699a6c99] SimpleTraits v0.9.1
+  [b85f4697] SoftGlobalScope v1.0.10
+  [a2af1166] SortingAlgorithms v0.3.1
+  [47a9eef4] SparseDiffTools v1.6.0
+  [276daf66] SpecialFunctions v0.10.0
+  [90137ffa] StaticArrays v0.12.1
+  [2913bbd2] StatsBase v0.33.0
+  [4c63d2b9] StatsFuns v0.9.4
+  [9672c7b4] SteadyStateDiffEq v1.5.0
+  [789caeaf] StochasticDiffEq v6.19.2
+  [bea87d4a] SuiteSparse_jll v5.4.0+8
+  [c3572dad] Sundials v4.1.1
+  [fb77eaff] Sundials_jll v5.2.0+0
+  [3783bdb8] TableTraits v1.0.0
+  [bd369af6] Tables v1.0.4
+  [5d786b92] TerminalLoggers v0.1.1
+  [37f0c46e] TimeToLive v0.3.0
+  [3bb67fe8] TranscodingStreams v0.9.5
+  [a2a6695c] TreeViews v0.3.0
+  [3a884ed6] UnPack v0.1.0
+  [1986cc42] Unitful v1.1.0
+  [81def892] VersionParsing v1.2.0
+  [19fa3120] VertexSafeGraphs v0.1.1
+  [104b5d7c] WebSockets v1.5.2
+  [efce3f68] WoodburyMatrices v0.5.2
+  [c2297ded] ZMQ v1.2.0
+  [8f1865be] ZeroMQ_jll v4.3.2+2
+  [83775a58] Zlib_jll v1.2.11+9
+  [700de1a5] ZygoteRules v0.2.0
+  [0ac62f75] libass_jll v0.14.0+1
+  [f638f0a6] libfdk_aac_jll v0.1.6+1
+  [f27f6e37] libvorbis_jll v1.3.6+2
+  [1270edf5] x264_jll v2019.5.25+1
+  [dfaa095f] x265_jll v3.0.0+0
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8bb1440f] DelimitedFiles
+  [8ba89e20] Distributed
+  [7b1f6079] FileWatching
+  [9fa8497b] Future
+  [b77e0a4c] InteractiveUtils
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [1a1011a3] SharedArrays
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [4607b0f0] SuiteSparse
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+Test Summary:      | Pass  Total
+Additive Inflation |    5      5
+Test Summary:            | Pass  Total
+Multiplicative Inflation |    3      3
+Test Summary:           | Pass  Total
+MultiAdditive Inflation |   11     11
+Test Summary: |
+State         | No tests
+Test Summary: | Pass  Total
+EnsembleState |    9      9
+Test Summary: | Pass  Total
+Initialize    |    1      1
+    Testing EnKF tests passed 
