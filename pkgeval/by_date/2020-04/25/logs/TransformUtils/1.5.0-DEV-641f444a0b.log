@@ -1,0 +1,72 @@
+Julia Version 1.5.0-DEV.681
+Commit 641f444a0b (2020-04-24 16:27 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed TransformUtils ─ v0.2.5
+Updating `~/.julia/environments/v1.5/Project.toml`
+  [9b8138ad] + TransformUtils v0.2.5
+Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [9b8138ad] + TransformUtils v0.2.5
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+    Testing TransformUtils
+Status `/tmp/jl_PAExdm/Project.toml`
+  [9b8138ad] TransformUtils v0.2.5
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_PAExdm/Manifest.toml`
+  [9b8138ad] TransformUtils v0.2.5
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+Test Summary:                               |
+Constructors SO3, Quaternion, AngleAxis...  | No tests
+Test Summary:                           | Pass  Total
+Ensure basic quaternion operations hold |   10     10
+Test Summary:                                       | Pass  Total
+Comparison functions for SO3, Quaternion, AngleAxis |    5      5
+Test Summary:                                        | Pass  Total
+Trivial case quaterion -> SO3 -> Euler -> quaternion |    2      2
+┌ Warning: Need better coverage on convert function tests
+└ @ Main ~/.julia/packages/TransformUtils/bw4xv/test/runtests.jl:89
+dAA = AngleAxis(0.7853981633974483, [1.0, 0.0, 0.0])
+dAA = so3([0.0 -0.038284088726322586 0.050921364265340045; 0.038284088726322586 0.0 0.1597834021091481; -0.050921364265340045 -0.1597834021091481 0.0])
+dAA = so3([0.0 0.0009126629218756004 0.01940742036502942; -0.0009126629218756004 0.0 0.041630892063191476; -0.01940742036502942 -0.041630892063191476 0.0])
+dAA = so3([0.0 -0.04998629177458985 0.047644383490588645; 0.04998629177458985 0.0 0.22960218156661077; -0.047644383490588645 -0.22960218156661077 0.0])
+dAA = Quaternion(0.9947419144488228, [-0.08822224060520266, 0.018792898391667805, 0.04849934918459647])
+dAA = SO3([0.9942565990996857 0.10595142450731385 0.015103337101382201; -0.10397088272347413 0.9896995643202495 -0.09841152335986957; -0.025374607236932793 0.09627599923750228 0.9950311860833267])
+Test Summary:                        | Pass  Total
+Compare SO3 and quaternion rotations |   24     24
+Test Summary:       | Pass  Total
+Basic SE3 mechanics |    4      4
+Compare operations on two different SE3 transforms
+xi = SE3(SO3([0.9988216682965314 -0.00024541965350045495 0.048530554401608514; -0.004798708183238243 0.9945873160674623 0.10379327106076718; -0.0482933467581812 -0.10390385212741367 0.9934141846037727]), [-1.5978340210914808, 0.5092136426534004, 0.38284088726322585])
+xj = SE3(SO3([0.9668568915181945 -0.24814662002336088 0.06009164912661199; 0.19901591760418064 0.8799097224664262 0.43145283038731225; -0.15993878786567095 -0.40519394773372247 0.9001319063648512]), [-2.2960218156661076, 0.47644383490588643, 0.49986291774589847])
+Dx = SE3(SO3([0.9724865734202799 -0.2325084791573683 0.014480042721291046; 0.2143196778251768 0.9173091613352997 0.3355755924188196; -0.09130684648039941 -0.32323939990393635 0.9419019854186251]), [-0.7028592305131496, -0.0445801258799452, 0.07896661870733213])
+Test Summary:         | Pass  Total
+SE3 ⊕ and ⊖ mechanics |    6      6
+TransformUtils.convert(Euler, q) = Euler(0.7853981633974484, 0.0, 1.5707963267948963, Quaternion(1.0, [0.0, 0.0, 0.0]))
+Test Summary:              | Pass  Total
+Previous discovered issues |    3      3
+Test Summary:      | Pass  Total
+test SO3 logmap... |  301    301
+Test Summary:                              | Pass  Total
+test in-place and efficient inverse SE3... |    1      1
+    Testing TransformUtils tests passed 
