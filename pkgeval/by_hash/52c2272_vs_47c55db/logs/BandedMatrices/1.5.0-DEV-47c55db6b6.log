@@ -1,0 +1,126 @@
+Julia Version 1.5.0-DEV.725
+Commit 47c55db6b6 (2020-04-30 08:05 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed ArrayLayouts ─── v0.2.5
+  Installed FillArrays ───── v0.8.7
+  Installed BandedMatrices ─ v0.15.5
+Updating `~/.julia/environments/v1.5/Project.toml`
+  [aae01518] + BandedMatrices v0.15.5
+Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [4c555306] + ArrayLayouts v0.2.5
+  [aae01518] + BandedMatrices v0.15.5
+  [1a297f60] + FillArrays v0.8.7
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [2f01184e] + SparseArrays
+    Testing BandedMatrices
+Status `/tmp/jl_llXDQW/Project.toml`
+  [4c555306] ArrayLayouts v0.2.5
+  [aae01518] BandedMatrices v0.15.5
+  [1a297f60] FillArrays v0.8.7
+  [2a0f44e3] Base64
+  [37e2e46d] LinearAlgebra
+  [9a3f8284] Random
+  [2f01184e] SparseArrays
+  [8dfed614] Test
+Status `/tmp/jl_llXDQW/Manifest.toml`
+  [4c555306] ArrayLayouts v0.2.5
+  [aae01518] BandedMatrices v0.15.5
+  [1a297f60] FillArrays v0.8.7
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [8dfed614] Test
+Test Summary: | Pass  Total
+BandedMatrix  | 3335   3335
+Test Summary:         | Pass  Total
+BandedMatrix SubArray |  135    135
+Test Summary:  |  Pass  Total
+Linear Algebra | 22865  22865
+  0.000068 seconds (6 allocations: 224 bytes)
+Test Summary: | Pass  Total
+broadcasting  |  178    178
+Test Summary: | Pass  Total
+Indexing      |  536    536
+Test Summary: | Pass  Total
+Banded A\b    |   54     54
+Mixed types: Error During Test at /home/pkgeval/.julia/packages/BandedMatrices/PbHXE/test/test_bandedqr.jl:84
+  Test threw exception
+  Expression: Q * R ≈ A
+  Overload materialize!(::Lmul{QLayout})
+  Stacktrace:
+   [1] error(::String) at ./error.jl:33
+   [2] materialize!(::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRPackedQ{Float64,BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:28
+   [3] copyto!(::Array{Float64,2}, ::Lmul{QLayout,BandedColumns{DenseColumnMajor},LinearAlgebra.QRPackedQ{Float64,BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}},BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:19
+   [4] copy(::Lmul{QLayout,BandedColumns{DenseColumnMajor},LinearAlgebra.QRPackedQ{Float64,BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}},BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:9
+   [5] materialize(::Lmul{QLayout,BandedColumns{DenseColumnMajor},LinearAlgebra.QRPackedQ{Float64,BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}},BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/lmul.jl:46
+   [6] lmul(::LinearAlgebra.QRPackedQ{Float64,BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}}, ::BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/lmul.jl:44
+   [7] *(::LinearAlgebra.QRPackedQ{Float64,BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}}, ::BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/muladd.jl:426
+   [8] macro expansion at /home/pkgeval/.julia/packages/BandedMatrices/PbHXE/test/test_bandedqr.jl:84 [inlined]
+   [9] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
+   [10] macro expansion at /home/pkgeval/.julia/packages/BandedMatrices/PbHXE/test/test_bandedqr.jl:70 [inlined]
+   [11] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
+   [12] top-level scope at /home/pkgeval/.julia/packages/BandedMatrices/PbHXE/test/test_bandedqr.jl:6
+  
+banded Views: Error During Test at /home/pkgeval/.julia/packages/BandedMatrices/PbHXE/test/test_bandedqr.jl:95
+  Test threw exception
+  Expression: Matrix(qr(V)) ≈ V
+  Overload materialize!(::Lmul{QLayout})
+  Stacktrace:
+   [1] error(::String) at ./error.jl:33
+   [2] materialize!(::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRPackedQ{Float64,BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:28
+   [3] copyto!(::Array{Float64,2}, ::Lmul{QLayout,BandedColumns{DenseColumnMajor},LinearAlgebra.QRPackedQ{Float64,BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}},BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:19
+   [4] copy(::Lmul{QLayout,BandedColumns{DenseColumnMajor},LinearAlgebra.QRPackedQ{Float64,BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}},BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:9
+   [5] materialize(::Lmul{QLayout,BandedColumns{DenseColumnMajor},LinearAlgebra.QRPackedQ{Float64,BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}},BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/lmul.jl:46
+   [6] lmul(::LinearAlgebra.QRPackedQ{Float64,BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}}, ::BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/lmul.jl:44
+   [7] *(::LinearAlgebra.QRPackedQ{Float64,BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}}, ::BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/muladd.jl:426
+   [8] AbstractArray{T,2} where T(::QR{Float64,BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/LinearAlgebra/src/qr.jl:398
+   [9] AbstractArray(::QR{Float64,BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/LinearAlgebra/src/qr.jl:399
+   [10] Array{T,2} where T(::QR{Float64,BandedMatrix{Float64,Array{Float64,2},Base.OneTo{Int64}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/LinearAlgebra/src/qr.jl:400
+   [11] macro expansion at /home/pkgeval/.julia/packages/BandedMatrices/PbHXE/test/test_bandedqr.jl:95 [inlined]
+   [12] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
+   [13] macro expansion at /home/pkgeval/.julia/packages/BandedMatrices/PbHXE/test/test_bandedqr.jl:89 [inlined]
+   [14] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
+   [15] top-level scope at /home/pkgeval/.julia/packages/BandedMatrices/PbHXE/test/test_bandedqr.jl:6
+  
+Test Summary:                   | Pass  Error  Broken  Total
+QR tests                        | 1111      2       4   1117
+  Mixed types                   |    2      1              3
+  banded Views                  |   11      1             12
+  banded_lmul! times degenerate |    2                     2
+ERROR: LoadError: LoadError: Some tests did not pass: 1111 passed, 0 failed, 2 errored, 4 broken.
+in expression starting at /home/pkgeval/.julia/packages/BandedMatrices/PbHXE/test/test_bandedqr.jl:5
+in expression starting at /home/pkgeval/.julia/packages/BandedMatrices/PbHXE/test/runtests.jl:11
+ERROR: Package BandedMatrices errored during testing
+Stacktrace:
+ [1] pkgerror(::String, ::Vararg{String,N} where N) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/Types.jl:52
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/Operations.jl:1515
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:316
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:303
+ [5] #test#68 at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:297 [inlined]
+ [6] test at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:297 [inlined]
+ [7] #test#67 at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:296 [inlined]
+ [8] test at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:296 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:295
+ [10] test(::String) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:295
+ [11] top-level scope at none:16

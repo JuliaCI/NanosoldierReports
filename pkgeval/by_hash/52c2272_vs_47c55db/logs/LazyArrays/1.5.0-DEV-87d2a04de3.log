@@ -1,0 +1,342 @@
+Julia Version 1.5.0-DEV.732
+Commit 87d2a04de3 (2020-04-30 10:44 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed ArrayLayouts ─ v0.2.5
+  Installed FillArrays ─── v0.8.7
+  Installed MacroTools ─── v0.5.5
+  Installed LazyArrays ─── v0.16.6
+  Installed StaticArrays ─ v0.12.2
+Updating `~/.julia/environments/v1.5/Project.toml`
+  [5078a376] + LazyArrays v0.16.6
+Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [4c555306] + ArrayLayouts v0.2.5
+  [1a297f60] + FillArrays v0.8.7
+  [5078a376] + LazyArrays v0.16.6
+  [1914dd2f] + MacroTools v0.5.5
+  [90137ffa] + StaticArrays v0.12.2
+  [2a0f44e3] + Base64
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+    Testing LazyArrays
+Status `/tmp/jl_sQ1f5C/Project.toml`
+  [4c555306] ArrayLayouts v0.2.5
+  [1a297f60] FillArrays v0.8.7
+  [5078a376] LazyArrays v0.16.6
+  [1914dd2f] MacroTools v0.5.5
+  [90137ffa] StaticArrays v0.12.2
+  [9f7883ad] Tracker v0.2.6
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_sQ1f5C/Manifest.toml`
+  [79e6a3ab] Adapt v1.0.1
+  [4c555306] ArrayLayouts v0.2.5
+  [b99e7846] BinaryProvider v0.5.9
+  [bbf7d656] CommonSubexpressions v0.2.0
+  [e66e0078] CompilerSupportLibraries_jll v0.3.3+0
+  [163ba53b] DiffResults v1.0.2
+  [b552c78f] DiffRules v1.0.1
+  [1a297f60] FillArrays v0.8.7
+  [f6369f11] ForwardDiff v0.10.10
+  [5078a376] LazyArrays v0.16.6
+  [1914dd2f] MacroTools v0.5.5
+  [872c559c] NNlib v0.6.6
+  [77ba4419] NaNMath v0.3.3
+  [efe28fd5] OpenSpecFun_jll v0.5.3+3
+  [ae029012] Requires v1.0.1
+  [276daf66] SpecialFunctions v0.10.0
+  [90137ffa] StaticArrays v0.12.2
+  [9f7883ad] Tracker v0.2.6
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+Test Summary:     | Pass  Total
+Lazy MemoryLayout |    6      6
+Test Summary: | Pass  Total
+Applying      |   35     35
+Test Summary:   | Pass  Total
+Matrix * Vector |  449    449
+Test Summary:   | Pass  Total
+Matrix * Matrix |  237    237
+Test Summary: | Pass  Total
+adjtrans      |  656    656
+Test Summary: | Pass  Broken  Total
+Mul           |   28       1     29
+Test Summary: | Pass  Total
+Lmul/Rmul     |  142    142
+QR: Error During Test at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:910
+  Test threw exception
+  Expression: all(Q * b .=== apply(*, Q, b))
+  Overload materialize!(::Lmul{QLayout})
+  Stacktrace:
+   [1] error(::String) at ./error.jl:33
+   [2] materialize!(::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,1}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:28
+   [3] copyto!(::Array{Float64,1}, ::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,1}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:19
+   [4] copy(::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,1}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:9
+   [5] copy(::Applied{LmulStyle,typeof(*),Tuple{LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,1}}}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:265
+   [6] materialize at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:49 [inlined]
+   [7] apply(::Function, ::LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}, ::Vararg{Any,N} where N) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:46
+   [8] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:910
+   [9] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [10] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:905
+   [11] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [12] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:904
+  
+QR: Error During Test at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:911
+  Test threw exception
+  Expression: all(Q * B .=== copyto!(similar(B, 5, 3), Lmul(Q, B)) .=== copyto!(similar(B, 5, 3), applied(*, Q, B)) .=== apply(*, Q, B))
+  Overload materialize!(::Lmul{QLayout})
+  Stacktrace:
+   [1] error(::String) at ./error.jl:33
+   [2] materialize!(::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:28
+   [3] copyto!(::Array{Float64,2}, ::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:19
+   [4] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:911
+   [5] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [6] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:905
+   [7] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [8] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:904
+  
+QR: Error During Test at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:912
+  Test threw exception
+  Expression: all(Q * B * b .=== apply(*, Q, B, b))
+  Overload materialize!(::Lmul{QLayout})
+  Stacktrace:
+   [1] error(::String) at ./error.jl:33
+   [2] materialize!(::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:28
+   [3] copyto!(::Array{Float64,2}, ::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:19
+   [4] copy(::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:9
+   [5] copy(::Applied{LmulStyle,typeof(*),Tuple{LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2}}}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:265
+   [6] materialize at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:49 [inlined]
+   [7] apply at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:46 [inlined]
+   [8] _lmaterialize(::LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}, ::Array{Float64,2}, ::Array{Float64,1}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:86
+   [9] lmaterialize(::Applied{DefaultArrayApplyStyle,typeof(*),Tuple{LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2},Array{Float64,1}}}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:83
+   [10] copy(::Applied{DefaultArrayApplyStyle,typeof(*),Tuple{LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2},Array{Float64,1}}}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:102
+   [11] materialize at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:49 [inlined]
+   [12] apply(::Function, ::LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}, ::Vararg{Any,N} where N) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:46
+   [13] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:912
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:905
+   [16] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [17] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:904
+  
+QR: Error During Test at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:916
+  Test threw exception
+  Expression: copyto!(dest, applied(*, Q, b)) == Q * b
+  Overload materialize!(::Lmul{QLayout})
+  Stacktrace:
+   [1] error(::String) at ./error.jl:33
+   [2] materialize!(::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,1}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:28
+   [3] copyto!(::Array{Float64,1}, ::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,1}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:19
+   [4] copyto!(::Array{Float64,1}, ::Applied{LmulStyle,typeof(*),Tuple{LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,1}}}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:271
+   [5] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:916
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [7] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:905
+   [8] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [9] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:904
+  
+QR: Error During Test at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:920
+  Test threw exception
+  Expression: all(Q * b .=== apply(*, Q, b))
+  Overload materialize!(::Lmul{QLayout})
+  Stacktrace:
+   [1] error(::String) at ./error.jl:33
+   [2] materialize!(::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,1}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:28
+   [3] copyto!(::Array{Float64,1}, ::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,1}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:19
+   [4] copy(::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,1}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:9
+   [5] copy(::Applied{LmulStyle,typeof(*),Tuple{LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,1}}}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:265
+   [6] materialize at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:49 [inlined]
+   [7] apply(::Function, ::LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}, ::Vararg{Any,N} where N) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:46
+   [8] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:920
+   [9] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [10] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:905
+   [11] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [12] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:904
+  
+QR: Error During Test at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:921
+  Test threw exception
+  Expression: all(Q * b .=== apply(*, Q, b))
+  Overload materialize!(::Lmul{QLayout})
+  Stacktrace:
+   [1] error(::String) at ./error.jl:33
+   [2] materialize!(::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,1}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:28
+   [3] copyto!(::Array{Float64,1}, ::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,1}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:19
+   [4] copy(::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,1}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:9
+   [5] copy(::Applied{LmulStyle,typeof(*),Tuple{LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,1}}}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:265
+   [6] materialize at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:49 [inlined]
+   [7] apply(::Function, ::LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}, ::Vararg{Any,N} where N) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:46
+   [8] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:921
+   [9] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [10] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:905
+   [11] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [12] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:904
+  
+QR: Error During Test at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:922
+  Test threw exception
+  Expression: all(Q * B .=== apply(*, Q, B))
+  Overload materialize!(::Lmul{QLayout})
+  Stacktrace:
+   [1] error(::String) at ./error.jl:33
+   [2] materialize!(::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:28
+   [3] copyto!(::Array{Float64,2}, ::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:19
+   [4] copy(::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:9
+   [5] copy(::Applied{LmulStyle,typeof(*),Tuple{LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2}}}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:265
+   [6] materialize at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:49 [inlined]
+   [7] apply(::Function, ::LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}, ::Vararg{Any,N} where N) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:46
+   [8] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:922
+   [9] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [10] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:905
+   [11] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [12] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:904
+  
+QR: Error During Test at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:923
+  Test threw exception
+  Expression: all(Q * B * b .=== apply(*, Q, B, b))
+  Overload materialize!(::Lmul{QLayout})
+  Stacktrace:
+   [1] error(::String) at ./error.jl:33
+   [2] materialize!(::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:28
+   [3] copyto!(::Array{Float64,2}, ::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:19
+   [4] copy(::Lmul{QLayout,DenseColumnMajor,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:9
+   [5] copy(::Applied{LmulStyle,typeof(*),Tuple{LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2}}}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:265
+   [6] materialize at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:49 [inlined]
+   [7] apply at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:46 [inlined]
+   [8] _lmaterialize(::LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}, ::Array{Float64,2}, ::Array{Float64,1}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:86
+   [9] lmaterialize(::Applied{DefaultArrayApplyStyle,typeof(*),Tuple{LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2},Array{Float64,1}}}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:83
+   [10] copy(::Applied{DefaultArrayApplyStyle,typeof(*),Tuple{LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}},Array{Float64,2},Array{Float64,1}}}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:102
+   [11] materialize at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:49 [inlined]
+   [12] apply(::Function, ::LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}, ::Vararg{Any,N} where N) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:46
+   [13] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:923
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:905
+   [16] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [17] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:904
+  
+QR: Error During Test at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:926
+  Test threw exception
+  Expression: all(Q' * b .=== apply(*, Q', b))
+  Overload materialize!(::Lmul{QLayout})
+  Stacktrace:
+   [1] error(::String) at ./error.jl:33
+   [2] materialize!(::Lmul{QLayout,DenseColumnMajor,Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}},Array{Float64,1}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:28
+   [3] copyto!(::Array{Float64,1}, ::Lmul{QLayout,DenseColumnMajor,Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}},Array{Float64,1}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:19
+   [4] copy(::Lmul{QLayout,DenseColumnMajor,Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}},Array{Float64,1}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:9
+   [5] copy(::Applied{LmulStyle,typeof(*),Tuple{Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}},Array{Float64,1}}}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:265
+   [6] materialize at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:49 [inlined]
+   [7] apply(::Function, ::Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}}, ::Vararg{Any,N} where N) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:46
+   [8] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:926
+   [9] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [10] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:905
+   [11] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [12] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:904
+  
+QR: Error During Test at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:927
+  Test threw exception
+  Expression: all(Q' * B .=== apply(*, Q', B))
+  Overload materialize!(::Lmul{QLayout})
+  Stacktrace:
+   [1] error(::String) at ./error.jl:33
+   [2] materialize!(::Lmul{QLayout,DenseColumnMajor,Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:28
+   [3] copyto!(::Array{Float64,2}, ::Lmul{QLayout,DenseColumnMajor,Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:19
+   [4] copy(::Lmul{QLayout,DenseColumnMajor,Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:9
+   [5] copy(::Applied{LmulStyle,typeof(*),Tuple{Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}},Array{Float64,2}}}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:265
+   [6] materialize at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:49 [inlined]
+   [7] apply(::Function, ::Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}}, ::Vararg{Any,N} where N) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:46
+   [8] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:927
+   [9] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [10] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:905
+   [11] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [12] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:904
+  
+QR: Error During Test at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:928
+  Test threw exception
+  Expression: all((Q' * B) * b .=== apply(*, Q', B, b))
+  Overload materialize!(::Lmul{QLayout})
+  Stacktrace:
+   [1] error(::String) at ./error.jl:33
+   [2] materialize!(::Lmul{QLayout,DenseColumnMajor,Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:28
+   [3] copyto!(::Array{Float64,2}, ::Lmul{QLayout,DenseColumnMajor,Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:19
+   [4] copy(::Lmul{QLayout,DenseColumnMajor,Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}},Array{Float64,2}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:9
+   [5] copy(::Applied{LmulStyle,typeof(*),Tuple{Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}},Array{Float64,2}}}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:265
+   [6] materialize at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:49 [inlined]
+   [7] apply at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:46 [inlined]
+   [8] _lmaterialize(::Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}}, ::Array{Float64,2}, ::Array{Float64,1}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:86
+   [9] lmaterialize(::Applied{DefaultArrayApplyStyle,typeof(*),Tuple{Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}},Array{Float64,2},Array{Float64,1}}}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:83
+   [10] copy(::Applied{DefaultArrayApplyStyle,typeof(*),Tuple{Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}},Array{Float64,2},Array{Float64,1}}}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:102
+   [11] materialize at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:49 [inlined]
+   [12] apply(::Function, ::Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}}, ::Vararg{Any,N} where N) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/lazyapplying.jl:46
+   [13] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:928
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:905
+   [16] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [17] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:904
+  
+QR: Error During Test at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:932
+  Test threw exception
+  Expression: all(copyto!(dest, applied(*, Q', b)) .=== Q' * b)
+  Overload materialize!(::Lmul{QLayout})
+  Stacktrace:
+   [1] error(::String) at ./error.jl:33
+   [2] materialize!(::Lmul{QLayout,DenseColumnMajor,Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}},Array{Float64,1}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:28
+   [3] copyto!(::Array{Float64,1}, ::Lmul{QLayout,DenseColumnMajor,Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}},Array{Float64,1}}) at /home/pkgeval/.julia/packages/ArrayLayouts/mk6EA/src/factorizations.jl:19
+   [4] copyto!(::Array{Float64,1}, ::Applied{LmulStyle,typeof(*),Tuple{Adjoint{Float64,LinearAlgebra.QRCompactWYQ{Float64,Array{Float64,2}}},Array{Float64,1}}}) at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/src/linalg/mul.jl:271
+   [5] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:932
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [7] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:905
+   [8] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114
+   [9] top-level scope at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:904
+  
+Test Summary:        | Pass  Error  Broken  Total
+Factorizations       |   20     12       1     33
+  QR                 |    6     12             18
+  applied axes       |    1                     1
+  Broadcast          |    4                     4
+  Diagonal           |    6              1      7
+  ApplyArray MulTest |    3                     3
+ERROR: LoadError: LoadError: Some tests did not pass: 20 passed, 0 failed, 12 errored, 1 broken.
+in expression starting at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/multests.jl:903
+in expression starting at /home/pkgeval/.julia/packages/LazyArrays/dqxuG/test/runtests.jl:28
+ERROR: Package LazyArrays errored during testing
+Stacktrace:
+ [1] pkgerror(::String, ::Vararg{String,N} where N) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/Types.jl:52
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/Operations.jl:1515
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:316
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:303
+ [5] #test#68 at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:297 [inlined]
+ [6] test at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:297 [inlined]
+ [7] #test#67 at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:296 [inlined]
+ [8] test at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:296 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:295
+ [10] test(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:295
+ [11] top-level scope at none:16
