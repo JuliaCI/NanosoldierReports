@@ -1,0 +1,498 @@
+Julia Version 1.5.0-DEV.773
+Commit e3f91bd494 (2020-05-01 17:06 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed TupleTools ─ v1.2.0
+  Installed Strided ──── v0.3.4
+Updating `~/.julia/environments/v1.5/Project.toml`
+  [5e0ebb24] + Strided v0.3.4
+Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [5e0ebb24] + Strided v0.3.4
+  [9d95972d] + TupleTools v1.2.0
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+    Testing Strided
+Status `/tmp/jl_kdBPqg/Project.toml`
+  [5e0ebb24] Strided v0.3.4
+  [9d95972d] TupleTools v1.2.0
+  [37e2e46d] LinearAlgebra
+  [9a3f8284] Random
+  [8dfed614] Test
+Status `/tmp/jl_kdBPqg/Manifest.toml`
+  [5e0ebb24] Strided v0.3.4
+  [9d95972d] TupleTools v1.2.0
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+Test Summary:               | Pass  Total
+construction of StridedView |  452    452
+Test Summary:                     | Pass  Total
+construction of UnsafeStridedView |  292    292
+Test Summary:                           | Pass  Total
+elementwise conj, transpose and adjoint |   16     16
+Test Summary:                            | Pass  Total
+reshape and permutedims with StridedView |  260    260
+Test Summary:                                  | Pass  Total
+reshape and permutedims with UnsafeStridedView |  260    260
+Test Summary:                                  | Pass  Total
+map, scale!, axpy! and axpby! with StridedView |  140    140
+Test Summary:                                        | Pass  Total
+map, scale!, axpy! and axpby! with UnsafeStridedView |  140    140
+Test Summary:          | Pass  Total
+views with StridedView |   36     36
+Test Summary:                | Pass  Total
+views with UnsafeStridedView |   36     36
+T = Float32: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:239
+  Test threw exception
+  Expression: #= /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:239 =# @inferred(B1 .+ sin.(B2 .- 3)) ≈ A1 .+ sin.(A2 .- 3)
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Tuple{Base.OneTo{Int64},Base.OneTo{Int64}},typeof(sin),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(-),Tuple{StridedView{Float32,2,Array{Float32,1},typeof(identity)},Int64}}}}, ::Type{Float32}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(sin),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(-),Tuple{StridedView{Float32,2,Array{Float32,1},typeof(identity)},Int64}}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:239 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Float32: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:240
+  Test threw exception
+  Expression: #= /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:240 =# @inferred(B2' .* B3 .- Ref(0.5)) ≈ A2' .* A3 .- Ref(0.5)
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Tuple{Base.OneTo{Int64},Base.OneTo{Int64},Base.OneTo{Int64}},typeof(*),Tuple{StridedView{Float32,2,Array{Float32,1},typeof(identity)},StridedView{Float32,3,Array{Float32,1},typeof(identity)}}}, ::Type{Float32}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Float32,2,Array{Float32,1},typeof(identity)},StridedView{Float32,3,Array{Float32,1},typeof(identity)}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:240 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Float32: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:241
+  Test threw exception
+  Expression: #= /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:241 =# @inferred(B2' .* B3 .- max.(abs.(B1), real.(B3))) ≈ A2' .* A3 .- max.(abs.(A1), real.(A3))
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Tuple{Base.OneTo{Int64},Base.OneTo{Int64},Base.OneTo{Int64}},typeof(*),Tuple{StridedView{Float32,2,Array{Float32,1},typeof(identity)},StridedView{Float32,3,Array{Float32,1},typeof(identity)}}}, ::Type{Float32}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Float32,2,Array{Float32,1},typeof(identity)},StridedView{Float32,3,Array{Float32,1},typeof(identity)}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:241 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Float32: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:243
+  Test threw exception
+  Expression: B1 .+ sin.(B2 .- 3) isa StridedView
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Tuple{Base.OneTo{Int64},Base.OneTo{Int64}},typeof(+),Tuple{StridedView{Float32,1,Array{Float32,1},typeof(identity)},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(sin),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(-),Tuple{StridedView{Float32,2,Array{Float32,1},typeof(identity)},Int64}}}}}}, ::Type{Float32}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(+),Tuple{StridedView{Float32,1,Array{Float32,1},typeof(identity)},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(sin),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(-),Tuple{StridedView{Float32,2,Array{Float32,1},typeof(identity)},Int64}}}}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:243 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Float32: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:244
+  Test threw exception
+  Expression: B2' .* B3 .- Ref(0.5) isa StridedView
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Tuple{Base.OneTo{Int64},Base.OneTo{Int64},Base.OneTo{Int64}},typeof(-),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Float32,2,Array{Float32,1},typeof(identity)},StridedView{Float32,3,Array{Float32,1},typeof(identity)}}},Base.RefValue{Float64}}}, ::Type{Float64}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(-),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Float32,2,Array{Float32,1},typeof(identity)},StridedView{Float32,3,Array{Float32,1},typeof(identity)}}},Base.RefValue{Float64}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:244 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Float32: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:245
+  Test threw exception
+  Expression: B2' .* B3 .- max.(abs.(B1), real.(B3)) isa StridedView
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Tuple{Base.OneTo{Int64},Base.OneTo{Int64},Base.OneTo{Int64}},typeof(-),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Float32,2,Array{Float32,1},typeof(identity)},StridedView{Float32,3,Array{Float32,1},typeof(identity)}}},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(max),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{1},Nothing,typeof(abs),Tuple{StridedView{Float32,1,Array{Float32,1},typeof(identity)}}},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(real),Tuple{StridedView{Float32,3,Array{Float32,1},typeof(identity)}}}}}}}, ::Type{Float32}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(-),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Float32,2,Array{Float32,1},typeof(identity)},StridedView{Float32,3,Array{Float32,1},typeof(identity)}}},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(max),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{1},Nothing,typeof(abs),Tuple{StridedView{Float32,1,Array{Float32,1},typeof(identity)}}},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(real),Tuple{StridedView{Float32,3,Array{Float32,1},typeof(identity)}}}}}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:245 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Float64: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:239
+  Test threw exception
+  Expression: #= /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:239 =# @inferred(B1 .+ sin.(B2 .- 3)) ≈ A1 .+ sin.(A2 .- 3)
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Tuple{Base.OneTo{Int64},Base.OneTo{Int64}},typeof(sin),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(-),Tuple{StridedView{Float64,2,Array{Float64,1},typeof(identity)},Int64}}}}, ::Type{Float64}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(sin),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(-),Tuple{StridedView{Float64,2,Array{Float64,1},typeof(identity)},Int64}}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:239 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Float64: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:240
+  Test threw exception
+  Expression: #= /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:240 =# @inferred(B2' .* B3 .- Ref(0.5)) ≈ A2' .* A3 .- Ref(0.5)
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Tuple{Base.OneTo{Int64},Base.OneTo{Int64},Base.OneTo{Int64}},typeof(*),Tuple{StridedView{Float64,2,Array{Float64,1},typeof(identity)},StridedView{Float64,3,Array{Float64,1},typeof(identity)}}}, ::Type{Float64}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Float64,2,Array{Float64,1},typeof(identity)},StridedView{Float64,3,Array{Float64,1},typeof(identity)}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:240 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Float64: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:241
+  Test threw exception
+  Expression: #= /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:241 =# @inferred(B2' .* B3 .- max.(abs.(B1), real.(B3))) ≈ A2' .* A3 .- max.(abs.(A1), real.(A3))
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Tuple{Base.OneTo{Int64},Base.OneTo{Int64},Base.OneTo{Int64}},typeof(*),Tuple{StridedView{Float64,2,Array{Float64,1},typeof(identity)},StridedView{Float64,3,Array{Float64,1},typeof(identity)}}}, ::Type{Float64}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Float64,2,Array{Float64,1},typeof(identity)},StridedView{Float64,3,Array{Float64,1},typeof(identity)}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:241 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Float64: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:243
+  Test threw exception
+  Expression: B1 .+ sin.(B2 .- 3) isa StridedView
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Tuple{Base.OneTo{Int64},Base.OneTo{Int64}},typeof(+),Tuple{StridedView{Float64,1,Array{Float64,1},typeof(identity)},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(sin),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(-),Tuple{StridedView{Float64,2,Array{Float64,1},typeof(identity)},Int64}}}}}}, ::Type{Float64}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(+),Tuple{StridedView{Float64,1,Array{Float64,1},typeof(identity)},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(sin),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(-),Tuple{StridedView{Float64,2,Array{Float64,1},typeof(identity)},Int64}}}}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:243 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Float64: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:244
+  Test threw exception
+  Expression: B2' .* B3 .- Ref(0.5) isa StridedView
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Tuple{Base.OneTo{Int64},Base.OneTo{Int64},Base.OneTo{Int64}},typeof(-),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Float64,2,Array{Float64,1},typeof(identity)},StridedView{Float64,3,Array{Float64,1},typeof(identity)}}},Base.RefValue{Float64}}}, ::Type{Float64}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(-),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Float64,2,Array{Float64,1},typeof(identity)},StridedView{Float64,3,Array{Float64,1},typeof(identity)}}},Base.RefValue{Float64}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:244 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Float64: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:245
+  Test threw exception
+  Expression: B2' .* B3 .- max.(abs.(B1), real.(B3)) isa StridedView
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Tuple{Base.OneTo{Int64},Base.OneTo{Int64},Base.OneTo{Int64}},typeof(-),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Float64,2,Array{Float64,1},typeof(identity)},StridedView{Float64,3,Array{Float64,1},typeof(identity)}}},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(max),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{1},Nothing,typeof(abs),Tuple{StridedView{Float64,1,Array{Float64,1},typeof(identity)}}},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(real),Tuple{StridedView{Float64,3,Array{Float64,1},typeof(identity)}}}}}}}, ::Type{Float64}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(-),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Float64,2,Array{Float64,1},typeof(identity)},StridedView{Float64,3,Array{Float64,1},typeof(identity)}}},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(max),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{1},Nothing,typeof(abs),Tuple{StridedView{Float64,1,Array{Float64,1},typeof(identity)}}},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(real),Tuple{StridedView{Float64,3,Array{Float64,1},typeof(identity)}}}}}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:245 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Complex{Float32}: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:239
+  Test threw exception
+  Expression: #= /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:239 =# @inferred(B1 .+ sin.(B2 .- 3)) ≈ A1 .+ sin.(A2 .- 3)
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Tuple{Base.OneTo{Int64},Base.OneTo{Int64}},typeof(sin),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(-),Tuple{StridedView{Complex{Float32},2,Array{Complex{Float32},1},typeof(identity)},Int64}}}}, ::Type{Complex{Float32}}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(sin),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(-),Tuple{StridedView{Complex{Float32},2,Array{Complex{Float32},1},typeof(identity)},Int64}}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:239 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Complex{Float32}: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:240
+  Test threw exception
+  Expression: #= /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:240 =# @inferred(B2' .* B3 .- Ref(0.5)) ≈ A2' .* A3 .- Ref(0.5)
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Tuple{Base.OneTo{Int64},Base.OneTo{Int64},Base.OneTo{Int64}},typeof(*),Tuple{StridedView{Complex{Float32},2,Array{Complex{Float32},1},typeof(conj)},StridedView{Complex{Float32},3,Array{Complex{Float32},1},typeof(identity)}}}, ::Type{Complex{Float32}}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Complex{Float32},2,Array{Complex{Float32},1},typeof(conj)},StridedView{Complex{Float32},3,Array{Complex{Float32},1},typeof(identity)}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:240 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Complex{Float32}: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:241
+  Test threw exception
+  Expression: #= /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:241 =# @inferred(B2' .* B3 .- max.(abs.(B1), real.(B3))) ≈ A2' .* A3 .- max.(abs.(A1), real.(A3))
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Tuple{Base.OneTo{Int64},Base.OneTo{Int64},Base.OneTo{Int64}},typeof(*),Tuple{StridedView{Complex{Float32},2,Array{Complex{Float32},1},typeof(conj)},StridedView{Complex{Float32},3,Array{Complex{Float32},1},typeof(identity)}}}, ::Type{Complex{Float32}}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Complex{Float32},2,Array{Complex{Float32},1},typeof(conj)},StridedView{Complex{Float32},3,Array{Complex{Float32},1},typeof(identity)}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:241 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Complex{Float32}: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:243
+  Test threw exception
+  Expression: B1 .+ sin.(B2 .- 3) isa StridedView
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Tuple{Base.OneTo{Int64},Base.OneTo{Int64}},typeof(+),Tuple{StridedView{Complex{Float32},1,Array{Complex{Float32},1},typeof(identity)},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(sin),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(-),Tuple{StridedView{Complex{Float32},2,Array{Complex{Float32},1},typeof(identity)},Int64}}}}}}, ::Type{Complex{Float32}}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(+),Tuple{StridedView{Complex{Float32},1,Array{Complex{Float32},1},typeof(identity)},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(sin),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(-),Tuple{StridedView{Complex{Float32},2,Array{Complex{Float32},1},typeof(identity)},Int64}}}}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:243 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Complex{Float32}: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:244
+  Test threw exception
+  Expression: B2' .* B3 .- Ref(0.5) isa StridedView
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Tuple{Base.OneTo{Int64},Base.OneTo{Int64},Base.OneTo{Int64}},typeof(-),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Complex{Float32},2,Array{Complex{Float32},1},typeof(conj)},StridedView{Complex{Float32},3,Array{Complex{Float32},1},typeof(identity)}}},Base.RefValue{Float64}}}, ::Type{Complex{Float64}}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(-),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Complex{Float32},2,Array{Complex{Float32},1},typeof(conj)},StridedView{Complex{Float32},3,Array{Complex{Float32},1},typeof(identity)}}},Base.RefValue{Float64}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:244 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Complex{Float32}: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:245
+  Test threw exception
+  Expression: B2' .* B3 .- max.(abs.(B1), real.(B3)) isa StridedView
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Tuple{Base.OneTo{Int64},Base.OneTo{Int64},Base.OneTo{Int64}},typeof(-),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Complex{Float32},2,Array{Complex{Float32},1},typeof(conj)},StridedView{Complex{Float32},3,Array{Complex{Float32},1},typeof(identity)}}},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(max),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{1},Nothing,typeof(abs),Tuple{StridedView{Complex{Float32},1,Array{Complex{Float32},1},typeof(identity)}}},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(real),Tuple{StridedView{Complex{Float32},3,Array{Complex{Float32},1},typeof(identity)}}}}}}}, ::Type{Complex{Float32}}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(-),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Complex{Float32},2,Array{Complex{Float32},1},typeof(conj)},StridedView{Complex{Float32},3,Array{Complex{Float32},1},typeof(identity)}}},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(max),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{1},Nothing,typeof(abs),Tuple{StridedView{Complex{Float32},1,Array{Complex{Float32},1},typeof(identity)}}},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(real),Tuple{StridedView{Complex{Float32},3,Array{Complex{Float32},1},typeof(identity)}}}}}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:245 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Complex{Float64}: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:239
+  Test threw exception
+  Expression: #= /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:239 =# @inferred(B1 .+ sin.(B2 .- 3)) ≈ A1 .+ sin.(A2 .- 3)
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Tuple{Base.OneTo{Int64},Base.OneTo{Int64}},typeof(sin),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(-),Tuple{StridedView{Complex{Float64},2,Array{Complex{Float64},1},typeof(identity)},Int64}}}}, ::Type{Complex{Float64}}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(sin),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(-),Tuple{StridedView{Complex{Float64},2,Array{Complex{Float64},1},typeof(identity)},Int64}}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:239 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Complex{Float64}: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:240
+  Test threw exception
+  Expression: #= /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:240 =# @inferred(B2' .* B3 .- Ref(0.5)) ≈ A2' .* A3 .- Ref(0.5)
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Tuple{Base.OneTo{Int64},Base.OneTo{Int64},Base.OneTo{Int64}},typeof(*),Tuple{StridedView{Complex{Float64},2,Array{Complex{Float64},1},typeof(conj)},StridedView{Complex{Float64},3,Array{Complex{Float64},1},typeof(identity)}}}, ::Type{Complex{Float64}}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Complex{Float64},2,Array{Complex{Float64},1},typeof(conj)},StridedView{Complex{Float64},3,Array{Complex{Float64},1},typeof(identity)}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:240 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Complex{Float64}: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:241
+  Test threw exception
+  Expression: #= /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:241 =# @inferred(B2' .* B3 .- max.(abs.(B1), real.(B3))) ≈ A2' .* A3 .- max.(abs.(A1), real.(A3))
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Tuple{Base.OneTo{Int64},Base.OneTo{Int64},Base.OneTo{Int64}},typeof(*),Tuple{StridedView{Complex{Float64},2,Array{Complex{Float64},1},typeof(conj)},StridedView{Complex{Float64},3,Array{Complex{Float64},1},typeof(identity)}}}, ::Type{Complex{Float64}}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Complex{Float64},2,Array{Complex{Float64},1},typeof(conj)},StridedView{Complex{Float64},3,Array{Complex{Float64},1},typeof(identity)}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:241 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Complex{Float64}: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:243
+  Test threw exception
+  Expression: B1 .+ sin.(B2 .- 3) isa StridedView
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Tuple{Base.OneTo{Int64},Base.OneTo{Int64}},typeof(+),Tuple{StridedView{Complex{Float64},1,Array{Complex{Float64},1},typeof(identity)},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(sin),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(-),Tuple{StridedView{Complex{Float64},2,Array{Complex{Float64},1},typeof(identity)},Int64}}}}}}, ::Type{Complex{Float64}}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(+),Tuple{StridedView{Complex{Float64},1,Array{Complex{Float64},1},typeof(identity)},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(sin),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{2},Nothing,typeof(-),Tuple{StridedView{Complex{Float64},2,Array{Complex{Float64},1},typeof(identity)},Int64}}}}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:243 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Complex{Float64}: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:244
+  Test threw exception
+  Expression: B2' .* B3 .- Ref(0.5) isa StridedView
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Tuple{Base.OneTo{Int64},Base.OneTo{Int64},Base.OneTo{Int64}},typeof(-),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Complex{Float64},2,Array{Complex{Float64},1},typeof(conj)},StridedView{Complex{Float64},3,Array{Complex{Float64},1},typeof(identity)}}},Base.RefValue{Float64}}}, ::Type{Complex{Float64}}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(-),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Complex{Float64},2,Array{Complex{Float64},1},typeof(conj)},StridedView{Complex{Float64},3,Array{Complex{Float64},1},typeof(identity)}}},Base.RefValue{Float64}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:244 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+T = Complex{Float64}: Error During Test at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:245
+  Test threw exception
+  Expression: B2' .* B3 .- max.(abs.(B1), real.(B3)) isa StridedView
+  MethodError: similar(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Tuple{Base.OneTo{Int64},Base.OneTo{Int64},Base.OneTo{Int64}},typeof(-),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Complex{Float64},2,Array{Complex{Float64},1},typeof(conj)},StridedView{Complex{Float64},3,Array{Complex{Float64},1},typeof(identity)}}},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(max),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{1},Nothing,typeof(abs),Tuple{StridedView{Complex{Float64},1,Array{Complex{Float64},1},typeof(identity)}}},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(real),Tuple{StridedView{Complex{Float64},3,Array{Complex{Float64},1},typeof(identity)}}}}}}}, ::Type{Complex{Float64}}) is ambiguous. Candidates:
+    similar(bc::Base.Broadcast.Broadcasted, ::Type{T}) where T in Base.Broadcast at broadcast.jl:196
+    similar(bc::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, eltype::T) where {N, T} in Strided at /home/pkgeval/.julia/packages/Strided/OU1Y8/src/broadcast.jl:18
+  Possible fix, define
+    similar(::Base.Broadcast.Broadcasted{var"#s62",Axes,F,Args} where Args<:Tuple where F where Axes where var"#s62"<:Strided.StridedArrayStyle{N}, ::T) where {N, T<:(Type{T} where T)}
+  Stacktrace:
+   [1] copy at ./broadcast.jl:862 [inlined]
+   [2] materialize(::Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(-),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(*),Tuple{StridedView{Complex{Float64},2,Array{Complex{Float64},1},typeof(conj)},StridedView{Complex{Float64},3,Array{Complex{Float64},1},typeof(identity)}}},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(max),Tuple{Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{1},Nothing,typeof(abs),Tuple{StridedView{Complex{Float64},1,Array{Complex{Float64},1},typeof(identity)}}},Base.Broadcast.Broadcasted{Strided.StridedArrayStyle{3},Nothing,typeof(real),Tuple{StridedView{Complex{Float64},3,Array{Complex{Float64},1},typeof(identity)}}}}}}}) at ./broadcast.jl:837
+   [3] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:245 [inlined]
+   [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [5] macro expansion at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:229 [inlined]
+   [6] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1188 [inlined]
+   [7] top-level scope at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:0
+  
+Test Summary:              | Pass  Error  Total
+broadcast with StridedView |    4     24     28
+  T = Float32              |    1      6      7
+  T = Float64              |    1      6      7
+  T = Complex{Float32}     |    1      6      7
+  T = Complex{Float64}     |    1      6      7
+Test Summary:              | Pass  Error  Total
+broadcast with StridedView |    4     24     28
+  T = Float32              |    1      6      7
+  T = Float64              |    1      6      7
+  T = Complex{Float32}     |    1      6      7
+  T = Complex{Float64}     |    1      6      7
+ERROR: LoadError: Some tests did not pass: 4 passed, 0 failed, 24 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/Strided/OU1Y8/test/runtests.jl:228
+caused by [exception 1]
+Some tests did not pass: 4 passed, 0 failed, 24 errored, 0 broken.
+ERROR: Package Strided errored during testing
+Stacktrace:
+ [1] pkgerror(::String, ::Vararg{String,N} where N) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/Types.jl:52
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/Operations.jl:1515
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:316
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:303
+ [5] #test#68 at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:297 [inlined]
+ [6] test at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:297 [inlined]
+ [7] #test#67 at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:296 [inlined]
+ [8] test at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:296 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:295
+ [10] test(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:295
+ [11] top-level scope at none:16
