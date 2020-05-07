@@ -11,12 +11,12 @@ Environment:
   JULIA_NUM_THREADS = 2
 
   Resolving package versions...
+  Installed ArrayLayouts ─ v0.3.0
   Installed FillArrays ─── v0.8.8
-  Installed ArrayLayouts ─ v0.2.6
 Updating `~/.julia/environments/v1.5/Project.toml`
-  [4c555306] + ArrayLayouts v0.2.6
+  [4c555306] + ArrayLayouts v0.3.0
 Updating `~/.julia/environments/v1.5/Manifest.toml`
-  [4c555306] + ArrayLayouts v0.2.6
+  [4c555306] + ArrayLayouts v0.3.0
   [1a297f60] + FillArrays v0.8.8
   [8f399da3] + Libdl
   [37e2e46d] + LinearAlgebra
@@ -24,14 +24,14 @@ Updating `~/.julia/environments/v1.5/Manifest.toml`
   [9e88b42a] + Serialization
   [2f01184e] + SparseArrays
     Testing ArrayLayouts
-Status `/tmp/jl_5HlBvj/Project.toml`
-  [4c555306] ArrayLayouts v0.2.6
+Status `/tmp/jl_A3aGUK/Project.toml`
+  [4c555306] ArrayLayouts v0.3.0
   [1a297f60] FillArrays v0.8.8
   [37e2e46d] LinearAlgebra
   [9a3f8284] Random
   [8dfed614] Test
-Status `/tmp/jl_5HlBvj/Manifest.toml`
-  [4c555306] ArrayLayouts v0.2.6
+Status `/tmp/jl_A3aGUK/Manifest.toml`
+  [4c555306] ArrayLayouts v0.3.0
   [1a297f60] FillArrays v0.8.8
   [2a0f44e3] Base64
   [8ba89e20] Distributed
@@ -53,55 +53,55 @@ Test Summary:   | Pass  Total
 Matrix * Matrix |   88     88
 Test Summary: | Pass  Total
 adjtrans      |  198    198
-adjoint: Error During Test at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/test/test_muladd.jl:287
+adjoint: Error During Test at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/test/test_muladd.jl:287
   Test threw exception
   Expression: mul(V, b) ≈ V * b ≈ Matrix(V) * b
   MethodError: unsafe_convert(::Type{Ptr{Float64}}, ::Adjoint{Float64,Array{Float64,2}}) is ambiguous. Candidates:
     unsafe_convert(::Type{Ptr{T}}, A::Adjoint{var"#s814",var"#s813"} where var"#s813"<:(StridedVecOrMat{T} where T) where var"#s814"<:Real) where T in LinearAlgebra at /opt/julia/share/julia/stdlib/v1.5/LinearAlgebra/src/adjtrans.jl:208
-    unsafe_convert(::Type{Ptr{T}}, A::Adjoint{var"#s13",S} where S where var"#s13"<:Real) where T<:Real in ArrayLayouts at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/ArrayLayouts.jl:83
+    unsafe_convert(::Type{Ptr{T}}, A::Adjoint{var"#s13",S} where S where var"#s13"<:Real) where T<:Real in ArrayLayouts at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/ArrayLayouts.jl:83
   Possible fix, define
     unsafe_convert(::Type{Ptr{T}}, ::Adjoint{var"#s814",var"#s813"} where var"#s813"<:(StridedVecOrMat{T} where T) where var"#s814"<:Real) where T<:Real
   Stacktrace:
    [1] unsafe_convert(::Type{Ptr{Float64}}, ::SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}) at ./subarray.jl:409
-   [2] unsafe_convert(::Type{Ptr{Float64}}, ::Transpose{Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}}) at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/ArrayLayouts.jl:84
+   [2] unsafe_convert(::Type{Ptr{Float64}}, ::Transpose{Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}}) at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/ArrayLayouts.jl:84
    [3] gemv!(::Char, ::Float64, ::Transpose{Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}}, ::Array{Float64,1}, ::Float64, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/LinearAlgebra/src/blas.jl:626
-   [4] _gemv! at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/muladd.jl:247 [inlined]
-   [5] materialize! at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/muladd.jl:263 [inlined]
-   [6] muladd!(::Float64, ::SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}, ::Array{Float64,1}, ::Float64, ::Array{Float64,1}) at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/muladd.jl:80
-   [7] copyto! at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/muladd.jl:94 [inlined]
-   [8] copy(::MulAdd{RowMajor,DenseColumnMajor,ZerosLayout,Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false},Array{Float64,1},Zeros{Float64,1,Tuple{Base.OneTo{Int64}}}}) at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/muladd.jl:82
-   [9] materialize(::MulAdd{RowMajor,DenseColumnMajor,ZerosLayout,Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false},Array{Float64,1},Zeros{Float64,1,Tuple{Base.OneTo{Int64}}}}) at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/muladd.jl:81
-   [10] mul(::SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}, ::Array{Float64,1}) at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/muladd.jl:407
-   [11] macro expansion at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/test/test_muladd.jl:287 [inlined]
+   [4] _gemv! at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/muladd.jl:252 [inlined]
+   [5] materialize! at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/muladd.jl:268 [inlined]
+   [6] muladd!(::Float64, ::SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}, ::Array{Float64,1}, ::Float64, ::Array{Float64,1}) at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/muladd.jl:80
+   [7] copyto! at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/muladd.jl:94 [inlined]
+   [8] copy(::MulAdd{RowMajor,DenseColumnMajor,ZerosLayout,Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false},Array{Float64,1},Zeros{Float64,1,Tuple{Base.OneTo{Int64}}}}) at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/muladd.jl:82
+   [9] materialize(::MulAdd{RowMajor,DenseColumnMajor,ZerosLayout,Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false},Array{Float64,1},Zeros{Float64,1,Tuple{Base.OneTo{Int64}}}}) at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/muladd.jl:81
+   [10] mul(::SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}, ::Array{Float64,1}) at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/muladd.jl:412
+   [11] macro expansion at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/test/test_muladd.jl:287 [inlined]
    [12] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
-   [13] macro expansion at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/test/test_muladd.jl:280 [inlined]
+   [13] macro expansion at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/test/test_muladd.jl:280 [inlined]
    [14] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
-   [15] top-level scope at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/test/test_muladd.jl:234
+   [15] top-level scope at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/test/test_muladd.jl:234
   
-adjoint: Error During Test at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/test/test_muladd.jl:288
+adjoint: Error During Test at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/test/test_muladd.jl:288
   Test threw exception
   Expression: mul(V', b) ≈ V' * b ≈ (Matrix(V))' * b
   MethodError: unsafe_convert(::Type{Ptr{Float64}}, ::Adjoint{Float64,Array{Float64,2}}) is ambiguous. Candidates:
     unsafe_convert(::Type{Ptr{T}}, A::Adjoint{var"#s814",var"#s813"} where var"#s813"<:(StridedVecOrMat{T} where T) where var"#s814"<:Real) where T in LinearAlgebra at /opt/julia/share/julia/stdlib/v1.5/LinearAlgebra/src/adjtrans.jl:208
-    unsafe_convert(::Type{Ptr{T}}, A::Adjoint{var"#s13",S} where S where var"#s13"<:Real) where T<:Real in ArrayLayouts at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/ArrayLayouts.jl:83
+    unsafe_convert(::Type{Ptr{T}}, A::Adjoint{var"#s13",S} where S where var"#s13"<:Real) where T<:Real in ArrayLayouts at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/ArrayLayouts.jl:83
   Possible fix, define
     unsafe_convert(::Type{Ptr{T}}, ::Adjoint{var"#s814",var"#s813"} where var"#s813"<:(StridedVecOrMat{T} where T) where var"#s814"<:Real) where T<:Real
   Stacktrace:
    [1] unsafe_convert(::Type{Ptr{Float64}}, ::SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}) at ./subarray.jl:409
-   [2] unsafe_convert(::Type{Ptr{Float64}}, ::Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}}) at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/ArrayLayouts.jl:83
+   [2] unsafe_convert(::Type{Ptr{Float64}}, ::Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}}) at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/ArrayLayouts.jl:83
    [3] gemv!(::Char, ::Float64, ::Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}}, ::Array{Float64,1}, ::Float64, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/LinearAlgebra/src/blas.jl:626
-   [4] _gemv! at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/muladd.jl:247 [inlined]
-   [5] materialize! at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/muladd.jl:261 [inlined]
-   [6] muladd!(::Float64, ::Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}}, ::Array{Float64,1}, ::Float64, ::Array{Float64,1}) at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/muladd.jl:80
-   [7] copyto! at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/muladd.jl:94 [inlined]
-   [8] copy(::MulAdd{ColumnMajor,DenseColumnMajor,ZerosLayout,Float64,Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}},Array{Float64,1},Zeros{Float64,1,Tuple{Base.OneTo{Int64}}}}) at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/muladd.jl:82
-   [9] materialize(::MulAdd{ColumnMajor,DenseColumnMajor,ZerosLayout,Float64,Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}},Array{Float64,1},Zeros{Float64,1,Tuple{Base.OneTo{Int64}}}}) at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/muladd.jl:81
-   [10] mul(::Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}}, ::Array{Float64,1}) at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/src/muladd.jl:407
-   [11] macro expansion at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/test/test_muladd.jl:288 [inlined]
+   [4] _gemv! at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/muladd.jl:252 [inlined]
+   [5] materialize! at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/muladd.jl:266 [inlined]
+   [6] muladd!(::Float64, ::Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}}, ::Array{Float64,1}, ::Float64, ::Array{Float64,1}) at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/muladd.jl:80
+   [7] copyto! at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/muladd.jl:94 [inlined]
+   [8] copy(::MulAdd{ColumnMajor,DenseColumnMajor,ZerosLayout,Float64,Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}},Array{Float64,1},Zeros{Float64,1,Tuple{Base.OneTo{Int64}}}}) at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/muladd.jl:82
+   [9] materialize(::MulAdd{ColumnMajor,DenseColumnMajor,ZerosLayout,Float64,Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}},Array{Float64,1},Zeros{Float64,1,Tuple{Base.OneTo{Int64}}}}) at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/muladd.jl:81
+   [10] mul(::Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Array{Float64,2}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}}, ::Array{Float64,1}) at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/src/muladd.jl:412
+   [11] macro expansion at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/test/test_muladd.jl:288 [inlined]
    [12] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
-   [13] macro expansion at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/test/test_muladd.jl:280 [inlined]
+   [13] macro expansion at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/test/test_muladd.jl:280 [inlined]
    [14] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
-   [15] top-level scope at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/test/test_muladd.jl:234
+   [15] top-level scope at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/test/test_muladd.jl:234
   
 Test Summary:     | Pass  Error  Total
 Mul               |   14      2     16
@@ -111,8 +111,8 @@ Mul               |   14      2     16
   Scalar * Vector |    1             1
   adjoint         |    4      2      6
 ERROR: LoadError: LoadError: Some tests did not pass: 14 passed, 0 failed, 2 errored, 0 broken.
-in expression starting at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/test/test_muladd.jl:233
-in expression starting at /home/pkgeval/.julia/packages/ArrayLayouts/L5sKF/test/runtests.jl:7
+in expression starting at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/test/test_muladd.jl:233
+in expression starting at /home/pkgeval/.julia/packages/ArrayLayouts/oXEZW/test/runtests.jl:7
 ERROR: Package ArrayLayouts errored during testing
 Stacktrace:
  [1] pkgerror(::String, ::Vararg{String,N} where N) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/Types.jl:52

@@ -11,20 +11,20 @@ Environment:
   JULIA_NUM_THREADS = 2
 
   Resolving package versions...
-  Installed AbstractTensors ─── v0.4.7
   Installed AbstractLattices ── v0.1.2
+  Installed AbstractTensors ─── v0.4.7
   Installed ReplMaker ───────── v0.2.3
   Installed Fatou ───────────── v1.1.0
   Installed LaTeXStrings ────── v1.1.0
   Installed ColorTypes ──────── v0.10.3
   Installed Colors ──────────── v0.12.0
-  Installed ForceImport ─────── v0.0.3
   Installed SyntaxTree ──────── v1.0.1
   Installed Requires ────────── v0.5.2
-  Installed FixedPointNumbers ─ v0.8.0
   Installed Reexport ────────── v0.2.0
-  Installed Reduce ──────────── v1.2.5
+  Installed FixedPointNumbers ─ v0.8.0
+  Installed ForceImport ─────── v0.0.3
   Installed StaticArrays ────── v0.12.3
+  Installed Reduce ──────────── v1.2.5
   Installed ColorSchemes ────── v3.9.0
 Updating `~/.julia/environments/v1.5/Project.toml`
   [5f923234] + Fatou v1.1.0
@@ -66,8 +66,49 @@ Updating `~/.julia/environments/v1.5/Manifest.toml`
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
    Building Reduce → `~/.julia/packages/Reduce/gkKoh/deps/build.log`
+┌ Error: Error building `Reduce`: 
+│ ┌ Error: Download failed: curl: (35) OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to ayera.dl.sourceforge.net:443 
+│ └ @ Base download.jl:43
+│ ERROR: LoadError: failed process: Process(`curl -s -S -g -L -f -o /home/pkgeval/.julia/packages/Reduce/gkKoh/deps/reduce.tar.gz https://sourceforge.net/projects/reduce-algebra/files/snapshot_2019-09-15/linux64/reduce-csl_5129_amd64.tgz/download`, ProcessExited(35)) [35]
+│ 
+│ Stacktrace:
+│  [1] pipeline_error at ./process.jl:525 [inlined]
+│  [2] download_curl(::String, ::String, ::String) at ./download.jl:44
+│  [3] download(::String, ::String) at ./download.jl:62
+│  [4] top-level scope at /home/pkgeval/.julia/packages/Reduce/gkKoh/deps/build.jl:56
+│  [5] include(::String) at ./client.jl:457
+│  [6] top-level scope at none:5
+│ in expression starting at /home/pkgeval/.julia/packages/Reduce/gkKoh/deps/build.jl:30
+│ caused by [exception 2]
+│ IOError: could not spawn `/home/pkgeval/.julia/packages/Reduce/gkKoh/deps/usr/bin/redcsl`: no such file or directory (ENOENT)
+│ Stacktrace:
+│  [1] _spawn_primitive(::String, ::Cmd, ::Array{Any,1}) at ./process.jl:99
+│  [2] #581 at ./process.jl:112 [inlined]
+│  [3] setup_stdios(::Base.var"#581#582"{Cmd}, ::Array{Any,1}) at ./process.jl:196
+│  [4] _spawn at ./process.jl:111 [inlined]
+│  [5] _spawn(::Base.CmdRedirect, ::Array{Any,1}) at ./process.jl:139 (repeats 3 times)
+│  [6] run(::Base.CmdRedirect; wait::Bool) at ./process.jl:443
+│  [7] _spawn(::Cmd, ::Base.DevNull, ::Base.DevNull) at /home/pkgeval/.julia/packages/Reduce/gkKoh/deps/svn.jl:23 (repeats 2 times)
+│  [8] top-level scope at /home/pkgeval/.julia/packages/Reduce/gkKoh/deps/build.jl:43
+│  [9] include(::String) at ./client.jl:457
+│  [10] top-level scope at none:5
+│ caused by [exception 1]
+│ IOError: could not spawn `redcsl`: no such file or directory (ENOENT)
+│ Stacktrace:
+│  [1] _spawn_primitive(::String, ::Cmd, ::Array{Any,1}) at ./process.jl:99
+│  [2] #581 at ./process.jl:112 [inlined]
+│  [3] setup_stdios(::Base.var"#581#582"{Cmd}, ::Array{Any,1}) at ./process.jl:196
+│  [4] _spawn at ./process.jl:111 [inlined]
+│  [5] _spawn(::Base.CmdRedirect, ::Array{Any,1}) at ./process.jl:139 (repeats 3 times)
+│  [6] run(::Base.CmdRedirect; wait::Bool) at ./process.jl:443
+│  [7] _spawn(::Cmd, ::Base.DevNull, ::Base.DevNull) at /home/pkgeval/.julia/packages/Reduce/gkKoh/deps/svn.jl:23 (repeats 2 times)
+│  [8] top-level scope at /home/pkgeval/.julia/packages/Reduce/gkKoh/deps/build.jl:33
+│  [9] include(::String) at ./client.jl:457
+│  [10] top-level scope at none:5
+│ Building Reduce.jl with CSL binaries ... 
+└ @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/Operations.jl:903
     Testing Fatou
-Status `/tmp/jl_KNO7c5/Project.toml`
+Status `/tmp/jl_nyLwOx/Project.toml`
   [35d6a980] ColorSchemes v3.9.0
   [5f923234] Fatou v1.1.0
   [b964fa9f] LaTeXStrings v1.1.0
@@ -75,7 +116,7 @@ Status `/tmp/jl_KNO7c5/Project.toml`
   [ae029012] Requires v0.5.2
   [a4af3ec5] SyntaxTree v1.0.1
   [8dfed614] Test
-Status `/tmp/jl_KNO7c5/Manifest.toml`
+Status `/tmp/jl_nyLwOx/Manifest.toml`
   [398f06c4] AbstractLattices v0.1.2
   [a8e43f4a] AbstractTensors v0.4.7
   [35d6a980] ColorSchemes v3.9.0
@@ -112,10 +153,75 @@ Status `/tmp/jl_KNO7c5/Manifest.toml`
   [8dfed614] Test
   [cf7118a7] UUIDs
   [4ec0a83e] Unicode
-┌ Warning: `@get!(dict, key, default)` at /home/pkgeval/.julia/packages/Requires/9Jse8/src/require.jl:11 is deprecated, use `get!(()->default, dict, key)` instead.
-└ @ Base deprecated.jl:204
-Fatou detected 2 julia threads.
-  0.246475 seconds (117.23 k allocations: 6.308 MiB)
-  0.127918 seconds (1.21 M allocations: 33.410 MiB)
-  0.110497 seconds (60.37 k allocations: 3.297 MiB)
-    Testing Fatou tests passed 
+ERROR: LoadError: InitError: IOError: could not spawn `/home/pkgeval/.julia/packages/Reduce/gkKoh/src/../deps/usr/bin/redcsl`: no such file or directory (ENOENT)
+Stacktrace:
+ [1] _spawn_primitive(::String, ::Cmd, ::Array{Any,1}) at ./process.jl:99
+ [2] #581 at ./process.jl:112 [inlined]
+ [3] setup_stdios(::Base.var"#581#582"{Cmd}, ::Array{Any,1}) at ./process.jl:196
+ [4] _spawn at ./process.jl:111 [inlined]
+ [5] _spawn(::Base.CmdRedirect, ::Array{Any,1}) at ./process.jl:139 (repeats 3 times)
+ [6] run(::Base.CmdRedirect; wait::Bool) at ./process.jl:443
+ [7] _spawn(::Cmd, ::Pipe, ::Pipe) at /home/pkgeval/.julia/packages/Reduce/gkKoh/deps/svn.jl:23
+ [8] Reduce.PSL() at /home/pkgeval/.julia/packages/Reduce/gkKoh/src/Reduce.jl:32
+ [9] Load() at /home/pkgeval/.julia/packages/Reduce/gkKoh/src/Reduce.jl:351
+ [10] __init__() at /home/pkgeval/.julia/packages/Reduce/gkKoh/src/Reduce.jl:321
+ [11] _include_from_serialized(::String, ::Array{Any,1}) at ./loading.jl:697
+ [12] _require_from_serialized(::String) at ./loading.jl:749
+ [13] _require(::Base.PkgId) at ./loading.jl:1040
+ [14] require(::Base.PkgId) at ./loading.jl:928
+ [15] require(::Module, ::Symbol) at ./loading.jl:923
+ [16] include(::Function, ::Module, ::String) at ./Base.jl:380
+ [17] include(::Module, ::String) at ./Base.jl:368
+ [18] top-level scope at none:2
+ [19] eval at ./boot.jl:331 [inlined]
+ [20] eval(::Expr) at ./client.jl:467
+ [21] top-level scope at ./none:3
+during initialization of module Reduce
+in expression starting at /home/pkgeval/.julia/packages/Fatou/jOP9J/src/Fatou.jl:2
+caused by [exception 1]
+IOError: could not spawn `redcsl`: no such file or directory (ENOENT)
+Stacktrace:
+ [1] _spawn_primitive(::String, ::Cmd, ::Array{Any,1}) at ./process.jl:99
+ [2] #581 at ./process.jl:112 [inlined]
+ [3] setup_stdios(::Base.var"#581#582"{Cmd}, ::Array{Any,1}) at ./process.jl:196
+ [4] _spawn at ./process.jl:111 [inlined]
+ [5] _spawn(::Base.CmdRedirect, ::Array{Any,1}) at ./process.jl:139 (repeats 3 times)
+ [6] run(::Base.CmdRedirect; wait::Bool) at ./process.jl:443
+ [7] _spawn(::Cmd, ::Pipe, ::Pipe) at /home/pkgeval/.julia/packages/Reduce/gkKoh/deps/svn.jl:23
+ [8] Reduce.PSL() at /home/pkgeval/.julia/packages/Reduce/gkKoh/src/Reduce.jl:23
+ [9] Load() at /home/pkgeval/.julia/packages/Reduce/gkKoh/src/Reduce.jl:351
+ [10] __init__() at /home/pkgeval/.julia/packages/Reduce/gkKoh/src/Reduce.jl:321
+ [11] _include_from_serialized(::String, ::Array{Any,1}) at ./loading.jl:697
+ [12] _require_from_serialized(::String) at ./loading.jl:749
+ [13] _require(::Base.PkgId) at ./loading.jl:1040
+ [14] require(::Base.PkgId) at ./loading.jl:928
+ [15] require(::Module, ::Symbol) at ./loading.jl:923
+ [16] include(::Function, ::Module, ::String) at ./Base.jl:380
+ [17] include(::Module, ::String) at ./Base.jl:368
+ [18] top-level scope at none:2
+ [19] eval at ./boot.jl:331 [inlined]
+ [20] eval(::Expr) at ./client.jl:467
+ [21] top-level scope at ./none:3
+ERROR: LoadError: Failed to precompile Fatou [5f923234-c850-556d-bb4f-28324fa1959a] to /home/pkgeval/.julia/compiled/v1.5/Fatou/zwInd_HaQXw.ji.
+Stacktrace:
+ [1] error(::String) at ./error.jl:33
+ [2] compilecache(::Base.PkgId, ::String) at ./loading.jl:1290
+ [3] _require(::Base.PkgId) at ./loading.jl:1030
+ [4] require(::Base.PkgId) at ./loading.jl:928
+ [5] require(::Module, ::Symbol) at ./loading.jl:923
+ [6] include(::String) at ./client.jl:457
+ [7] top-level scope at none:6
+in expression starting at /home/pkgeval/.julia/packages/Fatou/jOP9J/test/runtests.jl:1
+ERROR: Package Fatou errored during testing
+Stacktrace:
+ [1] pkgerror(::String, ::Vararg{String,N} where N) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/Types.jl:52
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/Operations.jl:1515
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:316
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:303
+ [5] #test#68 at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:297 [inlined]
+ [6] test at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:297 [inlined]
+ [7] #test#67 at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:296 [inlined]
+ [8] test at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:296 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:295
+ [10] test(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:295
+ [11] top-level scope at none:16

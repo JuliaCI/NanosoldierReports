@@ -54,9 +54,9 @@ Updating `~/.julia/environments/v1.5/Manifest.toml`
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
     Testing TimeSeries
-Status `/tmp/jl_PESQOk/Project.toml`
-  [336ed68f] CSV v0.6.1
-  [a93c6f00] DataFrames v0.20.2
+Status `/tmp/jl_o0WBfr/Project.toml`
+  [336ed68f] CSV v0.6.2
+  [a93c6f00] DataFrames v0.21.0
   [945b72a4] MarketData v0.12.1
   [3cdcf5f2] RecipesBase v1.0.1
   [189a3867] Reexport v0.2.0
@@ -67,15 +67,15 @@ Status `/tmp/jl_PESQOk/Project.toml`
   [9a3f8284] Random
   [10745b16] Statistics
   [8dfed614] Test
-Status `/tmp/jl_PESQOk/Manifest.toml`
-  [336ed68f] CSV v0.6.1
-  [324d7699] CategoricalArrays v0.7.7
+Status `/tmp/jl_o0WBfr/Manifest.toml`
+  [336ed68f] CSV v0.6.2
+  [324d7699] CategoricalArrays v0.8.0
   [34da2185] Compat v3.9.0
   [9a962f9c] DataAPI v1.3.0
-  [a93c6f00] DataFrames v0.20.2
+  [a93c6f00] DataFrames v0.21.0
   [864edb3b] DataStructures v0.17.15
   [e2d170a0] DataValueInterfaces v1.0.0
-  [48062228] FilePathsBase v0.7.0
+  [48062228] FilePathsBase v0.8.0
   [cd3eb016] HTTP v0.8.14
   [83e8ac13] IniFile v0.5.0
   [41ab1584] InvertedIndices v1.0.0
@@ -86,7 +86,7 @@ Status `/tmp/jl_PESQOk/Manifest.toml`
   [c8ffd9c3] MbedTLS_jll v2.16.0+2
   [e1d29d7a] Missings v0.4.3
   [bac558e1] OrderedCollections v1.2.0
-  [69de0a69] Parsers v1.0.2
+  [69de0a69] Parsers v1.0.3
   [2dfb63ee] PooledArrays v0.5.3
   [3cdcf5f2] RecipesBase v1.0.1
   [189a3867] Reexport v0.2.0
@@ -132,11 +132,78 @@ Status `/tmp/jl_PESQOk/Manifest.toml`
 [ Info: 	* timeseriesrc ...
 [ Info: 	* basemisc ...
 [ Info: 	* tables ...
-WARNING: using DataFrames.rename! in module Main conflicts with an existing identifier.
-WARNING: using DataFrames.tail in module Main conflicts with an existing identifier.
 WARNING: using DataFrames.head in module Main conflicts with an existing identifier.
+WARNING: using DataFrames.rename! in module Main conflicts with an existing identifier.
 WARNING: using DataFrames.rename in module Main conflicts with an existing identifier.
+WARNING: using DataFrames.tail in module Main conflicts with an existing identifier.
+single column: Test Failed at /home/pkgeval/.julia/packages/TimeSeries/49cHd/test/tables.jl:123
+  Expression: names(df) == [:timestamp; colnames(cl)]
+   Evaluated: ["timestamp", "Close"] == [:timestamp, :Close]
+Stacktrace:
+ [1] macro expansion at /home/pkgeval/.julia/packages/TimeSeries/49cHd/test/tables.jl:123 [inlined]
+ [2] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
+ [3] macro expansion at /home/pkgeval/.julia/packages/TimeSeries/49cHd/test/tables.jl:122 [inlined]
+ [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
+ [5] macro expansion at /home/pkgeval/.julia/packages/TimeSeries/49cHd/test/tables.jl:121 [inlined]
+ [6] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
+ [7] top-level scope at /home/pkgeval/.julia/packages/TimeSeries/49cHd/test/tables.jl:14
+multi column: Test Failed at /home/pkgeval/.julia/packages/TimeSeries/49cHd/test/tables.jl:130
+  Expression: names(df) == [:timestamp; colnames(ohlc)]
+   Evaluated: ["timestamp", "Open", "High", "Low", "Close"] == [:timestamp, :Open, :High, :Low, :Close]
+Stacktrace:
+ [1] macro expansion at /home/pkgeval/.julia/packages/TimeSeries/49cHd/test/tables.jl:130 [inlined]
+ [2] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
+ [3] macro expansion at /home/pkgeval/.julia/packages/TimeSeries/49cHd/test/tables.jl:129 [inlined]
+ [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
+ [5] macro expansion at /home/pkgeval/.julia/packages/TimeSeries/49cHd/test/tables.jl:121 [inlined]
+ [6] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
+ [7] top-level scope at /home/pkgeval/.julia/packages/TimeSeries/49cHd/test/tables.jl:14
+column name collision: Test Failed at /home/pkgeval/.julia/packages/TimeSeries/49cHd/test/tables.jl:141
+  Expression: names(df) == [:timestamp, :Open, :High, :timestamp_1, :Close]
+   Evaluated: ["timestamp", "Open", "High", "timestamp_1", "Close"] == [:timestamp, :Open, :High, :timestamp_1, :Close]
+Stacktrace:
+ [1] macro expansion at /home/pkgeval/.julia/packages/TimeSeries/49cHd/test/tables.jl:141 [inlined]
+ [2] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
+ [3] macro expansion at /home/pkgeval/.julia/packages/TimeSeries/49cHd/test/tables.jl:139 [inlined]
+ [4] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
+ [5] macro expansion at /home/pkgeval/.julia/packages/TimeSeries/49cHd/test/tables.jl:121 [inlined]
+ [6] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1114 [inlined]
+ [7] top-level scope at /home/pkgeval/.julia/packages/TimeSeries/49cHd/test/tables.jl:14
 [ Info: 	* plotrecipes ...
-Test Summary: | Pass  Total
-TimeSeries    | 3503   3503
-    Testing TimeSeries tests passed 
+Test Summary:                | Pass  Fail  Total
+TimeSeries                   | 3500     3   3503
+  timearray                  |  209          209
+  split                      |   59           59
+  apply                      | 2572         2572
+  broadcast                  |  192          192
+  combine                    |  121          121
+  modify                     |   40           40
+  meta                       |   41           41
+  readwrite                  |   28           28
+  timeseriesrc               |    7            7
+  basemisc                   |  132          132
+  Tables.jl integration      |   95     3     98
+    interface                |   16           16
+    iterator                 |   47           47
+    DataFrames.jl            |   19     3     22
+      single column          |    2     1      3
+      multi column           |    5     1      6
+      column name collision  |    6     1      7
+      DataFrame to TimeArray |    6            6
+    CSV.jl                   |   13           13
+  plotrecipes                |    4            4
+ERROR: LoadError: Some tests did not pass: 3500 passed, 3 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/TimeSeries/49cHd/test/runtests.jl:19
+ERROR: Package TimeSeries errored during testing
+Stacktrace:
+ [1] pkgerror(::String, ::Vararg{String,N} where N) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/Types.jl:52
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/Operations.jl:1515
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:316
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:303
+ [5] #test#68 at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:297 [inlined]
+ [6] test at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:297 [inlined]
+ [7] #test#67 at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:296 [inlined]
+ [8] test at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:296 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:295
+ [10] test(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:295
+ [11] top-level scope at none:16

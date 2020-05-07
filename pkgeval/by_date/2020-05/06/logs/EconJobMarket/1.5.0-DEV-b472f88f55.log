@@ -13,32 +13,32 @@ Environment:
   Resolving package versions...
   Installed WeakRefStrings ────────────── v0.6.2
   Installed Parsers ───────────────────── v0.3.12
-  Installed DataAPI ───────────────────── v1.3.0
   Installed IteratorInterfaceExtensions ─ v1.0.0
   Installed Compat ────────────────────── v3.9.0
-  Installed DataStructures ────────────── v0.17.15
+  Installed DataAPI ───────────────────── v1.3.0
   Installed EconJobMarket ─────────────── v0.1.0
+  Installed DataStructures ────────────── v0.17.15
   Installed DataFrames ────────────────── v0.20.2
   Installed Tables ────────────────────── v1.0.4
   Installed Cascadia ──────────────────── v0.4.0
-  Installed MbedTLS_jll ───────────────── v2.16.0+2
-  Installed OrderedCollections ────────── v1.2.0
   Installed IniFile ───────────────────── v0.5.0
-  Installed FilePathsBase ─────────────── v0.7.0
+  Installed OrderedCollections ────────── v1.2.0
+  Installed MbedTLS_jll ───────────────── v2.16.0+2
   Installed JSON3 ─────────────────────── v0.1.13
-  Installed CategoricalArrays ─────────── v0.7.7
   Installed PooledArrays ──────────────── v0.5.3
   Installed Missings ──────────────────── v0.4.3
-  Installed Reexport ──────────────────── v0.2.0
-  Installed DataValueInterfaces ───────── v1.0.0
+  Installed FilePathsBase ─────────────── v0.7.0
+  Installed CategoricalArrays ─────────── v0.7.7
   Installed JSON ──────────────────────── v0.21.0
+  Installed DataValueInterfaces ───────── v1.0.0
+  Installed Reexport ──────────────────── v0.2.0
   Installed HTTP ──────────────────────── v0.8.14
   Installed InvertedIndices ───────────── v1.0.0
+  Installed TableTraits ───────────────── v1.0.0
+  Installed MbedTLS ───────────────────── v1.0.2
   Installed SortingAlgorithms ─────────── v0.3.1
   Installed Gumbo_jll ─────────────────── v0.10.1+0
-  Installed TableTraits ───────────────── v1.0.0
   Installed AbstractTrees ─────────────── v0.3.3
-  Installed MbedTLS ───────────────────── v1.0.2
   Installed Gumbo ─────────────────────── v0.8.0
   Installed CSV ───────────────────────── v0.5.26
 Updating `~/.julia/environments/v1.5/Project.toml`
@@ -100,7 +100,7 @@ Updating `~/.julia/environments/v1.5/Manifest.toml`
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
     Testing EconJobMarket
-Status `/tmp/jl_vZSDVf/Project.toml`
+Status `/tmp/jl_6aqmPU/Project.toml`
   [336ed68f] CSV v0.5.26
   [54eefc05] Cascadia v0.4.0
   [e30172f5] Documenter v0.23.4
@@ -110,7 +110,7 @@ Status `/tmp/jl_vZSDVf/Project.toml`
   [44d3d7a6] Weave v0.9.4
   [ade2ca70] Dates
   [8dfed614] Test
-Status `/tmp/jl_vZSDVf/Manifest.toml`
+Status `/tmp/jl_6aqmPU/Manifest.toml`
   [1520ce14] AbstractTrees v0.3.3
   [336ed68f] CSV v0.5.26
   [54eefc05] Cascadia v0.4.0
@@ -177,146 +177,6 @@ Status `/tmp/jl_vZSDVf/Manifest.toml`
 [ Info: Report weaved to /home/pkgeval/.julia/packages/EconJobMarket/iaKG1/docs/src/index.md
 [ Info: SetupBuildDirectory: setting up build directory.
 [ Info: Doctest: running doctests.
-┌ Error: doctest failure in ~/.julia/packages/EconJobMarket/iaKG1/src/02_job_ads.jl:124-161
-│ 
-│ ```jldoctest
-│ julia> data = joinpath(dirname(@__DIR__), "data", "ads.tsv") |>
-│        fetch_ads |>
-│        CSV.read;
-│ 
-│ julia> Tables.schema(data)
-│ Tables.Schema:
-│  :posid                              Int64
-│  :oid                                Int64
-│  :adtitle                            String
-│  :position_type_id                   String
-│  :position_type                      String
-│  :adtext                             String
-│  :startdate                          Date
-│  :enddate                            Date
-│  :country_code                       String
-│  :position_country                   String
-│  :department                         String
-│  :shortname                          String
-│  :address                            Missing
-│  :longitude                          Float64
-│  :latitude                           Float64
-│  ⋮
-│  :business_economics                 Bool
-│  :computational_economics            Bool
-│  :political_economy                  Bool
-│  :accounting                         Bool
-│  :decision_sciences                  Bool
-│  :insurance                          Bool
-│  :management_general                 Bool
-│  :management_health_care             Bool
-│  :management_information_technology  Bool
-│  :marketing                          Bool
-│  :operations_research                Bool
-│  :organizational_behavior            Bool
-│  :real_estate                        Bool
-│  :statistics                         Bool
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ Tables.schema(data)
-│ 
-│ Evaluated output:
-│ 
-│ Tables.Schema:
-│  :posid                              Int64
-│  :oid                                Int64
-│  :adtitle                            String
-│  :position_type_id                   Int64
-│  :position_type                      String
-│  :adtext                             String
-│  :startdate                          Date
-│  :enddate                            Date
-│  :country_code                       Union{Missing, String}
-│  :position_country                   Union{Missing, String}
-│  ⋮
-│  :insurance                          Bool
-│  :management_general                 Bool
-│  :management_health_care             Bool
-│  :management_information_technology  Bool
-│  :marketing                          Bool
-│  :operations_research                Bool
-│  :organizational_behavior            Bool
-│  :real_estate                        Bool
-│  :statistics                         Bool
-│ 
-│ Expected output:
-│ 
-│ Tables.Schema:
-│  :posid                              Int64
-│  :oid                                Int64
-│  :adtitle                            String
-│  :position_type_id                   String
-│  :position_type                      String
-│  :adtext                             String
-│  :startdate                          Date
-│  :enddate                            Date
-│  :country_code                       String
-│  :position_country                   String
-│  :department                         String
-│  :shortname                          String
-│  :address                            Missing
-│  :longitude                          Float64
-│  :latitude                           Float64
-│  ⋮
-│  :business_economics                 Bool
-│  :computational_economics            Bool
-│  :political_economy                  Bool
-│  :accounting                         Bool
-│  :decision_sciences                  Bool
-│  :insurance                          Bool
-│  :management_general                 Bool
-│  :management_health_care             Bool
-│  :management_information_technology  Bool
-│  :marketing                          Bool
-│  :operations_research                Bool
-│  :organizational_behavior            Bool
-│  :real_estate                        Bool
-│  :statistics                         Bool
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    Tables.Schema:
-│     :posid                              Int64
-│     :oid                                Int64
-│     :adtitle                            String
-│     :position_type_id                   String
-│     Int64
-│     :position_type                      String
-│     :adtext                             String
-│     :startdate                          Date
-│     :enddate                            Date
-│     :country_code                       String
-│     Union{Missing, String}
-│     :position_country                   String
-│     :department                         String
-│     :shortname                          String
-│     :address                            Missing
-│     :longitude                          Float64
-│     :latitude                           Float64
-│     Union{Missing, String}
-│     ⋮
-│     :business_economics                 Bool
-│     :computational_economics            Bool
-│     :political_economy                  Bool
-│     :accounting                         Bool
-│     :decision_sciences                  Bool
-│     :insurance                          Bool
-│     :management_general                 Bool
-│     :management_health_care             Bool
-│     :management_information_technology  Bool
-│     :marketing                          Bool
-│     :operations_research                Bool
-│     :organizational_behavior            Bool
-│     :real_estate                        Bool
-│     :statistics                         Bool
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/IGqbY/src/DocTests.jl:364
 ┌ Error: doctest failure in ~/.julia/packages/EconJobMarket/iaKG1/src/02_job_ads.jl:14-50
 │ 
 │ ```jldoctest
@@ -458,6 +318,146 @@ Status `/tmp/jl_vZSDVf/Manifest.toml`
 │     "Organizational Behavior"
 │     "Real Estate"
 │     "Statistics"
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/IGqbY/src/DocTests.jl:364
+┌ Error: doctest failure in ~/.julia/packages/EconJobMarket/iaKG1/src/02_job_ads.jl:124-161
+│ 
+│ ```jldoctest
+│ julia> data = joinpath(dirname(@__DIR__), "data", "ads.tsv") |>
+│        fetch_ads |>
+│        CSV.read;
+│ 
+│ julia> Tables.schema(data)
+│ Tables.Schema:
+│  :posid                              Int64
+│  :oid                                Int64
+│  :adtitle                            String
+│  :position_type_id                   String
+│  :position_type                      String
+│  :adtext                             String
+│  :startdate                          Date
+│  :enddate                            Date
+│  :country_code                       String
+│  :position_country                   String
+│  :department                         String
+│  :shortname                          String
+│  :address                            Missing
+│  :longitude                          Float64
+│  :latitude                           Float64
+│  ⋮
+│  :business_economics                 Bool
+│  :computational_economics            Bool
+│  :political_economy                  Bool
+│  :accounting                         Bool
+│  :decision_sciences                  Bool
+│  :insurance                          Bool
+│  :management_general                 Bool
+│  :management_health_care             Bool
+│  :management_information_technology  Bool
+│  :marketing                          Bool
+│  :operations_research                Bool
+│  :organizational_behavior            Bool
+│  :real_estate                        Bool
+│  :statistics                         Bool
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Tables.schema(data)
+│ 
+│ Evaluated output:
+│ 
+│ Tables.Schema:
+│  :posid                              Int64
+│  :oid                                Int64
+│  :adtitle                            String
+│  :position_type_id                   Int64
+│  :position_type                      String
+│  :adtext                             String
+│  :startdate                          Date
+│  :enddate                            Date
+│  :country_code                       Union{Missing, String}
+│  :position_country                   Union{Missing, String}
+│  ⋮
+│  :insurance                          Bool
+│  :management_general                 Bool
+│  :management_health_care             Bool
+│  :management_information_technology  Bool
+│  :marketing                          Bool
+│  :operations_research                Bool
+│  :organizational_behavior            Bool
+│  :real_estate                        Bool
+│  :statistics                         Bool
+│ 
+│ Expected output:
+│ 
+│ Tables.Schema:
+│  :posid                              Int64
+│  :oid                                Int64
+│  :adtitle                            String
+│  :position_type_id                   String
+│  :position_type                      String
+│  :adtext                             String
+│  :startdate                          Date
+│  :enddate                            Date
+│  :country_code                       String
+│  :position_country                   String
+│  :department                         String
+│  :shortname                          String
+│  :address                            Missing
+│  :longitude                          Float64
+│  :latitude                           Float64
+│  ⋮
+│  :business_economics                 Bool
+│  :computational_economics            Bool
+│  :political_economy                  Bool
+│  :accounting                         Bool
+│  :decision_sciences                  Bool
+│  :insurance                          Bool
+│  :management_general                 Bool
+│  :management_health_care             Bool
+│  :management_information_technology  Bool
+│  :marketing                          Bool
+│  :operations_research                Bool
+│  :organizational_behavior            Bool
+│  :real_estate                        Bool
+│  :statistics                         Bool
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    Tables.Schema:
+│     :posid                              Int64
+│     :oid                                Int64
+│     :adtitle                            String
+│     :position_type_id                   String
+│     Int64
+│     :position_type                      String
+│     :adtext                             String
+│     :startdate                          Date
+│     :enddate                            Date
+│     :country_code                       String
+│     Union{Missing, String}
+│     :position_country                   String
+│     :department                         String
+│     :shortname                          String
+│     :address                            Missing
+│     :longitude                          Float64
+│     :latitude                           Float64
+│     Union{Missing, String}
+│     ⋮
+│     :business_economics                 Bool
+│     :computational_economics            Bool
+│     :political_economy                  Bool
+│     :accounting                         Bool
+│     :decision_sciences                  Bool
+│     :insurance                          Bool
+│     :management_general                 Bool
+│     :management_health_care             Bool
+│     :management_information_technology  Bool
+│     :marketing                          Bool
+│     :operations_research                Bool
+│     :organizational_behavior            Bool
+│     :real_estate                        Bool
+│     :statistics                         Bool
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/IGqbY/src/DocTests.jl:364
 [ Info: ExpandTemplates: expanding markdown templates.
 [ Info: CrossReferences: building cross-references.
