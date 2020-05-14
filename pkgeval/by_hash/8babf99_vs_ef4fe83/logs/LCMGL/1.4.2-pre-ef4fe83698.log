@@ -11,8 +11,8 @@ Environment:
   JULIA_NUM_THREADS = 2
 
   Resolving package versions...
-  Installed Compat ──── v2.2.0
   Installed LCMGL ───── v0.1.0
+  Installed Compat ──── v2.2.0
   Installed URIParser ─ v0.4.1
   Installed Homebrew ── v0.7.1
   Installed Parsers ─── v1.0.3
@@ -57,8 +57,8 @@ Environment:
 ┌ Error: Error building `LCMGL`: 
 │   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
 │                                  Dload  Upload   Total   Spent    Left  Speed
-│   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   624  100   624    0     0   3284      0 --:--:-- --:--:-- --:--:--  3284
-│ 100 7164k  100 7164k    0     0  12.2M      0 --:--:-- --:--:-- --:--:-- 12.2M
+│   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   624  100   624    0     0   3216      0 --:--:-- --:--:-- --:--:--  3200
+│ 100 7164k  100 7164k    0     0  12.3M      0 --:--:-- --:--:-- --:--:-- 12.3M
 │ Archive:  /home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/downloads/lcm-1.3.1.zip
 │    creating: /home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/lcm-1.3.1/
 │   inflating: /home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/lcm-1.3.1/install-sh  
@@ -1328,44 +1328,14 @@ Environment:
 │ Making all in lcm
 │ make[1]: Entering directory '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/lcm-1.3.1/lcm'
 │   CC       lcm_file.lo
-│   CC       lcm_memq.lo
 │   CC       lcm.lo
-│   CC       ringbuffer.lo
 │   CC       lcm_udpm.lo
-│   CC       lcm_tcpq.lo
-│   CC       lcm_mpudpm.lo
+│   CC       lcm_memq.lo
+│   CC       ringbuffer.lo
 │   CC       udpm_util.lo
+│   CC       lcm_mpudpm.lo
+│   CC       lcm_tcpq.lo
 │   CC       eventlog.lo
-│ lcm_file.c: In function 'lcm_logprov_create':
-│ lcm_file.c:230:9: warning: 'g_thread_create' is deprecated: Use 'g_thread_new' instead [-Wdeprecated-declarations]
-│          lr->timer_thread = g_thread_create (timer_thread, lr, TRUE, NULL);
-│          ^~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_internal.h:4,
-│                  from lcm_file.c:13:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:104:10: note: declared here
-│  GThread *g_thread_create       (GThreadFunc       func,
-│           ^~~~~~~~~~~~~~~
-│ lcm_memq.c: In function 'lcm_memq_destroy':
-│ lcm_memq.c:61:5: warning: 'g_mutex_free' is deprecated [-Wdeprecated-declarations]
-│      g_mutex_free(self->mutex);
-│      ^~~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_internal.h:4,
-│                  from lcm_memq.c:12:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:279:17: note: declared here
-│  void            g_mutex_free            (GMutex *mutex);
-│                  ^~~~~~~~~~~~
-│ lcm_memq.c: In function 'lcm_memq_create':
-│ lcm_memq.c:80:5: warning: 'g_mutex_new' is deprecated [-Wdeprecated-declarations]
-│      self->mutex = g_mutex_new();
-│      ^~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_internal.h:4,
-│                  from lcm_memq.c:12:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:277:17: note: declared here
-│  GMutex *        g_mutex_new             (void);
-│                  ^~~~~~~~~~~
 │ lcm.c: In function 'lcm_create':
 │ lcm.c:61:5: warning: 'g_thread_init' is deprecated [-Wdeprecated-declarations]
 │      if (!g_thread_supported ()) g_thread_init (NULL);
@@ -1585,7 +1555,6 @@ Environment:
 │ /usr/include/glib-2.0/glib/deprecated/gthread.h:283:17: note: declared here
 │  void            g_cond_free             (GCond  *cond);
 │                  ^~~~~~~~~~~
-│   CC       lcmtypes/channel_to_port_t.lo
 │ lcm_udpm.c: In function '_recv_message_fragment':
 │ lcm_udpm.c:341:9: warning: 'g_static_rec_mutex_lock' is deprecated: Use 'g_rec_mutex_lock' instead [-Wdeprecated-declarations]
 │          g_static_rec_mutex_lock (&lcm->mutex);
@@ -1612,146 +1581,6 @@ Environment:
 │ /usr/include/glib-2.0/glib/deprecated/gthread.h:179:10: note: declared here
 │  void     g_static_rec_mutex_lock        (GStaticRecMutex *mutex);
 │           ^~~~~~~~~~~~~~~~~~~~~~~
-│ lcm_mpudpm.c: In function 'lcm_mpudpm_destroy':
-│ lcm_mpudpm.c:297:5: warning: 'g_static_mutex_free' is deprecated: Use 'g_mutex_clear' instead [-Wdeprecated-declarations]
-│      g_static_mutex_free (&lcm->receive_lock);
-│      ^~~~~~~~~~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_mpudpm.c:20:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:152:9: note: declared here
-│  void    g_static_mutex_free           (GStaticMutex *mutex);
-│          ^~~~~~~~~~~~~~~~~~~
-│ lcm_mpudpm.c:298:5: warning: 'g_static_mutex_free' is deprecated: Use 'g_mutex_clear' instead [-Wdeprecated-declarations]
-│      g_static_mutex_free (&lcm->transmit_lock);
-│      ^~~~~~~~~~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_mpudpm.c:20:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:152:9: note: declared here
-│  void    g_static_mutex_free           (GStaticMutex *mutex);
-│          ^~~~~~~~~~~~~~~~~~~
-│ lcm_mpudpm.c:300:9: warning: 'g_mutex_free' is deprecated [-Wdeprecated-declarations]
-│          g_mutex_free(lcm->create_read_thread_mutex);
-│          ^~~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_mpudpm.c:20:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:279:17: note: declared here
-│  void            g_mutex_free            (GMutex *mutex);
-│                  ^~~~~~~~~~~~
-│ lcm_mpudpm.c:301:9: warning: 'g_cond_free' is deprecated [-Wdeprecated-declarations]
-│          g_cond_free(lcm->create_read_thread_cond);
-│          ^~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_mpudpm.c:20:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:283:17: note: declared here
-│  void            g_cond_free             (GCond  *cond);
-│                  ^~~~~~~~~~~
-│ lcm_mpudpm.c: In function 'recv_message_fragment':
-│ lcm_mpudpm.c:507:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
-│          g_static_mutex_lock(&lcm->receive_lock);
-│          ^~~~~~~~~~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_mpudpm.c:20:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
-│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
-│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-│ lcm_mpudpm.c:509:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
-│          g_static_mutex_unlock(&lcm->receive_lock);
-│          ^~~~~~~~~~~~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_mpudpm.c:20:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
-│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
-│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-│ lcm_mpudpm.c: In function 'dispatch_complete_message':
-│ lcm_mpudpm.c:573:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
-│          g_static_mutex_lock(&lcm->transmit_lock);
-│          ^~~~~~~~~~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_mpudpm.c:20:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
-│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
-│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-│ lcm_mpudpm.c:575:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
-│          g_static_mutex_unlock(&lcm->transmit_lock);
-│          ^~~~~~~~~~~~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_mpudpm.c:20:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
-│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
-│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-│ lcm_mpudpm.c:597:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
-│          g_static_mutex_lock(&lcm->receive_lock);
-│          ^~~~~~~~~~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_mpudpm.c:20:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
-│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
-│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-│ lcm_mpudpm.c:600:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
-│          g_static_mutex_unlock(&lcm->receive_lock);
-│          ^~~~~~~~~~~~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_mpudpm.c:20:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
-│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
-│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-│ lcm_mpudpm.c:603:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
-│          g_static_mutex_lock(&lcm->receive_lock);
-│          ^~~~~~~~~~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_mpudpm.c:20:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
-│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
-│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-│ lcm_mpudpm.c:623:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
-│          g_static_mutex_unlock(&lcm->receive_lock);
-│          ^~~~~~~~~~~~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_mpudpm.c:20:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
-│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
-│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-│ lcm_mpudpm.c: In function 'recv_thread':
-│ lcm_mpudpm.c:645:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
-│          g_static_mutex_lock(&lcm->receive_lock);
-│          ^~~~~~~~~~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_mpudpm.c:20:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
-│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
-│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-│ lcm_mpudpm.c:665:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
-│          g_static_mutex_unlock(&lcm->receive_lock);
-│          ^~~~~~~~~~~~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_mpudpm.c:20:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
-│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
-│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-│ lcm_mpudpm.c:701:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
-│          g_static_mutex_lock(&lcm->receive_lock);
-│          ^~~~~~~~~~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_mpudpm.c:20:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
-│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
-│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-│ lcm_mpudpm.c:705:13: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
-│              g_static_mutex_unlock(&lcm->receive_lock);
-│              ^~~~~~~~~~~~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_mpudpm.c:20:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
-│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
-│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-│ lcm_mpudpm.c:735:17: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
-│                  g_static_mutex_unlock(&lcm->receive_lock);
-│                  ^~~~~~~~~~~~~~~~~~~~~
-│ In file included from /usr/include/glib-2.0/glib.h:108:0,
-│                  from lcm_mpudpm.c:20:
-│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
-│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
-│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 │ lcm_udpm.c:472:13: warning: 'g_static_rec_mutex_unlock' is deprecated: Use 'g_rec_mutex_unlock' instead [-Wdeprecated-declarations]
 │              g_static_rec_mutex_unlock (&lcm->mutex);
 │              ^~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1810,6 +1639,36 @@ Environment:
 │ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
 │  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
 │          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+│ lcm_file.c: In function 'lcm_logprov_create':
+│ lcm_file.c:230:9: warning: 'g_thread_create' is deprecated: Use 'g_thread_new' instead [-Wdeprecated-declarations]
+│          lr->timer_thread = g_thread_create (timer_thread, lr, TRUE, NULL);
+│          ^~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_internal.h:4,
+│                  from lcm_file.c:13:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:104:10: note: declared here
+│  GThread *g_thread_create       (GThreadFunc       func,
+│           ^~~~~~~~~~~~~~~
+│ lcm_memq.c: In function 'lcm_memq_destroy':
+│ lcm_memq.c:61:5: warning: 'g_mutex_free' is deprecated [-Wdeprecated-declarations]
+│      g_mutex_free(self->mutex);
+│      ^~~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_internal.h:4,
+│                  from lcm_memq.c:12:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:279:17: note: declared here
+│  void            g_mutex_free            (GMutex *mutex);
+│                  ^~~~~~~~~~~~
+│ lcm_memq.c: In function 'lcm_memq_create':
+│ lcm_memq.c:80:5: warning: 'g_mutex_new' is deprecated [-Wdeprecated-declarations]
+│      self->mutex = g_mutex_new();
+│      ^~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_internal.h:4,
+│                  from lcm_memq.c:12:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:277:17: note: declared here
+│  GMutex *        g_mutex_new             (void);
+│                  ^~~~~~~~~~~
 │ lcm_udpm.c:671:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
 │          g_static_mutex_lock (&lcm->transmit_lock);
 │          ^~~~~~~~~~~~~~~~~~~
@@ -2005,6 +1864,146 @@ Environment:
 │ /usr/include/glib-2.0/glib/deprecated/gthread.h:150:9: note: declared here
 │  void    g_static_mutex_init           (GStaticMutex *mutex);
 │          ^~~~~~~~~~~~~~~~~~~
+│ lcm_mpudpm.c: In function 'lcm_mpudpm_destroy':
+│ lcm_mpudpm.c:297:5: warning: 'g_static_mutex_free' is deprecated: Use 'g_mutex_clear' instead [-Wdeprecated-declarations]
+│      g_static_mutex_free (&lcm->receive_lock);
+│      ^~~~~~~~~~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_mpudpm.c:20:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:152:9: note: declared here
+│  void    g_static_mutex_free           (GStaticMutex *mutex);
+│          ^~~~~~~~~~~~~~~~~~~
+│ lcm_mpudpm.c:298:5: warning: 'g_static_mutex_free' is deprecated: Use 'g_mutex_clear' instead [-Wdeprecated-declarations]
+│      g_static_mutex_free (&lcm->transmit_lock);
+│      ^~~~~~~~~~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_mpudpm.c:20:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:152:9: note: declared here
+│  void    g_static_mutex_free           (GStaticMutex *mutex);
+│          ^~~~~~~~~~~~~~~~~~~
+│ lcm_mpudpm.c:300:9: warning: 'g_mutex_free' is deprecated [-Wdeprecated-declarations]
+│          g_mutex_free(lcm->create_read_thread_mutex);
+│          ^~~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_mpudpm.c:20:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:279:17: note: declared here
+│  void            g_mutex_free            (GMutex *mutex);
+│                  ^~~~~~~~~~~~
+│ lcm_mpudpm.c:301:9: warning: 'g_cond_free' is deprecated [-Wdeprecated-declarations]
+│          g_cond_free(lcm->create_read_thread_cond);
+│          ^~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_mpudpm.c:20:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:283:17: note: declared here
+│  void            g_cond_free             (GCond  *cond);
+│                  ^~~~~~~~~~~
+│ lcm_mpudpm.c: In function 'recv_message_fragment':
+│ lcm_mpudpm.c:507:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
+│          g_static_mutex_lock(&lcm->receive_lock);
+│          ^~~~~~~~~~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_mpudpm.c:20:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
+│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
+│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+│ lcm_mpudpm.c:509:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
+│          g_static_mutex_unlock(&lcm->receive_lock);
+│          ^~~~~~~~~~~~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_mpudpm.c:20:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
+│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
+│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+│ lcm_mpudpm.c: In function 'dispatch_complete_message':
+│ lcm_mpudpm.c:573:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
+│          g_static_mutex_lock(&lcm->transmit_lock);
+│          ^~~~~~~~~~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_mpudpm.c:20:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
+│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
+│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+│ lcm_mpudpm.c:575:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
+│          g_static_mutex_unlock(&lcm->transmit_lock);
+│          ^~~~~~~~~~~~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_mpudpm.c:20:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
+│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
+│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+│ lcm_mpudpm.c:597:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
+│          g_static_mutex_lock(&lcm->receive_lock);
+│          ^~~~~~~~~~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_mpudpm.c:20:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
+│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
+│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+│ lcm_mpudpm.c:600:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
+│          g_static_mutex_unlock(&lcm->receive_lock);
+│          ^~~~~~~~~~~~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_mpudpm.c:20:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
+│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
+│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+│ lcm_mpudpm.c:603:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
+│          g_static_mutex_lock(&lcm->receive_lock);
+│          ^~~~~~~~~~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_mpudpm.c:20:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
+│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
+│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+│ lcm_mpudpm.c:623:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
+│          g_static_mutex_unlock(&lcm->receive_lock);
+│          ^~~~~~~~~~~~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_mpudpm.c:20:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
+│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
+│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+│ lcm_mpudpm.c: In function 'recv_thread':
+│ lcm_mpudpm.c:645:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
+│          g_static_mutex_lock(&lcm->receive_lock);
+│          ^~~~~~~~~~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_mpudpm.c:20:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
+│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
+│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+│ lcm_mpudpm.c:665:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
+│          g_static_mutex_unlock(&lcm->receive_lock);
+│          ^~~~~~~~~~~~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_mpudpm.c:20:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
+│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
+│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+│ lcm_mpudpm.c:701:9: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
+│          g_static_mutex_lock(&lcm->receive_lock);
+│          ^~~~~~~~~~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_mpudpm.c:20:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
+│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
+│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+│ lcm_mpudpm.c:705:13: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
+│              g_static_mutex_unlock(&lcm->receive_lock);
+│              ^~~~~~~~~~~~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_mpudpm.c:20:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
+│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
+│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+│ lcm_mpudpm.c:735:17: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
+│                  g_static_mutex_unlock(&lcm->receive_lock);
+│                  ^~~~~~~~~~~~~~~~~~~~~
+│ In file included from /usr/include/glib-2.0/glib.h:108:0,
+│                  from lcm_mpudpm.c:20:
+│ /usr/include/glib-2.0/glib/deprecated/gthread.h:154:9: note: declared here
+│  GMutex *g_static_mutex_get_mutex_impl (GStaticMutex *mutex);
+│          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 │ lcm_mpudpm.c:827:17: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
 │                  g_static_mutex_lock(&lcm->receive_lock);
 │                  ^~~~~~~~~~~~~~~~~~~
@@ -2431,35 +2430,36 @@ Environment:
 │ /usr/include/glib-2.0/glib/deprecated/gthread.h:150:9: note: declared here
 │  void    g_static_mutex_init           (GStaticMutex *mutex);
 │          ^~~~~~~~~~~~~~~~~~~
+│   CC       lcmtypes/channel_to_port_t.lo
 │   CC       lcmtypes/channel_port_map_update_t.lo
 │   CCLD     liblcm.la
 │ make[1]: Leaving directory '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/lcm-1.3.1/lcm'
 │ Making all in liblcm-test
 │ make[1]: Entering directory '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/lcm-1.3.1/liblcm-test'
-│   CC       lcm-example.o
-│   CC       lcm-tester.o
-│   CC       lcm-logfilter.o
 │   CC       lcm-source.o
-│   CC       buftest-receiver.o
-│   CC       lcm-sink.o
+│   CC       lcm-tester.o
+│   CC       lcm-example.o
 │   CC       buftest-sender.o
+│   CC       lcm-sink.o
+│   CC       buftest-receiver.o
+│   CC       lcm-logfilter.o
+│   CCLD     lcm-source
 │   CCLD     lcm-sink
 │   CCLD     lcm-example
-│   CCLD     lcm-tester
-│   CCLD     lcm-source
-│   CCLD     lcm-buftest-sender
-│   CCLD     lcm-buftest-receiver
 │   CCLD     lcm-logfilter
+│   CCLD     lcm-buftest-receiver
+│   CCLD     lcm-tester
+│   CCLD     lcm-buftest-sender
 │ make[1]: Leaving directory '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/lcm-1.3.1/liblcm-test'
 │ Making all in lcmgen
 │ make[1]: Entering directory '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/lcm-1.3.1/lcmgen'
-│   CC       emit_c.o
-│   CC       emit_csharp.o
-│   CC       main.o
 │   CC       emit_cpp.o
 │   CC       emit_java.o
-│   CC       lcmgen.o
 │   CC       tokenize.o
+│   CC       main.o
+│   CC       lcmgen.o
+│   CC       emit_c.o
+│   CC       emit_csharp.o
 │   CC       getopt.o
 │ emit_cpp.c: In function 'emit_header_start':
 │ emit_cpp.c:306:19: warning: implicit declaration of function '_exit' [-Wimplicit-function-declaration]
@@ -2475,7 +2475,6 @@ Environment:
 │   CC       lcm_logger.o
 │   CC       lcm_logplayer.o
 │   CC       glib_util.o
-│   CCLD     lcm-logplayer
 │ glib_util.c: In function 'glib_mainloop_attach_lcm':
 │ glib_util.c:181:5: warning: 'g_static_mutex_get_mutex_impl' is deprecated: Use 'GMutex' instead [-Wdeprecated-declarations]
 │      g_static_mutex_lock (&lcm_glib_sources_mutex);
@@ -2592,6 +2591,7 @@ Environment:
 │           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 │         __bos (__s), __fmt, __va_arg_pack ());
 │         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+│   CCLD     lcm-logplayer
 │   CCLD     lcm-logger
 │ make[1]: Leaving directory '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/lcm-1.3.1/lcm-logger'
 │ Making all in m4macros
@@ -2617,9 +2617,9 @@ Environment:
 │ Making install in lcm
 │ make[1]: Entering directory '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/lcm-1.3.1/lcm'
 │ make[2]: Entering directory '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/lcm-1.3.1/lcm'
-│  /bin/mkdir -p '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/lib'
-│  /bin/mkdir -p '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/lib/pkgconfig'
 │  /bin/mkdir -p '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/include/lcm'
+│  /bin/mkdir -p '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/lib/pkgconfig'
+│  /bin/mkdir -p '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/lib'
 │  /bin/bash ../libtool   --mode=install /usr/bin/install -c   liblcm.la '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/lib'
 │  /usr/bin/install -c -m 644 eventlog.h lcm.h lcm_coretypes.h lcm-cpp.hpp lcm-cpp-impl.hpp '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/include/lcm'
 │  /usr/bin/install -c -m 644 lcm.pc '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/lib/pkgconfig'
@@ -2659,8 +2659,8 @@ Environment:
 │ make[1]: Entering directory '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/lcm-1.3.1/lcmgen'
 │ make[2]: Entering directory '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/lcm-1.3.1/lcmgen'
 │  /bin/mkdir -p '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/bin'
-│  /bin/mkdir -p '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/share/man/man1'
 │   /bin/bash ../libtool   --mode=install /usr/bin/install -c lcm-gen '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/bin'
+│  /bin/mkdir -p '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/share/man/man1'
 │  /usr/bin/install -c -m 644 lcm-gen.1 '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/share/man/man1'
 │ libtool: install: /usr/bin/install -c lcm-gen /home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/bin/lcm-gen
 │ make[2]: Leaving directory '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/lcm-1.3.1/lcmgen'
@@ -2668,10 +2668,10 @@ Environment:
 │ Making install in lcm-logger
 │ make[1]: Entering directory '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/lcm-1.3.1/lcm-logger'
 │ make[2]: Entering directory '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/lcm-1.3.1/lcm-logger'
-│  /bin/mkdir -p '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/bin'
 │  /bin/mkdir -p '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/share/man/man1'
-│   /bin/bash ../libtool   --mode=install /usr/bin/install -c lcm-logger lcm-logplayer '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/bin'
+│  /bin/mkdir -p '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/bin'
 │  /usr/bin/install -c -m 644 lcm-logger.1 lcm-logplayer.1 '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/share/man/man1'
+│   /bin/bash ../libtool   --mode=install /usr/bin/install -c lcm-logger lcm-logplayer '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/bin'
 │ libtool: install: /usr/bin/install -c .libs/lcm-logger /home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/bin/lcm-logger
 │ libtool: install: /usr/bin/install -c .libs/lcm-logplayer /home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr/bin/lcm-logplayer
 │ make[2]: Leaving directory '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/lcm-1.3.1/lcm-logger'
@@ -2700,8 +2700,8 @@ Environment:
 │ make: Leaving directory '/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/lcm-1.3.1'
 │   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
 │                                  Dload  Upload   Total   Spent    Left  Speed
-│   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   161  100   161    0     0    860      0 --:--:-- --:--:-- --:--:--   860
-│ 100  881k    0  881k    0     0  1876k      0 --:--:-- --:--:-- --:--:-- 1876k
+│   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   161  100   161    0     0    789      0 --:--:-- --:--:-- --:--:--   785
+│ 100  881k    0  881k    0     0  1968k      0 --:--:-- --:--:-- --:--:-- 1968k
 │ Archive:  /home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/downloads/cc8d228b50847c4c55e6963b8ee95c237287547f.zip
 │ cc8d228b50847c4c55e6963b8ee95c237287547f
 │    creating: /home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/libbot-cc8d228b50847c4c55e6963b8ee95c237287547f/
@@ -3125,7 +3125,7 @@ Environment:
 │ [ Info: Directory /home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src already exists
 │ [ Info: Attempting to create directory /home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps
 │ [ Info: Directory /home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps already exists
-│ ERROR: LoadError: failed process: Process(setenv(`make -j8 -C /home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/libbot-cc8d228b50847c4c55e6963b8ee95c237287547f BUILD_PREFIX=/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr`,["PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin", "PWD=/home/pkgeval", "DISPLAY=:99", "NVIDIA_DRIVER_CAPABILITIES=all", "OPENBLAS_NUM_THREADS=8", "XAUTHORITY=/tmp/xvfb-run.mPKij4/Xauthority", "CI=true", "NVIDIA_VISIBLE_DEVICES=all", "DEBIAN_FRONTEND=noninteractive", "JULIA_LOAD_PATH=@:/tmp/jl_7yzJgl", "PKGEVAL=true", "HOME=/home/pkgeval", "JULIA_PKGEVAL=true", "JULIA_DEPOT_PATH=::/usr/local/share/julia", "HOSTNAME=23961a32f546", "JULIA_NUM_THREADS=2", "OPENBLAS_MAIN_FREE=1"]), ProcessExited(2)) [2]
+│ ERROR: LoadError: failed process: Process(setenv(`make -j8 -C /home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/src/libbot-cc8d228b50847c4c55e6963b8ee95c237287547f BUILD_PREFIX=/home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/usr`,["PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin", "PWD=/home/pkgeval", "DISPLAY=:99", "NVIDIA_DRIVER_CAPABILITIES=all", "OPENBLAS_NUM_THREADS=8", "XAUTHORITY=/tmp/xvfb-run.egR6oM/Xauthority", "CI=true", "NVIDIA_VISIBLE_DEVICES=all", "DEBIAN_FRONTEND=noninteractive", "JULIA_LOAD_PATH=@:/tmp/jl_ZEXry7", "PKGEVAL=true", "HOME=/home/pkgeval", "JULIA_PKGEVAL=true", "JULIA_DEPOT_PATH=::/usr/local/share/julia", "HOSTNAME=493e2d337325", "JULIA_NUM_THREADS=2", "OPENBLAS_MAIN_FREE=1"]), ProcessExited(2)) [2]
 │ 
 │ Stacktrace:
 │  [1] pipeline_error at ./process.jl:525 [inlined]
@@ -3140,7 +3140,7 @@ Environment:
 │ in expression starting at /home/pkgeval/.julia/packages/LCMGL/Lk0yi/deps/build.jl:52
 └ @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/Operations.jl:892
     Testing LCMGL
-Status `/tmp/jl_lmb3js/Manifest.toml`
+Status `/tmp/jl_1fygLB/Manifest.toml`
   [9e28174c] BinDeps v0.8.10
   [34da2185] Compat v2.2.0
   [d9be37ee] Homebrew v0.7.1
@@ -3183,7 +3183,7 @@ Stacktrace:
  [6] eval(::Expr) at ./client.jl:449
  [7] top-level scope at ./none:3
 in expression starting at /home/pkgeval/.julia/packages/LCMGL/Lk0yi/src/LCMGL.jl:4
-ERROR: LoadError: Failed to precompile LCMGL [b1a4b0ec-3354-598b-9ba1-60d5189d7354] to /home/pkgeval/.julia/compiled/v1.4/LCMGL/4e2BU_kITCO.ji.
+ERROR: LoadError: Failed to precompile LCMGL [b1a4b0ec-3354-598b-9ba1-60d5189d7354] to /home/pkgeval/.julia/compiled/v1.4/LCMGL/4e2BU_8ywF8.ji.
 Stacktrace:
  [1] error(::String) at ./error.jl:33
  [2] compilecache(::Base.PkgId, ::String) at ./loading.jl:1272

@@ -11,29 +11,29 @@ Environment:
   JULIA_NUM_THREADS = 2
 
   Resolving package versions...
-  Installed CompilerSupportLibraries_jll ─ v0.3.3+0
-  Installed PDMats ─────────────────────── v0.9.12
-  Installed SortingAlgorithms ──────────── v0.3.1
-  Installed Missings ───────────────────── v0.4.3
-  Installed OpenBLAS_jll ───────────────── v0.3.9+4
+  Installed ProgressMeter ──────────────── v1.2.0
+  Installed Arpack_jll ─────────────────── v3.5.0+3
+  Installed Distances ──────────────────── v0.8.2
+  Installed DataAPI ────────────────────── v1.3.0
   Installed ApproxBayes ────────────────── v0.3.2
   Installed Rmath ──────────────────────── v0.6.1
+  Installed StatsFuns ──────────────────── v0.9.4
   Installed RecipesBase ────────────────── v1.0.1
-  Installed Arpack_jll ─────────────────── v3.5.0+3
-  Installed DataAPI ────────────────────── v1.3.0
-  Installed ProgressMeter ──────────────── v1.2.0
-  Installed Arpack ─────────────────────── v0.4.0
   Installed OpenSpecFun_jll ────────────── v0.5.3+3
+  Installed QuadGK ─────────────────────── v2.3.1
+  Installed OpenBLAS_jll ───────────────── v0.3.9+4
+  Installed SortingAlgorithms ──────────── v0.3.1
+  Installed FillArrays ─────────────────── v0.8.9
   Installed DataStructures ─────────────── v0.17.15
+  Installed StatsBase ──────────────────── v0.33.0
+  Installed CompilerSupportLibraries_jll ─ v0.3.3+0
+  Installed PDMats ─────────────────────── v0.9.12
+  Installed Rmath_jll ──────────────────── v0.2.2+0
+  Installed Missings ───────────────────── v0.4.3
+  Installed Arpack ─────────────────────── v0.4.0
   Installed SpecialFunctions ───────────── v0.10.0
   Installed OrderedCollections ─────────── v1.2.0
-  Installed Rmath_jll ──────────────────── v0.2.2+0
-  Installed QuadGK ─────────────────────── v2.3.1
-  Installed StatsFuns ──────────────────── v0.9.4
-  Installed StatsBase ──────────────────── v0.33.0
   Installed Distributions ──────────────── v0.23.2
-  Installed Distances ──────────────────── v0.8.2
-  Installed FillArrays ─────────────────── v0.8.9
    Updating `~/.julia/environments/v1.4/Project.toml`
   [f5f396d3] + ApproxBayes v0.3.2
    Updating `~/.julia/environments/v1.4/Manifest.toml`
@@ -85,7 +85,7 @@ Environment:
   [cf7118a7] + UUIDs 
   [4ec0a83e] + Unicode 
     Testing ApproxBayes
-Status `/tmp/jl_bDBLLO/Manifest.toml`
+Status `/tmp/jl_dnOr2x/Manifest.toml`
   [f5f396d3] ApproxBayes v0.3.2
   [7d9fca2a] Arpack v0.4.0
   [68821587] Arpack_jll v3.5.0+3
@@ -122,7 +122,7 @@ Status `/tmp/jl_bDBLLO/Manifest.toml`
   [90014a1f] PDMats v0.9.12
   [69de0a69] Parsers v1.0.3
   [ccf2f8ad] PlotThemes v2.0.0
-  [995b91a9] PlotUtils v1.0.2
+  [995b91a9] PlotUtils v1.0.3
   [91a5bcdd] Plots v1.2.4
   [92933f4c] ProgressMeter v1.2.0
   [1fd47b50] QuadGK v2.3.1
@@ -170,8 +170,8 @@ Status `/tmp/jl_bDBLLO/Manifest.toml`
   [4ec0a83e] Unicode 
 Running tests ...
 * test_sampling.jl ...
-  1.322933 seconds (10.04 M allocations: 276.563 MiB, 3.96% gc time)
-  1.856177 seconds (10.01 M allocations: 294.812 MiB, 2.71% gc time)
+  1.335179 seconds (10.04 M allocations: 276.562 MiB, 5.79% gc time)
+  2.235986 seconds (10.01 M allocations: 294.812 MiB, 13.43% gc time)
 * test_parameter.jl ...
 Test parameters of normal distribution are inferred correctly (mean within 5% of true value)
 Preparing to run in serial on 1 processor
@@ -236,22 +236,63 @@ Parameter 2: 0.39 (0.35,0.46)
 Test parameters of normal distribution are inferred correctly (mean within 5% of true value)
 Preparing to run in parallel on 2 processors
 	 Check ABC rejection algorithm correctly infers parameters
-Test Failed at /home/pkgeval/.julia/packages/ApproxBayes/RZWxX/test/test_parameter_parallel.jl:33
-  Expression: isapprox((mean(resrejection.parameters, dims = 1))[2], p2, rtol = 0.05)
-   Evaluated: isapprox(0.4227925237547526, 0.4; rtol = 0.05)
-ERROR: LoadError: LoadError: There was an error during testing
-in expression starting at /home/pkgeval/.julia/packages/ApproxBayes/RZWxX/test/test_parameter_parallel.jl:33
-in expression starting at /home/pkgeval/.julia/packages/ApproxBayes/RZWxX/test/runtests.jl:13
-ERROR: Package ApproxBayes errored during testing
-Stacktrace:
- [1] pkgerror(::String, ::Vararg{String,N} where N) at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/Types.jl:53
- [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/Operations.jl:1503
- [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:316
- [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:303
- [5] #test#68 at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:297 [inlined]
- [6] test at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:297 [inlined]
- [7] #test#67 at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:296 [inlined]
- [8] test at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:296 [inlined]
- [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:295
- [10] test(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:295
- [11] top-level scope at none:16
+	 Check no errors arising from plotting
+┌ Warning: Attribute alias `nbins` detected in the user recipe defined for the signature (::ApproxBayes.ABCrejectionresults). To ensure expected behavior it is recommended to use the default attribute `bins`.
+└ @ Plots ~/.julia/packages/Plots/zOV0T/src/pipeline.jl:15
+	 Check no errors arising from printing results
+
+#########################################
+Number of simulations: 1.18e+05
+Acceptance ratio: 8.45e-04
+
+Median (95% intervals):
+Parameter 1: 2.00 (1.91,2.07)
+Parameter 2: 0.41 (0.29,0.56)
+#########################################
+
+	 Check output is written to file
+Preparing to run in parallel on 2 processors
+Preparing to run in parallel on 2 processors
+	 Check ABC SMC algorithm correctly infers parameters
+	 Check no errors arising from plotting
+┌ Warning: Attribute alias `nbins` detected in the user recipe defined for the signature (::ApproxBayes.ABCSMCresults). To ensure expected behavior it is recommended to use the default attribute `bins`.
+└ @ Plots ~/.julia/packages/Plots/zOV0T/src/pipeline.jl:15
+	 Check no errors arising from printing results
+
+#########################################
+Total number of simulations: 3.31e+03
+Cumulative number of simulations = [102, 523, 998, 1476, 1994, 2679, 3313]
+Acceptance ratio: 3.02e-02
+Tolerance schedule = [0.99, 0.53, 0.33, 0.21, 0.12, 0.07, 0.05]
+
+Median (95% intervals):
+Parameter 1: 1.99 (1.94,2.05)
+Parameter 2: 0.42 (0.34,0.49)
+#########################################
+
+	 Check output is written to file
+	 Check ABC SMC is more efficient than ABC rejection
+Preparing to run in parallel on 2 processors
+Preparing to run in parallel on 2 processors
+Preparing to run in parallel on 2 processors
+┌ Warning: Only accepted 1 particles with ϵ < 0.1. 
+│ 	You may want to increase ϵ or increase maxiterations. 
+│ 	 Resorting to taking the 100 particles with smallest distance
+└ @ ApproxBayes ~/.julia/packages/ApproxBayes/RZWxX/src/ABCalgorithm.jl:85
+	 Check ABC SMC when epsilon is small and maxiterations small
+Preparing to run in parallel on 2 processors
+Preparing to run in parallel on 2 processors
+* test_bayesfactor.jl ...
+Test Bayes factors are calculated correctly (within 5% of true value)
+	 Checking ABC SMC model selection
+ 13.595360 seconds (21.80 M allocations: 1.677 GiB, 3.67% gc time)
+	 Checking ABC rejection model selection
+210.471680 seconds (57.38 M allocations: 20.303 GiB, 1.74% gc time)
+	 Check no errors arising from plotting
+┌ Warning: Attribute alias `nbins` detected in the user recipe defined for the signature (::ApproxBayes.ABCSMCmodelresults, ::Int64). To ensure expected behavior it is recommended to use the default attribute `bins`.
+└ @ Plots ~/.julia/packages/Plots/zOV0T/src/pipeline.jl:15
+┌ Warning: Attribute alias `nbins` detected in the user recipe defined for the signature (::ApproxBayes.ABCrejectionmodelresults, ::Int64). To ensure expected behavior it is recommended to use the default attribute `bins`.
+└ @ Plots ~/.julia/packages/Plots/zOV0T/src/pipeline.jl:15
+* test_util.jl ...
+368.047075 seconds (206.84 M allocations: 56.482 GiB, 3.05% gc time)
+    Testing ApproxBayes tests passed 

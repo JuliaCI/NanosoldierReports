@@ -19,7 +19,7 @@ Environment:
   [8f399da3] + Libdl 
   [37e2e46d] + LinearAlgebra 
     Testing UnbalancedOptimalTransport
-Status `/tmp/jl_MVe9KZ/Manifest.toml`
+Status `/tmp/jl_7dP0PH/Manifest.toml`
   [1520ce14] AbstractTrees v0.3.3
   [6e4b80f9] BenchmarkTools v0.5.0
   [b99e7846] BinaryProvider v0.5.9
@@ -70,12 +70,59 @@ Status `/tmp/jl_MVe9KZ/Manifest.toml`
 └ @ Convex ~/.julia/packages/Convex/v9Ehz/src/solution.jl:229
 ┌ Warning: Problem status ALMOST_OPTIMAL; solution may be inaccurate.
 └ @ Convex ~/.julia/packages/Convex/v9Ehz/src/solution.jl:229
-┌ Warning: Problem status ALMOST_OPTIMAL; solution may be inaccurate.
-└ @ Convex ~/.julia/packages/Convex/v9Ehz/src/solution.jl:229
-┌ Warning: Problem status ALMOST_OPTIMAL; solution may be inaccurate.
-└ @ Convex ~/.julia/packages/Convex/v9Ehz/src/solution.jl:229
-Test Summary:                 | Pass  Total
-UnbalancedOptimalTransport.jl |  131    131
-Combined backtracking failed 0 0 89 1 sigma 1
+┌ Warning: Maximum iterations (100000) reached
+│   max_residual = 0.0007571986066494674
+└ @ UnbalancedOptimalTransport ~/.julia/packages/UnbalancedOptimalTransport/CdKnf/src/sinkhorn.jl:101
+regularized OT! with balancing via Balanced(): Test Failed at /home/pkgeval/.julia/packages/UnbalancedOptimalTransport/CdKnf/test/runtests.jl:63
+  Expression: ≈(OT!(D, a, b, ϵ), result.optimal_value, rtol = 0.001, atol = 0.001)
+   Evaluated: 59.37480772937078 ≈ 59.519958932363906 (rtol=0.001, atol=0.001)
+Stacktrace:
+ [1] top-level scope at /home/pkgeval/.julia/packages/UnbalancedOptimalTransport/CdKnf/test/runtests.jl:63
+ [2] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Test/src/Test.jl:1186
+ [3] top-level scope at /home/pkgeval/.julia/packages/UnbalancedOptimalTransport/CdKnf/test/runtests.jl:38
+ [4] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Test/src/Test.jl:1113
+ [5] top-level scope at /home/pkgeval/.julia/packages/UnbalancedOptimalTransport/CdKnf/test/runtests.jl:38
+┌ Warning: Maximum iterations (100000) reached
+│   max_residual = 0.0007571986066494674
+└ @ UnbalancedOptimalTransport ~/.julia/packages/UnbalancedOptimalTransport/CdKnf/src/sinkhorn.jl:101
+regularized OT! with balancing via Balanced(): Test Failed at /home/pkgeval/.julia/packages/UnbalancedOptimalTransport/CdKnf/test/runtests.jl:66
+  Expression: ≈(result.optimal_coupling, coupling_sinkhorn, rtol = 0.001, atol = 0.001)
+   Evaluated: [0.0582728858517888 -6.291867141598968e-10 -8.348983207170743e-10; 1.2147623439720753e-9 0.01255146629112198 0.19699530462933737; 0.5850159968306775 -6.604554436679103e-10 -8.64876164142309e-10; 0.0021027078052558174 0.004019177884406269 0.06308025447384506] ≈ [0.05827288476515112 0.0 0.0; 0.0 0.01255149988005131 0.19699527359060182; 0.5850159990827843 0.0 0.0; 1.2532344213828958e-303 0.0041450920243461245 0.06505704857568242] (rtol=0.001, atol=0.001)
+Stacktrace:
+ [1] top-level scope at /home/pkgeval/.julia/packages/UnbalancedOptimalTransport/CdKnf/test/runtests.jl:66
+ [2] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Test/src/Test.jl:1186
+ [3] top-level scope at /home/pkgeval/.julia/packages/UnbalancedOptimalTransport/CdKnf/test/runtests.jl:38
+ [4] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Test/src/Test.jl:1113
+ [5] top-level scope at /home/pkgeval/.julia/packages/UnbalancedOptimalTransport/CdKnf/test/runtests.jl:38
+Test Summary:                                                                      | Pass  Fail  Total
+UnbalancedOptimalTransport.jl                                                      |  129     2    131
+  regularized OT! with balancing via KL{1.0}()                                     |    4            4
+  regularized OT! with balancing via KL{2.0}()                                     |    4            4
+  regularized OT! with balancing via KL{100.0}()                                   |    4            4
+  regularized OT! with balancing via TV{4.0}()                                     |    4            4
+  regularized OT! with balancing via RG{0.5,1.5}()                                 |    4            4
+  regularized OT! with balancing via Balanced()                                    |    2     2      4
+  Optimal coupling                                                                 |   24           24
+  Allocations                                                                      |    2            2
+  Prop. 12: Optimized KL-Sinkhorn divergence method                                |   24           24
+  BigFloats                                                                        |   12           12
+  Lemma 11: equality of dual potentials                                            |    6            6
+  Theorem 4: positive definiteness and (separate) convexity of Sinkhorn divergence |   30           30
+  eltype                                                                           |    3            3
+  Warnings and errors                                                              |    6            6
+ERROR: LoadError: Some tests did not pass: 129 passed, 2 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/UnbalancedOptimalTransport/CdKnf/test/runtests.jl:35
 Combined backtracking failed 0 0 90 0 sigma 1
-    Testing UnbalancedOptimalTransport tests passed 
+ERROR: Package UnbalancedOptimalTransport errored during testing
+Stacktrace:
+ [1] pkgerror(::String, ::Vararg{String,N} where N) at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/Types.jl:53
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/Operations.jl:1503
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:316
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:303
+ [5] #test#68 at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:297 [inlined]
+ [6] test at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:297 [inlined]
+ [7] #test#67 at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:296 [inlined]
+ [8] test at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:296 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:295
+ [10] test(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.4/Pkg/src/API.jl:295
+ [11] top-level scope at none:16
