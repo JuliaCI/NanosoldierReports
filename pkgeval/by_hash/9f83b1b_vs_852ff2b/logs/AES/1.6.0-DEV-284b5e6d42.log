@@ -1,0 +1,124 @@
+Julia Version 1.6.0-DEV.88
+Commit 284b5e6d42 (2020-05-24 00:00 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed AES ────────── v0.1.0
+  Installed StaticArrays ─ v0.12.3
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [5a3fb44e] + AES v0.1.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [5a3fb44e] + AES v0.1.0
+  [90137ffa] + StaticArrays v0.12.3
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+    Testing AES
+Status `/tmp/jl_87GHyY/Project.toml`
+  [5a3fb44e] AES v0.1.0
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [1bc83da4] SafeTestsets v0.0.1
+  [90137ffa] StaticArrays v0.12.3
+  [9a3f8284] Random
+  [8dfed614] Test
+Status `/tmp/jl_87GHyY/Manifest.toml`
+  [5a3fb44e] AES v0.1.0
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [682c06a0] JSON v0.21.0
+  [69de0a69] Parsers v1.0.4
+  [1bc83da4] SafeTestsets v0.0.1
+  [90137ffa] StaticArrays v0.12.3
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [de0858da] Printf
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+  1.957 μs (0 allocations: 0 bytes)
+  4.678 μs (0 allocations: 0 bytes)
+  2.827 μs (0 allocations: 0 bytes)
+  5.257 μs (0 allocations: 0 bytes)
+Test Summary:                     | Pass  Total
+Block Encryption/Decryption tests |    6      6
+ 52.580694 seconds (14.44 M allocations: 758.910 MiB, 6.67% gc time)
+CBC Mode tests: Error During Test at /home/pkgeval/.julia/packages/SafeTestsets/A83XK/src/SafeTestsets.jl:25
+  Got exception outside of a @test
+  LoadError: ArgumentError: an array of type `AES.AESBlock` shares memory with another argument and must
+  make a preventative copy of itself in order to maintain consistent semantics,
+  but `copy(A)` returns a new array of type `Array{UInt8,1}`. To fix, implement:
+      `Base.unaliascopy(A::AES.AESBlock)::typeof(A)`
+  Stacktrace:
+   [1] _unaliascopy(::AES.AESBlock{Array{UInt8,1},Int64}, ::Array{UInt8,1}) at ./abstractarray.jl:1242
+   [2] unaliascopy(::AES.AESBlock{Array{UInt8,1},Int64}) at ./abstractarray.jl:1240
+   [3] unalias at ./abstractarray.jl:1223 [inlined]
+   [4] broadcast_unalias at ./broadcast.jl:907 [inlined]
+   [5] preprocess at ./broadcast.jl:914 [inlined]
+   [6] preprocess_args at ./broadcast.jl:917 [inlined]
+   [7] preprocess_args at ./broadcast.jl:916 [inlined]
+   [8] preprocess at ./broadcast.jl:913 [inlined]
+   [9] copyto! at ./broadcast.jl:930 [inlined]
+   [10] copyto! at ./broadcast.jl:886 [inlined]
+   [11] materialize! at ./broadcast.jl:848 [inlined]
+   [12] materialize! at ./broadcast.jl:845 [inlined]
+   [13] AESCBC!(::Array{UInt8,1}, ::String, ::Array{UInt8,1}, ::AES.AES128Key, ::AES.CipherCache{StaticArrays.SArray{Tuple{4},Array{UInt8,1},1,4},Array{UInt8,1},Nothing}) at /home/pkgeval/.julia/packages/AES/MTuEx/src/modes/cbc.jl:27
+   [14] AESCBC(::String, ::Array{UInt8,1}, ::AES.AES128Key, ::AES.CipherCache{StaticArrays.SArray{Tuple{4},Array{UInt8,1},1,4},Array{UInt8,1},Nothing}) at /home/pkgeval/.julia/packages/AES/MTuEx/src/modes/cbc.jl:6
+   [15] #encrypt#10 at /home/pkgeval/.julia/packages/AES/MTuEx/src/encrypt.jl:7 [inlined]
+   [16] top-level scope at /home/pkgeval/.julia/packages/AES/MTuEx/test/cbc.jl:10
+   [17] include at ./Base.jl:368 [inlined]
+   [18] include(::String) at /home/pkgeval/.julia/packages/SafeTestsets/A83XK/src/SafeTestsets.jl:23
+   [19] top-level scope at /home/pkgeval/.julia/packages/AES/MTuEx/test/runtests.jl:5
+   [20] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [21] top-level scope at /home/pkgeval/.julia/packages/AES/MTuEx/test/runtests.jl:5
+   [22] eval(::Module, ::Any) at ./boot.jl:331
+   [23] top-level scope at /home/pkgeval/.julia/packages/SafeTestsets/A83XK/src/SafeTestsets.jl:23
+   [24] top-level scope at timing.jl:174
+   [25] top-level scope at /home/pkgeval/.julia/packages/AES/MTuEx/test/runtests.jl:5
+   [26] top-level scope at timing.jl:174
+   [27] include(::String) at ./client.jl:446
+   [28] top-level scope at none:6
+   [29] eval(::Module, ::Any) at ./boot.jl:331
+   [30] exec_options(::Base.JLOptions) at ./client.jl:271
+   [31] _start() at ./client.jl:487
+  in expression starting at /home/pkgeval/.julia/packages/AES/MTuEx/test/cbc.jl:10
+  
+Test Summary:  | Error  Total
+CBC Mode tests |     1      1
+ERROR: LoadError: Some tests did not pass: 0 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/AES/MTuEx/test/runtests.jl:3
+ERROR: Package AES errored during testing
+Stacktrace:
+ [1] pkgerror(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1557
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:327
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:314
+ [5] #test#61 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+ [6] test at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+ [7] #test#60 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+ [8] test at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope at none:16
