@@ -1,0 +1,2243 @@
+Julia Version 1.6.0-DEV.113
+Commit d0b2be1468 (2020-05-27 16:33 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed SortingAlgorithms ── v0.3.1
+  Installed Missings ─────────── v0.4.3
+  Installed DataAPI ──────────── v1.3.0
+  Installed OrderedCollections ─ v1.2.0
+  Installed DataStructures ───── v0.17.17
+  Installed StatsBase ────────── v0.33.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [2913bbd2] + StatsBase v0.33.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [9a962f9c] + DataAPI v1.3.0
+  [864edb3b] + DataStructures v0.17.17
+  [e1d29d7a] + Missings v0.4.3
+  [bac558e1] + OrderedCollections v1.2.0
+  [a2af1166] + SortingAlgorithms v0.3.1
+  [2913bbd2] + StatsBase v0.33.0
+  [2a0f44e3] + Base64
+  [8ba89e20] + Distributed
+  [b77e0a4c] + InteractiveUtils
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [de0858da] + Printf
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [8dfed614] + Test
+  [4ec0a83e] + Unicode
+    Testing StatsBase
+Status `/tmp/jl_KEQNOQ/Project.toml`
+  [9a962f9c] DataAPI v1.3.0
+  [864edb3b] DataStructures v0.17.17
+  [e1d29d7a] Missings v0.4.3
+  [a2af1166] SortingAlgorithms v0.3.1
+  [2913bbd2] StatsBase v0.33.0
+  [ade2ca70] Dates
+  [8bb1440f] DelimitedFiles
+  [37e2e46d] LinearAlgebra
+  [de0858da] Printf
+  [9a3f8284] Random
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+Status `/tmp/jl_KEQNOQ/Manifest.toml`
+  [9a962f9c] DataAPI v1.3.0
+  [864edb3b] DataStructures v0.17.17
+  [e1d29d7a] Missings v0.4.3
+  [bac558e1] OrderedCollections v1.2.0
+  [a2af1166] SortingAlgorithms v0.3.1
+  [2913bbd2] StatsBase v0.33.0
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8bb1440f] DelimitedFiles
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [de0858da] Printf
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+  [4ec0a83e] Unicode
+Running tests:
+ * ambiguous.jl ...
+Skipping StatsBase.findat
+Skipping StatsBase.wmean!
+Skipping Base.active_repl
+Skipping Base.active_repl_backend
+Test Summary: | Broken  Total
+Ambiguities   |      1      1
+ * weights.jl ...
+Quantile fweights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:323
+  Test threw exception
+  Expression: quantile(data[i], fweights(fill!(similar(wt[i]), 1)), p) ≈ quantile(data[i], p)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:323
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:262
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, p), quantile(data[i], p), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, p), quantile(data[i], p), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, p), quantile(data[i], p), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, p), quantile(data[i], p), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, p), quantile(data[i], p), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, p), quantile(data[i], p), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, p), quantile(data[i], p), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, p), quantile(data[i], p), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, p), quantile(data[i], p), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:423
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Quantile aweights, pweights and weights: Error During Test at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+  Test threw exception
+  Expression: ≈(quantile(data[i], w, prandom), quantile(data[i], prandom), atol = 1.0e-5)
+  BoundsError: attempt to access 1-element Array{Float64,1} at index [0]
+  Stacktrace:
+   [1] getindex at ./array.jl:811 [inlined]
+   [2] #_quantile#53 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:977 [inlined]
+   [3] #50 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [4] iterate at ./generator.jl:47 [inlined]
+   [5] _collect(::Array{Float64,1}, ::Base.Generator{Array{Float64,1},Statistics.var"#50#51"{Float64,Float64,Array{Float64,1}}}, ::Base.EltypeUnknown, ::Base.HasShape{1}) at ./array.jl:701
+   [6] collect_similar at ./array.jl:630 [inlined]
+   [7] map at ./abstractarray.jl:2151 [inlined]
+   [8] #quantile!#49 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:940 [inlined]
+   [9] quantile(::Array{Float64,1}, ::Array{Float64,1}; sorted::Bool, alpha::Float64, beta::Float64) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [10] quantile(::Array{Float64,1}, ::Array{Float64,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Statistics/src/Statistics.jl:1044
+   [11] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:426
+   [12] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
+   [13] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:339
+   [14] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:5
+  
+Test Summary:                                        | Pass  Error  Total
+StatsBase.Weights                                    | 3480    100   3580
+  weights                                            |   17            17
+  aweights                                           |   17            17
+  fweights                                           |   17            17
+  pweights                                           |   17            17
+  weights, setindex!                                 |   15            15
+  aweights, setindex!                                |   15            15
+  fweights, setindex!                                |   15            15
+  pweights, setindex!                                |   15            15
+  weights, isequal and ==                            |   10            10
+  aweights, isequal and ==                           |   10            10
+  fweights, isequal and ==                           |    8             8
+  pweights, isequal and ==                           |   10            10
+  Unit weights                                       |   13            13
+  wsum                                               |   43            43
+  Sum weights                                        |   11            11
+  Sum aweights                                       |   11            11
+  Sum fweights                                       |   11            11
+  Sum pweights                                       |   11            11
+  Mean weights                                       |   14            14
+  Mean aweights                                      |   14            14
+  Mean fweights                                      |   14            14
+  Mean pweights                                      |   14            14
+  Quantile fweights                                  |   43      1     44
+  Quantile aweights, pweights and weights            | 1013     33   1046
+  Quantile aweights, pweights and weights            | 1013     33   1046
+  Quantile aweights, pweights and weights            | 1013     33   1046
+  Median weights                                     |   11            11
+  Median aweights                                    |   11            11
+  Median fweights                                    |   11            11
+  Median pweights                                    |   11            11
+  Mismatched eltypes                                 |    1             1
+  Sum, mean, quantiles and variance for unit weights |   20            20
+  Exponential Weights                                |   11            11
+ERROR: LoadError: LoadError: Some tests did not pass: 3480 passed, 0 failed, 100 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/weights.jl:4
+in expression starting at /home/pkgeval/.julia/packages/StatsBase/unDUx/test/runtests.jl:30
+ERROR: Package StatsBase errored during testing
+Stacktrace:
+ [1] pkgerror(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1557
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:327
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:314
+ [5] #test#61 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+ [6] test at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+ [7] #test#60 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+ [8] test at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope at none:16
