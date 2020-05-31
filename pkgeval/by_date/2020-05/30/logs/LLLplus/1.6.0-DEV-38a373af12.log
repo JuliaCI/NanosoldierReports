@@ -1,0 +1,117 @@
+Julia Version 1.6.0-DEV.129
+Commit 38a373af12 (2020-05-29 17:04 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed Parsers ───────────── v1.0.4
+  Installed LLLplus ───────────── v1.2.8
+  Installed JSON ──────────────── v0.21.0
+  Installed DocStringExtensions ─ v0.8.1
+  Installed Documenter ────────── v0.24.11
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [142c1900] + LLLplus v1.2.8
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [ffbed154] + DocStringExtensions v0.8.1
+  [e30172f5] + Documenter v0.24.11
+  [682c06a0] + JSON v0.21.0
+  [142c1900] + LLLplus v1.2.8
+  [69de0a69] + Parsers v1.0.4
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [8bb1440f] + DelimitedFiles
+  [8ba89e20] + Distributed
+  [b77e0a4c] + InteractiveUtils
+  [76f85450] + LibGit2
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [a63ad114] + Mmap
+  [44cfe95a] + Pkg
+  [de0858da] + Printf
+  [3fa0cd96] + REPL
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [8dfed614] + Test
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+    Testing LLLplus
+Status `/tmp/jl_6cArrn/Project.toml`
+  [e30172f5] Documenter v0.24.11
+  [142c1900] LLLplus v1.2.8
+  [8bb1440f] DelimitedFiles
+  [37e2e46d] LinearAlgebra
+  [de0858da] Printf
+  [9a3f8284] Random
+  [8dfed614] Test
+Status `/tmp/jl_6cArrn/Manifest.toml`
+  [ffbed154] DocStringExtensions v0.8.1
+  [e30172f5] Documenter v0.24.11
+  [682c06a0] JSON v0.21.0
+  [142c1900] LLLplus v1.2.8
+  [69de0a69] Parsers v1.0.4
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8bb1440f] DelimitedFiles
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+tests with small matrices...
+...done
+
+In all the following tests, the first time includes the JIT compilation; 
+for the second execution the compilation is already done and the time
+should be faster.
+
+Testing LLL on 1000x1000 real matrix...
+  2.958047 seconds (2.57 M allocations: 183.794 MiB, 2.93% gc time)
+  1.363471 seconds (4.28 k allocations: 63.434 MiB, 5.02% gc time)
+
+Testing LLL on 10x10 complex matrix...
+  7.970233 seconds (11.06 M allocations: 511.300 MiB, 5.55% gc time)
+  0.000227 seconds (267 allocations: 52.625 KiB)
+Testing Seysen on same 10x10 complex matrix...
+  2.392650 seconds (2.51 M allocations: 125.976 MiB, 4.37% gc time)
+  0.000879 seconds (339 allocations: 147.484 KiB)
+Testing VBLAST on same 10x10 complex matrix...
+  2.470684 seconds (1.82 M allocations: 86.670 MiB, 3.61% gc time)
+  0.060793 seconds (181 allocations: 121.000 KiB)
+Testing Brun on real part of same 10x10 matrix...
+  2.192275 seconds (2.16 M allocations: 108.620 MiB, 3.47% gc time)
+  0.000175 seconds (24 allocations: 12.188 KiB)
+
+Testing sphere decoder on 100000 samples of 3x3 BPSK system...
+  2.713320 seconds (4.27 M allocations: 324.155 MiB, 18.02% gc time)
+  0.554541 seconds (2.07 M allocations: 216.415 MiB, 4.25% gc time)
+Error Rate is 0.0. It should be zero or very small.
+
+Testing now with 200x200 matrix from latticechallenge.org.
+The min norm of the input should be 30, min norm of the reduced bases is hopefully smaller :-)
+min norm of input is 30.0
+  0.666692 seconds (103.16 k allocations: 75.383 MiB, 4.06% gc time)
+min norm of lll-reduced basis is 29.30870177950569
