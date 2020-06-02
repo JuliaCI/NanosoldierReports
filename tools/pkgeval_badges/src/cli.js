@@ -70,14 +70,23 @@ for (var uuid in db.tests) {
     var text, color
     [text, color] = formats[test.status]
 
-    // generate the badge
-    format = {
+    // generate the badges
+    format_main_badge = {
         text: ['PkgEval', text],
         color: color,
         template: 'flat',
     }
-    svg = bf.create(format)
-    fs.writeFileSync(path.join(badge_dir, test.name + ".svg"), svg)
+    format_named_badge = {
+        text: [test.name, text],
+        color: color,
+        template: 'flat',
+    }
+    
+    svg_main_badge = bf.create(format_main_badge)
+    svg_named_badge = bf.create(format_named_badge)
+    
+    fs.writeFileSync(path.join(badge_dir, test.name + ".svg"), svg_main_badge)
+    fs.writeFileSync(path.join(badge_dir, test.name + ".named.svg"), svg_named_badge)
 
     // generate a redirect to the log
     fs.writeFileSync(path.join(badge_dir, test.name + ".html"),
