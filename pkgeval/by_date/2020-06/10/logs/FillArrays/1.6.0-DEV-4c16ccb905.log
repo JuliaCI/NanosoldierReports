@@ -1,0 +1,114 @@
+Julia Version 1.6.0-DEV.207
+Commit 4c16ccb905 (2020-06-10 16:41 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed FillArrays ─ v0.8.10
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [1a297f60] + FillArrays v0.8.10
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [1a297f60] + FillArrays v0.8.10
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [2f01184e] + SparseArrays
+    Testing FillArrays
+Status `/tmp/jl_x02u8a/Project.toml`
+  [1a297f60] FillArrays v0.8.10
+  [2a0f44e3] Base64
+  [37e2e46d] LinearAlgebra
+  [9a3f8284] Random
+  [2f01184e] SparseArrays
+  [8dfed614] Test
+Status `/tmp/jl_x02u8a/Manifest.toml`
+  [1a297f60] FillArrays v0.8.10
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [8dfed614] Test
+Test Summary:                       | Pass  Total
+fill array constructors and convert |  207    207
+Test Summary: | Pass  Total
+RectDiagonal  |   31     31
+Test Summary:                      | Pass  Total
+FillArray addition and subtraction |  130    130
+Test Summary:      | Pass  Total
+Other matrix types |    9      9
+Test Summary:               | Pass  Total
+Sparse vectors and matrices |    5      5
+Test Summary: | Pass  Total
+==            |    3      3
+Test Summary: | Pass  Total
+Rank          |    5      5
+Test Summary:  | Pass  Total
+BigInt indices |   19     19
+Test Summary: | Pass  Total
+IndexStyle    |    1      1
+Identities: Error During Test at /home/pkgeval/.julia/packages/FillArrays/M2GdF/test/runtests.jl:349
+  Test threw exception
+  Expression: (randn(4))' * Zeros(4) === zero(Float64)
+  MethodError: *(::Adjoint{Float64,Array{Float64,1}}, ::Zeros{Float64,1,Tuple{Base.OneTo{Int64}}}) is ambiguous. Candidates:
+    *(u::Adjoint{T,var"#s841"} where var"#s841"<:(AbstractArray{T,1} where T), v::AbstractArray{T,1}) where T<:Number in LinearAlgebra at /opt/julia/share/julia/stdlib/v1.6/LinearAlgebra/src/adjtrans.jl:268
+    *(a::Adjoint{T,var"#s15"} where var"#s15"<:AbstractArray{T,1}, b::Zeros{S,1,Axes} where Axes) where {T, S} in FillArrays at /home/pkgeval/.julia/packages/FillArrays/M2GdF/src/fillalgebra.jl:123
+  Possible fix, define
+    *(::Adjoint{T,var"#s15"} where var"#s15"<:AbstractArray{T,1}, ::Zeros{T,1,Axes} where Axes) where T<:Number
+  Stacktrace:
+   [1] macro expansion at /home/pkgeval/.julia/packages/FillArrays/M2GdF/test/runtests.jl:349 [inlined]
+   [2] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1115 [inlined]
+   [3] top-level scope at /home/pkgeval/.julia/packages/FillArrays/M2GdF/test/runtests.jl:336
+  
+Identities: Error During Test at /home/pkgeval/.julia/packages/FillArrays/M2GdF/test/runtests.jl:350
+  Test threw exception
+  Expression: ([1, 2, 3])' * Zeros{Int}(3) === zero(Int)
+  MethodError: *(::Adjoint{Int64,Array{Int64,1}}, ::Zeros{Int64,1,Tuple{Base.OneTo{Int64}}}) is ambiguous. Candidates:
+    *(u::Adjoint{T,var"#s841"} where var"#s841"<:(AbstractArray{T,1} where T), v::AbstractArray{T,1}) where T<:Number in LinearAlgebra at /opt/julia/share/julia/stdlib/v1.6/LinearAlgebra/src/adjtrans.jl:268
+    *(a::Adjoint{T,var"#s15"} where var"#s15"<:AbstractArray{T,1}, b::Zeros{S,1,Axes} where Axes) where {T, S} in FillArrays at /home/pkgeval/.julia/packages/FillArrays/M2GdF/src/fillalgebra.jl:123
+  Possible fix, define
+    *(::Adjoint{T,var"#s15"} where var"#s15"<:AbstractArray{T,1}, ::Zeros{T,1,Axes} where Axes) where T<:Number
+  Stacktrace:
+   [1] macro expansion at /home/pkgeval/.julia/packages/FillArrays/M2GdF/test/runtests.jl:350 [inlined]
+   [2] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1115 [inlined]
+   [3] top-level scope at /home/pkgeval/.julia/packages/FillArrays/M2GdF/test/runtests.jl:336
+  
+Identities: Test Failed at /home/pkgeval/.julia/packages/FillArrays/M2GdF/test/runtests.jl:351
+  Expression: (randn(4))' * Zeros(3)
+    Expected: DimensionMismatch
+      Thrown: MethodError
+Stacktrace:
+ [1] macro expansion at /home/pkgeval/.julia/packages/FillArrays/M2GdF/test/runtests.jl:351 [inlined]
+ [2] macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1115 [inlined]
+ [3] top-level scope at /home/pkgeval/.julia/packages/FillArrays/M2GdF/test/runtests.jl:336
+Test Summary: | Pass  Fail  Error  Total
+Identities    |  134     1      2    137
+ERROR: LoadError: Some tests did not pass: 134 passed, 1 failed, 2 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/FillArrays/M2GdF/test/runtests.jl:335
+ERROR: Package FillArrays errored during testing
+Stacktrace:
+ [1] pkgerror(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1561
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:327
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:314
+ [5] #test#61 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+ [6] test at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+ [7] #test#60 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+ [8] test at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope at none:16

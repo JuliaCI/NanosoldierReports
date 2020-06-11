@@ -1,0 +1,983 @@
+Julia Version 1.6.0-DEV.207
+Commit 4c16ccb905 (2020-06-10 16:41 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed InvertedIndices ────────────── v1.0.0
+  Installed TreeViews ──────────────────── v0.3.0
+  Installed DiffEqBayes ────────────────── v2.15.0
+  Installed FunctionWrappers ───────────── v1.1.1
+  Installed Libtask ────────────────────── v0.4.1
+  Installed FillArrays ─────────────────── v0.8.10
+  Installed RecursiveFactorization ─────── v0.1.2
+  Installed TerminalLoggers ────────────── v0.1.1
+  Installed UnPack ─────────────────────── v1.0.1
+  Installed TableTraits ────────────────── v1.0.0
+  Installed NLSolversBase ──────────────── v7.6.1
+  Installed DocStringExtensions ────────── v0.8.1
+  Installed JSON ───────────────────────── v0.21.0
+  Installed BenchmarkTools ─────────────── v0.5.0
+  Installed SpecialFunctions ───────────── v0.10.3
+  Installed IntervalSets ───────────────── v0.5.1
+  Installed ApproxBayes ────────────────── v0.3.2
+  Installed SortingAlgorithms ──────────── v0.3.1
+  Installed AxisArrays ─────────────────── v0.4.3
+  Installed MCMCChains ─────────────────── v3.0.12
+  Installed GeneralizedGenerated ───────── v0.2.4
+  Installed CanonicalTraits ────────────── v0.2.1
+  Installed Roots ──────────────────────── v1.0.1
+  Installed TimerOutputs ───────────────── v0.5.6
+  Installed Turing ─────────────────────── v0.13.0
+  Installed InplaceOps ─────────────────── v0.3.0
+  Installed SimpleTraits ───────────────── v0.9.2
+  Installed Combinatorics ──────────────── v1.0.2
+  Installed ArgCheck ───────────────────── v2.0.0
+  Installed Requires ───────────────────── v1.0.1
+  Installed PDMats ─────────────────────── v0.9.12
+  Installed BinaryProvider ─────────────── v0.5.10
+  Installed CompilerSupportLibraries_jll ─ v0.3.3+0
+  Installed IteratorInterfaceExtensions ── v1.0.0
+  Installed JuliaVariables ─────────────── v0.2.0
+  Installed EllipticalSliceSampling ────── v0.2.2
+  Installed Adapt ──────────────────────── v1.1.0
+  Installed MLStyle ────────────────────── v0.3.1
+  Installed Distributions ──────────────── v0.23.4
+  Installed DataValueInterfaces ────────── v1.0.0
+  Installed LoggingExtras ──────────────── v0.4.1
+  Installed Compat ─────────────────────── v3.11.0
+  Installed RangeArrays ────────────────── v0.3.2
+  Installed Tables ─────────────────────── v1.0.4
+  Installed TransformVariables ─────────── v0.3.8
+  Installed Parameters ─────────────────── v0.12.1
+  Installed Bijectors ──────────────────── v0.7.2
+  Installed Unitful ────────────────────── v1.2.1
+  Installed EllipsisNotation ───────────── v0.4.0
+  Installed OpenBLAS_jll ───────────────── v0.3.9+4
+  Installed RecipesBase ────────────────── v1.0.1
+  Installed LogDensityProblems ─────────── v0.10.3
+  Installed NamedArrays ────────────────── v0.9.4
+  Installed Inflate ────────────────────── v0.1.2
+  Installed ArnoldiMethod ──────────────── v0.0.4
+  Installed DiffResults ────────────────── v1.0.2
+  Installed ArrayInterface ─────────────── v2.8.7
+  Installed PrettyPrint ────────────────── v0.1.0
+  Installed StaticArrays ───────────────── v0.12.3
+  Installed LineSearches ───────────────── v7.0.1
+  Installed DataStructures ─────────────── v0.17.17
+  Installed AbstractTrees ──────────────── v0.3.3
+  Installed MuladdMacro ────────────────── v0.2.2
+  Installed QuadGK ─────────────────────── v2.3.1
+  Installed NNlib ──────────────────────── v0.6.6
+  Installed DynamicPPL ─────────────────── v0.8.1
+  Installed AbstractMCMC ───────────────── v1.0.1
+  Installed PoissonRandom ──────────────── v0.4.0
+  Installed Distances ──────────────────── v0.8.2
+  Installed SafeTestsets ───────────────── v0.0.1
+  Installed Arpack_jll ─────────────────── v3.5.0+3
+  Installed Rmath ──────────────────────── v0.6.1
+  Installed DistributionsAD ────────────── v0.5.3
+  Installed AdvancedHMC ────────────────── v0.2.25
+  Installed IterTools ──────────────────── v1.3.0
+  Installed LoopVectorization ──────────── v0.8.4
+  Installed IterativeSolvers ───────────── v0.8.4
+  Installed Tracker ────────────────────── v0.2.6
+  Installed OffsetArrays ───────────────── v1.0.4
+  Installed StructArrays ───────────────── v0.4.3
+  Installed MacroTools ─────────────────── v0.5.5
+  Installed Missings ───────────────────── v0.4.3
+  Installed ZygoteRules ────────────────── v0.2.0
+  Installed OrderedCollections ─────────── v1.2.0
+  Installed RandomNumbers ──────────────── v1.4.0
+  Installed DiffEqJump ─────────────────── v6.8.3
+  Installed DiffRules ──────────────────── v1.0.1
+  Installed LeftChildRightSiblingTrees ─── v0.1.2
+  Installed LaTeXStrings ───────────────── v1.1.0
+  Installed DataAPI ────────────────────── v1.3.0
+  Installed SLEEFPirates ───────────────── v0.5.0
+  Installed Latexify ───────────────────── v0.13.5
+  Installed StatsBase ──────────────────── v0.33.0
+  Installed LabelledArrays ─────────────── v1.2.2
+  Installed Arpack ─────────────────────── v0.4.0
+  Installed ConsoleProgressMonitor ─────── v0.1.2
+  Installed VectorizationBase ──────────── v0.12.6
+  Installed DynamicHMC ─────────────────── v2.1.5
+  Installed MappedArrays ───────────────── v0.2.2
+  Installed NameResolution ─────────────── v0.1.3
+  Installed ProgressLogging ────────────── v0.1.2
+  Installed NaNMath ────────────────────── v0.3.3
+  Installed ConstructionBase ───────────── v1.0.0
+  Installed PositiveFactorizations ─────── v0.2.3
+  Installed RecursiveArrayTools ────────── v2.4.4
+  Installed SIMDPirates ────────────────── v0.8.6
+  Installed Reexport ───────────────────── v0.2.0
+  Installed OpenSpecFun_jll ────────────── v0.5.3+3
+  Installed ChainRulesCore ─────────────── v0.8.0
+  Installed CpuId ──────────────────────── v0.2.2
+  Installed StatsFuns ──────────────────── v0.9.5
+  Installed ModelingToolkit ────────────── v3.8.0
+  Installed ForwardDiff ────────────────── v0.10.10
+  Installed Rmath_jll ──────────────────── v0.2.2+0
+  Installed CommonSubexpressions ───────── v0.2.0
+  Installed SymbolicUtils ──────────────── v0.3.3
+  Installed DiffEqBase ─────────────────── v6.36.4
+  Installed Parsers ────────────────────── v1.0.5
+  Installed Optim ──────────────────────── v0.20.6
+  Installed AdvancedMH ─────────────────── v0.5.1
+  Installed FiniteDiff ─────────────────── v2.3.2
+  Installed Formatting ─────────────────── v0.4.1
+  Installed ProgressMeter ──────────────── v1.3.0
+  Installed LightGraphs ────────────────── v1.3.3
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [ebbdde9d] + DiffEqBayes v2.15.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [80f14c24] + AbstractMCMC v1.0.1
+  [1520ce14] + AbstractTrees v0.3.3
+  [79e6a3ab] + Adapt v1.1.0
+  [0bf59076] + AdvancedHMC v0.2.25
+  [5b7e9947] + AdvancedMH v0.5.1
+  [f5f396d3] + ApproxBayes v0.3.2
+  [dce04be8] + ArgCheck v2.0.0
+  [ec485272] + ArnoldiMethod v0.0.4
+  [7d9fca2a] + Arpack v0.4.0
+  [68821587] + Arpack_jll v3.5.0+3
+  [4fba245c] + ArrayInterface v2.8.7
+  [39de3d68] + AxisArrays v0.4.3
+  [6e4b80f9] + BenchmarkTools v0.5.0
+  [76274a88] + Bijectors v0.7.2
+  [b99e7846] + BinaryProvider v0.5.10
+  [a603d957] + CanonicalTraits v0.2.1
+  [d360d2e6] + ChainRulesCore v0.8.0
+  [861a8166] + Combinatorics v1.0.2
+  [bbf7d656] + CommonSubexpressions v0.2.0
+  [34da2185] + Compat v3.11.0
+  [e66e0078] + CompilerSupportLibraries_jll v0.3.3+0
+  [88cd18e8] + ConsoleProgressMonitor v0.1.2
+  [187b0558] + ConstructionBase v1.0.0
+  [adafc99b] + CpuId v0.2.2
+  [9a962f9c] + DataAPI v1.3.0
+  [864edb3b] + DataStructures v0.17.17
+  [e2d170a0] + DataValueInterfaces v1.0.0
+  [2b5f629d] + DiffEqBase v6.36.4
+  [ebbdde9d] + DiffEqBayes v2.15.0
+  [c894b116] + DiffEqJump v6.8.3
+  [163ba53b] + DiffResults v1.0.2
+  [b552c78f] + DiffRules v1.0.1
+  [b4f34e82] + Distances v0.8.2
+  [31c24e10] + Distributions v0.23.4
+  [ced4e74d] + DistributionsAD v0.5.3
+  [ffbed154] + DocStringExtensions v0.8.1
+  [bbc10e6e] + DynamicHMC v2.1.5
+  [366bfd00] + DynamicPPL v0.8.1
+  [da5c29d0] + EllipsisNotation v0.4.0
+  [cad2338a] + EllipticalSliceSampling v0.2.2
+  [1a297f60] + FillArrays v0.8.10
+  [6a86dc24] + FiniteDiff v2.3.2
+  [59287772] + Formatting v0.4.1
+  [f6369f11] + ForwardDiff v0.10.10
+  [069b7b12] + FunctionWrappers v1.1.1
+  [6b9d7cbe] + GeneralizedGenerated v0.2.4
+  [d25df0c9] + Inflate v0.1.2
+  [505f98c9] + InplaceOps v0.3.0
+  [8197267c] + IntervalSets v0.5.1
+  [41ab1584] + InvertedIndices v1.0.0
+  [c8e1da08] + IterTools v1.3.0
+  [42fd0dbc] + IterativeSolvers v0.8.4
+  [82899510] + IteratorInterfaceExtensions v1.0.0
+  [682c06a0] + JSON v0.21.0
+  [b14d175d] + JuliaVariables v0.2.0
+  [b964fa9f] + LaTeXStrings v1.1.0
+  [2ee39098] + LabelledArrays v1.2.2
+  [23fbe1c1] + Latexify v0.13.5
+  [1d6d02ad] + LeftChildRightSiblingTrees v0.1.2
+  [6f1fad26] + Libtask v0.4.1
+  [093fc24a] + LightGraphs v1.3.3
+  [d3d80556] + LineSearches v7.0.1
+  [6fdf6af0] + LogDensityProblems v0.10.3
+  [e6f89c97] + LoggingExtras v0.4.1
+  [bdcacae8] + LoopVectorization v0.8.4
+  [c7f686f2] + MCMCChains v3.0.12
+  [d8e11817] + MLStyle v0.3.1
+  [1914dd2f] + MacroTools v0.5.5
+  [dbb5928d] + MappedArrays v0.2.2
+  [e1d29d7a] + Missings v0.4.3
+  [961ee093] + ModelingToolkit v3.8.0
+  [46d2c3a1] + MuladdMacro v0.2.2
+  [d41bc354] + NLSolversBase v7.6.1
+  [872c559c] + NNlib v0.6.6
+  [77ba4419] + NaNMath v0.3.3
+  [71a1bf82] + NameResolution v0.1.3
+  [86f7a689] + NamedArrays v0.9.4
+  [6fe1bfb0] + OffsetArrays v1.0.4
+  [4536629a] + OpenBLAS_jll v0.3.9+4
+  [efe28fd5] + OpenSpecFun_jll v0.5.3+3
+  [429524aa] + Optim v0.20.6
+  [bac558e1] + OrderedCollections v1.2.0
+  [90014a1f] + PDMats v0.9.12
+  [d96e819e] + Parameters v0.12.1
+  [69de0a69] + Parsers v1.0.5
+  [e409e4f3] + PoissonRandom v0.4.0
+  [85a6dd25] + PositiveFactorizations v0.2.3
+  [8162dcfd] + PrettyPrint v0.1.0
+  [33c8b6b6] + ProgressLogging v0.1.2
+  [92933f4c] + ProgressMeter v1.3.0
+  [1fd47b50] + QuadGK v2.3.1
+  [e6cf234a] + RandomNumbers v1.4.0
+  [b3c3ace0] + RangeArrays v0.3.2
+  [3cdcf5f2] + RecipesBase v1.0.1
+  [731186ca] + RecursiveArrayTools v2.4.4
+  [f2c3362d] + RecursiveFactorization v0.1.2
+  [189a3867] + Reexport v0.2.0
+  [ae029012] + Requires v1.0.1
+  [79098fc4] + Rmath v0.6.1
+  [f50d1b31] + Rmath_jll v0.2.2+0
+  [f2b01f46] + Roots v1.0.1
+  [21efa798] + SIMDPirates v0.8.6
+  [476501e8] + SLEEFPirates v0.5.0
+  [1bc83da4] + SafeTestsets v0.0.1
+  [699a6c99] + SimpleTraits v0.9.2
+  [a2af1166] + SortingAlgorithms v0.3.1
+  [276daf66] + SpecialFunctions v0.10.3
+  [90137ffa] + StaticArrays v0.12.3
+  [2913bbd2] + StatsBase v0.33.0
+  [4c63d2b9] + StatsFuns v0.9.5
+  [09ab397b] + StructArrays v0.4.3
+  [d1185830] + SymbolicUtils v0.3.3
+  [3783bdb8] + TableTraits v1.0.0
+  [bd369af6] + Tables v1.0.4
+  [5d786b92] + TerminalLoggers v0.1.1
+  [a759f4b9] + TimerOutputs v0.5.6
+  [9f7883ad] + Tracker v0.2.6
+  [84d833dd] + TransformVariables v0.3.8
+  [a2a6695c] + TreeViews v0.3.0
+  [fce5fe82] + Turing v0.13.0
+  [3a884ed6] + UnPack v1.0.1
+  [1986cc42] + Unitful v1.2.1
+  [3d5dd08c] + VectorizationBase v0.12.6
+  [700de1a5] + ZygoteRules v0.2.0
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [8bb1440f] + DelimitedFiles
+  [8ba89e20] + Distributed
+  [b77e0a4c] + InteractiveUtils
+  [76f85450] + LibGit2
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [a63ad114] + Mmap
+  [44cfe95a] + Pkg
+  [de0858da] + Printf
+  [3fa0cd96] + REPL
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [1a1011a3] + SharedArrays
+  [6462fe0b] + Sockets
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [4607b0f0] + SuiteSparse
+  [8dfed614] + Test
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+   Building Libtask ──────────→ `~/.julia/packages/Libtask/Zo6uM/deps/build.log`
+   Building NNlib ────────────→ `~/.julia/packages/NNlib/FAI3o/deps/build.log`
+   Building VectorizationBase → `~/.julia/packages/VectorizationBase/SyqTC/deps/build.log`
+   Building SLEEFPirates ─────→ `~/.julia/packages/SLEEFPirates/mkNmA/deps/build.log`
+    Testing DiffEqBayes
+Status `/tmp/jl_vZy1dN/Project.toml`
+  [f5f396d3] ApproxBayes v0.3.2
+  [2b5f629d] DiffEqBase v6.36.4
+  [ebbdde9d] DiffEqBayes v2.15.0
+  [163ba53b] DiffResults v1.0.2
+  [b4f34e82] Distances v0.8.2
+  [31c24e10] Distributions v0.23.4
+  [ffbed154] DocStringExtensions v0.8.1
+  [bbc10e6e] DynamicHMC v2.1.5
+  [f6369f11] ForwardDiff v0.10.10
+  [2ee39098] LabelledArrays v1.2.2
+  [6fdf6af0] LogDensityProblems v0.10.3
+  [1914dd2f] MacroTools v0.5.5
+  [e1d29d7a] Missings v0.4.3
+  [961ee093] ModelingToolkit v3.8.0
+  [429524aa] Optim v0.20.6
+  [1dea7af3] OrdinaryDiffEq v5.39.1
+  [90014a1f] PDMats v0.9.12
+  [65888b18] ParameterizedFunctions v5.3.0
+  [d96e819e] Parameters v0.12.1
+  [731186ca] RecursiveArrayTools v2.4.4
+  [189a3867] Reexport v0.2.0
+  [ae029012] Requires v1.0.1
+  [1bc83da4] SafeTestsets v0.0.1
+  [2913bbd2] StatsBase v0.33.0
+  [9672c7b4] SteadyStateDiffEq v1.5.1
+  [09ab397b] StructArrays v0.4.3
+  [84d833dd] TransformVariables v0.3.8
+  [fce5fe82] Turing v0.13.0
+  [8ba89e20] Distributed
+  [37e2e46d] LinearAlgebra
+  [44cfe95a] Pkg
+  [9a3f8284] Random
+  [8dfed614] Test
+Status `/tmp/jl_vZy1dN/Manifest.toml`
+  [80f14c24] AbstractMCMC v1.0.1
+  [1520ce14] AbstractTrees v0.3.3
+  [79e6a3ab] Adapt v1.1.0
+  [0bf59076] AdvancedHMC v0.2.25
+  [5b7e9947] AdvancedMH v0.5.1
+  [f5f396d3] ApproxBayes v0.3.2
+  [dce04be8] ArgCheck v2.0.0
+  [ec485272] ArnoldiMethod v0.0.4
+  [7d9fca2a] Arpack v0.4.0
+  [68821587] Arpack_jll v3.5.0+3
+  [4fba245c] ArrayInterface v2.8.7
+  [39de3d68] AxisArrays v0.4.3
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [76274a88] Bijectors v0.7.2
+  [b99e7846] BinaryProvider v0.5.10
+  [a603d957] CanonicalTraits v0.2.1
+  [d360d2e6] ChainRulesCore v0.8.0
+  [861a8166] Combinatorics v1.0.2
+  [bbf7d656] CommonSubexpressions v0.2.0
+  [34da2185] Compat v3.11.0
+  [e66e0078] CompilerSupportLibraries_jll v0.3.3+0
+  [88cd18e8] ConsoleProgressMonitor v0.1.2
+  [187b0558] ConstructionBase v1.0.0
+  [adafc99b] CpuId v0.2.2
+  [9a962f9c] DataAPI v1.3.0
+  [864edb3b] DataStructures v0.17.17
+  [e2d170a0] DataValueInterfaces v1.0.0
+  [2b5f629d] DiffEqBase v6.36.4
+  [ebbdde9d] DiffEqBayes v2.15.0
+  [459566f4] DiffEqCallbacks v2.13.2
+  [c894b116] DiffEqJump v6.8.3
+  [163ba53b] DiffResults v1.0.2
+  [b552c78f] DiffRules v1.0.1
+  [b4f34e82] Distances v0.8.2
+  [31c24e10] Distributions v0.23.4
+  [ced4e74d] DistributionsAD v0.5.3
+  [ffbed154] DocStringExtensions v0.8.1
+  [bbc10e6e] DynamicHMC v2.1.5
+  [366bfd00] DynamicPPL v0.8.1
+  [da5c29d0] EllipsisNotation v0.4.0
+  [cad2338a] EllipticalSliceSampling v0.2.2
+  [d4d017d3] ExponentialUtilities v1.6.0
+  [1a297f60] FillArrays v0.8.10
+  [6a86dc24] FiniteDiff v2.3.2
+  [59287772] Formatting v0.4.1
+  [f6369f11] ForwardDiff v0.10.10
+  [069b7b12] FunctionWrappers v1.1.1
+  [6b9d7cbe] GeneralizedGenerated v0.2.4
+  [01680d73] GenericSVD v0.3.0
+  [d25df0c9] Inflate v0.1.2
+  [505f98c9] InplaceOps v0.3.0
+  [8197267c] IntervalSets v0.5.1
+  [41ab1584] InvertedIndices v1.0.0
+  [c8e1da08] IterTools v1.3.0
+  [42fd0dbc] IterativeSolvers v0.8.4
+  [82899510] IteratorInterfaceExtensions v1.0.0
+  [682c06a0] JSON v0.21.0
+  [b14d175d] JuliaVariables v0.2.0
+  [b964fa9f] LaTeXStrings v1.1.0
+  [2ee39098] LabelledArrays v1.2.2
+  [23fbe1c1] Latexify v0.13.5
+  [1d6d02ad] LeftChildRightSiblingTrees v0.1.2
+  [6f1fad26] Libtask v0.4.1
+  [093fc24a] LightGraphs v1.3.3
+  [d3d80556] LineSearches v7.0.1
+  [6fdf6af0] LogDensityProblems v0.10.3
+  [e6f89c97] LoggingExtras v0.4.1
+  [bdcacae8] LoopVectorization v0.8.4
+  [c7f686f2] MCMCChains v3.0.12
+  [d8e11817] MLStyle v0.3.1
+  [1914dd2f] MacroTools v0.5.5
+  [dbb5928d] MappedArrays v0.2.2
+  [e1d29d7a] Missings v0.4.3
+  [961ee093] ModelingToolkit v3.8.0
+  [46d2c3a1] MuladdMacro v0.2.2
+  [d41bc354] NLSolversBase v7.6.1
+  [2774e3e8] NLsolve v4.3.0
+  [872c559c] NNlib v0.6.6
+  [77ba4419] NaNMath v0.3.3
+  [71a1bf82] NameResolution v0.1.3
+  [86f7a689] NamedArrays v0.9.4
+  [6fe1bfb0] OffsetArrays v1.0.4
+  [4536629a] OpenBLAS_jll v0.3.9+4
+  [efe28fd5] OpenSpecFun_jll v0.5.3+3
+  [429524aa] Optim v0.20.6
+  [bac558e1] OrderedCollections v1.2.0
+  [1dea7af3] OrdinaryDiffEq v5.39.1
+  [90014a1f] PDMats v0.9.12
+  [65888b18] ParameterizedFunctions v5.3.0
+  [d96e819e] Parameters v0.12.1
+  [69de0a69] Parsers v1.0.5
+  [e409e4f3] PoissonRandom v0.4.0
+  [85a6dd25] PositiveFactorizations v0.2.3
+  [8162dcfd] PrettyPrint v0.1.0
+  [33c8b6b6] ProgressLogging v0.1.2
+  [92933f4c] ProgressMeter v1.3.0
+  [1fd47b50] QuadGK v2.3.1
+  [e6cf234a] RandomNumbers v1.4.0
+  [b3c3ace0] RangeArrays v0.3.2
+  [3cdcf5f2] RecipesBase v1.0.1
+  [731186ca] RecursiveArrayTools v2.4.4
+  [f2c3362d] RecursiveFactorization v0.1.2
+  [189a3867] Reexport v0.2.0
+  [ae029012] Requires v1.0.1
+  [79098fc4] Rmath v0.6.1
+  [f50d1b31] Rmath_jll v0.2.2+0
+  [f2b01f46] Roots v1.0.1
+  [21efa798] SIMDPirates v0.8.6
+  [476501e8] SLEEFPirates v0.5.0
+  [1bc83da4] SafeTestsets v0.0.1
+  [699a6c99] SimpleTraits v0.9.2
+  [a2af1166] SortingAlgorithms v0.3.1
+  [47a9eef4] SparseDiffTools v1.8.0
+  [276daf66] SpecialFunctions v0.10.3
+  [90137ffa] StaticArrays v0.12.3
+  [2913bbd2] StatsBase v0.33.0
+  [4c63d2b9] StatsFuns v0.9.5
+  [9672c7b4] SteadyStateDiffEq v1.5.1
+  [09ab397b] StructArrays v0.4.3
+  [d1185830] SymbolicUtils v0.3.3
+  [3783bdb8] TableTraits v1.0.0
+  [bd369af6] Tables v1.0.4
+  [5d786b92] TerminalLoggers v0.1.1
+  [a759f4b9] TimerOutputs v0.5.6
+  [9f7883ad] Tracker v0.2.6
+  [84d833dd] TransformVariables v0.3.8
+  [a2a6695c] TreeViews v0.3.0
+  [fce5fe82] Turing v0.13.0
+  [3a884ed6] UnPack v1.0.1
+  [1986cc42] Unitful v1.2.1
+  [3d5dd08c] VectorizationBase v0.12.6
+  [19fa3120] VertexSafeGraphs v0.1.2
+  [700de1a5] ZygoteRules v0.2.0
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8bb1440f] DelimitedFiles
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [1a1011a3] SharedArrays
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [4607b0f0] SuiteSparse
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+┌ Warning: `@get!(dict, key, default)` at /home/pkgeval/.julia/packages/SymbolicUtils/ANVDR/src/rule_dsl.jl:296 is deprecated, use `get!(()->default, dict, key)` instead.
+└ @ Base deprecated.jl:204
+[ Info: finding initial optimum
+┌ Warning: dt <= dtmin. Aborting. There is either an error in your model specification or the true solution is unstable.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:343
+┌ Warning: Interrupted. Larger maxiters is needed.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:329
+┌ Info: found initial stepsize
+└   ϵ = 0.0938
+┌ Info: Starting MCMC
+│   total_steps = 75
+└   tuning = "stepsize"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.0055
+│   estimated_seconds_left = 0.41
+└   ϵ = 0.0937
+┌ Warning: Interrupted. Larger maxiters is needed.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:329
+┌ Info: Starting MCMC
+│   total_steps = 25
+└   tuning = "stepsize and LinearAlgebra.Diagonal metric"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.00074
+│   estimated_seconds_left = 0.018
+└   ϵ = 0.0366
+┌ Info: adaptation finished
+└   adapted_kinetic_energy = Gaussian kinetic energy (LinearAlgebra.Diagonal), √diag(M⁻¹): [0.49359641392729386, 0.9916238257476223, 0.8780384310414109]
+┌ Info: Starting MCMC
+│   total_steps = 50
+└   tuning = "stepsize and LinearAlgebra.Diagonal metric"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.0098
+│   estimated_seconds_left = 0.48
+└   ϵ = 0.00706
+┌ Info: adaptation finished
+└   adapted_kinetic_energy = Gaussian kinetic energy (LinearAlgebra.Diagonal), √diag(M⁻¹): [0.2666860742598377, 1.2721066093654387, 0.8433266583976518]
+┌ Info: Starting MCMC
+│   total_steps = 100
+└   tuning = "stepsize and LinearAlgebra.Diagonal metric"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.00015
+│   estimated_seconds_left = 0.015
+└   ϵ = 0.000247
+┌ Info: adaptation finished
+└   adapted_kinetic_energy = Gaussian kinetic energy (LinearAlgebra.Diagonal), √diag(M⁻¹): [0.03299995850659959, 0.14757993160182875, 0.19479527476956876]
+┌ Info: Starting MCMC
+│   total_steps = 200
+└   tuning = "stepsize and LinearAlgebra.Diagonal metric"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.039
+│   estimated_seconds_left = 7.9
+└   ϵ = 0.000316
+┌ Info: MCMC progress
+│   step = 101
+│   seconds_per_step = 0.049
+│   estimated_seconds_left = 4.9
+└   ϵ = 0.00409
+┌ Info: adaptation finished
+└   adapted_kinetic_energy = Gaussian kinetic energy (LinearAlgebra.Diagonal), √diag(M⁻¹): [0.04040560474108337, 0.255546964123764, 0.290864983042649]
+┌ Info: Starting MCMC
+│   total_steps = 400
+└   tuning = "stepsize and LinearAlgebra.Diagonal metric"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.00031
+│   estimated_seconds_left = 0.12
+└   ϵ = 0.00295
+┌ Info: MCMC progress
+│   step = 101
+│   seconds_per_step = 0.047
+│   estimated_seconds_left = 14.0
+└   ϵ = 0.00112
+┌ Info: MCMC progress
+│   step = 201
+│   seconds_per_step = 0.052
+│   estimated_seconds_left = 10.0
+└   ϵ = 0.00388
+┌ Info: MCMC progress
+│   step = 301
+│   seconds_per_step = 0.045
+│   estimated_seconds_left = 4.5
+└   ϵ = 0.00353
+┌ Info: adaptation finished
+└   adapted_kinetic_energy = Gaussian kinetic energy (LinearAlgebra.Diagonal), √diag(M⁻¹): [0.02843633484178825, 0.25723878997709126, 0.2543405508476033]
+┌ Info: Starting MCMC
+│   total_steps = 50
+└   tuning = "stepsize"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.019
+│   estimated_seconds_left = 0.92
+└   ϵ = 0.00329
+┌ Info: Starting MCMC
+└   total_steps = 1000
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.027
+└   estimated_seconds_left = 27.0
+┌ Info: MCMC progress
+│   step = 101
+│   seconds_per_step = 0.088
+└   estimated_seconds_left = 80.0
+┌ Info: MCMC progress
+│   step = 201
+│   seconds_per_step = 0.079
+└   estimated_seconds_left = 63.0
+┌ Info: MCMC progress
+│   step = 301
+│   seconds_per_step = 0.05
+└   estimated_seconds_left = 35.0
+┌ Info: MCMC progress
+│   step = 401
+│   seconds_per_step = 0.034
+└   estimated_seconds_left = 21.0
+┌ Info: MCMC progress
+│   step = 501
+│   seconds_per_step = 0.053
+└   estimated_seconds_left = 27.0
+┌ Info: MCMC progress
+│   step = 601
+│   seconds_per_step = 0.046
+└   estimated_seconds_left = 19.0
+┌ Info: MCMC progress
+│   step = 701
+│   seconds_per_step = 0.055
+└   estimated_seconds_left = 17.0
+┌ Info: MCMC progress
+│   step = 801
+│   seconds_per_step = 0.047
+└   estimated_seconds_left = 9.4
+┌ Info: MCMC progress
+│   step = 901
+│   seconds_per_step = 0.059
+└   estimated_seconds_left = 5.8
+[ Info: finding initial optimum
+┌ Warning: dt <= dtmin. Aborting. There is either an error in your model specification or the true solution is unstable.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:343
+┌ Warning: dt <= dtmin. Aborting. There is either an error in your model specification or the true solution is unstable.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:343
+┌ Warning: dt <= dtmin. Aborting. There is either an error in your model specification or the true solution is unstable.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:343
+┌ Warning: Interrupted. Larger maxiters is needed.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:329
+┌ Warning: dt <= dtmin. Aborting. There is either an error in your model specification or the true solution is unstable.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:343
+┌ Warning: dt <= dtmin. Aborting. There is either an error in your model specification or the true solution is unstable.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:343
+┌ Warning: Interrupted. Larger maxiters is needed.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:329
+┌ Info: found initial stepsize
+└   ϵ = 0.000122
+┌ Info: Starting MCMC
+│   total_steps = 75
+└   tuning = "stepsize"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.055
+│   estimated_seconds_left = 4.1
+└   ϵ = 0.000122
+┌ Info: Starting MCMC
+│   total_steps = 25
+└   tuning = "stepsize and LinearAlgebra.Diagonal metric"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.0014
+│   estimated_seconds_left = 0.033
+└   ϵ = 0.000112
+┌ Info: adaptation finished
+└   adapted_kinetic_energy = Gaussian kinetic energy (LinearAlgebra.Diagonal), √diag(M⁻¹): [0.014163149423867961, 0.014473813522929849, 0.014144744312206723, 0.03756126940806402, 0.024988643186803477]
+┌ Info: Starting MCMC
+│   total_steps = 50
+└   tuning = "stepsize and LinearAlgebra.Diagonal metric"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.055
+│   estimated_seconds_left = 2.7
+└   ϵ = 5.03e-5
+┌ Info: adaptation finished
+└   adapted_kinetic_energy = Gaussian kinetic energy (LinearAlgebra.Diagonal), √diag(M⁻¹): [0.010031907005910813, 0.010475528184952737, 0.010003119187365244, 0.26672755839291157, 0.11556587759544303]
+┌ Info: Starting MCMC
+│   total_steps = 100
+└   tuning = "stepsize and LinearAlgebra.Diagonal metric"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.0053
+│   estimated_seconds_left = 0.52
+└   ϵ = 0.00744
+┌ Info: adaptation finished
+└   adapted_kinetic_energy = Gaussian kinetic energy (LinearAlgebra.Diagonal), √diag(M⁻¹): [0.007148098675036762, 0.00756115966925362, 0.007079660322694759, 0.28289926249013975, 0.21664181315013942]
+┌ Info: Starting MCMC
+│   total_steps = 200
+└   tuning = "stepsize and LinearAlgebra.Diagonal metric"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.0048
+│   estimated_seconds_left = 0.95
+└   ϵ = 0.0131
+┌ Info: MCMC progress
+│   step = 101
+│   seconds_per_step = 0.018
+│   estimated_seconds_left = 1.8
+└   ϵ = 0.0168
+┌ Info: adaptation finished
+└   adapted_kinetic_energy = Gaussian kinetic energy (LinearAlgebra.Diagonal), √diag(M⁻¹): [0.005074632997893437, 0.005689180999598032, 0.005009345244180269, 0.30126227538430245, 0.18875593822419642]
+┌ Info: Starting MCMC
+│   total_steps = 400
+└   tuning = "stepsize and LinearAlgebra.Diagonal metric"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.0082
+│   estimated_seconds_left = 3.3
+└   ϵ = 0.018
+┌ Info: MCMC progress
+│   step = 101
+│   seconds_per_step = 0.012
+│   estimated_seconds_left = 3.7
+└   ϵ = 0.0296
+┌ Info: MCMC progress
+│   step = 201
+│   seconds_per_step = 0.013
+│   estimated_seconds_left = 2.5
+└   ϵ = 0.0224
+┌ Info: MCMC progress
+│   step = 301
+│   seconds_per_step = 0.0084
+│   estimated_seconds_left = 0.83
+└   ϵ = 0.0224
+┌ Info: adaptation finished
+└   adapted_kinetic_energy = Gaussian kinetic energy (LinearAlgebra.Diagonal), √diag(M⁻¹): [0.003725661684691711, 0.004421736989721969, 0.003556511558278723, 0.25918491077486827, 0.2494230325667916]
+┌ Info: Starting MCMC
+│   total_steps = 50
+└   tuning = "stepsize"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.003
+│   estimated_seconds_left = 0.15
+└   ϵ = 0.0218
+┌ Info: Starting MCMC
+└   total_steps = 1000
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.0051
+└   estimated_seconds_left = 5.1
+┌ Info: MCMC progress
+│   step = 101
+│   seconds_per_step = 0.0096
+└   estimated_seconds_left = 8.6
+┌ Info: MCMC progress
+│   step = 201
+│   seconds_per_step = 0.012
+└   estimated_seconds_left = 9.3
+┌ Info: MCMC progress
+│   step = 301
+│   seconds_per_step = 0.011
+└   estimated_seconds_left = 7.4
+┌ Info: MCMC progress
+│   step = 401
+│   seconds_per_step = 0.01
+└   estimated_seconds_left = 6.0
+┌ Info: MCMC progress
+│   step = 501
+│   seconds_per_step = 0.011
+└   estimated_seconds_left = 5.3
+┌ Info: MCMC progress
+│   step = 601
+│   seconds_per_step = 0.011
+└   estimated_seconds_left = 4.2
+┌ Info: MCMC progress
+│   step = 701
+│   seconds_per_step = 0.0089
+└   estimated_seconds_left = 2.7
+┌ Info: MCMC progress
+│   step = 801
+│   seconds_per_step = 0.0095
+└   estimated_seconds_left = 1.9
+┌ Info: MCMC progress
+│   step = 901
+│   seconds_per_step = 0.01
+└   estimated_seconds_left = 0.99
+[ Info: finding initial optimum
+┌ Warning: dt <= dtmin. Aborting. There is either an error in your model specification or the true solution is unstable.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:343
+┌ Warning: Interrupted. Larger maxiters is needed.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:329
+┌ Info: found initial stepsize
+└   ϵ = 0.375
+┌ Info: Starting MCMC
+│   total_steps = 75
+└   tuning = "stepsize"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.0052
+│   estimated_seconds_left = 0.38
+└   ϵ = 0.375
+┌ Info: Starting MCMC
+│   total_steps = 25
+└   tuning = "stepsize and LinearAlgebra.Diagonal metric"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 5.4e-5
+│   estimated_seconds_left = 0.0013
+└   ϵ = 0.00236
+┌ Info: adaptation finished
+└   adapted_kinetic_energy = Gaussian kinetic energy (LinearAlgebra.Diagonal), √diag(M⁻¹): [0.11315998515611253, 0.3394755419298194]
+┌ Info: Starting MCMC
+│   total_steps = 50
+└   tuning = "stepsize and LinearAlgebra.Diagonal metric"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.0013
+│   estimated_seconds_left = 0.064
+└   ϵ = 0.000378
+┌ Info: adaptation finished
+└   adapted_kinetic_energy = Gaussian kinetic energy (LinearAlgebra.Diagonal), √diag(M⁻¹): [0.048844503350969126, 0.21290670178013182]
+┌ Info: Starting MCMC
+│   total_steps = 100
+└   tuning = "stepsize and LinearAlgebra.Diagonal metric"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.0056
+│   estimated_seconds_left = 0.55
+└   ϵ = 0.00168
+┌ Info: adaptation finished
+└   adapted_kinetic_energy = Gaussian kinetic energy (LinearAlgebra.Diagonal), √diag(M⁻¹): [0.03592835312685664, 0.22437001183905927]
+┌ Info: Starting MCMC
+│   total_steps = 200
+└   tuning = "stepsize and LinearAlgebra.Diagonal metric"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.0027
+│   estimated_seconds_left = 0.53
+└   ϵ = 0.00372
+┌ Info: MCMC progress
+│   step = 101
+│   seconds_per_step = 0.018
+│   estimated_seconds_left = 1.8
+└   ϵ = 0.00762
+┌ Info: adaptation finished
+└   adapted_kinetic_energy = Gaussian kinetic energy (LinearAlgebra.Diagonal), √diag(M⁻¹): [0.029764213338647177, 0.26454523088270937]
+┌ Info: Starting MCMC
+│   total_steps = 400
+└   tuning = "stepsize and LinearAlgebra.Diagonal metric"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.0013
+│   estimated_seconds_left = 0.53
+└   ϵ = 0.00481
+┌ Info: MCMC progress
+│   step = 101
+│   seconds_per_step = 0.011
+│   estimated_seconds_left = 3.3
+└   ϵ = 0.0051
+┌ Info: MCMC progress
+│   step = 201
+│   seconds_per_step = 0.014
+│   estimated_seconds_left = 2.8
+└   ϵ = 0.00777
+┌ Info: MCMC progress
+│   step = 301
+│   seconds_per_step = 0.013
+│   estimated_seconds_left = 1.3
+└   ϵ = 0.00649
+┌ Info: adaptation finished
+└   adapted_kinetic_energy = Gaussian kinetic energy (LinearAlgebra.Diagonal), √diag(M⁻¹): [0.019587561189976715, 0.24698269166565331]
+┌ Info: Starting MCMC
+│   total_steps = 50
+└   tuning = "stepsize"
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.001
+│   estimated_seconds_left = 0.05
+└   ϵ = 0.00593
+┌ Info: Starting MCMC
+└   total_steps = 1000
+┌ Info: MCMC progress
+│   step = 1
+│   seconds_per_step = 0.017
+└   estimated_seconds_left = 17.0
+┌ Info: MCMC progress
+│   step = 101
+│   seconds_per_step = 0.013
+└   estimated_seconds_left = 12.0
+┌ Info: MCMC progress
+│   step = 201
+│   seconds_per_step = 0.013
+└   estimated_seconds_left = 11.0
+┌ Info: MCMC progress
+│   step = 301
+│   seconds_per_step = 0.013
+└   estimated_seconds_left = 9.4
+┌ Info: MCMC progress
+│   step = 401
+│   seconds_per_step = 0.012
+└   estimated_seconds_left = 7.4
+┌ Info: MCMC progress
+│   step = 501
+│   seconds_per_step = 0.011
+└   estimated_seconds_left = 5.4
+┌ Info: MCMC progress
+│   step = 601
+│   seconds_per_step = 0.01
+└   estimated_seconds_left = 4.1
+┌ Info: MCMC progress
+│   step = 701
+│   seconds_per_step = 0.012
+└   estimated_seconds_left = 3.5
+┌ Info: MCMC progress
+│   step = 801
+│   seconds_per_step = 0.0086
+└   estimated_seconds_left = 1.7
+┌ Info: MCMC progress
+│   step = 901
+│   seconds_per_step = 0.013
+└   estimated_seconds_left = 1.3
+[ Info: finding initial optimum
+┌ Warning: dt <= dtmin. Aborting. There is either an error in your model specification or the true solution is unstable.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:343
+┌ Warning: dt <= dtmin. Aborting. There is either an error in your model specification or the true solution is unstable.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:343
+┌ Warning: dt <= dtmin. Aborting. There is either an error in your model specification or the true solution is unstable.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:343
+┌ Warning: dt <= dtmin. Aborting. There is either an error in your model specification or the true solution is unstable.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:343
+┌ Warning: dt <= dtmin. Aborting. There is either an error in your model specification or the true solution is unstable.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:343
+┌ Warning: Interrupted. Larger maxiters is needed.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:329
+┌ Warning: Automatic dt set the starting dt as NaN, causing instability.
+└ @ OrdinaryDiffEq ~/.julia/packages/OrdinaryDiffEq/LQQYm/src/solve.jl:456
+┌ Warning: NaN dt detected. Likely a NaN value in the state, parameters, or derivative value caused this outcome.
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/TjqaN/src/integrator_interface.jl:323
+DynamicHMC: Error During Test at /home/pkgeval/.julia/packages/SafeTestsets/A83XK/src/SafeTestsets.jl:25
+  Got exception outside of a @test
+  LoadError: AssertionError: isfinite(phi_c) && isfinite(dphi_c)
+  Stacktrace:
+   [1] secant2!(::LineSearches.var"#ϕdϕ#6"{Optim.ManifoldObjective{NLSolversBase.OnceDifferentiable{Float64,Array{Float64,1},Array{Float64,1}}},Array{Float64,1},Array{Float64,1},Array{Float64,1}}, ::Array{Float64,1}, ::Array{Float64,1}, ::Array{Float64,1}, ::Int64, ::Int64, ::Float64, ::Float64, ::Float64, ::Int64) at /home/pkgeval/.julia/packages/LineSearches/WrsMD/src/hagerzhang.jl:370
+   [2] (::LineSearches.HagerZhang{Float64,Base.RefValue{Bool}})(::Function, ::LineSearches.var"#ϕdϕ#6"{Optim.ManifoldObjective{NLSolversBase.OnceDifferentiable{Float64,Array{Float64,1},Array{Float64,1}}},Array{Float64,1},Array{Float64,1},Array{Float64,1}}, ::Float64, ::Float64, ::Float64) at /home/pkgeval/.julia/packages/LineSearches/WrsMD/src/hagerzhang.jl:270
+   [3] HagerZhang at /home/pkgeval/.julia/packages/LineSearches/WrsMD/src/hagerzhang.jl:101 [inlined]
+   [4] perform_linesearch!(::Optim.LBFGSState{Array{Float64,1},Array{Array{Float64,1},1},Array{Array{Float64,1},1},Float64,Array{Float64,1}}, ::Optim.LBFGS{Nothing,LineSearches.InitialStatic{Float64},LineSearches.HagerZhang{Float64,Base.RefValue{Bool}},Optim.var"#19#21"}, ::Optim.ManifoldObjective{NLSolversBase.OnceDifferentiable{Float64,Array{Float64,1},Array{Float64,1}}}) at /home/pkgeval/.julia/packages/Optim/UkDyx/src/utilities/perform_linesearch.jl:53
+   [5] update_state!(::NLSolversBase.OnceDifferentiable{Float64,Array{Float64,1},Array{Float64,1}}, ::Optim.LBFGSState{Array{Float64,1},Array{Array{Float64,1},1},Array{Array{Float64,1},1},Float64,Array{Float64,1}}, ::Optim.LBFGS{Nothing,LineSearches.InitialStatic{Float64},LineSearches.HagerZhang{Float64,Base.RefValue{Bool}},Optim.var"#19#21"}) at /home/pkgeval/.julia/packages/Optim/UkDyx/src/multivariate/solvers/first_order/l_bfgs.jl:198
+   [6] optimize(::NLSolversBase.OnceDifferentiable{Float64,Array{Float64,1},Array{Float64,1}}, ::Array{Float64,1}, ::Optim.LBFGS{Nothing,LineSearches.InitialStatic{Float64},LineSearches.HagerZhang{Float64,Base.RefValue{Bool}},Optim.var"#19#21"}, ::Optim.Options{Float64,Nothing}, ::Optim.LBFGSState{Array{Float64,1},Array{Array{Float64,1},1},Array{Array{Float64,1},1},Float64,Array{Float64,1}}) at /home/pkgeval/.julia/packages/Optim/UkDyx/src/multivariate/optimize/optimize.jl:57
+   [7] optimize(::NLSolversBase.OnceDifferentiable{Float64,Array{Float64,1},Array{Float64,1}}, ::Array{Float64,1}, ::Optim.LBFGS{Nothing,LineSearches.InitialStatic{Float64},LineSearches.HagerZhang{Float64,Base.RefValue{Bool}},Optim.var"#19#21"}, ::Optim.Options{Float64,Nothing}) at /home/pkgeval/.julia/packages/Optim/UkDyx/src/multivariate/optimize/optimize.jl:33
+   [8] warmup at /home/pkgeval/.julia/packages/DynamicHMC/83Q9C/src/mcmc.jl:151 [inlined]
+   [9] #31 at /home/pkgeval/.julia/packages/DynamicHMC/83Q9C/src/mcmc.jl:445 [inlined]
+   [10] BottomRF at ./reduce.jl:81 [inlined]
+   [11] afoldl(::Base.BottomRF{DynamicHMC.var"#31#32"{DynamicHMC.SamplingLogDensity{Random._GLOBAL_RNG,LogDensityProblems.ForwardDiffLogDensity{LogDensityProblems.TransformedLogDensity{TransformVariables.TransformTuple{NamedTuple{(:parameters, :σ),Tuple{TransformVariables.ArrayTransform{TransformVariables.ShiftedExp{true,Float64},1},TransformVariables.ArrayTransform{TransformVariables.ShiftedExp{true,Float64},1}}}},DiffEqBayes.DynamicHMCPosterior{OrdinaryDiffEq.Tsit5,DiffEqBase.ODEProblem{Array{Float64,1},Tuple{Float64,Float64},true,Array{Float64,1},Main.##256.LotkaVolterraTest1{Main.##256.var"###ParameterizedDiffEqFunction#288",Main.##256.var"###ParameterizedTGradFunction#289",Main.##256.var"###ParameterizedJacobianFunction#290",Nothing,Nothing,ModelingToolkit.ODESystem},Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}},DiffEqBase.StandardODEProblem},Array{Float64,2},Array{Float64,1},Array{Distributions.Normal{Float64},1},Array{Distributions.Normal{Float64},1},Tuple{},Array{Int64,1}}},ForwardDiff.GradientConfig{ForwardDiff.Tag{LogDensityProblems.var"#28#29"{LogDensityProblems.TransformedLogDensity{TransformVariables.TransformTuple{NamedTuple{(:parameters, :σ),Tuple{TransformVariables.ArrayTransform{TransformVariables.ShiftedExp{true,Float64},1},TransformVariables.ArrayTransform{TransformVariables.ShiftedExp{true,Float64},1}}}},DiffEqBayes.DynamicHMCPosterior{OrdinaryDiffEq.Tsit5,DiffEqBase.ODEProblem{Array{Float64,1},Tuple{Float64,Float64},true,Array{Float64,1},Main.##256.LotkaVolterraTest1{Main.##256.var"###ParameterizedDiffEqFunction#288",Main.##256.var"###ParameterizedTGradFunction#289",Main.##256.var"###ParameterizedJacobianFunction#290",Nothing,Nothing,ModelingToolkit.ODESystem},Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}},DiffEqBase.StandardODEProblem},Array{Float64,2},Array{Float64,1},Array{Distributions.Normal{Float64},1},Array{Distributions.Normal{Float64},1},Tuple{},Array{Int64,1}}}},Float64},Float64,3,Array{ForwardDiff.Dual{ForwardDiff.Tag{LogDensityProblems.var"#28#29"{LogDensityProblems.TransformedLogDensity{TransformVariables.TransformTuple{NamedTuple{(:parameters, :σ),Tuple{TransformVariables.ArrayTransform{TransformVariables.ShiftedExp{true,Float64},1},TransformVariables.ArrayTransform{TransformVariables.ShiftedExp{true,Float64},1}}}},DiffEqBayes.DynamicHMCPosterior{OrdinaryDiffEq.Tsit5,DiffEqBase.ODEProblem{Array{Float64,1},Tuple{Float64,Float64},true,Array{Float64,1},Main.##256.LotkaVolterraTest1{Main.##256.var"###ParameterizedDiffEqFunction#288",Main.##256.var"###ParameterizedTGradFunction#289",Main.##256.var"###ParameterizedJacobianFunction#290",Nothing,Nothing,ModelingToolkit.ODESystem},Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}},DiffEqBase.StandardODEProblem},Array{Float64,2},Array{Float64,1},Array{Distributions.Normal{Float64},1},Array{Distributions.Normal{Float64},1},Tuple{},Array{Int64,1}}}},Float64},Float64,3},1}}},DynamicHMC.NUTS{Val{:generalized}},DynamicHMC.LogProgressReport{Nothing}}}}, ::Tuple{Tuple{},DynamicHMC.WarmupState{DynamicHMC.EvaluatedLogDensity{Array{Float64,1},Float64},DynamicHMC.GaussianKineticEnergy{LinearAlgebra.Diagonal{Float64,Array{Float64,1}},LinearAlgebra.Diagonal{Float64,Array{Float64,1}}},Nothing}}, ::DynamicHMC.FindLocalOptimum{Float64}, ::DynamicHMC.InitialStepsizeSearch, ::DynamicHMC.TuningNUTS{Nothing,DynamicHMC.DualAveraging{Float64}}, ::DynamicHMC.TuningNUTS{LinearAlgebra.Diagonal,DynamicHMC.DualAveraging{Float64}}, ::DynamicHMC.TuningNUTS{LinearAlgebra.Diagonal,DynamicHMC.DualAveraging{Float64}}, ::DynamicHMC.TuningNUTS{LinearAlgebra.Diagonal,DynamicHMC.DualAveraging{Float64}}, ::DynamicHMC.TuningNUTS{LinearAlgebra.Diagonal,DynamicHMC.DualAveraging{Float64}}, ::DynamicHMC.TuningNUTS{LinearAlgebra.Diagonal,DynamicHMC.DualAveraging{Float64}}, ::DynamicHMC.TuningNUTS{Nothing,DynamicHMC.DualAveraging{Float64}}) at ./operators.jl:526
+   [12] _foldl_impl at ./tuple.jl:207 [inlined]
+   [13] foldl_impl at ./reduce.jl:48 [inlined]
+   [14] mapfoldl_impl at ./reduce.jl:44 [inlined]
+   [15] #mapfoldl#199 at ./reduce.jl:160 [inlined]
+   [16] #foldl#200 at ./reduce.jl:178 [inlined]
+   [17] _warmup at /home/pkgeval/.julia/packages/DynamicHMC/83Q9C/src/mcmc.jl:443 [inlined]
+   [18] #mcmc_keep_warmup#33 at /home/pkgeval/.julia/packages/DynamicHMC/83Q9C/src/mcmc.jl:519 [inlined]
+   [19] macro expansion at /home/pkgeval/.julia/packages/UnPack/1IjJI/src/UnPack.jl:100 [inlined]
+   [20] #mcmc_with_warmup#34 at /home/pkgeval/.julia/packages/DynamicHMC/83Q9C/src/mcmc.jl:577 [inlined]
+   [21] dynamichmc_inference(::DiffEqBase.ODEProblem{Array{Float64,1},Tuple{Float64,Float64},true,Array{Float64,1},Main.##256.LotkaVolterraTest1{Main.##256.var"###ParameterizedDiffEqFunction#288",Main.##256.var"###ParameterizedTGradFunction#289",Main.##256.var"###ParameterizedJacobianFunction#290",Nothing,Nothing,ModelingToolkit.ODESystem},Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}},DiffEqBase.StandardODEProblem}, ::OrdinaryDiffEq.Tsit5, ::Array{Float64,1}, ::Array{Float64,2}, ::Array{Distributions.Normal{Float64},1}, ::TransformVariables.ArrayTransform{TransformVariables.ShiftedExp{true,Float64},1}; σ_priors::Array{Distributions.Normal{Float64},1}, sample_u0::Bool, rng::Random._GLOBAL_RNG, num_samples::Int64, AD_gradient_kind::Val{:ForwardDiff}, save_idxs::Array{Int64,1}, solve_kwargs::Tuple{}, mcmc_kwargs::NamedTuple{(:initialization, :reporter),Tuple{NamedTuple{(:q,),Tuple{Array{Float64,1}}},DynamicHMC.LogProgressReport{Nothing}}}) at /home/pkgeval/.julia/packages/DiffEqBayes/nafyl/src/dynamichmc_inference.jl:105
+   [22] top-level scope at /home/pkgeval/.julia/packages/DiffEqBayes/nafyl/test/dynamicHMC.jl:47
+   [23] include at ./Base.jl:369 [inlined]
+   [24] include(::String) at /home/pkgeval/.julia/packages/SafeTestsets/A83XK/src/SafeTestsets.jl:23
+   [25] top-level scope at /home/pkgeval/.julia/packages/DiffEqBayes/nafyl/test/runtests.jl:10
+   [26] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1115
+   [27] top-level scope at /home/pkgeval/.julia/packages/DiffEqBayes/nafyl/test/runtests.jl:10
+   [28] eval(::Module, ::Any) at ./boot.jl:331
+   [29] top-level scope at /home/pkgeval/.julia/packages/SafeTestsets/A83XK/src/SafeTestsets.jl:23
+   [30] top-level scope at timing.jl:174
+   [31] top-level scope at /home/pkgeval/.julia/packages/DiffEqBayes/nafyl/test/runtests.jl:10
+   [32] top-level scope at timing.jl:174
+   [33] include(::String) at ./client.jl:444
+   [34] top-level scope at none:6
+   [35] eval(::Module, ::Any) at ./boot.jl:331
+   [36] exec_options(::Base.JLOptions) at ./client.jl:260
+   [37] _start() at ./client.jl:485
+  in expression starting at /home/pkgeval/.julia/packages/DiffEqBayes/nafyl/test/dynamicHMC.jl:47
+  
+Test Summary: | Pass  Error  Total
+DynamicHMC    |    5      1      6
+ERROR: LoadError: Some tests did not pass: 5 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/DiffEqBayes/nafyl/test/runtests.jl:8
+ERROR: Package DiffEqBayes errored during testing
+Stacktrace:
+ [1] pkgerror(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1561
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:327
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:314
+ [5] #test#61 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+ [6] test at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+ [7] #test#60 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+ [8] test at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope at none:16
