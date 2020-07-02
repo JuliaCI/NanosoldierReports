@@ -11,22 +11,22 @@ Environment:
   JULIA_NUM_THREADS = 2
 
   Resolving package versions...
-  Installed Reexport ───────────────────── v0.2.0
-  Installed OpenMPI_jll ────────────────── v4.0.2+2
   Installed IntelOpenMP_jll ────────────── v2018.0.3+0
+  Installed OpenMPI_jll ────────────────── v4.0.2+2
+  Installed Reexport ───────────────────── v0.2.0
   Installed CompilerSupportLibraries_jll ─ v0.3.3+0
   Installed FFTW ───────────────────────── v1.2.2
   Installed OffsetArrays ───────────────── v1.1.0
   Installed DocStringExtensions ────────── v0.8.2
   Installed PencilFFTs ─────────────────── v0.7.1
-  Installed Requires ───────────────────── v1.0.1
   Installed MPICH_jll ──────────────────── v3.3.2+10
+  Installed AbstractFFTs ───────────────── v0.5.0
+  Installed FFTW_jll ───────────────────── v3.3.9+5
   Installed MicrosoftMPI_jll ───────────── v10.1.2+3
   Installed MKL_jll ────────────────────── v2020.1.216+0
-  Installed AbstractFFTs ───────────────── v0.5.0
-  Installed TimerOutputs ───────────────── v0.5.6
-  Installed FFTW_jll ───────────────────── v3.3.9+5
+  Installed Requires ───────────────────── v1.0.1
   Installed MPI ────────────────────────── v0.15.0
+  Installed TimerOutputs ───────────────── v0.5.6
 Updating `~/.julia/environments/v1.6/Project.toml`
   [4a48f351] + PencilFFTs v0.7.1
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -68,7 +68,7 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
    Building FFTW → `~/.julia/packages/FFTW/kcXL6/deps/build.log`
    Building MPI ─→ `~/.julia/packages/MPI/k7f4E/deps/build.log`
     Testing PencilFFTs
-Status `/tmp/jl_fWLsoo/Project.toml`
+Status `/tmp/jl_IAsX0b/Project.toml`
   [621f4979] AbstractFFTs v0.5.0
   [6e4b80f9] BenchmarkTools v0.5.0
   [7a1cc6ca] FFTW v1.2.2
@@ -83,7 +83,7 @@ Status `/tmp/jl_fWLsoo/Project.toml`
   [9abbd945] Profile
   [9a3f8284] Random
   [8dfed614] Test
-Status `/tmp/jl_fWLsoo/Manifest.toml`
+Status `/tmp/jl_IAsX0b/Manifest.toml`
   [621f4979] AbstractFFTs v0.5.0
   [6e4b80f9] BenchmarkTools v0.5.0
   [a74b3585] Blosc v0.7.0
@@ -148,10 +148,10 @@ Status `/tmp/jl_fWLsoo/Manifest.toml`
 └ @ Main ~/.julia/packages/PencilFFTs/HVNWA/test/hdf5.jl:10
 
 [ Info: Running taylor_green.jl with 6 processes...
-divergence local...    2.469 μs (0 allocations: 0 bytes)
-divergence global...   4.180 μs (2 allocations: 144 bytes)
-curl! local...         2.797 μs (0 allocations: 0 bytes)
-curl! global...        7.268 μs (4 allocations: 288 bytes)
+divergence local...    1.618 μs (0 allocations: 0 bytes)
+divergence global...   4.118 μs (2 allocations: 144 bytes)
+curl! local...         3.078 μs (0 allocations: 0 bytes)
+curl! global...        9.602 μs (4 allocations: 288 bytes)
 Test Summary: | Pass  Total
 Taylor-Green  |    5      5
 
@@ -160,17 +160,17 @@ Taylor-Green  |    5      5
 Test Summary:      | Pass  Total
 Fourier operations |    4      4
 Micro-benchmarks:
- - divergence global_view...  26.504 μs (2 allocations: 144 bytes)
- - divergence local...   15.983 μs (0 allocations: 0 bytes)
- - curl! global_view...  52.933 μs (4 allocations: 288 bytes)
- - curl! local...        21.177 μs (0 allocations: 0 bytes)
- - norm2(u)...           32.474 μs (0 allocations: 0 bytes)
- - norm2(uF)...          134.923 μs (0 allocations: 0 bytes)
- - norm2(parent(u))...   5.279 μs (0 allocations: 0 bytes)
- - norm2(parent(uF))...  5.258 μs (0 allocations: 0 bytes)
- - sqnorm(u)...          13.241 μs (0 allocations: 0 bytes)
- - sqnorm(parent(u))...  13.403 μs (0 allocations: 0 bytes)
- - sqnorm(uF)...         10.367 μs (0 allocations: 0 bytes)
+ - divergence global_view...  27.356 μs (2 allocations: 144 bytes)
+ - divergence local...   16.670 μs (0 allocations: 0 bytes)
+ - curl! global_view...  50.058 μs (4 allocations: 288 bytes)
+ - curl! local...        21.301 μs (0 allocations: 0 bytes)
+ - norm2(u)...           32.551 μs (0 allocations: 0 bytes)
+ - norm2(uF)...          109.468 μs (0 allocations: 0 bytes)
+ - norm2(parent(u))...   3.980 μs (0 allocations: 0 bytes)
+ - norm2(parent(uF))...  4.038 μs (0 allocations: 0 bytes)
+ - sqnorm(u)...          13.423 μs (0 allocations: 0 bytes)
+ - sqnorm(parent(u))...  13.354 μs (0 allocations: 0 bytes)
+ - sqnorm(uF)...         10.453 μs (0 allocations: 0 bytes)
 
 [ Info: Input data size: (41, 23, 15)
 Test Summary:      | Pass  Total
@@ -615,13 +615,19 @@ Input type: Float64
 Global dimensions: (64, 32, 64)  ->  (33, 32, 64)
 MPI topology: 2D decomposition (3×2 processes)
 
-gradient_global_view!...                  163.216 μs (0 allocations: 0 bytes)
-gradient_global_view! (lazy)...           193.904 μs (0 allocations: 0 bytes)
-gradient_global_view_explicit!...         353.545 μs (0 allocations: 0 bytes)
-gradient_global_view_explicit! (lazy)...  369.485 μs (0 allocations: 0 bytes)
-gradient_local!...                        235.774 μs (0 allocations: 0 bytes)
-gradient_local_parent!...                 86.313 μs (0 allocations: 0 bytes)
-gradient_local_linear!...                 122.163 μs (0 allocations: 0 bytes)
-gradient_local_linear_explicit!...        122.089 μs (0 allocations: 0 bytes)
+gradient_global_view!...                  170.759 μs (0 allocations: 0 bytes)
+gradient_global_view! (lazy)...           194.171 μs (0 allocations: 0 bytes)
+gradient_global_view_explicit!...         362.766 μs (0 allocations: 0 bytes)
+gradient_global_view_explicit! (lazy)...  369.227 μs (0 allocations: 0 bytes)
+gradient_local!...                        236.010 μs (0 allocations: 0 bytes)
+gradient_local_parent!...                 86.308 μs (0 allocations: 0 bytes)
+gradient_local_linear!...                 122.299 μs (0 allocations: 0 bytes)
+gradient_local_linear_explicit!...        122.115 μs (0 allocations: 0 bytes)
 
 [ Info: Running ../examples/in-place.jl with 6 processes...
+Transforms: (R2R!{REDFT01}, FFT!, R2R!{DHT})
+Input type: Complex{Float64}
+Global dimensions: (64, 32, 64)  ->  (64, 32, 64)
+MPI topology: 1D decomposition (6 processes)
+
+    Testing PencilFFTs tests passed 

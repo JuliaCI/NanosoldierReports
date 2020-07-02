@@ -11,13 +11,13 @@ Environment:
   JULIA_NUM_THREADS = 2
 
   Resolving package versions...
-  Installed SortingAlgorithms ── v0.3.1
-  Installed Reexport ─────────── v0.2.0
   Installed Missings ─────────── v0.4.3
+  Installed Reexport ─────────── v0.2.0
+  Installed SortingAlgorithms ── v0.3.1
   Installed DataAPI ──────────── v1.3.0
   Installed Gnuplot ──────────── v1.3.0
-  Installed StaticArrays ─────── v0.12.3
   Installed StatsBase ────────── v0.33.0
+  Installed StaticArrays ─────── v0.12.3
   Installed ReplMaker ────────── v0.2.3
   Installed StructC14N ───────── v0.3.0
   Installed ColorTypes ───────── v0.10.5
@@ -66,7 +66,7 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
     Testing Gnuplot
-Status `/tmp/jl_tOFVV4/Project.toml`
+Status `/tmp/jl_YtwEf3/Project.toml`
   [35d6a980] ColorSchemes v3.9.0
   [3da002f7] ColorTypes v0.10.5
   [5ae59095] Colors v0.12.3
@@ -77,7 +77,7 @@ Status `/tmp/jl_tOFVV4/Project.toml`
   [d2514e9c] StructC14N v0.3.0
   [3fa0cd96] REPL
   [8dfed614] Test
-Status `/tmp/jl_tOFVV4/Manifest.toml`
+Status `/tmp/jl_YtwEf3/Manifest.toml`
   [35d6a980] ColorSchemes v3.9.0
   [3da002f7] ColorTypes v0.10.5
   [5ae59095] Colors v0.12.3
@@ -118,29 +118,30 @@ Status `/tmp/jl_tOFVV4/Manifest.toml`
 [ Info: gnuplot    version: 5.2.0
 ┌ Info: using terminal: 
 └   terminal() = "unknown "
-GNUPLOT (default) unset multiplot
-GNUPLOT (default) set output
-GNUPLOT (default) reset session
-GNUPLOT (default) set term unknown
-GNUPLOT (default) print GPVAL_TERM
-GNUPLOT (default) -> unknown
-GNUPLOT (default) 
-GNUPLOT (default) reset
-GNUPLOT (default) plot  \
-   '/tmp/jl_gbeWKm' binary record=1000000 format='%float%float' using 1:2  
-GNUPLOT (default) -> WARNING: Plotting with an 'unknown' terminal.
-GNUPLOT (default) -> No output will be generated. Please select a terminal with 'set terminal'.
-GNUPLOT (default) unset multiplot
-GNUPLOT (default) $data2 << EOD
-GNUPLOT (default)  0.0 0.0
-GNUPLOT (default) EOD
-GNUPLOT (default) 
-GNUPLOT (default) reset
-GNUPLOT (default) plot  \
-   '/tmp/jl_gbeWKm' binary record=1000000 format='%float%float' using 1:2  , \
-  $data2 
-GNUPLOT (default) -> WARNING: Plotting with an 'unknown' terminal.
-GNUPLOT (default) -> No output will be generated. Please select a terminal with 'set terminal'.
-GNUPLOT (default) unset multiplot
-GNUPLOT (default) Process terminated
-    Testing Gnuplot tests passed 
+ERROR: LoadError: MethodError: Cannot `convert` an object of type Nothing to an object of type Float64
+Closest candidates are:
+  convert(::Type{T}, !Matched::T) where T<:Number at number.jl:6
+  convert(::Type{T}, !Matched::Number) where T<:Number at number.jl:7
+  convert(::Type{T}, !Matched::Base.TwicePrecision) where T<:Number at twiceprecision.jl:250
+  ...
+Stacktrace:
+ [1] push!(::Array{Float64,1}, ::Nothing) at ./array.jl:936
+ [2] contourlines(::Array{Float64,1}, ::Array{Float64,1}, ::Array{Float64,2}, ::String) at /home/pkgeval/.julia/packages/Gnuplot/7y0ez/src/Gnuplot.jl:2062
+ [3] contourlines(::Gnuplot.Histogram2D, ::String) at /home/pkgeval/.julia/packages/Gnuplot/7y0ez/src/Gnuplot.jl:2022
+ [4] top-level scope at /home/pkgeval/.julia/packages/Gnuplot/7y0ez/test/runtests.jl:273
+ [5] include(::String) at ./client.jl:444
+ [6] top-level scope at none:6
+in expression starting at /home/pkgeval/.julia/packages/Gnuplot/7y0ez/test/runtests.jl:273
+ERROR: Package Gnuplot errored during testing
+Stacktrace:
+ [1] pkgerror(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1561
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:327
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:314
+ [5] #test#61 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+ [6] test at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+ [7] #test#60 at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+ [8] test at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope at none:16
