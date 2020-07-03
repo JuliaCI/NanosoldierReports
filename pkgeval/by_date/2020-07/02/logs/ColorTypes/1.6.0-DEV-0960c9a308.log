@@ -1,0 +1,194 @@
+Julia Version 1.6.0-DEV.356
+Commit 0960c9a308 (2020-07-02 17:55 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed FixedPointNumbers ─ v0.8.1
+  Installed ColorTypes ──────── v0.10.5
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [3da002f7] + ColorTypes v0.10.5
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [3da002f7] + ColorTypes v0.10.5
+  [53c48c17] + FixedPointNumbers v0.8.1
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+    Testing ColorTypes
+Status `/tmp/jl_lC46Fr/Project.toml`
+  [3da002f7] ColorTypes v0.10.5
+  [e30172f5] Documenter v0.25.0
+  [8dfed614] Test
+Status `/tmp/jl_lC46Fr/Manifest.toml`
+  [3da002f7] ColorTypes v0.10.5
+  [ffbed154] DocStringExtensions v0.8.2
+  [e30172f5] Documenter v0.25.0
+  [53c48c17] FixedPointNumbers v0.8.1
+  [682c06a0] JSON v0.21.0
+  [69de0a69] Parsers v1.0.6
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+Skipping Base.active_repl
+Skipping Base.active_repl_backend
+[ Info: SetupBuildDirectory: setting up build directory.
+[ Info: Doctest: running doctests.
+┌ Error: doctest failure in ~/.julia/packages/ColorTypes/qTdGR/src/traits.jl:285-297
+│ 
+│ ```jldoctest; setup = :(using ColorTypes, ColorTypes.FixedPointNumbers)
+│ julia> parametric_colorant(RGB)
+│ RGB
+│ 
+│ julia> parametric_colorant(RGB{Float32})
+│ RGB{Float32}
+│ 
+│ julia> parametric_colorant(BGR)
+│ BGR
+│ 
+│ julia> parametric_colorant(RGB24)
+│ RGB{Normed{UInt8,8}}
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ parametric_colorant(RGB24)
+│ 
+│ Evaluated output:
+│ 
+│ RGB{N0f8}
+│ 
+│ Expected output:
+│ 
+│ RGB{Normed{UInt8,8}}
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    RGB{Normed{UInt8,8}}RGB{N0f8}
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/WSKVc/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/ColorTypes/qTdGR/src/traits.jl:351-360
+│ 
+│ ```jldoctest; setup = :(using ColorTypes, ColorTypes.FixedPointNumbers)
+│ julia> ccolor(RGB, Gray{Float32})
+│ RGB{Float32}
+│ 
+│ julia> ccolor(RGB, Gray{N0f8})
+│ RGB{Normed{UInt8,8}}
+│ 
+│ julia> ccolor(RGB{Float32}, Gray{N0f8})
+│ RGB{Float32}
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ ccolor(RGB, Gray{N0f8})
+│ 
+│ Evaluated output:
+│ 
+│ RGB{N0f8}
+│ 
+│ Expected output:
+│ 
+│ RGB{Normed{UInt8,8}}
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    RGB{Normed{UInt8,8}}RGB{N0f8}
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/WSKVc/src/DocTests.jl:369
+┌ Error: Doctesting failed
+│   exception =
+│    `makedocs` encountered a doctest error. Terminating build
+│    Stacktrace:
+│      [1] error(s::String)
+│        @ Base ./error.jl:33
+│      [2] runner(#unused#::Type{Documenter.Builder.Doctest}, doc::Documenter.Documents.Document)
+│        @ Documenter.Builder ~/.julia/packages/Documenter/WSKVc/src/Builder.jl:204
+│      [3] dispatch(#unused#::Type{Documenter.Builder.DocumentPipeline}, x::Documenter.Documents.Document)
+│        @ Documenter.Utilities.Selectors ~/.julia/packages/Documenter/WSKVc/src/Utilities/Selectors.jl:167
+│      [4] #2
+│        @ ~/.julia/packages/Documenter/WSKVc/src/Documenter.jl:240 [inlined]
+│      [5] cd(f::Documenter.var"#2#3"{Documenter.Documents.Document}, dir::String)
+│        @ Base.Filesystem ./file.jl:104
+│      [6] makedocs(; debug::Bool, format::Documenter.Writers.HTMLWriter.HTML, kwargs::Base.Iterators.Pairs{Symbol,Any,NTuple{5,Symbol},NamedTuple{(:root, :source, :sitename, :doctest, :modules),Tuple{String,String,String,Symbol,Vector{Module}}}})
+│        @ Documenter ~/.julia/packages/Documenter/WSKVc/src/Documenter.jl:239
+│      [7] (::Documenter.var"#all_doctests#31"{Bool,Vector{Module}})()
+│        @ Documenter ~/.julia/packages/Documenter/WSKVc/src/Documenter.jl:801
+│      [8] macro expansion
+│        @ ~/.julia/packages/Documenter/WSKVc/src/Documenter.jl:817 [inlined]
+│      [9] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1115 [inlined]
+│     [10] doctest(source::Nothing, modules::Vector{Module}; fix::Bool, testset::String)
+│        @ Documenter ~/.julia/packages/Documenter/WSKVc/src/Documenter.jl:817
+│     [11] doctest(package::Module; manual::Bool, testset::Nothing, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+│        @ Documenter ~/.julia/packages/Documenter/WSKVc/src/Documenter.jl:760
+│     [12] top-level scope
+│        @ ~/.julia/packages/ColorTypes/qTdGR/test/runtests.jl:8
+│     [13] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [14] top-level scope
+│        @ none:6
+│     [15] eval(m::Module, e::Any)
+│        @ Core ./boot.jl:340
+│     [16] exec_options(opts::Base.JLOptions)
+│        @ Base ./client.jl:260
+│     [17] _start()
+│        @ Base ./client.jl:485
+└ @ Documenter ~/.julia/packages/Documenter/WSKVc/src/Documenter.jl:810
+Doctests: ColorTypes: Test Failed at /home/pkgeval/.julia/packages/Documenter/WSKVc/src/Documenter.jl:817
+  Expression: all_doctests()
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/Documenter/WSKVc/src/Documenter.jl:817 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1115 [inlined]
+ [3] doctest(source::Nothing, modules::Vector{Module}; fix::Bool, testset::String)
+   @ Documenter ~/.julia/packages/Documenter/WSKVc/src/Documenter.jl:817
+Test Summary:        | Fail  Total
+Doctests: ColorTypes |    1      1
+ERROR: LoadError: Some tests did not pass: 0 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/ColorTypes/qTdGR/test/runtests.jl:8
+ERROR: Package ColorTypes errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1561
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:327
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:314
+  [5] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [7] #test#60
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:16
