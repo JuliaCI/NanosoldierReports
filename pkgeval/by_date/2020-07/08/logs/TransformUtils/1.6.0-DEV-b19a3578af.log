@@ -1,0 +1,72 @@
+Julia Version 1.6.0-DEV.408
+Commit b19a3578af (2020-07-08 17:48 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed TransformUtils ─ v0.2.6
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [9b8138ad] + TransformUtils v0.2.6
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [9b8138ad] + TransformUtils v0.2.6
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+    Testing TransformUtils
+Status `/tmp/jl_tQe5Zd/Project.toml`
+  [9b8138ad] TransformUtils v0.2.6
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_tQe5Zd/Manifest.toml`
+  [9b8138ad] TransformUtils v0.2.6
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+Test Summary:                               |
+Constructors SO3, Quaternion, AngleAxis...  | No tests
+Test Summary:                           | Pass  Total
+Ensure basic quaternion operations hold |   10     10
+Test Summary:                                       | Pass  Total
+Comparison functions for SO3, Quaternion, AngleAxis |    5      5
+Test Summary:                                        | Pass  Total
+Trivial case quaterion -> SO3 -> Euler -> quaternion |    2      2
+┌ Warning: Need better coverage on convert function tests
+└ @ Main ~/.julia/packages/TransformUtils/cFZOw/test/runtests.jl:89
+dAA = AngleAxis(0.7853981633974483, [1.0, 0.0, 0.0])
+dAA = so3([0.0 0.005411503337618761 0.03796296635488777; -0.005411503337618761 0.0 0.013138447450015956; -0.03796296635488777 -0.013138447450015956 0.0])
+dAA = so3([0.0 -0.13242234767499061 0.08593975207809945; 0.13242234767499061 0.0 -0.0013523234724219452; -0.08593975207809945 0.0013523234724219452 0.0])
+dAA = so3([0.0 -0.1616683568460967 0.015015011318868003; 0.1616683568460967 0.0 -0.006057642164264191; -0.015015011318868003 0.006057642164264191 0.0])
+dAA = Quaternion(0.9965398305885639, [0.053634821154236206, -0.059180854679485285, 0.023006487121573917])
+dAA = SO3([0.985927961674057 -0.04317883782095345 -0.16149811873105907; 0.041460872586008536 0.9990421198231896 -0.013994243945091923; 0.16194767807426635 0.007101463484365475 0.9867737931171128])
+Test Summary:                        | Pass  Total
+Compare SO3 and quaternion rotations |   24     24
+Test Summary:       | Pass  Total
+Basic SE3 mechanics |    4      4
+Compare operations on two different SE3 transforms
+xi = SE3(SO3([0.9231265769297476 -0.32216932497799483 0.20986721756670307; 0.32288630965033965 0.9459030165047888 0.031810602124547595; -0.20876243437542027 0.038398039147389915 0.9772122781582739]), [-0.13138447450015955, 0.37962966354887767, -0.0541150333761876])
+xj = SE3(SO3([0.9502235878757216 -0.13581739770845036 -0.2804082158644703; 0.05761714721484304 0.9610647929445035 -0.27024938133021076; 0.3061950316243127 0.2406410152950722 0.9210518467308683]), [0.0605764216426419, 0.15015011318868002, 1.616683568460967])
+Dx = SE3(SO3([0.8318584158348488 0.13470121073103863 -0.5383931275864579; -0.23987536972012236 0.9620704291685233 -0.12992419451791146; 0.5004711610136695 0.23722578516486312 0.832617885855537]), [-0.24569158366592536, -0.21475392112362351, 1.6657113245278172])
+Test Summary:         | Pass  Total
+SE3 ⊕ and ⊖ mechanics |    6      6
+TransformUtils.convert(Euler, q) = Euler(0.7853981633974484, 0.0, 1.5707963267948963, Quaternion(1.0, [0.0, 0.0, 0.0]))
+Test Summary:              | Pass  Total
+Previous discovered issues |    3      3
+Test Summary:      | Pass  Total
+test SO3 logmap... |  301    301
+Test Summary:                              | Pass  Total
+test in-place and efficient inverse SE3... |    1      1
+    Testing TransformUtils tests passed 
