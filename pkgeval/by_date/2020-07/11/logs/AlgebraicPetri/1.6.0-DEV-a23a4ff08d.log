@@ -1,0 +1,872 @@
+Julia Version 1.6.0-DEV.430
+Commit a23a4ff08d (2020-07-11 14:53 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed LinearMaps ─────────────────── v2.6.1
+  Installed LeftChildRightSiblingTrees ─── v0.1.2
+  Installed OpenSpecFun_jll ────────────── v0.5.3+3
+  Installed FunctionWrappers ───────────── v1.1.1
+  Installed SimpleTraits ───────────────── v0.9.2
+  Installed AbstractTrees ──────────────── v0.3.3
+  Installed AlgebraicPetri ─────────────── v0.3.0
+  Installed OrdinaryDiffEq ─────────────── v5.41.0
+  Installed OpenBLAS_jll ───────────────── v0.3.9+5
+  Installed FixedPointNumbers ──────────── v0.8.2
+  Installed CommonSubexpressions ───────── v0.3.0
+  Installed CEnum ──────────────────────── v0.4.1
+  Installed MacroTools ─────────────────── v0.5.5
+  Installed Parsers ────────────────────── v1.0.7
+  Installed RecursiveArrayTools ────────── v2.5.0
+  Installed JLD2 ───────────────────────── v0.1.13
+  Installed TranscodingStreams ─────────── v0.9.5
+  Installed SLEEFPirates ───────────────── v0.5.4
+  Installed JSON ───────────────────────── v0.21.0
+  Installed Petri ──────────────────────── v1.0.0
+  Installed NLsolve ────────────────────── v4.4.0
+  Installed DataStructures ─────────────── v0.17.19
+  Installed Compat ─────────────────────── v3.13.0
+  Installed LinearOperators ────────────── v1.1.0
+  Installed StaticArrays ───────────────── v0.12.4
+  Installed VectorizationBase ──────────── v0.12.21
+  Installed TableTraits ────────────────── v1.0.0
+  Installed VertexSafeGraphs ───────────── v0.1.2
+  Installed DiffEqJump ─────────────────── v6.9.3
+  Installed SparseDiffTools ────────────── v1.9.1
+  Installed DiffEqBase ─────────────────── v6.40.4
+  Installed Match ──────────────────────── v1.1.0
+  Installed LightGraphs ────────────────── v1.3.3
+  Installed Libiconv_jll ───────────────── v1.16.0+5
+  Installed IterTools ──────────────────── v1.3.0
+  Installed NLSolversBase ──────────────── v7.6.1
+  Installed FiniteDiff ─────────────────── v2.4.1
+  Installed Arpack ─────────────────────── v0.4.0
+  Installed LoggingExtras ──────────────── v0.4.1
+  Installed CompilerSupportLibraries_jll ─ v0.3.3+0
+  Installed DiffResults ────────────────── v1.0.2
+  Installed DataAPI ────────────────────── v1.3.0
+  Installed Catlab ─────────────────────── v0.7.1
+  Installed PoissonRandom ──────────────── v0.4.0
+  Installed ExponentialUtilities ───────── v1.7.0
+  Installed ArnoldiMethod ──────────────── v0.0.4
+  Installed Measures ───────────────────── v0.3.1
+  Installed NaNMath ────────────────────── v0.3.3
+  Installed LightXML ───────────────────── v0.9.0
+  Installed ColorTypes ─────────────────── v0.10.6
+  Installed QuadGK ─────────────────────── v2.4.0
+  Installed DocStringExtensions ────────── v0.8.2
+  Installed Compose ────────────────────── v0.9.0
+  Installed LoopVectorization ──────────── v0.8.15
+  Installed Colors ─────────────────────── v0.12.3
+  Installed Rmath ──────────────────────── v0.6.1
+  Installed MuladdMacro ────────────────── v0.2.2
+  Installed Roots ──────────────────────── v1.0.3
+  Installed ArrayInterface ─────────────── v2.9.1
+  Installed Inflate ────────────────────── v0.1.2
+  Installed RecursiveFactorization ─────── v0.1.4
+  Installed Requires ───────────────────── v1.0.1
+  Installed OrderedCollections ─────────── v1.3.0
+  Installed Parameters ─────────────────── v0.12.1
+  Installed TimerOutputs ───────────────── v0.5.6
+  Installed PDMats ─────────────────────── v0.9.12
+  Installed AutoHashEquals ─────────────── v0.2.0
+  Installed TreeViews ──────────────────── v0.3.0
+  Installed DiffRules ──────────────────── v1.0.1
+  Installed DiffEqNoiseProcess ─────────── v5.0.3
+  Installed RandomNumbers ──────────────── v1.4.0
+  Installed Distributions ──────────────── v0.23.4
+  Installed ProgressMeter ──────────────── v1.3.1
+  Installed TerminalLoggers ────────────── v0.1.2
+  Installed SortingAlgorithms ──────────── v0.3.1
+  Installed Reexport ───────────────────── v0.2.0
+  Installed IteratorInterfaceExtensions ── v1.0.0
+  Installed MetaGraphs ─────────────────── v0.6.5
+  Installed CodecZlib ──────────────────── v0.7.0
+  Installed ProgressLogging ────────────── v0.1.3
+  Installed IterativeSolvers ───────────── v0.8.4
+  Installed GenericSVD ─────────────────── v0.3.0
+  Installed StatsFuns ──────────────────── v0.9.5
+  Installed ZygoteRules ────────────────── v0.2.0
+  Installed UnPack ─────────────────────── v1.0.1
+  Installed ConsoleProgressMonitor ─────── v0.1.2
+  Installed SpecialFunctions ───────────── v0.10.3
+  Installed Missings ───────────────────── v0.4.3
+  Installed Adapt ──────────────────────── v2.0.2
+  Installed FillArrays ─────────────────── v0.8.12
+  Installed OffsetArrays ───────────────── v1.1.1
+  Installed StochasticDiffEq ───────────── v6.24.0
+  Installed LineSearches ───────────────── v7.0.1
+  Installed Zlib_jll ───────────────────── v1.2.11+14
+  Installed ForwardDiff ────────────────── v0.10.12
+  Installed XML2_jll ───────────────────── v2.9.10+1
+  Installed Arpack_jll ─────────────────── v3.5.0+3
+  Installed FastClosures ───────────────── v0.3.2
+  Installed CpuId ──────────────────────── v0.2.2
+  Installed FileIO ─────────────────────── v1.3.0
+  Installed RecipesBase ────────────────── v1.0.1
+  Installed ChainRulesCore ─────────────── v0.9.3
+  Installed LLVM ───────────────────────── v2.0.0
+  Installed LabelledArrays ─────────────── v1.3.0
+  Installed Rmath_jll ──────────────────── v0.2.2+1
+  Installed SIMDPirates ────────────────── v0.8.13
+  Installed ResettableStacks ───────────── v1.0.0
+  Installed Distances ──────────────────── v0.9.0
+  Installed StatsBase ──────────────────── v0.33.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [4f99eebe] + AlgebraicPetri v0.3.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [1520ce14] + AbstractTrees v0.3.3
+  [79e6a3ab] + Adapt v2.0.2
+  [4f99eebe] + AlgebraicPetri v0.3.0
+  [ec485272] + ArnoldiMethod v0.0.4
+  [7d9fca2a] + Arpack v0.4.0
+  [68821587] + Arpack_jll v3.5.0+3
+  [4fba245c] + ArrayInterface v2.9.1
+  [15f4f7f2] + AutoHashEquals v0.2.0
+  [fa961155] + CEnum v0.4.1
+  [134e5e36] + Catlab v0.7.1
+  [d360d2e6] + ChainRulesCore v0.9.3
+  [944b1d66] + CodecZlib v0.7.0
+  [3da002f7] + ColorTypes v0.10.6
+  [5ae59095] + Colors v0.12.3
+  [bbf7d656] + CommonSubexpressions v0.3.0
+  [34da2185] + Compat v3.13.0
+  [e66e0078] + CompilerSupportLibraries_jll v0.3.3+0
+  [a81c6b42] + Compose v0.9.0
+  [88cd18e8] + ConsoleProgressMonitor v0.1.2
+  [adafc99b] + CpuId v0.2.2
+  [9a962f9c] + DataAPI v1.3.0
+  [864edb3b] + DataStructures v0.17.19
+  [2b5f629d] + DiffEqBase v6.40.4
+  [c894b116] + DiffEqJump v6.9.3
+  [77a26b50] + DiffEqNoiseProcess v5.0.3
+  [163ba53b] + DiffResults v1.0.2
+  [b552c78f] + DiffRules v1.0.1
+  [b4f34e82] + Distances v0.9.0
+  [31c24e10] + Distributions v0.23.4
+  [ffbed154] + DocStringExtensions v0.8.2
+  [d4d017d3] + ExponentialUtilities v1.7.0
+  [9aa1b823] + FastClosures v0.3.2
+  [5789e2e9] + FileIO v1.3.0
+  [1a297f60] + FillArrays v0.8.12
+  [6a86dc24] + FiniteDiff v2.4.1
+  [53c48c17] + FixedPointNumbers v0.8.2
+  [f6369f11] + ForwardDiff v0.10.12
+  [069b7b12] + FunctionWrappers v1.1.1
+  [01680d73] + GenericSVD v0.3.0
+  [d25df0c9] + Inflate v0.1.2
+  [c8e1da08] + IterTools v1.3.0
+  [42fd0dbc] + IterativeSolvers v0.8.4
+  [82899510] + IteratorInterfaceExtensions v1.0.0
+  [033835bb] + JLD2 v0.1.13
+  [682c06a0] + JSON v0.21.0
+  [929cbde3] + LLVM v2.0.0
+  [2ee39098] + LabelledArrays v1.3.0
+  [1d6d02ad] + LeftChildRightSiblingTrees v0.1.2
+  [94ce4f54] + Libiconv_jll v1.16.0+5
+  [093fc24a] + LightGraphs v1.3.3
+  [9c8b4983] + LightXML v0.9.0
+  [d3d80556] + LineSearches v7.0.1
+  [7a12625a] + LinearMaps v2.6.1
+  [5c8ed15e] + LinearOperators v1.1.0
+  [e6f89c97] + LoggingExtras v0.4.1
+  [bdcacae8] + LoopVectorization v0.8.15
+  [1914dd2f] + MacroTools v0.5.5
+  [7eb4fadd] + Match v1.1.0
+  [442fdcdd] + Measures v0.3.1
+  [626554b9] + MetaGraphs v0.6.5
+  [e1d29d7a] + Missings v0.4.3
+  [46d2c3a1] + MuladdMacro v0.2.2
+  [d41bc354] + NLSolversBase v7.6.1
+  [2774e3e8] + NLsolve v4.4.0
+  [77ba4419] + NaNMath v0.3.3
+  [6fe1bfb0] + OffsetArrays v1.1.1
+  [4536629a] + OpenBLAS_jll v0.3.9+5
+  [efe28fd5] + OpenSpecFun_jll v0.5.3+3
+  [bac558e1] + OrderedCollections v1.3.0
+  [1dea7af3] + OrdinaryDiffEq v5.41.0
+  [90014a1f] + PDMats v0.9.12
+  [d96e819e] + Parameters v0.12.1
+  [69de0a69] + Parsers v1.0.7
+  [4259d249] + Petri v1.0.0
+  [e409e4f3] + PoissonRandom v0.4.0
+  [33c8b6b6] + ProgressLogging v0.1.3
+  [92933f4c] + ProgressMeter v1.3.1
+  [1fd47b50] + QuadGK v2.4.0
+  [e6cf234a] + RandomNumbers v1.4.0
+  [3cdcf5f2] + RecipesBase v1.0.1
+  [731186ca] + RecursiveArrayTools v2.5.0
+  [f2c3362d] + RecursiveFactorization v0.1.4
+  [189a3867] + Reexport v0.2.0
+  [ae029012] + Requires v1.0.1
+  [ae5879a3] + ResettableStacks v1.0.0
+  [79098fc4] + Rmath v0.6.1
+  [f50d1b31] + Rmath_jll v0.2.2+1
+  [f2b01f46] + Roots v1.0.3
+  [21efa798] + SIMDPirates v0.8.13
+  [476501e8] + SLEEFPirates v0.5.4
+  [699a6c99] + SimpleTraits v0.9.2
+  [a2af1166] + SortingAlgorithms v0.3.1
+  [47a9eef4] + SparseDiffTools v1.9.1
+  [276daf66] + SpecialFunctions v0.10.3
+  [90137ffa] + StaticArrays v0.12.4
+  [2913bbd2] + StatsBase v0.33.0
+  [4c63d2b9] + StatsFuns v0.9.5
+  [789caeaf] + StochasticDiffEq v6.24.0
+  [3783bdb8] + TableTraits v1.0.0
+  [5d786b92] + TerminalLoggers v0.1.2
+  [a759f4b9] + TimerOutputs v0.5.6
+  [3bb67fe8] + TranscodingStreams v0.9.5
+  [a2a6695c] + TreeViews v0.3.0
+  [3a884ed6] + UnPack v1.0.1
+  [3d5dd08c] + VectorizationBase v0.12.21
+  [19fa3120] + VertexSafeGraphs v0.1.2
+  [02c8fc9c] + XML2_jll v2.9.10+1
+  [83775a58] + Zlib_jll v1.2.11+14
+  [700de1a5] + ZygoteRules v0.2.0
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [8bb1440f] + DelimitedFiles
+  [8ba89e20] + Distributed
+  [b77e0a4c] + InteractiveUtils
+  [76f85450] + LibGit2
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [a63ad114] + Mmap
+  [44cfe95a] + Pkg
+  [de0858da] + Printf
+  [3fa0cd96] + REPL
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [1a1011a3] + SharedArrays
+  [6462fe0b] + Sockets
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [4607b0f0] + SuiteSparse
+  [8dfed614] + Test
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+   Building SLEEFPirates → `~/.julia/packages/SLEEFPirates/QzifL/deps/build.log`
+    Testing AlgebraicPetri
+Status `/tmp/jl_4fdQFb/Project.toml`
+  [4f99eebe] AlgebraicPetri v0.3.0
+  [15f4f7f2] AutoHashEquals v0.2.0
+  [134e5e36] Catlab v0.7.1
+  [4259d249] Petri v1.0.0
+  [8dfed614] Test
+Status `/tmp/jl_4fdQFb/Manifest.toml`
+  [1520ce14] AbstractTrees v0.3.3
+  [79e6a3ab] Adapt v2.0.2
+  [4f99eebe] AlgebraicPetri v0.3.0
+  [ec485272] ArnoldiMethod v0.0.4
+  [7d9fca2a] Arpack v0.4.0
+  [68821587] Arpack_jll v3.5.0+3
+  [4fba245c] ArrayInterface v2.9.1
+  [15f4f7f2] AutoHashEquals v0.2.0
+  [fa961155] CEnum v0.4.1
+  [134e5e36] Catlab v0.7.1
+  [d360d2e6] ChainRulesCore v0.9.3
+  [944b1d66] CodecZlib v0.7.0
+  [3da002f7] ColorTypes v0.10.6
+  [5ae59095] Colors v0.12.3
+  [bbf7d656] CommonSubexpressions v0.3.0
+  [34da2185] Compat v3.13.0
+  [e66e0078] CompilerSupportLibraries_jll v0.3.3+0
+  [a81c6b42] Compose v0.9.0
+  [88cd18e8] ConsoleProgressMonitor v0.1.2
+  [adafc99b] CpuId v0.2.2
+  [9a962f9c] DataAPI v1.3.0
+  [864edb3b] DataStructures v0.17.19
+  [2b5f629d] DiffEqBase v6.40.4
+  [c894b116] DiffEqJump v6.9.3
+  [77a26b50] DiffEqNoiseProcess v5.0.3
+  [163ba53b] DiffResults v1.0.2
+  [b552c78f] DiffRules v1.0.1
+  [b4f34e82] Distances v0.9.0
+  [31c24e10] Distributions v0.23.4
+  [ffbed154] DocStringExtensions v0.8.2
+  [d4d017d3] ExponentialUtilities v1.7.0
+  [9aa1b823] FastClosures v0.3.2
+  [5789e2e9] FileIO v1.3.0
+  [1a297f60] FillArrays v0.8.12
+  [6a86dc24] FiniteDiff v2.4.1
+  [53c48c17] FixedPointNumbers v0.8.2
+  [f6369f11] ForwardDiff v0.10.12
+  [069b7b12] FunctionWrappers v1.1.1
+  [01680d73] GenericSVD v0.3.0
+  [d25df0c9] Inflate v0.1.2
+  [c8e1da08] IterTools v1.3.0
+  [42fd0dbc] IterativeSolvers v0.8.4
+  [82899510] IteratorInterfaceExtensions v1.0.0
+  [033835bb] JLD2 v0.1.13
+  [682c06a0] JSON v0.21.0
+  [929cbde3] LLVM v2.0.0
+  [2ee39098] LabelledArrays v1.3.0
+  [1d6d02ad] LeftChildRightSiblingTrees v0.1.2
+  [94ce4f54] Libiconv_jll v1.16.0+5
+  [093fc24a] LightGraphs v1.3.3
+  [9c8b4983] LightXML v0.9.0
+  [d3d80556] LineSearches v7.0.1
+  [7a12625a] LinearMaps v2.6.1
+  [5c8ed15e] LinearOperators v1.1.0
+  [e6f89c97] LoggingExtras v0.4.1
+  [bdcacae8] LoopVectorization v0.8.15
+  [1914dd2f] MacroTools v0.5.5
+  [7eb4fadd] Match v1.1.0
+  [442fdcdd] Measures v0.3.1
+  [626554b9] MetaGraphs v0.6.5
+  [e1d29d7a] Missings v0.4.3
+  [46d2c3a1] MuladdMacro v0.2.2
+  [d41bc354] NLSolversBase v7.6.1
+  [2774e3e8] NLsolve v4.4.0
+  [77ba4419] NaNMath v0.3.3
+  [6fe1bfb0] OffsetArrays v1.1.1
+  [4536629a] OpenBLAS_jll v0.3.9+5
+  [efe28fd5] OpenSpecFun_jll v0.5.3+3
+  [bac558e1] OrderedCollections v1.3.0
+  [1dea7af3] OrdinaryDiffEq v5.41.0
+  [90014a1f] PDMats v0.9.12
+  [d96e819e] Parameters v0.12.1
+  [69de0a69] Parsers v1.0.7
+  [4259d249] Petri v1.0.0
+  [e409e4f3] PoissonRandom v0.4.0
+  [33c8b6b6] ProgressLogging v0.1.3
+  [92933f4c] ProgressMeter v1.3.1
+  [1fd47b50] QuadGK v2.4.0
+  [e6cf234a] RandomNumbers v1.4.0
+  [3cdcf5f2] RecipesBase v1.0.1
+  [731186ca] RecursiveArrayTools v2.5.0
+  [f2c3362d] RecursiveFactorization v0.1.4
+  [189a3867] Reexport v0.2.0
+  [ae029012] Requires v1.0.1
+  [ae5879a3] ResettableStacks v1.0.0
+  [79098fc4] Rmath v0.6.1
+  [f50d1b31] Rmath_jll v0.2.2+1
+  [f2b01f46] Roots v1.0.3
+  [21efa798] SIMDPirates v0.8.13
+  [476501e8] SLEEFPirates v0.5.4
+  [699a6c99] SimpleTraits v0.9.2
+  [a2af1166] SortingAlgorithms v0.3.1
+  [47a9eef4] SparseDiffTools v1.9.1
+  [276daf66] SpecialFunctions v0.10.3
+  [90137ffa] StaticArrays v0.12.4
+  [2913bbd2] StatsBase v0.33.0
+  [4c63d2b9] StatsFuns v0.9.5
+  [789caeaf] StochasticDiffEq v6.24.0
+  [3783bdb8] TableTraits v1.0.0
+  [5d786b92] TerminalLoggers v0.1.2
+  [a759f4b9] TimerOutputs v0.5.6
+  [3bb67fe8] TranscodingStreams v0.9.5
+  [a2a6695c] TreeViews v0.3.0
+  [3a884ed6] UnPack v1.0.1
+  [3d5dd08c] VectorizationBase v0.12.21
+  [19fa3120] VertexSafeGraphs v0.1.2
+  [02c8fc9c] XML2_jll v2.9.10+1
+  [83775a58] Zlib_jll v1.2.11+14
+  [700de1a5] ZygoteRules v0.2.0
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8bb1440f] DelimitedFiles
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [1a1011a3] SharedArrays
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [4607b0f0] SuiteSparse
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+
+signal (11): Segmentation fault
+in expression starting at /home/pkgeval/.julia/packages/Petri/kRzAA/src/visualization.jl:2
+jl_svecref at /workspace/srcdir/src/julia.h:836 [inlined]
+jl_deserialize_value_array at /workspace/srcdir/src/dump.c:1340
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1708
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1518 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1628 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1724
+jl_deserialize_value_svec at /workspace/srcdir/src/dump.c:1273 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1702
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1252 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1637 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_singleton at /workspace/srcdir/src/dump.c:1565 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1769
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1518 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_array at /workspace/srcdir/src/dump.c:1330
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1708
+jl_deserialize_value_method at /workspace/srcdir/src/dump.c:1405 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1739
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1637 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_singleton at /workspace/srcdir/src/dump.c:1565 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1769
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1518 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1518 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1510 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_method at /workspace/srcdir/src/dump.c:1378 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1739
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1637 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1518 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1518 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1510 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1628 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1724
+jl_deserialize_value_svec at /workspace/srcdir/src/dump.c:1273 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1702
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1252 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_array at /workspace/srcdir/src/dump.c:1330
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1708
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_value_array at /workspace/srcdir/src/dump.c:1330
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1708
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1518 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1518 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1510 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1628 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_svec at /workspace/srcdir/src/dump.c:1273 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1702
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1252 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1637 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_singleton at /workspace/srcdir/src/dump.c:1565 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1769
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1518 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1628 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_array at /workspace/srcdir/src/dump.c:1330
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1708
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_value_array at /workspace/srcdir/src/dump.c:1330
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1708
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1637 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_svec at /workspace/srcdir/src/dump.c:1273 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1702
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1252 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_method_instance at /workspace/srcdir/src/dump.c:1437 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1741
+jl_deserialize_value_array at /workspace/srcdir/src/dump.c:1330
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1708
+jl_deserialize_value_method_instance at /workspace/srcdir/src/dump.c:1455 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1741
+jl_deserialize_value_svec at /workspace/srcdir/src/dump.c:1273 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1702
+jl_deserialize_value_method at /workspace/srcdir/src/dump.c:1387 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1739
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1637 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1518 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1628 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_svec at /workspace/srcdir/src/dump.c:1273 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1702
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1252 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_svec at /workspace/srcdir/src/dump.c:1273 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1702
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1252 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_method_instance at /workspace/srcdir/src/dump.c:1437 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1741
+jl_deserialize_value_svec at /workspace/srcdir/src/dump.c:1273 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1702
+jl_deserialize_value_method at /workspace/srcdir/src/dump.c:1387 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1739
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1637 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_singleton at /workspace/srcdir/src/dump.c:1565 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1769
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1518 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1518 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1510 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_method at /workspace/srcdir/src/dump.c:1378 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1739
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1637 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1518 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1628 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_svec at /workspace/srcdir/src/dump.c:1273 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1702
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1252 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_svec at /workspace/srcdir/src/dump.c:1273 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1702
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1252 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_method_instance at /workspace/srcdir/src/dump.c:1437 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1741
+jl_deserialize_value_svec at /workspace/srcdir/src/dump.c:1273 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1702
+jl_deserialize_value_method at /workspace/srcdir/src/dump.c:1387 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1739
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1637 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_singleton at /workspace/srcdir/src/dump.c:1565 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1769
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1518 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1628 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1724
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1724
+jl_deserialize_value_svec at /workspace/srcdir/src/dump.c:1273 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1702
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1252 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1637 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_singleton at /workspace/srcdir/src/dump.c:1565 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1769
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1518 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1628 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_svec at /workspace/srcdir/src/dump.c:1273 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1702
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1252 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_method_instance at /workspace/srcdir/src/dump.c:1437 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1741
+jl_deserialize_value_array at /workspace/srcdir/src/dump.c:1330
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1708
+jl_deserialize_value_method_instance at /workspace/srcdir/src/dump.c:1455 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1741
+jl_deserialize_value_array at /workspace/srcdir/src/dump.c:1330
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1708
+jl_deserialize_value_method_instance at /workspace/srcdir/src/dump.c:1455 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1741
+jl_deserialize_value_svec at /workspace/srcdir/src/dump.c:1273 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1702
+jl_deserialize_value_method at /workspace/srcdir/src/dump.c:1387 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1739
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1637 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_svec at /workspace/srcdir/src/dump.c:1273 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1702
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1252 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_method_instance at /workspace/srcdir/src/dump.c:1437 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1741
+jl_deserialize_value_array at /workspace/srcdir/src/dump.c:1330
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1708
+jl_deserialize_value_method_instance at /workspace/srcdir/src/dump.c:1455 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1741
+jl_deserialize_value_svec at /workspace/srcdir/src/dump.c:1273 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1702
+jl_deserialize_value_method at /workspace/srcdir/src/dump.c:1387 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1739
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_struct at /workspace/srcdir/src/dump.c:1583 [inlined]
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1664 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_value_any at /workspace/srcdir/src/dump.c:1637 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1805
+jl_deserialize_datatype at /workspace/srcdir/src/dump.c:1248 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1802
+jl_deserialize_value_singleton at /workspace/srcdir/src/dump.c:1565 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1769
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1518 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1523 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_module at /workspace/srcdir/src/dump.c:1510 [inlined]
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1745
+jl_deserialize_value_array at /workspace/srcdir/src/dump.c:1330
+jl_deserialize_value at /workspace/srcdir/src/dump.c:1708
+_jl_restore_incremental at /workspace/srcdir/src/dump.c:2475
+jl_restore_incremental at /workspace/srcdir/src/dump.c:2543
+_include_from_serialized at ./loading.jl:681
+_require_from_serialized at ./loading.jl:749
+_require at ./loading.jl:1040
+require at ./loading.jl:928
+require at ./loading.jl:923
+jl_apply at /workspace/srcdir/src/julia.h:1713 [inlined]
+call_require at /workspace/srcdir/src/toplevel.c:423 [inlined]
+eval_import_path at /workspace/srcdir/src/toplevel.c:460
+jl_toplevel_eval_flex at /workspace/srcdir/src/toplevel.c:680
+jl_toplevel_eval_flex at /workspace/srcdir/src/toplevel.c:788
+jl_toplevel_eval_in at /workspace/srcdir/src/toplevel.c:881
+eval at ./boot.jl:340 [inlined]
+include_string at ./loading.jl:1103
+_include at ./loading.jl:1157
+include at ./Base.jl:374 [inlined]
+include at /home/pkgeval/.julia/packages/Petri/kRzAA/src/Petri.jl:7
+jl_apply at /workspace/srcdir/src/julia.h:1713 [inlined]
+do_call at /workspace/srcdir/src/interpreter.c:117
+eval_value at /workspace/srcdir/src/interpreter.c:206
+eval_stmt_value at /workspace/srcdir/src/interpreter.c:157 [inlined]
+eval_body at /workspace/srcdir/src/interpreter.c:551
+jl_interpret_toplevel_thunk at /workspace/srcdir/src/interpreter.c:659
+jl_toplevel_eval_flex at /workspace/srcdir/src/toplevel.c:838
+jl_eval_module_expr at /workspace/srcdir/src/toplevel.c:197
+jl_toplevel_eval_flex at /workspace/srcdir/src/toplevel.c:664
+jl_toplevel_eval_flex at /workspace/srcdir/src/toplevel.c:788
+jl_toplevel_eval_flex at /workspace/srcdir/src/toplevel.c:788
+jl_toplevel_eval_in at /workspace/srcdir/src/toplevel.c:881
+eval at ./boot.jl:340 [inlined]
+include_string at ./loading.jl:1103
+_include at ./loading.jl:1157
+include at ./Base.jl:374 [inlined]
+include_package_for_output at ./loading.jl:1219
+jfptr_include_package_for_output_17094.clone_1 at /opt/julia/lib/julia/sys.so (unknown line)
+jl_apply at /workspace/srcdir/src/julia.h:1713 [inlined]
+do_call at /workspace/srcdir/src/interpreter.c:117
+eval_value at /workspace/srcdir/src/interpreter.c:206
+eval_stmt_value at /workspace/srcdir/src/interpreter.c:157 [inlined]
+eval_body at /workspace/srcdir/src/interpreter.c:551
+jl_interpret_toplevel_thunk at /workspace/srcdir/src/interpreter.c:659
+jl_toplevel_eval_flex at /workspace/srcdir/src/toplevel.c:838
+jl_toplevel_eval_in at /workspace/srcdir/src/toplevel.c:881
+eval at ./boot.jl:340 [inlined]
+eval at ./client.jl:446
+jl_apply at /workspace/srcdir/src/julia.h:1713 [inlined]
+do_call at /workspace/srcdir/src/interpreter.c:117
+eval_value at /workspace/srcdir/src/interpreter.c:206
+eval_stmt_value at /workspace/srcdir/src/interpreter.c:157 [inlined]
+eval_body at /workspace/srcdir/src/interpreter.c:551
+jl_interpret_toplevel_thunk at /workspace/srcdir/src/interpreter.c:659
+jl_toplevel_eval_flex at /workspace/srcdir/src/toplevel.c:838
+jl_toplevel_eval_flex at /workspace/srcdir/src/toplevel.c:788
+jl_toplevel_eval_in at /workspace/srcdir/src/toplevel.c:881
+eval at ./boot.jl:340
+exec_options at ./client.jl:260
+_start at ./client.jl:485
+jfptr__start_23229.clone_1 at /opt/julia/lib/julia/sys.so (unknown line)
+jl_apply at /workspace/srcdir/ui/../src/julia.h:1713 [inlined]
+true_main at /workspace/srcdir/ui/repl.c:106
+main at /workspace/srcdir/ui/repl.c:227
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 0x4015e4)
+Allocations: 16833925 (Pool: 16829712; Big: 4213); GC: 12
+ERROR: LoadError: Failed to precompile Petri [4259d249-1051-49fa-8328-3f8ab9391c33] to /home/pkgeval/.julia/compiled/v1.6/Petri/FiiRl_fWcny.ji.
+Stacktrace:
+ [1] error(s::String)
+   @ Base ./error.jl:33
+ [2] compilecache(pkg::Base.PkgId, path::String)
+   @ Base ./loading.jl:1350
+ [3] _require(pkg::Base.PkgId)
+   @ Base ./loading.jl:1030
+ [4] require(uuidkey::Base.PkgId)
+   @ Base ./loading.jl:928
+ [5] require(into::Module, mod::Symbol)
+   @ Base ./loading.jl:923
+ [6] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [7] top-level scope
+   @ none:6
+in expression starting at /home/pkgeval/.julia/packages/AlgebraicPetri/w9SwP/test/runtests.jl:3
+ERROR: Package AlgebraicPetri errored during testing
+Stacktrace:
+  [1] pkgerror(::String, ::Vararg{String,N} where N)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1561
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:327
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:314
+  [5] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [7] #test#60
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:16

@@ -1,0 +1,108 @@
+Julia Version 1.6.0-DEV.420
+Commit 0d5efa8846 (2020-07-10 14:27 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed RBNF ─────────────── v0.1.0
+  Installed PrettyPrint ──────── v0.1.0
+  Installed OrderedCollections ─ v1.3.0
+  Installed DataStructures ───── v0.17.19
+  Installed MLStyle ──────────── v0.4.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [83ef0002] + RBNF v0.1.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [864edb3b] + DataStructures v0.17.19
+  [d8e11817] + MLStyle v0.4.0
+  [bac558e1] + OrderedCollections v1.3.0
+  [8162dcfd] + PrettyPrint v0.1.0
+  [83ef0002] + RBNF v0.1.0
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [d6f4376e] + Markdown
+    Testing RBNF
+Status `/tmp/jl_ZeCWVM/Project.toml`
+  [864edb3b] DataStructures v0.17.19
+  [d8e11817] MLStyle v0.4.0
+  [8162dcfd] PrettyPrint v0.1.0
+  [83ef0002] RBNF v0.1.0
+  [8dfed614] Test
+Status `/tmp/jl_ZeCWVM/Manifest.toml`
+  [864edb3b] DataStructures v0.17.19
+  [d8e11817] MLStyle v0.4.0
+  [bac558e1] OrderedCollections v1.3.0
+  [8162dcfd] PrettyPrint v0.1.0
+  [83ef0002] RBNF v0.1.0
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+┌ Warning: Deprecated use detected at /home/pkgeval/.julia/packages/RBNF/VejHZ/src/ParserGen.jl:365.
+└ @ MLStyle ~/.julia/packages/MLStyle/nVLUN/src/DeprecationUtils.jl:11
+┌ Warning: Deprecated use of pattern Do(s=String([s]), ...): 
+│ Chaning a variable s captured during pattern matching.
+│ This is dangerous and prevents optimizations, hence got deprecated.
+│ There might be similar cases that we couldn't detect from your code.
+│ Plesae avoid it! And remember not to change the variable bound during pattern matching, instead, mutate outer variables.
+└ @ MLStyle ~/.julia/packages/MLStyle/nVLUN/src/DeprecationUtils.jl:13
+ERROR: LoadError: LoadError: LoadError: invalid use of active patterns: 1-ary view pattern(RBNF.MacroSplit(x)) should accept Union{Some{T}, Nothing} instead of Union{T, Nothing}! A simple solution is:
+  (@active RBNF.MacroSplit(x) ex) =>
+  (@active RBNF.MacroSplit(x) let r=ex; r === nothing? r : Some(r)) end
+Stacktrace:
+ [1] error(s::String)
+   @ Base ./error.jl:33
+ [2] make(node::Expr, top::Symbol, mod::Module)
+   @ RBNF ~/.julia/packages/RBNF/VejHZ/src/ParserGen.jl:359
+ [3] grammar_gen(name::Symbol, struct_name::Nothing, def_body::Expr, is_grammar_node::Bool, mod::Module, lang::Type)
+   @ RBNF ~/.julia/packages/RBNF/VejHZ/src/ParserGen.jl:265
+ [4] parser_gen(pc::RBNF.PContext, lang::Type, mod::Module)
+   @ RBNF ~/.julia/packages/RBNF/VejHZ/src/ParserGen.jl:175
+ [5] @parser(__source__::LineNumberNode, __module__::Module, lang::Any, node::Any)
+   @ RBNF ~/.julia/packages/RBNF/VejHZ/src/ParserGen.jl:395
+ [6] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [7] top-level scope
+   @ ~/.julia/packages/RBNF/VejHZ/test/runtests.jl:55
+ [8] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [9] top-level scope
+   @ none:6
+in expression starting at /home/pkgeval/.julia/packages/RBNF/VejHZ/test/qasm.jl:12
+in expression starting at /home/pkgeval/.julia/packages/RBNF/VejHZ/test/qasm.jl:1
+in expression starting at /home/pkgeval/.julia/packages/RBNF/VejHZ/test/runtests.jl:55
+ERROR: Package RBNF errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1561
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:327
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:314
+  [5] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [7] #test#60
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:16
