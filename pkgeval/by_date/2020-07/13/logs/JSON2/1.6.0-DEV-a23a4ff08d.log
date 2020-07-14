@@ -1,0 +1,135 @@
+Julia Version 1.6.0-DEV.430
+Commit a23a4ff08d (2020-07-11 14:53 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed JSON2 ─── v0.3.2
+  Installed Parsers ─ v1.0.7
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [2535ab7d] + JSON2 v0.3.2
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [2535ab7d] + JSON2 v0.3.2
+  [69de0a69] + Parsers v1.0.7
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [8ba89e20] + Distributed
+  [b77e0a4c] + InteractiveUtils
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [de0858da] + Printf
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [8dfed614] + Test
+  [4ec0a83e] + Unicode
+    Testing JSON2
+Status `/tmp/jl_aZUI2N/Project.toml`
+  [2535ab7d] JSON2 v0.3.2
+  [69de0a69] Parsers v1.0.7
+  [ade2ca70] Dates
+  [8dfed614] Test
+Status `/tmp/jl_aZUI2N/Manifest.toml`
+  [2535ab7d] JSON2 v0.3.2
+  [69de0a69] Parsers v1.0.7
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [de0858da] Printf
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+  [4ec0a83e] Unicode
+Test Summary:          | Pass  Total
+fail = [1,2,3/4,5,6,7] |    1      1
+Test Summary:                 | Pass  Total
+fail = {"1":2, "2":3 _ "4":5} |    1      1
+Test Summary: | Pass  Total
+fail = [tXXe] |    1      1
+Test Summary: | Pass  Total
+fail = [fail] |    1      1
+Test Summary: | Pass  Total
+fail = ∞      |    1      1
+Test Summary:  | Pass  Total
+fail = [5,2,-] |    1      1
+Test Summary:   | Pass  Total
+fail = [5,2,+β] |    1      1
+Test Summary: | Pass  Total
+fail = "\     |    1      1
+Test Summary:   | Pass  Total
+fail = ["🍕"_"🍕" |    1      1
+Test Summary: | Pass  Total
+Symbol        |    1      1
+Test Summary: | Pass  Total
+Floats        |    2      2
+Test Summary: | Pass  Total
+Char          |    4      4
+Test Summary: | Pass  Total
+Null bytes    |    3      3
+Test Summary: | Pass  Broken  Total
+Arrays        |    2       1      3
+Test Summary: | Pass  Total
+Pairs         |    4      4
+Test Summary: | Pass  Total
+Sets          |    2      2
+Test Summary:      | Pass  Total
+Read/write options |   10     10
+Error During Test at /home/pkgeval/.julia/packages/JSON2/ld4Kq/test/floatparsing.jl:126
+  Test threw exception
+  Expression: JSON2.read(JSON2.write(f), typeof(f)) == f
+  BoundsError: attempt to access 16-element Vector{BigFloat} at index [17]
+  Stacktrace:
+    [1] getindex
+      @ ./array.jl:811 [inlined]
+    [2] scale
+      @ ~/.julia/packages/Parsers/AF18A/src/floats.jl:325 [inlined]
+    [3] scale
+      @ ~/.julia/packages/Parsers/AF18A/src/floats.jl:403 [inlined]
+    [4] typeparser
+      @ ~/.julia/packages/Parsers/AF18A/src/floats.jl:268 [inlined]
+    [5] typeparser
+      @ ~/.julia/packages/Parsers/AF18A/src/floats.jl:19 [inlined]
+    [6] xparse
+      @ ~/.julia/packages/Parsers/AF18A/src/Parsers.jl:254 [inlined]
+    [7] parse(::Type{Float64}, buf::IOBuffer, options::Parsers.Options{false,false,false,false,Nothing,Nothing,Nothing}; pos::Int64, len::Int64)
+      @ Parsers ~/.julia/packages/Parsers/AF18A/src/Parsers.jl:131
+    [8] parse
+      @ ~/.julia/packages/Parsers/AF18A/src/Parsers.jl:131 [inlined]
+    [9] #read#45
+      @ ~/.julia/packages/JSON2/ld4Kq/src/read.jl:201 [inlined]
+   [10] read(io::IOBuffer, ::Type{Float64})
+      @ JSON2 ~/.julia/packages/JSON2/ld4Kq/src/read.jl:201
+   [11] read(str::String, T::Type; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+      @ JSON2 ~/.julia/packages/JSON2/ld4Kq/src/read.jl:36
+   [12] read(str::String, T::Type)
+      @ JSON2 ~/.julia/packages/JSON2/ld4Kq/src/read.jl:36
+   [13] top-level scope
+      @ ~/.julia/packages/JSON2/ld4Kq/test/floatparsing.jl:126
+   [14] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [15] top-level scope
+      @ ~/.julia/packages/JSON2/ld4Kq/test/runtests.jl:68
+   [16] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [17] top-level scope
+      @ none:6
+   [18] eval(m::Module, e::Any)
+      @ Core ./boot.jl:340
+   [19] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:260
+   [20] _start()
+      @ Base ./client.jl:485
+  
+parsing Float64 '5.0e-324' failed
+    Testing JSON2 tests passed 
