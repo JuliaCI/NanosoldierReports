@@ -1,0 +1,128 @@
+Julia Version 1.6.0-DEV.462
+Commit 09eee44bf6 (2020-07-14 15:04 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed BinaryProvider ── v0.5.10
+  Installed Ccluster ──────── v0.1.1
+  Installed AbstractAlgebra ─ v0.8.1
+  Installed Nemo ──────────── v0.16.4
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [8fd415a7] + Ccluster v0.1.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [c3fe647b] + AbstractAlgebra v0.8.1
+  [b99e7846] + BinaryProvider v0.5.10
+  [8fd415a7] + Ccluster v0.1.1
+  [2edaba10] + Nemo v0.16.4
+  [2a0f44e3] + Base64
+  [8ba89e20] + Distributed
+  [b77e0a4c] + InteractiveUtils
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [de0858da] + Printf
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [2f01184e] + SparseArrays
+  [8dfed614] + Test
+  [4ec0a83e] + Unicode
+   Building Nemo ────→ `~/.julia/packages/Nemo/xJHVO/deps/build.log`
+   Building Ccluster → `~/.julia/packages/Ccluster/fpFRK/deps/build.log`
+┌ Error: Error building `Ccluster`: 
+│ Cloning into 'Ccluster'...
+│ Already on 'master'
+│ Your branch is up to date with 'origin/master'.
+│ FLINT_LIB_DIR set to /home/pkgeval/.julia/packages/Nemo/xJHVO/deps/usr/lib
+│ FLINT_INC_DIR set to /home/pkgeval/.julia/packages/Nemo/xJHVO/deps/usr/include
+│ ARB_LIB_DIR set to /home/pkgeval/.julia/packages/Nemo/xJHVO/deps/usr/lib
+│ ARB_INC_DIR set to /home/pkgeval/.julia/packages/Ccluster/fpFRK/deps/Ccluster/build/include
+│ Configuring...x86_64-Linux
+│ Testing __builtin_popcountl...yes
+│ Testing native popcount...yes
+│ CCLUSTER was successfully configured.
+│ make[1]: Entering directory '/home/pkgeval/.julia/packages/Ccluster/fpFRK/deps/Ccluster'
+│     CC   src/base/inline.lo
+│     CC   src/numbers/inlines.lo
+│     CC   src/numbers/app_rat.lo
+│     CC   src/numbers/compRat.lo
+│     CC   src/polynomials/app_rat_poly.lo
+│     CC   src/polynomials/parallel_taylor_shift.lo
+│ In file included from src/polynomials/app_rat_poly.c:12:0:
+│ src/polynomials/app_rat_poly.h:25:10: fatal error: polynomials/realApp_poly.h: No such file or directory
+│  #include "polynomials/realApp_poly.h"
+│           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+│ compilation terminated.
+│ Makefile:129: recipe for target 'src/polynomials/app_rat_poly.lo' failed
+│ make[1]: *** [src/polynomials/app_rat_poly.lo] Error 1
+│ make[1]: *** Waiting for unfinished jobs....
+│ In file included from src/polynomials/parallel_taylor_shift.c:12:0:
+│ src/polynomials/app_rat_poly.h:25:10: fatal error: polynomials/realApp_poly.h: No such file or directory
+│  #include "polynomials/realApp_poly.h"
+│           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+│ compilation terminated.
+│ Makefile:129: recipe for target 'src/polynomials/parallel_taylor_shift.lo' failed
+│ make[1]: *** [src/polynomials/parallel_taylor_shift.lo] Error 1
+│ make[1]: Leaving directory '/home/pkgeval/.julia/packages/Ccluster/fpFRK/deps/Ccluster'
+│ Makefile:136: recipe for target 'library' failed
+│ make: *** [library] Error 2
+│ ERROR: LoadError: failed process: Process(`make -j4`, ProcessExited(2)) [2]
+│ 
+│ Stacktrace:
+│  [1] pipeline_error
+│    @ ./process.jl:525 [inlined]
+│  [2] run(::Cmd; wait::Bool)
+│    @ Base ./process.jl:440
+│  [3] run
+│    @ ./process.jl:438 [inlined]
+│  [4] (::var"#1#2")()
+│    @ Main ~/.julia/packages/Ccluster/fpFRK/deps/build.jl:101
+│  [5] withenv(::var"#1#2", ::Pair{String,String}, ::Vararg{Pair{String,String},N} where N)
+│    @ Base ./env.jl:161
+│  [6] top-level scope
+│    @ ~/.julia/packages/Ccluster/fpFRK/deps/build.jl:99
+│  [7] include(fname::String)
+│    @ Base.MainInclude ./client.jl:444
+│  [8] top-level scope
+│    @ none:5
+│ in expression starting at /home/pkgeval/.julia/packages/Ccluster/fpFRK/deps/build.jl:74
+│ CCLUSTER_VERSION = "master" = "master"
+│ Deleting old /home/pkgeval/.julia/packages/Ccluster/fpFRK/local
+│ Cloning Ccluster ... 
+│ DONE
+│ Building Ccluster ... 
+└ @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:936
+ERROR: Package Ccluster did not provide a `test/runtests.jl` file
+Stacktrace:
+  [1] pkgerror(::String, ::Vararg{String,N} where N)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1519
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:327
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:314
+  [5] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [7] #test#60
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:16
