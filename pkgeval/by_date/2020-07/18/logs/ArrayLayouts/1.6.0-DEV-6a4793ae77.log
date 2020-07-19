@@ -1,0 +1,178 @@
+Julia Version 1.6.0-DEV.487
+Commit 6a4793ae77 (2020-07-17 20:23 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed ArrayLayouts ─ v0.3.7
+  Installed FillArrays ─── v0.8.13
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [4c555306] + ArrayLayouts v0.3.7
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [4c555306] + ArrayLayouts v0.3.7
+  [1a297f60] + FillArrays v0.8.13
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [2f01184e] + SparseArrays
+    Testing ArrayLayouts
+Status `/tmp/jl_jFgQwQ/Project.toml`
+  [4c555306] ArrayLayouts v0.3.7
+  [1a297f60] FillArrays v0.8.13
+  [2a0f44e3] Base64
+  [37e2e46d] LinearAlgebra
+  [9a3f8284] Random
+  [8dfed614] Test
+Status `/tmp/jl_jFgQwQ/Manifest.toml`
+  [4c555306] ArrayLayouts v0.3.7
+  [1a297f60] FillArrays v0.8.13
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [8dfed614] Test
+Test Summary: | Pass  Broken  Total
+MemoryLayout  |  211       2    213
+adjoint: Error During Test at /home/pkgeval/.julia/packages/ArrayLayouts/RffWD/test/test_muladd.jl:287
+  Test threw exception
+  Expression: mul(V, b) ≈ V * b ≈ Matrix(V) * b
+  MethodError: unsafe_convert(::Type{Ptr{Float64}}, ::Adjoint{Float64,Matrix{Float64}}) is ambiguous. Candidates:
+    unsafe_convert(::Type{Ptr{T}}, A::Adjoint{var"#s3",S} where S where var"#s3"<:Real) where T<:Real in ArrayLayouts at /home/pkgeval/.julia/packages/ArrayLayouts/RffWD/src/ArrayLayouts.jl:83
+    unsafe_convert(::Type{Ptr{T}}, A::Adjoint{var"#s849",var"#s848"} where var"#s848"<:(AbstractVecOrMat{T} where T) where var"#s849"<:Real) where T in LinearAlgebra at /opt/julia/share/julia/stdlib/v1.6/LinearAlgebra/src/adjtrans.jl:208
+  Possible fix, define
+    unsafe_convert(::Type{Ptr{T}}, ::Adjoint{var"#s849",var"#s848"} where var"#s848"<:(AbstractVecOrMat{T} where T) where var"#s849"<:Real) where T<:Real
+  Stacktrace:
+    [1] unsafe_convert(#unused#::Type{Ptr{Float64}}, V::SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false})
+      @ Base ./subarray.jl:402
+    [2] unsafe_convert(#unused#::Type{Ptr{Float64}}, A::Transpose{Float64,SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}})
+      @ LinearAlgebra /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/LinearAlgebra/src/adjtrans.jl:209
+    [3] gemv!(trans::Char, alpha::Float64, A::Transpose{Float64,SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}}, X::Vector{Float64}, beta::Float64, Y::Vector{Float64})
+      @ LinearAlgebra.BLAS /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/LinearAlgebra/src/blas.jl:704
+    [4] _gemv!(tA::Char, α::Float64, A::Transpose{Float64,SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}}, x::Vector{Float64}, β::Float64, y::Vector{Float64})
+      @ ArrayLayouts ~/.julia/packages/ArrayLayouts/RffWD/src/muladd.jl:286
+    [5] materialize!(M::MulAdd{RowMajor,DenseColumnMajor,DenseColumnMajor,Float64,SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false},Vector{Float64},Vector{Float64}})
+      @ ArrayLayouts ~/.julia/packages/ArrayLayouts/RffWD/src/muladd.jl:302
+    [6] muladd!(α::Float64, A::SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}, B::Vector{Float64}, β::Float64, C::Vector{Float64})
+      @ ArrayLayouts ~/.julia/packages/ArrayLayouts/RffWD/src/muladd.jl:80
+    [7] copyto!(dest::Vector{Float64}, M::MulAdd{RowMajor,DenseColumnMajor,ZerosLayout,Float64,SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false},Vector{Float64},Zeros{Float64,1,Tuple{Base.OneTo{Int64}}}})
+      @ ArrayLayouts ~/.julia/packages/ArrayLayouts/RffWD/src/muladd.jl:94
+    [8] copy(M::MulAdd{RowMajor,DenseColumnMajor,ZerosLayout,Float64,SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false},Vector{Float64},Zeros{Float64,1,Tuple{Base.OneTo{Int64}}}})
+      @ ArrayLayouts ~/.julia/packages/ArrayLayouts/RffWD/src/muladd.jl:82
+    [9] materialize(M::MulAdd{RowMajor,DenseColumnMajor,ZerosLayout,Float64,SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false},Vector{Float64},Zeros{Float64,1,Tuple{Base.OneTo{Int64}}}})
+      @ ArrayLayouts ~/.julia/packages/ArrayLayouts/RffWD/src/muladd.jl:81
+   [10] _mul(layoutA::RowMajor, layoutB::DenseColumnMajor, A::SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}, B::Vector{Float64})
+      @ ArrayLayouts ~/.julia/packages/ArrayLayouts/RffWD/src/muladd.jl:447
+   [11] mul
+      @ ~/.julia/packages/ArrayLayouts/RffWD/src/muladd.jl:448 [inlined]
+   [12] macro expansion
+      @ ~/.julia/packages/ArrayLayouts/RffWD/test/test_muladd.jl:287 [inlined]
+   [13] macro expansion
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+   [14] macro expansion
+      @ ~/.julia/packages/ArrayLayouts/RffWD/test/test_muladd.jl:280 [inlined]
+   [15] macro expansion
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+   [16] macro expansion
+      @ ~/.julia/packages/ArrayLayouts/RffWD/test/test_muladd.jl:234 [inlined]
+   [17] macro expansion
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+   [18] top-level scope
+      @ ~/.julia/packages/ArrayLayouts/RffWD/test/test_muladd.jl:6
+  
+adjoint: Error During Test at /home/pkgeval/.julia/packages/ArrayLayouts/RffWD/test/test_muladd.jl:288
+  Test threw exception
+  Expression: mul(V', b) ≈ V' * b ≈ (Matrix(V))' * b
+  MethodError: unsafe_convert(::Type{Ptr{Float64}}, ::Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}}) is ambiguous. Candidates:
+    unsafe_convert(::Type{Ptr{T}}, A::Adjoint{var"#s3",S} where S where var"#s3"<:Real) where T<:Real in ArrayLayouts at /home/pkgeval/.julia/packages/ArrayLayouts/RffWD/src/ArrayLayouts.jl:83
+    unsafe_convert(::Type{Ptr{T}}, A::Adjoint{var"#s849",var"#s848"} where var"#s848"<:(AbstractVecOrMat{T} where T) where var"#s849"<:Real) where T in LinearAlgebra at /opt/julia/share/julia/stdlib/v1.6/LinearAlgebra/src/adjtrans.jl:208
+  Possible fix, define
+    unsafe_convert(::Type{Ptr{T}}, ::Adjoint{var"#s849",var"#s848"} where var"#s848"<:(AbstractVecOrMat{T} where T) where var"#s849"<:Real) where T<:Real
+  Stacktrace:
+    [1] gemv!(trans::Char, alpha::Float64, A::Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}}, X::Vector{Float64}, beta::Float64, Y::Vector{Float64})
+      @ LinearAlgebra.BLAS /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/LinearAlgebra/src/blas.jl:704
+    [2] _gemv!(tA::Char, α::Float64, A::Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}}, x::Vector{Float64}, β::Float64, y::Vector{Float64})
+      @ ArrayLayouts ~/.julia/packages/ArrayLayouts/RffWD/src/muladd.jl:286
+    [3] materialize!(M::MulAdd{ColumnMajor,DenseColumnMajor,DenseColumnMajor,Float64,Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}},Vector{Float64},Vector{Float64}})
+      @ ArrayLayouts ~/.julia/packages/ArrayLayouts/RffWD/src/muladd.jl:300
+    [4] muladd!(α::Float64, A::Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}}, B::Vector{Float64}, β::Float64, C::Vector{Float64})
+      @ ArrayLayouts ~/.julia/packages/ArrayLayouts/RffWD/src/muladd.jl:80
+    [5] copyto!(dest::Vector{Float64}, M::MulAdd{ColumnMajor,DenseColumnMajor,ZerosLayout,Float64,Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}},Vector{Float64},Zeros{Float64,1,Tuple{Base.OneTo{Int64}}}})
+      @ ArrayLayouts ~/.julia/packages/ArrayLayouts/RffWD/src/muladd.jl:94
+    [6] copy(M::MulAdd{ColumnMajor,DenseColumnMajor,ZerosLayout,Float64,Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}},Vector{Float64},Zeros{Float64,1,Tuple{Base.OneTo{Int64}}}})
+      @ ArrayLayouts ~/.julia/packages/ArrayLayouts/RffWD/src/muladd.jl:82
+    [7] materialize(M::MulAdd{ColumnMajor,DenseColumnMajor,ZerosLayout,Float64,Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}},Vector{Float64},Zeros{Float64,1,Tuple{Base.OneTo{Int64}}}})
+      @ ArrayLayouts ~/.julia/packages/ArrayLayouts/RffWD/src/muladd.jl:81
+    [8] _mul(layoutA::ColumnMajor, layoutB::DenseColumnMajor, A::Adjoint{Float64,SubArray{Float64,2,Adjoint{Float64,Matrix{Float64}},Tuple{UnitRange{Int64},UnitRange{Int64}},false}}, B::Vector{Float64})
+      @ ArrayLayouts ~/.julia/packages/ArrayLayouts/RffWD/src/muladd.jl:447
+    [9] mul
+      @ ~/.julia/packages/ArrayLayouts/RffWD/src/muladd.jl:448 [inlined]
+   [10] macro expansion
+      @ ~/.julia/packages/ArrayLayouts/RffWD/test/test_muladd.jl:288 [inlined]
+   [11] macro expansion
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+   [12] macro expansion
+      @ ~/.julia/packages/ArrayLayouts/RffWD/test/test_muladd.jl:280 [inlined]
+   [13] macro expansion
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+   [14] macro expansion
+      @ ~/.julia/packages/ArrayLayouts/RffWD/test/test_muladd.jl:234 [inlined]
+   [15] macro expansion
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+   [16] top-level scope
+      @ ~/.julia/packages/ArrayLayouts/RffWD/test/test_muladd.jl:6
+  
+Test Summary:       | Pass  Error  Broken  Total
+Multiplication      |  626      2       2    630
+  Matrix * Vector   |  178                   178
+  Matrix * Matrix   |   88                    88
+  adjtrans          |  198                   198
+  Mul               |   14      2             16
+    Mixed types     |    5                     5
+    no allocation   |    2                     2
+    BigFloat        |    2                     2
+    Scalar * Vector |    1                     1
+    adjoint         |    4      2              6
+  Lmul/Rmul         |  130                   130
+  MulAdd            |   18              2     20
+ERROR: LoadError: LoadError: Some tests did not pass: 626 passed, 0 failed, 2 errored, 2 broken.
+in expression starting at /home/pkgeval/.julia/packages/ArrayLayouts/RffWD/test/test_muladd.jl:5
+in expression starting at /home/pkgeval/.julia/packages/ArrayLayouts/RffWD/test/runtests.jl:7
+ERROR: Package ArrayLayouts errored during testing
+Stacktrace:
+  [1] pkgerror(::String, ::Vararg{String,N} where N)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1561
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:327
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:314
+  [5] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [7] #test#60
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:16
