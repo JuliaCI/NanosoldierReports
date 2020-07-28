@@ -36,7 +36,7 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
    Building GAP → `~/.julia/packages/GAP/tHnBo/deps/build.log`
     Testing GAP
-Status `/tmp/jl_QCV0hS/Project.toml`
+Status `/tmp/jl_uH3ZbV/Project.toml`
   [b99e7846] BinaryProvider v0.5.10
   [e30172f5] Documenter v0.25.1
   [c863536a] GAP v0.4.2
@@ -45,7 +45,7 @@ Status `/tmp/jl_QCV0hS/Project.toml`
   [44cfe95a] Pkg
   [3fa0cd96] REPL
   [8dfed614] Test
-Status `/tmp/jl_QCV0hS/Manifest.toml`
+Status `/tmp/jl_uH3ZbV/Manifest.toml`
   [b99e7846] BinaryProvider v0.5.10
   [ffbed154] DocStringExtensions v0.8.2
   [e30172f5] Documenter v0.25.1
@@ -104,181 +104,6 @@ Test Summary: | Pass  Total
 help          |   20     20
 [ Info: SetupBuildDirectory: setting up build directory.
 [ Info: Doctest: running doctests.
-┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/constructors.jl:323-339
-│ 
-│ ```jldoctest
-│ julia> val = GAP.evalstr("[ [ 1, 2 ], [ 3, 4 ] ]")
-│ GAP: [ [ 1, 2 ], [ 3, 4 ] ]
-│ 
-│ julia> Matrix{Int64}(val)
-│ 2×2 Array{Int64,2}:
-│  1  2
-│  3  4
-│ 
-│ julia> val = GAP.evalstr( "NewMatrix( IsPlistMatrixRep, Integers, 2, [ 0, 1, 2, 3 ] )" )
-│ GAP: <2x2-matrix over Integers>
-│ 
-│ julia> Matrix{Int64}(val)
-│ 2×2 Array{Int64,2}:
-│  0  1
-│  2  3
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ Matrix{Int64}(val)
-│ 
-│ Evaluated output:
-│ 
-│ 2×2 Matrix{Int64}:
-│  1  2
-│  3  4
-│ 
-│ Expected output:
-│ 
-│ 2×2 Array{Int64,2}:
-│  1  2
-│  3  4
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2×2 Array{Int64,2}:
-│     Matrix{Int64}:
-│     1  2
-│     3  4
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/constructors.jl:323-339
-│ 
-│ ```jldoctest
-│ julia> val = GAP.evalstr("[ [ 1, 2 ], [ 3, 4 ] ]")
-│ GAP: [ [ 1, 2 ], [ 3, 4 ] ]
-│ 
-│ julia> Matrix{Int64}(val)
-│ 2×2 Array{Int64,2}:
-│  1  2
-│  3  4
-│ 
-│ julia> val = GAP.evalstr( "NewMatrix( IsPlistMatrixRep, Integers, 2, [ 0, 1, 2, 3 ] )" )
-│ GAP: <2x2-matrix over Integers>
-│ 
-│ julia> Matrix{Int64}(val)
-│ 2×2 Array{Int64,2}:
-│  0  1
-│  2  3
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ Matrix{Int64}(val)
-│ 
-│ Evaluated output:
-│ 
-│ 2×2 Matrix{Int64}:
-│  0  1
-│  2  3
-│ 
-│ Expected output:
-│ 
-│ 2×2 Array{Int64,2}:
-│  0  1
-│  2  3
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2×2 Array{Int64,2}:
-│     Matrix{Int64}:
-│     0  1
-│     2  3
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/constructors.jl:435-458
-│ 
-│ ```jldoctest
-│ julia> val = GAP.evalstr("rec( a:= 1, b:= 2 )")
-│ GAP: rec( a := 1, b := 2 )
-│ 
-│ julia> Dict{Symbol,Int}(val)
-│ Dict{Symbol,Int64} with 2 entries:
-│   :a => 1
-│   :b => 2
-│ 
-│ julia> val = GAP.evalstr("rec( l:= [ 1, 2 ] )")
-│ GAP: rec( l := [ 1, 2 ] )
-│ 
-│ julia> Dict{Symbol,Any}(val, recursive = false)
-│ Dict{Symbol,Any} with 1 entry:
-│   :l => GAP: [ 1, 2 ]
-│ 
-│ julia> Dict{Symbol,Any}(val, recursive = true)
-│ Dict{Symbol,Any} with 1 entry:
-│   :l => Any[1, 2]
-│ 
-│ julia> Dict{Symbol,Array{Int,1}}(val, recursive = true)
-│ Dict{Symbol,Array{Int64,1}} with 1 entry:
-│   :l => [1, 2]
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ Dict{Symbol,Array{Int,1}}(val, recursive = true)
-│ 
-│ Evaluated output:
-│ 
-│ Dict{Symbol,Vector{Int64}} with 1 entry:
-│   :l => [1, 2]
-│ 
-│ Expected output:
-│ 
-│ Dict{Symbol,Array{Int64,1}} with 1 entry:
-│   :l => [1, 2]
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    Dict{Symbol,Array{Int64,1}} Dict{Symbol,Vector{Int64}} with 1 entry:
-│      :l => [1, 2]
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/constructors.jl:244-253
-│ 
-│ ```jldoctest
-│ julia> val = GAP.evalstr("[ true, false, true ]")
-│ GAP: [ true, false, true ]
-│ 
-│ julia> BitArray{1}(val)
-│ 3-element BitArray{1}:
-│  1
-│  0
-│  1
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ BitArray{1}(val)
-│ 
-│ Evaluated output:
-│ 
-│ 3-element BitVector:
-│  1
-│  0
-│  1
-│ 
-│ Expected output:
-│ 
-│ 3-element BitArray{1}:
-│  1
-│  0
-│  1
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    3-element BitArray{1}:
-│     BitVector:
-│     1
-│     0
-│     1
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/constructors.jl
 │ 
 │ ```jldoctest
@@ -521,6 +346,94 @@ help          |   20     20
 │     0x62
 │     0x63
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/constructors.jl:323-339
+│ 
+│ ```jldoctest
+│ julia> val = GAP.evalstr("[ [ 1, 2 ], [ 3, 4 ] ]")
+│ GAP: [ [ 1, 2 ], [ 3, 4 ] ]
+│ 
+│ julia> Matrix{Int64}(val)
+│ 2×2 Array{Int64,2}:
+│  1  2
+│  3  4
+│ 
+│ julia> val = GAP.evalstr( "NewMatrix( IsPlistMatrixRep, Integers, 2, [ 0, 1, 2, 3 ] )" )
+│ GAP: <2x2-matrix over Integers>
+│ 
+│ julia> Matrix{Int64}(val)
+│ 2×2 Array{Int64,2}:
+│  0  1
+│  2  3
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Matrix{Int64}(val)
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Int64}:
+│  1  2
+│  3  4
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Int64,2}:
+│  1  2
+│  3  4
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Int64,2}:
+│     Matrix{Int64}:
+│     1  2
+│     3  4
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/constructors.jl:323-339
+│ 
+│ ```jldoctest
+│ julia> val = GAP.evalstr("[ [ 1, 2 ], [ 3, 4 ] ]")
+│ GAP: [ [ 1, 2 ], [ 3, 4 ] ]
+│ 
+│ julia> Matrix{Int64}(val)
+│ 2×2 Array{Int64,2}:
+│  1  2
+│  3  4
+│ 
+│ julia> val = GAP.evalstr( "NewMatrix( IsPlistMatrixRep, Integers, 2, [ 0, 1, 2, 3 ] )" )
+│ GAP: <2x2-matrix over Integers>
+│ 
+│ julia> Matrix{Int64}(val)
+│ 2×2 Array{Int64,2}:
+│  0  1
+│  2  3
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Matrix{Int64}(val)
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Int64}:
+│  0  1
+│  2  3
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Int64,2}:
+│  0  1
+│  2  3
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Int64,2}:
+│     Matrix{Int64}:
+│     0  1
+│     2  3
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/adapter.jl:78-105
 │ 
 │ ```jldoctest
@@ -578,6 +491,93 @@ help          |   20     20
 │     7
 │     7
 │     7
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/constructors.jl:435-458
+│ 
+│ ```jldoctest
+│ julia> val = GAP.evalstr("rec( a:= 1, b:= 2 )")
+│ GAP: rec( a := 1, b := 2 )
+│ 
+│ julia> Dict{Symbol,Int}(val)
+│ Dict{Symbol,Int64} with 2 entries:
+│   :a => 1
+│   :b => 2
+│ 
+│ julia> val = GAP.evalstr("rec( l:= [ 1, 2 ] )")
+│ GAP: rec( l := [ 1, 2 ] )
+│ 
+│ julia> Dict{Symbol,Any}(val, recursive = false)
+│ Dict{Symbol,Any} with 1 entry:
+│   :l => GAP: [ 1, 2 ]
+│ 
+│ julia> Dict{Symbol,Any}(val, recursive = true)
+│ Dict{Symbol,Any} with 1 entry:
+│   :l => Any[1, 2]
+│ 
+│ julia> Dict{Symbol,Array{Int,1}}(val, recursive = true)
+│ Dict{Symbol,Array{Int64,1}} with 1 entry:
+│   :l => [1, 2]
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Dict{Symbol,Array{Int,1}}(val, recursive = true)
+│ 
+│ Evaluated output:
+│ 
+│ Dict{Symbol,Vector{Int64}} with 1 entry:
+│   :l => [1, 2]
+│ 
+│ Expected output:
+│ 
+│ Dict{Symbol,Array{Int64,1}} with 1 entry:
+│   :l => [1, 2]
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    Dict{Symbol,Array{Int64,1}} Dict{Symbol,Vector{Int64}} with 1 entry:
+│      :l => [1, 2]
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/constructors.jl:244-253
+│ 
+│ ```jldoctest
+│ julia> val = GAP.evalstr("[ true, false, true ]")
+│ GAP: [ true, false, true ]
+│ 
+│ julia> BitArray{1}(val)
+│ 3-element BitArray{1}:
+│  1
+│  0
+│  1
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ BitArray{1}(val)
+│ 
+│ Evaluated output:
+│ 
+│ 3-element BitVector:
+│  1
+│  0
+│  1
+│ 
+│ Expected output:
+│ 
+│ 3-element BitArray{1}:
+│  1
+│  0
+│  1
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    3-element BitArray{1}:
+│     BitVector:
+│     1
+│     0
+│     1
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
 ┌ Error: Doctesting failed
 │   exception =

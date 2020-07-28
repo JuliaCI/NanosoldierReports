@@ -1,0 +1,177 @@
+Julia Version 1.6.0-DEV.548
+Commit 9267bbf1fc (2020-07-27 16:57 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed MbedTLS_jll ─ v2.16.6+1
+  Installed IniFile ───── v0.5.0
+  Installed Parsers ───── v1.0.7
+  Installed MbedTLS ───── v1.0.2
+  Installed Diana ─────── v0.2.0
+  Installed JSON ──────── v0.21.0
+  Installed HTTP ──────── v0.8.17
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [070d9d8b] + Diana v0.2.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [070d9d8b] + Diana v0.2.0
+  [cd3eb016] + HTTP v0.8.17
+  [83e8ac13] + IniFile v0.5.0
+  [682c06a0] + JSON v0.21.0
+  [739be429] + MbedTLS v1.0.2
+  [c8ffd9c3] + MbedTLS_jll v2.16.6+1
+  [69de0a69] + Parsers v1.0.7
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [8ba89e20] + Distributed
+  [b77e0a4c] + InteractiveUtils
+  [76f85450] + LibGit2
+  [8f399da3] + Libdl
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [a63ad114] + Mmap
+  [44cfe95a] + Pkg
+  [de0858da] + Printf
+  [3fa0cd96] + REPL
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [8dfed614] + Test
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+    Testing Diana
+Status `/tmp/jl_K9qyh4/Project.toml`
+  [070d9d8b] Diana v0.2.0
+  [8dfed614] Test
+Status `/tmp/jl_K9qyh4/Manifest.toml`
+  [070d9d8b] Diana v0.2.0
+  [cd3eb016] HTTP v0.8.17
+  [83e8ac13] IniFile v0.5.0
+  [682c06a0] JSON v0.21.0
+  [739be429] MbedTLS v1.0.2
+  [c8ffd9c3] MbedTLS_jll v2.16.6+1
+  [69de0a69] Parsers v1.0.7
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+Diana: Error During Test at /home/pkgeval/.julia/packages/Diana/XQ8Bx/test/runtests.jl:4
+  Got exception outside of a @test
+  LoadError: IOError(EOFError() during request(https://neomatrix.herokuapp.com/graphql))
+  
+  Stacktrace:
+    [1] read_to_buffer(t::HTTP.ConnectionPool.Transaction{MbedTLS.SSLContext}, sizehint::Int64)
+      @ HTTP.ConnectionPool ~/.julia/packages/HTTP/atT5q/src/ConnectionPool.jl:254
+    [2] readuntil(t::HTTP.ConnectionPool.Transaction{MbedTLS.SSLContext}, f::Function, sizehint::Int64)
+      @ HTTP.ConnectionPool ~/.julia/packages/HTTP/atT5q/src/ConnectionPool.jl:273
+    [3] readuntil
+      @ ~/.julia/packages/HTTP/atT5q/src/ConnectionPool.jl:271 [inlined]
+    [4] readheaders
+      @ ~/.julia/packages/HTTP/atT5q/src/Messages.jl:471 [inlined]
+    [5] startread(http::HTTP.Streams.Stream{HTTP.Messages.Response,HTTP.ConnectionPool.Transaction{MbedTLS.SSLContext}})
+      @ HTTP.Streams ~/.julia/packages/HTTP/atT5q/src/Streams.jl:155
+    [6] macro expansion
+      @ ~/.julia/packages/HTTP/atT5q/src/StreamRequest.jl:67 [inlined]
+    [7] macro expansion
+      @ ./task.jl:334 [inlined]
+    [8] request(::Type{HTTP.StreamRequest.StreamLayer{Union{}}}, io::HTTP.ConnectionPool.Transaction{MbedTLS.SSLContext}, req::HTTP.Messages.Request, body::String; reached_redirect_limit::Bool, response_stream::Nothing, iofunction::Nothing, verbose::Int64, kw::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+      @ HTTP.StreamRequest ~/.julia/packages/HTTP/atT5q/src/StreamRequest.jl:57
+    [9] request(::Type{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}, url::HTTP.URIs.URI, req::HTTP.Messages.Request, body::String; proxy::Nothing, socket_type::Type, reuse_limit::Int64, kw::Base.Iterators.Pairs{Symbol,Union{Nothing, Bool},Tuple{Symbol,Symbol},NamedTuple{(:iofunction, :reached_redirect_limit),Tuple{Nothing,Bool}}})
+      @ HTTP.ConnectionRequest ~/.julia/packages/HTTP/atT5q/src/ConnectionRequest.jl:89
+   [10] request(::Type{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}, ::HTTP.URIs.URI, ::Vararg{Any,N} where N; kw::Base.Iterators.Pairs{Symbol,Union{Nothing, Bool},Tuple{Symbol,Symbol},NamedTuple{(:iofunction, :reached_redirect_limit),Tuple{Nothing,Bool}}})
+      @ HTTP.ExceptionRequest ~/.julia/packages/HTTP/atT5q/src/ExceptionRequest.jl:19
+   [11] (::Base.var"#60#62"{Base.var"#60#61#63"{ExponentialBackOff,HTTP.RetryRequest.var"#2#3"{Bool,HTTP.Messages.Request},typeof(HTTP.request)}})(::Type, ::Vararg{Any,N} where N; kwargs::Base.Iterators.Pairs{Symbol,Union{Nothing, Bool},Tuple{Symbol,Symbol},NamedTuple{(:iofunction, :reached_redirect_limit),Tuple{Nothing,Bool}}})
+      @ Base ./error.jl:288
+   [12] #request#1
+      @ ~/.julia/packages/HTTP/atT5q/src/RetryRequest.jl:44 [inlined]
+   [13] request(::Type{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String},SubString{String}}}, body::String; http_version::VersionNumber, target::String, parent::Nothing, iofunction::Nothing, kw::Base.Iterators.Pairs{Symbol,Bool,Tuple{Symbol},NamedTuple{(:reached_redirect_limit,),Tuple{Bool}}})
+      @ HTTP.MessageRequest ~/.julia/packages/HTTP/atT5q/src/MessageRequest.jl:51
+   [14] request(::Type{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String},SubString{String}}}, body::String; kw::Base.Iterators.Pairs{Symbol,Bool,Tuple{Symbol},NamedTuple{(:reached_redirect_limit,),Tuple{Bool}}})
+      @ HTTP.BasicAuthRequest ~/.julia/packages/HTTP/atT5q/src/BasicAuthRequest.jl:28
+   [15] request(::Type{HTTP.RedirectRequest.RedirectLayer{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String},SubString{String}}}, body::String; redirect_limit::Int64, forwardheaders::Bool, kw::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+      @ HTTP.RedirectRequest ~/.julia/packages/HTTP/atT5q/src/RedirectRequest.jl:24
+   [16] request(::Type{HTTP.RedirectRequest.RedirectLayer{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String},SubString{String}}}, body::String)
+      @ HTTP.RedirectRequest ~/.julia/packages/HTTP/atT5q/src/RedirectRequest.jl:21
+   [17] request(method::String, url::String, h::Vector{Pair{SubString{String},SubString{String}}}, b::String; headers::Vector{Pair{SubString{String},SubString{String}}}, body::String, query::Nothing, kw::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+      @ HTTP ~/.julia/packages/HTTP/atT5q/src/HTTP.jl:314
+   [18] request
+      @ ~/.julia/packages/HTTP/atT5q/src/HTTP.jl:314 [inlined]
+   [19] #post#14
+      @ ~/.julia/packages/HTTP/atT5q/src/HTTP.jl:405 [inlined]
+   [20] post
+      @ ~/.julia/packages/HTTP/atT5q/src/HTTP.jl:405 [inlined]
+   [21] Queryclient(url::String, data::String; vars::Dict{Any,Any}, auth::String, headers::Dict{String,String}, getlink::Bool, check::Bool, operationName::String)
+      @ Diana ~/.julia/packages/Diana/XQ8Bx/src/client.jl:48
+   [22] top-level scope
+      @ ~/.julia/packages/Diana/XQ8Bx/test/cliente.jl:11
+   [23] include(fname::String)
+      @ Base.MainInclude ./client.jl:443
+   [24] top-level scope
+      @ ~/.julia/packages/Diana/XQ8Bx/test/runtests.jl:5
+   [25] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [26] top-level scope
+      @ ~/.julia/packages/Diana/XQ8Bx/test/runtests.jl:5
+   [27] include(fname::String)
+      @ Base.MainInclude ./client.jl:443
+   [28] top-level scope
+      @ none:6
+   [29] eval(m::Module, e::Any)
+      @ Core ./boot.jl:340
+   [30] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:260
+   [31] _start()
+      @ Base ./client.jl:484
+  in expression starting at /home/pkgeval/.julia/packages/Diana/XQ8Bx/test/cliente.jl:11
+  
+Test Summary: | Error  Total
+Diana         |     1      1
+ERROR: LoadError: Some tests did not pass: 0 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/Diana/XQ8Bx/test/runtests.jl:4
+ERROR: Package Diana errored during testing
+Stacktrace:
+  [1] pkgerror(::String, ::Vararg{String,N} where N)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1561
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:327
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:314
+  [5] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [7] #test#60
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:16

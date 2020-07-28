@@ -19,21 +19,21 @@ Environment:
   Installed OrderedCollections ────────── v1.3.0
   Installed CategoricalArrays ─────────── v0.8.1
   Installed IteratorInterfaceExtensions ─ v1.0.0
-  Installed DataValueInterfaces ───────── v1.0.0
   Installed TableTraits ───────────────── v1.0.0
+  Installed DataValueInterfaces ───────── v1.0.0
+  Installed InvertedIndices ───────────── v1.0.0
   Installed FilePathsBase ─────────────── v0.8.0
   Installed JSON ──────────────────────── v0.21.0
-  Installed InvertedIndices ───────────── v1.0.0
-  Installed IterTools ─────────────────── v1.3.0
+  Installed Parsers ───────────────────── v1.0.7
   Installed Tables ────────────────────── v1.0.5
   Installed SortingAlgorithms ─────────── v0.3.1
-  Installed Parsers ───────────────────── v1.0.7
+  Installed DataFrames ────────────────── v0.21.5
   Installed Reexport ──────────────────── v0.2.0
-  Installed MacroTools ────────────────── v0.5.5
   Installed LightQuery ────────────────── v0.6.0
+  Installed IterTools ─────────────────── v1.3.0
+  Installed MacroTools ────────────────── v0.5.5
   Installed DataStructures ────────────── v0.17.19
   Installed CSV ───────────────────────── v0.6.2
-  Installed DataFrames ────────────────── v0.21.5
 Updating `~/.julia/environments/v1.6/Project.toml`
   [a6f99520] + LightQuery v0.6.0
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -86,7 +86,7 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
     Testing LightQuery
-Status `/tmp/jl_OVcsTl/Project.toml`
+Status `/tmp/jl_AQbCSg/Project.toml`
   [336ed68f] CSV v0.6.2
   [34da2185] Compat v3.13.0
   [e30172f5] Documenter v0.25.1
@@ -99,7 +99,7 @@ Status `/tmp/jl_OVcsTl/Project.toml`
   [d6f4376e] Markdown
   [10745b16] Statistics
   [8dfed614] Test
-Status `/tmp/jl_OVcsTl/Manifest.toml`
+Status `/tmp/jl_AQbCSg/Manifest.toml`
   [336ed68f] CSV v0.6.2
   [324d7699] CategoricalArrays v0.8.1
   [34da2185] Compat v3.13.0
@@ -162,100 +162,111 @@ Status `/tmp/jl_OVcsTl/Manifest.toml`
   [4ec0a83e] Unicode
 [ Info: SetupBuildDirectory: setting up build directory.
 [ Info: Doctest: running doctests.
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:429-448
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:80-89
 │ 
 │ ```jldoctest
 │ julia> using LightQuery
 │ 
-│ julia> collect(LeftJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
-│ 4-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
-│  (1, -1)
-│  (-2, missing)
-│  (5, missing)
-│  (-6, 6)
+│ julia> using Test: @inferred
 │ 
-│ julia> collect(LeftJoin(By(Int[], abs), By(Int[], abs))) == []
-│ true
-│ 
-│ julia> collect(LeftJoin(By([1], abs), By(Int[], abs)))
-│ 1-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
-│  (1, missing)
-│ 
-│ julia> collect(LeftJoin(By(Int[], abs), By([1], abs))) == []
-│ true
+│ julia> collect(@inferred order([-2, 1], abs))
+│ 2-element Array{Int64,1}:
+│   1
+│  -2
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ collect(LeftJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
+│ collect(@inferred order([-2, 1], abs))
 │ 
 │ Evaluated output:
 │ 
-│ 4-element Vector{Tuple{Int64,Union{Missing, Int64}}}:
-│  (1, -1)
-│  (-2, missing)
-│  (5, missing)
-│  (-6, 6)
+│ 2-element Vector{Int64}:
+│   1
+│  -2
 │ 
 │ Expected output:
 │ 
-│ 4-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
-│  (1, -1)
-│  (-2, missing)
-│  (5, missing)
-│  (-6, 6)
+│ 2-element Array{Int64,1}:
+│   1
+│  -2
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    4-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
-│     Vector{Tuple{Int64,Union{Missing, Int64}}}:
-│     (1, -1)
-│     (-2, missing)
-│     (5, missing)
-│     (-6, 6)
+│    2-element Array{Int64,1}:
+│      Vector{Int64}:
+│      1
+│     -2
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:429-448
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:703-710
 │ 
 │ ```jldoctest
 │ julia> using LightQuery
 │ 
-│ julia> collect(LeftJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
-│ 4-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
-│  (1, -1)
-│  (-2, missing)
-│  (5, missing)
-│  (-6, 6)
-│ 
-│ julia> collect(LeftJoin(By(Int[], abs), By(Int[], abs))) == []
-│ true
-│ 
-│ julia> collect(LeftJoin(By([1], abs), By(Int[], abs)))
-│ 1-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
-│  (1, missing)
-│ 
-│ julia> collect(LeftJoin(By(Int[], abs), By([1], abs))) == []
-│ true
+│ julia> collect(Length(when(1:4, iseven), 2))
+│ 2-element Array{Int64,1}:
+│  2
+│  4
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ collect(LeftJoin(By([1], abs), By(Int[], abs)))
+│ collect(Length(when(1:4, iseven), 2))
 │ 
 │ Evaluated output:
 │ 
-│ 1-element Vector{Tuple{Int64,Union{Missing, Int64}}}:
-│  (1, missing)
+│ 2-element Vector{Int64}:
+│  2
+│  4
 │ 
 │ Expected output:
 │ 
-│ 1-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
-│  (1, missing)
+│ 2-element Array{Int64,1}:
+│  2
+│  4
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    1-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
-│     Vector{Tuple{Int64,Union{Missing, Int64}}}:
-│     (1, missing)
+│    2-element Array{Int64,1}:
+│     Vector{Int64}:
+│     2
+│     4
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:103-112
+│ 
+│ ```jldoctest
+│ julia> using LightQuery
+│ 
+│ julia> using Test: @inferred
+│ 
+│ julia> collect(@inferred order([1, -2], Backwards))
+│ 2-element Array{Int64,1}:
+│   1
+│  -2
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ collect(@inferred order([1, -2], Backwards))
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Vector{Int64}:
+│   1
+│  -2
+│ 
+│ Expected output:
+│ 
+│ 2-element Array{Int64,1}:
+│   1
+│  -2
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Array{Int64,1}:
+│      Vector{Int64}:
+│      1
+│     -2
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/make_columns.jl:54-73
 │ 
@@ -395,225 +406,41 @@ Status `/tmp/jl_OVcsTl/Manifest.toml`
 │     ((name"a", 1),)
 │     ((name"a", 2),)
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:80-89
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:6-15
 │ 
 │ ```jldoctest
 │ julia> using LightQuery
 │ 
 │ julia> using Test: @inferred
 │ 
-│ julia> collect(@inferred order([-2, 1], abs))
-│ 2-element Array{Int64,1}:
-│   1
-│  -2
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ collect(@inferred order([-2, 1], abs))
-│ 
-│ Evaluated output:
-│ 
-│ 2-element Vector{Int64}:
-│   1
-│  -2
-│ 
-│ Expected output:
-│ 
-│ 2-element Array{Int64,1}:
-│   1
-│  -2
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2-element Array{Int64,1}:
-│      Vector{Int64}:
-│      1
-│     -2
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/utilities.jl:79-90
-│ 
-│ ```jldoctest
-│ julia> using LightQuery
-│ 
-│ julia> using Test: @inferred
-│ 
-│ julia> @inferred collect(over([1, -2, -3, 4], abs))
-│ 4-element Array{Int64,1}:
-│  1
-│  2
-│  3
-│  4
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ @inferred collect(over([1, -2, -3, 4], abs))
-│ 
-│ Evaluated output:
-│ 
-│ 4-element Vector{Int64}:
-│  1
-│  2
-│  3
-│  4
-│ 
-│ Expected output:
-│ 
-│ 4-element Array{Int64,1}:
-│  1
-│  2
-│  3
-│  4
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    4-element Array{Int64,1}:
-│     Vector{Int64}:
-│     1
-│     2
-│     3
-│     4
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:380-398
-│ 
-│ ```jldoctest
-│ julia> using LightQuery
-│ 
-│ julia> using Test: @inferred
-│ 
-│ julia> @inferred collect(InnerJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
+│ julia> @inferred collect(Enumerate(when([4, 3, 2, 1], iseven)))
 │ 2-element Array{Tuple{Int64,Int64},1}:
-│  (1, -1)
-│  (-6, 6)
-│ 
-│ julia> (@inferred collect(InnerJoin(By(Int[], abs), By(Int[], abs)))) == []
-│ true
-│ 
-│ julia> (@inferred collect(InnerJoin(By([1], abs), By(Int[], abs)))) == []
-│ true
-│ 
-│ julia> (@inferred collect(InnerJoin(By(Int[], abs), By([1], abs)))) == []
-│ true
+│  (1, 4)
+│  (3, 2)
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ @inferred collect(InnerJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
+│ @inferred collect(Enumerate(when([4, 3, 2, 1], iseven)))
 │ 
 │ Evaluated output:
 │ 
 │ 2-element Vector{Tuple{Int64,Int64}}:
-│  (1, -1)
-│  (-6, 6)
+│  (1, 4)
+│  (3, 2)
 │ 
 │ Expected output:
 │ 
 │ 2-element Array{Tuple{Int64,Int64},1}:
-│  (1, -1)
-│  (-6, 6)
+│  (1, 4)
+│  (3, 2)
 │ 
 │   diff =
 │    Warning: Diff output requires color.
 │    2-element Array{Tuple{Int64,Int64},1}:
 │     Vector{Tuple{Int64,Int64}}:
-│     (1, -1)
-│     (-6, 6)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:494-513
-│ 
-│ ```jldoctest
-│ julia> using LightQuery
-│ 
-│ julia> collect(RightJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
-│ 4-element Array{Tuple{Union{Missing, Int64},Int64},1}:
-│  (1, -1)
-│  (missing, 3)
-│  (missing, -4)
-│  (-6, 6)
-│ 
-│ julia> collect(RightJoin(By(Int[], abs), By(Int[], abs))) == []
-│ true
-│ 
-│ julia> collect(RightJoin(By([1], abs), By(Int[], abs))) == []
-│ true
-│ 
-│ julia> collect(RightJoin(By(Int[], abs), By([1], abs)))
-│ 1-element Array{Tuple{Union{Missing, Int64},Int64},1}:
-│  (missing, 1)
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ collect(RightJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
-│ 
-│ Evaluated output:
-│ 
-│ 4-element Vector{Tuple{Union{Missing, Int64},Int64}}:
-│  (1, -1)
-│  (missing, 3)
-│  (missing, -4)
-│  (-6, 6)
-│ 
-│ Expected output:
-│ 
-│ 4-element Array{Tuple{Union{Missing, Int64},Int64},1}:
-│  (1, -1)
-│  (missing, 3)
-│  (missing, -4)
-│  (-6, 6)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    4-element Array{Tuple{Union{Missing, Int64},Int64},1}:
-│     Vector{Tuple{Union{Missing, Int64},Int64}}:
-│     (1, -1)
-│     (missing, 3)
-│     (missing, -4)
-│     (-6, 6)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:494-513
-│ 
-│ ```jldoctest
-│ julia> using LightQuery
-│ 
-│ julia> collect(RightJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
-│ 4-element Array{Tuple{Union{Missing, Int64},Int64},1}:
-│  (1, -1)
-│  (missing, 3)
-│  (missing, -4)
-│  (-6, 6)
-│ 
-│ julia> collect(RightJoin(By(Int[], abs), By(Int[], abs))) == []
-│ true
-│ 
-│ julia> collect(RightJoin(By([1], abs), By(Int[], abs))) == []
-│ true
-│ 
-│ julia> collect(RightJoin(By(Int[], abs), By([1], abs)))
-│ 1-element Array{Tuple{Union{Missing, Int64},Int64},1}:
-│  (missing, 1)
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ collect(RightJoin(By(Int[], abs), By([1], abs)))
-│ 
-│ Evaluated output:
-│ 
-│ 1-element Vector{Tuple{Union{Missing, Int64},Int64}}:
-│  (missing, 1)
-│ 
-│ Expected output:
-│ 
-│ 1-element Array{Tuple{Union{Missing, Int64},Int64},1}:
-│  (missing, 1)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    1-element Array{Tuple{Union{Missing, Int64},Int64},1}:
-│     Vector{Tuple{Union{Missing, Int64},Int64}}:
-│     (missing, 1)
+│     (1, 4)
+│     (3, 2)
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/columns.jl:146-154
 │ 
@@ -664,203 +491,32 @@ Status `/tmp/jl_OVcsTl/Manifest.toml`
 │     [4] top-level scope
 │       @ none:1
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:195-207
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:228-235
 │ 
 │ ```jldoctest
 │ julia> using LightQuery
 │ 
 │ julia> using Test: @inferred
 │ 
-│ julia> result = @inferred index([-2, 1], abs)
-│ LightQuery.Indexed{Int64,Int64,Array{Int64,1},Dict{Int64,Int64}} with 2 entries:
-│   2 => -2
-│   1 => 1
-│ 
-│ julia> @inferred result[2]
-│ -2
+│ julia> @inferred By([1, -2], abs)
+│ By{Array{Int64,1},typeof(abs)}([1, -2], abs)
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ result = @inferred index([-2, 1], abs)
+│ @inferred By([1, -2], abs)
 │ 
 │ Evaluated output:
 │ 
-│ LightQuery.Indexed{Int64,Int64,Vector{Int64},Dict{Int64,Int64}} with 2 entries:
-│   2 => -2
-│   1 => 1
+│ By{Vector{Int64},typeof(abs)}([1, -2], abs)
 │ 
 │ Expected output:
 │ 
-│ LightQuery.Indexed{Int64,Int64,Array{Int64,1},Dict{Int64,Int64}} with 2 entries:
-│   2 => -2
-│   1 => 1
+│ By{Array{Int64,1},typeof(abs)}([1, -2], abs)
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    LightQuery.Indexed{Int64,Int64,Array{Int64,1},Dict{Int64,Int64}} LightQuery.Indexed{Int64,Int64,Vector{Int64},Dict{Int64,Int64}} with 2 entries:
-│      2 => -2
-│      1 => 1
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:103-112
-│ 
-│ ```jldoctest
-│ julia> using LightQuery
-│ 
-│ julia> using Test: @inferred
-│ 
-│ julia> collect(@inferred order([1, -2], Backwards))
-│ 2-element Array{Int64,1}:
-│   1
-│  -2
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ collect(@inferred order([1, -2], Backwards))
-│ 
-│ Evaluated output:
-│ 
-│ 2-element Vector{Int64}:
-│   1
-│  -2
-│ 
-│ Expected output:
-│ 
-│ 2-element Array{Int64,1}:
-│   1
-│  -2
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2-element Array{Int64,1}:
-│      Vector{Int64}:
-│      1
-│     -2
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:253-266
-│ 
-│ ```jldoctest
-│ julia> using LightQuery
-│ 
-│ julia> using Test: @inferred
-│ 
-│ julia> @inferred collect(Group(By([1, -1, -2, 2, 3, -3], abs)))
-│ 3-element Array{Tuple{Int64,SubArray{Int64,1,Array{Int64,1},Tuple{UnitRange{Int64}},true}},1}:
-│  (1, [1, -1])
-│  (2, [-2, 2])
-│  (3, [3, -3])
-│ 
-│ julia> (@inferred collect(Group(By(Int[], abs)))) == []
-│ true
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ @inferred collect(Group(By([1, -1, -2, 2, 3, -3], abs)))
-│ 
-│ Evaluated output:
-│ 
-│ 3-element Vector{Tuple{Int64,SubArray{Int64,1,Vector{Int64},Tuple{UnitRange{Int64}},true}}}:
-│  (1, [1, -1])
-│  (2, [-2, 2])
-│  (3, [3, -3])
-│ 
-│ Expected output:
-│ 
-│ 3-element Array{Tuple{Int64,SubArray{Int64,1,Array{Int64,1},Tuple{UnitRange{Int64}},true}},1}:
-│  (1, [1, -1])
-│  (2, [-2, 2])
-│  (3, [3, -3])
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    3-element Array{Tuple{Int64,SubArray{Int64,1,Array{Int64,1},Tuple{UnitRange{Int64}},true}},1}:
-│     Vector{Tuple{Int64,SubArray{Int64,1,Vector{Int64},Tuple{UnitRange{Int64}},true}}}:
-│     (1, [1, -1])
-│     (2, [-2, 2])
-│     (3, [3, -3])
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:270-288
-│ 
-│ ```jldoctest
-│ julia> using LightQuery
-│ 
-│ julia> using Test: @inferred
-│ 
-│ julia> first_group =
-│         @> [2, 1, 2, 1] |>
-│         order(_, identity) |>
-│         Group(By(_, identity)) |>
-│         first;
-│ 
-│ julia> key(first_group)
-│ 1
-│ 
-│ julia> collect(value(first_group))
-│ 2-element Array{Int64,1}:
-│  1
-│  1
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ collect(value(first_group))
-│ 
-│ Evaluated output:
-│ 
-│ 2-element Vector{Int64}:
-│  1
-│  1
-│ 
-│ Expected output:
-│ 
-│ 2-element Array{Int64,1}:
-│  1
-│  1
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2-element Array{Int64,1}:
-│     Vector{Int64}:
-│     1
-│     1
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/utilities.jl:102-111
-│ 
-│ ```jldoctest
-│ julia> using LightQuery
-│ 
-│ julia> using Test: @inferred
-│ 
-│ julia> @inferred collect(when(1:4, iseven))
-│ 2-element Array{Int64,1}:
-│  2
-│  4
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ @inferred collect(when(1:4, iseven))
-│ 
-│ Evaluated output:
-│ 
-│ 2-element Vector{Int64}:
-│  2
-│  4
-│ 
-│ Expected output:
-│ 
-│ 2-element Array{Int64,1}:
-│  2
-│  4
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2-element Array{Int64,1}:
-│     Vector{Int64}:
-│     2
-│     4
+│    By{Array{Int64,1},typeof(abs)}([1, By{Vector{Int64},typeof(abs)}([1, -2], abs)
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:559-581
 │ 
@@ -1015,75 +671,241 @@ Status `/tmp/jl_OVcsTl/Manifest.toml`
 │     Int64}}}:
 │     (missing, 1)
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:6-15
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:253-266
 │ 
 │ ```jldoctest
 │ julia> using LightQuery
 │ 
 │ julia> using Test: @inferred
 │ 
-│ julia> @inferred collect(Enumerate(when([4, 3, 2, 1], iseven)))
-│ 2-element Array{Tuple{Int64,Int64},1}:
-│  (1, 4)
-│  (3, 2)
+│ julia> @inferred collect(Group(By([1, -1, -2, 2, 3, -3], abs)))
+│ 3-element Array{Tuple{Int64,SubArray{Int64,1,Array{Int64,1},Tuple{UnitRange{Int64}},true}},1}:
+│  (1, [1, -1])
+│  (2, [-2, 2])
+│  (3, [3, -3])
+│ 
+│ julia> (@inferred collect(Group(By(Int[], abs)))) == []
+│ true
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ @inferred collect(Enumerate(when([4, 3, 2, 1], iseven)))
+│ @inferred collect(Group(By([1, -1, -2, 2, 3, -3], abs)))
 │ 
 │ Evaluated output:
 │ 
-│ 2-element Vector{Tuple{Int64,Int64}}:
-│  (1, 4)
-│  (3, 2)
+│ 3-element Vector{Tuple{Int64,SubArray{Int64,1,Vector{Int64},Tuple{UnitRange{Int64}},true}}}:
+│  (1, [1, -1])
+│  (2, [-2, 2])
+│  (3, [3, -3])
 │ 
 │ Expected output:
 │ 
-│ 2-element Array{Tuple{Int64,Int64},1}:
-│  (1, 4)
-│  (3, 2)
+│ 3-element Array{Tuple{Int64,SubArray{Int64,1,Array{Int64,1},Tuple{UnitRange{Int64}},true}},1}:
+│  (1, [1, -1])
+│  (2, [-2, 2])
+│  (3, [3, -3])
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    2-element Array{Tuple{Int64,Int64},1}:
-│     Vector{Tuple{Int64,Int64}}:
-│     (1, 4)
-│     (3, 2)
+│    3-element Array{Tuple{Int64,SubArray{Int64,1,Array{Int64,1},Tuple{UnitRange{Int64}},true}},1}:
+│     Vector{Tuple{Int64,SubArray{Int64,1,Vector{Int64},Tuple{UnitRange{Int64}},true}}}:
+│     (1, [1, -1])
+│     (2, [-2, 2])
+│     (3, [3, -3])
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:228-235
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:270-288
 │ 
 │ ```jldoctest
 │ julia> using LightQuery
 │ 
 │ julia> using Test: @inferred
 │ 
-│ julia> @inferred By([1, -2], abs)
-│ By{Array{Int64,1},typeof(abs)}([1, -2], abs)
+│ julia> first_group =
+│         @> [2, 1, 2, 1] |>
+│         order(_, identity) |>
+│         Group(By(_, identity)) |>
+│         first;
+│ 
+│ julia> key(first_group)
+│ 1
+│ 
+│ julia> collect(value(first_group))
+│ 2-element Array{Int64,1}:
+│  1
+│  1
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ @inferred By([1, -2], abs)
+│ collect(value(first_group))
 │ 
 │ Evaluated output:
 │ 
-│ By{Vector{Int64},typeof(abs)}([1, -2], abs)
+│ 2-element Vector{Int64}:
+│  1
+│  1
 │ 
 │ Expected output:
 │ 
-│ By{Array{Int64,1},typeof(abs)}([1, -2], abs)
+│ 2-element Array{Int64,1}:
+│  1
+│  1
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    By{Array{Int64,1},typeof(abs)}([1, By{Vector{Int64},typeof(abs)}([1, -2], abs)
+│    2-element Array{Int64,1}:
+│     Vector{Int64}:
+│     1
+│     1
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:703-710
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/utilities.jl:79-90
 │ 
 │ ```jldoctest
 │ julia> using LightQuery
 │ 
-│ julia> collect(Length(when(1:4, iseven), 2))
+│ julia> using Test: @inferred
+│ 
+│ julia> @inferred collect(over([1, -2, -3, 4], abs))
+│ 4-element Array{Int64,1}:
+│  1
+│  2
+│  3
+│  4
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ @inferred collect(over([1, -2, -3, 4], abs))
+│ 
+│ Evaluated output:
+│ 
+│ 4-element Vector{Int64}:
+│  1
+│  2
+│  3
+│  4
+│ 
+│ Expected output:
+│ 
+│ 4-element Array{Int64,1}:
+│  1
+│  2
+│  3
+│  4
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    4-element Array{Int64,1}:
+│     Vector{Int64}:
+│     1
+│     2
+│     3
+│     4
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:429-448
+│ 
+│ ```jldoctest
+│ julia> using LightQuery
+│ 
+│ julia> collect(LeftJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
+│ 4-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
+│  (1, -1)
+│  (-2, missing)
+│  (5, missing)
+│  (-6, 6)
+│ 
+│ julia> collect(LeftJoin(By(Int[], abs), By(Int[], abs))) == []
+│ true
+│ 
+│ julia> collect(LeftJoin(By([1], abs), By(Int[], abs)))
+│ 1-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
+│  (1, missing)
+│ 
+│ julia> collect(LeftJoin(By(Int[], abs), By([1], abs))) == []
+│ true
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ collect(LeftJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
+│ 
+│ Evaluated output:
+│ 
+│ 4-element Vector{Tuple{Int64,Union{Missing, Int64}}}:
+│  (1, -1)
+│  (-2, missing)
+│  (5, missing)
+│  (-6, 6)
+│ 
+│ Expected output:
+│ 
+│ 4-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
+│  (1, -1)
+│  (-2, missing)
+│  (5, missing)
+│  (-6, 6)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    4-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
+│     Vector{Tuple{Int64,Union{Missing, Int64}}}:
+│     (1, -1)
+│     (-2, missing)
+│     (5, missing)
+│     (-6, 6)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:429-448
+│ 
+│ ```jldoctest
+│ julia> using LightQuery
+│ 
+│ julia> collect(LeftJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
+│ 4-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
+│  (1, -1)
+│  (-2, missing)
+│  (5, missing)
+│  (-6, 6)
+│ 
+│ julia> collect(LeftJoin(By(Int[], abs), By(Int[], abs))) == []
+│ true
+│ 
+│ julia> collect(LeftJoin(By([1], abs), By(Int[], abs)))
+│ 1-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
+│  (1, missing)
+│ 
+│ julia> collect(LeftJoin(By(Int[], abs), By([1], abs))) == []
+│ true
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ collect(LeftJoin(By([1], abs), By(Int[], abs)))
+│ 
+│ Evaluated output:
+│ 
+│ 1-element Vector{Tuple{Int64,Union{Missing, Int64}}}:
+│  (1, missing)
+│ 
+│ Expected output:
+│ 
+│ 1-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
+│  (1, missing)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    1-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
+│     Vector{Tuple{Int64,Union{Missing, Int64}}}:
+│     (1, missing)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/utilities.jl:102-111
+│ 
+│ ```jldoctest
+│ julia> using LightQuery
+│ 
+│ julia> using Test: @inferred
+│ 
+│ julia> @inferred collect(when(1:4, iseven))
 │ 2-element Array{Int64,1}:
 │  2
 │  4
@@ -1091,7 +913,7 @@ Status `/tmp/jl_OVcsTl/Manifest.toml`
 │ 
 │ Subexpression:
 │ 
-│ collect(Length(when(1:4, iseven), 2))
+│ @inferred collect(when(1:4, iseven))
 │ 
 │ Evaluated output:
 │ 
@@ -1111,6 +933,184 @@ Status `/tmp/jl_OVcsTl/Manifest.toml`
 │     Vector{Int64}:
 │     2
 │     4
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:380-398
+│ 
+│ ```jldoctest
+│ julia> using LightQuery
+│ 
+│ julia> using Test: @inferred
+│ 
+│ julia> @inferred collect(InnerJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
+│ 2-element Array{Tuple{Int64,Int64},1}:
+│  (1, -1)
+│  (-6, 6)
+│ 
+│ julia> (@inferred collect(InnerJoin(By(Int[], abs), By(Int[], abs)))) == []
+│ true
+│ 
+│ julia> (@inferred collect(InnerJoin(By([1], abs), By(Int[], abs)))) == []
+│ true
+│ 
+│ julia> (@inferred collect(InnerJoin(By(Int[], abs), By([1], abs)))) == []
+│ true
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ @inferred collect(InnerJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Vector{Tuple{Int64,Int64}}:
+│  (1, -1)
+│  (-6, 6)
+│ 
+│ Expected output:
+│ 
+│ 2-element Array{Tuple{Int64,Int64},1}:
+│  (1, -1)
+│  (-6, 6)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Array{Tuple{Int64,Int64},1}:
+│     Vector{Tuple{Int64,Int64}}:
+│     (1, -1)
+│     (-6, 6)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:195-207
+│ 
+│ ```jldoctest
+│ julia> using LightQuery
+│ 
+│ julia> using Test: @inferred
+│ 
+│ julia> result = @inferred index([-2, 1], abs)
+│ LightQuery.Indexed{Int64,Int64,Array{Int64,1},Dict{Int64,Int64}} with 2 entries:
+│   2 => -2
+│   1 => 1
+│ 
+│ julia> @inferred result[2]
+│ -2
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ result = @inferred index([-2, 1], abs)
+│ 
+│ Evaluated output:
+│ 
+│ LightQuery.Indexed{Int64,Int64,Vector{Int64},Dict{Int64,Int64}} with 2 entries:
+│   2 => -2
+│   1 => 1
+│ 
+│ Expected output:
+│ 
+│ LightQuery.Indexed{Int64,Int64,Array{Int64,1},Dict{Int64,Int64}} with 2 entries:
+│   2 => -2
+│   1 => 1
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    LightQuery.Indexed{Int64,Int64,Array{Int64,1},Dict{Int64,Int64}} LightQuery.Indexed{Int64,Int64,Vector{Int64},Dict{Int64,Int64}} with 2 entries:
+│      2 => -2
+│      1 => 1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:494-513
+│ 
+│ ```jldoctest
+│ julia> using LightQuery
+│ 
+│ julia> collect(RightJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
+│ 4-element Array{Tuple{Union{Missing, Int64},Int64},1}:
+│  (1, -1)
+│  (missing, 3)
+│  (missing, -4)
+│  (-6, 6)
+│ 
+│ julia> collect(RightJoin(By(Int[], abs), By(Int[], abs))) == []
+│ true
+│ 
+│ julia> collect(RightJoin(By([1], abs), By(Int[], abs))) == []
+│ true
+│ 
+│ julia> collect(RightJoin(By(Int[], abs), By([1], abs)))
+│ 1-element Array{Tuple{Union{Missing, Int64},Int64},1}:
+│  (missing, 1)
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ collect(RightJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
+│ 
+│ Evaluated output:
+│ 
+│ 4-element Vector{Tuple{Union{Missing, Int64},Int64}}:
+│  (1, -1)
+│  (missing, 3)
+│  (missing, -4)
+│  (-6, 6)
+│ 
+│ Expected output:
+│ 
+│ 4-element Array{Tuple{Union{Missing, Int64},Int64},1}:
+│  (1, -1)
+│  (missing, 3)
+│  (missing, -4)
+│  (-6, 6)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    4-element Array{Tuple{Union{Missing, Int64},Int64},1}:
+│     Vector{Tuple{Union{Missing, Int64},Int64}}:
+│     (1, -1)
+│     (missing, 3)
+│     (missing, -4)
+│     (-6, 6)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/BUbJO/src/rows.jl:494-513
+│ 
+│ ```jldoctest
+│ julia> using LightQuery
+│ 
+│ julia> collect(RightJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
+│ 4-element Array{Tuple{Union{Missing, Int64},Int64},1}:
+│  (1, -1)
+│  (missing, 3)
+│  (missing, -4)
+│  (-6, 6)
+│ 
+│ julia> collect(RightJoin(By(Int[], abs), By(Int[], abs))) == []
+│ true
+│ 
+│ julia> collect(RightJoin(By([1], abs), By(Int[], abs))) == []
+│ true
+│ 
+│ julia> collect(RightJoin(By(Int[], abs), By([1], abs)))
+│ 1-element Array{Tuple{Union{Missing, Int64},Int64},1}:
+│  (missing, 1)
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ collect(RightJoin(By(Int[], abs), By([1], abs)))
+│ 
+│ Evaluated output:
+│ 
+│ 1-element Vector{Tuple{Union{Missing, Int64},Int64}}:
+│  (missing, 1)
+│ 
+│ Expected output:
+│ 
+│ 1-element Array{Tuple{Union{Missing, Int64},Int64},1}:
+│  (missing, 1)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    1-element Array{Tuple{Union{Missing, Int64},Int64},1}:
+│     Vector{Tuple{Union{Missing, Int64},Int64}}:
+│     (missing, 1)
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
 ┌ Error: Doctesting failed
 │   exception =

@@ -13,26 +13,26 @@ Environment:
   Resolving package versions...
   Installed Crayons ───────────────────── v4.0.3
   Installed Missings ──────────────────── v0.4.3
-  Installed IteratorInterfaceExtensions ─ v1.0.0
   Installed TableTraitsUtils ──────────── v1.0.1
   Installed DataAPI ───────────────────── v1.3.0
+  Installed IteratorInterfaceExtensions ─ v1.0.0
   Installed OrderedCollections ────────── v1.3.0
   Installed StaticRanges ──────────────── v0.7.0
   Installed AxisIndices ───────────────── v0.5.1
   Installed MetadataArrays ────────────── v0.1.0
-  Installed ChainedFixes ──────────────── v0.2.0
-  Installed IntervalSets ──────────────── v0.5.1
-  Installed EllipsisNotation ──────────── v0.4.0
   Installed TableTraits ───────────────── v1.0.0
-  Installed Tables ────────────────────── v1.0.5
   Installed DataValueInterfaces ───────── v1.0.0
-  Installed NamedDims ─────────────────── v0.2.23
-  Installed Formatting ────────────────── v0.4.1
+  Installed EllipsisNotation ──────────── v0.4.0
+  Installed IntervalSets ──────────────── v0.5.1
+  Installed ChainedFixes ──────────────── v0.2.0
   Installed MappedArrays ──────────────── v0.2.2
+  Installed Formatting ────────────────── v0.4.1
+  Installed Tables ────────────────────── v1.0.5
+  Installed NamedDims ─────────────────── v0.2.23
+  Installed ArrayInterface ────────────── v2.11.0
   Installed Requires ──────────────────── v1.0.1
   Installed Parameters ────────────────── v0.12.1
   Installed Reexport ──────────────────── v0.2.0
-  Installed ArrayInterface ────────────── v2.11.0
   Installed UnPack ────────────────────── v1.0.1
   Installed StaticArrays ──────────────── v0.12.4
   Installed DataValues ────────────────── v0.4.13
@@ -88,7 +88,7 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
     Testing AxisIndices
-Status `/tmp/jl_Uet6xZ/Project.toml`
+Status `/tmp/jl_RV3pQT/Project.toml`
   [f52c9ee2] AxisIndices v0.5.1
   [9706b775] ChainedFixes v0.2.0
   [3da002f7] ColorTypes v0.10.7
@@ -109,7 +109,7 @@ Status `/tmp/jl_Uet6xZ/Project.toml`
   [37e2e46d] LinearAlgebra
   [10745b16] Statistics
   [8dfed614] Test
-Status `/tmp/jl_Uet6xZ/Manifest.toml`
+Status `/tmp/jl_RV3pQT/Manifest.toml`
   [4fba245c] ArrayInterface v2.11.0
   [f52c9ee2] AxisIndices v0.5.1
   [9706b775] ChainedFixes v0.2.0
@@ -1566,1256 +1566,35 @@ Tables        |   39     39
 │      a     1     2
 │      b     3     4
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/AxisIndices.jl
-│ 
-│ ```jldoctest README
-│ julia> using AxisIndices
-│ 
-│ julia> x = AxisArray{Int}(undef, OneToSRange(2), OneToSRange(2));
-│ 
-│ julia> x[1:4] .= 1;
-│ 
-│ julia> parent(x)
-│ 2×2 StaticArrays.MArray{Tuple{2,2},Int64,2,4} with indices SOneTo(2)×SOneTo(2):
-│  1  1
-│  1  1
-│ 
-│ julia> A = AxisArray(reshape(1:4, 2, 2), [:a, :b], ["one", "two"])
-│ 2×2 AxisArray{Int64,2}
-│  • dim_1 - [:a, :b]
-│  • dim_2 - ["one", "two"]
-│       one   two
-│   a     1     3
-│   b     2     4
-│ 
-│ julia> A[:a, "one"]
-│ 1
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ parent(x)
-│ 
-│ Evaluated output:
-│ 
-│ 2×2 StaticArrays.MMatrix{2,2,Int64,4} with indices SOneTo(2)×SOneTo(2):
-│  1  1
-│  1  1
-│ 
-│ Expected output:
-│ 
-│ 2×2 StaticArrays.MArray{Tuple{2,2},Int64,2,4} with indices SOneTo(2)×SOneTo(2):
-│  1  1
-│  1  1
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2×2 StaticArrays.MArray{Tuple{2,2},Int64,2,4} StaticArrays.MMatrix{2,2,Int64,4} with indices SOneTo(2)×SOneTo(2):
-│     1  1
-│     1  1
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/indexing.jl:418-433
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Interface/names.jl:68-78
 │ 
 │ ```jldoctest
 │ julia> using AxisIndices
 │ 
-│ julia> x = NamedMetaLinearAxes{(:dimx,:dimy)}(([:a, :b], ["one", "two"]); metadata="some metadata")
-│ 2×2 NamedMetaLinearAxes{Int64,2}
-│  • dimx - [:a, :b]
-│  • dimy - ["one", "two"]
-│ metadata: String
-│  • some metadata
-│       one   two
-│   a     1     3
-│   b     2     4
+│ julia> A = reshape(1:24, 2,3,4);
 │ 
-│ julia> x == NamedMetaLinearAxes((dimx = [:a, :b], dimy = ["one", "two"]); metadata="some metadata")
-│ true
+│ julia> named_axes(A)
+│ (dim_1 = Base.OneTo(2), dim_2 = Base.OneTo(3), dim_3 = Base.OneTo(4))
 │ 
+│ julia> named_axes(NamedAxisArray{(:a, :b, :c)}(A))
+│ (a = SimpleAxis(Base.OneTo(2)), b = SimpleAxis(Base.OneTo(3)), c = SimpleAxis(Base.OneTo(4)))
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ x = NamedMetaLinearAxes{(:dimx,:dimy)}(([:a, :b], ["one", "two"]); metadata="some metadata")
+│ named_axes(NamedAxisArray{(:a, :b, :c)}(A))
 │ 
 │ Evaluated output:
 │ 
-│ 2×2 NamedMetaLinearAxes{Int64,2}
-│  • dimx - [:a, :b]
-│  • dimy - ["one", "two"]
-│ metadata: 13-codeunit String
-│  • some metadata
-│       one   two
-│   a     1     3
-│   b     2     4
+│ (a = typename(SimpleAxis)(Base.OneTo(2)), b = typename(SimpleAxis)(Base.OneTo(3)), c = typename(SimpleAxis)(Base.OneTo(4)))
 │ 
 │ Expected output:
 │ 
-│ 2×2 NamedMetaLinearAxes{Int64,2}
-│  • dimx - [:a, :b]
-│  • dimy - ["one", "two"]
-│ metadata: String
-│  • some metadata
-│       one   two
-│   a     1     3
-│   b     2     4
+│ (a = SimpleAxis(Base.OneTo(2)), b = SimpleAxis(Base.OneTo(3)), c = SimpleAxis(Base.OneTo(4)))
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    2×2 NamedMetaLinearAxes{Int64,2}
-│     • dimx - [:a, :b]
-│     • dimy - ["one", "two"]
-│    metadata: 13-codeunit String
-│     • some metadata
-│          one   two
-│      a     1     3
-│      b     2     4
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/SimpleAxis.jl:12-36
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices, StaticRanges
-│ 
-│ julia> x = SimpleAxis(2:10)
-│ SimpleAxis(2:10)
-│ 
-│ julia> x[2]
-│ 2
-│ 
-│ julia> x[==(2)]
-│ 2
-│ 
-│ julia> x[2] == x[==(2)]  # keys and values are same
-│ true
-│ 
-│ julia> x[>(2)]
-│ SimpleAxis(3:10)
-│ 
-│ julia> x[>(2)]
-│ SimpleAxis(3:10)
-│ 
-│ julia> x[1]
-│ ERROR: BoundsError: attempt to access 9-element SimpleAxis(2:10 => 2:10) at index [1]
-│ [...]
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ x = SimpleAxis(2:10)
-│ 
-│ Evaluated output:
-│ 
-│ typename(SimpleAxis)(2:10)
-│ 
-│ Expected output:
-│ 
-│ SimpleAxis(2:10)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    SimpleAxis(2:10)typename(SimpleAxis)(2:10)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/SimpleAxis.jl:12-36
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices, StaticRanges
-│ 
-│ julia> x = SimpleAxis(2:10)
-│ SimpleAxis(2:10)
-│ 
-│ julia> x[2]
-│ 2
-│ 
-│ julia> x[==(2)]
-│ 2
-│ 
-│ julia> x[2] == x[==(2)]  # keys and values are same
-│ true
-│ 
-│ julia> x[>(2)]
-│ SimpleAxis(3:10)
-│ 
-│ julia> x[>(2)]
-│ SimpleAxis(3:10)
-│ 
-│ julia> x[1]
-│ ERROR: BoundsError: attempt to access 9-element SimpleAxis(2:10 => 2:10) at index [1]
-│ [...]
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ x[>(2)]
-│ 
-│ Evaluated output:
-│ 
-│ typename(SimpleAxis)(3:10)
-│ 
-│ Expected output:
-│ 
-│ SimpleAxis(3:10)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    SimpleAxis(3:10)typename(SimpleAxis)(3:10)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/SimpleAxis.jl:12-36
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices, StaticRanges
-│ 
-│ julia> x = SimpleAxis(2:10)
-│ SimpleAxis(2:10)
-│ 
-│ julia> x[2]
-│ 2
-│ 
-│ julia> x[==(2)]
-│ 2
-│ 
-│ julia> x[2] == x[==(2)]  # keys and values are same
-│ true
-│ 
-│ julia> x[>(2)]
-│ SimpleAxis(3:10)
-│ 
-│ julia> x[>(2)]
-│ SimpleAxis(3:10)
-│ 
-│ julia> x[1]
-│ ERROR: BoundsError: attempt to access 9-element SimpleAxis(2:10 => 2:10) at index [1]
-│ [...]
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ x[>(2)]
-│ 
-│ Evaluated output:
-│ 
-│ typename(SimpleAxis)(3:10)
-│ 
-│ Expected output:
-│ 
-│ SimpleAxis(3:10)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    SimpleAxis(3:10)typename(SimpleAxis)(3:10)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/SimpleAxis.jl:12-36
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices, StaticRanges
-│ 
-│ julia> x = SimpleAxis(2:10)
-│ SimpleAxis(2:10)
-│ 
-│ julia> x[2]
-│ 2
-│ 
-│ julia> x[==(2)]
-│ 2
-│ 
-│ julia> x[2] == x[==(2)]  # keys and values are same
-│ true
-│ 
-│ julia> x[>(2)]
-│ SimpleAxis(3:10)
-│ 
-│ julia> x[>(2)]
-│ SimpleAxis(3:10)
-│ 
-│ julia> x[1]
-│ ERROR: BoundsError: attempt to access 9-element SimpleAxis(2:10 => 2:10) at index [1]
-│ [...]
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ x[1]
-│ 
-│ Evaluated output:
-│ 
-│ ERROR: BoundsError: attempt to access 9-element typename(SimpleAxis)(2:10 => 2:10) at index [1]
-│ Stacktrace:
-│  [1] to_index
-│    @ ~/.julia/packages/AxisIndices/DIY36/src/Interface/to_index.jl:39 [inlined]
-│  [2] to_index
-│    @ ~/.julia/packages/AxisIndices/DIY36/src/Interface/to_index.jl:18 [inlined]
-│  [3] getindex(axis::SimpleAxis{Int64,UnitRange{Int64}}, i::Int64)
-│    @ AxisIndices.Axes ~/.julia/packages/AxisIndices/DIY36/src/Axes/indexing.jl:114
-│  [4] top-level scope
-│    @ none:1
-│ 
-│ Expected output:
-│ 
-│ ERROR: BoundsError: attempt to access 9-element SimpleAxis(2:10 => 2:10) at index [1]
-│ [...]
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    ERROR: BoundsError: attempt to access 9-element SimpleAxis(2:10 typename(SimpleAxis)(2:10 => 2:10) at index [1]
-│    [...]Stacktrace:
-│     [1] to_index
-│       @ ~/.julia/packages/AxisIndices/DIY36/src/Interface/to_index.jl:39 [inlined]
-│     [2] to_index
-│       @ ~/.julia/packages/AxisIndices/DIY36/src/Interface/to_index.jl:18 [inlined]
-│     [3] getindex(axis::SimpleAxis{Int64,UnitRange{Int64}}, i::Int64)
-│       @ AxisIndices.Axes ~/.julia/packages/AxisIndices/DIY36/src/Axes/indexing.jl:114
-│     [4] top-level scope
-│       @ none:1
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/SimpleAxis.jl:77-82
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices
-│ 
-│ julia> SimpleAxis(1, 10)
-│ SimpleAxis(1:10)
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ SimpleAxis(1, 10)
-│ 
-│ Evaluated output:
-│ 
-│ typename(SimpleAxis)(1:10)
-│ 
-│ Expected output:
-│ 
-│ SimpleAxis(1:10)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    SimpleAxis(1:10)typename(SimpleAxis)(1:10)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/SimpleAxis.jl:92-97
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices
-│ 
-│ julia> SimpleAxis(10)
-│ SimpleAxis(Base.OneTo(10))
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ SimpleAxis(10)
-│ 
-│ Evaluated output:
-│ 
-│ typename(SimpleAxis)(Base.OneTo(10))
-│ 
-│ Expected output:
-│ 
-│ SimpleAxis(Base.OneTo(10))
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    SimpleAxis(Base.OneTo(10))typename(SimpleAxis)(Base.OneTo(10))
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/indexing.jl:375-390
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices
-│ 
-│ julia> x = NamedMetaCartesianAxes{(:dimx,:dimy)}(([:a, :b], ["one", "two"]); metadata="some metadata")
-│ 2×2 NamedMetaCartesianAxes{CartesianIndex{2},2}
-│  • dimx - [:a, :b]
-│  • dimy - ["one", "two"]
-│ metadata: String
-│  • some metadata
-│                        one                    two
-│   a   CartesianIndex(1, 1)   CartesianIndex(1, 2)
-│   b   CartesianIndex(2, 1)   CartesianIndex(2, 2)
-│ 
-│ julia> x == NamedMetaCartesianAxes((dimx = [:a, :b], dimy = ["one", "two"]); metadata="some metadata")
-│ true
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ x = NamedMetaCartesianAxes{(:dimx,:dimy)}(([:a, :b], ["one", "two"]); metadata="some metadata")
-│ 
-│ Evaluated output:
-│ 
-│ 2×2 NamedMetaCartesianAxes{CartesianIndex{2},2}
-│  • dimx - [:a, :b]
-│  • dimy - ["one", "two"]
-│ metadata: 13-codeunit String
-│  • some metadata
-│                        one                    two
-│   a   CartesianIndex(1, 1)   CartesianIndex(1, 2)
-│   b   CartesianIndex(2, 1)   CartesianIndex(2, 2)
-│ 
-│ Expected output:
-│ 
-│ 2×2 NamedMetaCartesianAxes{CartesianIndex{2},2}
-│  • dimx - [:a, :b]
-│  • dimy - ["one", "two"]
-│ metadata: String
-│  • some metadata
-│                        one                    two
-│   a   CartesianIndex(1, 1)   CartesianIndex(1, 2)
-│   b   CartesianIndex(2, 1)   CartesianIndex(2, 2)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2×2 NamedMetaCartesianAxes{CartesianIndex{2},2}
-│     • dimx - [:a, :b]
-│     • dimy - ["one", "two"]
-│    metadata: 13-codeunit String
-│     • some metadata
-│                           one                    two
-│      a   CartesianIndex(1, 1)   CartesianIndex(1, 2)
-│      b   CartesianIndex(2, 1)   CartesianIndex(2, 2)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/indexing.jl:249-261
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices
-│ 
-│ julia> MetaCartesianAxes(([:a, :b], ["one", "two"]); metadata="some metadata")
-│ 2×2 MetaCartesianAxes{CartesianIndex{2},2}
-│  • dim_1 - [:a, :b]
-│  • dim_2 - ["one", "two"]
-│ metadata: String
-│  • some metadata
-│                        one                    two
-│   a   CartesianIndex(1, 1)   CartesianIndex(1, 2)
-│   b   CartesianIndex(2, 1)   CartesianIndex(2, 2)
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ MetaCartesianAxes(([:a, :b], ["one", "two"]); metadata="some metadata")
-│ 
-│ Evaluated output:
-│ 
-│ 2×2 MetaCartesianAxes{CartesianIndex{2},2}
-│  • dim_1 - [:a, :b]
-│  • dim_2 - ["one", "two"]
-│ metadata: 13-codeunit String
-│  • some metadata
-│                        one                    two
-│   a   CartesianIndex(1, 1)   CartesianIndex(1, 2)
-│   b   CartesianIndex(2, 1)   CartesianIndex(2, 2)
-│ 
-│ Expected output:
-│ 
-│ 2×2 MetaCartesianAxes{CartesianIndex{2},2}
-│  • dim_1 - [:a, :b]
-│  • dim_2 - ["one", "two"]
-│ metadata: String
-│  • some metadata
-│                        one                    two
-│   a   CartesianIndex(1, 1)   CartesianIndex(1, 2)
-│   b   CartesianIndex(2, 1)   CartesianIndex(2, 2)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2×2 MetaCartesianAxes{CartesianIndex{2},2}
-│     • dim_1 - [:a, :b]
-│     • dim_2 - ["one", "two"]
-│    metadata: 13-codeunit String
-│     • some metadata
-│                           one                    two
-│      a   CartesianIndex(1, 1)   CartesianIndex(1, 2)
-│      b   CartesianIndex(2, 1)   CartesianIndex(2, 2)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/AbstractAxis.jl:154-159
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices
-│ 
-│ julia> similar(Axis(1.0:10.0, 1:10), [:one, :two])
-│ Axis([:one, :two] => 1:2)
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ similar(Axis(1.0:10.0, 1:10), [:one, :two])
-│ 
-│ Evaluated output:
-│ 
-│ typename(Axis)([:one, :two] => 1:2)
-│ 
-│ Expected output:
-│ 
-│ Axis([:one, :two] => 1:2)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    Axis([:one, typename(Axis)([:one, :two] => 1:2)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/AbstractAxis.jl:219-228
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices
-│ 
-│ julia> similar(Axis(1.0:10.0, 1:10), [:one, :two], UInt(1):UInt(2))
-│ Axis([:one, :two] => 0x0000000000000001:0x0000000000000002)
-│ 
-│ julia> similar(Axis(1.0:10.0, 1:10), [:one, :two], UInt(1):UInt(3))
-│ ERROR: DimensionMismatch("keys and indices must have same length, got length(keys) = 2 and length(indices) = 3.")
-│ [...]
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ similar(Axis(1.0:10.0, 1:10), [:one, :two], UInt(1):UInt(2))
-│ 
-│ Evaluated output:
-│ 
-│ typename(Axis)([:one, :two] => 0x0000000000000001:0x0000000000000002)
-│ 
-│ Expected output:
-│ 
-│ Axis([:one, :two] => 0x0000000000000001:0x0000000000000002)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    Axis([:one, typename(Axis)([:one, :two] => 0x0000000000000001:0x0000000000000002)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/AbstractAxis.jl:253-258
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices
-│ 
-│ julia> similar(SimpleAxis(1:10), 1:3)
-│ SimpleAxis(1:3)
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ similar(SimpleAxis(1:10), 1:3)
-│ 
-│ Evaluated output:
-│ 
-│ typename(SimpleAxis)(1:3)
-│ 
-│ Expected output:
-│ 
-│ SimpleAxis(1:3)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    SimpleAxis(1:3)typename(SimpleAxis)(1:3)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:12-23
-│ 
-│ ```jldoctest axis_examples
-│ julia> using AxisIndices
-│ 
-│ julia> x = Axis(2.0:11.0, 1:10)
-│ Axis(2.0:1.0:11.0 => 1:10)
-│ 
-│ julia> y = Axis(2.0:11.0)  # when only one argument is specified assume it's the keys
-│ Axis(2.0:1.0:11.0 => Base.OneTo(10))
-│ 
-│ julia> z = Axis(1:10)
-│ Axis(1:10 => Base.OneTo(10))
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ x = Axis(2.0:11.0, 1:10)
-│ 
-│ Evaluated output:
-│ 
-│ typename(Axis)(2.0:1.0:11.0 => 1:10)
-│ 
-│ Expected output:
-│ 
-│ Axis(2.0:1.0:11.0 => 1:10)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    Axis(2.0:1.0:11.0 typename(Axis)(2.0:1.0:11.0 => 1:10)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:12-23
-│ 
-│ ```jldoctest axis_examples
-│ julia> using AxisIndices
-│ 
-│ julia> x = Axis(2.0:11.0, 1:10)
-│ Axis(2.0:1.0:11.0 => 1:10)
-│ 
-│ julia> y = Axis(2.0:11.0)  # when only one argument is specified assume it's the keys
-│ Axis(2.0:1.0:11.0 => Base.OneTo(10))
-│ 
-│ julia> z = Axis(1:10)
-│ Axis(1:10 => Base.OneTo(10))
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ y = Axis(2.0:11.0)  # when only one argument is specified assume it's the keys
-│ 
-│ Evaluated output:
-│ 
-│ typename(Axis)(2.0:1.0:11.0 => Base.OneTo(10))
-│ 
-│ Expected output:
-│ 
-│ Axis(2.0:1.0:11.0 => Base.OneTo(10))
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    Axis(2.0:1.0:11.0 typename(Axis)(2.0:1.0:11.0 => Base.OneTo(10))
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:12-23
-│ 
-│ ```jldoctest axis_examples
-│ julia> using AxisIndices
-│ 
-│ julia> x = Axis(2.0:11.0, 1:10)
-│ Axis(2.0:1.0:11.0 => 1:10)
-│ 
-│ julia> y = Axis(2.0:11.0)  # when only one argument is specified assume it's the keys
-│ Axis(2.0:1.0:11.0 => Base.OneTo(10))
-│ 
-│ julia> z = Axis(1:10)
-│ Axis(1:10 => Base.OneTo(10))
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ z = Axis(1:10)
-│ 
-│ Evaluated output:
-│ 
-│ typename(Axis)(1:10 => Base.OneTo(10))
-│ 
-│ Expected output:
-│ 
-│ Axis(1:10 => Base.OneTo(10))
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    Axis(1:10 typename(Axis)(1:10 => Base.OneTo(10))
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:26-44
-│ 
-│ ```jldoctest axis_examples
-│ julia> x[2]
-│ 2
-│ 
-│ julia> x[2] == y[2] == z[2]
-│ true
-│ 
-│ julia> x[1:2]
-│ Axis(2.0:1.0:3.0 => 1:2)
-│ 
-│ julia> y[1:2]
-│ Axis(2.0:1.0:3.0 => 1:2)
-│ 
-│ julia> z[1:2]
-│ Axis(1:2 => 1:2)
-│ 
-│ julia> x[1:2] == y[1:2] == z[1:2]
-│ true
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ x[1:2]
-│ 
-│ Evaluated output:
-│ 
-│ typename(Axis)(2.0:1.0:3.0 => 1:2)
-│ 
-│ Expected output:
-│ 
-│ Axis(2.0:1.0:3.0 => 1:2)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    Axis(2.0:1.0:3.0 typename(Axis)(2.0:1.0:3.0 => 1:2)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:26-44
-│ 
-│ ```jldoctest axis_examples
-│ julia> x[2]
-│ 2
-│ 
-│ julia> x[2] == y[2] == z[2]
-│ true
-│ 
-│ julia> x[1:2]
-│ Axis(2.0:1.0:3.0 => 1:2)
-│ 
-│ julia> y[1:2]
-│ Axis(2.0:1.0:3.0 => 1:2)
-│ 
-│ julia> z[1:2]
-│ Axis(1:2 => 1:2)
-│ 
-│ julia> x[1:2] == y[1:2] == z[1:2]
-│ true
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ y[1:2]
-│ 
-│ Evaluated output:
-│ 
-│ typename(Axis)(2.0:1.0:3.0 => 1:2)
-│ 
-│ Expected output:
-│ 
-│ Axis(2.0:1.0:3.0 => 1:2)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    Axis(2.0:1.0:3.0 typename(Axis)(2.0:1.0:3.0 => 1:2)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:26-44
-│ 
-│ ```jldoctest axis_examples
-│ julia> x[2]
-│ 2
-│ 
-│ julia> x[2] == y[2] == z[2]
-│ true
-│ 
-│ julia> x[1:2]
-│ Axis(2.0:1.0:3.0 => 1:2)
-│ 
-│ julia> y[1:2]
-│ Axis(2.0:1.0:3.0 => 1:2)
-│ 
-│ julia> z[1:2]
-│ Axis(1:2 => 1:2)
-│ 
-│ julia> x[1:2] == y[1:2] == z[1:2]
-│ true
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ z[1:2]
-│ 
-│ Evaluated output:
-│ 
-│ typename(Axis)(1:2 => 1:2)
-│ 
-│ Expected output:
-│ 
-│ Axis(1:2 => 1:2)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    Axis(1:2 typename(Axis)(1:2 => 1:2)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:48-68
-│ 
-│ ```jldoctest axis_examples
-│ julia> x[==(3.0)]
-│ 2
-│ 
-│ julia> x[==(3.0)] ==       # 3.0 is the 2nd key of x
-│        y[isequal(3.0)] ==  # 3.0 is the 2nd key of y
-│        z[==(2)]            # 2 is the 2nd key of z
-│ true
-│ 
-│ julia> x[<(4.0)]  # all keys less than 4.0 are 2.0:3.0 which correspond to values 1:2
-│ Axis(2.0:1.0:3.0 => 1:2)
-│ 
-│ julia> y[<=(3.0)]  # all keys less than or equal to 3.0 are 2.0:3.0 which correspond to values 1:2
-│ Axis(2.0:1.0:3.0 => 1:2)
-│ 
-│ julia> z[<(3)]  # all keys less than or equal to 3 are 1:2 which correspond to values 1:2
-│ Axis(1:2 => 1:2)
-│ 
-│ julia> x[<(4.0)] == y[<=(3.0)] == z[<(3)]
-│ true
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ x[<(4.0)]  # all keys less than 4.0 are 2.0:3.0 which correspond to values 1:2
-│ 
-│ Evaluated output:
-│ 
-│ typename(Axis)(2.0:1.0:3.0 => 1:2)
-│ 
-│ Expected output:
-│ 
-│ Axis(2.0:1.0:3.0 => 1:2)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    Axis(2.0:1.0:3.0 typename(Axis)(2.0:1.0:3.0 => 1:2)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:48-68
-│ 
-│ ```jldoctest axis_examples
-│ julia> x[==(3.0)]
-│ 2
-│ 
-│ julia> x[==(3.0)] ==       # 3.0 is the 2nd key of x
-│        y[isequal(3.0)] ==  # 3.0 is the 2nd key of y
-│        z[==(2)]            # 2 is the 2nd key of z
-│ true
-│ 
-│ julia> x[<(4.0)]  # all keys less than 4.0 are 2.0:3.0 which correspond to values 1:2
-│ Axis(2.0:1.0:3.0 => 1:2)
-│ 
-│ julia> y[<=(3.0)]  # all keys less than or equal to 3.0 are 2.0:3.0 which correspond to values 1:2
-│ Axis(2.0:1.0:3.0 => 1:2)
-│ 
-│ julia> z[<(3)]  # all keys less than or equal to 3 are 1:2 which correspond to values 1:2
-│ Axis(1:2 => 1:2)
-│ 
-│ julia> x[<(4.0)] == y[<=(3.0)] == z[<(3)]
-│ true
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ y[<=(3.0)]  # all keys less than or equal to 3.0 are 2.0:3.0 which correspond to values 1:2
-│ 
-│ Evaluated output:
-│ 
-│ typename(Axis)(2.0:1.0:3.0 => 1:2)
-│ 
-│ Expected output:
-│ 
-│ Axis(2.0:1.0:3.0 => 1:2)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    Axis(2.0:1.0:3.0 typename(Axis)(2.0:1.0:3.0 => 1:2)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:48-68
-│ 
-│ ```jldoctest axis_examples
-│ julia> x[==(3.0)]
-│ 2
-│ 
-│ julia> x[==(3.0)] ==       # 3.0 is the 2nd key of x
-│        y[isequal(3.0)] ==  # 3.0 is the 2nd key of y
-│        z[==(2)]            # 2 is the 2nd key of z
-│ true
-│ 
-│ julia> x[<(4.0)]  # all keys less than 4.0 are 2.0:3.0 which correspond to values 1:2
-│ Axis(2.0:1.0:3.0 => 1:2)
-│ 
-│ julia> y[<=(3.0)]  # all keys less than or equal to 3.0 are 2.0:3.0 which correspond to values 1:2
-│ Axis(2.0:1.0:3.0 => 1:2)
-│ 
-│ julia> z[<(3)]  # all keys less than or equal to 3 are 1:2 which correspond to values 1:2
-│ Axis(1:2 => 1:2)
-│ 
-│ julia> x[<(4.0)] == y[<=(3.0)] == z[<(3)]
-│ true
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ z[<(3)]  # all keys less than or equal to 3 are 1:2 which correspond to values 1:2
-│ 
-│ Evaluated output:
-│ 
-│ typename(Axis)(1:2 => 1:2)
-│ 
-│ Expected output:
-│ 
-│ Axis(1:2 => 1:2)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    Axis(1:2 typename(Axis)(1:2 => 1:2)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/OffsetAxis.jl:26-31
-│ 
-│ ```jldoctest offset_axis_examples
-│ julia> using AxisIndices
-│ 
-│ julia> axis = OffsetAxis(-2, 1:3)
-│ OffsetAxis(-1:1 => 1:3)
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ axis = OffsetAxis(-2, 1:3)
-│ 
-│ Evaluated output:
-│ 
-│ typename(OffsetAxis)(-1:1 => 1:3)
-│ 
-│ Expected output:
-│ 
-│ OffsetAxis(-1:1 => 1:3)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    OffsetAxis(-1:1 typename(OffsetAxis)(-1:1 => 1:3)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/OffsetAxis.jl:55-59
-│ 
-│ ```jldoctest offset_axis_examples
-│ julia> axis[3]
-│ ERROR: BoundsError: attempt to access 3-element OffsetAxis(-1:1 => 1:3) at index [3]
-│ [...]
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ axis[3]
-│ 
-│ Evaluated output:
-│ 
-│ ERROR: BoundsError: attempt to access 3-element typename(OffsetAxis)(-1:1 => 1:3) at index [3]
-│ Stacktrace:
-│  [1] getindex(axis::OffsetAxis{Int64,UnitRange{Int64},UnitRange{Int64}}, i::Int64)
-│    @ AxisIndices.Axes ~/.julia/packages/AxisIndices/DIY36/src/Axes/AbstractOffsetAxis.jl:31
-│  [2] top-level scope
-│    @ none:1
-│ 
-│ Expected output:
-│ 
-│ ERROR: BoundsError: attempt to access 3-element OffsetAxis(-1:1 => 1:3) at index [3]
-│ [...]
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    ERROR: BoundsError: attempt to access 3-element OffsetAxis(-1:1 typename(OffsetAxis)(-1:1 => 1:3) at index [3]
-│    [...]Stacktrace:
-│     [1] getindex(axis::OffsetAxis{Int64,UnitRange{Int64},UnitRange{Int64}}, i::Int64)
-│       @ AxisIndices.Axes ~/.julia/packages/AxisIndices/DIY36/src/Axes/AbstractOffsetAxis.jl:31
-│     [2] top-level scope
-│       @ none:1
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/OffsetAxis.jl:62-65
-│ 
-│ ```jldoctest offset_axis_examples
-│ julia> axis[0:1]  # offset of -2 still applies
-│ OffsetAxis(0:1 => 2:3)
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ axis[0:1]  # offset of -2 still applies
-│ 
-│ Evaluated output:
-│ 
-│ typename(OffsetAxis)(0:1 => 2:3)
-│ 
-│ Expected output:
-│ 
-│ OffsetAxis(0:1 => 2:3)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    OffsetAxis(0:1 typename(OffsetAxis)(0:1 => 2:3)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/permute_axes.jl:10-18
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices
-│ 
-│ julia> AxisIndices.permute_axes(rand(2, 4, 6), (1, 3, 2))
-│ (Base.OneTo(2), Base.OneTo(6), Base.OneTo(4))
-│ 
-│ julia> AxisIndices.permute_axes((Axis(1:2), Axis(1:4), Axis(1:6)), (1, 3, 2))
-│ (Axis(1:2 => Base.OneTo(2)), Axis(1:6 => Base.OneTo(6)), Axis(1:4 => Base.OneTo(4)))
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ AxisIndices.permute_axes((Axis(1:2), Axis(1:4), Axis(1:6)), (1, 3, 2))
-│ 
-│ Evaluated output:
-│ 
-│ (typename(Axis)(1:2 => Base.OneTo(2)), typename(Axis)(1:6 => Base.OneTo(6)), typename(Axis)(1:4 => Base.OneTo(4)))
-│ 
-│ Expected output:
-│ 
-│ (Axis(1:2 => Base.OneTo(2)), Axis(1:6 => Base.OneTo(6)), Axis(1:4 => Base.OneTo(4)))
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    (Axis(1:2 (typename(Axis)(1:2 => Base.OneTo(2)), Axis(1:6 typename(Axis)(1:6 => Base.OneTo(6)), Axis(1:4 typename(Axis)(1:4 => Base.OneTo(4)))
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/permute_axes.jl:33-47
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices, StaticRanges
-│ 
-│ julia> length.(AxisIndices.permute_axes(rand(4))) == (1, 4)
-│ true
-│ 
-│ julia> AxisIndices.permute_axes((Axis(1:4),))
-│ (SimpleAxis(Base.OneTo(1)), Axis(1:4 => Base.OneTo(4)))
-│ 
-│ julia> AxisIndices.permute_axes((Axis(mrange(1, 4)),))
-│ (SimpleAxis(OneToMRange(1)), Axis(UnitMRange(1:4) => OneToMRange(4)))
-│ 
-│ julia> AxisIndices.permute_axes((Axis(srange(1, 4)),))
-│ (SimpleAxis(OneToSRange(1)), Axis(UnitSRange(1:4) => OneToSRange(4)))
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ AxisIndices.permute_axes((Axis(1:4),))
-│ 
-│ Evaluated output:
-│ 
-│ (typename(SimpleAxis)(Base.OneTo(1)), typename(Axis)(1:4 => Base.OneTo(4)))
-│ 
-│ Expected output:
-│ 
-│ (SimpleAxis(Base.OneTo(1)), Axis(1:4 => Base.OneTo(4)))
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    (SimpleAxis(Base.OneTo(1)), Axis(1:4 (typename(SimpleAxis)(Base.OneTo(1)), typename(Axis)(1:4 => Base.OneTo(4)))
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/permute_axes.jl:33-47
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices, StaticRanges
-│ 
-│ julia> length.(AxisIndices.permute_axes(rand(4))) == (1, 4)
-│ true
-│ 
-│ julia> AxisIndices.permute_axes((Axis(1:4),))
-│ (SimpleAxis(Base.OneTo(1)), Axis(1:4 => Base.OneTo(4)))
-│ 
-│ julia> AxisIndices.permute_axes((Axis(mrange(1, 4)),))
-│ (SimpleAxis(OneToMRange(1)), Axis(UnitMRange(1:4) => OneToMRange(4)))
-│ 
-│ julia> AxisIndices.permute_axes((Axis(srange(1, 4)),))
-│ (SimpleAxis(OneToSRange(1)), Axis(UnitSRange(1:4) => OneToSRange(4)))
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ AxisIndices.permute_axes((Axis(mrange(1, 4)),))
-│ 
-│ Evaluated output:
-│ 
-│ (typename(SimpleAxis)(OneToMRange(1)), typename(Axis)(UnitMRange(1:4) => OneToMRange(4)))
-│ 
-│ Expected output:
-│ 
-│ (SimpleAxis(OneToMRange(1)), Axis(UnitMRange(1:4) => OneToMRange(4)))
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    (SimpleAxis(OneToMRange(1)), Axis(UnitMRange(1:4) (typename(SimpleAxis)(OneToMRange(1)), typename(Axis)(UnitMRange(1:4) => OneToMRange(4)))
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/permute_axes.jl:33-47
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices, StaticRanges
-│ 
-│ julia> length.(AxisIndices.permute_axes(rand(4))) == (1, 4)
-│ true
-│ 
-│ julia> AxisIndices.permute_axes((Axis(1:4),))
-│ (SimpleAxis(Base.OneTo(1)), Axis(1:4 => Base.OneTo(4)))
-│ 
-│ julia> AxisIndices.permute_axes((Axis(mrange(1, 4)),))
-│ (SimpleAxis(OneToMRange(1)), Axis(UnitMRange(1:4) => OneToMRange(4)))
-│ 
-│ julia> AxisIndices.permute_axes((Axis(srange(1, 4)),))
-│ (SimpleAxis(OneToSRange(1)), Axis(UnitSRange(1:4) => OneToSRange(4)))
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ AxisIndices.permute_axes((Axis(srange(1, 4)),))
-│ 
-│ Evaluated output:
-│ 
-│ (typename(SimpleAxis)(OneToSRange(1)), typename(Axis)(UnitSRange(1:4) => OneToSRange(4)))
-│ 
-│ Expected output:
-│ 
-│ (SimpleAxis(OneToSRange(1)), Axis(UnitSRange(1:4) => OneToSRange(4)))
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    (SimpleAxis(OneToSRange(1)), Axis(UnitSRange(1:4) (typename(SimpleAxis)(OneToSRange(1)), typename(Axis)(UnitSRange(1:4) => OneToSRange(4)))
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/permute_axes.jl:70-78
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices
-│ 
-│ julia> AxisIndices.permute_axes(rand(4, 2))
-│ (Base.OneTo(2), Base.OneTo(4))
-│ 
-│ julia> AxisIndices.permute_axes((Axis(1:4), Axis(1:2)))
-│ (Axis(1:2 => Base.OneTo(2)), Axis(1:4 => Base.OneTo(4)))
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ AxisIndices.permute_axes((Axis(1:4), Axis(1:2)))
-│ 
-│ Evaluated output:
-│ 
-│ (typename(Axis)(1:2 => Base.OneTo(2)), typename(Axis)(1:4 => Base.OneTo(4)))
-│ 
-│ Expected output:
-│ 
-│ (Axis(1:2 => Base.OneTo(2)), Axis(1:4 => Base.OneTo(4)))
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    (Axis(1:2 (typename(Axis)(1:2 => Base.OneTo(2)), Axis(1:4 typename(Axis)(1:4 => Base.OneTo(4)))
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/indexing.jl:277-289
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices
-│ 
-│ julia> MetaLinearAxes(([:a, :b], ["one", "two"]); metadata="some metadata")
-│ 2×2 MetaLinearAxes{Int64,2}
-│  • dim_1 - [:a, :b]
-│  • dim_2 - ["one", "two"]
-│ metadata: String
-│  • some metadata
-│       one   two
-│   a     1     3
-│   b     2     4
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ MetaLinearAxes(([:a, :b], ["one", "two"]); metadata="some metadata")
-│ 
-│ Evaluated output:
-│ 
-│ 2×2 MetaLinearAxes{Int64,2}
-│  • dim_1 - [:a, :b]
-│  • dim_2 - ["one", "two"]
-│ metadata: 13-codeunit String
-│  • some metadata
-│       one   two
-│   a     1     3
-│   b     2     4
-│ 
-│ Expected output:
-│ 
-│ 2×2 MetaLinearAxes{Int64,2}
-│  • dim_1 - [:a, :b]
-│  • dim_2 - ["one", "two"]
-│ metadata: String
-│  • some metadata
-│       one   two
-│   a     1     3
-│   b     2     4
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2×2 MetaLinearAxes{Int64,2}
-│     • dim_1 - [:a, :b]
-│     • dim_2 - ["one", "two"]
-│    metadata: 13-codeunit String
-│     • some metadata
-│          one   two
-│      a     1     3
-│      b     2     4
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/CenteredAxis.jl:14-29
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices
-│ 
-│ julia> axis = CenteredAxis(1:10)
-│ CenteredAxis(-5:4 => 1:10)
-│ 
-│ julia> axis[10]  # the indexing goes straight to keys and is centered around zero
-│ ERROR: BoundsError: attempt to access 10-element CenteredAxis(-5:4 => 1:10) at index [10]
-│ [...]
-│ 
-│ julia> axis[-5]
-│ -5
-│ 
-│ julia> AxisIndices.to_index(axis, -5)
-│ 1
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ axis = CenteredAxis(1:10)
-│ 
-│ Evaluated output:
-│ 
-│ typename(CenteredAxis)(-5:4 => 1:10)
-│ 
-│ Expected output:
-│ 
-│ CenteredAxis(-5:4 => 1:10)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    CenteredAxis(-5:4 typename(CenteredAxis)(-5:4 => 1:10)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/CenteredAxis.jl:14-29
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices
-│ 
-│ julia> axis = CenteredAxis(1:10)
-│ CenteredAxis(-5:4 => 1:10)
-│ 
-│ julia> axis[10]  # the indexing goes straight to keys and is centered around zero
-│ ERROR: BoundsError: attempt to access 10-element CenteredAxis(-5:4 => 1:10) at index [10]
-│ [...]
-│ 
-│ julia> axis[-5]
-│ -5
-│ 
-│ julia> AxisIndices.to_index(axis, -5)
-│ 1
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ axis[10]  # the indexing goes straight to keys and is centered around zero
-│ 
-│ Evaluated output:
-│ 
-│ ERROR: BoundsError: attempt to access 10-element typename(CenteredAxis)(-5:4 => 1:10) at index [10]
-│ Stacktrace:
-│  [1] getindex(axis::CenteredAxis{Int64,UnitRange{Int64},UnitRange{Int64}}, i::Int64)
-│    @ AxisIndices.Axes ~/.julia/packages/AxisIndices/DIY36/src/Axes/AbstractOffsetAxis.jl:31
-│  [2] top-level scope
-│    @ none:1
-│ 
-│ Expected output:
-│ 
-│ ERROR: BoundsError: attempt to access 10-element CenteredAxis(-5:4 => 1:10) at index [10]
-│ [...]
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    ERROR: BoundsError: attempt to access 10-element CenteredAxis(-5:4 typename(CenteredAxis)(-5:4 => 1:10) at index [10]
-│    [...]Stacktrace:
-│     [1] getindex(axis::CenteredAxis{Int64,UnitRange{Int64},UnitRange{Int64}}, i::Int64)
-│       @ AxisIndices.Axes ~/.julia/packages/AxisIndices/DIY36/src/Axes/AbstractOffsetAxis.jl:31
-│     [2] top-level scope
-│       @ none:1
+│    (a = SimpleAxis(Base.OneTo(2)), typename(SimpleAxis)(Base.OneTo(2)), b = SimpleAxis(Base.OneTo(3)), typename(SimpleAxis)(Base.OneTo(3)), c = SimpleAxis(Base.OneTo(4)))typename(SimpleAxis)(Base.OneTo(4)))
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Interface/rows.jl:24-31
 │ 
@@ -2876,93 +1655,6 @@ Tables        |   39     39
 │   diff =
 │    Warning: Diff output requires color.
 │    Axis{String,Int64,Array{String,1},Base.OneTo{Int64}}Axis{String,Int64,Vector{String},Base.OneTo{Int64}}
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Interface/rows.jl:8-13
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices
-│ 
-│ julia> rowaxis(AxisArray(ones(2,2), ["a", "b"], [:one, :two]))
-│ Axis(["a", "b"] => Base.OneTo(2))
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ rowaxis(AxisArray(ones(2,2), ["a", "b"], [:one, :two]))
-│ 
-│ Evaluated output:
-│ 
-│ typename(Axis)(["a", "b"] => Base.OneTo(2))
-│ 
-│ Expected output:
-│ 
-│ Axis(["a", "b"] => Base.OneTo(2))
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    Axis(["a", typename(Axis)(["a", "b"] => Base.OneTo(2))
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Interface/cols.jl:40-47
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices
-│ 
-│ julia> colkeys(AxisArray(ones(2,2), ["a", "b"], [:one, :two]))
-│ 2-element Array{Symbol,1}:
-│  :one
-│  :two
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ colkeys(AxisArray(ones(2,2), ["a", "b"], [:one, :two]))
-│ 
-│ Evaluated output:
-│ 
-│ 2-element Vector{Symbol}:
-│  :one
-│  :two
-│ 
-│ Expected output:
-│ 
-│ 2-element Array{Symbol,1}:
-│  :one
-│  :two
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2-element Array{Symbol,1}:
-│     Vector{Symbol}:
-│     :one
-│     :two
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Interface/cols.jl:8-13
-│ 
-│ ```jldoctest
-│ julia> using AxisIndices
-│ 
-│ julia> colaxis(AxisArray(ones(2,2), ["a", "b"], [:one, :two]))
-│ Axis([:one, :two] => Base.OneTo(2))
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ colaxis(AxisArray(ones(2,2), ["a", "b"], [:one, :two]))
-│ 
-│ Evaluated output:
-│ 
-│ typename(Axis)([:one, :two] => Base.OneTo(2))
-│ 
-│ Expected output:
-│ 
-│ Axis([:one, :two] => Base.OneTo(2))
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    Axis([:one, typename(Axis)([:one, :two] => Base.OneTo(2))
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Interface/iterators.jl:9-17
 │ 
@@ -3522,30 +2214,31 @@ Tables        |   39     39
 │     7:9
 │     12:14
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Interface/keys.jl:95-100
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Interface/cols.jl:8-13
 │ 
 │ ```jldoctest
 │ julia> using AxisIndices
 │ 
-│ julia> keys_type(AxisArray([1], ["a"]), 1)
-│ Array{String,1}
+│ julia> colaxis(AxisArray(ones(2,2), ["a", "b"], [:one, :two]))
+│ Axis([:one, :two] => Base.OneTo(2))
+│ 
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ keys_type(AxisArray([1], ["a"]), 1)
+│ colaxis(AxisArray(ones(2,2), ["a", "b"], [:one, :two]))
 │ 
 │ Evaluated output:
 │ 
-│ Vector{String} = Array{String,1}
+│ typename(Axis)([:one, :two] => Base.OneTo(2))
 │ 
 │ Expected output:
 │ 
-│ Array{String,1}
+│ Axis([:one, :two] => Base.OneTo(2))
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    Vector{String} = Array{String,1}
+│    Axis([:one, typename(Axis)([:one, :two] => Base.OneTo(2))
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Interface/axes.jl:22-35
 │ 
@@ -3638,35 +2331,146 @@ Tables        |   39     39
 │    Warning: Diff output requires color.
 │    Axis{Symbol,Int64,Array{Symbol,1},Base.OneTo{Int64}}Axis{Symbol,Int64,Vector{Symbol},Base.OneTo{Int64}}
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Interface/names.jl:68-78
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Interface/rows.jl:8-13
 │ 
 │ ```jldoctest
 │ julia> using AxisIndices
 │ 
-│ julia> A = reshape(1:24, 2,3,4);
+│ julia> rowaxis(AxisArray(ones(2,2), ["a", "b"], [:one, :two]))
+│ Axis(["a", "b"] => Base.OneTo(2))
 │ 
-│ julia> named_axes(A)
-│ (dim_1 = Base.OneTo(2), dim_2 = Base.OneTo(3), dim_3 = Base.OneTo(4))
-│ 
-│ julia> named_axes(NamedAxisArray{(:a, :b, :c)}(A))
-│ (a = SimpleAxis(Base.OneTo(2)), b = SimpleAxis(Base.OneTo(3)), c = SimpleAxis(Base.OneTo(4)))
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ named_axes(NamedAxisArray{(:a, :b, :c)}(A))
+│ rowaxis(AxisArray(ones(2,2), ["a", "b"], [:one, :two]))
 │ 
 │ Evaluated output:
 │ 
-│ (a = typename(SimpleAxis)(Base.OneTo(2)), b = typename(SimpleAxis)(Base.OneTo(3)), c = typename(SimpleAxis)(Base.OneTo(4)))
+│ typename(Axis)(["a", "b"] => Base.OneTo(2))
 │ 
 │ Expected output:
 │ 
-│ (a = SimpleAxis(Base.OneTo(2)), b = SimpleAxis(Base.OneTo(3)), c = SimpleAxis(Base.OneTo(4)))
+│ Axis(["a", "b"] => Base.OneTo(2))
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    (a = SimpleAxis(Base.OneTo(2)), typename(SimpleAxis)(Base.OneTo(2)), b = SimpleAxis(Base.OneTo(3)), typename(SimpleAxis)(Base.OneTo(3)), c = SimpleAxis(Base.OneTo(4)))typename(SimpleAxis)(Base.OneTo(4)))
+│    Axis(["a", typename(Axis)(["a", "b"] => Base.OneTo(2))
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Interface/keys.jl:95-100
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices
+│ 
+│ julia> keys_type(AxisArray([1], ["a"]), 1)
+│ Array{String,1}
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ keys_type(AxisArray([1], ["a"]), 1)
+│ 
+│ Evaluated output:
+│ 
+│ Vector{String} = Array{String,1}
+│ 
+│ Expected output:
+│ 
+│ Array{String,1}
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    Vector{String} = Array{String,1}
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Interface/cols.jl:40-47
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices
+│ 
+│ julia> colkeys(AxisArray(ones(2,2), ["a", "b"], [:one, :two]))
+│ 2-element Array{Symbol,1}:
+│  :one
+│  :two
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ colkeys(AxisArray(ones(2,2), ["a", "b"], [:one, :two]))
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Vector{Symbol}:
+│  :one
+│  :two
+│ 
+│ Expected output:
+│ 
+│ 2-element Array{Symbol,1}:
+│  :one
+│  :two
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Array{Symbol,1}:
+│     Vector{Symbol}:
+│     :one
+│     :two
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Arrays/MetaAxisArray.jl:8-21
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices
+│ 
+│ julia> MetaAxisArray([1 2; 3 4], (["a", "b"], [:one, :two]), metadata = "some metadata")
+│ 2×2 MetaAxisArray{Int64,2}
+│  • dim_1 - ["a", "b"]
+│  • dim_2 - [:one, :two]
+│ metadata: String
+│  • some metadata
+│       one   two
+│   a     1     2
+│   b     3     4
+│ 
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ MetaAxisArray([1 2; 3 4], (["a", "b"], [:one, :two]), metadata = "some metadata")
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 MetaAxisArray{Int64,2}
+│  • dim_1 - ["a", "b"]
+│  • dim_2 - [:one, :two]
+│ metadata: 13-codeunit String
+│  • some metadata
+│       one   two
+│   a     1     2
+│   b     3     4
+│ 
+│ Expected output:
+│ 
+│ 2×2 MetaAxisArray{Int64,2}
+│  • dim_1 - ["a", "b"]
+│  • dim_2 - [:one, :two]
+│ metadata: String
+│  • some metadata
+│       one   two
+│   a     1     2
+│   b     3     4
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 MetaAxisArray{Int64,2}
+│     • dim_1 - ["a", "b"]
+│     • dim_2 - [:one, :two]
+│    metadata: 13-codeunit String
+│     • some metadata
+│          one   two
+│      a     1     2
+│      b     3     4
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Arrays/factorizations.jl:231-249
 │ 
@@ -3884,60 +2688,1256 @@ Tables        |   39     39
 │    Warning: Diff output requires color.
 │    (Axis([:a, (typename(Axis)([:a, :b] => Base.OneTo(2)), SimpleAxis(Base.OneTo(4)))typename(SimpleAxis)(Base.OneTo(4)))
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Arrays/MetaAxisArray.jl:8-21
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/AxisIndices.jl
+│ 
+│ ```jldoctest README
+│ julia> using AxisIndices
+│ 
+│ julia> x = AxisArray{Int}(undef, OneToSRange(2), OneToSRange(2));
+│ 
+│ julia> x[1:4] .= 1;
+│ 
+│ julia> parent(x)
+│ 2×2 StaticArrays.MArray{Tuple{2,2},Int64,2,4} with indices SOneTo(2)×SOneTo(2):
+│  1  1
+│  1  1
+│ 
+│ julia> A = AxisArray(reshape(1:4, 2, 2), [:a, :b], ["one", "two"])
+│ 2×2 AxisArray{Int64,2}
+│  • dim_1 - [:a, :b]
+│  • dim_2 - ["one", "two"]
+│       one   two
+│   a     1     3
+│   b     2     4
+│ 
+│ julia> A[:a, "one"]
+│ 1
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ parent(x)
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 StaticArrays.MMatrix{2,2,Int64,4} with indices SOneTo(2)×SOneTo(2):
+│  1  1
+│  1  1
+│ 
+│ Expected output:
+│ 
+│ 2×2 StaticArrays.MArray{Tuple{2,2},Int64,2,4} with indices SOneTo(2)×SOneTo(2):
+│  1  1
+│  1  1
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 StaticArrays.MArray{Tuple{2,2},Int64,2,4} StaticArrays.MMatrix{2,2,Int64,4} with indices SOneTo(2)×SOneTo(2):
+│     1  1
+│     1  1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/CenteredAxis.jl:14-29
 │ 
 │ ```jldoctest
 │ julia> using AxisIndices
 │ 
-│ julia> MetaAxisArray([1 2; 3 4], (["a", "b"], [:one, :two]), metadata = "some metadata")
-│ 2×2 MetaAxisArray{Int64,2}
-│  • dim_1 - ["a", "b"]
-│  • dim_2 - [:one, :two]
-│ metadata: String
-│  • some metadata
-│       one   two
-│   a     1     2
-│   b     3     4
+│ julia> axis = CenteredAxis(1:10)
+│ CenteredAxis(-5:4 => 1:10)
 │ 
+│ julia> axis[10]  # the indexing goes straight to keys and is centered around zero
+│ ERROR: BoundsError: attempt to access 10-element CenteredAxis(-5:4 => 1:10) at index [10]
+│ [...]
+│ 
+│ julia> axis[-5]
+│ -5
+│ 
+│ julia> AxisIndices.to_index(axis, -5)
+│ 1
 │ 
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ MetaAxisArray([1 2; 3 4], (["a", "b"], [:one, :two]), metadata = "some metadata")
+│ axis = CenteredAxis(1:10)
 │ 
 │ Evaluated output:
 │ 
-│ 2×2 MetaAxisArray{Int64,2}
-│  • dim_1 - ["a", "b"]
-│  • dim_2 - [:one, :two]
-│ metadata: 13-codeunit String
-│  • some metadata
-│       one   two
-│   a     1     2
-│   b     3     4
+│ typename(CenteredAxis)(-5:4 => 1:10)
 │ 
 │ Expected output:
 │ 
-│ 2×2 MetaAxisArray{Int64,2}
-│  • dim_1 - ["a", "b"]
-│  • dim_2 - [:one, :two]
-│ metadata: String
-│  • some metadata
-│       one   two
-│   a     1     2
-│   b     3     4
+│ CenteredAxis(-5:4 => 1:10)
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    2×2 MetaAxisArray{Int64,2}
-│     • dim_1 - ["a", "b"]
-│     • dim_2 - [:one, :two]
+│    CenteredAxis(-5:4 typename(CenteredAxis)(-5:4 => 1:10)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/CenteredAxis.jl:14-29
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices
+│ 
+│ julia> axis = CenteredAxis(1:10)
+│ CenteredAxis(-5:4 => 1:10)
+│ 
+│ julia> axis[10]  # the indexing goes straight to keys and is centered around zero
+│ ERROR: BoundsError: attempt to access 10-element CenteredAxis(-5:4 => 1:10) at index [10]
+│ [...]
+│ 
+│ julia> axis[-5]
+│ -5
+│ 
+│ julia> AxisIndices.to_index(axis, -5)
+│ 1
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ axis[10]  # the indexing goes straight to keys and is centered around zero
+│ 
+│ Evaluated output:
+│ 
+│ ERROR: BoundsError: attempt to access 10-element typename(CenteredAxis)(-5:4 => 1:10) at index [10]
+│ Stacktrace:
+│  [1] getindex(axis::CenteredAxis{Int64,UnitRange{Int64},UnitRange{Int64}}, i::Int64)
+│    @ AxisIndices.Axes ~/.julia/packages/AxisIndices/DIY36/src/Axes/AbstractOffsetAxis.jl:31
+│  [2] top-level scope
+│    @ none:1
+│ 
+│ Expected output:
+│ 
+│ ERROR: BoundsError: attempt to access 10-element CenteredAxis(-5:4 => 1:10) at index [10]
+│ [...]
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    ERROR: BoundsError: attempt to access 10-element CenteredAxis(-5:4 typename(CenteredAxis)(-5:4 => 1:10) at index [10]
+│    [...]Stacktrace:
+│     [1] getindex(axis::CenteredAxis{Int64,UnitRange{Int64},UnitRange{Int64}}, i::Int64)
+│       @ AxisIndices.Axes ~/.julia/packages/AxisIndices/DIY36/src/Axes/AbstractOffsetAxis.jl:31
+│     [2] top-level scope
+│       @ none:1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/indexing.jl:277-289
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices
+│ 
+│ julia> MetaLinearAxes(([:a, :b], ["one", "two"]); metadata="some metadata")
+│ 2×2 MetaLinearAxes{Int64,2}
+│  • dim_1 - [:a, :b]
+│  • dim_2 - ["one", "two"]
+│ metadata: String
+│  • some metadata
+│       one   two
+│   a     1     3
+│   b     2     4
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ MetaLinearAxes(([:a, :b], ["one", "two"]); metadata="some metadata")
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 MetaLinearAxes{Int64,2}
+│  • dim_1 - [:a, :b]
+│  • dim_2 - ["one", "two"]
+│ metadata: 13-codeunit String
+│  • some metadata
+│       one   two
+│   a     1     3
+│   b     2     4
+│ 
+│ Expected output:
+│ 
+│ 2×2 MetaLinearAxes{Int64,2}
+│  • dim_1 - [:a, :b]
+│  • dim_2 - ["one", "two"]
+│ metadata: String
+│  • some metadata
+│       one   two
+│   a     1     3
+│   b     2     4
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 MetaLinearAxes{Int64,2}
+│     • dim_1 - [:a, :b]
+│     • dim_2 - ["one", "two"]
 │    metadata: 13-codeunit String
 │     • some metadata
 │          one   two
-│      a     1     2
-│      b     3     4
+│      a     1     3
+│      b     2     4
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/AbstractAxis.jl:154-159
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices
+│ 
+│ julia> similar(Axis(1.0:10.0, 1:10), [:one, :two])
+│ Axis([:one, :two] => 1:2)
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ similar(Axis(1.0:10.0, 1:10), [:one, :two])
+│ 
+│ Evaluated output:
+│ 
+│ typename(Axis)([:one, :two] => 1:2)
+│ 
+│ Expected output:
+│ 
+│ Axis([:one, :two] => 1:2)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    Axis([:one, typename(Axis)([:one, :two] => 1:2)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/AbstractAxis.jl:219-228
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices
+│ 
+│ julia> similar(Axis(1.0:10.0, 1:10), [:one, :two], UInt(1):UInt(2))
+│ Axis([:one, :two] => 0x0000000000000001:0x0000000000000002)
+│ 
+│ julia> similar(Axis(1.0:10.0, 1:10), [:one, :two], UInt(1):UInt(3))
+│ ERROR: DimensionMismatch("keys and indices must have same length, got length(keys) = 2 and length(indices) = 3.")
+│ [...]
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ similar(Axis(1.0:10.0, 1:10), [:one, :two], UInt(1):UInt(2))
+│ 
+│ Evaluated output:
+│ 
+│ typename(Axis)([:one, :two] => 0x0000000000000001:0x0000000000000002)
+│ 
+│ Expected output:
+│ 
+│ Axis([:one, :two] => 0x0000000000000001:0x0000000000000002)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    Axis([:one, typename(Axis)([:one, :two] => 0x0000000000000001:0x0000000000000002)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/AbstractAxis.jl:253-258
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices
+│ 
+│ julia> similar(SimpleAxis(1:10), 1:3)
+│ SimpleAxis(1:3)
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ similar(SimpleAxis(1:10), 1:3)
+│ 
+│ Evaluated output:
+│ 
+│ typename(SimpleAxis)(1:3)
+│ 
+│ Expected output:
+│ 
+│ SimpleAxis(1:3)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    SimpleAxis(1:3)typename(SimpleAxis)(1:3)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/indexing.jl:418-433
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices
+│ 
+│ julia> x = NamedMetaLinearAxes{(:dimx,:dimy)}(([:a, :b], ["one", "two"]); metadata="some metadata")
+│ 2×2 NamedMetaLinearAxes{Int64,2}
+│  • dimx - [:a, :b]
+│  • dimy - ["one", "two"]
+│ metadata: String
+│  • some metadata
+│       one   two
+│   a     1     3
+│   b     2     4
+│ 
+│ julia> x == NamedMetaLinearAxes((dimx = [:a, :b], dimy = ["one", "two"]); metadata="some metadata")
+│ true
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ x = NamedMetaLinearAxes{(:dimx,:dimy)}(([:a, :b], ["one", "two"]); metadata="some metadata")
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 NamedMetaLinearAxes{Int64,2}
+│  • dimx - [:a, :b]
+│  • dimy - ["one", "two"]
+│ metadata: 13-codeunit String
+│  • some metadata
+│       one   two
+│   a     1     3
+│   b     2     4
+│ 
+│ Expected output:
+│ 
+│ 2×2 NamedMetaLinearAxes{Int64,2}
+│  • dimx - [:a, :b]
+│  • dimy - ["one", "two"]
+│ metadata: String
+│  • some metadata
+│       one   two
+│   a     1     3
+│   b     2     4
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 NamedMetaLinearAxes{Int64,2}
+│     • dimx - [:a, :b]
+│     • dimy - ["one", "two"]
+│    metadata: 13-codeunit String
+│     • some metadata
+│          one   two
+│      a     1     3
+│      b     2     4
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/OffsetAxis.jl:26-31
+│ 
+│ ```jldoctest offset_axis_examples
+│ julia> using AxisIndices
+│ 
+│ julia> axis = OffsetAxis(-2, 1:3)
+│ OffsetAxis(-1:1 => 1:3)
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ axis = OffsetAxis(-2, 1:3)
+│ 
+│ Evaluated output:
+│ 
+│ typename(OffsetAxis)(-1:1 => 1:3)
+│ 
+│ Expected output:
+│ 
+│ OffsetAxis(-1:1 => 1:3)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    OffsetAxis(-1:1 typename(OffsetAxis)(-1:1 => 1:3)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/OffsetAxis.jl:55-59
+│ 
+│ ```jldoctest offset_axis_examples
+│ julia> axis[3]
+│ ERROR: BoundsError: attempt to access 3-element OffsetAxis(-1:1 => 1:3) at index [3]
+│ [...]
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ axis[3]
+│ 
+│ Evaluated output:
+│ 
+│ ERROR: BoundsError: attempt to access 3-element typename(OffsetAxis)(-1:1 => 1:3) at index [3]
+│ Stacktrace:
+│  [1] getindex(axis::OffsetAxis{Int64,UnitRange{Int64},UnitRange{Int64}}, i::Int64)
+│    @ AxisIndices.Axes ~/.julia/packages/AxisIndices/DIY36/src/Axes/AbstractOffsetAxis.jl:31
+│  [2] top-level scope
+│    @ none:1
+│ 
+│ Expected output:
+│ 
+│ ERROR: BoundsError: attempt to access 3-element OffsetAxis(-1:1 => 1:3) at index [3]
+│ [...]
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    ERROR: BoundsError: attempt to access 3-element OffsetAxis(-1:1 typename(OffsetAxis)(-1:1 => 1:3) at index [3]
+│    [...]Stacktrace:
+│     [1] getindex(axis::OffsetAxis{Int64,UnitRange{Int64},UnitRange{Int64}}, i::Int64)
+│       @ AxisIndices.Axes ~/.julia/packages/AxisIndices/DIY36/src/Axes/AbstractOffsetAxis.jl:31
+│     [2] top-level scope
+│       @ none:1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/OffsetAxis.jl:62-65
+│ 
+│ ```jldoctest offset_axis_examples
+│ julia> axis[0:1]  # offset of -2 still applies
+│ OffsetAxis(0:1 => 2:3)
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ axis[0:1]  # offset of -2 still applies
+│ 
+│ Evaluated output:
+│ 
+│ typename(OffsetAxis)(0:1 => 2:3)
+│ 
+│ Expected output:
+│ 
+│ OffsetAxis(0:1 => 2:3)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    OffsetAxis(0:1 typename(OffsetAxis)(0:1 => 2:3)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/indexing.jl:249-261
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices
+│ 
+│ julia> MetaCartesianAxes(([:a, :b], ["one", "two"]); metadata="some metadata")
+│ 2×2 MetaCartesianAxes{CartesianIndex{2},2}
+│  • dim_1 - [:a, :b]
+│  • dim_2 - ["one", "two"]
+│ metadata: String
+│  • some metadata
+│                        one                    two
+│   a   CartesianIndex(1, 1)   CartesianIndex(1, 2)
+│   b   CartesianIndex(2, 1)   CartesianIndex(2, 2)
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ MetaCartesianAxes(([:a, :b], ["one", "two"]); metadata="some metadata")
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 MetaCartesianAxes{CartesianIndex{2},2}
+│  • dim_1 - [:a, :b]
+│  • dim_2 - ["one", "two"]
+│ metadata: 13-codeunit String
+│  • some metadata
+│                        one                    two
+│   a   CartesianIndex(1, 1)   CartesianIndex(1, 2)
+│   b   CartesianIndex(2, 1)   CartesianIndex(2, 2)
+│ 
+│ Expected output:
+│ 
+│ 2×2 MetaCartesianAxes{CartesianIndex{2},2}
+│  • dim_1 - [:a, :b]
+│  • dim_2 - ["one", "two"]
+│ metadata: String
+│  • some metadata
+│                        one                    two
+│   a   CartesianIndex(1, 1)   CartesianIndex(1, 2)
+│   b   CartesianIndex(2, 1)   CartesianIndex(2, 2)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 MetaCartesianAxes{CartesianIndex{2},2}
+│     • dim_1 - [:a, :b]
+│     • dim_2 - ["one", "two"]
+│    metadata: 13-codeunit String
+│     • some metadata
+│                           one                    two
+│      a   CartesianIndex(1, 1)   CartesianIndex(1, 2)
+│      b   CartesianIndex(2, 1)   CartesianIndex(2, 2)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/indexing.jl:375-390
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices
+│ 
+│ julia> x = NamedMetaCartesianAxes{(:dimx,:dimy)}(([:a, :b], ["one", "two"]); metadata="some metadata")
+│ 2×2 NamedMetaCartesianAxes{CartesianIndex{2},2}
+│  • dimx - [:a, :b]
+│  • dimy - ["one", "two"]
+│ metadata: String
+│  • some metadata
+│                        one                    two
+│   a   CartesianIndex(1, 1)   CartesianIndex(1, 2)
+│   b   CartesianIndex(2, 1)   CartesianIndex(2, 2)
+│ 
+│ julia> x == NamedMetaCartesianAxes((dimx = [:a, :b], dimy = ["one", "two"]); metadata="some metadata")
+│ true
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ x = NamedMetaCartesianAxes{(:dimx,:dimy)}(([:a, :b], ["one", "two"]); metadata="some metadata")
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 NamedMetaCartesianAxes{CartesianIndex{2},2}
+│  • dimx - [:a, :b]
+│  • dimy - ["one", "two"]
+│ metadata: 13-codeunit String
+│  • some metadata
+│                        one                    two
+│   a   CartesianIndex(1, 1)   CartesianIndex(1, 2)
+│   b   CartesianIndex(2, 1)   CartesianIndex(2, 2)
+│ 
+│ Expected output:
+│ 
+│ 2×2 NamedMetaCartesianAxes{CartesianIndex{2},2}
+│  • dimx - [:a, :b]
+│  • dimy - ["one", "two"]
+│ metadata: String
+│  • some metadata
+│                        one                    two
+│   a   CartesianIndex(1, 1)   CartesianIndex(1, 2)
+│   b   CartesianIndex(2, 1)   CartesianIndex(2, 2)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 NamedMetaCartesianAxes{CartesianIndex{2},2}
+│     • dimx - [:a, :b]
+│     • dimy - ["one", "two"]
+│    metadata: 13-codeunit String
+│     • some metadata
+│                           one                    two
+│      a   CartesianIndex(1, 1)   CartesianIndex(1, 2)
+│      b   CartesianIndex(2, 1)   CartesianIndex(2, 2)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/SimpleAxis.jl:12-36
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices, StaticRanges
+│ 
+│ julia> x = SimpleAxis(2:10)
+│ SimpleAxis(2:10)
+│ 
+│ julia> x[2]
+│ 2
+│ 
+│ julia> x[==(2)]
+│ 2
+│ 
+│ julia> x[2] == x[==(2)]  # keys and values are same
+│ true
+│ 
+│ julia> x[>(2)]
+│ SimpleAxis(3:10)
+│ 
+│ julia> x[>(2)]
+│ SimpleAxis(3:10)
+│ 
+│ julia> x[1]
+│ ERROR: BoundsError: attempt to access 9-element SimpleAxis(2:10 => 2:10) at index [1]
+│ [...]
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ x = SimpleAxis(2:10)
+│ 
+│ Evaluated output:
+│ 
+│ typename(SimpleAxis)(2:10)
+│ 
+│ Expected output:
+│ 
+│ SimpleAxis(2:10)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    SimpleAxis(2:10)typename(SimpleAxis)(2:10)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/SimpleAxis.jl:12-36
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices, StaticRanges
+│ 
+│ julia> x = SimpleAxis(2:10)
+│ SimpleAxis(2:10)
+│ 
+│ julia> x[2]
+│ 2
+│ 
+│ julia> x[==(2)]
+│ 2
+│ 
+│ julia> x[2] == x[==(2)]  # keys and values are same
+│ true
+│ 
+│ julia> x[>(2)]
+│ SimpleAxis(3:10)
+│ 
+│ julia> x[>(2)]
+│ SimpleAxis(3:10)
+│ 
+│ julia> x[1]
+│ ERROR: BoundsError: attempt to access 9-element SimpleAxis(2:10 => 2:10) at index [1]
+│ [...]
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ x[>(2)]
+│ 
+│ Evaluated output:
+│ 
+│ typename(SimpleAxis)(3:10)
+│ 
+│ Expected output:
+│ 
+│ SimpleAxis(3:10)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    SimpleAxis(3:10)typename(SimpleAxis)(3:10)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/SimpleAxis.jl:12-36
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices, StaticRanges
+│ 
+│ julia> x = SimpleAxis(2:10)
+│ SimpleAxis(2:10)
+│ 
+│ julia> x[2]
+│ 2
+│ 
+│ julia> x[==(2)]
+│ 2
+│ 
+│ julia> x[2] == x[==(2)]  # keys and values are same
+│ true
+│ 
+│ julia> x[>(2)]
+│ SimpleAxis(3:10)
+│ 
+│ julia> x[>(2)]
+│ SimpleAxis(3:10)
+│ 
+│ julia> x[1]
+│ ERROR: BoundsError: attempt to access 9-element SimpleAxis(2:10 => 2:10) at index [1]
+│ [...]
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ x[>(2)]
+│ 
+│ Evaluated output:
+│ 
+│ typename(SimpleAxis)(3:10)
+│ 
+│ Expected output:
+│ 
+│ SimpleAxis(3:10)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    SimpleAxis(3:10)typename(SimpleAxis)(3:10)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/SimpleAxis.jl:12-36
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices, StaticRanges
+│ 
+│ julia> x = SimpleAxis(2:10)
+│ SimpleAxis(2:10)
+│ 
+│ julia> x[2]
+│ 2
+│ 
+│ julia> x[==(2)]
+│ 2
+│ 
+│ julia> x[2] == x[==(2)]  # keys and values are same
+│ true
+│ 
+│ julia> x[>(2)]
+│ SimpleAxis(3:10)
+│ 
+│ julia> x[>(2)]
+│ SimpleAxis(3:10)
+│ 
+│ julia> x[1]
+│ ERROR: BoundsError: attempt to access 9-element SimpleAxis(2:10 => 2:10) at index [1]
+│ [...]
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ x[1]
+│ 
+│ Evaluated output:
+│ 
+│ ERROR: BoundsError: attempt to access 9-element typename(SimpleAxis)(2:10 => 2:10) at index [1]
+│ Stacktrace:
+│  [1] to_index
+│    @ ~/.julia/packages/AxisIndices/DIY36/src/Interface/to_index.jl:39 [inlined]
+│  [2] to_index
+│    @ ~/.julia/packages/AxisIndices/DIY36/src/Interface/to_index.jl:18 [inlined]
+│  [3] getindex(axis::SimpleAxis{Int64,UnitRange{Int64}}, i::Int64)
+│    @ AxisIndices.Axes ~/.julia/packages/AxisIndices/DIY36/src/Axes/indexing.jl:114
+│  [4] top-level scope
+│    @ none:1
+│ 
+│ Expected output:
+│ 
+│ ERROR: BoundsError: attempt to access 9-element SimpleAxis(2:10 => 2:10) at index [1]
+│ [...]
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    ERROR: BoundsError: attempt to access 9-element SimpleAxis(2:10 typename(SimpleAxis)(2:10 => 2:10) at index [1]
+│    [...]Stacktrace:
+│     [1] to_index
+│       @ ~/.julia/packages/AxisIndices/DIY36/src/Interface/to_index.jl:39 [inlined]
+│     [2] to_index
+│       @ ~/.julia/packages/AxisIndices/DIY36/src/Interface/to_index.jl:18 [inlined]
+│     [3] getindex(axis::SimpleAxis{Int64,UnitRange{Int64}}, i::Int64)
+│       @ AxisIndices.Axes ~/.julia/packages/AxisIndices/DIY36/src/Axes/indexing.jl:114
+│     [4] top-level scope
+│       @ none:1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/SimpleAxis.jl:77-82
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices
+│ 
+│ julia> SimpleAxis(1, 10)
+│ SimpleAxis(1:10)
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ SimpleAxis(1, 10)
+│ 
+│ Evaluated output:
+│ 
+│ typename(SimpleAxis)(1:10)
+│ 
+│ Expected output:
+│ 
+│ SimpleAxis(1:10)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    SimpleAxis(1:10)typename(SimpleAxis)(1:10)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/SimpleAxis.jl:92-97
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices
+│ 
+│ julia> SimpleAxis(10)
+│ SimpleAxis(Base.OneTo(10))
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ SimpleAxis(10)
+│ 
+│ Evaluated output:
+│ 
+│ typename(SimpleAxis)(Base.OneTo(10))
+│ 
+│ Expected output:
+│ 
+│ SimpleAxis(Base.OneTo(10))
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    SimpleAxis(Base.OneTo(10))typename(SimpleAxis)(Base.OneTo(10))
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:12-23
+│ 
+│ ```jldoctest axis_examples
+│ julia> using AxisIndices
+│ 
+│ julia> x = Axis(2.0:11.0, 1:10)
+│ Axis(2.0:1.0:11.0 => 1:10)
+│ 
+│ julia> y = Axis(2.0:11.0)  # when only one argument is specified assume it's the keys
+│ Axis(2.0:1.0:11.0 => Base.OneTo(10))
+│ 
+│ julia> z = Axis(1:10)
+│ Axis(1:10 => Base.OneTo(10))
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ x = Axis(2.0:11.0, 1:10)
+│ 
+│ Evaluated output:
+│ 
+│ typename(Axis)(2.0:1.0:11.0 => 1:10)
+│ 
+│ Expected output:
+│ 
+│ Axis(2.0:1.0:11.0 => 1:10)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    Axis(2.0:1.0:11.0 typename(Axis)(2.0:1.0:11.0 => 1:10)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:12-23
+│ 
+│ ```jldoctest axis_examples
+│ julia> using AxisIndices
+│ 
+│ julia> x = Axis(2.0:11.0, 1:10)
+│ Axis(2.0:1.0:11.0 => 1:10)
+│ 
+│ julia> y = Axis(2.0:11.0)  # when only one argument is specified assume it's the keys
+│ Axis(2.0:1.0:11.0 => Base.OneTo(10))
+│ 
+│ julia> z = Axis(1:10)
+│ Axis(1:10 => Base.OneTo(10))
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ y = Axis(2.0:11.0)  # when only one argument is specified assume it's the keys
+│ 
+│ Evaluated output:
+│ 
+│ typename(Axis)(2.0:1.0:11.0 => Base.OneTo(10))
+│ 
+│ Expected output:
+│ 
+│ Axis(2.0:1.0:11.0 => Base.OneTo(10))
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    Axis(2.0:1.0:11.0 typename(Axis)(2.0:1.0:11.0 => Base.OneTo(10))
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:12-23
+│ 
+│ ```jldoctest axis_examples
+│ julia> using AxisIndices
+│ 
+│ julia> x = Axis(2.0:11.0, 1:10)
+│ Axis(2.0:1.0:11.0 => 1:10)
+│ 
+│ julia> y = Axis(2.0:11.0)  # when only one argument is specified assume it's the keys
+│ Axis(2.0:1.0:11.0 => Base.OneTo(10))
+│ 
+│ julia> z = Axis(1:10)
+│ Axis(1:10 => Base.OneTo(10))
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ z = Axis(1:10)
+│ 
+│ Evaluated output:
+│ 
+│ typename(Axis)(1:10 => Base.OneTo(10))
+│ 
+│ Expected output:
+│ 
+│ Axis(1:10 => Base.OneTo(10))
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    Axis(1:10 typename(Axis)(1:10 => Base.OneTo(10))
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:26-44
+│ 
+│ ```jldoctest axis_examples
+│ julia> x[2]
+│ 2
+│ 
+│ julia> x[2] == y[2] == z[2]
+│ true
+│ 
+│ julia> x[1:2]
+│ Axis(2.0:1.0:3.0 => 1:2)
+│ 
+│ julia> y[1:2]
+│ Axis(2.0:1.0:3.0 => 1:2)
+│ 
+│ julia> z[1:2]
+│ Axis(1:2 => 1:2)
+│ 
+│ julia> x[1:2] == y[1:2] == z[1:2]
+│ true
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ x[1:2]
+│ 
+│ Evaluated output:
+│ 
+│ typename(Axis)(2.0:1.0:3.0 => 1:2)
+│ 
+│ Expected output:
+│ 
+│ Axis(2.0:1.0:3.0 => 1:2)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    Axis(2.0:1.0:3.0 typename(Axis)(2.0:1.0:3.0 => 1:2)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:26-44
+│ 
+│ ```jldoctest axis_examples
+│ julia> x[2]
+│ 2
+│ 
+│ julia> x[2] == y[2] == z[2]
+│ true
+│ 
+│ julia> x[1:2]
+│ Axis(2.0:1.0:3.0 => 1:2)
+│ 
+│ julia> y[1:2]
+│ Axis(2.0:1.0:3.0 => 1:2)
+│ 
+│ julia> z[1:2]
+│ Axis(1:2 => 1:2)
+│ 
+│ julia> x[1:2] == y[1:2] == z[1:2]
+│ true
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ y[1:2]
+│ 
+│ Evaluated output:
+│ 
+│ typename(Axis)(2.0:1.0:3.0 => 1:2)
+│ 
+│ Expected output:
+│ 
+│ Axis(2.0:1.0:3.0 => 1:2)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    Axis(2.0:1.0:3.0 typename(Axis)(2.0:1.0:3.0 => 1:2)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:26-44
+│ 
+│ ```jldoctest axis_examples
+│ julia> x[2]
+│ 2
+│ 
+│ julia> x[2] == y[2] == z[2]
+│ true
+│ 
+│ julia> x[1:2]
+│ Axis(2.0:1.0:3.0 => 1:2)
+│ 
+│ julia> y[1:2]
+│ Axis(2.0:1.0:3.0 => 1:2)
+│ 
+│ julia> z[1:2]
+│ Axis(1:2 => 1:2)
+│ 
+│ julia> x[1:2] == y[1:2] == z[1:2]
+│ true
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ z[1:2]
+│ 
+│ Evaluated output:
+│ 
+│ typename(Axis)(1:2 => 1:2)
+│ 
+│ Expected output:
+│ 
+│ Axis(1:2 => 1:2)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    Axis(1:2 typename(Axis)(1:2 => 1:2)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:48-68
+│ 
+│ ```jldoctest axis_examples
+│ julia> x[==(3.0)]
+│ 2
+│ 
+│ julia> x[==(3.0)] ==       # 3.0 is the 2nd key of x
+│        y[isequal(3.0)] ==  # 3.0 is the 2nd key of y
+│        z[==(2)]            # 2 is the 2nd key of z
+│ true
+│ 
+│ julia> x[<(4.0)]  # all keys less than 4.0 are 2.0:3.0 which correspond to values 1:2
+│ Axis(2.0:1.0:3.0 => 1:2)
+│ 
+│ julia> y[<=(3.0)]  # all keys less than or equal to 3.0 are 2.0:3.0 which correspond to values 1:2
+│ Axis(2.0:1.0:3.0 => 1:2)
+│ 
+│ julia> z[<(3)]  # all keys less than or equal to 3 are 1:2 which correspond to values 1:2
+│ Axis(1:2 => 1:2)
+│ 
+│ julia> x[<(4.0)] == y[<=(3.0)] == z[<(3)]
+│ true
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ x[<(4.0)]  # all keys less than 4.0 are 2.0:3.0 which correspond to values 1:2
+│ 
+│ Evaluated output:
+│ 
+│ typename(Axis)(2.0:1.0:3.0 => 1:2)
+│ 
+│ Expected output:
+│ 
+│ Axis(2.0:1.0:3.0 => 1:2)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    Axis(2.0:1.0:3.0 typename(Axis)(2.0:1.0:3.0 => 1:2)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:48-68
+│ 
+│ ```jldoctest axis_examples
+│ julia> x[==(3.0)]
+│ 2
+│ 
+│ julia> x[==(3.0)] ==       # 3.0 is the 2nd key of x
+│        y[isequal(3.0)] ==  # 3.0 is the 2nd key of y
+│        z[==(2)]            # 2 is the 2nd key of z
+│ true
+│ 
+│ julia> x[<(4.0)]  # all keys less than 4.0 are 2.0:3.0 which correspond to values 1:2
+│ Axis(2.0:1.0:3.0 => 1:2)
+│ 
+│ julia> y[<=(3.0)]  # all keys less than or equal to 3.0 are 2.0:3.0 which correspond to values 1:2
+│ Axis(2.0:1.0:3.0 => 1:2)
+│ 
+│ julia> z[<(3)]  # all keys less than or equal to 3 are 1:2 which correspond to values 1:2
+│ Axis(1:2 => 1:2)
+│ 
+│ julia> x[<(4.0)] == y[<=(3.0)] == z[<(3)]
+│ true
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ y[<=(3.0)]  # all keys less than or equal to 3.0 are 2.0:3.0 which correspond to values 1:2
+│ 
+│ Evaluated output:
+│ 
+│ typename(Axis)(2.0:1.0:3.0 => 1:2)
+│ 
+│ Expected output:
+│ 
+│ Axis(2.0:1.0:3.0 => 1:2)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    Axis(2.0:1.0:3.0 typename(Axis)(2.0:1.0:3.0 => 1:2)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/Axis.jl:48-68
+│ 
+│ ```jldoctest axis_examples
+│ julia> x[==(3.0)]
+│ 2
+│ 
+│ julia> x[==(3.0)] ==       # 3.0 is the 2nd key of x
+│        y[isequal(3.0)] ==  # 3.0 is the 2nd key of y
+│        z[==(2)]            # 2 is the 2nd key of z
+│ true
+│ 
+│ julia> x[<(4.0)]  # all keys less than 4.0 are 2.0:3.0 which correspond to values 1:2
+│ Axis(2.0:1.0:3.0 => 1:2)
+│ 
+│ julia> y[<=(3.0)]  # all keys less than or equal to 3.0 are 2.0:3.0 which correspond to values 1:2
+│ Axis(2.0:1.0:3.0 => 1:2)
+│ 
+│ julia> z[<(3)]  # all keys less than or equal to 3 are 1:2 which correspond to values 1:2
+│ Axis(1:2 => 1:2)
+│ 
+│ julia> x[<(4.0)] == y[<=(3.0)] == z[<(3)]
+│ true
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ z[<(3)]  # all keys less than or equal to 3 are 1:2 which correspond to values 1:2
+│ 
+│ Evaluated output:
+│ 
+│ typename(Axis)(1:2 => 1:2)
+│ 
+│ Expected output:
+│ 
+│ Axis(1:2 => 1:2)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    Axis(1:2 typename(Axis)(1:2 => 1:2)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/permute_axes.jl:10-18
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices
+│ 
+│ julia> AxisIndices.permute_axes(rand(2, 4, 6), (1, 3, 2))
+│ (Base.OneTo(2), Base.OneTo(6), Base.OneTo(4))
+│ 
+│ julia> AxisIndices.permute_axes((Axis(1:2), Axis(1:4), Axis(1:6)), (1, 3, 2))
+│ (Axis(1:2 => Base.OneTo(2)), Axis(1:6 => Base.OneTo(6)), Axis(1:4 => Base.OneTo(4)))
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ AxisIndices.permute_axes((Axis(1:2), Axis(1:4), Axis(1:6)), (1, 3, 2))
+│ 
+│ Evaluated output:
+│ 
+│ (typename(Axis)(1:2 => Base.OneTo(2)), typename(Axis)(1:6 => Base.OneTo(6)), typename(Axis)(1:4 => Base.OneTo(4)))
+│ 
+│ Expected output:
+│ 
+│ (Axis(1:2 => Base.OneTo(2)), Axis(1:6 => Base.OneTo(6)), Axis(1:4 => Base.OneTo(4)))
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    (Axis(1:2 (typename(Axis)(1:2 => Base.OneTo(2)), Axis(1:6 typename(Axis)(1:6 => Base.OneTo(6)), Axis(1:4 typename(Axis)(1:4 => Base.OneTo(4)))
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/permute_axes.jl:33-47
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices, StaticRanges
+│ 
+│ julia> length.(AxisIndices.permute_axes(rand(4))) == (1, 4)
+│ true
+│ 
+│ julia> AxisIndices.permute_axes((Axis(1:4),))
+│ (SimpleAxis(Base.OneTo(1)), Axis(1:4 => Base.OneTo(4)))
+│ 
+│ julia> AxisIndices.permute_axes((Axis(mrange(1, 4)),))
+│ (SimpleAxis(OneToMRange(1)), Axis(UnitMRange(1:4) => OneToMRange(4)))
+│ 
+│ julia> AxisIndices.permute_axes((Axis(srange(1, 4)),))
+│ (SimpleAxis(OneToSRange(1)), Axis(UnitSRange(1:4) => OneToSRange(4)))
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ AxisIndices.permute_axes((Axis(1:4),))
+│ 
+│ Evaluated output:
+│ 
+│ (typename(SimpleAxis)(Base.OneTo(1)), typename(Axis)(1:4 => Base.OneTo(4)))
+│ 
+│ Expected output:
+│ 
+│ (SimpleAxis(Base.OneTo(1)), Axis(1:4 => Base.OneTo(4)))
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    (SimpleAxis(Base.OneTo(1)), Axis(1:4 (typename(SimpleAxis)(Base.OneTo(1)), typename(Axis)(1:4 => Base.OneTo(4)))
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/permute_axes.jl:33-47
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices, StaticRanges
+│ 
+│ julia> length.(AxisIndices.permute_axes(rand(4))) == (1, 4)
+│ true
+│ 
+│ julia> AxisIndices.permute_axes((Axis(1:4),))
+│ (SimpleAxis(Base.OneTo(1)), Axis(1:4 => Base.OneTo(4)))
+│ 
+│ julia> AxisIndices.permute_axes((Axis(mrange(1, 4)),))
+│ (SimpleAxis(OneToMRange(1)), Axis(UnitMRange(1:4) => OneToMRange(4)))
+│ 
+│ julia> AxisIndices.permute_axes((Axis(srange(1, 4)),))
+│ (SimpleAxis(OneToSRange(1)), Axis(UnitSRange(1:4) => OneToSRange(4)))
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ AxisIndices.permute_axes((Axis(mrange(1, 4)),))
+│ 
+│ Evaluated output:
+│ 
+│ (typename(SimpleAxis)(OneToMRange(1)), typename(Axis)(UnitMRange(1:4) => OneToMRange(4)))
+│ 
+│ Expected output:
+│ 
+│ (SimpleAxis(OneToMRange(1)), Axis(UnitMRange(1:4) => OneToMRange(4)))
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    (SimpleAxis(OneToMRange(1)), Axis(UnitMRange(1:4) (typename(SimpleAxis)(OneToMRange(1)), typename(Axis)(UnitMRange(1:4) => OneToMRange(4)))
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/permute_axes.jl:33-47
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices, StaticRanges
+│ 
+│ julia> length.(AxisIndices.permute_axes(rand(4))) == (1, 4)
+│ true
+│ 
+│ julia> AxisIndices.permute_axes((Axis(1:4),))
+│ (SimpleAxis(Base.OneTo(1)), Axis(1:4 => Base.OneTo(4)))
+│ 
+│ julia> AxisIndices.permute_axes((Axis(mrange(1, 4)),))
+│ (SimpleAxis(OneToMRange(1)), Axis(UnitMRange(1:4) => OneToMRange(4)))
+│ 
+│ julia> AxisIndices.permute_axes((Axis(srange(1, 4)),))
+│ (SimpleAxis(OneToSRange(1)), Axis(UnitSRange(1:4) => OneToSRange(4)))
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ AxisIndices.permute_axes((Axis(srange(1, 4)),))
+│ 
+│ Evaluated output:
+│ 
+│ (typename(SimpleAxis)(OneToSRange(1)), typename(Axis)(UnitSRange(1:4) => OneToSRange(4)))
+│ 
+│ Expected output:
+│ 
+│ (SimpleAxis(OneToSRange(1)), Axis(UnitSRange(1:4) => OneToSRange(4)))
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    (SimpleAxis(OneToSRange(1)), Axis(UnitSRange(1:4) (typename(SimpleAxis)(OneToSRange(1)), typename(Axis)(UnitSRange(1:4) => OneToSRange(4)))
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/AxisIndices/DIY36/src/Axes/permute_axes.jl:70-78
+│ 
+│ ```jldoctest
+│ julia> using AxisIndices
+│ 
+│ julia> AxisIndices.permute_axes(rand(4, 2))
+│ (Base.OneTo(2), Base.OneTo(4))
+│ 
+│ julia> AxisIndices.permute_axes((Axis(1:4), Axis(1:2)))
+│ (Axis(1:2 => Base.OneTo(2)), Axis(1:4 => Base.OneTo(4)))
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ AxisIndices.permute_axes((Axis(1:4), Axis(1:2)))
+│ 
+│ Evaluated output:
+│ 
+│ (typename(Axis)(1:2 => Base.OneTo(2)), typename(Axis)(1:4 => Base.OneTo(4)))
+│ 
+│ Expected output:
+│ 
+│ (Axis(1:2 => Base.OneTo(2)), Axis(1:4 => Base.OneTo(4)))
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    (Axis(1:2 (typename(Axis)(1:2 => Base.OneTo(2)), Axis(1:4 typename(Axis)(1:4 => Base.OneTo(4)))
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
 ┌ Error: Doctesting failed
 │   exception =

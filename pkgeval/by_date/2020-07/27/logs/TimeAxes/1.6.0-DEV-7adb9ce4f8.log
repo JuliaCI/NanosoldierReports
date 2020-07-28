@@ -19,30 +19,30 @@ Environment:
   Installed OrderedCollections ────────── v1.3.0
   Installed FFTW ──────────────────────── v1.2.2
   Installed AxisIndices ───────────────── v0.5.1
-  Installed IteratorInterfaceExtensions ─ v1.0.0
   Installed Missings ──────────────────── v0.4.3
-  Installed EllipsisNotation ──────────── v0.4.0
+  Installed ChainedFixes ──────────────── v0.2.0
+  Installed IteratorInterfaceExtensions ─ v1.0.0
   Installed MetadataArrays ────────────── v0.1.0
+  Installed StaticRanges ──────────────── v0.7.0
+  Installed EllipsisNotation ──────────── v0.4.0
   Installed IntervalSets ──────────────── v0.5.1
   Installed NamedDims ─────────────────── v0.2.23
-  Installed StaticRanges ──────────────── v0.7.0
-  Installed DataValueInterfaces ───────── v1.0.0
   Installed MKL_jll ───────────────────── v2020.1.216+0
-  Installed ChainedFixes ──────────────── v0.2.0
   Installed TableTraits ───────────────── v1.0.0
   Installed AbstractFFTs ──────────────── v0.5.0
-  Installed Tables ────────────────────── v1.0.5
+  Installed DataValueInterfaces ───────── v1.0.0
   Installed Formatting ────────────────── v0.4.1
   Installed FFTW_jll ──────────────────── v3.3.9+5
+  Installed Tables ────────────────────── v1.0.5
+  Installed MappedArrays ──────────────── v0.2.2
   Installed Requires ──────────────────── v1.0.1
   Installed ArrayInterface ────────────── v2.11.0
-  Installed StaticArrays ──────────────── v0.12.4
   Installed UnPack ────────────────────── v1.0.1
-  Installed Parameters ────────────────── v0.12.1
-  Installed DataValues ────────────────── v0.4.13
   Installed PrettyTables ──────────────── v0.9.1
+  Installed Parameters ────────────────── v0.12.1
+  Installed StaticArrays ──────────────── v0.12.4
+  Installed DataValues ────────────────── v0.4.13
   Installed Reexport ──────────────────── v0.2.0
-  Installed MappedArrays ──────────────── v0.2.2
 Updating `~/.julia/environments/v1.6/Project.toml`
   [9a9fc9a6] + TimeAxes v0.3.1
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -101,14 +101,14 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
    Building FFTW → `~/.julia/packages/FFTW/kcXL6/deps/build.log`
     Testing TimeAxes
-Status `/tmp/jl_DqNngC/Project.toml`
+Status `/tmp/jl_Tta6C2/Project.toml`
   [f52c9ee2] AxisIndices v0.5.1
   [e30172f5] Documenter v0.25.1
   [9a9fc9a6] TimeAxes v0.3.1
   [1986cc42] Unitful v1.3.0
   [ade2ca70] Dates
   [8dfed614] Test
-Status `/tmp/jl_DqNngC/Manifest.toml`
+Status `/tmp/jl_Tta6C2/Manifest.toml`
   [621f4979] AbstractFFTs v0.5.0
   [4fba245c] ArrayInterface v2.11.0
   [f52c9ee2] AxisIndices v0.5.1
@@ -360,6 +360,198 @@ fft-tests     |   20     20
 │       9 s   540
 │      10 s   550
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/TimeAxes/J5eSJ/src/TimeAxes.jl
+│ 
+│ ```jldoctest README
+│ julia> using TimeAxes, Dates
+│ 
+│ julia> t = TimeAxis(Second(1):Second(1):Second(10))
+│ TimeAxis(1 second:1 second:10 seconds => Base.OneTo(10))
+│ 
+│ julia> t2 = t[Second(1)..Second(3)]  # index by time interval
+│ TimeAxis(1 second:1 second:3 seconds => 1:3)
+│ 
+│ julia> t[:ts1] = Second(1);
+│ 
+│ julia> t[:ts2] = Second(3);
+│ 
+│ julia> t2 = t[:ts1..:ts2]  # index by interval between two time stamps
+│ TimeAxis(1 second:1 second:3 seconds => 1:3)
+│ 
+│ julia> t[>(:ts2)] == t[>(Second(3))]  # all time points above :ts2 and 3 seconds returns the same thing
+│ true
+│ 
+│ julia> x = AxisArray(ones(10, 2), t)
+│ 10×2 AxisArray{Float64,2}
+│  • dim_1 - 1 second:1 second:10 seconds
+│  • dim_2 - 1:2
+│                  1     2
+│     1 second   1.0   1.0
+│    2 seconds   1.0   1.0
+│    3 seconds   1.0   1.0
+│    4 seconds   1.0   1.0
+│    5 seconds   1.0   1.0
+│    6 seconds   1.0   1.0
+│    7 seconds   1.0   1.0
+│    8 seconds   1.0   1.0
+│    9 seconds   1.0   1.0
+│   10 seconds   1.0   1.0
+│ 
+│ julia> x[:ts1..:ts2,:]
+│ 3×2 AxisArray{Float64,2}
+│  • dim_1 - 1 second:1 second:3 seconds
+│  • dim_2 - 1:2
+│                 1     2
+│    1 second   1.0   1.0
+│   2 seconds   1.0   1.0
+│   3 seconds   1.0   1.0
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ t = TimeAxis(Second(1):Second(1):Second(10))
+│ 
+│ Evaluated output:
+│ 
+│ typename(TimeAxis)(Second(1):Second(1):Second(10) => Base.OneTo(10))
+│ 
+│ Expected output:
+│ 
+│ TimeAxis(1 second:1 second:10 seconds => Base.OneTo(10))
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    TimeAxis(1 second:1 second:10 seconds typename(TimeAxis)(Second(1):Second(1):Second(10) => Base.OneTo(10))
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/TimeAxes/J5eSJ/src/TimeAxes.jl
+│ 
+│ ```jldoctest README
+│ julia> using TimeAxes, Dates
+│ 
+│ julia> t = TimeAxis(Second(1):Second(1):Second(10))
+│ TimeAxis(1 second:1 second:10 seconds => Base.OneTo(10))
+│ 
+│ julia> t2 = t[Second(1)..Second(3)]  # index by time interval
+│ TimeAxis(1 second:1 second:3 seconds => 1:3)
+│ 
+│ julia> t[:ts1] = Second(1);
+│ 
+│ julia> t[:ts2] = Second(3);
+│ 
+│ julia> t2 = t[:ts1..:ts2]  # index by interval between two time stamps
+│ TimeAxis(1 second:1 second:3 seconds => 1:3)
+│ 
+│ julia> t[>(:ts2)] == t[>(Second(3))]  # all time points above :ts2 and 3 seconds returns the same thing
+│ true
+│ 
+│ julia> x = AxisArray(ones(10, 2), t)
+│ 10×2 AxisArray{Float64,2}
+│  • dim_1 - 1 second:1 second:10 seconds
+│  • dim_2 - 1:2
+│                  1     2
+│     1 second   1.0   1.0
+│    2 seconds   1.0   1.0
+│    3 seconds   1.0   1.0
+│    4 seconds   1.0   1.0
+│    5 seconds   1.0   1.0
+│    6 seconds   1.0   1.0
+│    7 seconds   1.0   1.0
+│    8 seconds   1.0   1.0
+│    9 seconds   1.0   1.0
+│   10 seconds   1.0   1.0
+│ 
+│ julia> x[:ts1..:ts2,:]
+│ 3×2 AxisArray{Float64,2}
+│  • dim_1 - 1 second:1 second:3 seconds
+│  • dim_2 - 1:2
+│                 1     2
+│    1 second   1.0   1.0
+│   2 seconds   1.0   1.0
+│   3 seconds   1.0   1.0
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ t2 = t[Second(1)..Second(3)]  # index by time interval
+│ 
+│ Evaluated output:
+│ 
+│ typename(TimeAxis)(Second(1):Second(1):Second(3) => 1:3)
+│ 
+│ Expected output:
+│ 
+│ TimeAxis(1 second:1 second:3 seconds => 1:3)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    TimeAxis(1 second:1 second:3 seconds typename(TimeAxis)(Second(1):Second(1):Second(3) => 1:3)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/TimeAxes/J5eSJ/src/TimeAxes.jl
+│ 
+│ ```jldoctest README
+│ julia> using TimeAxes, Dates
+│ 
+│ julia> t = TimeAxis(Second(1):Second(1):Second(10))
+│ TimeAxis(1 second:1 second:10 seconds => Base.OneTo(10))
+│ 
+│ julia> t2 = t[Second(1)..Second(3)]  # index by time interval
+│ TimeAxis(1 second:1 second:3 seconds => 1:3)
+│ 
+│ julia> t[:ts1] = Second(1);
+│ 
+│ julia> t[:ts2] = Second(3);
+│ 
+│ julia> t2 = t[:ts1..:ts2]  # index by interval between two time stamps
+│ TimeAxis(1 second:1 second:3 seconds => 1:3)
+│ 
+│ julia> t[>(:ts2)] == t[>(Second(3))]  # all time points above :ts2 and 3 seconds returns the same thing
+│ true
+│ 
+│ julia> x = AxisArray(ones(10, 2), t)
+│ 10×2 AxisArray{Float64,2}
+│  • dim_1 - 1 second:1 second:10 seconds
+│  • dim_2 - 1:2
+│                  1     2
+│     1 second   1.0   1.0
+│    2 seconds   1.0   1.0
+│    3 seconds   1.0   1.0
+│    4 seconds   1.0   1.0
+│    5 seconds   1.0   1.0
+│    6 seconds   1.0   1.0
+│    7 seconds   1.0   1.0
+│    8 seconds   1.0   1.0
+│    9 seconds   1.0   1.0
+│   10 seconds   1.0   1.0
+│ 
+│ julia> x[:ts1..:ts2,:]
+│ 3×2 AxisArray{Float64,2}
+│  • dim_1 - 1 second:1 second:3 seconds
+│  • dim_2 - 1:2
+│                 1     2
+│    1 second   1.0   1.0
+│   2 seconds   1.0   1.0
+│   3 seconds   1.0   1.0
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ t2 = t[:ts1..:ts2]  # index by interval between two time stamps
+│ 
+│ Evaluated output:
+│ 
+│ typename(TimeAxis)(Second(1):Second(1):Second(3) => 1:3)
+│ 
+│ Expected output:
+│ 
+│ TimeAxis(1 second:1 second:3 seconds => 1:3)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    TimeAxis(1 second:1 second:3 seconds typename(TimeAxis)(Second(1):Second(1):Second(3) => 1:3)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/TimeAxes/J5eSJ/src/lead.jl:11-45
 │ 
 │ ```jldoctest
@@ -559,198 +751,6 @@ fft-tests     |   20     20
 │     2  3
 │     5  6
 │     8  9
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/TimeAxes/J5eSJ/src/TimeAxes.jl
-│ 
-│ ```jldoctest README
-│ julia> using TimeAxes, Dates
-│ 
-│ julia> t = TimeAxis(Second(1):Second(1):Second(10))
-│ TimeAxis(1 second:1 second:10 seconds => Base.OneTo(10))
-│ 
-│ julia> t2 = t[Second(1)..Second(3)]  # index by time interval
-│ TimeAxis(1 second:1 second:3 seconds => 1:3)
-│ 
-│ julia> t[:ts1] = Second(1);
-│ 
-│ julia> t[:ts2] = Second(3);
-│ 
-│ julia> t2 = t[:ts1..:ts2]  # index by interval between two time stamps
-│ TimeAxis(1 second:1 second:3 seconds => 1:3)
-│ 
-│ julia> t[>(:ts2)] == t[>(Second(3))]  # all time points above :ts2 and 3 seconds returns the same thing
-│ true
-│ 
-│ julia> x = AxisArray(ones(10, 2), t)
-│ 10×2 AxisArray{Float64,2}
-│  • dim_1 - 1 second:1 second:10 seconds
-│  • dim_2 - 1:2
-│                  1     2
-│     1 second   1.0   1.0
-│    2 seconds   1.0   1.0
-│    3 seconds   1.0   1.0
-│    4 seconds   1.0   1.0
-│    5 seconds   1.0   1.0
-│    6 seconds   1.0   1.0
-│    7 seconds   1.0   1.0
-│    8 seconds   1.0   1.0
-│    9 seconds   1.0   1.0
-│   10 seconds   1.0   1.0
-│ 
-│ julia> x[:ts1..:ts2,:]
-│ 3×2 AxisArray{Float64,2}
-│  • dim_1 - 1 second:1 second:3 seconds
-│  • dim_2 - 1:2
-│                 1     2
-│    1 second   1.0   1.0
-│   2 seconds   1.0   1.0
-│   3 seconds   1.0   1.0
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ t = TimeAxis(Second(1):Second(1):Second(10))
-│ 
-│ Evaluated output:
-│ 
-│ typename(TimeAxis)(Second(1):Second(1):Second(10) => Base.OneTo(10))
-│ 
-│ Expected output:
-│ 
-│ TimeAxis(1 second:1 second:10 seconds => Base.OneTo(10))
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    TimeAxis(1 second:1 second:10 seconds typename(TimeAxis)(Second(1):Second(1):Second(10) => Base.OneTo(10))
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/TimeAxes/J5eSJ/src/TimeAxes.jl
-│ 
-│ ```jldoctest README
-│ julia> using TimeAxes, Dates
-│ 
-│ julia> t = TimeAxis(Second(1):Second(1):Second(10))
-│ TimeAxis(1 second:1 second:10 seconds => Base.OneTo(10))
-│ 
-│ julia> t2 = t[Second(1)..Second(3)]  # index by time interval
-│ TimeAxis(1 second:1 second:3 seconds => 1:3)
-│ 
-│ julia> t[:ts1] = Second(1);
-│ 
-│ julia> t[:ts2] = Second(3);
-│ 
-│ julia> t2 = t[:ts1..:ts2]  # index by interval between two time stamps
-│ TimeAxis(1 second:1 second:3 seconds => 1:3)
-│ 
-│ julia> t[>(:ts2)] == t[>(Second(3))]  # all time points above :ts2 and 3 seconds returns the same thing
-│ true
-│ 
-│ julia> x = AxisArray(ones(10, 2), t)
-│ 10×2 AxisArray{Float64,2}
-│  • dim_1 - 1 second:1 second:10 seconds
-│  • dim_2 - 1:2
-│                  1     2
-│     1 second   1.0   1.0
-│    2 seconds   1.0   1.0
-│    3 seconds   1.0   1.0
-│    4 seconds   1.0   1.0
-│    5 seconds   1.0   1.0
-│    6 seconds   1.0   1.0
-│    7 seconds   1.0   1.0
-│    8 seconds   1.0   1.0
-│    9 seconds   1.0   1.0
-│   10 seconds   1.0   1.0
-│ 
-│ julia> x[:ts1..:ts2,:]
-│ 3×2 AxisArray{Float64,2}
-│  • dim_1 - 1 second:1 second:3 seconds
-│  • dim_2 - 1:2
-│                 1     2
-│    1 second   1.0   1.0
-│   2 seconds   1.0   1.0
-│   3 seconds   1.0   1.0
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ t2 = t[Second(1)..Second(3)]  # index by time interval
-│ 
-│ Evaluated output:
-│ 
-│ typename(TimeAxis)(Second(1):Second(1):Second(3) => 1:3)
-│ 
-│ Expected output:
-│ 
-│ TimeAxis(1 second:1 second:3 seconds => 1:3)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    TimeAxis(1 second:1 second:3 seconds typename(TimeAxis)(Second(1):Second(1):Second(3) => 1:3)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/TimeAxes/J5eSJ/src/TimeAxes.jl
-│ 
-│ ```jldoctest README
-│ julia> using TimeAxes, Dates
-│ 
-│ julia> t = TimeAxis(Second(1):Second(1):Second(10))
-│ TimeAxis(1 second:1 second:10 seconds => Base.OneTo(10))
-│ 
-│ julia> t2 = t[Second(1)..Second(3)]  # index by time interval
-│ TimeAxis(1 second:1 second:3 seconds => 1:3)
-│ 
-│ julia> t[:ts1] = Second(1);
-│ 
-│ julia> t[:ts2] = Second(3);
-│ 
-│ julia> t2 = t[:ts1..:ts2]  # index by interval between two time stamps
-│ TimeAxis(1 second:1 second:3 seconds => 1:3)
-│ 
-│ julia> t[>(:ts2)] == t[>(Second(3))]  # all time points above :ts2 and 3 seconds returns the same thing
-│ true
-│ 
-│ julia> x = AxisArray(ones(10, 2), t)
-│ 10×2 AxisArray{Float64,2}
-│  • dim_1 - 1 second:1 second:10 seconds
-│  • dim_2 - 1:2
-│                  1     2
-│     1 second   1.0   1.0
-│    2 seconds   1.0   1.0
-│    3 seconds   1.0   1.0
-│    4 seconds   1.0   1.0
-│    5 seconds   1.0   1.0
-│    6 seconds   1.0   1.0
-│    7 seconds   1.0   1.0
-│    8 seconds   1.0   1.0
-│    9 seconds   1.0   1.0
-│   10 seconds   1.0   1.0
-│ 
-│ julia> x[:ts1..:ts2,:]
-│ 3×2 AxisArray{Float64,2}
-│  • dim_1 - 1 second:1 second:3 seconds
-│  • dim_2 - 1:2
-│                 1     2
-│    1 second   1.0   1.0
-│   2 seconds   1.0   1.0
-│   3 seconds   1.0   1.0
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ t2 = t[:ts1..:ts2]  # index by interval between two time stamps
-│ 
-│ Evaluated output:
-│ 
-│ typename(TimeAxis)(Second(1):Second(1):Second(3) => 1:3)
-│ 
-│ Expected output:
-│ 
-│ TimeAxis(1 second:1 second:3 seconds => 1:3)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    TimeAxis(1 second:1 second:3 seconds typename(TimeAxis)(Second(1):Second(1):Second(3) => 1:3)
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
 ┌ Error: Doctesting failed
 │   exception =
