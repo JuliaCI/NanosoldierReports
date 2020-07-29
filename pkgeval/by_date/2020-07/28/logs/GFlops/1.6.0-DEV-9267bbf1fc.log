@@ -1,0 +1,553 @@
+Julia Version 1.6.0-DEV.548
+Commit 9267bbf1fc (2020-07-27 16:57 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed GFlops ───────── v0.1.1
+  Installed Parsers ──────── v1.0.7
+  Installed BenchmarkTools ─ v0.5.0
+  Installed Cassette ─────── v0.3.3
+  Installed JSON ─────────── v0.21.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [2ea8233c] + GFlops v0.1.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [6e4b80f9] + BenchmarkTools v0.5.0
+  [7057c7e9] + Cassette v0.3.3
+  [2ea8233c] + GFlops v0.1.1
+  [682c06a0] + JSON v0.21.0
+  [69de0a69] + Parsers v1.0.7
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [8ba89e20] + Distributed
+  [b77e0a4c] + InteractiveUtils
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [a63ad114] + Mmap
+  [de0858da] + Printf
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [8dfed614] + Test
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+    Testing GFlops
+Status `/tmp/jl_Fzc5GJ/Project.toml`
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [7057c7e9] Cassette v0.3.3
+  [2ea8233c] GFlops v0.1.1
+  [b77e0a4c] InteractiveUtils
+  [de0858da] Printf
+  [10745b16] Statistics
+  [8dfed614] Test
+Status `/tmp/jl_Fzc5GJ/Manifest.toml`
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [7057c7e9] Cassette v0.3.3
+  [2ea8233c] GFlops v0.1.1
+  [682c06a0] JSON v0.21.0
+  [69de0a69] Parsers v1.0.7
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [de0858da] Printf
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+mul+add 64: Error During Test at /home/pkgeval/.julia/packages/GFlops/ixJgp/test/runtests.jl:57
+  Got exception outside of a @test
+  TypeError: non-boolean (typeof(convert)) used in boolean context
+  Stacktrace:
+    [1] convert
+      @ ./array.jl:554 [inlined]
+    [2] Generator
+      @ ./generator.jl:32 [inlined]
+    [3] Generator
+      @ ./generator.jl:38 [inlined]
+    [4] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::Type{Base.Generator}, ::Type{Base.OneTo}, ::Vector{Float64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [5] map
+      @ ./abstractarray.jl:2225 [inlined]
+    [6] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(map), ::Type{Base.OneTo}, ::Vector{Float64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [7] axes
+      @ ./abstractarray.jl:75 [inlined]
+    [8] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(axes), ::Vector{Float64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [9] axes1
+      @ ./abstractarray.jl:95 [inlined]
+   [10] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(Base.axes1), ::Vector{Float64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [11] eachindex
+      @ ./abstractarray.jl:212 [inlined]
+   [12] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(eachindex), ::Vector{Float64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [13] macro expansion
+      @ ./simdloop.jl:69 [inlined]
+   [14] my_axpy!
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:5 [inlined]
+   [15] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(my_axpy!), ::Float64, ::Vector{Float64}, ::Vector{Float64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [16] #1
+      @ ~/.julia/packages/GFlops/ixJgp/src/count_ops.jl:27 [inlined]
+   [17] overdub(overdub_context#256::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, overdub_arguments#257::var"#1#16"{Vector{Float64},Vector{Float64},Float64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [18] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/src/count_ops.jl:26
+   [19] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:63
+   [20] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [21] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:58
+   [22] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [23] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:57
+   [24] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [25] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:35
+   [26] include(fname::String)
+      @ Base.MainInclude ./client.jl:443
+   [27] top-level scope
+      @ none:6
+   [28] eval(m::Module, e::Any)
+      @ Core ./boot.jl:340
+   [29] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:260
+   [30] _start()
+      @ Base ./client.jl:484
+  
+mul+add 32: Error During Test at /home/pkgeval/.julia/packages/GFlops/ixJgp/test/runtests.jl:79
+  Got exception outside of a @test
+  TypeError: non-boolean (typeof(convert)) used in boolean context
+  Stacktrace:
+    [1] convert
+      @ ./array.jl:554 [inlined]
+    [2] Generator
+      @ ./generator.jl:32 [inlined]
+    [3] Generator
+      @ ./generator.jl:38 [inlined]
+    [4] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::Type{Base.Generator}, ::Type{Base.OneTo}, ::Vector{Float32})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [5] map
+      @ ./abstractarray.jl:2225 [inlined]
+    [6] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(map), ::Type{Base.OneTo}, ::Vector{Float32})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [7] axes
+      @ ./abstractarray.jl:75 [inlined]
+    [8] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(axes), ::Vector{Float32})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [9] axes1
+      @ ./abstractarray.jl:95 [inlined]
+   [10] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(Base.axes1), ::Vector{Float32})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [11] eachindex
+      @ ./abstractarray.jl:212 [inlined]
+   [12] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(eachindex), ::Vector{Float32})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [13] macro expansion
+      @ ./simdloop.jl:69 [inlined]
+   [14] my_axpy!
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:5 [inlined]
+   [15] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(my_axpy!), ::Float32, ::Vector{Float32}, ::Vector{Float32})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [16] #3
+      @ ~/.julia/packages/GFlops/ixJgp/src/count_ops.jl:27 [inlined]
+   [17] overdub(overdub_context#256::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, overdub_arguments#257::var"#3#18"{Vector{Float32},Vector{Float32},Float32})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [18] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/src/count_ops.jl:26
+   [19] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:85
+   [20] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [21] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:80
+   [22] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [23] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:57
+   [24] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [25] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:35
+   [26] include(fname::String)
+      @ Base.MainInclude ./client.jl:443
+   [27] top-level scope
+      @ none:6
+   [28] eval(m::Module, e::Any)
+      @ Core ./boot.jl:340
+   [29] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:260
+   [30] _start()
+      @ Base ./client.jl:484
+  
+sqrt: Error During Test at /home/pkgeval/.julia/packages/GFlops/ixJgp/test/runtests.jl:101
+  Got exception outside of a @test
+  MethodError: no method matching isless(::Float64, ::typeof(zero))
+  Closest candidates are:
+    isless(!Matched::Missing, ::Any) at missing.jl:87
+    isless(::Any, !Matched::Missing) at missing.jl:88
+    isless(::Float64, !Matched::Float64) at float.jl:465
+    ...
+  Stacktrace:
+    [1] call(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::Function, ::Float64, ::Function)
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/context.jl:456
+    [2] fallback(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::Function, ::Vararg{Any,N} where N)
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/context.jl:454
+    [3] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(isless), ::Float64, ::typeof(zero))
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:536
+    [4] <
+      @ ./operators.jl:277 [inlined]
+    [5] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(<), ::Float64, ::typeof(zero))
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [6] sqrt
+      @ ./math.jl:574 [inlined]
+    [7] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(sqrt), ::Float64)
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [8] #5
+      @ ~/.julia/packages/GFlops/ixJgp/src/count_ops.jl:27 [inlined]
+    [9] overdub(overdub_context#256::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, overdub_arguments#257::var"#5#20")
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [10] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/src/count_ops.jl:26
+   [11] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:102
+   [12] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [13] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:102
+   [14] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [15] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:57
+   [16] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [17] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:35
+   [18] include(fname::String)
+      @ Base.MainInclude ./client.jl:443
+   [19] top-level scope
+      @ none:6
+   [20] eval(m::Module, e::Any)
+      @ Core ./boot.jl:340
+   [21] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:260
+   [22] _start()
+      @ Base ./client.jl:484
+  
+interpolated arguments: Error During Test at /home/pkgeval/.julia/packages/GFlops/ixJgp/test/runtests.jl:113
+  Got exception outside of a @test
+  TypeError: non-boolean (typeof(convert)) used in boolean context
+  Stacktrace:
+    [1] convert
+      @ ./array.jl:554 [inlined]
+    [2] Generator
+      @ ./generator.jl:32 [inlined]
+    [3] Generator
+      @ ./generator.jl:38 [inlined]
+    [4] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::Type{Base.Generator}, ::Type{Base.OneTo}, ::Vector{Float64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [5] map
+      @ ./abstractarray.jl:2225 [inlined]
+    [6] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(map), ::Type{Base.OneTo}, ::Vector{Float64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [7] axes
+      @ ./abstractarray.jl:75 [inlined]
+    [8] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(axes), ::Vector{Float64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [9] axes1
+      @ ./abstractarray.jl:95 [inlined]
+   [10] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(Base.axes1), ::Vector{Float64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [11] eachindex
+      @ ./abstractarray.jl:212 [inlined]
+   [12] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(eachindex), ::Vector{Float64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [13] macro expansion
+      @ ./simdloop.jl:69 [inlined]
+   [14] my_axpy!
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:5 [inlined]
+   [15] overdub(::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, ::typeof(my_axpy!), ::Irrational{:π}, ::Vector{Float64}, ::Vector{Float64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [16] #7
+      @ ~/.julia/packages/GFlops/ixJgp/src/count_ops.jl:27 [inlined]
+   [17] overdub(overdub_context#256::Cassette.Context{nametype(CounterCtx),GFlops.Counter,Nothing,Cassette.var"##PassType#258",Nothing,Nothing}, overdub_arguments#257::var"#7#22"{Vector{Float64},Vector{Float64}})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [18] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/src/count_ops.jl:26
+   [19] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:117
+   [20] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [21] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:114
+   [22] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [23] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:57
+   [24] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [25] top-level scope
+      @ ~/.julia/packages/GFlops/ixJgp/test/runtests.jl:35
+   [26] include(fname::String)
+      @ Base.MainInclude ./client.jl:443
+   [27] top-level scope
+      @ none:6
+   [28] eval(m::Module, e::Any)
+      @ Core ./boot.jl:340
+   [29] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:260
+   [30] _start()
+      @ Base ./client.jl:484
+  
+Internal error: encountered unexpected error in runtime:
+MethodError(f=typeof(Core.Compiler.widenconst)(), args=(nothing,), world=0x0000000000001007)
+jl_method_error_bare at /workspace/srcdir/src/gf.c:1724
+jl_method_error at /workspace/srcdir/src/gf.c:1742
+jl_lookup_generic_ at /workspace/srcdir/src/gf.c:2292
+jl_apply_generic at /workspace/srcdir/src/gf.c:2313
+typeinf_local at ./compiler/abstractinterpretation.jl:1319
+typeinf_nocycle at ./compiler/abstractinterpretation.jl:1431
+typeinf at ./compiler/typeinfer.jl:12
+typeinf_edge at ./compiler/typeinfer.jl:522
+abstract_call_method at ./compiler/abstractinterpretation.jl:453
+abstract_call_gf_by_type at ./compiler/abstractinterpretation.jl:129
+abstract_call_known at ./compiler/abstractinterpretation.jl:991
+abstract_call at ./compiler/abstractinterpretation.jl:1014
+abstract_call at ./compiler/abstractinterpretation.jl:998
+abstract_eval_statement at ./compiler/abstractinterpretation.jl:1119
+typeinf_local at ./compiler/abstractinterpretation.jl:1375
+typeinf_nocycle at ./compiler/abstractinterpretation.jl:1431
+typeinf at ./compiler/typeinfer.jl:12
+typeinf_edge at ./compiler/typeinfer.jl:522
+abstract_call_method at ./compiler/abstractinterpretation.jl:453
+abstract_call_gf_by_type at ./compiler/abstractinterpretation.jl:129
+abstract_call_known at ./compiler/abstractinterpretation.jl:991
+abstract_call at ./compiler/abstractinterpretation.jl:1014
+abstract_call at ./compiler/abstractinterpretation.jl:998
+abstract_eval_statement at ./compiler/abstractinterpretation.jl:1119
+typeinf_local at ./compiler/abstractinterpretation.jl:1375
+typeinf_nocycle at ./compiler/abstractinterpretation.jl:1431
+typeinf at ./compiler/typeinfer.jl:12
+typeinf_edge at ./compiler/typeinfer.jl:522
+abstract_call_method at ./compiler/abstractinterpretation.jl:453
+abstract_call_gf_by_type at ./compiler/abstractinterpretation.jl:129
+abstract_call_known at ./compiler/abstractinterpretation.jl:991
+abstract_call at ./compiler/abstractinterpretation.jl:1014
+abstract_call at ./compiler/abstractinterpretation.jl:998
+abstract_eval_statement at ./compiler/abstractinterpretation.jl:1119
+typeinf_local at ./compiler/abstractinterpretation.jl:1375
+typeinf_nocycle at ./compiler/abstractinterpretation.jl:1431
+typeinf at ./compiler/typeinfer.jl:12
+typeinf_edge at ./compiler/typeinfer.jl:522
+abstract_call_method at ./compiler/abstractinterpretation.jl:453
+abstract_call_gf_by_type at ./compiler/abstractinterpretation.jl:129
+abstract_call_known at ./compiler/abstractinterpretation.jl:991
+abstract_call at ./compiler/abstractinterpretation.jl:1014
+abstract_call at ./compiler/abstractinterpretation.jl:998
+abstract_eval_statement at ./compiler/abstractinterpretation.jl:1119
+typeinf_local at ./compiler/abstractinterpretation.jl:1375
+typeinf_nocycle at ./compiler/abstractinterpretation.jl:1431
+typeinf at ./compiler/typeinfer.jl:12
+typeinf_edge at ./compiler/typeinfer.jl:522
+abstract_call_method at ./compiler/abstractinterpretation.jl:453
+abstract_call_gf_by_type at ./compiler/abstractinterpretation.jl:129
+abstract_call_known at ./compiler/abstractinterpretation.jl:991
+abstract_call at ./compiler/abstractinterpretation.jl:1014
+abstract_call at ./compiler/abstractinterpretation.jl:998
+abstract_eval_statement at ./compiler/abstractinterpretation.jl:1119
+typeinf_local at ./compiler/abstractinterpretation.jl:1375
+typeinf_nocycle at ./compiler/abstractinterpretation.jl:1431
+typeinf at ./compiler/typeinfer.jl:12
+typeinf_edge at ./compiler/typeinfer.jl:522
+abstract_call_method at ./compiler/abstractinterpretation.jl:453
+abstract_call_gf_by_type at ./compiler/abstractinterpretation.jl:129
+abstract_call_known at ./compiler/abstractinterpretation.jl:991
+abstract_call at ./compiler/abstractinterpretation.jl:1014
+abstract_call at ./compiler/abstractinterpretation.jl:998
+abstract_eval_statement at ./compiler/abstractinterpretation.jl:1119
+typeinf_local at ./compiler/abstractinterpretation.jl:1375
+typeinf_nocycle at ./compiler/abstractinterpretation.jl:1431
+typeinf at ./compiler/typeinfer.jl:12
+typeinf_ext at ./compiler/typeinfer.jl:609
+typeinf_ext_toplevel at ./compiler/typeinfer.jl:642
+typeinf_ext_toplevel at ./compiler/typeinfer.jl:638
+jfptr_typeinf_ext_toplevel_8226.clone_1 at /opt/julia/lib/julia/sys.so (unknown line)
+jl_apply at /workspace/srcdir/src/julia.h:1733 [inlined]
+jl_type_infer at /workspace/srcdir/src/gf.c:300
+jl_generate_fptr at /workspace/srcdir/src/jitlayers.cpp:294
+jl_compile_method_internal at /workspace/srcdir/src/gf.c:1872
+jl_compile_method_internal at /workspace/srcdir/src/gf.c:1823 [inlined]
+_jl_invoke at /workspace/srcdir/src/gf.c:2126 [inlined]
+jl_apply_generic at /workspace/srcdir/src/gf.c:2317
+#9 at /home/pkgeval/.julia/packages/GFlops/ixJgp/src/count_ops.jl:27 [inlined]
+overdub at /home/pkgeval/.julia/packages/Cassette/158rp/src/overdub.jl:0
+unknown function (ip: 0x7f74dbe4695c)
+jl_apply at /workspace/srcdir/src/julia.h:1733 [inlined]
+do_call at /workspace/srcdir/src/interpreter.c:117
+eval_value at /workspace/srcdir/src/interpreter.c:206
+eval_stmt_value at /workspace/srcdir/src/interpreter.c:157 [inlined]
+eval_body at /workspace/srcdir/src/interpreter.c:551
+eval_body at /workspace/srcdir/src/interpreter.c:491
+eval_body at /workspace/srcdir/src/interpreter.c:491
+eval_body at /workspace/srcdir/src/interpreter.c:491
+eval_body at /workspace/srcdir/src/interpreter.c:491
+eval_body at /workspace/srcdir/src/interpreter.c:491
+eval_body at /workspace/srcdir/src/interpreter.c:491
+jl_interpret_toplevel_thunk at /workspace/srcdir/src/interpreter.c:659
+macro expansion at /home/pkgeval/.julia/packages/GFlops/ixJgp/src/count_ops.jl:26 [inlined]
+macro expansion at /home/pkgeval/.julia/packages/GFlops/ixJgp/test/runtests.jl:134 [inlined]
+macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+macro expansion at /home/pkgeval/.julia/packages/GFlops/ixJgp/test/runtests.jl:131 [inlined]
+macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+macro expansion at /home/pkgeval/.julia/packages/GFlops/ixJgp/test/runtests.jl:57 [inlined]
+macro expansion at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+top-level scope at /home/pkgeval/.julia/packages/GFlops/ixJgp/test/runtests.jl:35
+jl_toplevel_eval_flex at /workspace/srcdir/src/toplevel.c:838
+jl_toplevel_eval_flex at /workspace/srcdir/src/toplevel.c:788
+jl_toplevel_eval_in at /workspace/srcdir/src/toplevel.c:881
+eval at ./boot.jl:340 [inlined]
+include_string at ./loading.jl:1103
+_include at ./loading.jl:1157
+include at ./client.jl:443
+jl_apply at /workspace/srcdir/src/julia.h:1733 [inlined]
+do_call at /workspace/srcdir/src/interpreter.c:117
+eval_value at /workspace/srcdir/src/interpreter.c:206
+eval_stmt_value at /workspace/srcdir/src/interpreter.c:157 [inlined]
+eval_body at /workspace/srcdir/src/interpreter.c:551
+jl_interpret_toplevel_thunk at /workspace/srcdir/src/interpreter.c:659
+top-level scope at none:6
+jl_toplevel_eval_flex at /workspace/srcdir/src/toplevel.c:838
+jl_toplevel_eval_flex at /workspace/srcdir/src/toplevel.c:788
+jl_toplevel_eval_in at /workspace/srcdir/src/toplevel.c:881
+eval at ./boot.jl:340
+exec_options at ./client.jl:260
+_start at ./client.jl:484
+jfptr__start_18366.clone_1 at /opt/julia/lib/julia/sys.so (unknown line)
+jl_apply at /workspace/srcdir/ui/../src/julia.h:1733 [inlined]
+true_main at /workspace/srcdir/ui/repl.c:106
+main at /workspace/srcdir/ui/repl.c:227
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 0x4015e4)
+julia: /workspace/srcdir/src/codegen.cpp:3508: jl_cgval_t emit_sparam(jl_codectx_t&, size_t): Assertion `ctx.spvals_ptr != __null' failed.
+
+signal (6): Aborted
+in expression starting at /home/pkgeval/.julia/packages/GFlops/ixJgp/test/runtests.jl:34
+gsignal at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+abort at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 0x7f74f4ad0399)
+__assert_fail at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+emit_sparam at /workspace/srcdir/src/codegen.cpp:3508
+emit_expr at /workspace/srcdir/src/codegen.cpp:4204
+emit_function at /workspace/srcdir/src/codegen.cpp:6470
+jl_emit_code at /workspace/srcdir/src/codegen.cpp:6987
+jl_emit_codeinst at /workspace/srcdir/src/codegen.cpp:7021
+_jl_compile_codeinst at /workspace/srcdir/src/jitlayers.cpp:95
+jl_generate_fptr_for_unspecialized at /workspace/srcdir/src/jitlayers.cpp:343
+jl_compile_method_internal at /workspace/srcdir/src/gf.c:1878
+jl_compile_method_internal at /workspace/srcdir/src/gf.c:1823 [inlined]
+_jl_invoke at /workspace/srcdir/src/gf.c:2126 [inlined]
+jl_apply_generic at /workspace/srcdir/src/gf.c:2317
+promote_result at ./promotion.jl:237 [inlined]
+overdub at /home/pkgeval/.julia/packages/Cassette/158rp/src/overdub.jl:0
+promote_type at ./promotion.jl:223 [inlined]
+overdub at /home/pkgeval/.julia/packages/Cassette/158rp/src/overdub.jl:0
+_promote at ./promotion.jl:258 [inlined]
+overdub at /home/pkgeval/.julia/packages/Cassette/158rp/src/overdub.jl:0
+promote at ./promotion.jl:282 [inlined]
+overdub at /home/pkgeval/.julia/packages/Cassette/158rp/src/overdub.jl:0
+/ at ./promotion.jl:314 [inlined]
+overdub at /home/pkgeval/.julia/packages/Cassette/158rp/src/overdub.jl:0
+sin at ./special/trig.jl:31 [inlined]
+overdub at /home/pkgeval/.julia/packages/Cassette/158rp/src/overdub.jl:0
+#9 at /home/pkgeval/.julia/packages/GFlops/ixJgp/src/count_ops.jl:27 [inlined]
+overdub at /home/pkgeval/.julia/packages/Cassette/158rp/src/overdub.jl:0
+unknown function (ip: 0x7f74dbe4695c)
+jl_apply at /workspace/srcdir/src/julia.h:1733 [inlined]
+do_call at /workspace/srcdir/src/interpreter.c:117
+eval_value at /workspace/srcdir/src/interpreter.c:206
+eval_stmt_value at /workspace/srcdir/src/interpreter.c:157 [inlined]
+eval_body at /workspace/srcdir/src/interpreter.c:551
+eval_body at /workspace/srcdir/src/interpreter.c:491
+eval_body at /workspace/srcdir/src/interpreter.c:491
+eval_body at /workspace/srcdir/src/interpreter.c:491
+eval_body at /workspace/srcdir/src/interpreter.c:491
+eval_body at /workspace/srcdir/src/interpreter.c:491
+eval_body at /workspace/srcdir/src/interpreter.c:491
+jl_interpret_toplevel_thunk at /workspace/srcdir/src/interpreter.c:659
+jl_toplevel_eval_flex at /workspace/srcdir/src/toplevel.c:838
+jl_toplevel_eval_flex at /workspace/srcdir/src/toplevel.c:788
+jl_toplevel_eval_in at /workspace/srcdir/src/toplevel.c:881
+eval at ./boot.jl:340 [inlined]
+include_string at ./loading.jl:1103
+_include at ./loading.jl:1157
+include at ./client.jl:443
+jl_apply at /workspace/srcdir/src/julia.h:1733 [inlined]
+do_call at /workspace/srcdir/src/interpreter.c:117
+eval_value at /workspace/srcdir/src/interpreter.c:206
+eval_stmt_value at /workspace/srcdir/src/interpreter.c:157 [inlined]
+eval_body at /workspace/srcdir/src/interpreter.c:551
+jl_interpret_toplevel_thunk at /workspace/srcdir/src/interpreter.c:659
+jl_toplevel_eval_flex at /workspace/srcdir/src/toplevel.c:838
+jl_toplevel_eval_flex at /workspace/srcdir/src/toplevel.c:788
+jl_toplevel_eval_in at /workspace/srcdir/src/toplevel.c:881
+eval at ./boot.jl:340
+exec_options at ./client.jl:260
+_start at ./client.jl:484
+jfptr__start_18366.clone_1 at /opt/julia/lib/julia/sys.so (unknown line)
+jl_apply at /workspace/srcdir/ui/../src/julia.h:1733 [inlined]
+true_main at /workspace/srcdir/ui/repl.c:106
+main at /workspace/srcdir/ui/repl.c:227
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 0x4015e4)
+Allocations: 10716806 (Pool: 10712950; Big: 3856); GC: 14
+ERROR: Package GFlops errored during testing (received signal: 6)
+Stacktrace:
+  [1] pkgerror(::String, ::Vararg{String,N} where N)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1561
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:327
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:314
+  [5] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [7] #test#60
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:16
