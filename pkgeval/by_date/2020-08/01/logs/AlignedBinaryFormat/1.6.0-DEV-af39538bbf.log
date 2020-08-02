@@ -1,0 +1,107 @@
+Julia Version 1.6.0-DEV.564
+Commit af39538bbf (2020-07-31 15:09 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+[ Info: LEGAL NOTICE: package operations send anonymous data about your system to https://pkg.julialang.org (your current package server), including the operating system and Julia versions you are using, and a random client UUID. Running `Pkg.telemetryinfo()` will show exactly what data is sent. See https://julialang.org/legal/data/ for more details about what this data is used for, how long it is retained, and how to opt out of sending it.
+  Installed AlignedBinaryFormat ─ v0.6.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [94fc9360] + AlignedBinaryFormat v0.6.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [94fc9360] + AlignedBinaryFormat v0.6.0
+  [a63ad114] + Mmap
+  [de0858da] + Printf
+  [9e88b42a] + Serialization
+  [4ec0a83e] + Unicode
+    Testing AlignedBinaryFormat
+Status `/tmp/jl_oDSF4k/Project.toml`
+  [94fc9360] AlignedBinaryFormat v0.6.0
+  [a63ad114] Mmap
+  [de0858da] Printf
+  [9e88b42a] Serialization
+  [8dfed614] Test
+Status `/tmp/jl_oDSF4k/Manifest.toml`
+  [94fc9360] AlignedBinaryFormat v0.6.0
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [de0858da] Printf
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+  [4ec0a83e] Unicode
+Test Summary: | Pass  Total
+open/close    |    6      6
+public write/read: Error During Test at /home/pkgeval/.julia/packages/AlignedBinaryFormat/Nlf6L/test/runtests.jl:59
+  Got exception outside of a @test
+  the following type is not recognized: Vector{Float16}
+  Stacktrace:
+    [1] error(::String, ::String)
+      @ Base ./error.jl:42
+    [2] read_type(io::IOStream)
+      @ AlignedBinaryFormat ~/.julia/packages/AlignedBinaryFormat/Nlf6L/src/read_write.jl:76
+    [3] read_header
+      @ ~/.julia/packages/AlignedBinaryFormat/Nlf6L/src/read_write.jl:91 [inlined]
+    [4] abfread(io::IOStream)
+      @ AlignedBinaryFormat ~/.julia/packages/AlignedBinaryFormat/Nlf6L/src/read_write.jl:180
+    [5] abfopen(filename::String, rw::String)
+      @ AlignedBinaryFormat ~/.julia/packages/AlignedBinaryFormat/Nlf6L/src/abffile.jl:28
+    [6] abfopen(::var"#4#8"{Matrix{Char},Array{Float64,3},Vector{Float16},BitVector,Array{UInt32,3}}, ::String, ::String)
+      @ AlignedBinaryFormat ~/.julia/packages/AlignedBinaryFormat/Nlf6L/src/abffile.jl:42
+    [7] top-level scope
+      @ ~/.julia/packages/AlignedBinaryFormat/Nlf6L/test/runtests.jl:76
+    [8] top-level scope
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+    [9] top-level scope
+      @ ~/.julia/packages/AlignedBinaryFormat/Nlf6L/test/runtests.jl:60
+   [10] include(fname::String)
+      @ Base.MainInclude ./client.jl:443
+   [11] top-level scope
+      @ none:6
+   [12] eval(m::Module, e::Any)
+      @ Core ./boot.jl:344
+   [13] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:260
+   [14] _start()
+      @ Base ./client.jl:484
+  
+Test Summary:     | Error  Total
+public write/read |     1      1
+ERROR: LoadError: Some tests did not pass: 0 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/AlignedBinaryFormat/Nlf6L/test/runtests.jl:59
+ERROR: Package AlignedBinaryFormat errored during testing
+Stacktrace:
+  [1] pkgerror(::String, ::Vararg{String,N} where N)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1567
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:328
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:315
+  [5] #test#62
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [7] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:16
