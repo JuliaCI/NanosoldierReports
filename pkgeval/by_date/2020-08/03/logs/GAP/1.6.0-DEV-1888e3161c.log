@@ -1,0 +1,668 @@
+Julia Version 1.6.0-DEV.572
+Commit 1888e3161c (2020-08-02 15:45 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+[ Info: LEGAL NOTICE: package operations send anonymous data about your system to https://pkg.julialang.org (your current package server), including the operating system and Julia versions you are using, and a random client UUID. Running `Pkg.telemetryinfo()` will show exactly what data is sent. See https://julialang.org/legal/data/ for more details about what this data is used for, how long it is retained, and how to opt out of sending it.
+  Installed BinaryProvider ─ v0.5.10
+  Installed GAP ──────────── v0.4.2
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [c863536a] + GAP v0.4.2
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [b99e7846] + BinaryProvider v0.5.10
+  [c863536a] + GAP v0.4.2
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [b77e0a4c] + InteractiveUtils
+  [76f85450] + LibGit2
+  [8f399da3] + Libdl
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [44cfe95a] + Pkg
+  [de0858da] + Printf
+  [3fa0cd96] + REPL
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+   Building GAP → `~/.julia/packages/GAP/tHnBo/deps/build.log`
+    Testing GAP
+Status `/tmp/jl_lX5Aym/Project.toml`
+  [b99e7846] BinaryProvider v0.5.10
+  [e30172f5] Documenter v0.25.1
+  [c863536a] GAP v0.4.2
+  [8f399da3] Libdl
+  [d6f4376e] Markdown
+  [44cfe95a] Pkg
+  [3fa0cd96] REPL
+  [8dfed614] Test
+Status `/tmp/jl_lX5Aym/Manifest.toml`
+  [b99e7846] BinaryProvider v0.5.10
+  [ffbed154] DocStringExtensions v0.8.2
+  [e30172f5] Documenter v0.25.1
+  [c863536a] GAP v0.4.2
+  [682c06a0] JSON v0.21.0
+  [69de0a69] Parsers v1.0.7
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+Test Summary: | Pass  Total
+basics        |    9      9
+Test Summary: | Pass  Total
+globals       |   16     16
+Test Summary: | Pass  Total
+gapcalls      |   14     14
+Test Summary: | Pass  Total
+bugfixes      |    2      2
+Test Summary:       | Pass  Total
+integer_arithmetics |   21     21
+Test Summary:   | Pass  Total
+ffe_arithmetics |    8      8
+Test Summary: | Pass  Total
+operators     |    4      4
+Test Summary: | Pass  Total
+object_access |   25     25
+Test Summary:       | Pass  Total
+conversion from GAP |  123    123
+Test Summary:     | Pass  Total
+conversion to GAP |   62     62
+Test Summary:                          | Pass  Total
+conversion from GAP using constructors |   96     96
+Test Summary: | Pass  Total
+compat        |    5      5
+Test Summary: | Pass  Total
+packages      |    5      5
+Test Summary:               | Pass  Total
+LoadPackageAndExposeGlobals |    3      3
+Help: no matching entry found
+Test Summary: | Pass  Total
+help          |   20     20
+[ Info: SetupBuildDirectory: setting up build directory.
+[ Info: Doctest: running doctests.
+┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/constructors.jl:244-253
+│ 
+│ ```jldoctest
+│ julia> val = GAP.evalstr("[ true, false, true ]")
+│ GAP: [ true, false, true ]
+│ 
+│ julia> BitArray{1}(val)
+│ 3-element BitArray{1}:
+│  1
+│  0
+│  1
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ BitArray{1}(val)
+│ 
+│ Evaluated output:
+│ 
+│ 3-element BitVector:
+│  1
+│  0
+│  1
+│ 
+│ Expected output:
+│ 
+│ 3-element BitArray{1}:
+│  1
+│  0
+│  1
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    3-element BitArray{1}:
+│     BitVector:
+│     1
+│     0
+│     1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/constructors.jl
+│ 
+│ ```jldoctest
+│ julia> val = GAP.evalstr("[ [ 1 ], [ 2 ] ]")
+│ GAP: [ [ 1 ], [ 2 ] ]
+│ 
+│ julia> Vector{Any}(val)
+│ 2-element Array{Any,1}:
+│  Any[1]
+│  Any[2]
+│ 
+│ julia> Vector{Any}(val, recursive = false)
+│ 2-element Array{Any,1}:
+│  GAP: [ 1 ]
+│  GAP: [ 2 ]
+│ 
+│ julia> val = GAP.evalstr( "NewVector( IsPlistVectorRep, Integers, [ 0, 2, 5 ] )" )
+│ GAP: <plist vector over Integers of length 3>
+│ 
+│ julia> Vector{Int64}( val )
+│ 3-element Array{Int64,1}:
+│  0
+│  2
+│  5
+│ 
+│ julia> val = GAP.evalstr("\"abc\"")
+│ GAP: "abc"
+│ 
+│ julia> Vector{UInt8}(val)
+│ 3-element Array{UInt8,1}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Vector{Any}(val)
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Vector{Any}:
+│  Any[1]
+│  Any[2]
+│ 
+│ Expected output:
+│ 
+│ 2-element Array{Any,1}:
+│  Any[1]
+│  Any[2]
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Array{Any,1}:
+│     Vector{Any}:
+│     Any[1]
+│     Any[2]
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/constructors.jl
+│ 
+│ ```jldoctest
+│ julia> val = GAP.evalstr("[ [ 1 ], [ 2 ] ]")
+│ GAP: [ [ 1 ], [ 2 ] ]
+│ 
+│ julia> Vector{Any}(val)
+│ 2-element Array{Any,1}:
+│  Any[1]
+│  Any[2]
+│ 
+│ julia> Vector{Any}(val, recursive = false)
+│ 2-element Array{Any,1}:
+│  GAP: [ 1 ]
+│  GAP: [ 2 ]
+│ 
+│ julia> val = GAP.evalstr( "NewVector( IsPlistVectorRep, Integers, [ 0, 2, 5 ] )" )
+│ GAP: <plist vector over Integers of length 3>
+│ 
+│ julia> Vector{Int64}( val )
+│ 3-element Array{Int64,1}:
+│  0
+│  2
+│  5
+│ 
+│ julia> val = GAP.evalstr("\"abc\"")
+│ GAP: "abc"
+│ 
+│ julia> Vector{UInt8}(val)
+│ 3-element Array{UInt8,1}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Vector{Any}(val, recursive = false)
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Vector{Any}:
+│  GAP: [ 1 ]
+│  GAP: [ 2 ]
+│ 
+│ Expected output:
+│ 
+│ 2-element Array{Any,1}:
+│  GAP: [ 1 ]
+│  GAP: [ 2 ]
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Array{Any,1}:
+│     Vector{Any}:
+│     GAP: [ 1 ]
+│     GAP: [ 2 ]
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/constructors.jl
+│ 
+│ ```jldoctest
+│ julia> val = GAP.evalstr("[ [ 1 ], [ 2 ] ]")
+│ GAP: [ [ 1 ], [ 2 ] ]
+│ 
+│ julia> Vector{Any}(val)
+│ 2-element Array{Any,1}:
+│  Any[1]
+│  Any[2]
+│ 
+│ julia> Vector{Any}(val, recursive = false)
+│ 2-element Array{Any,1}:
+│  GAP: [ 1 ]
+│  GAP: [ 2 ]
+│ 
+│ julia> val = GAP.evalstr( "NewVector( IsPlistVectorRep, Integers, [ 0, 2, 5 ] )" )
+│ GAP: <plist vector over Integers of length 3>
+│ 
+│ julia> Vector{Int64}( val )
+│ 3-element Array{Int64,1}:
+│  0
+│  2
+│  5
+│ 
+│ julia> val = GAP.evalstr("\"abc\"")
+│ GAP: "abc"
+│ 
+│ julia> Vector{UInt8}(val)
+│ 3-element Array{UInt8,1}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Vector{Int64}( val )
+│ 
+│ Evaluated output:
+│ 
+│ 3-element Vector{Int64}:
+│  0
+│  2
+│  5
+│ 
+│ Expected output:
+│ 
+│ 3-element Array{Int64,1}:
+│  0
+│  2
+│  5
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    3-element Array{Int64,1}:
+│     Vector{Int64}:
+│     0
+│     2
+│     5
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/constructors.jl
+│ 
+│ ```jldoctest
+│ julia> val = GAP.evalstr("[ [ 1 ], [ 2 ] ]")
+│ GAP: [ [ 1 ], [ 2 ] ]
+│ 
+│ julia> Vector{Any}(val)
+│ 2-element Array{Any,1}:
+│  Any[1]
+│  Any[2]
+│ 
+│ julia> Vector{Any}(val, recursive = false)
+│ 2-element Array{Any,1}:
+│  GAP: [ 1 ]
+│  GAP: [ 2 ]
+│ 
+│ julia> val = GAP.evalstr( "NewVector( IsPlistVectorRep, Integers, [ 0, 2, 5 ] )" )
+│ GAP: <plist vector over Integers of length 3>
+│ 
+│ julia> Vector{Int64}( val )
+│ 3-element Array{Int64,1}:
+│  0
+│  2
+│  5
+│ 
+│ julia> val = GAP.evalstr("\"abc\"")
+│ GAP: "abc"
+│ 
+│ julia> Vector{UInt8}(val)
+│ 3-element Array{UInt8,1}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Vector{UInt8}(val)
+│ 
+│ Evaluated output:
+│ 
+│ 3-element Vector{UInt8}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│ Expected output:
+│ 
+│ 3-element Array{UInt8,1}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    3-element Array{UInt8,1}:
+│     Vector{UInt8}:
+│     0x61
+│     0x62
+│     0x63
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/adapter.jl:78-105
+│ 
+│ ```jldoctest
+│ julia> l = GAP.evalstr( "[ 1, 2, 3, 5, 8, 13 ]" )
+│ GAP: [ 1, 2, 3, 5, 8, 13 ]
+│ 
+│ julia> l[1] = 0
+│ 0
+│ 
+│ julia> l[8] = -1
+│ -1
+│ 
+│ julia> l[2:4] = [ 7, 7, 7 ]
+│ 3-element Array{Int64,1}:
+│  7
+│  7
+│  7
+│ 
+│ julia> l
+│ GAP: [ 0, 7, 7, 7, 8, 13,, -1 ]
+│ 
+│ julia> m = GAP.evalstr( "[ [ 1, 2 ], [ 3, 4 ] ]" )
+│ GAP: [ [ 1, 2 ], [ 3, 4 ] ]
+│ 
+│ julia> m[1,2] = 0
+│ 0
+│ 
+│ julia> m
+│ GAP: [ [ 1, 0 ], [ 3, 4 ] ]
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ l[2:4] = [ 7, 7, 7 ]
+│ 
+│ Evaluated output:
+│ 
+│ 3-element Vector{Int64}:
+│  7
+│  7
+│  7
+│ 
+│ Expected output:
+│ 
+│ 3-element Array{Int64,1}:
+│  7
+│  7
+│  7
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    3-element Array{Int64,1}:
+│     Vector{Int64}:
+│     7
+│     7
+│     7
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/constructors.jl:435-458
+│ 
+│ ```jldoctest
+│ julia> val = GAP.evalstr("rec( a:= 1, b:= 2 )")
+│ GAP: rec( a := 1, b := 2 )
+│ 
+│ julia> Dict{Symbol,Int}(val)
+│ Dict{Symbol,Int64} with 2 entries:
+│   :a => 1
+│   :b => 2
+│ 
+│ julia> val = GAP.evalstr("rec( l:= [ 1, 2 ] )")
+│ GAP: rec( l := [ 1, 2 ] )
+│ 
+│ julia> Dict{Symbol,Any}(val, recursive = false)
+│ Dict{Symbol,Any} with 1 entry:
+│   :l => GAP: [ 1, 2 ]
+│ 
+│ julia> Dict{Symbol,Any}(val, recursive = true)
+│ Dict{Symbol,Any} with 1 entry:
+│   :l => Any[1, 2]
+│ 
+│ julia> Dict{Symbol,Array{Int,1}}(val, recursive = true)
+│ Dict{Symbol,Array{Int64,1}} with 1 entry:
+│   :l => [1, 2]
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Dict{Symbol,Array{Int,1}}(val, recursive = true)
+│ 
+│ Evaluated output:
+│ 
+│ Dict{Symbol,Vector{Int64}} with 1 entry:
+│   :l => [1, 2]
+│ 
+│ Expected output:
+│ 
+│ Dict{Symbol,Array{Int64,1}} with 1 entry:
+│   :l => [1, 2]
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    Dict{Symbol,Array{Int64,1}} Dict{Symbol,Vector{Int64}} with 1 entry:
+│      :l => [1, 2]
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/constructors.jl:323-339
+│ 
+│ ```jldoctest
+│ julia> val = GAP.evalstr("[ [ 1, 2 ], [ 3, 4 ] ]")
+│ GAP: [ [ 1, 2 ], [ 3, 4 ] ]
+│ 
+│ julia> Matrix{Int64}(val)
+│ 2×2 Array{Int64,2}:
+│  1  2
+│  3  4
+│ 
+│ julia> val = GAP.evalstr( "NewMatrix( IsPlistMatrixRep, Integers, 2, [ 0, 1, 2, 3 ] )" )
+│ GAP: <2x2-matrix over Integers>
+│ 
+│ julia> Matrix{Int64}(val)
+│ 2×2 Array{Int64,2}:
+│  0  1
+│  2  3
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Matrix{Int64}(val)
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Int64}:
+│  1  2
+│  3  4
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Int64,2}:
+│  1  2
+│  3  4
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Int64,2}:
+│     Matrix{Int64}:
+│     1  2
+│     3  4
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/GAP/tHnBo/src/constructors.jl:323-339
+│ 
+│ ```jldoctest
+│ julia> val = GAP.evalstr("[ [ 1, 2 ], [ 3, 4 ] ]")
+│ GAP: [ [ 1, 2 ], [ 3, 4 ] ]
+│ 
+│ julia> Matrix{Int64}(val)
+│ 2×2 Array{Int64,2}:
+│  1  2
+│  3  4
+│ 
+│ julia> val = GAP.evalstr( "NewMatrix( IsPlistMatrixRep, Integers, 2, [ 0, 1, 2, 3 ] )" )
+│ GAP: <2x2-matrix over Integers>
+│ 
+│ julia> Matrix{Int64}(val)
+│ 2×2 Array{Int64,2}:
+│  0  1
+│  2  3
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Matrix{Int64}(val)
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Int64}:
+│  0  1
+│  2  3
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Int64,2}:
+│  0  1
+│  2  3
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Int64,2}:
+│     Matrix{Int64}:
+│     0  1
+│     2  3
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/bRylW/src/DocTests.jl:369
+┌ Error: Doctesting failed
+│   exception =
+│    `makedocs` encountered a doctest error. Terminating build
+│    Stacktrace:
+│      [1] error(s::String)
+│        @ Base ./error.jl:33
+│      [2] runner(#unused#::Type{Documenter.Builder.Doctest}, doc::Documenter.Documents.Document)
+│        @ Documenter.Builder ~/.julia/packages/Documenter/bRylW/src/Builder.jl:217
+│      [3] dispatch(#unused#::Type{Documenter.Builder.DocumentPipeline}, x::Documenter.Documents.Document)
+│        @ Documenter.Utilities.Selectors ~/.julia/packages/Documenter/bRylW/src/Utilities/Selectors.jl:167
+│      [4] #2
+│        @ ~/.julia/packages/Documenter/bRylW/src/Documenter.jl:240 [inlined]
+│      [5] cd(f::Documenter.var"#2#3"{Documenter.Documents.Document}, dir::String)
+│        @ Base.Filesystem ./file.jl:104
+│      [6] makedocs(; debug::Bool, format::Documenter.Writers.HTMLWriter.HTML, kwargs::Base.Iterators.Pairs{Symbol,Any,NTuple{5,Symbol},NamedTuple{(:root, :source, :sitename, :doctest, :modules),Tuple{String,String,String,Symbol,Vector{Module}}}})
+│        @ Documenter ~/.julia/packages/Documenter/bRylW/src/Documenter.jl:239
+│      [7] (::Documenter.var"#all_doctests#31"{Bool,Vector{Module}})()
+│        @ Documenter ~/.julia/packages/Documenter/bRylW/src/Documenter.jl:801
+│      [8] macro expansion
+│        @ ~/.julia/packages/Documenter/bRylW/src/Documenter.jl:817 [inlined]
+│      [9] macro expansion
+│        @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+│     [10] doctest(source::Nothing, modules::Vector{Module}; fix::Bool, testset::String)
+│        @ Documenter ~/.julia/packages/Documenter/bRylW/src/Documenter.jl:817
+│     [11] doctest(package::Module; manual::Bool, testset::Nothing, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+│        @ Documenter ~/.julia/packages/Documenter/bRylW/src/Documenter.jl:760
+│     [12] top-level scope
+│        @ ~/.julia/packages/GAP/tHnBo/test/testmanual.jl:2
+│     [13] top-level scope
+│        @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+│     [14] top-level scope
+│        @ ~/.julia/packages/GAP/tHnBo/test/testmanual.jl:2
+│     [15] include(fname::String)
+│        @ Base.MainInclude ./client.jl:443
+│     [16] top-level scope
+│        @ ~/.julia/packages/GAP/tHnBo/test/runtests.jl:12
+│     [17] include(fname::String)
+│        @ Base.MainInclude ./client.jl:443
+│     [18] top-level scope
+│        @ none:6
+│     [19] eval(m::Module, e::Any)
+│        @ Core ./boot.jl:344
+│     [20] exec_options(opts::Base.JLOptions)
+│        @ Base ./client.jl:260
+│     [21] _start()
+│        @ Base ./client.jl:484
+└ @ Documenter ~/.julia/packages/Documenter/bRylW/src/Documenter.jl:810
+Doctests: GAP: Test Failed at /home/pkgeval/.julia/packages/Documenter/bRylW/src/Documenter.jl:817
+  Expression: all_doctests()
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/Documenter/bRylW/src/Documenter.jl:817 [inlined]
+ [2] macro expansion
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+ [3] doctest(source::Nothing, modules::Vector{Module}; fix::Bool, testset::String)
+   @ Documenter ~/.julia/packages/Documenter/bRylW/src/Documenter.jl:817
+Test Summary:   | Fail  Total
+manual examples |    1      1
+  Doctests: GAP |    1      1
+ERROR: LoadError: LoadError: Some tests did not pass: 0 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/GAP/tHnBo/test/testmanual.jl:1
+in expression starting at /home/pkgeval/.julia/packages/GAP/tHnBo/test/runtests.jl:12
+ERROR: Package GAP errored during testing
+Stacktrace:
+  [1] pkgerror(::String, ::Vararg{String,N} where N)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1567
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:328
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:315
+  [5] #test#62
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [7] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:16
