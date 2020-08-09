@@ -1,0 +1,936 @@
+Julia Version 1.6.0-DEV.604
+Commit dffc8895b8 (2020-08-07 15:04 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+[ Info: LEGAL NOTICE: package operations send anonymous data about your system to https://pkg.julialang.org (your current package server), including the operating system and Julia versions you are using, and a random client UUID. Running `Pkg.telemetryinfo()` will show exactly what data is sent. See https://julialang.org/legal/data/ for more details about what this data is used for, how long it is retained, and how to opt out of sending it.
+  Installed Mocking ────────────────────── v0.7.1
+  Installed Requires ───────────────────── v1.0.1
+  Installed Calculus ───────────────────── v0.5.1
+  Installed NaNMath ────────────────────── v0.3.4
+  Installed JSONSchema ─────────────────── v0.3.1
+  Installed TranscodingStreams ─────────── v0.9.5
+  Installed SpecialFunctions ───────────── v0.10.3
+  Installed PowerModelsRestoration ─────── v0.5.0
+  Installed Zlib_jll ───────────────────── v1.2.11+15
+  Installed DiffResults ────────────────── v1.0.2
+  Installed ExprTools ──────────────────── v0.1.1
+  Installed InfrastructureModels ───────── v0.5.3
+  Installed OrderedCollections ─────────── v1.3.0
+  Installed CompilerSupportLibraries_jll ─ v0.3.3+0
+  Installed ZipFile ────────────────────── v0.9.2
+  Installed ForwardDiff ────────────────── v0.10.12
+  Installed Libiconv_jll ───────────────── v1.16.0+5
+  Installed OpenSpecFun_jll ────────────── v0.5.3+3
+  Installed MutableArithmetics ─────────── v0.2.10
+  Installed Syslogs ────────────────────── v0.3.0
+  Installed LineSearches ───────────────── v7.0.1
+  Installed Parameters ─────────────────── v0.12.1
+  Installed EzXML ──────────────────────── v1.1.0
+  Installed ArrayInterface ─────────────── v2.11.0
+  Installed CommonSubexpressions ───────── v0.3.0
+  Installed Parsers ────────────────────── v1.0.8
+  Installed StaticArrays ───────────────── v0.12.4
+  Installed NLsolve ────────────────────── v4.4.0
+  Installed PowerModels ────────────────── v0.17.2
+  Installed JuMP ───────────────────────── v0.21.3
+  Installed RecipesBase ────────────────── v1.0.2
+  Installed MathOptInterface ───────────── v0.9.14
+  Installed CodecBzip2 ─────────────────── v0.7.2
+  Installed NLSolversBase ──────────────── v7.6.2
+  Installed HTTP ───────────────────────── v0.8.17
+  Installed CodecZlib ──────────────────── v0.7.0
+  Installed FiniteDiff ─────────────────── v2.5.2
+  Installed UnPack ─────────────────────── v1.0.1
+  Installed BenchmarkTools ─────────────── v0.5.0
+  Installed MbedTLS ────────────────────── v1.0.2
+  Installed Reexport ───────────────────── v0.2.0
+  Installed Distances ──────────────────── v0.9.0
+  Installed DataStructures ─────────────── v0.17.20
+  Installed DiffRules ──────────────────── v1.0.1
+  Installed JSON ───────────────────────── v0.21.0
+  Installed Memento ────────────────────── v1.0.0
+  Installed XML2_jll ───────────────────── v2.9.10+1
+  Installed MacroTools ─────────────────── v0.5.5
+  Installed Bzip2_jll ──────────────────── v1.0.6+3
+  Installed IniFile ────────────────────── v0.5.0
+  Installed MbedTLS_jll ────────────────── v2.16.6+1
+  Installed TimeZones ──────────────────── v1.3.2
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [23adbb12] + PowerModelsRestoration v0.5.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [4fba245c] + ArrayInterface v2.11.0
+  [6e4b80f9] + BenchmarkTools v0.5.0
+  [6e34b625] + Bzip2_jll v1.0.6+3
+  [49dc2e85] + Calculus v0.5.1
+  [523fee87] + CodecBzip2 v0.7.2
+  [944b1d66] + CodecZlib v0.7.0
+  [bbf7d656] + CommonSubexpressions v0.3.0
+  [e66e0078] + CompilerSupportLibraries_jll v0.3.3+0
+  [864edb3b] + DataStructures v0.17.20
+  [163ba53b] + DiffResults v1.0.2
+  [b552c78f] + DiffRules v1.0.1
+  [b4f34e82] + Distances v0.9.0
+  [e2ba6199] + ExprTools v0.1.1
+  [8f5d6c58] + EzXML v1.1.0
+  [6a86dc24] + FiniteDiff v2.5.2
+  [f6369f11] + ForwardDiff v0.10.12
+  [cd3eb016] + HTTP v0.8.17
+  [2030c09a] + InfrastructureModels v0.5.3
+  [83e8ac13] + IniFile v0.5.0
+  [682c06a0] + JSON v0.21.0
+  [7d188eb4] + JSONSchema v0.3.1
+  [4076af6c] + JuMP v0.21.3
+  [94ce4f54] + Libiconv_jll v1.16.0+5
+  [d3d80556] + LineSearches v7.0.1
+  [1914dd2f] + MacroTools v0.5.5
+  [b8f27783] + MathOptInterface v0.9.14
+  [739be429] + MbedTLS v1.0.2
+  [c8ffd9c3] + MbedTLS_jll v2.16.6+1
+  [f28f55f0] + Memento v1.0.0
+  [78c3b35d] + Mocking v0.7.1
+  [d8a4904e] + MutableArithmetics v0.2.10
+  [d41bc354] + NLSolversBase v7.6.2
+  [2774e3e8] + NLsolve v4.4.0
+  [77ba4419] + NaNMath v0.3.4
+  [efe28fd5] + OpenSpecFun_jll v0.5.3+3
+  [bac558e1] + OrderedCollections v1.3.0
+  [d96e819e] + Parameters v0.12.1
+  [69de0a69] + Parsers v1.0.8
+  [c36e90e8] + PowerModels v0.17.2
+  [23adbb12] + PowerModelsRestoration v0.5.0
+  [3cdcf5f2] + RecipesBase v1.0.2
+  [189a3867] + Reexport v0.2.0
+  [ae029012] + Requires v1.0.1
+  [276daf66] + SpecialFunctions v0.10.3
+  [90137ffa] + StaticArrays v0.12.4
+  [cea106d9] + Syslogs v0.3.0
+  [f269a46b] + TimeZones v1.3.2
+  [3bb67fe8] + TranscodingStreams v0.9.5
+  [3a884ed6] + UnPack v1.0.1
+  [02c8fc9c] + XML2_jll v2.9.10+1
+  [a5390f91] + ZipFile v0.9.2
+  [83775a58] + Zlib_jll v1.2.11+15
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [8ba89e20] + Distributed
+  [b77e0a4c] + InteractiveUtils
+  [76f85450] + LibGit2
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [a63ad114] + Mmap
+  [44cfe95a] + Pkg
+  [de0858da] + Printf
+  [3fa0cd96] + REPL
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [8dfed614] + Test
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+   Building TimeZones → `~/.julia/packages/TimeZones/v0mfN/deps/build.log`
+    Testing PowerModelsRestoration
+Status `/tmp/jl_gFWIdC/Project.toml`
+  [9961bab8] Cbc v0.7.0
+  [2030c09a] InfrastructureModels v0.5.3
+  [b6b21f68] Ipopt v0.6.3
+  [4076af6c] JuMP v0.21.3
+  [2ddba703] Juniper v0.6.4
+  [b8f27783] MathOptInterface v0.9.14
+  [f28f55f0] Memento v1.0.0
+  [c36e90e8] PowerModels v0.17.2
+  [23adbb12] PowerModelsRestoration v0.5.0
+  [c946c3f1] SCS v0.6.6
+  [8dfed614] Test
+Status `/tmp/jl_gFWIdC/Manifest.toml`
+  [ae81ac8f] ASL_jll v0.1.1+3
+  [4fba245c] ArrayInterface v2.11.0
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [b99e7846] BinaryProvider v0.5.10
+  [6e34b625] Bzip2_jll v1.0.6+3
+  [fa961155] CEnum v0.3.0
+  [49dc2e85] Calculus v0.5.1
+  [9961bab8] Cbc v0.7.0
+  [38041ee0] Cbc_jll v2.10.3+4
+  [3830e938] Cgl_jll v0.60.2+5
+  [06985876] Clp_jll v1.17.6+5
+  [523fee87] CodecBzip2 v0.7.2
+  [944b1d66] CodecZlib v0.7.0
+  [be027038] CoinUtils_jll v2.11.3+3
+  [bbf7d656] CommonSubexpressions v0.3.0
+  [e66e0078] CompilerSupportLibraries_jll v0.3.3+0
+  [864edb3b] DataStructures v0.17.20
+  [163ba53b] DiffResults v1.0.2
+  [b552c78f] DiffRules v1.0.1
+  [b4f34e82] Distances v0.9.0
+  [e2ba6199] ExprTools v0.1.1
+  [8f5d6c58] EzXML v1.1.0
+  [6a86dc24] FiniteDiff v2.5.2
+  [f6369f11] ForwardDiff v0.10.12
+  [cd3eb016] HTTP v0.8.17
+  [2030c09a] InfrastructureModels v0.5.3
+  [83e8ac13] IniFile v0.5.0
+  [b6b21f68] Ipopt v0.6.3
+  [9cc047cb] Ipopt_jll v3.13.2+0
+  [682c06a0] JSON v0.21.0
+  [7d188eb4] JSONSchema v0.3.1
+  [4076af6c] JuMP v0.21.3
+  [2ddba703] Juniper v0.6.4
+  [94ce4f54] Libiconv_jll v1.16.0+5
+  [d3d80556] LineSearches v7.0.1
+  [d00139f3] METIS_jll v5.1.0+4
+  [d7ed1dd3] MUMPS_seq_jll v5.2.1+3
+  [1914dd2f] MacroTools v0.5.5
+  [b8f27783] MathOptInterface v0.9.14
+  [fdba3010] MathProgBase v0.7.8
+  [739be429] MbedTLS v1.0.2
+  [c8ffd9c3] MbedTLS_jll v2.16.6+1
+  [f28f55f0] Memento v1.0.0
+  [78c3b35d] Mocking v0.7.1
+  [d8a4904e] MutableArithmetics v0.2.10
+  [d41bc354] NLSolversBase v7.6.2
+  [2774e3e8] NLsolve v4.4.0
+  [77ba4419] NaNMath v0.3.4
+  [656ef2d0] OpenBLAS32_jll v0.3.9+4
+  [efe28fd5] OpenSpecFun_jll v0.5.3+3
+  [bac558e1] OrderedCollections v1.3.0
+  [7da25872] Osi_jll v0.108.5+3
+  [d96e819e] Parameters v0.12.1
+  [69de0a69] Parsers v1.0.8
+  [c36e90e8] PowerModels v0.17.2
+  [23adbb12] PowerModelsRestoration v0.5.0
+  [3cdcf5f2] RecipesBase v1.0.2
+  [189a3867] Reexport v0.2.0
+  [ae029012] Requires v1.0.1
+  [c946c3f1] SCS v0.6.6
+  [276daf66] SpecialFunctions v0.10.3
+  [90137ffa] StaticArrays v0.12.4
+  [cea106d9] Syslogs v0.3.0
+  [f269a46b] TimeZones v1.3.2
+  [3bb67fe8] TranscodingStreams v0.9.5
+  [3a884ed6] UnPack v1.0.1
+  [02c8fc9c] XML2_jll v2.9.10+1
+  [a5390f91] ZipFile v0.9.2
+  [83775a58] Zlib_jll v1.2.11+15
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+WARNING: Method definition constraint_power_magnitude_sqr_on_off(PowerModels.AbstractQCWRModel, Int64, Any, Any, Any, Any) in module PowerModels at /home/pkgeval/.julia/packages/PowerModels/72tBz/src/form/wr.jl:704 overwritten in module PowerModelsRestoration at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/src/form/wr.jl:130.
+  ** incremental compilation may be fatally broken for this module **
+
+┌ Warning: `with_optimizer` is deprecated. Adapt the following example to update your code:
+│ `with_optimizer(Ipopt.Optimizer, max_cpu_time=60.0)` becomes `optimizer_with_attributes(Ipopt.Optimizer, "max_cpu_time" => 60.0)`.
+│   caller = ip:0x0
+└ @ Core :-1
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+[ Info: no explicit NLP constraints or objective provided using @NLconstraint or @NLobjective macros
+[ Info: no explicit NLP constraints or objective provided using @NLconstraint or @NLobjective macros
+[ Info: no explicit NLP constraints or objective provided using @NLconstraint or @NLobjective macros
+[ Info: no explicit NLP constraints or objective provided using @NLconstraint or @NLobjective macros
+[ Info: no explicit NLP constraints or objective provided using @NLconstraint or @NLobjective macros
+[ Info: no explicit NLP constraints or objective provided using @NLconstraint or @NLobjective macros
+[ Info: no explicit NLP constraints or objective provided using @NLconstraint or @NLobjective macros
+[ Info: no explicit NLP constraints or objective provided using @NLconstraint or @NLobjective macros
+[ Info: no explicit NLP constraints or objective provided using @NLconstraint or @NLobjective macros
+[ Info: no explicit NLP constraints or objective provided using @NLconstraint or @NLobjective macros
+[ Info: no explicit NLP constraints or objective provided using @NLconstraint or @NLobjective macros
+[ Info: no explicit NLP constraints or objective provided using @NLconstraint or @NLobjective macros
+[ Info: no explicit NLP constraints or objective provided using @NLconstraint or @NLobjective macros
+Internal error: encountered unexpected error in runtime:
+BoundsError(a=Array{UInt64, (113,)}[0x0000000000000001, 0x0000000000000002, 0x0000000000000003, 0x0000000000000000, 0x0000000000000004, 0x0000000000000005, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000006, 0x0000000000000007, 0x0000000000000008, 0x0000000000000009, 0x000000000000000a, 0x000000000000000b, 0x000000000000000c, 0x000000000000000d, 0x000000000000000e, 0x000000000000000f, 0x0000000000000010, 0x0000000000000011, 0x0000000000000012, 0x0000000000000013, 0x0000000000000014, 0x0000000000000015, 0x0000000000000016, 0x0000000000000017, 0x0000000000000018, 0x0000000000000019, 0x000000000000001a, 0x000000000000001b, 0x000000000000001c, 0x000000000000001d, 0x000000000000001e, 0x000000000000001f, 0x0000000000000020, 0x0000000000000021, 0x0000000000000022, 0x0000000000000023, 0x0000000000000024, 0x0000000000000025, 0x0000000000000026, 0x0000000000000027, 0x0000000000000028, 0x0000000000000029, 0x000000000000002a, 0x000000000000002b, 0x000000000000002c], i=(114,))
+jl_bounds_error_ints at /buildworker/worker/package_linux64/build/src/rtutils.c:183
+getindex at ./array.jl:809 [inlined]
+getindex at ./abstractarray.jl:1122 [inlined]
+DFS at ./compiler/ssair/domtree.jl:197
+SNCA at ./compiler/ssair/domtree.jl:269
+construct_domtree at ./compiler/ssair/domtree.jl:121
+run_passes at ./compiler/ssair/driver.jl:131
+optimize at ./compiler/optimize.jl:172
+typeinf at ./compiler/typeinfer.jl:32
+typeinf_edge at ./compiler/typeinfer.jl:522
+abstract_call_method at ./compiler/abstractinterpretation.jl:453
+abstract_call_gf_by_type at ./compiler/abstractinterpretation.jl:129
+abstract_call_known at ./compiler/abstractinterpretation.jl:991
+abstract_call at ./compiler/abstractinterpretation.jl:1014
+abstract_call at ./compiler/abstractinterpretation.jl:998
+abstract_eval_statement at ./compiler/abstractinterpretation.jl:1120
+typeinf_local at ./compiler/abstractinterpretation.jl:1376
+typeinf_nocycle at ./compiler/abstractinterpretation.jl:1432
+typeinf at ./compiler/typeinfer.jl:12
+typeinf_ext at ./compiler/typeinfer.jl:609
+typeinf_ext_toplevel at ./compiler/typeinfer.jl:642
+typeinf_ext_toplevel at ./compiler/typeinfer.jl:638
+jfptr_typeinf_ext_toplevel_11988.clone_1 at /opt/julia/lib/julia/sys.so (unknown line)
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+jl_type_infer at /buildworker/worker/package_linux64/build/src/gf.c:300
+jl_generate_fptr at /buildworker/worker/package_linux64/build/src/jitlayers.cpp:293
+jl_compile_method_internal at /buildworker/worker/package_linux64/build/src/gf.c:1890
+jl_compile_method_internal at /buildworker/worker/package_linux64/build/src/gf.c:1841 [inlined]
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2145 [inlined]
+jl_apply_generic at /buildworker/worker/package_linux64/build/src/gf.c:2336
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:436
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:7 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:7 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:6 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+top-level scope at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:3
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344 [inlined]
+include_string at ./loading.jl:1103
+_include at ./loading.jl:1157
+include at ./client.jl:443
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_stmt_value at /buildworker/worker/package_linux64/build/src/interpreter.c:157 [inlined]
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:551
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/runtests.jl:59 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+top-level scope at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/runtests.jl:49
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344 [inlined]
+include_string at ./loading.jl:1103
+_include at ./loading.jl:1157
+include at ./client.jl:443
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_stmt_value at /buildworker/worker/package_linux64/build/src/interpreter.c:157 [inlined]
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:551
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+top-level scope at none:6
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344
+exec_options at ./client.jl:260
+_start at ./client.jl:484
+jfptr__start_36646.clone_1 at /opt/julia/lib/julia/sys.so (unknown line)
+jl_apply at /buildworker/worker/package_linux64/build/ui/../src/julia.h:1752 [inlined]
+true_main at /buildworker/worker/package_linux64/build/ui/repl.c:106
+main at /buildworker/worker/package_linux64/build/ui/repl.c:227
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+_start at /opt/julia/bin/julia (unknown line)
+Internal error: encountered unexpected error in runtime:
+BoundsError(a=Array{UInt64, (132,)}[0x0000000000000001, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000002, 0x0000000000000000, 0x0000000000000003, 0x0000000000000004, 0x0000000000000005, 0x0000000000000000, 0x0000000000000006, 0x0000000000000007, 0x0000000000000000, 0x0000000000000008, 0x0000000000000009, 0x000000000000000a, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x000000000000000b, 0x000000000000000c, 0x000000000000000d, 0x000000000000000e, 0x000000000000000f, 0x0000000000000010, 0x0000000000000011, 0x0000000000000012, 0x0000000000000013, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000014, 0x0000000000000015, 0x0000000000000016, 0x0000000000000017, 0x0000000000000018, 0x0000000000000019, 0x000000000000001a, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x000000000000001b, 0x000000000000001c, 0x000000000000001d, 0x000000000000001e, 0x000000000000001f, 0x0000000000000020, 0x0000000000000021, 0x0000000000000022, 0x0000000000000023, 0x0000000000000024, 0x0000000000000025, 0x0000000000000026, 0x0000000000000027, 0x0000000000000028, 0x0000000000000029], i=(152,))
+jl_bounds_error_ints at /buildworker/worker/package_linux64/build/src/rtutils.c:183
+getindex at ./array.jl:809 [inlined]
+getindex at ./abstractarray.jl:1122 [inlined]
+DFS at ./compiler/ssair/domtree.jl:197
+SNCA at ./compiler/ssair/domtree.jl:269
+construct_domtree at ./compiler/ssair/domtree.jl:121
+run_passes at ./compiler/ssair/driver.jl:131
+optimize at ./compiler/optimize.jl:172
+typeinf at ./compiler/typeinfer.jl:32
+typeinf_edge at ./compiler/typeinfer.jl:522
+abstract_call_method at ./compiler/abstractinterpretation.jl:453
+abstract_call_gf_by_type at ./compiler/abstractinterpretation.jl:129
+abstract_call_known at ./compiler/abstractinterpretation.jl:991
+abstract_call at ./compiler/abstractinterpretation.jl:1014
+abstract_call at ./compiler/abstractinterpretation.jl:998
+abstract_eval_statement at ./compiler/abstractinterpretation.jl:1120
+typeinf_local at ./compiler/abstractinterpretation.jl:1361
+typeinf_nocycle at ./compiler/abstractinterpretation.jl:1432
+typeinf at ./compiler/typeinfer.jl:12
+typeinf_ext at ./compiler/typeinfer.jl:609
+typeinf_ext_toplevel at ./compiler/typeinfer.jl:642
+typeinf_ext_toplevel at ./compiler/typeinfer.jl:638
+jfptr_typeinf_ext_toplevel_11988.clone_1 at /opt/julia/lib/julia/sys.so (unknown line)
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+jl_type_infer at /buildworker/worker/package_linux64/build/src/gf.c:300
+jl_generate_fptr at /buildworker/worker/package_linux64/build/src/jitlayers.cpp:293
+jl_compile_method_internal at /buildworker/worker/package_linux64/build/src/gf.c:1890
+jl_compile_method_internal at /buildworker/worker/package_linux64/build/src/gf.c:1841 [inlined]
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2145 [inlined]
+jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2159
+_run_iterative_sub_network##kw at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/src/util/iterative_restoration.jl:106
+unknown function (ip: 0x7f75f2bf0ec8)
+#run_iterative_restoration#289 at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/src/util/iterative_restoration.jl:40
+run_iterative_restoration##kw at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/src/util/iterative_restoration.jl:15
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:436
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:7 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:7 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:6 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+top-level scope at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:3
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344 [inlined]
+include_string at ./loading.jl:1103
+_include at ./loading.jl:1157
+include at ./client.jl:443
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_stmt_value at /buildworker/worker/package_linux64/build/src/interpreter.c:157 [inlined]
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:551
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/runtests.jl:59 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+top-level scope at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/runtests.jl:49
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344 [inlined]
+include_string at ./loading.jl:1103
+_include at ./loading.jl:1157
+include at ./client.jl:443
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_stmt_value at /buildworker/worker/package_linux64/build/src/interpreter.c:157 [inlined]
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:551
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+top-level scope at none:6
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344
+exec_options at ./client.jl:260
+_start at ./client.jl:484
+jfptr__start_36646.clone_1 at /opt/julia/lib/julia/sys.so (unknown line)
+jl_apply at /buildworker/worker/package_linux64/build/ui/../src/julia.h:1752 [inlined]
+true_main at /buildworker/worker/package_linux64/build/ui/repl.c:106
+main at /buildworker/worker/package_linux64/build/ui/repl.c:227
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+_start at /opt/julia/bin/julia (unknown line)
+┌ Warning: `sort(d::Dict; args...)` is deprecated, use `sort!(OrderedDict(d); args...)` instead.
+│   caller = _run_iterative_sub_network(network::Any, model_constructor::Any, optimizer::Any; repair_periods::Any, kwargs::Any) at iterative_restoration.jl:119
+└ @ PowerModelsRestoration ~/.julia/packages/PowerModelsRestoration/oaYuf/src/util/iterative_restoration.jl:119
+Internal error: encountered unexpected error in runtime:
+BoundsError(a=Array{UInt64, (132,)}[0x0000000000000001, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000002, 0x0000000000000000, 0x0000000000000003, 0x0000000000000004, 0x0000000000000005, 0x0000000000000000, 0x0000000000000006, 0x0000000000000007, 0x0000000000000000, 0x0000000000000008, 0x0000000000000009, 0x000000000000000a, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x000000000000000b, 0x000000000000000c, 0x000000000000000d, 0x000000000000000e, 0x000000000000000f, 0x0000000000000010, 0x0000000000000011, 0x0000000000000012, 0x0000000000000013, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000014, 0x0000000000000015, 0x0000000000000016, 0x0000000000000017, 0x0000000000000018, 0x0000000000000019, 0x000000000000001a, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x000000000000001b, 0x000000000000001c, 0x000000000000001d, 0x000000000000001e, 0x000000000000001f, 0x0000000000000020, 0x0000000000000021, 0x0000000000000022, 0x0000000000000023, 0x0000000000000024, 0x0000000000000025, 0x0000000000000026, 0x0000000000000027, 0x0000000000000028, 0x0000000000000029], i=(152,))
+jl_bounds_error_ints at /buildworker/worker/package_linux64/build/src/rtutils.c:183
+getindex at ./array.jl:809 [inlined]
+getindex at ./abstractarray.jl:1122 [inlined]
+DFS at ./compiler/ssair/domtree.jl:197
+SNCA at ./compiler/ssair/domtree.jl:269
+construct_domtree at ./compiler/ssair/domtree.jl:121
+run_passes at ./compiler/ssair/driver.jl:131
+optimize at ./compiler/optimize.jl:172
+typeinf at ./compiler/typeinfer.jl:32
+typeinf_edge at ./compiler/typeinfer.jl:522
+abstract_call_method at ./compiler/abstractinterpretation.jl:453
+abstract_call_gf_by_type at ./compiler/abstractinterpretation.jl:129
+abstract_call_known at ./compiler/abstractinterpretation.jl:991
+abstract_call at ./compiler/abstractinterpretation.jl:1014
+abstract_call at ./compiler/abstractinterpretation.jl:998
+abstract_eval_statement at ./compiler/abstractinterpretation.jl:1120
+typeinf_local at ./compiler/abstractinterpretation.jl:1361
+typeinf_nocycle at ./compiler/abstractinterpretation.jl:1432
+typeinf at ./compiler/typeinfer.jl:12
+typeinf_ext at ./compiler/typeinfer.jl:609
+typeinf_ext_toplevel at ./compiler/typeinfer.jl:642
+typeinf_ext_toplevel at ./compiler/typeinfer.jl:638
+jfptr_typeinf_ext_toplevel_11988.clone_1 at /opt/julia/lib/julia/sys.so (unknown line)
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+jl_type_infer at /buildworker/worker/package_linux64/build/src/gf.c:300
+jl_generate_fptr at /buildworker/worker/package_linux64/build/src/jitlayers.cpp:293
+jl_compile_method_internal at /buildworker/worker/package_linux64/build/src/gf.c:1890
+jl_compile_method_internal at /buildworker/worker/package_linux64/build/src/gf.c:1841 [inlined]
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2145 [inlined]
+jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2159
+_run_iterative_sub_network##kw at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/src/util/iterative_restoration.jl:106
+unknown function (ip: 0x7f75f2bf0ec8)
+#_run_iterative_sub_network#290 at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/src/util/iterative_restoration.jl:132
+_run_iterative_sub_network##kw at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/src/util/iterative_restoration.jl:106
+unknown function (ip: 0x7f75f2bf0ec8)
+#run_iterative_restoration#289 at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/src/util/iterative_restoration.jl:40
+run_iterative_restoration##kw at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/src/util/iterative_restoration.jl:15
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:436
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:7 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:7 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:6 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+top-level scope at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:3
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344 [inlined]
+include_string at ./loading.jl:1103
+_include at ./loading.jl:1157
+include at ./client.jl:443
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_stmt_value at /buildworker/worker/package_linux64/build/src/interpreter.c:157 [inlined]
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:551
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/runtests.jl:59 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+top-level scope at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/runtests.jl:49
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344 [inlined]
+include_string at ./loading.jl:1103
+_include at ./loading.jl:1157
+include at ./client.jl:443
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_stmt_value at /buildworker/worker/package_linux64/build/src/interpreter.c:157 [inlined]
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:551
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+top-level scope at none:6
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344
+exec_options at ./client.jl:260
+_start at ./client.jl:484
+jfptr__start_36646.clone_1 at /opt/julia/lib/julia/sys.so (unknown line)
+jl_apply at /buildworker/worker/package_linux64/build/ui/../src/julia.h:1752 [inlined]
+true_main at /buildworker/worker/package_linux64/build/ui/repl.c:106
+main at /buildworker/worker/package_linux64/build/ui/repl.c:227
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+_start at /opt/julia/bin/julia (unknown line)
+Internal error: encountered unexpected error in runtime:
+BoundsError(a=Array{UInt64, (113,)}[0x0000000000000001, 0x0000000000000002, 0x0000000000000003, 0x0000000000000000, 0x0000000000000004, 0x0000000000000005, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000006, 0x0000000000000007, 0x0000000000000008, 0x0000000000000009, 0x000000000000000a, 0x000000000000000b, 0x000000000000000c, 0x000000000000000d, 0x000000000000000e, 0x000000000000000f, 0x0000000000000010, 0x0000000000000011, 0x0000000000000012, 0x0000000000000013, 0x0000000000000014, 0x0000000000000015, 0x0000000000000016, 0x0000000000000017, 0x0000000000000018, 0x0000000000000019, 0x000000000000001a, 0x000000000000001b, 0x000000000000001c, 0x000000000000001d, 0x000000000000001e, 0x000000000000001f, 0x0000000000000020, 0x0000000000000021, 0x0000000000000022, 0x0000000000000023, 0x0000000000000024, 0x0000000000000025, 0x0000000000000026, 0x0000000000000027, 0x0000000000000028, 0x0000000000000029, 0x000000000000002a, 0x000000000000002b, 0x000000000000002c], i=(114,))
+jl_bounds_error_ints at /buildworker/worker/package_linux64/build/src/rtutils.c:183
+getindex at ./array.jl:809 [inlined]
+getindex at ./abstractarray.jl:1122 [inlined]
+DFS at ./compiler/ssair/domtree.jl:197
+SNCA at ./compiler/ssair/domtree.jl:269
+construct_domtree at ./compiler/ssair/domtree.jl:121
+run_passes at ./compiler/ssair/driver.jl:131
+optimize at ./compiler/optimize.jl:172
+typeinf at ./compiler/typeinfer.jl:32
+typeinf_edge at ./compiler/typeinfer.jl:522
+abstract_call_method at ./compiler/abstractinterpretation.jl:453
+abstract_call_gf_by_type at ./compiler/abstractinterpretation.jl:129
+abstract_call_known at ./compiler/abstractinterpretation.jl:991
+abstract_call at ./compiler/abstractinterpretation.jl:1014
+abstract_call at ./compiler/abstractinterpretation.jl:998
+abstract_eval_statement at ./compiler/abstractinterpretation.jl:1120
+typeinf_local at ./compiler/abstractinterpretation.jl:1376
+typeinf_nocycle at ./compiler/abstractinterpretation.jl:1432
+typeinf at ./compiler/typeinfer.jl:12
+typeinf_ext at ./compiler/typeinfer.jl:609
+typeinf_ext_toplevel at ./compiler/typeinfer.jl:642
+typeinf_ext_toplevel at ./compiler/typeinfer.jl:638
+jfptr_typeinf_ext_toplevel_11988.clone_1 at /opt/julia/lib/julia/sys.so (unknown line)
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+jl_type_infer at /buildworker/worker/package_linux64/build/src/gf.c:300
+jl_generate_fptr at /buildworker/worker/package_linux64/build/src/jitlayers.cpp:293
+jl_compile_method_internal at /buildworker/worker/package_linux64/build/src/gf.c:1890
+jl_compile_method_internal at /buildworker/worker/package_linux64/build/src/gf.c:1841 [inlined]
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2145 [inlined]
+jl_apply_generic at /buildworker/worker/package_linux64/build/src/gf.c:2336
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:436
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:50 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:50 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:49 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+top-level scope at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:3
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344 [inlined]
+include_string at ./loading.jl:1103
+_include at ./loading.jl:1157
+include at ./client.jl:443
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_stmt_value at /buildworker/worker/package_linux64/build/src/interpreter.c:157 [inlined]
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:551
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/runtests.jl:59 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+top-level scope at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/runtests.jl:49
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344 [inlined]
+include_string at ./loading.jl:1103
+_include at ./loading.jl:1157
+include at ./client.jl:443
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_stmt_value at /buildworker/worker/package_linux64/build/src/interpreter.c:157 [inlined]
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:551
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+top-level scope at none:6
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344
+exec_options at ./client.jl:260
+_start at ./client.jl:484
+jfptr__start_36646.clone_1 at /opt/julia/lib/julia/sys.so (unknown line)
+jl_apply at /buildworker/worker/package_linux64/build/ui/../src/julia.h:1752 [inlined]
+true_main at /buildworker/worker/package_linux64/build/ui/repl.c:106
+main at /buildworker/worker/package_linux64/build/ui/repl.c:227
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+_start at /opt/julia/bin/julia (unknown line)
+[ Info: no explicit NLP constraints or objective provided using @NLconstraint or @NLobjective macros
+Internal error: encountered unexpected error in runtime:
+BoundsError(a=Array{UInt64, (132,)}[0x0000000000000001, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000002, 0x0000000000000000, 0x0000000000000003, 0x0000000000000004, 0x0000000000000005, 0x0000000000000000, 0x0000000000000006, 0x0000000000000007, 0x0000000000000000, 0x0000000000000008, 0x0000000000000009, 0x000000000000000a, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x000000000000000b, 0x000000000000000c, 0x000000000000000d, 0x000000000000000e, 0x000000000000000f, 0x0000000000000010, 0x0000000000000011, 0x0000000000000012, 0x0000000000000013, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000014, 0x0000000000000015, 0x0000000000000016, 0x0000000000000017, 0x0000000000000018, 0x0000000000000019, 0x000000000000001a, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x000000000000001b, 0x000000000000001c, 0x000000000000001d, 0x000000000000001e, 0x000000000000001f, 0x0000000000000020, 0x0000000000000021, 0x0000000000000022, 0x0000000000000023, 0x0000000000000024, 0x0000000000000025, 0x0000000000000026, 0x0000000000000027, 0x0000000000000028, 0x0000000000000029], i=(152,))
+jl_bounds_error_ints at /buildworker/worker/package_linux64/build/src/rtutils.c:183
+getindex at ./array.jl:809 [inlined]
+getindex at ./abstractarray.jl:1122 [inlined]
+DFS at ./compiler/ssair/domtree.jl:197
+SNCA at ./compiler/ssair/domtree.jl:269
+construct_domtree at ./compiler/ssair/domtree.jl:121
+run_passes at ./compiler/ssair/driver.jl:131
+optimize at ./compiler/optimize.jl:172
+typeinf at ./compiler/typeinfer.jl:32
+typeinf_edge at ./compiler/typeinfer.jl:522
+abstract_call_method at ./compiler/abstractinterpretation.jl:453
+abstract_call_gf_by_type at ./compiler/abstractinterpretation.jl:129
+abstract_call_known at ./compiler/abstractinterpretation.jl:991
+abstract_call at ./compiler/abstractinterpretation.jl:1014
+abstract_call at ./compiler/abstractinterpretation.jl:998
+abstract_eval_statement at ./compiler/abstractinterpretation.jl:1120
+typeinf_local at ./compiler/abstractinterpretation.jl:1361
+typeinf_nocycle at ./compiler/abstractinterpretation.jl:1432
+typeinf at ./compiler/typeinfer.jl:12
+typeinf_ext at ./compiler/typeinfer.jl:609
+typeinf_ext_toplevel at ./compiler/typeinfer.jl:642
+typeinf_ext_toplevel at ./compiler/typeinfer.jl:638
+jfptr_typeinf_ext_toplevel_11988.clone_1 at /opt/julia/lib/julia/sys.so (unknown line)
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+jl_type_infer at /buildworker/worker/package_linux64/build/src/gf.c:300
+jl_generate_fptr at /buildworker/worker/package_linux64/build/src/jitlayers.cpp:293
+jl_compile_method_internal at /buildworker/worker/package_linux64/build/src/gf.c:1890
+jl_compile_method_internal at /buildworker/worker/package_linux64/build/src/gf.c:1841 [inlined]
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2145 [inlined]
+jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2159
+_run_iterative_sub_network##kw at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/src/util/iterative_restoration.jl:106
+unknown function (ip: 0x7f75f2bf0ec8)
+#run_iterative_restoration#289 at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/src/util/iterative_restoration.jl:40
+run_iterative_restoration##kw at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/src/util/iterative_restoration.jl:15
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:436
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:50 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:50 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:49 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+top-level scope at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:3
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344 [inlined]
+include_string at ./loading.jl:1103
+_include at ./loading.jl:1157
+include at ./client.jl:443
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_stmt_value at /buildworker/worker/package_linux64/build/src/interpreter.c:157 [inlined]
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:551
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/runtests.jl:59 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+top-level scope at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/runtests.jl:49
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344 [inlined]
+include_string at ./loading.jl:1103
+_include at ./loading.jl:1157
+include at ./client.jl:443
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_stmt_value at /buildworker/worker/package_linux64/build/src/interpreter.c:157 [inlined]
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:551
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+top-level scope at none:6
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344
+exec_options at ./client.jl:260
+_start at ./client.jl:484
+jfptr__start_36646.clone_1 at /opt/julia/lib/julia/sys.so (unknown line)
+jl_apply at /buildworker/worker/package_linux64/build/ui/../src/julia.h:1752 [inlined]
+true_main at /buildworker/worker/package_linux64/build/ui/repl.c:106
+main at /buildworker/worker/package_linux64/build/ui/repl.c:227
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+_start at /opt/julia/bin/julia (unknown line)
+[ Info: no explicit NLP constraints or objective provided using @NLconstraint or @NLobjective macros
+Internal error: encountered unexpected error in runtime:
+BoundsError(a=Array{UInt64, (132,)}[0x0000000000000001, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000002, 0x0000000000000000, 0x0000000000000003, 0x0000000000000004, 0x0000000000000005, 0x0000000000000000, 0x0000000000000006, 0x0000000000000007, 0x0000000000000000, 0x0000000000000008, 0x0000000000000009, 0x000000000000000a, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x000000000000000b, 0x000000000000000c, 0x000000000000000d, 0x000000000000000e, 0x000000000000000f, 0x0000000000000010, 0x0000000000000011, 0x0000000000000012, 0x0000000000000013, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000014, 0x0000000000000015, 0x0000000000000016, 0x0000000000000017, 0x0000000000000018, 0x0000000000000019, 0x000000000000001a, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x000000000000001b, 0x000000000000001c, 0x000000000000001d, 0x000000000000001e, 0x000000000000001f, 0x0000000000000020, 0x0000000000000021, 0x0000000000000022, 0x0000000000000023, 0x0000000000000024, 0x0000000000000025, 0x0000000000000026, 0x0000000000000027, 0x0000000000000028, 0x0000000000000029], i=(152,))
+jl_bounds_error_ints at /buildworker/worker/package_linux64/build/src/rtutils.c:183
+getindex at ./array.jl:809 [inlined]
+getindex at ./abstractarray.jl:1122 [inlined]
+DFS at ./compiler/ssair/domtree.jl:197
+SNCA at ./compiler/ssair/domtree.jl:269
+construct_domtree at ./compiler/ssair/domtree.jl:121
+run_passes at ./compiler/ssair/driver.jl:131
+optimize at ./compiler/optimize.jl:172
+typeinf at ./compiler/typeinfer.jl:32
+typeinf_edge at ./compiler/typeinfer.jl:522
+abstract_call_method at ./compiler/abstractinterpretation.jl:453
+abstract_call_gf_by_type at ./compiler/abstractinterpretation.jl:129
+abstract_call_known at ./compiler/abstractinterpretation.jl:991
+abstract_call at ./compiler/abstractinterpretation.jl:1014
+abstract_call at ./compiler/abstractinterpretation.jl:998
+abstract_eval_statement at ./compiler/abstractinterpretation.jl:1120
+typeinf_local at ./compiler/abstractinterpretation.jl:1361
+typeinf_nocycle at ./compiler/abstractinterpretation.jl:1432
+typeinf at ./compiler/typeinfer.jl:12
+typeinf_ext at ./compiler/typeinfer.jl:609
+typeinf_ext_toplevel at ./compiler/typeinfer.jl:642
+typeinf_ext_toplevel at ./compiler/typeinfer.jl:638
+jfptr_typeinf_ext_toplevel_11988.clone_1 at /opt/julia/lib/julia/sys.so (unknown line)
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+jl_type_infer at /buildworker/worker/package_linux64/build/src/gf.c:300
+jl_generate_fptr at /buildworker/worker/package_linux64/build/src/jitlayers.cpp:293
+jl_compile_method_internal at /buildworker/worker/package_linux64/build/src/gf.c:1890
+jl_compile_method_internal at /buildworker/worker/package_linux64/build/src/gf.c:1841 [inlined]
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2145 [inlined]
+jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2159
+_run_iterative_sub_network##kw at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/src/util/iterative_restoration.jl:106
+unknown function (ip: 0x7f75f2bf0ec8)
+#_run_iterative_sub_network#290 at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/src/util/iterative_restoration.jl:132
+_run_iterative_sub_network##kw at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/src/util/iterative_restoration.jl:106
+unknown function (ip: 0x7f75f2bf0ec8)
+#run_iterative_restoration#289 at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/src/util/iterative_restoration.jl:40
+run_iterative_restoration##kw at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/src/util/iterative_restoration.jl:15
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:436
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:50 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:50 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:49 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+top-level scope at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/iterative.jl:3
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344 [inlined]
+include_string at ./loading.jl:1103
+_include at ./loading.jl:1157
+include at ./client.jl:443
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_stmt_value at /buildworker/worker/package_linux64/build/src/interpreter.c:157 [inlined]
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:551
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:491
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+macro expansion at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/runtests.jl:59 [inlined]
+macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114 [inlined]
+top-level scope at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/runtests.jl:49
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344 [inlined]
+include_string at ./loading.jl:1103
+_include at ./loading.jl:1157
+include at ./client.jl:443
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1752 [inlined]
+do_call at /buildworker/worker/package_linux64/build/src/interpreter.c:117
+eval_value at /buildworker/worker/package_linux64/build/src/interpreter.c:206
+eval_stmt_value at /buildworker/worker/package_linux64/build/src/interpreter.c:157 [inlined]
+eval_body at /buildworker/worker/package_linux64/build/src/interpreter.c:551
+jl_interpret_toplevel_thunk at /buildworker/worker/package_linux64/build/src/interpreter.c:659
+top-level scope at none:6
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:838
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:788
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:881
+eval at ./boot.jl:344
+exec_options at ./client.jl:260
+_start at ./client.jl:484
+jfptr__start_36646.clone_1 at /opt/julia/lib/julia/sys.so (unknown line)
+jl_apply at /buildworker/worker/package_linux64/build/ui/../src/julia.h:1752 [inlined]
+true_main at /buildworker/worker/package_linux64/build/ui/repl.c:106
+main at /buildworker/worker/package_linux64/build/ui/repl.c:227
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+_start at /opt/julia/bin/julia (unknown line)
+[ Info: no explicit NLP constraints or objective provided using @NLconstraint or @NLobjective macros
+test ac redispatch: Test Failed at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/restoration_redispatch.jl:31
+  Expression: isapprox(gen_power(result_sim, "1", ["3", "4", "5"]), 9.87; atol = 1)
+   Evaluated: isapprox(8.519574337347251, 9.87; atol = 1)
+Stacktrace:
+ [1] top-level scope
+   @ ~/.julia/packages/PowerModelsRestoration/oaYuf/test/restoration_redispatch.jl:31
+ [2] top-level scope
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+ [3] top-level scope
+   @ ~/.julia/packages/PowerModelsRestoration/oaYuf/test/restoration_redispatch.jl:7
+ [4] top-level scope
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+ [5] top-level scope
+   @ ~/.julia/packages/PowerModelsRestoration/oaYuf/test/restoration_redispatch.jl:6
+[ Info: no explicit NLP constraints or objective provided using @NLconstraint or @NLobjective macros
+Test Summary:                            | Pass  Fail  Total
+PowerModelsRestoration                   |  804     1    805
+  test ml output                         |   87           87
+  test topology propagation              |   44           44
+  test adding load weights from pti data |    8            8
+  test ac ml                             |   42           42
+  test dc ml                             |   35           35
+  test soc ml                            |   32           32
+  test sdp ml                            |   19           19
+  test ac ml uc                          |   16           16
+  test dc ml uc                          |   17           17
+  test soc ml uc                         |   16           16
+  discrete load and shunt variables      |   33           33
+  test ac ml smpl                        |   15           15
+  test ac ml strg                        |   12           12
+  test soc ml strg                       |   23           23
+  test dc ml strg                        |   23           23
+  test soc ml strg                       |             No tests
+  Data                                   |   78           78
+  MRSP                                   |   97           97
+  ROP                                    |  104          104
+  Iterative                              |   53           53
+  Restoration Redispatch                 |   17     1     18
+    test ac redispatch                   |    5     1      6
+    test dc redispatch                   |    6            6
+    test soc redispatch                  |    6            6
+  test ac ml uc heuristic                |   33           33
+ERROR: LoadError: Some tests did not pass: 804 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/PowerModelsRestoration/oaYuf/test/runtests.jl:47
+ERROR: Package PowerModelsRestoration errored during testing
+Stacktrace:
+  [1] pkgerror(::String, ::Vararg{String,N} where N)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1567
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:328
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:315
+  [5] #test#62
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [7] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:16
