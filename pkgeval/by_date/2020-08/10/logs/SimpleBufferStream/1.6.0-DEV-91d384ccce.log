@@ -1,0 +1,162 @@
+Julia Version 1.6.0-DEV.607
+Commit 91d384ccce (2020-08-08 23:34 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+[ Info: LEGAL NOTICE: package operations send anonymous data about your system to https://pkg.julialang.org (your current package server), including the operating system and Julia versions you are using, and a random client UUID. Running `Pkg.telemetryinfo()` will show exactly what data is sent. See https://julialang.org/legal/data/ for more details about what this data is used for, how long it is retained, and how to opt out of sending it.
+  Installed SimpleBufferStream ─ v1.0.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [777ac1f9] + SimpleBufferStream v1.0.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [777ac1f9] + SimpleBufferStream v1.0.0
+    Testing SimpleBufferStream
+Status `/tmp/jl_dAOy0Q/Project.toml`
+  [be1be57a] Gzip_jll v1.10.0+0
+  [cd3eb016] HTTP v0.8.17
+  [777ac1f9] SimpleBufferStream v1.0.0
+  [a4e569a6] Tar v1.6.1
+  [8dfed614] Test
+Status `/tmp/jl_dAOy0Q/Manifest.toml`
+  [0dad84c5] ArgTools v1.1.1
+  [be1be57a] Gzip_jll v1.10.0+0
+  [cd3eb016] HTTP v0.8.17
+  [83e8ac13] IniFile v0.5.0
+  [739be429] MbedTLS v1.0.2
+  [c8ffd9c3] MbedTLS_jll v2.16.6+1
+  [777ac1f9] SimpleBufferStream v1.0.0
+  [a4e569a6] Tar v1.6.1
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+Test Summary: | Pass  Total
+basic usage   |   20     20
+Test Summary: | Pass  Total
+async passing |    3      3
+HTTP.jl streaming: Error During Test at /home/pkgeval/.julia/packages/SimpleBufferStream/57wZb/test/runtests.jl:169
+  Test threw exception
+  Expression: (HTTP.get(url, response_stream = file_io)).status == 200
+  IOError(Base.IOError("connect: connection timed out (ETIMEDOUT)", -110) during request(https://us-east.storage.julialang.org/registry/23338594-aafe-5451-b93e-139f81909106/e414c14b3ff844553817b45c51053fa410ff72fe))
+  
+  Stacktrace:
+    [1] wait_connected(x::Sockets.TCPSocket)
+      @ Sockets /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:532
+    [2] connect
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:567 [inlined]
+    [3] connect(addr::Sockets.IPv4, port::UInt64)
+      @ Sockets /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:553
+    [4] getconnection(::Type{Sockets.TCPSocket}, host::SubString{String}, port::String; keepalive::Bool, connect_timeout::Int64, kw::Base.Iterators.Pairs{Symbol,Any,NTuple{4,Symbol},NamedTuple{(:require_ssl_verification, :iofunction, :reached_redirect_limit, :response_stream),Tuple{Bool,Nothing,Bool,IOStream}}})
+      @ HTTP.ConnectionPool ~/.julia/packages/HTTP/atT5q/src/ConnectionPool.jl:616
+    [5] #getconnection#29
+      @ ~/.julia/packages/HTTP/atT5q/src/ConnectionPool.jl:668 [inlined]
+    [6] newconnection(pod::HTTP.ConnectionPool.Pod, T::Type, host::SubString{String}, port::SubString{String}, pipeline_limit::Int64, require_ssl_verification::Bool, idle_timeout::Int64; kw::Base.Iterators.Pairs{Symbol,Any,Tuple{Symbol,Symbol,Symbol},NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream),Tuple{Nothing,Bool,IOStream}}})
+      @ HTTP.ConnectionPool ~/.julia/packages/HTTP/atT5q/src/ConnectionPool.jl:583
+    [7] getconnection(::Type{HTTP.ConnectionPool.Transaction{MbedTLS.SSLContext}}, host::SubString{String}, port::SubString{String}; connection_limit::Int64, pipeline_limit::Int64, idle_timeout::Int64, reuse_limit::Int64, require_ssl_verification::Bool, kw::Base.Iterators.Pairs{Symbol,Any,Tuple{Symbol,Symbol,Symbol},NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream),Tuple{Nothing,Bool,IOStream}}})
+      @ HTTP.ConnectionPool ~/.julia/packages/HTTP/atT5q/src/ConnectionPool.jl:527
+    [8] request(::Type{ConnectionPoolLayer{StreamLayer{Union{}}}}, url::HTTP.URIs.URI, req::HTTP.Messages.Request, body::Vector{UInt8}; proxy::Nothing, socket_type::Type, reuse_limit::Int64, kw::Base.Iterators.Pairs{Symbol,Any,Tuple{Symbol,Symbol,Symbol},NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream),Tuple{Nothing,Bool,IOStream}}})
+      @ HTTP.ConnectionRequest ~/.julia/packages/HTTP/atT5q/src/ConnectionRequest.jl:73
+    [9] request(::Type{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}, ::HTTP.URIs.URI, ::Vararg{Any,N} where N; kw::Base.Iterators.Pairs{Symbol,Any,Tuple{Symbol,Symbol,Symbol},NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream),Tuple{Nothing,Bool,IOStream}}})
+      @ HTTP.ExceptionRequest ~/.julia/packages/HTTP/atT5q/src/ExceptionRequest.jl:19
+   [10] (::Base.var"#56#58"{Base.var"#56#57#59"{ExponentialBackOff,HTTP.RetryRequest.var"#2#3"{Bool,HTTP.Messages.Request},typeof(HTTP.request)}})(::Type, ::Vararg{Any,N} where N; kwargs::Base.Iterators.Pairs{Symbol,Any,Tuple{Symbol,Symbol,Symbol},NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream),Tuple{Nothing,Bool,IOStream}}})
+      @ Base ./error.jl:301
+   [11] #request#1
+      @ ~/.julia/packages/HTTP/atT5q/src/RetryRequest.jl:44 [inlined]
+   [12] request(::Type{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String},SubString{String}}}, body::Vector{UInt8}; http_version::VersionNumber, target::String, parent::Nothing, iofunction::Nothing, kw::Base.Iterators.Pairs{Symbol,Any,Tuple{Symbol,Symbol},NamedTuple{(:reached_redirect_limit, :response_stream),Tuple{Bool,IOStream}}})
+      @ HTTP.MessageRequest ~/.julia/packages/HTTP/atT5q/src/MessageRequest.jl:51
+   [13] request(::Type{BasicAuthLayer{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String},SubString{String}}}, body::Vector{UInt8}; kw::Base.Iterators.Pairs{Symbol,Any,Tuple{Symbol,Symbol},NamedTuple{(:reached_redirect_limit, :response_stream),Tuple{Bool,IOStream}}})
+      @ HTTP.BasicAuthRequest ~/.julia/packages/HTTP/atT5q/src/BasicAuthRequest.jl:28
+   [14] request(::Type{RedirectLayer{BasicAuthLayer{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String},SubString{String}}}, body::Vector{UInt8}; redirect_limit::Int64, forwardheaders::Bool, kw::Base.Iterators.Pairs{Symbol,IOStream,Tuple{Symbol},NamedTuple{(:response_stream,),Tuple{IOStream}}})
+      @ HTTP.RedirectRequest ~/.julia/packages/HTTP/atT5q/src/RedirectRequest.jl:24
+   [15] request(method::String, url::String, h::Vector{Pair{SubString{String},SubString{String}}}, b::Vector{UInt8}; headers::Vector{Pair{SubString{String},SubString{String}}}, body::Vector{UInt8}, query::Nothing, kw::Base.Iterators.Pairs{Symbol,IOStream,Tuple{Symbol},NamedTuple{(:response_stream,),Tuple{IOStream}}})
+      @ HTTP ~/.julia/packages/HTTP/atT5q/src/HTTP.jl:314
+   [16] #get#12
+      @ ~/.julia/packages/HTTP/atT5q/src/HTTP.jl:391 [inlined]
+   [17] (::var"#17#25"{String})(file_path::String, file_io::IOStream)
+      @ Main ~/.julia/packages/SimpleBufferStream/57wZb/test/runtests.jl:169
+   [18] mktemp(fn::var"#17#25"{String}, parent::String)
+      @ Base.Filesystem ./file.jl:659
+   [19] mktemp(fn::Function)
+      @ Base.Filesystem ./file.jl:657
+   [20] top-level scope
+      @ ~/.julia/packages/SimpleBufferStream/57wZb/test/runtests.jl:167
+   [21] top-level scope
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [22] top-level scope
+      @ ~/.julia/packages/SimpleBufferStream/57wZb/test/runtests.jl:163
+  
+HTTP.jl streaming: Error During Test at /home/pkgeval/.julia/packages/SimpleBufferStream/57wZb/test/runtests.jl:174
+  Test threw exception
+  Expression: (HTTP.get(url, response_stream = http_buffio)).status == 200
+  IOError(Base.IOError("connect: connection timed out (ETIMEDOUT)", -110) during request(https://us-east.storage.julialang.org/registry/23338594-aafe-5451-b93e-139f81909106/e414c14b3ff844553817b45c51053fa410ff72fe))
+  
+  Stacktrace:
+    [1] wait_connected(x::Sockets.TCPSocket)
+      @ Sockets /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:532
+    [2] connect
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:567 [inlined]
+    [3] connect(addr::Sockets.IPv4, port::UInt64)
+      @ Sockets /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:553
+    [4] getconnection(::Type{Sockets.TCPSocket}, host::SubString{String}, port::String; keepalive::Bool, connect_timeout::Int64, kw::Base.Iterators.Pairs{Symbol,Any,NTuple{4,Symbol},NamedTuple{(:require_ssl_verification, :iofunction, :reached_redirect_limit, :response_stream),Tuple{Bool,Nothing,Bool,BufferStream}}})
+      @ HTTP.ConnectionPool ~/.julia/packages/HTTP/atT5q/src/ConnectionPool.jl:616
+    [5] #getconnection#29
+      @ ~/.julia/packages/HTTP/atT5q/src/ConnectionPool.jl:668 [inlined]
+    [6] newconnection(pod::HTTP.ConnectionPool.Pod, T::Type, host::SubString{String}, port::SubString{String}, pipeline_limit::Int64, require_ssl_verification::Bool, idle_timeout::Int64; kw::Base.Iterators.Pairs{Symbol,Any,Tuple{Symbol,Symbol,Symbol},NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream),Tuple{Nothing,Bool,BufferStream}}})
+      @ HTTP.ConnectionPool ~/.julia/packages/HTTP/atT5q/src/ConnectionPool.jl:583
+    [7] getconnection(::Type{HTTP.ConnectionPool.Transaction{MbedTLS.SSLContext}}, host::SubString{String}, port::SubString{String}; connection_limit::Int64, pipeline_limit::Int64, idle_timeout::Int64, reuse_limit::Int64, require_ssl_verification::Bool, kw::Base.Iterators.Pairs{Symbol,Any,Tuple{Symbol,Symbol,Symbol},NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream),Tuple{Nothing,Bool,BufferStream}}})
+      @ HTTP.ConnectionPool ~/.julia/packages/HTTP/atT5q/src/ConnectionPool.jl:527
+    [8] request(::Type{ConnectionPoolLayer{StreamLayer{Union{}}}}, url::HTTP.URIs.URI, req::HTTP.Messages.Request, body::Vector{UInt8}; proxy::Nothing, socket_type::Type, reuse_limit::Int64, kw::Base.Iterators.Pairs{Symbol,Any,Tuple{Symbol,Symbol,Symbol},NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream),Tuple{Nothing,Bool,BufferStream}}})
+      @ HTTP.ConnectionRequest ~/.julia/packages/HTTP/atT5q/src/ConnectionRequest.jl:73
+    [9] request(::Type{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}, ::HTTP.URIs.URI, ::Vararg{Any,N} where N; kw::Base.Iterators.Pairs{Symbol,Any,Tuple{Symbol,Symbol,Symbol},NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream),Tuple{Nothing,Bool,BufferStream}}})
+      @ HTTP.ExceptionRequest ~/.julia/packages/HTTP/atT5q/src/ExceptionRequest.jl:19
+   [10] (::Base.var"#56#58"{Base.var"#56#57#59"{ExponentialBackOff,HTTP.RetryRequest.var"#2#3"{Bool,HTTP.Messages.Request},typeof(HTTP.request)}})(::Type, ::Vararg{Any,N} where N; kwargs::Base.Iterators.Pairs{Symbol,Any,Tuple{Symbol,Symbol,Symbol},NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream),Tuple{Nothing,Bool,BufferStream}}})
+      @ Base ./error.jl:301
+   [11] #request#1
+      @ ~/.julia/packages/HTTP/atT5q/src/RetryRequest.jl:44 [inlined]
+   [12] request(::Type{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String},SubString{String}}}, body::Vector{UInt8}; http_version::VersionNumber, target::String, parent::Nothing, iofunction::Nothing, kw::Base.Iterators.Pairs{Symbol,Any,Tuple{Symbol,Symbol},NamedTuple{(:reached_redirect_limit, :response_stream),Tuple{Bool,BufferStream}}})
+      @ HTTP.MessageRequest ~/.julia/packages/HTTP/atT5q/src/MessageRequest.jl:51
+   [13] request(::Type{BasicAuthLayer{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String},SubString{String}}}, body::Vector{UInt8}; kw::Base.Iterators.Pairs{Symbol,Any,Tuple{Symbol,Symbol},NamedTuple{(:reached_redirect_limit, :response_stream),Tuple{Bool,BufferStream}}})
+      @ HTTP.BasicAuthRequest ~/.julia/packages/HTTP/atT5q/src/BasicAuthRequest.jl:28
+   [14] request(::Type{RedirectLayer{BasicAuthLayer{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String},SubString{String}}}, body::Vector{UInt8}; redirect_limit::Int64, forwardheaders::Bool, kw::Base.Iterators.Pairs{Symbol,BufferStream,Tuple{Symbol},NamedTuple{(:response_stream,),Tuple{BufferStream}}})
+      @ HTTP.RedirectRequest ~/.julia/packages/HTTP/atT5q/src/RedirectRequest.jl:24
+   [15] request(method::String, url::String, h::Vector{Pair{SubString{String},SubString{String}}}, b::Vector{UInt8}; headers::Vector{Pair{SubString{String},SubString{String}}}, body::Vector{UInt8}, query::Nothing, kw::Base.Iterators.Pairs{Symbol,BufferStream,Tuple{Symbol},NamedTuple{(:response_stream,),Tuple{BufferStream}}})
+      @ HTTP ~/.julia/packages/HTTP/atT5q/src/HTTP.jl:314
+   [16] #get#12
+      @ ~/.julia/packages/HTTP/atT5q/src/HTTP.jl:391 [inlined]
+   [17] (::var"#17#25"{String})(file_path::String, file_io::IOStream)
+      @ Main ~/.julia/packages/SimpleBufferStream/57wZb/test/runtests.jl:174
+   [18] mktemp(fn::var"#17#25"{String}, parent::String)
+      @ Base.Filesystem ./file.jl:659
+   [19] mktemp(fn::Function)
+      @ Base.Filesystem ./file.jl:657
+   [20] top-level scope
+      @ ~/.julia/packages/SimpleBufferStream/57wZb/test/runtests.jl:167
+   [21] top-level scope
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1114
+   [22] top-level scope
+      @ ~/.julia/packages/SimpleBufferStream/57wZb/test/runtests.jl:163
+  
+
+signal (15): Terminated
+in expression starting at /home/pkgeval/.julia/packages/SimpleBufferStream/57wZb/test/runtests.jl:162

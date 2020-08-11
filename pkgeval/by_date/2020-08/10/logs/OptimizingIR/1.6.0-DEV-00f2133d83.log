@@ -1,0 +1,175 @@
+Julia Version 1.6.0-DEV.609
+Commit 00f2133d83 (2020-08-10 13:38 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+[ Info: LEGAL NOTICE: package operations send anonymous data about your system to https://pkg.julialang.org (your current package server), including the operating system and Julia versions you are using, and a random client UUID. Running `Pkg.telemetryinfo()` will show exactly what data is sent. See https://julialang.org/legal/data/ for more details about what this data is used for, how long it is retained, and how to opt out of sending it.
+  Installed OptimizingIR ─ v0.2.2
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [cc8fcbce] + OptimizingIR v0.2.2
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [cc8fcbce] + OptimizingIR v0.2.2
+    Testing OptimizingIR
+Status `/tmp/jl_j7yc54/Project.toml`
+  [cc8fcbce] OptimizingIR v0.2.2
+  [8dfed614] Test
+Status `/tmp/jl_j7yc54/Manifest.toml`
+  [cc8fcbce] OptimizingIR v0.2.2
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+DirectedGraph{VX}
+Vertices
+[1] VX(1)
+[2] VX(2)
+Edges
+Bool[0 1; 0 1]
+
+Test Summary: | Pass  Total
+Graph         |   52     52
+Test Summary: | Pass  Total
+LookupTable   |   25     25
+Test Summary:    | Pass  Total
+OptimizationRule |   11     11
+Test Summary: | Pass  Total
+AbstractValue |   11     11
+BasicBlock
+---------------
+
+Instructions
+---------------
+1 |  Pure  | call(foreign_fun, (x, 10.0::Float64, 2.0::Float64))
+2 |  Pure  | call(+, %1, %1)
+3 | Impure | output = %2
+---------------
+
+Inputs
+---------------
+1 | x
+---------------
+
+Variables - Local Mutables
+---------------
+---------------
+
+Variables - Local Immutables
+---------------
+output | %2
+---------------
+
+Outputs
+---------------
+1 | output
+---------------
+
+Test Summary: | Pass  Total
+call          |    4      4
+Test Summary: | Pass  Total
+OP_GETINDEX   |    3      3
+BasicBlock
+---------------
+
+Instructions
+---------------
+ 1 | Impure | call(zeros, Float64::DataType, x)
+ 2 | Impure | vec = %1
+ 3 | Impure | call(getindex, vec, 1::Int64)
+ 4 | Impure | inspect1 = %3
+ 5 | Impure | call(setindex!, (vec, 10::Int64, 1::Int64))
+ 6 | Impure | call(getindex, vec, 1::Int64)
+ 7 | Impure | inspect2 = %6
+ 8 |  Pure  | call(*, 2.0::Float64, %6)
+ 9 | Impure | inspect3 = %8
+10 | Impure | inspect4 = %8
+---------------
+
+Inputs
+---------------
+1 | x
+---------------
+
+Variables - Local Mutables
+---------------
+vec
+---------------
+
+Variables - Local Immutables
+---------------
+inspect3 | %8
+inspect2 | %6
+inspect1 | %3
+inspect4 | %8
+---------------
+
+Outputs
+---------------
+1 | vec
+2 | inspect1
+3 | inspect2
+4 | inspect3
+5 | inspect4
+---------------
+
+Test Summary: | Pass  Total
+OP_SETINDEX   |   13     13
+Test Summary: | Pass  Total
+Basic Block   |    9      9
+Test Summary: | Pass  Total
+Inputs        |    9      9
+Test Summary: | Pass  Total
+Passes        |    3      3
+Test Summary: | Pass  Total
+Variables     |    7      7
+Test Summary: | Pass  Total
+has_symbol    |   10     10
+Test Summary: | Pass  Total
+gensym        |    1      1
+Test Summary: | Pass  Total
+Native        |    2      2
+Test Summary:     | Pass  Total
+World Age Problem |    1      1
+Test Summary:      | Pass  Total
+can't mutate input |    2      2
+
+[ Info: Benchmarks
+Compile Native:
+  0.002720 seconds (342 allocations: 22.859 KiB)
+Compile BasicBlockInterpreter
+  0.000013 seconds (7 allocations: 928 bytes)
+Compilation Overhead: Native / BasicBlockInterpreter: 214.9x
+F Call Native 1st
+  0.069691 seconds (46.88 k allocations: 2.840 MiB)
+F Call Native 2nd
+  0.000011 seconds (4 allocations: 176 bytes)
+F Call Interpreter 1st
+  0.120339 seconds (73.22 k allocations: 4.424 MiB)
+F Call Interpreter 2nd
+  0.000116 seconds (37 allocations: 976 bytes)
+F Call Julia 1st
+  0.027240 seconds (16.43 k allocations: 961.650 KiB)
+F Call Julia 2nd
+  0.000076 seconds (4 allocations: 176 bytes)
+F Call Overhead: BasicBlockInterpreter / julia = 49.1x
+F Call Overhead: Native / julia = 1.6x
+[ Info: Compilation + F Call
+BasicBlockInterpreter: 326.6µs
+Native: 2646.0µs
+Native / BasicBlockInterpreter = 8.1x
+
+Test Summary: | Pass  Total
+Benchmarks    |    2      2
+    Testing OptimizingIR tests passed 
