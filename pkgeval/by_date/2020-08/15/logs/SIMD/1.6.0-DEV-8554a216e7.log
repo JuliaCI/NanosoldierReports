@@ -1,0 +1,462 @@
+Julia Version 1.6.0-DEV.636
+Commit 8554a216e7 (2020-08-14 06:59 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+[ Info: LEGAL NOTICE: package operations send anonymous data about your system to https://pkg.julialang.org (your current package server), including the operating system and Julia versions you are using, and a random client UUID. Running `Pkg.telemetryinfo()` will show exactly what data is sent. See https://julialang.org/legal/data/ for more details about what this data is used for, how long it is retained, and how to opt out of sending it.
+  Installed SIMD ─ v2.8.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [fdea26ae] + SIMD v2.8.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [fdea26ae] + SIMD v2.8.0
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [d6f4376e] + Markdown
+    Testing SIMD
+Status `/tmp/jl_OS8aOY/Project.toml`
+  [fdea26ae] SIMD v2.8.0
+  [b77e0a4c] InteractiveUtils
+  [8dfed614] Test
+Status `/tmp/jl_OS8aOY/Manifest.toml`
+  [fdea26ae] SIMD v2.8.0
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+
+;  @ /home/pkgeval/.julia/packages/SIMD/Am38N/test/runtests.jl:568 within `vsum'
+define double @julia_vsum_2964({ {}*, [1 x [2 x i64]], i64, i64 }* nocapture nonnull readonly align 8 dereferenceable(40)) {
+top:
+  %1 = alloca [2 x {}*], align 8
+  %gcframe23 = alloca [4 x {}*], align 16
+  %gcframe23.sub = getelementptr inbounds [4 x {}*], [4 x {}*]* %gcframe23, i64 0, i64 0
+  %.sub = getelementptr inbounds [2 x {}*], [2 x {}*]* %1, i64 0, i64 0
+  %2 = bitcast [4 x {}*]* %gcframe23 to i8*
+  call void @llvm.memset.p0i8.i32(i8* nonnull align 16 %2, i8 0, i32 32, i1 false)
+  %thread_ptr = call i8* asm "movq %fs:0, $0", "=r"() #7
+  %ptls_i8 = getelementptr i8, i8* %thread_ptr, i64 -15784
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/Am38N/test/runtests.jl:569 within `vsum'
+; ┌ @ abstractarray.jl:206 within `length'
+; │┌ @ subarray.jl:63 within `size'
+; ││┌ @ subarray.jl:423 within `axes'
+; │││┌ @ subarray.jl:428 within `_indices_sub'
+; ││││┌ @ abstractarray.jl:99 within `unsafe_indices'
+; │││││┌ @ range.jl:542 within `unsafe_length'
+; ││││││┌ @ range.jl:596 within `last'
+; │││││││┌ @ Base.jl:33 within `getproperty'
+          %3 = bitcast [4 x {}*]* %gcframe23 to i64*
+          store i64 8, i64* %3, align 16
+          %4 = getelementptr inbounds [4 x {}*], [4 x {}*]* %gcframe23, i64 0, i64 1
+          %5 = bitcast i8* %ptls_i8 to i64*
+          %6 = load i64, i64* %5, align 8
+          %7 = bitcast {}** %4 to i64*
+          store i64 %6, i64* %7, align 8
+          %8 = bitcast i8* %ptls_i8 to {}***
+          store {}** %gcframe23.sub, {}*** %8, align 8
+          %9 = getelementptr inbounds { {}*, [1 x [2 x i64]], i64, i64 }, { {}*, [1 x [2 x i64]], i64, i64 }* %0, i64 0, i32 1, i64 0, i64 1
+; ││││││└└
+; ││││││┌ @ range.jl:591 within `first'
+; │││││││┌ @ Base.jl:33 within `getproperty'
+          %10 = getelementptr inbounds { {}*, [1 x [2 x i64]], i64, i64 }, { {}*, [1 x [2 x i64]], i64, i64 }* %0, i64 0, i32 1, i64 0, i64 0
+; ││││││└└
+; ││││││┌ @ int.jl:86 within `-'
+         %11 = load i64, i64* %9, align 8
+         %12 = load i64, i64* %10, align 8
+         %13 = sub i64 %11, %12
+; ││││││└
+; ││││││┌ @ int.jl:87 within `+'
+         %14 = add i64 %13, 1
+; │││││└└
+; │││││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; ││││││┌ @ promotion.jl:409 within `max'
+         %15 = icmp sgt i64 %14, 0
+         %16 = select i1 %15, i64 %14, i64 0
+; └└└└└└└
+; ┌ @ int.jl:262 within `rem'
+   %17 = and i64 %16, 3
+; └
+; ┌ @ promotion.jl:398 within `=='
+   %18 = icmp eq i64 %17, 0
+; └
+  br i1 %18, label %L14, label %L112
+
+L14:                                              ; preds = %top
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/Am38N/test/runtests.jl:572 within `vsum'
+; ┌ @ range.jl:22 within `Colon'
+; │┌ @ range.jl:24 within `_colon'
+; ││┌ @ range.jl:256 within `StepRange' @ range.jl:205
+     %19 = call i64 @j_steprange_last_2966(i64 1, i64 4, i64 %16)
+; └└└
+; ┌ @ range.jl:619 within `iterate'
+; │┌ @ range.jl:500 within `isempty'
+; ││┌ @ bool.jl:36 within `&'
+     %20 = icmp sgt i64 %19, 0
+; └└└
+  br i1 %20, label %L40.preheader, label %L108
+
+L40.preheader:                                    ; preds = %L14
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/Am38N/test/runtests.jl:573 within `vsum'
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:1944 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:1935 within `_pointer'
+; ││┌ @ deprecated.jl:210 within `pointer' @ subarray.jl:412
+; │││┌ @ subarray.jl:357 within `first_index'
+; ││││┌ @ Base.jl within `getproperty'
+       %21 = getelementptr inbounds { {}*, [1 x [2 x i64]], i64, i64 }, { {}*, [1 x [2 x i64]], i64, i64 }* %0, i64 0, i32 2
+       %22 = getelementptr inbounds { {}*, [1 x [2 x i64]], i64, i64 }, { {}*, [1 x [2 x i64]], i64, i64 }* %0, i64 0, i32 3
+; ││││└
+; ││││┌ @ int.jl within `+'
+       %23 = load i64, i64* %21, align 8
+       %24 = load i64, i64* %22, align 8
+; │││└└
+; │││ @ deprecated.jl:210 within `pointer' @ subarray.jl:417
+; │││┌ @ Base.jl within `getproperty'
+      %25 = bitcast { {}*, [1 x [2 x i64]], i64, i64 }* %0 to i8***
+      %26 = load atomic i8**, i8*** %25 unordered, align 8
+; └└└└
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:1943 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:1922 within `_preprocessindices'
+; ││┌ @ abstractarray.jl:565 within `checkbounds' @ abstractarray.jl:550
+; │││┌ @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:1871 within `checkindex'
+      br label %L40
+
+L40:                                              ; preds = %L70, %L40.preheader
+      %value_phi3 = phi i64 [ %50, %L70 ], [ 1, %L40.preheader ]
+      %value_phi5 = phi <4 x double> [ %res.i15, %L70 ], [ zeroinitializer, %L40.preheader ]
+; ││││┌ @ int.jl:442 within `<='
+       %27 = icmp slt i64 %value_phi3, 1
+; ││││└
+; ││││┌ @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:1865 within `last'
+; │││││┌ @ int.jl:86 within `-'
+        %28 = add nuw i64 %value_phi3, 3
+; ││││└└
+; ││││┌ @ int.jl:442 within `<='
+       %29 = icmp sgt i64 %28, %16
+; ││││└
+      %or.cond = or i1 %27, %29
+      br i1 %or.cond, label %L66, label %L70
+
+L66:                                              ; preds = %L40
+; │││└
+; │││ @ abstractarray.jl:565 within `checkbounds'
+     %30 = call noalias nonnull {}* @jl_gc_pool_alloc(i8* %ptls_i8, i32 1448, i32 48) #1
+     %31 = bitcast {}* %30 to i64*
+     %32 = getelementptr inbounds i64, i64* %31, i64 -1
+     store atomic i64 140004429676560, i64* %32 unordered, align 8
+     %33 = bitcast {}* %30 to i8*
+     %34 = bitcast { {}*, [1 x [2 x i64]], i64, i64 }* %0 to i8*
+     call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %33, i8* nonnull align 8 %34, i64 40, i1 false)
+     %35 = getelementptr inbounds [4 x {}*], [4 x {}*]* %gcframe23, i64 0, i64 3
+     store {}* %30, {}** %35, align 8
+     %36 = call noalias nonnull {}* @jl_gc_pool_alloc(i8* %ptls_i8, i32 1400, i32 16) #1
+     %37 = bitcast {}* %36 to i64*
+     %38 = getelementptr inbounds i64, i64* %37, i64 -1
+     store atomic i64 140004397737168, i64* %38 unordered, align 8
+     store i64 %value_phi3, i64* %37, align 8
+     %39 = getelementptr inbounds [4 x {}*], [4 x {}*]* %gcframe23, i64 0, i64 2
+     store {}* %36, {}** %39, align 16
+     store {}* %30, {}** %.sub, align 8
+     %40 = getelementptr inbounds [2 x {}*], [2 x {}*]* %1, i64 0, i64 1
+     store {}* %36, {}** %40, align 8
+     %41 = call nonnull {}* @jl_apply_generic({}* inttoptr (i64 140004505717504 to {}*), {}** nonnull %.sub, i32 2)
+     call void @llvm.trap()
+     unreachable
+
+L70:                                              ; preds = %L40
+; └└└
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:1944 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:1935 within `_pointer'
+; ││┌ @ deprecated.jl:210 within `pointer' @ subarray.jl:412
+; │││┌ @ subarray.jl:357 within `first_index'
+; ││││┌ @ int.jl:87 within `+'
+       %42 = add nuw i64 %value_phi3, 2305843009213693951
+; │││└└
+; │││ @ deprecated.jl:210 within `pointer' @ subarray.jl:415
+; │││┌ @ int.jl:86 within `-'
+      %43 = add i64 %42, %23
+; │││└
+; │││┌ @ int.jl:87 within `+'
+      %44 = add i64 %43, %24
+; │││└
+; │││ @ deprecated.jl:210 within `pointer' @ subarray.jl:417 @ abstractarray.jl:1068
+; │││┌ @ pointer.jl:65 within `unsafe_convert'
+      %45 = load i8*, i8** %26, align 8
+; │││└
+; │││┌ @ abstractarray.jl:1072 within `_memory_offset'
+; ││││┌ @ int.jl:88 within `*'
+       %46 = shl i64 %44, 3
+       %47 = add i64 %46, -8
+; │││└└
+; │││┌ @ pointer.jl:159 within `+'
+      %48 = getelementptr i8, i8* %45, i64 %47
+; │└└└
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:1426 within `vload' @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:1426 @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:1353 @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:1353
+; ││┌ @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:1383 within `macro expansion'
+     %ptr.i = bitcast i8* %48 to <4 x double>*
+     %res.i = load <4 x double>, <4 x double>* %ptr.i, align 8
+; └└└
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:1083 within `+'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:602 within `llvmwrap' @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:602
+; ││┌ @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:623 within `macro expansion'
+     %res.i15 = fadd <4 x double> %value_phi5, %res.i
+; └└└
+; ┌ @ range.jl:623 within `iterate'
+; │┌ @ promotion.jl:398 within `=='
+    %49 = icmp eq i64 %value_phi3, %19
+; │└
+   %50 = add nuw i64 %value_phi3, 4
+; └
+  br i1 %49, label %L108, label %L40
+
+L108:                                             ; preds = %L70, %L14
+  %value_phi11 = phi <4 x double> [ zeroinitializer, %L14 ], [ %res.i15, %L70 ]
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/Am38N/test/runtests.jl:575 within `vsum'
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:1286 within `sum'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:1240 within `llvmwrapreduce'
+; ││┌ @ /home/pkgeval/.julia/packages/SIMD/Am38N/src/SIMD.jl:1274 within `macro expansion'
+     %vec_2_1.i = shufflevector <4 x double> %value_phi11, <4 x double> undef, <2 x i32> <i32 0, i32 1>
+     %vec_2_2.i = shufflevector <4 x double> %value_phi11, <4 x double> undef, <2 x i32> <i32 2, i32 3>
+     %vec_2.i = fadd <2 x double> %vec_2_1.i, %vec_2_2.i
+     %vec_1_1.i = shufflevector <2 x double> %vec_2.i, <2 x double> undef, <1 x i32> zeroinitializer
+     %vec_1_2.i = shufflevector <2 x double> %vec_2.i, <2 x double> undef, <1 x i32> <i32 1>
+     %vec_1.i = fadd <1 x double> %vec_1_1.i, %vec_1_2.i
+     %res.i16 = extractelement <1 x double> %vec_1.i, i32 0
+     %51 = bitcast {}** %4 to i64*
+     %52 = load i64, i64* %51, align 8
+     %53 = bitcast i8* %ptls_i8 to i64*
+     store i64 %52, i64* %53, align 8
+; └└└
+  ret double %res.i16
+
+L112:                                             ; preds = %top
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/Am38N/test/runtests.jl:569 within `vsum'
+  store {}* inttoptr (i64 140004381504784 to {}*), {}** %.sub, align 8
+  %54 = call nonnull {}* @jl_apply_generic({}* inttoptr (i64 140004477130976 to {}*), {}** nonnull %.sub, i32 1)
+  %55 = getelementptr inbounds [4 x {}*], [4 x {}*]* %gcframe23, i64 0, i64 2
+  store {}* %54, {}** %55, align 16
+  call void @jl_throw({}* %54)
+  unreachable
+}
+	.text
+; ┌ @ runtests.jl:568 within `vsum'
+	pushq	%rbp
+	movq	%rsp, %rbp
+	pushq	%r15
+	pushq	%r14
+	pushq	%r13
+	pushq	%r12
+	pushq	%rbx
+	andq	$-32, %rsp
+	subq	$96, %rsp
+	vxorps	%xmm0, %xmm0, %xmm0
+	vmovaps	%ymm0, 32(%rsp)
+	movq	%fs:0, %r15
+; └
+; ┌ @ runtests.jl:569 within `vsum'
+; │┌ @ abstractarray.jl:206 within `length'
+; ││┌ @ subarray.jl:63 within `size'
+; │││┌ @ subarray.jl:423 within `axes'
+; ││││┌ @ subarray.jl:428 within `_indices_sub'
+; │││││┌ @ abstractarray.jl:99 within `unsafe_indices'
+; ││││││┌ @ range.jl:542 within `unsafe_length'
+; │││││││┌ @ range.jl:596 within `last'
+; ││││││││┌ @ Base.jl:33 within `getproperty'
+	movq	$8, 32(%rsp)
+	movq	-15784(%r15), %rax
+	movq	%rax, 40(%rsp)
+	leaq	32(%rsp), %rax
+	movq	%rax, -15784(%r15)
+; │││││││└└
+; │││││││┌ @ int.jl:86 within `-'
+	movq	16(%rdi), %rax
+	subq	8(%rdi), %rax
+; │││││││└
+; │││││││┌ @ int.jl:87 within `+'
+	incq	%rax
+; ││││││└└
+; ││││││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; │││││││┌ @ promotion.jl:409 within `max'
+	movq	%rax, %rcx
+	sarq	$63, %rcx
+	andnq	%rax, %rcx, %r12
+; │└└└└└└└
+; │┌ @ promotion.jl:398 within `=='
+	testb	$3, %r12b
+; │└
+	jne	L450
+; └
+; ┌ @ runtests.jl within `vsum'
+	movq	%rdi, %r14
+	addq	$-15784, %r15           # imm = 0xC258
+; └
+; ┌ @ runtests.jl:572 within `vsum'
+; │┌ @ range.jl:22 within `Colon'
+; ││┌ @ range.jl:24 within `_colon'
+; │││┌ @ range.jl:256 within `StepRange' @ range.jl:205
+	movabsq	$steprange_last, %rax
+	movl	$4, %ebx
+	movl	$1, %edi
+	movl	$4, %esi
+	movq	%r12, %rdx
+	vzeroupper
+	callq	*%rax
+; │└└└
+; │┌ @ range.jl:619 within `iterate'
+; ││┌ @ range.jl:500 within `isempty'
+; │││┌ @ bool.jl:36 within `&'
+	testq	%rax, %rax
+	vxorpd	%xmm1, %xmm1, %xmm1
+; │└└└
+	jle	L252
+; └
+; ┌ @ runtests.jl:573 within `vsum'
+; │┌ @ SIMD.jl:1944 within `getindex'
+; ││┌ @ SIMD.jl:1935 within `_pointer'
+; │││┌ @ deprecated.jl:210 within `pointer' @ subarray.jl:412
+; ││││┌ @ subarray.jl:357 within `first_index'
+; │││││┌ @ int.jl within `+'
+	movq	24(%r14), %rdx
+	movq	32(%r14), %rsi
+	movq	(%r14), %rcx
+; │└└└└└
+; │┌ @ SIMD.jl:1943 within `getindex'
+; ││┌ @ SIMD.jl:1922 within `_preprocessindices'
+; │││┌ @ abstractarray.jl:565 within `checkbounds' @ abstractarray.jl:550
+; ││││┌ @ SIMD.jl:1871 within `checkindex'
+	shlq	$3, %rsi
+	leaq	(%rsi,%rdx,8), %rdx
+	addq	$-8, %rdx
+	movq	$-3, %rsi
+	subq	%rax, %rsi
+	vxorpd	%xmm1, %xmm1, %xmm1
+	nopw	%cs:(%rax,%rax)
+	nopl	(%rax)
+; │││││┌ @ int.jl:442 within `<='
+L208:
+	leaq	-3(%rbx), %r13
+	testq	%r13, %r13
+; │││││└
+	jle	L298
+	cmpq	%r12, %rbx
+	jg	L298
+; │└└└└
+; │┌ @ SIMD.jl within `getindex'
+	movq	(%rcx), %rax
+; │└
+; │┌ @ SIMD.jl:1944 within `getindex'
+; ││┌ @ SIMD.jl:1426 within `vload' @ SIMD.jl:1426 @ SIMD.jl:1353 @ SIMD.jl:1353
+; │││┌ @ SIMD.jl:1383 within `macro expansion'
+	addq	%rdx, %rax
+; │└└└
+; │┌ @ SIMD.jl:1083 within `+'
+; ││┌ @ SIMD.jl:602 within `llvmwrap' @ SIMD.jl:602
+; │││┌ @ SIMD.jl:623 within `macro expansion'
+	vaddpd	-32(%rax,%rbx,8), %ymm1, %ymm1
+; │└└└
+; │┌ @ range.jl:623 within `iterate'
+; ││┌ @ promotion.jl:398 within `=='
+	leaq	(%rsi,%rbx), %rax
+	addq	$4, %rax
+	addq	$4, %rbx
+	cmpq	$4, %rax
+; │└└
+	jne	L208
+; └
+; ┌ @ runtests.jl:575 within `vsum'
+; │┌ @ SIMD.jl:1286 within `sum'
+; ││┌ @ SIMD.jl:1240 within `llvmwrapreduce'
+; │││┌ @ SIMD.jl:1274 within `macro expansion'
+L252:
+	vextractf128	$1, %ymm1, %xmm0
+	vaddpd	%xmm0, %xmm1, %xmm0
+	vpermilpd	$1, %xmm0, %xmm1 # xmm1 = xmm0[1,0]
+	vaddsd	%xmm1, %xmm0, %xmm0
+	movq	40(%rsp), %rax
+	movq	%rax, (%r15)
+; │└└└
+	leaq	-40(%rbp), %rsp
+	popq	%rbx
+	popq	%r12
+	popq	%r13
+	popq	%r14
+	popq	%r15
+	popq	%rbp
+	vzeroupper
+	retq
+; └
+; ┌ @ runtests.jl:573 within `vsum'
+; │┌ @ SIMD.jl:1943 within `getindex'
+; ││┌ @ SIMD.jl:1922 within `_preprocessindices'
+; │││┌ @ abstractarray.jl:565 within `checkbounds'
+L298:
+	movabsq	$jl_gc_pool_alloc, %rbx
+	movq	%r15, %rdi
+	movl	$1448, %esi             # imm = 0x5A8
+	movl	$48, %edx
+	vzeroupper
+	callq	*%rbx
+	movq	%rbx, %rcx
+	movq	%rax, %rbx
+	movabsq	$140004397737168, %r12  # imm = 0x7F555064E4D0
+	leaq	31939392(%r12), %rax
+	movq	%rax, -8(%rbx)
+	movq	32(%r14), %rax
+	movq	%rax, 32(%rbx)
+	vmovups	(%r14), %ymm0
+	vmovups	%ymm0, (%rbx)
+	movq	%rbx, 56(%rsp)
+	movq	%r15, %rdi
+	movl	$1400, %esi             # imm = 0x578
+	movl	$16, %edx
+	vzeroupper
+	callq	*%rcx
+	movq	%r12, -8(%rax)
+	movq	%r13, (%rax)
+	movq	%rax, 48(%rsp)
+	movq	%rbx, 16(%rsp)
+	movq	%rax, 24(%rsp)
+	movabsq	$jl_apply_generic, %rax
+	movabsq	$jl_system_image_data, %rdi
+	leaq	16(%rsp), %rsi
+	movl	$2, %edx
+	callq	*%rax
+	ud2
+; └└└└
+; ┌ @ abstractarray.jl within `vsum'
+L450:
+	movabsq	$140004381504784, %rax  # imm = 0x7F554F6D3510
+; └
+; ┌ @ runtests.jl:569 within `vsum'
+	movq	%rax, 16(%rsp)
+	movabsq	$jl_apply_generic, %rax
+	movabsq	$jl_system_image_data, %rdi
+	leaq	16(%rsp), %rsi
+	movl	$1, %edx
+	vzeroupper
+	callq	*%rax
+	movq	%rax, 48(%rsp)
+	movabsq	$jl_throw, %rcx
+	movq	%rax, %rdi
+	callq	*%rcx
+	nopl	(%rax,%rax)
+; └
+Test Summary: | Pass  Total
+SIMD          |  817    817
+    Testing SIMD tests passed 
