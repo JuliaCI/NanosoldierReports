@@ -1,0 +1,91 @@
+Julia Version 1.5.2-pre.0
+Commit c4acbf93fb (2020-08-26 10:58 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed StaticKernels ─ v0.5.1
+Updating `~/.julia/environments/v1.5/Project.toml`
+  [4c63dfa8] + StaticKernels v0.5.1
+Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [4c63dfa8] + StaticKernels v0.5.1
+    Testing StaticKernels
+Status `/tmp/jl_7XaFSv/Project.toml`
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [4c63dfa8] StaticKernels v0.5.1
+  [8dfed614] Test
+Status `/tmp/jl_7XaFSv/Manifest.toml`
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [682c06a0] JSON v0.21.0
+  [69de0a69] Parsers v1.0.10
+  [4c63dfa8] StaticKernels v0.5.1
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [de0858da] Printf
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+Test Summary: | Pass  Broken  Total
+consistency   |   45       1     46
+Test Summary:  | Pass  Total
+type stability |    7      7
+sum StaticKernels.ExtensionSymmetric(): Test Failed at /home/pkgeval/.julia/packages/StaticKernels/8FasK/test/runtests.jl:170
+  Expression: 0 == #= /home/pkgeval/.julia/packages/StaticKernels/8FasK/test/runtests.jl:170 =# @ballocated(sum($k, $ae))
+   Evaluated: 0 == 64
+Stacktrace:
+ [1] top-level scope at /home/pkgeval/.julia/packages/StaticKernels/8FasK/test/runtests.jl:170
+ [2] top-level scope at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1190
+ [3] top-level scope at /home/pkgeval/.julia/packages/StaticKernels/8FasK/test/runtests.jl:166
+ [4] top-level scope at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1115
+ [5] top-level scope at /home/pkgeval/.julia/packages/StaticKernels/8FasK/test/runtests.jl:148
+Test Summary:                                        | Pass  Fail  Total
+memory allocations                                   |   20     1     21
+  map! StaticKernels.ExtensionNone()                 |    1            1
+  map! StaticKernels.ExtensionNothing()              |    1            1
+  map! StaticKernels.ExtensionReplicate()            |    1            1
+  map! StaticKernels.ExtensionCircular()             |    1            1
+  map! StaticKernels.ExtensionSymmetric()            |    1            1
+  map! StaticKernels.ExtensionConstant{Float64}(0.0) |    1            1
+  map! StaticKernels.ExtensionNone()                 |    1            1
+  sum StaticKernels.ExtensionNone()                  |    2            2
+  sum StaticKernels.ExtensionNothing()               |    2            2
+  sum StaticKernels.ExtensionReplicate()             |    2            2
+  sum StaticKernels.ExtensionCircular()              |    2            2
+  sum StaticKernels.ExtensionSymmetric()             |    1     1      2
+  sum StaticKernels.ExtensionConstant{Float64}(0.0)  |    2            2
+  multiargument                                      |    2            2
+ERROR: LoadError: Some tests did not pass: 20 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/StaticKernels/8FasK/test/runtests.jl:147
+ERROR: Package StaticKernels errored during testing
+Stacktrace:
+ [1] pkgerror(::String) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/Types.jl:52
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/Operations.jl:1578
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:328
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:315
+ [5] #test#61 at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:67 [inlined]
+ [6] test at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:67 [inlined]
+ [7] #test#60 at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:66 [inlined]
+ [8] test at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:66 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:65
+ [10] test(::String) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:65
+ [11] top-level scope at none:16
