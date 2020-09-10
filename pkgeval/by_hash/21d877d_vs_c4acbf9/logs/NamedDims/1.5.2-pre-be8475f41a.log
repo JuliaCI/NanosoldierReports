@@ -1,0 +1,146 @@
+Julia Version 1.5.2-pre.25
+Commit be8475f41a (2020-09-09 06:41 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed Requires ── v1.0.2
+  Installed NamedDims ─ v0.2.24
+Updating `~/.julia/environments/v1.5/Project.toml`
+  [356022a1] + NamedDims v0.2.24
+Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [356022a1] + NamedDims v0.2.24
+  [ae029012] + Requires v1.0.2
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [b77e0a4c] + InteractiveUtils
+  [76f85450] + LibGit2
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [44cfe95a] + Pkg
+  [de0858da] + Printf
+  [3fa0cd96] + REPL
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+    Testing NamedDims
+Status `/tmp/jl_GWsqmz/Project.toml`
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [356022a1] NamedDims v0.2.24
+  [ae029012] Requires v1.0.2
+  [9f7883ad] Tracker v0.2.11
+  [37e2e46d] LinearAlgebra
+  [44cfe95a] Pkg
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+Status `/tmp/jl_GWsqmz/Manifest.toml`
+  [79e6a3ab] Adapt v2.0.2
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [bbf7d656] CommonSubexpressions v0.3.0
+  [e66e0078] CompilerSupportLibraries_jll v0.3.3+0
+  [163ba53b] DiffResults v1.0.2
+  [b552c78f] DiffRules v1.0.1
+  [f6369f11] ForwardDiff v0.10.12
+  [682c06a0] JSON v0.21.1
+  [1914dd2f] MacroTools v0.5.5
+  [872c559c] NNlib v0.7.4
+  [77ba4419] NaNMath v0.3.4
+  [356022a1] NamedDims v0.2.24
+  [efe28fd5] OpenSpecFun_jll v0.5.3+3
+  [69de0a69] Parsers v1.0.10
+  [ae029012] Requires v1.0.2
+  [276daf66] SpecialFunctions v0.10.3
+  [90137ffa] StaticArrays v0.12.4
+  [9f7883ad] Tracker v0.2.11
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+Vector-Vector: Error During Test at /home/pkgeval/.julia/packages/NamedDims/iHgve/test/functions_math.jl:148
+  Test threw exception
+  Expression: ndv' * ndv == adjoint(v) * ndv == transpose(v) * ndv
+  MethodError: *(::Adjoint{Int64,Array{Int64,1}}, ::NamedDimsArray{(:vec,),Int64,1,Array{Int64,1}}) is ambiguous. Candidates:
+    *(u::Adjoint{var"#s828",var"#s8281"} where var"#s8281"<:(AbstractArray{T,1} where T) where var"#s828"<:Number, v::AbstractArray{var"#s827",1} where var"#s827"<:Number) in LinearAlgebra at /opt/julia/share/julia/stdlib/v1.5/LinearAlgebra/src/adjtrans.jl:283
+    *(a::Adjoint{var"#s16",var"#s15"} where var"#s15"<:(AbstractArray{T,1} where T) where var"#s16", b::NamedDimsArray{L,T,1,var"#s17"} where var"#s17"<:AbstractArray{T,1}) where {L, T} in NamedDims at /home/pkgeval/.julia/packages/NamedDims/iHgve/src/functions_math.jl:48
+  Possible fix, define
+    *(::Adjoint{var"#s828",var"#s8281"} where var"#s8281"<:(AbstractArray{T,1} where T) where var"#s828"<:Number, ::NamedDimsArray{L,T,1,var"#s17"} where var"#s17"<:AbstractArray{T,1}) where {L, T<:Number}
+  Stacktrace:
+   [1] top-level scope at /home/pkgeval/.julia/packages/NamedDims/iHgve/test/functions_math.jl:148
+   [2] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1115
+   [3] top-level scope at /home/pkgeval/.julia/packages/NamedDims/iHgve/test/functions_math.jl:143
+   [4] top-level scope at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Test/src/Test.jl:1115
+   [5] top-level scope at /home/pkgeval/.julia/packages/NamedDims/iHgve/test/functions_math.jl:88
+  
+Test Summary:                 | Pass  Error  Broken  Total
+NamedDims.jl                  |  993      1       6   1000
+  name_core.jl                |  122                   122
+  wrapper_array.jl            |  101              2    103
+  name_operations.jl          |   22                    22
+  functions.jl                |  161                   161
+  functions_dims.jl           |   55              1     56
+  functions_math.jl           |  153      1            154
+    +                         |   44                    44
+    -                         |    2                     2
+    scalar product            |    2                     2
+    matmul                    |   30      1             31
+      matrix_prod_names       |   12                    12
+      Matrix-Matrix           |    7                     7
+      Matrix-Vector           |    2                     2
+      Vector-Matrix           |    2                     2
+      Vector-Vector           |    5      1              6
+      NDAs from CoVectors     |    2                     2
+    allocations: matmul names |    2                     2
+    Mutmul with special types |   48                    48
+    inv                       |    3                     3
+    cov/cor                   |   22                    22
+  cat.jl                      |   74              3     77
+  broadcasting.jl             |  297                   297
+  tracker_compat.jl           |    8                     8
+ERROR: LoadError: Some tests did not pass: 993 passed, 0 failed, 1 errored, 6 broken.
+in expression starting at /home/pkgeval/.julia/packages/NamedDims/iHgve/test/runtests.jl:18
+ERROR: Package NamedDims errored during testing
+Stacktrace:
+ [1] pkgerror(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/Types.jl:52
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/Operations.jl:1578
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:328
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:315
+ [5] #test#61 at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:67 [inlined]
+ [6] test at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:67 [inlined]
+ [7] #test#60 at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:66 [inlined]
+ [8] test at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:66 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:65
+ [10] test(::String) at /workspace/srcdir/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:65
+ [11] top-level scope at none:19
