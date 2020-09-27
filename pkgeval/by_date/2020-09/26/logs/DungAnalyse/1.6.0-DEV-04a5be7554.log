@@ -1,0 +1,62 @@
+Julia Version 1.6.0-DEV.1048
+Commit 04a5be7554 (2020-09-25 12:35 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+ERROR: Unsatisfiable requirements detected for package JuliaDB [a93385a2]:
+ JuliaDB [a93385a2] log:
+ ├─possible versions are: 0.9.0-0.13.1 or uninstalled
+ ├─restricted by compatibility requirements with DungAnalyse [4b12b552] to versions: 0.13.0-0.13.1
+ │ └─DungAnalyse [4b12b552] log:
+ │   ├─possible versions are: 0.2.0-0.2.1 or uninstalled
+ │   └─restricted to versions * by an explicit requirement, leaving only versions 0.2.0-0.2.1
+ └─restricted by compatibility requirements with StatsBase [2913bbd2] to versions: uninstalled — no versions left
+   └─StatsBase [2913bbd2] log:
+     ├─possible versions are: 0.24.0-0.33.1 or uninstalled
+     └─restricted by compatibility requirements with DungAnalyse [4b12b552] to versions: 0.33.0-0.33.1
+       └─DungAnalyse [4b12b552] log: see above
+Stacktrace:
+  [1] propagate_constraints!(graph::Pkg.Resolve.Graph, sources::Set{Int64}; log_events::Bool)
+    @ Pkg.Resolve /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Resolve/graphtype.jl:1043
+  [2] propagate_constraints!
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Resolve/graphtype.jl:984 [inlined]
+  [3] simplify_graph!(graph::Pkg.Resolve.Graph, sources::Set{Int64}; clean_graph::Bool)
+    @ Pkg.Resolve /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Resolve/graphtype.jl:1498
+  [4] simplify_graph!
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Resolve/graphtype.jl:1498 [inlined]
+  [5] resolve_versions!(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:371
+  [6] targeted_resolve(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}, preserve::Pkg.Types.PreserveLevel)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1115
+  [7] tiered_resolve(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1101
+  [8] _resolve
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1121 [inlined]
+  [9] add(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}, new_git::Vector{Base.UUID}; preserve::Pkg.Types.PreserveLevel, platform::Base.BinaryPlatforms.Platform)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1136
+ [10] add(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; preserve::Pkg.Types.PreserveLevel, platform::Base.BinaryPlatforms.Platform, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:188
+ [11] add
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:139 [inlined]
+ [12] #add#22
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+ [13] add
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+ [14] add(pkgs::Vector{String}; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66
+ [15] add
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+ [16] #add#20
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65 [inlined]
+ [17] add(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [18] top-level scope
+    @ none:18
