@@ -1,0 +1,73 @@
+Julia Version 1.6.0-DEV.1063
+Commit 93bbe0833b (2020-09-26 14:27 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: Intel(R) Xeon(R) Silver 4114 CPU @ 2.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, skylake-avx512)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed TransformUtils ─ v0.2.6
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [9b8138ad] + TransformUtils v0.2.6
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [9b8138ad] + TransformUtils v0.2.6
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+    Testing TransformUtils
+Status `/tmp/jl_uvQEjo/Project.toml`
+  [9b8138ad] TransformUtils v0.2.6
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_uvQEjo/Manifest.toml`
+  [9b8138ad] TransformUtils v0.2.6
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+    Testing Running tests...
+Test Summary:                               |
+Constructors SO3, Quaternion, AngleAxis...  | No tests
+Test Summary:                           | Pass  Total
+Ensure basic quaternion operations hold |   10     10
+Test Summary:                                       | Pass  Total
+Comparison functions for SO3, Quaternion, AngleAxis |    5      5
+Test Summary:                                        | Pass  Total
+Trivial case quaterion -> SO3 -> Euler -> quaternion |    2      2
+┌ Warning: Need better coverage on convert function tests
+└ @ Main ~/.julia/packages/TransformUtils/cFZOw/test/runtests.jl:89
+dAA = AngleAxis(0.7853981633974483, [1.0, 0.0, 0.0])
+dAA = so3([0.0 0.02388009586784507 0.13281624674886822; -0.02388009586784507 0.0 -0.08240491031905434; -0.13281624674886822 0.08240491031905434 0.0])
+dAA = so3([0.0 -0.03249514933676727 0.08973089060051764; 0.03249514933676727 0.0 -0.10775861927668218; -0.08973089060051764 0.10775861927668218 0.0])
+dAA = so3([0.0 -0.07972985000504129 0.1030109156947995; 0.07972985000504129 0.0 0.03693770842596427; -0.1030109156947995 -0.03693770842596427 0.0])
+dAA = Quaternion(0.9927654133576352, [-0.07900103825109853, -0.04588574911622472, 0.0779112830348406])
+dAA = SO3([0.9729111505084437 0.22109473737403998 -0.06753525243782468; -0.21613841848582635 0.973584380645263 0.07360460459798226; 0.08202485763951198 -0.05701377788818954 0.9949981667621975])
+Test Summary:                        | Pass  Total
+Compare SO3 and quaternion rotations |   24     24
+Test Summary:       | Pass  Total
+Basic SE3 mechanics |    4      4
+Compare operations on two different SE3 transforms
+xi = SE3(SO3([0.9718446646128215 -0.04960403396915845 0.23034189301466418; 0.10938766657661209 0.9608383137428341 -0.2546057211547906; -0.20869184522763787 0.2726337738758968 0.9392116582952268]), [0.8240491031905433, 1.328162467488682, -0.2388009586784507])
+xj = SE3(SO3([0.9005278562003731 -0.3433669022166174 -0.26673723150194845; 0.42232384586365046 0.8366522841584956 0.34879152029157406; 0.10340285016427629 -0.4267459734719658 0.8984407185248052]), [-0.3693770842596427, 1.030109156947995, 0.7972985000504128])
+Dx = SE3(SO3([0.8997908808196606 -0.15312144617643247 -0.4085709161389458; 0.38930622681369226 0.7045745881473718 0.5933087825922075; 0.1970203861478947 -0.6929130338345495 0.693580921727476]), [-1.408653736919648, 0.05529341838060331, 0.774106721673758])
+Test Summary:         | Pass  Total
+SE3 ⊕ and ⊖ mechanics |    6      6
+TransformUtils.convert(Euler, q) = Euler(0.7853981633974484, 0.0, 1.5707963267948963, Quaternion(1.0, [0.0, 0.0, 0.0]))
+Test Summary:              | Pass  Total
+Previous discovered issues |    3      3
+Test Summary:      | Pass  Total
+test SO3 logmap... |  301    301
+Test Summary:                              | Pass  Total
+test in-place and efficient inverse SE3... |    1      1
+    Testing TransformUtils tests passed 
