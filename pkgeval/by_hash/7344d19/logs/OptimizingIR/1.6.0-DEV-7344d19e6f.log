@@ -1,0 +1,175 @@
+Julia Version 1.6.0-DEV.1110
+Commit 7344d19e6f (2020-10-02 14:43 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed OptimizingIR ─ v0.2.2
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [cc8fcbce] + OptimizingIR v0.2.2
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [cc8fcbce] + OptimizingIR v0.2.2
+    Testing OptimizingIR
+Status `/tmp/jl_EJKZH3/Project.toml`
+  [cc8fcbce] OptimizingIR v0.2.2
+  [8dfed614] Test
+Status `/tmp/jl_EJKZH3/Manifest.toml`
+  [cc8fcbce] OptimizingIR v0.2.2
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+    Testing Running tests...
+DirectedGraph{VX}
+Vertices
+[1] VX(1)
+[2] VX(2)
+Edges
+Bool[0 1; 0 1]
+
+Test Summary: | Pass  Total
+Graph         |   52     52
+Test Summary: | Pass  Total
+LookupTable   |   25     25
+Test Summary:    | Pass  Total
+OptimizationRule |   11     11
+Test Summary: | Pass  Total
+AbstractValue |   11     11
+BasicBlock
+---------------
+
+Instructions
+---------------
+1 |  Pure  | call(foreign_fun, (x, 10.0::Float64, 2.0::Float64))
+2 |  Pure  | call(+, %1, %1)
+3 | Impure | output = %2
+---------------
+
+Inputs
+---------------
+1 | x
+---------------
+
+Variables - Local Mutables
+---------------
+---------------
+
+Variables - Local Immutables
+---------------
+output | %2
+---------------
+
+Outputs
+---------------
+1 | output
+---------------
+
+Test Summary: | Pass  Total
+call          |    4      4
+Test Summary: | Pass  Total
+OP_GETINDEX   |    3      3
+BasicBlock
+---------------
+
+Instructions
+---------------
+ 1 | Impure | call(zeros, Float64::DataType, x)
+ 2 | Impure | vec = %1
+ 3 | Impure | call(getindex, vec, 1::Int64)
+ 4 | Impure | inspect1 = %3
+ 5 | Impure | call(setindex!, (vec, 10::Int64, 1::Int64))
+ 6 | Impure | call(getindex, vec, 1::Int64)
+ 7 | Impure | inspect2 = %6
+ 8 |  Pure  | call(*, 2.0::Float64, %6)
+ 9 | Impure | inspect3 = %8
+10 | Impure | inspect4 = %8
+---------------
+
+Inputs
+---------------
+1 | x
+---------------
+
+Variables - Local Mutables
+---------------
+vec
+---------------
+
+Variables - Local Immutables
+---------------
+inspect2 | %6
+inspect1 | %3
+inspect3 | %8
+inspect4 | %8
+---------------
+
+Outputs
+---------------
+1 | vec
+2 | inspect1
+3 | inspect2
+4 | inspect3
+5 | inspect4
+---------------
+
+Test Summary: | Pass  Total
+OP_SETINDEX   |   13     13
+Test Summary: | Pass  Total
+Basic Block   |    9      9
+Test Summary: | Pass  Total
+Inputs        |    9      9
+Test Summary: | Pass  Total
+Passes        |    3      3
+Test Summary: | Pass  Total
+Variables     |    7      7
+Test Summary: | Pass  Total
+has_symbol    |   10     10
+Test Summary: | Pass  Total
+gensym        |    1      1
+Test Summary: | Pass  Total
+Native        |    2      2
+Test Summary:     | Pass  Total
+World Age Problem |    1      1
+Test Summary:      | Pass  Total
+can't mutate input |    2      2
+
+[ Info: Benchmarks
+Compile Native:
+  0.001446 seconds (342 allocations: 22.859 KiB, 0.01% compilation time)
+Compile BasicBlockInterpreter
+  0.000015 seconds (7 allocations: 928 bytes)
+Compilation Overhead: Native / BasicBlockInterpreter: 167.5x
+F Call Native 1st
+  0.075857 seconds (45.13 k allocations: 2.751 MiB, 151.83% compilation time)
+F Call Native 2nd
+  0.000011 seconds (4 allocations: 176 bytes)
+F Call Interpreter 1st
+  0.214351 seconds (124.97 k allocations: 7.467 MiB, 6.39% gc time, 99.75% compilation time)
+F Call Interpreter 2nd
+  0.001862 seconds (37 allocations: 976 bytes)
+F Call Julia 1st
+  0.038387 seconds (15.77 k allocations: 927.057 KiB, 99.92% compilation time)
+F Call Julia 2nd
+  0.000010 seconds (4 allocations: 176 bytes)
+F Call Overhead: BasicBlockInterpreter / julia = 17.6x
+F Call Overhead: Native / julia = 1.3x
+[ Info: Compilation + F Call
+BasicBlockInterpreter: 120.4µs
+Native: 1819.8µs
+Native / BasicBlockInterpreter = 15.1x
+
+Test Summary: | Pass  Total
+Benchmarks    |    2      2
+    Testing OptimizingIR tests passed 
