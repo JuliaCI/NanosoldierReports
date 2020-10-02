@@ -1,0 +1,191 @@
+Julia Version 1.6.0-DEV.1109
+Commit d5a83678c5 (2020-10-02 08:27 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed CUDAapi ─ v4.0.0
+  Installed CEnum ─── v0.3.0
+  Installed CUDAdrv ─ v6.3.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [c5f51814] + CUDAdrv v6.3.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [fa961155] + CEnum v0.3.0
+  [3895d2a7] + CUDAapi v4.0.0
+  [c5f51814] + CUDAdrv v6.3.0
+  [8f399da3] + Libdl
+  [56ddb016] + Logging
+  [de0858da] + Printf
+  [4ec0a83e] + Unicode
+    Testing CUDAdrv
+Status `/tmp/jl_GdcVvh/Project.toml`
+  [fa961155] CEnum v0.3.0
+  [3895d2a7] CUDAapi v4.0.0
+  [c5f51814] CUDAdrv v6.3.0
+  [de0858da] Printf
+  [8dfed614] Test
+Status `/tmp/jl_GdcVvh/Manifest.toml`
+  [fa961155] CEnum v0.3.0
+  [3895d2a7] CUDAapi v4.0.0
+  [c5f51814] CUDAdrv v6.3.0
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [de0858da] Printf
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+  [4ec0a83e] Unicode
+    Testing Running tests...
+┌ Error: Could not initialize CUDA
+│   exception =
+│    could not load library "libcuda"
+│    libcuda.so: cannot open shared object file: No such file or directory
+│    Stacktrace:
+│      [1] dlopen(s::String, flags::UInt32; throw_error::Bool)
+│        @ Base.Libc.Libdl ./libdl.jl:114
+│      [2] dlopen
+│        @ ./libdl.jl:114 [inlined]
+│      [3] #dlopen#2
+│        @ ./libdl.jl:110 [inlined]
+│      [4] dlopen
+│        @ ./libdl.jl:110 [inlined]
+│      [5] (::CUDAdrv.var"#2781#cache_fptr!#583")()
+│        @ CUDAdrv ~/.julia/packages/CUDAapi/XuSHC/src/call.jl:31
+│      [6] macro expansion
+│        @ ~/.julia/packages/CUDAapi/XuSHC/src/call.jl:39 [inlined]
+│      [7] __configure__(show_reason::Bool)
+│        @ CUDAdrv ~/.julia/packages/CUDAdrv/Uc14X/src/CUDAdrv.jl:101
+│      [8] (::CUDAdrv.var"#581#582"{Bool})()
+│        @ CUDAdrv ~/.julia/packages/CUDAdrv/Uc14X/src/CUDAdrv.jl:66
+│      [9] lock(f::CUDAdrv.var"#581#582"{Bool}, l::ReentrantLock)
+│        @ Base ./lock.jl:168
+│     [10] _functional(show_reason::Bool)
+│        @ CUDAdrv ~/.julia/packages/CUDAdrv/Uc14X/src/CUDAdrv.jl:63
+│     [11] functional(show_reason::Bool)
+│        @ CUDAdrv ~/.julia/packages/CUDAdrv/Uc14X/src/CUDAdrv.jl:56
+│     [12] top-level scope
+│        @ ~/.julia/packages/CUDAdrv/Uc14X/test/runtests.jl:12
+│     [13] top-level scope
+│        @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113
+│     [14] top-level scope
+│        @ ~/.julia/packages/CUDAdrv/Uc14X/test/runtests.jl:7
+│     [15] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [16] top-level scope
+│        @ none:6
+│     [17] eval(m::Module, e::Any)
+│        @ Core ./boot.jl:360
+│     [18] exec_options(opts::Base.JLOptions)
+│        @ Base ./client.jl:261
+│     [19] _start()
+│        @ Base ./client.jl:485
+└ @ CUDAdrv ~/.julia/packages/CUDAdrv/Uc14X/src/CUDAdrv.jl:108
+CUDAdrv: Test Failed at /home/pkgeval/.julia/packages/CUDAdrv/Uc14X/test/runtests.jl:12
+  Expression: CUDAdrv.functional(true)
+Stacktrace:
+ [1] top-level scope
+   @ ~/.julia/packages/CUDAdrv/Uc14X/test/runtests.jl:12
+ [2] top-level scope
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113
+ [3] top-level scope
+   @ ~/.julia/packages/CUDAdrv/Uc14X/test/runtests.jl:7
+CUDAdrv: Error During Test at /home/pkgeval/.julia/packages/CUDAdrv/Uc14X/test/runtests.jl:14
+  Test threw exception
+  Expression: length(devices()) > 0
+  AssertionError: CUDAdrv.jl did not successfully initialize, and is not usable.
+  Stacktrace:
+    [1] libcuda
+      @ ~/.julia/packages/CUDAdrv/Uc14X/src/CUDAdrv.jl:82 [inlined]
+    [2] (::CUDAdrv.var"#594#cache_fptr!#11")()
+      @ CUDAdrv ~/.julia/packages/CUDAapi/XuSHC/src/call.jl:31
+    [3] macro expansion
+      @ ~/.julia/packages/CUDAapi/XuSHC/src/call.jl:39 [inlined]
+    [4] macro expansion
+      @ ~/.julia/packages/CUDAdrv/Uc14X/src/libcuda.jl:36 [inlined]
+    [5] macro expansion
+      @ ~/.julia/packages/CUDAdrv/Uc14X/src/error.jl:110 [inlined]
+    [6] cuDeviceGetCount
+      @ ~/.julia/packages/CUDAapi/XuSHC/src/call.jl:93 [inlined]
+    [7] length(#unused#::CUDAdrv.DeviceSet)
+      @ CUDAdrv ~/.julia/packages/CUDAdrv/Uc14X/src/devices.jl:105
+    [8] top-level scope
+      @ ~/.julia/packages/CUDAdrv/Uc14X/test/runtests.jl:14
+    [9] top-level scope
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113
+   [10] top-level scope
+      @ ~/.julia/packages/CUDAdrv/Uc14X/test/runtests.jl:7
+CUDAdrv: Error During Test at /home/pkgeval/.julia/packages/CUDAdrv/Uc14X/test/runtests.jl:5
+  Got exception outside of a @test
+  AssertionError: CUDAdrv.jl did not successfully initialize, and is not usable.
+  Stacktrace:
+    [1] libcuda
+      @ ~/.julia/packages/CUDAdrv/Uc14X/src/CUDAdrv.jl:82 [inlined]
+    [2] (::CUDAdrv.var"#594#cache_fptr!#11")()
+      @ CUDAdrv ~/.julia/packages/CUDAapi/XuSHC/src/call.jl:31
+    [3] macro expansion
+      @ ~/.julia/packages/CUDAapi/XuSHC/src/call.jl:39 [inlined]
+    [4] macro expansion
+      @ ~/.julia/packages/CUDAdrv/Uc14X/src/libcuda.jl:36 [inlined]
+    [5] macro expansion
+      @ ~/.julia/packages/CUDAdrv/Uc14X/src/error.jl:110 [inlined]
+    [6] cuDeviceGetCount
+      @ ~/.julia/packages/CUDAapi/XuSHC/src/call.jl:93 [inlined]
+    [7] length(#unused#::CUDAdrv.DeviceSet)
+      @ CUDAdrv ~/.julia/packages/CUDAdrv/Uc14X/src/devices.jl:105
+    [8] top-level scope
+      @ ~/.julia/packages/CUDAdrv/Uc14X/test/runtests.jl:15
+    [9] top-level scope
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113
+   [10] top-level scope
+      @ ~/.julia/packages/CUDAdrv/Uc14X/test/runtests.jl:7
+   [11] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [12] top-level scope
+      @ none:6
+   [13] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [14] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [15] _start()
+      @ Base ./client.jl:485
+Test Summary: | Pass  Fail  Error  Total
+CUDAdrv       |   10     1      2     13
+  pointer     |    7                   7
+ERROR: LoadError: Some tests did not pass: 10 passed, 1 failed, 2 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/CUDAdrv/Uc14X/test/runtests.jl:5
+ERROR: Package CUDAdrv errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1609
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:331
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:318
+  [5] #test#62
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [7] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:19
