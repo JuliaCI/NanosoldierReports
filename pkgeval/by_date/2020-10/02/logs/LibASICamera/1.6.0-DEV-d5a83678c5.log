@@ -21,10 +21,10 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [8f399da3] + Libdl
    Building LibASICamera → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/655dc935ae8cfe92c07c1b414e629b774e0b42dc/build.log`
     Testing LibASICamera
-Status `/tmp/jl_pRVO0h/Project.toml`
+Status `/tmp/jl_vCezpX/Project.toml`
   [d52fb188] LibASICamera v0.1.0
   [8dfed614] Test
-Status `/tmp/jl_pRVO0h/Manifest.toml`
+Status `/tmp/jl_vCezpX/Manifest.toml`
   [fa961155] CEnum v0.2.0
   [d52fb188] LibASICamera v0.1.0
   [2a0f44e3] Base64
@@ -45,15 +45,20 @@ Connect the camera for testing and make sure you can access the camera
     without being root by calling "sudo install asi.rules /lib/udev/rules.d"
     from the lib subdir of the SDK and then relogging / rebooting.
 
-ERROR: LoadError: No cameras found.
+ERROR: LoadError: could not load library "/home/pkgeval/.julia/packages/LibASICamera/KNqZ4/src/../lib/libASICamera2"
+libusb-1.0.so.0: cannot open shared object file: No such file or directory
 Stacktrace:
- [1] get_connected_devices()
-   @ LibASICamera ~/.julia/packages/LibASICamera/KNqZ4/src/LibASICamera_highlevel.jl:206
- [2] top-level scope
-   @ ~/.julia/packages/LibASICamera/KNqZ4/test/runtests.jl:6
- [3] include(fname::String)
-   @ Base.MainInclude ./client.jl:444
+ [1] ASIGetNumOfConnectedCameras
+   @ ~/.julia/packages/LibASICamera/KNqZ4/src/LibASICamera_ccalls.jl:2 [inlined]
+ [2] get_num_connected_cameras
+   @ ~/.julia/packages/LibASICamera/KNqZ4/src/LibASICamera_highlevel.jl:58 [inlined]
+ [3] get_connected_devices()
+   @ LibASICamera ~/.julia/packages/LibASICamera/KNqZ4/src/LibASICamera_highlevel.jl:204
  [4] top-level scope
+   @ ~/.julia/packages/LibASICamera/KNqZ4/test/runtests.jl:6
+ [5] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [6] top-level scope
    @ none:6
 in expression starting at /home/pkgeval/.julia/packages/LibASICamera/KNqZ4/test/runtests.jl:5
 ERROR: Package LibASICamera errored during testing

@@ -28,11 +28,11 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [6462fe0b] + Sockets
   [8dfed614] + Test
     Testing TensorToolbox
-Status `/tmp/jl_kea2AL/Project.toml`
+Status `/tmp/jl_8CxJgY/Project.toml`
   [9c690861] TensorToolbox v1.0.1
   [37e2e46d] LinearAlgebra
   [8dfed614] Test
-Status `/tmp/jl_kea2AL/Manifest.toml`
+Status `/tmp/jl_8CxJgY/Manifest.toml`
   [9c690861] TensorToolbox v1.0.1
   [2a0f44e3] Base64
   [8ba89e20] Distributed
@@ -79,7 +79,7 @@ Check if it folds back correctly: true
 ...Testing function ttm.
 Created 4 matrices with 5 rows and appropriate number of columns.
 Size of tensor Y=ttm(X,M): (5, 5, 5, 5)
-Multiplication error: 7.468368644524e-12
+Multiplication error: 1.0691399389096429e-11
 
 ...Testing function ttv.
 Multiplying a tensor X by a vector v in mode 2.
@@ -88,16 +88,16 @@ Size of tensor Y=ttv(X,v): (3, 2)
 ...Testing function krontm.
 Created two tensors X and Y of order 3 and sizes (5, 4, 3) and (2, 5, 4).
 Multiplying tkron(X,Y) by random matrix in mode 3.
-Multiplication error: 1.2290714517023569e-14
+Multiplication error: 1.3821496357332215e-14
 Multiplying tkron(X,Y) by random matrices in modes [3, 2].
-Multiplication error: 9.204545682473235e-14
+Multiplication error: 1.1729000522699804e-13
 Multiplying tkron(X,Y) by random matrices in all modes.
-Multiplication error: 5.530150049827599e-13
+Multiplication error: 6.968573394028159e-13
 
 ...Testing function mkrontv.
 Multiplying mode-1 matricized tkron(X,Y) by a random vector.
-Multiplication error: 3.137671763769791e-14
-Multiplication error: 1.6989949383819803e-15
+Multiplication error: 3.2171190647067566e-14
+Multiplication error: 1.894711961311747e-15
 
 ...Testing function mttkrp.
 Multiplying mode-1 matricized tensor X by Khatri-Rao product of matrices.
@@ -122,9 +122,9 @@ Type of output T: ttensor
 Core tensor size: (20, 10, 50, 5)
 Factor matrices sizes: (20, 20) (10, 10) (50, 50) (5, 5) 
 
-...Testing function full, i.e. n-mode multiplication (ttm): norm(full(T)-X) = 3.897887826664835e-13
+...Testing function full, i.e. n-mode multiplication (ttm): norm(full(T)-X) = 2.469524451879298e-13
 
-...Testing ttm for ttensor T and array of matrices A : norm(full(ttm(T,A))-ttm(full(T),A)) = 7.570211807699931e-12
+...Testing ttm for ttensor T and array of matrices A : norm(full(ttm(T,A))-ttm(full(T),A)) = 2.110139186873417e-11
 
 ...Testing hosvd with smaller multilinear rank: [5, 5, 5, 5]
 Results:
@@ -145,7 +145,7 @@ Factor matrices sizes: (20, 5) (10, 5) (50, 5) (5, 5)
 
 ...Testing hosvd for tensor with noise.
 For ttensor T, X=full(T) tensor of size (60, 50, 40) and rank [5, 5, 5] , N noise tensor and S=hosvd(X+N,[5, 5, 5]).
-Error( norm(T-S) ): 0.013338883758378084. Noise norm: 0.17310203525743495.
+Error( norm(T-S) ): 0.013336605441595864. Noise norm: 0.17321657868579335.
 
 
 ...Testing hosvd with eps_abs=1e-5 on function defined tensor X of size (20, 20, 20) and multlinear rank(13, 13, 13)
@@ -185,56 +185,56 @@ norm(full(3*T) - 3*full(T)) = 3.11024972780411e-14
 ...Creating two random ttensors X and Y of size (6, 8, 2, 5, 4).
 
 ...Testing addition.
-norm(full(X+Y) - (full(X)+full(Y))) = 2.771712677006769e-13
+norm(full(X+Y) - (full(X)+full(Y))) = 2.4632763944877686e-13
 
 
 ...Testing inner product.
-|innerprod(X,Y) - innerprod(full(X),full(Y))| = 2.7284841053187847e-12
+|innerprod(X,Y) - innerprod(full(X),full(Y))| = 1.0459189070388675e-11
 
 
 ...Testing Hadamard product.
 ┌ Warning: `one(i::CartesianIndex)` is deprecated, use `oneunit(i)` instead.
 │   caller = tkron(X1::Array{Float64, 5}, X2::Array{Float64, 5}) at tensor.jl:592
 └ @ TensorToolbox ~/.julia/packages/TensorToolbox/6LauI/src/tensor.jl:592
-norm(full(ewprod(X,Y)) - full(X).*full(Y)) = 4.009731176465907e-12
+norm(full(ewprod(X,Y)) - full(X).*full(Y)) = 3.1353190146696837e-12
 
 
 ...Testing singular values of matricizations of Tucker Tensor.
 
-Singular values of matricizations of random Tucker tensor of size (10, 9, 8), rank [3, 3, 3] and norm 115.39416217412172.
-Mode-1 singular values error: 3.8428474007872526e-14
-Mode-2 singular values error: 2.929642751054232e-14
-Mode-3 singular values error: 2.929642751054232e-14
+Singular values of matricizations of random Tucker tensor of size (10, 9, 8), rank [3, 3, 3] and norm 76.94278761178076.
+Mode-1 singular values error: 5.136098584586421e-14
+Mode-2 singular values error: 2.1972320632906738e-14
+Mode-3 singular values error: 3.332740845837229e-14
 
-Singular values of matricizations of random Tucker tensor of size (20, 20, 20, 20), rank [5, 5, 5, 5] and norm 7022.959016541314.
-Mode-1 singular values error: 4.6597737154841516e-12
-Mode-2 singular values error: 3.777415196472282e-12
-Mode-3 singular values error: 2.920667743334236e-12
-Mode-4 singular values error: 3.5297886589114624e-12
+Singular values of matricizations of random Tucker tensor of size (20, 20, 20, 20), rank [5, 5, 5, 5] and norm 9975.797757891047.
+Mode-1 singular values error: 2.7661201467245607e-12
+Mode-2 singular values error: 4.265908282671653e-12
+Mode-3 singular values error: 5.475883235154604e-12
+Mode-4 singular values error: 2.7661201467245607e-12
 
 ...Testing function mhadtv.
 
 
 ...Creating two random ttensors X and Y of size (5, 4, 3).
 Multiplying mode-1 matricized ewprod(X,Y) by a random vector.
-Multiplication error: 1.0358000028865063e-14
-Multiplication error: 1.7575767621928958e-14
-Multiplication error: 1.0484358435291514e-12
+Multiplication error: 7.650878665730354e-15
+Multiplication error: 1.7806883670196606e-14
+Multiplication error: 1.9071157634437897e-12
 
 ...Testing function mttkrp.
 Multiplying mode-1 matricized tensor X by Khatri-Rao product of matrices.
-Multiplication error: 3.51812356486539e-15
+Multiplication error: 4.261113673290064e-15
 
 ...Testing cp_als on ttensor.
 Test rank-1 ttensor T of size: (5, 4, 3)
-norm(full(Tcp)-T) = 5.557379632143593e-17
+norm(full(Tcp)-T) = 2.9747478019479994e-16
 
 
 ****Testing ktensor.jl
 
 **Test rank-1 tensor X of size: (5, 4, 3)
 ...Testing cp_als.
-norm(full(Xcp)-X) = 4.3809775104041284e-16
+norm(full(Xcp)-X) = 5.57381155913549e-16
 
 **Test ktensors X and Y of size: (4, 3, 2)
 
@@ -242,19 +242,19 @@ norm(full(Xcp)-X) = 4.3809775104041284e-16
 X is of order: 3
 ...Testing function ttensor and full.
 ...Testing scalar multiplication.
-norm(full(3*X) - 3*full(X)) = 1.1438025228256184e-15
+norm(full(3*X) - 3*full(X)) = 1.0906210770260937e-15
 ...Testing functions plus and minus.
-norm(full(Z)-(full(X)+full(Y))) = 3.640109616122045e-16
-norm(full(Z)-(full(X)-full(Y))) = 6.087272963323595e-16
+norm(full(Z)-(full(X)+full(Y))) = 6.890150443143122e-16
+norm(full(Z)-(full(X)-full(Y))) = 7.83081154346659e-16
 ...Testing function innerprod.
-norm(innerprod(X,Y)-innerprod(full(X),full(Y))) = 0.0
+norm(innerprod(X,Y)-innerprod(full(X),full(Y))) = 1.7763568394002505e-15
 ...Testing function norm.
 ...Testing functions arrange and arrange!.
-norm(full(X)-full(Z)) = 2.255941018298854e-16
+norm(full(X)-full(Z)) = 7.205766531097152e-16
 ...Testing functions normalize and normalize!.
-norm(full(X)-full(Z)) = 5.14379882161374e-16
+norm(full(X)-full(Z)) = 5.309954273421678e-16
 ...Testing functions redistribute and redistribute!.
-norm(full(X)-full(Z)) = 5.367000068077286e-16
+norm(full(X)-full(Z)) = 6.449812927423887e-16
 ...Testing functions fixsigns, fixsigns! and isequal.
 norm(full(X)-full(Z)) = 0.0
 ...Testing functions ttm and ttv.
@@ -266,7 +266,7 @@ Is the output MatrixCell: true
 
 ...Testing function mttkrp.
 Multiplying mode-1 matricized tensor X by Khatri-Rao product of matrices.
-Multiplication error: 8.867966812113452e-16
+Multiplication error: 1.5082799641678607e-15
 
 
 ****Testing dimtree.jl
@@ -302,32 +302,32 @@ norm(full(H)-X) = 5.111706013773555e-14
 
 ...Testing ndims of htensor H : 6
 
-...Testing ttm for ttensor H and array of matrices A : norm(full(ttm(H,A))-ttm(full(H),A)) = 4.460093769537096e-13
+...Testing ttm for ttensor H and array of matrices A : norm(full(ttm(H,A))-ttm(full(H),A)) = 5.794000282832403e-13
 
 
 ...Testing norm of htensor H.
-|norm(H) - norm(full(H))| = 2.1316282072803006e-14
+|norm(H) - norm(full(H))| = 7.105427357601002e-15
 
 
 ...Testing scalar multiplication 3*H.
-norm(full(3*H) - 3*full(H)) = 2.0926149837498293e-14
+norm(full(3*H) - 3*full(H)) = 2.2562424661517418e-14
 
 
 Testing functions plus and minus for htensors H1 and H2.
-norm(full(H1+H2) - (full(H1)+full(H2))) = 9.489809492268385e-16
-norm(full(H1+H2) - (full(H1)+full(H2))) = 6.577690795458483e-16
+norm(full(H1+H2) - (full(H1)+full(H2))) = 1.1057035446705494e-15
+norm(full(H1+H2) - (full(H1)+full(H2))) = 1.0749464258202508e-15
 
 
 ...Testing inner product.
-|innerprod(H1,H2) - innerprod(full(H1),full(H2))| = 1.7763568394002505e-15
+|innerprod(H1,H2) - innerprod(full(H1),full(H2))| = 0.0
 
 
 Testing function dropdims for squeezed tensor X and squeezed htensor Y.
-norm(full(Y)-dropdims(X,dims=1)) = 2.5220182858840033e-15
-norm(full(Y)-dropdims(X,dims=2)) = 7.034724422464134e-15
-norm(full(Y)-dropdims(X,dims=3)) = 4.909756567888921e-15
-norm(full(Y)-dropdims(X,dims=4)) = 8.129482064353327e-15
-norm(full(Y)-dropdims(X,dims=5)) = 4.459812119282963e-15
+norm(full(Y)-dropdims(X,dims=1)) = 3.568319021798266e-15
+norm(full(Y)-dropdims(X,dims=2)) = 3.7835237663640286e-15
+norm(full(Y)-dropdims(X,dims=3)) = 5.438393234215957e-15
+norm(full(Y)-dropdims(X,dims=4)) = 3.009104764757781e-15
+norm(full(Y)-dropdims(X,dims=5)) = 5.890109426366857e-15
 
 
 ...Testing reorthogonalization for random htensor H of size (4, 5, 2).
@@ -359,15 +359,15 @@ Testing hrank: [1, 2, 2, 2, 2]
 Results:
 Type of output T: TTtensor
 
-...Testing function full, i.e. contracted product (conprod): norm(full(T)-X) = 1.4745157709205194e-14
+...Testing function full, i.e. contracted product (conprod): norm(full(T)-X) = 4.825051901024862e-15
 
 ...Testing TTsvd with requested rank.
 Created tensor x of size (6, 5, 6, 5), with TTrank = (4, 4, 4).
 T1=TTsvd(X,reqrank=[4, 4, 4])
-norm(X-full(T1)) = 1.239860171956574e-13
+norm(X-full(T1)) = 2.0887089928656418e-13
 
 ...Testing recompression.
-S=TTsvd(T): norm(full(S)-X) = 1.3172228899185936e-13
+S=TTsvd(T): norm(full(S)-X) = 6.703899506037969e-14
 
 ...Testing reorthogonalization - function reorth.
 Test TT-tensor T of size: (6, 5, 4, 3) with flags T.lorth = false and T.rorth = false.
@@ -377,8 +377,8 @@ Flags: Tl.lorth = true, Tl.rorth = false.
 
 Performing right orthogonalization: Tr=reorth(T,"right").
 Flags: Tr.lorth = false, Tr.rorth = true.
-norm(Diagonal(ones(size(Gn, 1))) - Gn * Gn') = 7.115147368616694e-16
-norm(Diagonal(ones(size(Gn, 1))) - Gn * Gn') = 2.626796807751364e-16
+norm(Diagonal(ones(size(Gn, 1))) - Gn * Gn') = 4.0047067289348175e-16
+norm(Diagonal(ones(size(Gn, 1))) - Gn * Gn') = 3.2129317275301393e-16
 
 ...Testing reorthogonalization with overwriting - function reorth!.
 
@@ -394,7 +394,7 @@ Fixed precision problem with ϵ = 1.0e-8.
 Created TT-tensor T of size (6, 5, 6, 5), with TTrank = (4, 4, 4), but its actual TT-rank is (2,2,2)
 T1=TTsvd(T,ϵ)
 TTrank(T1) = (2, 2, 2)
-norm(full(T)-full(T1)) = 1.2754779956472701e-13
+norm(full(T)-full(T1)) = 9.428022815264036e-14
 
 Fixed rank problem with reqrank = [2, 2, 2].
 Created TT-tensor T of size (6, 5, 4, 3), with TTrank = (6, 12, 3).

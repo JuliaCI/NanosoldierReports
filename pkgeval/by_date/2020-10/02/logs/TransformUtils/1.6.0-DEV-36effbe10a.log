@@ -1,0 +1,73 @@
+Julia Version 1.6.0-DEV.1117
+Commit 36effbe10a (2020-10-02 17:38 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed TransformUtils ─ v0.2.6
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [9b8138ad] + TransformUtils v0.2.6
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [9b8138ad] + TransformUtils v0.2.6
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+    Testing TransformUtils
+Status `/tmp/jl_Zo04l4/Project.toml`
+  [9b8138ad] TransformUtils v0.2.6
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_Zo04l4/Manifest.toml`
+  [9b8138ad] TransformUtils v0.2.6
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+    Testing Running tests...
+Test Summary:                               |
+Constructors SO3, Quaternion, AngleAxis...  | No tests
+Test Summary:                           | Pass  Total
+Ensure basic quaternion operations hold |   10     10
+Test Summary:                                       | Pass  Total
+Comparison functions for SO3, Quaternion, AngleAxis |    5      5
+Test Summary:                                        | Pass  Total
+Trivial case quaterion -> SO3 -> Euler -> quaternion |    2      2
+┌ Warning: Need better coverage on convert function tests
+└ @ Main ~/.julia/packages/TransformUtils/cFZOw/test/runtests.jl:89
+dAA = AngleAxis(0.7853981633974483, [1.0, 0.0, 0.0])
+dAA = so3([0.0 0.1925601578883077 0.11141660909389187; -0.1925601578883077 0.0 -0.15354698664071603; -0.11141660909389187 0.15354698664071603 0.0])
+dAA = so3([0.0 0.06719704231328281 0.0011565134972488418; -0.06719704231328281 0.0 -0.06736415123123646; -0.0011565134972488418 0.06736415123123646 0.0])
+dAA = so3([0.0 -0.22134890726820708 -0.10250405786751252; 0.22134890726820708 0.0 0.0953759915302804; 0.10250405786751252 -0.0953759915302804 0.0])
+dAA = Quaternion(0.9897921765358845, [0.07199233357605687, -0.008841647523883419, -0.1226799757242137])
+dAA = SO3([0.9892119501926865 0.062470677512411456 -0.13250332843790077; -0.04592089766370256 0.9911599434048292 0.12447183515758006; 0.13910783138896846 -0.11704435501499558 0.9833359701573935])
+Test Summary:                        | Pass  Total
+Compare SO3 and quaternion rotations |   24     24
+Test Summary:       | Pass  Total
+Basic SE3 mechanics |    4      4
+Compare operations on two different SE3 transforms
+xi = SE3(SO3([0.9859515029610376 0.16665489403778075 -0.011215172853195645; -0.16617026384429096 0.9718413869393538 -0.1670681359377419; -0.01694335335137966 0.16658470795679042 0.9858815638057956]), [1.5354698664071602, 1.1141660909389186, -1.9256015788830767])
+xj = SE3(SO3([0.8179025217242198 0.5653505780177505 -0.10683720743335494; -0.5652103877179152 0.7547863820801992 -0.33291851111352716; -0.10757640342066767 0.3326803892045324 0.9368837046644555]), [-0.9537599153028039, -1.025040578675125, 2.2134890726820706])
+Dx = SE3(SO3([0.9021560848396643 0.4263484784527811 -0.06588910006797241; -0.43090797276799897 0.8831705505560926 -0.18527843273144884; -0.02080186510249235 0.1955422040160311 0.9804746446781836]), [-2.168917383247942, -1.8043026948565288, 4.465963577250199])
+Test Summary:         | Pass  Total
+SE3 ⊕ and ⊖ mechanics |    6      6
+TransformUtils.convert(Euler, q) = Euler(0.7853981633974484, 0.0, 1.5707963267948963, Quaternion(1.0, [0.0, 0.0, 0.0]))
+Test Summary:              | Pass  Total
+Previous discovered issues |    3      3
+Test Summary:      | Pass  Total
+test SO3 logmap... |  301    301
+Test Summary:                              | Pass  Total
+test in-place and efficient inverse SE3... |    1      1
+    Testing TransformUtils tests passed 

@@ -52,7 +52,7 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
     Testing OnlinePackage
-Status `/tmp/jl_bmtH7N/Project.toml`
+Status `/tmp/jl_KgKb9Z/Project.toml`
   [e30172f5] Documenter v0.25.2
   [cd3eb016] HTTP v0.8.19
   [682c06a0] JSON v0.21.1
@@ -60,7 +60,7 @@ Status `/tmp/jl_bmtH7N/Project.toml`
   [a9144af2] libsodium_jll v1.0.18+1
   [2a0f44e3] Base64
   [44cfe95a] Pkg
-Status `/tmp/jl_bmtH7N/Manifest.toml`
+Status `/tmp/jl_KgKb9Z/Manifest.toml`
   [ffbed154] DocStringExtensions v0.8.3
   [e30172f5] Documenter v0.25.2
   [cd3eb016] HTTP v0.8.19
@@ -95,11 +95,269 @@ Status `/tmp/jl_bmtH7N/Manifest.toml`
     Testing Running tests...
 [ Info: SetupBuildDirectory: setting up build directory.
 [ Info: Doctest: running doctests.
-[ Info: Skipped ExpandTemplates step (doctest only).
-[ Info: Skipped CrossReferences step (doctest only).
-[ Info: Skipped CheckDocument step (doctest only).
-[ Info: Skipped Populate step (doctest only).
-[ Info: Skipped RenderDocument step (doctest only).
-Test Summary:           | Pass  Total
+┌ Error: doctest failure in ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl
+│ 
+│ ```jldoctest
+│ julia> using OnlinePackage
+│ 
+│ julia> repo_name = "Test1.6.0-DEV.1109.jl";
+│ 
+│ julia> user = get_user(OnlinePackage.SAMPLE_FILE);
+│ 
+│ julia> put_online(user, repo_name)
+│ 
+│ julia> put_online(user, repo_name)
+│ 
+│ julia> delete(user, repo_name)
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ put_online(user, repo_name)
+│ 
+│ Evaluated output:
+│ 
+│ ERROR: IOError: could not spawn `ssh-keygen -f COMPATHELPER_PRIV -N '' -q`: no such file or directory (ENOENT)
+│ Stacktrace:
+│   [1] _spawn_primitive(file::String, cmd::Cmd, stdio::Vector{Any})
+│     @ Base ./process.jl:99
+│   [2] #619
+│     @ ./process.jl:112 [inlined]
+│   [3] setup_stdios(f::Base.var"#619#620"{Cmd}, stdios::Vector{Any})
+│     @ Base ./process.jl:196
+│   [4] _spawn
+│     @ ./process.jl:111 [inlined]
+│   [5] run(::Cmd; wait::Bool)
+│     @ Base ./process.jl:439
+│   [6] run
+│     @ ./process.jl:438 [inlined]
+│   [7] (::OnlinePackage.var"#8#10"{String, String})()
+│     @ OnlinePackage ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:90
+│   [8] cd(f::OnlinePackage.var"#8#10"{String, String}, dir::String)
+│     @ Base.Filesystem ./file.jl:104
+│   [9] #7
+│     @ ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:89 [inlined]
+│  [10] mktempdir(fn::OnlinePackage.var"#7#9"{String, String}, parent::String; prefix::String)
+│     @ Base.Filesystem ./file.jl:711
+│  [11] mktempdir
+│     @ ./file.jl:709 [inlined]
+│  [12] add_key(user::OnlinePackage.User, repo_name::String, key_name::String)
+│     @ OnlinePackage ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:88
+│  [13] #put_online#11
+│     @ ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:174 [inlined]
+│  [14] put_online(user::OnlinePackage.User, repo_name::String)
+│     @ OnlinePackage ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:165
+│  [15] top-level scope
+│     @ none:1
+│ 
+│ Expected output:
+│ 
+│ 
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    ERROR: IOError: could not spawn `ssh-keygen -f COMPATHELPER_PRIV -N '' -q`: no such file or directory (ENOENT)
+│    Stacktrace:
+│      [1] _spawn_primitive(file::String, cmd::Cmd, stdio::Vector{Any})
+│        @ Base ./process.jl:99
+│      [2] #619
+│        @ ./process.jl:112 [inlined]
+│      [3] setup_stdios(f::Base.var"#619#620"{Cmd}, stdios::Vector{Any})
+│        @ Base ./process.jl:196
+│      [4] _spawn
+│        @ ./process.jl:111 [inlined]
+│      [5] run(::Cmd; wait::Bool)
+│        @ Base ./process.jl:439
+│      [6] run
+│        @ ./process.jl:438 [inlined]
+│      [7] (::OnlinePackage.var"#8#10"{String, String})()
+│        @ OnlinePackage ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:90
+│      [8] cd(f::OnlinePackage.var"#8#10"{String, String}, dir::String)
+│        @ Base.Filesystem ./file.jl:104
+│      [9] #7
+│        @ ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:89 [inlined]
+│     [10] mktempdir(fn::OnlinePackage.var"#7#9"{String, String}, parent::String; prefix::String)
+│        @ Base.Filesystem ./file.jl:711
+│     [11] mktempdir
+│        @ ./file.jl:709 [inlined]
+│     [12] add_key(user::OnlinePackage.User, repo_name::String, key_name::String)
+│        @ OnlinePackage ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:88
+│     [13] #put_online#11
+│        @ ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:174 [inlined]
+│     [14] put_online(user::OnlinePackage.User, repo_name::String)
+│        @ OnlinePackage ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:165
+│     [15] top-level scope
+│        @ none:1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl
+│ 
+│ ```jldoctest
+│ julia> using OnlinePackage
+│ 
+│ julia> repo_name = "Test1.6.0-DEV.1109.jl";
+│ 
+│ julia> user = get_user(OnlinePackage.SAMPLE_FILE);
+│ 
+│ julia> put_online(user, repo_name)
+│ 
+│ julia> put_online(user, repo_name)
+│ 
+│ julia> delete(user, repo_name)
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ put_online(user, repo_name)
+│ 
+│ Evaluated output:
+│ 
+│ ERROR: IOError: could not spawn `ssh-keygen -f COMPATHELPER_PRIV -N '' -q`: no such file or directory (ENOENT)
+│ Stacktrace:
+│   [1] _spawn_primitive(file::String, cmd::Cmd, stdio::Vector{Any})
+│     @ Base ./process.jl:99
+│   [2] #619
+│     @ ./process.jl:112 [inlined]
+│   [3] setup_stdios(f::Base.var"#619#620"{Cmd}, stdios::Vector{Any})
+│     @ Base ./process.jl:196
+│   [4] _spawn
+│     @ ./process.jl:111 [inlined]
+│   [5] run(::Cmd; wait::Bool)
+│     @ Base ./process.jl:439
+│   [6] run
+│     @ ./process.jl:438 [inlined]
+│   [7] (::OnlinePackage.var"#8#10"{String, String})()
+│     @ OnlinePackage ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:90
+│   [8] cd(f::OnlinePackage.var"#8#10"{String, String}, dir::String)
+│     @ Base.Filesystem ./file.jl:104
+│   [9] #7
+│     @ ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:89 [inlined]
+│  [10] mktempdir(fn::OnlinePackage.var"#7#9"{String, String}, parent::String; prefix::String)
+│     @ Base.Filesystem ./file.jl:711
+│  [11] mktempdir
+│     @ ./file.jl:709 [inlined]
+│  [12] add_key(user::OnlinePackage.User, repo_name::String, key_name::String)
+│     @ OnlinePackage ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:88
+│  [13] #put_online#11
+│     @ ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:174 [inlined]
+│  [14] put_online(user::OnlinePackage.User, repo_name::String)
+│     @ OnlinePackage ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:165
+│  [15] top-level scope
+│     @ none:1
+│ 
+│ Expected output:
+│ 
+│ 
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    ERROR: IOError: could not spawn `ssh-keygen -f COMPATHELPER_PRIV -N '' -q`: no such file or directory (ENOENT)
+│    Stacktrace:
+│      [1] _spawn_primitive(file::String, cmd::Cmd, stdio::Vector{Any})
+│        @ Base ./process.jl:99
+│      [2] #619
+│        @ ./process.jl:112 [inlined]
+│      [3] setup_stdios(f::Base.var"#619#620"{Cmd}, stdios::Vector{Any})
+│        @ Base ./process.jl:196
+│      [4] _spawn
+│        @ ./process.jl:111 [inlined]
+│      [5] run(::Cmd; wait::Bool)
+│        @ Base ./process.jl:439
+│      [6] run
+│        @ ./process.jl:438 [inlined]
+│      [7] (::OnlinePackage.var"#8#10"{String, String})()
+│        @ OnlinePackage ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:90
+│      [8] cd(f::OnlinePackage.var"#8#10"{String, String}, dir::String)
+│        @ Base.Filesystem ./file.jl:104
+│      [9] #7
+│        @ ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:89 [inlined]
+│     [10] mktempdir(fn::OnlinePackage.var"#7#9"{String, String}, parent::String; prefix::String)
+│        @ Base.Filesystem ./file.jl:711
+│     [11] mktempdir
+│        @ ./file.jl:709 [inlined]
+│     [12] add_key(user::OnlinePackage.User, repo_name::String, key_name::String)
+│        @ OnlinePackage ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:88
+│     [13] #put_online#11
+│        @ ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:174 [inlined]
+│     [14] put_online(user::OnlinePackage.User, repo_name::String)
+│        @ OnlinePackage ~/.julia/packages/OnlinePackage/i9Qpm/src/OnlinePackage.jl:165
+│     [15] top-level scope
+│        @ none:1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+┌ Error: Doctesting failed
+│   exception =
+│    `makedocs` encountered a doctest error. Terminating build
+│    Stacktrace:
+│      [1] error(s::String)
+│        @ Base ./error.jl:33
+│      [2] runner(#unused#::Type{Documenter.Builder.Doctest}, doc::Documenter.Documents.Document)
+│        @ Documenter.Builder ~/.julia/packages/Documenter/pjwqp/src/Builder.jl:217
+│      [3] dispatch(#unused#::Type{Documenter.Builder.DocumentPipeline}, x::Documenter.Documents.Document)
+│        @ Documenter.Utilities.Selectors ~/.julia/packages/Documenter/pjwqp/src/Utilities/Selectors.jl:167
+│      [4] #2
+│        @ ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:241 [inlined]
+│      [5] cd(f::Documenter.var"#2#3"{Documenter.Documents.Document}, dir::String)
+│        @ Base.Filesystem ./file.jl:104
+│      [6] makedocs(; debug::Bool, format::Documenter.Writers.HTMLWriter.HTML, kwargs::Base.Iterators.Pairs{Symbol, Any, NTuple{5, Symbol}, NamedTuple{(:root, :source, :sitename, :doctest, :modules), Tuple{String, String, String, Symbol, Vector{Module}}}})
+│        @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:240
+│      [7] (::Documenter.var"#all_doctests#31"{Bool, Vector{Module}})()
+│        @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:802
+│      [8] macro expansion
+│        @ ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:818 [inlined]
+│      [9] macro expansion
+│        @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113 [inlined]
+│     [10] doctest(source::String, modules::Vector{Module}; fix::Bool, testset::String)
+│        @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:818
+│     [11] doctest(package::Module; manual::Bool, testset::Nothing, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+│        @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:761
+│     [12] doctest(package::Module)
+│        @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:748
+│     [13] top-level scope
+│        @ ~/.julia/packages/OnlinePackage/i9Qpm/test/runtests.jl:4
+│     [14] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [15] top-level scope
+│        @ none:6
+│     [16] eval(m::Module, e::Any)
+│        @ Core ./boot.jl:360
+│     [17] exec_options(opts::Base.JLOptions)
+│        @ Base ./client.jl:261
+│     [18] _start()
+│        @ Base ./client.jl:485
+└ @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:811
+Doctests: OnlinePackage: Test Failed at /home/pkgeval/.julia/packages/Documenter/pjwqp/src/Documenter.jl:818
+  Expression: all_doctests()
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:818 [inlined]
+ [2] macro expansion
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113 [inlined]
+ [3] doctest(source::String, modules::Vector{Module}; fix::Bool, testset::String)
+   @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:818
+Test Summary:           | Fail  Total
 Doctests: OnlinePackage |    1      1
-    Testing OnlinePackage tests passed 
+ERROR: LoadError: Some tests did not pass: 0 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/OnlinePackage/i9Qpm/test/runtests.jl:4
+ERROR: Package OnlinePackage errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1609
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:331
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:318
+  [5] #test#62
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [7] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:19

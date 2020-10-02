@@ -36,13 +36,13 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
     Testing PyVenvs
-Status `/tmp/jl_FwpX6i/Project.toml`
+Status `/tmp/jl_VKbHXY/Project.toml`
   [4c88cf16] Aqua v0.4.11
   [438e738f] PyCall v1.92.1
   [900dd30e] PyVenvs v0.1.0
   [44cfe95a] Pkg
   [8dfed614] Test
-Status `/tmp/jl_FwpX6i/Manifest.toml`
+Status `/tmp/jl_VKbHXY/Manifest.toml`
   [4c88cf16] Aqua v0.4.11
   [8f4d0f93] Conda v1.4.1
   [682c06a0] JSON v0.21.1
@@ -91,67 +91,73 @@ Skipping Base.Filesystem.JL_O_TEMPORARY
 Skipping Base.BinaryPlatforms.compiler_abi
 Test Summary: | Pass  Total
 test_aqua.jl  |    7      7
+The virtual environment was not created successfully because ensurepip is not
+available.  On Debian/Ubuntu systems, you need to install the python3-venv
+package using the following command.
+
+    apt-get install python3-venv
+
+You may need to use sudo with that command.  After installing the python3-venv
+package, recreate your virtual environment.
+
+Failing command: ['/home/pkgeval/.julia/scratchspaces/900dd30e-34bf-4e23-831d-6809554238a5/pyvenv-CLI-VENV-0.1.0-49e2bf059941c4c5516639184921e340bb05a057/venv/bin/python3', '-Im', 'ensurepip', '--upgrade', '--default-pip']
+
 test_core.jl: Error During Test at /home/pkgeval/.julia/packages/PyVenvs/YgBvj/test/runtests.jl:4
   Got exception outside of a @test
-  LoadError: InitError: IOError: could not spawn `python3 -m venv /home/pkgeval/.julia/scratchspaces/900dd30e-34bf-4e23-831d-6809554238a5/pyvenv-CLI-VENV-0.1.0-49e2bf059941c4c5516639184921e340bb05a057/venv`: no such file or directory (ENOENT)
+  LoadError: InitError: failed process: Process(`python3 -m venv /home/pkgeval/.julia/scratchspaces/900dd30e-34bf-4e23-831d-6809554238a5/pyvenv-CLI-VENV-0.1.0-49e2bf059941c4c5516639184921e340bb05a057/venv`, ProcessExited(1)) [1]
+  
   Stacktrace:
-    [1] _spawn_primitive(file::String, cmd::Cmd, stdio::Vector{Any})
-      @ Base ./process.jl:99
-    [2] #619
-      @ ./process.jl:112 [inlined]
-    [3] setup_stdios(f::Base.var"#619#620"{Cmd}, stdios::Vector{Any})
-      @ Base ./process.jl:196
-    [4] _spawn
-      @ ./process.jl:111 [inlined]
-    [5] run(::Cmd; wait::Bool)
-      @ Base ./process.jl:439
-    [6] run
+    [1] pipeline_error
+      @ ./process.jl:525 [inlined]
+    [2] run(::Cmd; wait::Bool)
+      @ Base ./process.jl:440
+    [3] run
       @ ./process.jl:438 [inlined]
-    [7] mkvenv(path::String)
+    [4] mkvenv(path::String)
       @ PyVenvs.Implementations ~/.julia/packages/PyVenvs/YgBvj/src/core.jl:61
-    [8] mkvenv(venv::PyVenvs.Implementations.PyVenv)
+    [5] mkvenv(venv::PyVenvs.Implementations.PyVenv)
       @ PyVenvs.Implementations ~/.julia/packages/PyVenvs/YgBvj/src/core.jl:60
-    [9] install(venv::PyVenvs.Implementations.PyVenv; upgrade::Bool)
+    [6] install(venv::PyVenvs.Implementations.PyVenv; upgrade::Bool)
       @ PyVenvs.Implementations ~/.julia/packages/PyVenvs/YgBvj/src/core.jl:130
-   [10] install
+    [7] install
       @ ~/.julia/packages/PyVenvs/YgBvj/src/core.jl:130 [inlined]
-   [11] #5
+    [8] #5
       @ ~/.julia/packages/PyVenvs/YgBvj/src/core.jl:119 [inlined]
-   [12] _with_python
+    [9] _with_python
       @ ~/.julia/packages/PyVenvs/YgBvj/src/core.jl:108 [inlined]
-   [13] #init#4
+   [10] #init#4
       @ ~/.julia/packages/PyVenvs/YgBvj/src/core.jl:117 [inlined]
-   [14] init
+   [11] init
       @ ~/.julia/packages/PyVenvs/YgBvj/src/core.jl:117 [inlined]
-   [15] __init__()
+   [12] __init__()
       @ CLIVenvExample ~/.julia/packages/PyVenvs/YgBvj/examples/CLIVenvExample/src/CLIVenvExample.jl:11
-   [16] _include_from_serialized(path::String, depmods::Vector{Any})
+   [13] _include_from_serialized(path::String, depmods::Vector{Any})
       @ Base ./loading.jl:630
-   [17] _require_from_serialized(path::String, cache::Base.TOMLCache)
+   [14] _require_from_serialized(path::String, cache::Base.TOMLCache)
       @ Base ./loading.jl:683
-   [18] _require(pkg::Base.PkgId, cache::Base.TOMLCache)
+   [15] _require(pkg::Base.PkgId, cache::Base.TOMLCache)
       @ Base ./loading.jl:988
-   [19] require(uuidkey::Base.PkgId, cache::Base.TOMLCache)
+   [16] require(uuidkey::Base.PkgId, cache::Base.TOMLCache)
       @ Base ./loading.jl:871
-   [20] require(into::Module, mod::Symbol)
+   [17] require(into::Module, mod::Symbol)
       @ Base ./loading.jl:858
-   [21] include(mod::Module, _path::String)
+   [18] include(mod::Module, _path::String)
       @ Base ./Base.jl:389
-   [22] include(x::String)
+   [19] include(x::String)
       @ Main.TestPyVenvs ~/.julia/packages/PyVenvs/YgBvj/test/runtests.jl:1
-   [23] top-level scope
+   [20] top-level scope
       @ ~/.julia/packages/PyVenvs/YgBvj/test/runtests.jl:13
-   [24] top-level scope
+   [21] top-level scope
       @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1188
-   [25] include(fname::String)
+   [22] include(fname::String)
       @ Base.MainInclude ./client.jl:444
-   [26] top-level scope
+   [23] top-level scope
       @ none:6
-   [27] eval(m::Module, e::Any)
+   [24] eval(m::Module, e::Any)
       @ Core ./boot.jl:360
-   [28] exec_options(opts::Base.JLOptions)
+   [25] exec_options(opts::Base.JLOptions)
       @ Base ./client.jl:261
-   [29] _start()
+   [26] _start()
       @ Base ./client.jl:485
   during initialization of module CLIVenvExample
   in expression starting at /home/pkgeval/.julia/packages/PyVenvs/YgBvj/test/test_core.jl:1

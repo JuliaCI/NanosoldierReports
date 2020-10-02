@@ -28,12 +28,12 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [2f01184e] + SparseArrays
   [cf7118a7] + UUIDs
     Testing Metadata
-Status `/tmp/jl_OYdoFk/Project.toml`
+Status `/tmp/jl_a7u3O0/Project.toml`
   [4fba245c] ArrayInterface v2.13.3
   [e30172f5] Documenter v0.25.2
   [4fb893c1] Metadata v0.2.0
   [8dfed614] Test
-Status `/tmp/jl_OYdoFk/Manifest.toml`
+Status `/tmp/jl_a7u3O0/Manifest.toml`
   [4fba245c] ArrayInterface v2.13.3
   [ffbed154] DocStringExtensions v0.8.3
   [e30172f5] Documenter v0.25.2
@@ -89,52 +89,44 @@ Test Summary:        | Pass  Total
 ElementwiseMetaArray |   10     10
 [ Info: SetupBuildDirectory: setting up build directory.
 [ Info: Doctest: running doctests.
-┌ Error: doctest failure in ~/.julia/packages/Metadata/6ineH/src/metaarray.jl:10-20
+┌ Error: doctest failure in ~/.julia/packages/Metadata/6ineH/src/ranges.jl:37-45
 │ 
 │ ```jldoctest
 │ julia> using Metadata
 │ 
-│ julia> Metadata.MetaArray(ones(2,2), metadata=(m1 =1, m2=[1, 2]))
-│ 2×2 attach_metadata(::Array{Float64,2}, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
+│ julia> Metadata.MetaUnitRange(1:2, (m1 =1, m2=[1, 2]))
+│ attach_metadata(1:2, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
 │   • metadata:
 │     - m1 = 1
 │     - m2 = [1, 2]
-│  1.0  1.0
-│  1.0  1.0
 │ 
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ Metadata.MetaArray(ones(2,2), metadata=(m1 =1, m2=[1, 2]))
+│ Metadata.MetaUnitRange(1:2, (m1 =1, m2=[1, 2]))
 │ 
 │ Evaluated output:
 │ 
-│ 2×2 attach_metadata(::Matrix{Float64}, ::NamedTuple{(:m1, :m2), Tuple{Int64, Vector{Int64}}})
+│ attach_metadata(1:2, ::NamedTuple{(:m1, :m2), Tuple{Int64, Vector{Int64}}})
 │   • metadata:
 │     - m1 = 1
 │     - m2 = [1, 2]
-│  1.0  1.0
-│  1.0  1.0
 │ 
 │ Expected output:
 │ 
-│ 2×2 attach_metadata(::Array{Float64,2}, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
+│ attach_metadata(1:2, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
 │   • metadata:
 │     - m1 = 1
 │     - m2 = [1, 2]
-│  1.0  1.0
-│  1.0  1.0
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    2×2 attach_metadata(::Array{Float64,2}, attach_metadata(::Matrix{Float64}, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
+│    attach_metadata(1:2, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
 │      :m2), Tuple{Int64, Vector{Int64}}})
 │      • metadata:
 │        - m1 = 1
 │        - m2 = [1, 2]
-│     1.0  1.0
-│     1.0  1.0
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/Metadata/6ineH/src/ranges.jl:10-18
 │ 
@@ -317,44 +309,52 @@ ElementwiseMetaArray |   10     10
 │     1.0  1.0
 │     1.0  1.0
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/Metadata/6ineH/src/ranges.jl:37-45
+┌ Error: doctest failure in ~/.julia/packages/Metadata/6ineH/src/metaarray.jl:10-20
 │ 
 │ ```jldoctest
 │ julia> using Metadata
 │ 
-│ julia> Metadata.MetaUnitRange(1:2, (m1 =1, m2=[1, 2]))
-│ attach_metadata(1:2, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
+│ julia> Metadata.MetaArray(ones(2,2), metadata=(m1 =1, m2=[1, 2]))
+│ 2×2 attach_metadata(::Array{Float64,2}, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
 │   • metadata:
 │     - m1 = 1
 │     - m2 = [1, 2]
+│  1.0  1.0
+│  1.0  1.0
 │ 
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ Metadata.MetaUnitRange(1:2, (m1 =1, m2=[1, 2]))
+│ Metadata.MetaArray(ones(2,2), metadata=(m1 =1, m2=[1, 2]))
 │ 
 │ Evaluated output:
 │ 
-│ attach_metadata(1:2, ::NamedTuple{(:m1, :m2), Tuple{Int64, Vector{Int64}}})
+│ 2×2 attach_metadata(::Matrix{Float64}, ::NamedTuple{(:m1, :m2), Tuple{Int64, Vector{Int64}}})
 │   • metadata:
 │     - m1 = 1
 │     - m2 = [1, 2]
+│  1.0  1.0
+│  1.0  1.0
 │ 
 │ Expected output:
 │ 
-│ attach_metadata(1:2, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
+│ 2×2 attach_metadata(::Array{Float64,2}, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
 │   • metadata:
 │     - m1 = 1
 │     - m2 = [1, 2]
+│  1.0  1.0
+│  1.0  1.0
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    attach_metadata(1:2, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
+│    2×2 attach_metadata(::Array{Float64,2}, attach_metadata(::Matrix{Float64}, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
 │      :m2), Tuple{Int64, Vector{Int64}}})
 │      • metadata:
 │        - m1 = 1
 │        - m2 = [1, 2]
+│     1.0  1.0
+│     1.0  1.0
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
 ┌ Error: Doctesting failed
 │   exception =

@@ -51,23 +51,29 @@ g++ -Wall -O2 -I lib -I data -I stat lib/math_misc.o lib/point3D.o lib/transit.o
 g++ -c -fPIC -Wall -O2 -I lib -I data -I stat examples/kepler-11/Kepler-11.cpp -o examples/kepler-11/Kepler-11.o
 examples/kepler-11/Kepler-11.cpp: In function 'void read_input()':
 examples/kepler-11/Kepler-11.cpp:27:12: warning: ignoring return value of 'int fscanf(FILE*, const char*, ...)', declared with attribute warn_unused_result [-Wunused-result]
-     fscanf (fin, "%d", &n_planets);
-     ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+   27 |     fscanf (fin, "%d", &n_planets);
+      |     ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
 examples/kepler-11/Kepler-11.cpp:32:16: warning: ignoring return value of 'int fscanf(FILE*, const char*, ...)', declared with attribute warn_unused_result [-Wunused-result]
-         fscanf (fin, "%s %d", s, &use[i]);
-         ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |         fscanf (fin, "%s %d", s, &use[i]);
+      |         ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
 g++ -Wall -O2 -I lib -I data -I stat lib/math_misc.o lib/point3D.o lib/transit.o lib/occultations.o lib/c_interface.o data/koi_input.o stat/stat_dist.o examples/kepler-11/Kepler-11.o -o examples/kepler-11/kepler-11
 g++ -c -fPIC -Wall -O2 -I lib -I data -I stat examples/period-dist/period_dist.cpp -o examples/period-dist/period_dist.o
 examples/period-dist/period_dist.cpp: In function 'void print_results()':
-examples/period-dist/period_dist.cpp:312:65: warning: format '%d' expects argument of type 'int', but argument 3 has type 'std::vector<pdf>::size_type {aka long unsigned int}' [-Wformat=]
-     fprintf (stderr, "Number of pairs of KOIs: %d\n", PDF.size());
-                                                       ~~~~~~~~~~^
+examples/period-dist/period_dist.cpp:312:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'std::vector<pdf>::size_type' {aka 'long unsigned int'} [-Wformat=]
+  312 |     fprintf (stderr, "Number of pairs of KOIs: %d\n", PDF.size());
+      |                                                ~^     ~~~~~~~~~~
+      |                                                 |             |
+      |                                                 int           std::vector<pdf>::size_type {aka long unsigned int}
+      |                                                %ld
 g++ -Wall -O2 -I lib -I data -I stat lib/math_misc.o lib/point3D.o lib/transit.o lib/occultations.o lib/c_interface.o data/koi_input.o stat/stat_dist.o examples/period-dist/period_dist.o -o examples/period-dist/period-dist
 g++ -c -fPIC -Wall -O2 -I lib -I data -I stat examples/mhs-dist/mhs_dist.cpp -o examples/mhs-dist/mhs_dist.o
 examples/mhs-dist/mhs_dist.cpp: In function 'void print_results()':
-examples/mhs-dist/mhs_dist.cpp:256:63: warning: format '%d' expects argument of type 'int', but argument 3 has type 'std::vector<pdf>::size_type {aka long unsigned int}' [-Wformat=]
-   fprintf (stderr, "Number of pairs of KOIs: %d\n", PDF.size());
-                                                     ~~~~~~~~~~^
+examples/mhs-dist/mhs_dist.cpp:256:47: warning: format '%d' expects argument of type 'int', but argument 3 has type 'std::vector<pdf>::size_type' {aka 'long unsigned int'} [-Wformat=]
+  256 |   fprintf (stderr, "Number of pairs of KOIs: %d\n", PDF.size());
+      |                                              ~^     ~~~~~~~~~~
+      |                                               |             |
+      |                                               int           std::vector<pdf>::size_type {aka long unsigned int}
+      |                                              %ld
 g++ -Wall -O2 -I lib -I data -I stat lib/math_misc.o lib/point3D.o lib/transit.o lib/occultations.o lib/c_interface.o data/koi_input.o stat/stat_dist.o examples/mhs-dist/mhs_dist.o -o examples/mhs-dist/mhs-dist
 g++ -c -fPIC -Wall -O2 -I lib -I data -I stat examples/solar-system/solsys.cpp -o examples/solar-system/solsys.o
 g++ -Wall -O2 -I lib -I data -I stat lib/math_misc.o lib/point3D.o lib/transit.o lib/occultations.o lib/c_interface.o data/koi_input.o stat/stat_dist.o examples/solar-system/solsys.o -o examples/solar-system/solar-system
@@ -77,8 +83,7 @@ g++ -c -fPIC -Wall -O2 -I lib -I data -I stat examples/koi-table/koi_table.cpp -
 g++ -Wall -O2 -I lib -I data -I stat lib/math_misc.o lib/point3D.o lib/transit.o lib/occultations.o lib/c_interface.o data/koi_input.o stat/stat_dist.o examples/koi-table/koi_table.o -o examples/koi-table/koi-table
 data/grab.sh
 sed: can't read data/koi-data.txt: No such file or directory
-Makefile:203: recipe for target 'data/koi-data-edit.txt' failed
-make: *** [data/koi-data-edit.txt] Error 2
+make: *** [Makefile:203: data/koi-data-edit.txt] Error 2
 ERROR: LoadError: failed process: Process(`make`, ProcessExited(2)) [2]
 
 Stacktrace:

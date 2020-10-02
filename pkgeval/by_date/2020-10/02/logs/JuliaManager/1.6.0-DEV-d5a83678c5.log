@@ -13,14 +13,14 @@ Environment:
   Resolving package versions...
   Installed HTTPClient ────── v0.2.1
   Installed Expat_jll ─────── v2.2.7+5
-  Installed Compat ────────── v2.2.1
   Installed URIParser ─────── v0.4.1
-  Installed WinRPM ────────── v0.4.3
+  Installed Compat ────────── v2.2.1
   Installed BufferedStreams ─ v1.0.0
-  Installed JuliaManager ──── v0.1.1
+  Installed WinRPM ────────── v0.4.3
   Installed PackageCompiler ─ v0.6.5
-  Installed LibExpat ──────── v0.6.1
+  Installed JuliaManager ──── v0.1.1
   Installed Libz ──────────── v1.0.1
+  Installed LibExpat ──────── v0.6.1
   Installed BinDeps ───────── v1.0.1
 Updating `~/.julia/environments/v1.6/Project.toml`
   [0cdbb3b1] + JuliaManager v0.1.1
@@ -68,12 +68,12 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
    Building WinRPM ─────────→ `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/859b5188afdcbede4a36a1876024937dfa876a51/build.log`
    Building PackageCompiler → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/2a9f7f6769d3fe87b128a6cdba81307962ed977f/build.log`
     Testing JuliaManager
-Status `/tmp/jl_Sc0m1R/Project.toml`
+Status `/tmp/jl_Lpnl9W/Project.toml`
   [0cdbb3b1] JuliaManager v0.1.1
   [9b87118b] PackageCompiler v0.6.5
   [3fa0cd96] REPL
   [8dfed614] Test
-Status `/tmp/jl_Sc0m1R/Manifest.toml`
+Status `/tmp/jl_Lpnl9W/Manifest.toml`
   [9e28174c] BinDeps v1.0.1
   [e1450e63] BufferedStreams v1.0.0
   [34da2185] Compat v2.2.1
@@ -118,37 +118,43 @@ Status `/tmp/jl_Sc0m1R/Manifest.toml`
 [ Info: Installing CLI `jlm` at /home/pkgeval/.julia/bin/jlm
 Sys.which("jlm") = "/home/pkgeval/.julia/packages/JuliaManager/JwCvZ/jlm/jlm"
 [ Info: jlm --help
-/usr/bin/env: 'python3': No such file or directory
-test set: Error During Test at /home/pkgeval/.julia/packages/JuliaManager/JwCvZ/test/destructive_tests.jl:10
-  Test threw exception
-  Expression: run(`jlm --help`) isa Any
-  failed process: Process(`jlm --help`, ProcessExited(127)) [127]
-  
-  Stacktrace:
-   [1] pipeline_error
-     @ ./process.jl:525 [inlined]
-   [2] run(::Cmd; wait::Bool)
-     @ Base ./process.jl:440
-   [3] run(::Cmd)
-     @ Base ./process.jl:438
-   [4] top-level scope
-     @ ~/.julia/packages/JuliaManager/JwCvZ/test/destructive_tests.jl:32
-   [5] include(mod::Module, _path::String)
-     @ Base ./Base.jl:389
-   [6] include(x::String)
-     @ Main.TestJuliaManager ~/.julia/packages/JuliaManager/JwCvZ/test/runtests.jl:1
-   [7] top-level scope
-     @ ~/.julia/packages/JuliaManager/JwCvZ/test/runtests.jl:6
-   [8] top-level scope
-     @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113
-   [9] top-level scope
-     @ ~/.julia/packages/JuliaManager/JwCvZ/test/runtests.jl:6
+usage: jlm [-h] [--version] [--dry-run] [--verbose] [--pdb] [--jlm-dir PATH]
+           {run,init,set-default,set-sysimage,unset-sysimage,create-default-sysimage,install-backend,update-backend,info,locate}
+           ...
+
+Command line interface to manage Julia's system images.
+
+positional arguments:
+  {run,init,set-default,set-sysimage,unset-sysimage,create-default-sysimage,install-backend,update-backend,info,locate}
+    run                 Run `julia` executable with appropriate system image.
+    init                Initialize `jlm`.
+    set-default         Set default Julia executable to be used.
+    set-sysimage        Set system image for `juila`.
+    unset-sysimage      Unset system image for `juila`.
+    create-default-sysimage
+                        Compile default system image for `julia`.
+    install-backend     Install JuliaManager.jl for this `julia`.
+    update-backend      Update JuliaManager.jl for this `julia`.
+    info                Print information about jlm setup.
+    locate              Show paths to related files and directories
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  --dry-run
+  --verbose, -v
+  --pdb
+  --jlm-dir PATH        Specify the `.jlm` directory which is created by `jlm
+                        init` and stores information for `jlm`. By default,
+                        `.jlm` directory found in the nearest "ancestor"
+                        directory is used. Run `jlm locate dir` to locate the
+                        actual directory that would be used. (default: None)
 [ Info: jlm create-default-sysimage
-/usr/bin/env: 'python3': No such file or directory
+Julia executable `julia` is not found.
 test set: Error During Test at /home/pkgeval/.julia/packages/JuliaManager/JwCvZ/test/destructive_tests.jl:10
   Test threw exception
   Expression: run(`jlm create-default-sysimage`) isa Any
-  failed process: Process(`jlm create-default-sysimage`, ProcessExited(127)) [127]
+  failed process: Process(`jlm create-default-sysimage`, ProcessExited(1)) [1]
   
   Stacktrace:
     [1] pipeline_error
@@ -171,49 +177,45 @@ test set: Error During Test at /home/pkgeval/.julia/packages/JuliaManager/JwCvZ/
       @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113
    [10] top-level scope
       @ ~/.julia/packages/JuliaManager/JwCvZ/test/runtests.jl:6
-  0.256025 seconds (3.06 k allocations: 165.031 KiB)
+  5.936156 seconds (3.39 M allocations: 183.018 MiB, 1.82% gc time, 93.09% compilation time)
+/usr/bin/python3: No module named pip
 test set: Error During Test at /home/pkgeval/.julia/packages/JuliaManager/JwCvZ/test/runtests.jl:6
   Got exception outside of a @test
-  LoadError: IOError: could not spawn `python3 -m pip install --user tox`: no such file or directory (ENOENT)
+  LoadError: failed process: Process(`python3 -m pip install --user tox`, ProcessExited(1)) [1]
+  
   Stacktrace:
-    [1] _spawn_primitive(file::String, cmd::Cmd, stdio::Vector{Any})
-      @ Base ./process.jl:99
-    [2] #619
-      @ ./process.jl:112 [inlined]
-    [3] setup_stdios(f::Base.var"#619#620"{Cmd}, stdios::Vector{Any})
-      @ Base ./process.jl:196
-    [4] _spawn
-      @ ./process.jl:111 [inlined]
-    [5] run(::Cmd; wait::Bool)
-      @ Base ./process.jl:439
-    [6] run(::Cmd)
+    [1] pipeline_error
+      @ ./process.jl:525 [inlined]
+    [2] run(::Cmd; wait::Bool)
+      @ Base ./process.jl:440
+    [3] run(::Cmd)
       @ Base ./process.jl:438
-    [7] top-level scope
+    [4] top-level scope
       @ ~/.julia/packages/JuliaManager/JwCvZ/test/destructive_tests.jl:38
-    [8] include(mod::Module, _path::String)
+    [5] include(mod::Module, _path::String)
       @ Base ./Base.jl:389
-    [9] include(x::String)
+    [6] include(x::String)
       @ Main.TestJuliaManager ~/.julia/packages/JuliaManager/JwCvZ/test/runtests.jl:1
-   [10] top-level scope
+    [7] top-level scope
       @ ~/.julia/packages/JuliaManager/JwCvZ/test/runtests.jl:6
-   [11] top-level scope
+    [8] top-level scope
       @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113
-   [12] top-level scope
+    [9] top-level scope
       @ ~/.julia/packages/JuliaManager/JwCvZ/test/runtests.jl:6
-   [13] include(fname::String)
+   [10] include(fname::String)
       @ Base.MainInclude ./client.jl:444
-   [14] top-level scope
+   [11] top-level scope
       @ none:6
-   [15] eval(m::Module, e::Any)
+   [12] eval(m::Module, e::Any)
       @ Core ./boot.jl:360
-   [16] exec_options(opts::Base.JLOptions)
+   [13] exec_options(opts::Base.JLOptions)
       @ Base ./client.jl:261
-   [17] _start()
+   [14] _start()
       @ Base ./client.jl:485
   in expression starting at /home/pkgeval/.julia/packages/JuliaManager/JwCvZ/test/destructive_tests.jl:1
 Test Summary: | Pass  Error  Total
-test set      |    2      3      5
-ERROR: LoadError: Some tests did not pass: 2 passed, 0 failed, 3 errored, 0 broken.
+test set      |    3      2      5
+ERROR: LoadError: Some tests did not pass: 3 passed, 0 failed, 2 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/JuliaManager/JwCvZ/test/runtests.jl:1
 ERROR: Package JuliaManager errored during testing
 Stacktrace:
