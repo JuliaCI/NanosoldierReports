@@ -1,0 +1,111 @@
+Julia Version 1.6.0-DEV.1122
+Commit 9392bbe347 (2020-10-03 14:15 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed MutableArithmetics ─ v0.2.10
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [d8a4904e] + MutableArithmetics v0.2.10
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [d8a4904e] + MutableArithmetics v0.2.10
+  [2a0f44e3] + Base64
+  [8ba89e20] + Distributed
+  [b77e0a4c] + InteractiveUtils
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [2f01184e] + SparseArrays
+  [8dfed614] + Test
+    Testing MutableArithmetics
+Status `/tmp/jl_tqMmpX/Project.toml`
+  [d8a4904e] MutableArithmetics v0.2.10
+  [6fe1bfb0] OffsetArrays v1.3.0
+  [37e2e46d] LinearAlgebra
+  [2f01184e] SparseArrays
+  [8dfed614] Test
+Status `/tmp/jl_tqMmpX/Manifest.toml`
+  [d8a4904e] MutableArithmetics v0.2.10
+  [6fe1bfb0] OffsetArrays v1.3.0
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [8dfed614] Test
+    Testing Running tests...
+Test Summary: | Pass  Total
+Errors        |    4      4
+promote_operation: Test Failed at /home/pkgeval/.julia/packages/MutableArithmetics/NuiNA/test/int.jl:13
+  Expression: MA.promote_operation(+, Vector{Int}, Int)
+    Expected: ErrorException("Operation `+` between `Array{Int64,1}` and `Int64` is not allowed. You should use broadcast.")
+      Thrown: ErrorException("Operation `+` between `Vector{Int64}` and `Int64` is not allowed. You should use broadcast.")
+Stacktrace:
+ [1] top-level scope
+   @ ~/.julia/packages/MutableArithmetics/NuiNA/test/int.jl:13
+ [2] top-level scope
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113
+ [3] top-level scope
+   @ ~/.julia/packages/MutableArithmetics/NuiNA/test/int.jl:6
+promote_operation: Test Failed at /home/pkgeval/.julia/packages/MutableArithmetics/NuiNA/test/int.jl:15
+  Expression: MA.promote_operation(+, Int, Vector{Int})
+    Expected: ErrorException("Operation `+` between `Int64` and `Array{Int64,1}` is not allowed. You should use broadcast.")
+      Thrown: ErrorException("Operation `+` between `Int64` and `Vector{Int64}` is not allowed. You should use broadcast.")
+Stacktrace:
+ [1] top-level scope
+   @ ~/.julia/packages/MutableArithmetics/NuiNA/test/int.jl:15
+ [2] top-level scope
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113
+ [3] top-level scope
+   @ ~/.julia/packages/MutableArithmetics/NuiNA/test/int.jl:6
+Test Summary:                                            | Pass  Fail  Total
+Int                                                      |   31     2     33
+  promote_operation                                      |    6     2      8
+  add_to! / add!                                         |    5            5
+  mul_to! / mul!                                         |    5            5
+  add_mul_to! / add_mul! / add_mul_buf_to! /add_mul_buf! |   11           11
+  zero!                                                  |    2            2
+  one!                                                   |    2            2
+ERROR: LoadError: Some tests did not pass: 31 passed, 2 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/MutableArithmetics/NuiNA/test/runtests.jl:9
+ERROR: Package MutableArithmetics errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1609
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:331
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:318
+  [5] #test#62
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [7] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:19

@@ -1,0 +1,73 @@
+Julia Version 1.6.0-DEV.1122
+Commit 9392bbe347 (2020-10-03 14:15 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed TransformUtils ─ v0.2.6
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [9b8138ad] + TransformUtils v0.2.6
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [9b8138ad] + TransformUtils v0.2.6
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+    Testing TransformUtils
+Status `/tmp/jl_WhI4G0/Project.toml`
+  [9b8138ad] TransformUtils v0.2.6
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_WhI4G0/Manifest.toml`
+  [9b8138ad] TransformUtils v0.2.6
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+    Testing Running tests...
+Test Summary:                               |
+Constructors SO3, Quaternion, AngleAxis...  | No tests
+Test Summary:                           | Pass  Total
+Ensure basic quaternion operations hold |   10     10
+Test Summary:                                       | Pass  Total
+Comparison functions for SO3, Quaternion, AngleAxis |    5      5
+Test Summary:                                        | Pass  Total
+Trivial case quaterion -> SO3 -> Euler -> quaternion |    2      2
+┌ Warning: Need better coverage on convert function tests
+└ @ Main ~/.julia/packages/TransformUtils/cFZOw/test/runtests.jl:89
+dAA = AngleAxis(0.7853981633974483, [1.0, 0.0, 0.0])
+dAA = so3([0.0 0.03559127079861281 0.014682458420797746; -0.03559127079861281 0.0 0.14838343971255633; -0.014682458420797746 -0.14838343971255633 0.0])
+dAA = so3([0.0 -0.12901240051638427 0.04630845707892722; 0.12901240051638427 0.0 -0.023583240731609067; -0.04630845707892722 0.023583240731609067 0.0])
+dAA = so3([0.0 0.07054543346428475 0.0417146024962996; -0.07054543346428475 0.0 -0.07872555527275979; -0.0417146024962996 0.07872555527275979 0.0])
+dAA = Quaternion(0.992535812897633, [-0.045222208817086225, 0.11215738609306096, -0.015758575129464134])
+dAA = SO3([0.9975499505451434 -0.06984496785407884 0.0039719809723220145; 0.0693840410856349 0.9950291744208556 0.0714338637760642; -0.008941532866836773 -0.07098325518608642 0.9974374298537115])
+Test Summary:                        | Pass  Total
+Compare SO3 and quaternion rotations |   24     24
+Test Summary:       | Pass  Total
+Basic SE3 mechanics |    4      4
+Compare operations on two different SE3 transforms
+xi = SE3(SO3([0.9418745942135741 -0.31269231971258427 0.122864811755759; 0.319449471710961 0.946788236245092 -0.03929466543305617; -0.10403981833222808 0.0762597462667618 0.9916451821597915]), [-1.4838343971255632, 0.14682458420797745, -0.35591270798612806])
+xj = SE3(SO3([0.8439041863941644 0.034925900868712084 0.535355868217499; -0.16433953228631573 0.9667376726513495 0.19598670976514515; -0.510703673683985 -0.2533741378380223 0.8215736753088675]), [0.7872555527275978, 0.41714602496299596, -0.7054543346428475])
+Dx = SE3(SO3([0.7954872537767333 0.368080656790572 0.48136956610838205; -0.4584232261501004 0.8850525475784797 0.08080924297985138; -0.3962930415801983 -0.2849537122436973 0.8727847426906885]), [2.2618022137187257, -0.480871180342358, -0.07820642144317758])
+Test Summary:         | Pass  Total
+SE3 ⊕ and ⊖ mechanics |    6      6
+TransformUtils.convert(Euler, q) = Euler(0.7853981633974484, 0.0, 1.5707963267948963, Quaternion(1.0, [0.0, 0.0, 0.0]))
+Test Summary:              | Pass  Total
+Previous discovered issues |    3      3
+Test Summary:      | Pass  Total
+test SO3 logmap... |  301    301
+Test Summary:                              | Pass  Total
+test in-place and efficient inverse SE3... |    1      1
+    Testing TransformUtils tests passed 
