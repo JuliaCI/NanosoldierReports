@@ -1,0 +1,141 @@
+Julia Version 1.6.0-DEV.1124
+Commit 55a6dab763 (2020-10-04 09:06 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed ProgressMeter ─ v1.4.0
+  Installed KissMCMC ────── v0.2.0
+  Installed StaticArrays ── v0.12.4
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [79d62d8d] + KissMCMC v0.2.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [79d62d8d] + KissMCMC v0.2.0
+  [92933f4c] + ProgressMeter v1.4.0
+  [90137ffa] + StaticArrays v0.12.4
+  [8ba89e20] + Distributed
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [de0858da] + Printf
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [4ec0a83e] + Unicode
+    Testing KissMCMC
+Status `/tmp/jl_MWtvW0/Project.toml`
+  [31c24e10] Distributions v0.23.12
+  [79d62d8d] KissMCMC v0.2.0
+  [d96e819e] Parameters v0.12.1
+  [2913bbd2] StatsBase v0.33.1
+  [10745b16] Statistics
+  [8dfed614] Test
+Status `/tmp/jl_MWtvW0/Manifest.toml`
+  [34da2185] Compat v3.18.0
+  [e66e0078] CompilerSupportLibraries_jll v0.3.3+0
+  [9a962f9c] DataAPI v1.3.0
+  [864edb3b] DataStructures v0.18.7
+  [31c24e10] Distributions v0.23.12
+  [1a297f60] FillArrays v0.9.6
+  [79d62d8d] KissMCMC v0.2.0
+  [e1d29d7a] Missings v0.4.4
+  [efe28fd5] OpenSpecFun_jll v0.5.3+3
+  [bac558e1] OrderedCollections v1.3.1
+  [90014a1f] PDMats v0.10.1
+  [d96e819e] Parameters v0.12.1
+  [92933f4c] ProgressMeter v1.4.0
+  [1fd47b50] QuadGK v2.4.1
+  [79098fc4] Rmath v0.6.1
+  [f50d1b31] Rmath_jll v0.2.2+1
+  [a2af1166] SortingAlgorithms v0.3.1
+  [276daf66] SpecialFunctions v0.10.3
+  [90137ffa] StaticArrays v0.12.4
+  [2913bbd2] StatsBase v0.33.1
+  [4c63d2b9] StatsFuns v0.9.5
+  [3a884ed6] UnPack v1.0.2
+  [56f22d72] Artifacts
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8bb1440f] DelimitedFiles
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [1a1011a3] SharedArrays
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [4607b0f0] SuiteSparse
+  [fa267f1f] TOML
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+    Testing Running tests...
+atest.dist = Distributions.Normal{Float64}(μ=-5.0, σ=3.0)
+atest.dist = Distributions.LogNormal{Float64}(μ=0.0, σ=1.0)
+metropolis: Test Failed at /home/pkgeval/.julia/packages/KissMCMC/z6iaT/test/runtests.jl:39
+  Expression: abs.(SB.skewness(thetas) - skewness_) < abs.(std_ * 2 * tol)
+   Evaluated: 2.0315936995546258 < 1.2967184495370525
+Stacktrace:
+ [1] test_mean_std(thetas::Vector{Float64}, atest::ATest, tol::Float64)
+   @ Main ~/.julia/packages/KissMCMC/z6iaT/test/runtests.jl:39
+ [2] macro expansion
+   @ ~/.julia/packages/KissMCMC/z6iaT/test/metro.jl:16 [inlined]
+ [3] macro expansion
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113 [inlined]
+ [4] top-level scope
+   @ ~/.julia/packages/KissMCMC/z6iaT/test/metro.jl:3
+atest.dist = FullNormal(
+dim: 2
+μ: [0.5, -0.25]
+Σ: [0.47 1.8; 1.8 7.0]
+)
+
+atest.dist = var"#9#14"()
+Test Summary: | Pass  Fail  Total
+metropolis    |   27     1     28
+ERROR: LoadError: LoadError: Some tests did not pass: 27 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/KissMCMC/z6iaT/test/metro.jl:2
+in expression starting at /home/pkgeval/.julia/packages/KissMCMC/z6iaT/test/runtests.jl:85
+ERROR: Package KissMCMC errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1609
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:331
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:318
+  [5] #test#62
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [7] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:19
