@@ -1,0 +1,73 @@
+Julia Version 1.6.0-DEV.1130
+Commit ab451cdcd6 (2020-10-05 03:24 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed TransformUtils ─ v0.2.6
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [9b8138ad] + TransformUtils v0.2.6
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [9b8138ad] + TransformUtils v0.2.6
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+    Testing TransformUtils
+Status `/tmp/jl_wXvPyZ/Project.toml`
+  [9b8138ad] TransformUtils v0.2.6
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_wXvPyZ/Manifest.toml`
+  [9b8138ad] TransformUtils v0.2.6
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+    Testing Running tests...
+Test Summary:                               |
+Constructors SO3, Quaternion, AngleAxis...  | No tests
+Test Summary:                           | Pass  Total
+Ensure basic quaternion operations hold |   10     10
+Test Summary:                                       | Pass  Total
+Comparison functions for SO3, Quaternion, AngleAxis |    5      5
+Test Summary:                                        | Pass  Total
+Trivial case quaterion -> SO3 -> Euler -> quaternion |    2      2
+┌ Warning: Need better coverage on convert function tests
+└ @ Main ~/.julia/packages/TransformUtils/cFZOw/test/runtests.jl:89
+dAA = AngleAxis(0.7853981633974483, [1.0, 0.0, 0.0])
+dAA = so3([0.0 -0.08985135049301912 0.21930887968064897; 0.08985135049301912 0.0 0.032863721665286456; -0.21930887968064897 -0.032863721665286456 0.0])
+dAA = so3([0.0 0.06587529360320657 0.04371325852208711; -0.06587529360320657 0.0 0.07011426279651749; -0.04371325852208711 -0.07011426279651749 0.0])
+dAA = so3([0.0 0.054335988754551104 0.1944497853573633; -0.054335988754551104 0.0 0.12208429311123913; -0.1944497853573633 -0.12208429311123913 0.0])
+dAA = Quaternion(0.9973659537354259, [0.0046939404877533765, -0.054166152372154525, 0.04801196922974862])
+dAA = SO3([0.9640053853215499 -0.26278436245078496 -0.04047216231417674; 0.2658794953870651 0.952011368720895 0.15159962981118394; -0.001308053427893363 -0.15690357764405136 0.9876130600183085])
+Test Summary:                        | Pass  Total
+Compare SO3 and quaternion rotations |   24     24
+Test Summary:       | Pass  Total
+Basic SE3 mechanics |    4      4
+Compare operations on two different SE3 transforms
+xi = SE3(SO3([0.9805808237762236 0.1532569964850996 0.12236642133652849; -0.1723016165448181 0.9712441864339549 0.16430728302265707; -0.09366643464115151 -0.18220050314587835 0.9787898526624618]), [-0.32863721665286455, 2.1930887968064896, 0.8985135049301911])
+xj = SE3(SO3([0.9349999809809187 -0.2361195465119155 -0.26461782880351997; 0.23330599324581658 0.9714746978958402 -0.042487937862044384; 0.2671017579149651 -0.022010704286626714 0.9634169293797686]), [-1.2208429311123912, 1.9444978535736328, -0.543359887545511])
+Dx = SE3(SO3([0.8516255824448953 -0.39685929611369547 -0.3423982570246743; 0.3212263037157045 0.911362541484796 -0.2573557455731645; 0.41418296576095304 0.10918341021655067 0.9036212999962683]), [-0.6969920532080135, -0.11546921887822736, -1.5613123682202596])
+Test Summary:         | Pass  Total
+SE3 ⊕ and ⊖ mechanics |    6      6
+TransformUtils.convert(Euler, q) = Euler(0.7853981633974484, 0.0, 1.5707963267948963, Quaternion(1.0, [0.0, 0.0, 0.0]))
+Test Summary:              | Pass  Total
+Previous discovered issues |    3      3
+Test Summary:      | Pass  Total
+test SO3 logmap... |  301    301
+Test Summary:                              | Pass  Total
+test in-place and efficient inverse SE3... |    1      1
+    Testing TransformUtils tests passed 

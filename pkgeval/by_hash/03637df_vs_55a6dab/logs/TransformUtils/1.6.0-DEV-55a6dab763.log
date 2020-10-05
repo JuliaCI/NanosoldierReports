@@ -1,0 +1,73 @@
+Julia Version 1.6.0-DEV.1124
+Commit 55a6dab763 (2020-10-04 09:06 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed TransformUtils ─ v0.2.6
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [9b8138ad] + TransformUtils v0.2.6
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [9b8138ad] + TransformUtils v0.2.6
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+    Testing TransformUtils
+Status `/tmp/jl_PkYRtY/Project.toml`
+  [9b8138ad] TransformUtils v0.2.6
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_PkYRtY/Manifest.toml`
+  [9b8138ad] TransformUtils v0.2.6
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+    Testing Running tests...
+Test Summary:                               |
+Constructors SO3, Quaternion, AngleAxis...  | No tests
+Test Summary:                           | Pass  Total
+Ensure basic quaternion operations hold |   10     10
+Test Summary:                                       | Pass  Total
+Comparison functions for SO3, Quaternion, AngleAxis |    5      5
+Test Summary:                                        | Pass  Total
+Trivial case quaterion -> SO3 -> Euler -> quaternion |    2      2
+┌ Warning: Need better coverage on convert function tests
+└ @ Main ~/.julia/packages/TransformUtils/cFZOw/test/runtests.jl:89
+dAA = AngleAxis(0.7853981633974483, [1.0, 0.0, 0.0])
+dAA = so3([0.0 -0.06003471618058015 0.15441576859342998; 0.06003471618058015 0.0 0.02864818584517534; -0.15441576859342998 -0.02864818584517534 0.0])
+dAA = so3([0.0 -0.2618929262113231 -0.14191087454770487; 0.2618929262113231 0.0 -0.018525237839821032; 0.14191087454770487 0.018525237839821032 0.0])
+dAA = so3([0.0 0.13640232776446218 0.07425814666175881; -0.13640232776446218 0.0 -0.07801351216122887; -0.07425814666175881 0.07801351216122887 0.0])
+dAA = Quaternion(0.9969841747167073, [-0.032779216609268774, -0.07025763122023215, -0.003455948241904567])
+dAA = SO3([0.9983910932576997 -0.03994241575908289 -0.04024709091380267; 0.0368398974424064 0.9964965776432936 -0.07508257255606178; 0.04310506768499858 0.07347907299722738 0.9963647820810108])
+Test Summary:                        | Pass  Total
+Compare SO3 and quaternion rotations |   24     24
+Test Summary:       | Pass  Total
+Basic SE3 mechanics |    4      4
+Compare operations on two different SE3 transforms
+xi = SE3(SO3([0.7353557729940914 -0.6034954833531917 -0.3082938349960306; 0.5878128841256423 0.7943997110386674 -0.15298729475866973; 0.33723567483312994 -0.06871899791163512 0.9389088342037603]), [-0.2864818584517534, 1.5441576859342998, 0.6003471618058015])
+xj = SE3(SO3([0.9388211604621814 0.034112609268993885 -0.3427114800488947; 0.022860883689588343 0.9867156943128038 0.16084004039334407; 0.34364546943816104 -0.15883472065534784 0.9255697287881467]), [0.7801351216122886, 0.7425814666175881, -1.3640232776446217])
+Dx = SE3(SO3([0.819694993919441 0.5515243680367532 0.15466411479417994; -0.5720286229148949 0.7741748196571894 0.27099188765505017; 0.029721566403815125 -0.31060299430369015 0.9500749488435558]), [-0.3492896662297831, -1.1454808788108626, -2.0505652211684073])
+Test Summary:         | Pass  Total
+SE3 ⊕ and ⊖ mechanics |    6      6
+TransformUtils.convert(Euler, q) = Euler(0.7853981633974484, 0.0, 1.5707963267948963, Quaternion(1.0, [0.0, 0.0, 0.0]))
+Test Summary:              | Pass  Total
+Previous discovered issues |    3      3
+Test Summary:      | Pass  Total
+test SO3 logmap... |  301    301
+Test Summary:                              | Pass  Total
+test in-place and efficient inverse SE3... |    1      1
+    Testing TransformUtils tests passed 
