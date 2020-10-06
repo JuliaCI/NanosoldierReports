@@ -1,0 +1,136 @@
+Julia Version 1.6.0-DEV.1139
+Commit be1f3abcc6 (2020-10-06 02:47 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed AbstractTrees ─ v0.3.3
+  Installed HalfEdges ───── v0.2.3
+  Installed IterTools ───── v1.3.0
+  Installed StaticArrays ── v0.12.4
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [b1055ec2] + HalfEdges v0.2.3
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [1520ce14] + AbstractTrees v0.3.3
+  [b1055ec2] + HalfEdges v0.2.3
+  [c8e1da08] + IterTools v1.3.0
+  [90137ffa] + StaticArrays v0.12.4
+  [2a0f44e3] + Base64
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+    Testing HalfEdges
+Status `/tmp/jl_CklUFX/Project.toml`
+  [1520ce14] AbstractTrees v0.3.3
+  [b1055ec2] HalfEdges v0.2.3
+  [90137ffa] StaticArrays v0.12.4
+  [9e88b42a] Serialization
+  [8dfed614] Test
+Status `/tmp/jl_CklUFX/Manifest.toml`
+  [1520ce14] AbstractTrees v0.3.3
+  [b1055ec2] HalfEdges v0.2.3
+  [c8e1da08] IterTools v1.3.0
+  [90137ffa] StaticArrays v0.12.4
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+    Testing Running tests...
+Test Summary: | Pass  Total
+one tri       |   25     25
+Test Summary: | Pass  Total
+bounded ring  |   20     20
+Test Summary: | Pass  Total
+unbroken ring |    9      9
+Test Summary: | Pass  Total
+3x3grid       |    1      1
+Test Summary: | Pass  Total
+box48         |    4      4
+Test Summary: | Pass  Total
+incidence     |    4      4
+Test Summary: | Pass  Total
+readme        |   14     14
+Test Summary: | Pass  Total
+Degenerate    |    2      2
+Test Summary: | Pass  Total
+Handles       |    8      8
+collide: Test Failed at /home/pkgeval/.julia/packages/HalfEdges/ziomJ/test/runtests.jl:251
+  Expression: collide_self(col) == collide_self(topo, col.mesh.P)
+   Evaluated: Tuple{Int64, Int64, Any}[(1, 4, true), (2, 11, true), (4, 11, true), (3, 12, true)] == Tuple{Int64, Int64, Any}[(1, 4, true), (4, 7, true), (2, 8, true), (1, 9, true), (4, 11, true), (3, 11, true)]
+Stacktrace:
+ [1] top-level scope
+   @ ~/.julia/packages/HalfEdges/ziomJ/test/runtests.jl:251
+ [2] top-level scope
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113
+ [3] top-level scope
+   @ ~/.julia/packages/HalfEdges/ziomJ/test/runtests.jl:233
+julia: /workspace/srcdir/src/array.c:727: array_resize_buffer: Assertion `oldlen == a->nrows && "Race condition detected: recursive resizing on the same array."' failed.
+
+signal (6): Aborted
+in expression starting at /home/pkgeval/.julia/packages/HalfEdges/ziomJ/test/runtests.jl:232
+gsignal at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+abort at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+unknown function (ip: 0x7fd3fa734728)
+__assert_fail at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+array_resize_buffer at /workspace/srcdir/src/array.c:726
+jl_array_grow_at_end at /workspace/srcdir/src/array.c:907 [inlined]
+jl_array_grow_end at /workspace/srcdir/src/array.c:971
+_growend! at ./array.jl:892 [inlined]
+push! at ./array.jl:935
+unknown function (ip: 0x7fd3e416fbfa)
+_jl_invoke at /workspace/srcdir/src/gf.c:2173 [inlined]
+jl_apply_generic at /workspace/srcdir/src/gf.c:2374
+macro expansion at /home/pkgeval/.julia/packages/HalfEdges/ziomJ/src/BoundingVolumeTrees/DynamicAABBTrees.jl:695 [inlined]
+#106#threadsfor_fun at ./threadingconstructs.jl:81
+#106#threadsfor_fun at ./threadingconstructs.jl:48
+unknown function (ip: 0x7fd3e415ce7c)
+_jl_invoke at /workspace/srcdir/src/gf.c:2173 [inlined]
+jl_apply_generic at /workspace/srcdir/src/gf.c:2374
+jl_apply at /workspace/srcdir/src/julia.h:1687 [inlined]
+start_task at /workspace/srcdir/src/task.c:822
+unknown function (ip: (nil))
+Allocations: 35710801 (Pool: 35702076; Big: 8725); GC: 43
+ERROR: Package HalfEdges errored during testing (received signal: 6)
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1609
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:331
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:318
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:19
