@@ -4,32 +4,66 @@
 
 *Commit(s):* [JuliaLang/julia@be1f3abcc64567153305edddfa516c0a3bb27ac6](https://github.com/JuliaLang/julia/commit/be1f3abcc64567153305edddfa516c0a3bb27ac6) vs [JuliaLang/julia@0a04f411b205930b8a798e62800fda846b177c80](https://github.com/JuliaLang/julia/commit/0a04f411b205930b8a798e62800fda846b177c80)
 
-*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/be1f3abcc64567153305edddfa516c0a3bb27ac6#commitcomment-42993285)
+*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/be1f3abcc64567153305edddfa516c0a3bb27ac6#commitcomment-42993340)
 
 *Package Selection:* `["Example"]`
 
-## Error
+In total, 1 packages were tested, out of which 1 succeeded, 0 failed and 0 were skipped.
 
-The build could not finish due to an error:
+
+## :heavy_check_mark: Packages that passed tests
+
+<details><summary><strong>1 packages passed tests on the previous version too.</strong></summary>
+<p>
+
+- [Example v0.5.3](logs/Example/1.6.0-DEV-be1f3abcc6.build-f8e50040507149f8.log)
+
+</p>
+</details>
+
+
+## Version Info
+
+#### Primary Build
 
 ```
-NanosoldierError: failed to run tests: Build for julia on x86_64-linux-gnu did not complete successfully
+Julia Version 1.6.0-DEV.1139
+Commit be1f3abcc6* (2020-10-06 02:47 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  uname: Linux 4.15.0-118-generic #119-Ubuntu SMP Tue Sep 8 12:30:01 UTC 2020 x86_64 x86_64
+  CPU: AMD EPYC 7502 32-Core Processor: 
+                  speed         user         nice          sys         idle          irq
+       #1-128  1497 MHz   89485016 s      12169 s   14731485 s  625623177 s          0 s
+       
+  Memory: 503.8203659057617 GB (339253.53125 MB free)
+  Uptime: 571896.0 sec
+  Load Avg:  0.97  0.99  0.88
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.0 (ORCJIT, znver2)
 
-Stacktrace:
- [1] error(::String) at ./error.jl:33
- [2] #autobuild#23(::Bool, ::Bool, ::Bool, ::Bool, ::Bool, ::Union{Nothing, String}, ::Bool, ::Any, ::typeof(BinaryBuilder.autobuild), ::AbstractString, ::AbstractString, ::VersionNumber, ::Array{#s643,1} where #s643<:BinaryBuilderBase.AbstractSource, ::AbstractString, ::Array{T,1} where T, ::Array{#s642,1} where #s642<:BinaryBuilderBase.Product, ::Array{#s641,1} where #s641<:BinaryBuilderBase.AbstractDependency) at /storage/tbesard/depot/packages/BinaryBuilder/OMMHj/src/AutoBuild.jl:714
- [3] (::BinaryBuilder.var"#kw##autobuild")(::NamedTuple{(:verbose, :debug, :preferred_gcc_version, :skip_audit),Tuple{Bool,Bool,VersionNumber,Bool}}, ::typeof(BinaryBuilder.autobuild), ::String, ::String, ::VersionNumber, ::Array{BinaryBuilderBase.DirectorySource,1}, ::String, ::Array{Pkg.BinaryPlatforms.Linux,1}, ::Array{BinaryBuilderBase.Product,1}, ::Array{BinaryBuilderBase.AbstractDependency,1}) at ./none:0
- [4] #build_tarballs#1(::Any, ::typeof(BinaryBuilder.build_tarballs), ::Any, ::Any, ::Any, ::Any, ::Any, ::Any, ::Any, ::Any) at /storage/tbesard/depot/packages/BinaryBuilder/OMMHj/src/AutoBuild.jl:247
- [5] cd(::NewPkgEval.var"#20#24"{Array{String,1},Array{BinaryBuilderBase.DirectorySource,1},String,Array{Pkg.BinaryPlatforms.Linux,1},Array{BinaryBuilderBase.Product,1},Array{Any,1}}, ::String) at ./none:0
- [6] #perform_julia_build#17(::Array{String,1}, ::Array{String,1}, ::typeof(NewPkgEval.perform_julia_build), ::String, ::String) at /storage/tbesard/depot/packages/NewPkgEval/gvv8l/src/julia.jl:395
- [7] #perform_julia_build at ./none:0 [inlined]
- [8] execute_tests!(::Nanosoldier.PkgEvalJob, ::Dict{String,Nanosoldier.BuildRef}, ::Dict{String,Array{String,1}}, ::Dict{Any,Any}) at /storage/tbesard/Nanosoldier/src/jobs/PkgEvalJob.jl:192
- [9] run(::Nanosoldier.PkgEvalJob) at /storage/tbesard/Nanosoldier/src/jobs/PkgEvalJob.jl:340
- [10] (::Distributed.var"#108#110"{Distributed.CallMsg{:call_fetch}})() at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.3/Distributed/src/process_messages.jl:294
- [11] run_work_thunk(::Distributed.var"#108#110"{Distributed.CallMsg{:call_fetch}}, ::Bool) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.3/Distributed/src/process_messages.jl:79
- [12] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.3/Distributed/src/process_messages.jl:294 [inlined]
- [13] (::Distributed.var"#107#109"{Distributed.CallMsg{:call_fetch},Distributed.MsgHeader,Sockets.TCPSocket})() at ./task.jl:333
 ```
+Build flags: `LLVM_VER=10.0.0`
 
-Check the logs folder in this directory for more detailed output.
+#### Comparison Build
 
+```
+Julia Version 1.6.0-DEV.1134
+Commit 0a04f411b2 (2020-10-06 01:25 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  uname: Linux 4.15.0-118-generic #119-Ubuntu SMP Tue Sep 8 12:30:01 UTC 2020 x86_64 x86_64
+  CPU: AMD EPYC 7502 32-Core Processor: 
+                  speed         user         nice          sys         idle          irq
+       #1-128  1498 MHz   89485084 s      12169 s   14731503 s  625635316 s          0 s
+       
+  Memory: 503.8203659057617 GB (339126.46484375 MB free)
+  Uptime: 571905.0 sec
+  Load Avg:  0.9  0.97  0.88
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, znver2)
+
+```
+<!-- Generated on 2020-10-06T02:49:14.847 -->
