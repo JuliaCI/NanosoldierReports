@@ -1,0 +1,125 @@
+Julia Version 1.6.0-DEV.1139
+Commit be1f3abcc6 (2020-10-06 02:47 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed MicroLogging ─ v0.4.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [cecf6091] + MicroLogging v0.4.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [cecf6091] + MicroLogging v0.4.0
+  [2a0f44e3] + Base64
+  [8ba89e20] + Distributed
+  [b77e0a4c] + InteractiveUtils
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [8dfed614] + Test
+    Testing MicroLogging
+Status `/tmp/jl_m4H4DY/Project.toml`
+  [cecf6091] MicroLogging v0.4.0
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [8dfed614] Test
+Status `/tmp/jl_m4H4DY/Manifest.toml`
+  [cecf6091] MicroLogging v0.4.0
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+    Testing Running tests...
+ConsoleLogger: Test Failed at /home/pkgeval/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:169
+  Expression: startswith(genmsg("msg", exception = (DivideError(), bt)), "┌ PREFIX msg\n│   exception =\n│    DivideError: integer division error\n│    Stacktrace:\n│     [1] func1() at")
+   Evaluated: startswith("┌ PREFIX msg\n│   exception =\n│    DivideError: integer division error\n│    Stacktrace:\n│      [1] func1()\n│        @ Main ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:5\n│      [2] top-level scope\n│        @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:168\n│      [3] top-level scope\n│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113\n│      [4] top-level scope\n│        @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:9\n│      [5] include(fname::String)\n│        @ Base.MainInclude ./client.jl:444\n│      [6] top-level scope\n│        @ ~/.julia/packages/MicroLogging/sNmzu/test/runtests.jl:14\n│      [7] top-level scope\n│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113\n│      [8] top-level scope\n│        @ ~/.julia/packages/MicroLogging/sNmzu/test/runtests.jl:13\n│      [9] include(fname::String)\n│        @ Base.MainInclude ./client.jl:444\n│     [10] top-level scope\n│        @ none:6\n│     [11] eval(m::Module, e::Any)\n│        @ Core ./boot.jl:360\n│     [12] exec_options(opts::Base.JLOptions)\n│        @ Base ./client.jl:261\n│     [13] _start()\n│        @ Base ./client.jl:485\n└ SUFFIX\n", "┌ PREFIX msg\n│   exception =\n│    DivideError: integer division error\n│    Stacktrace:\n│     [1] func1() at")
+Stacktrace:
+ [1] top-level scope
+   @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:169
+ [2] top-level scope
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113
+ [3] top-level scope
+   @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:9
+Limiting large data structures: Test Failed at /home/pkgeval/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:179
+  Expression: genmsg("msg", a = fill(1.00001, 100, 100), b = fill(2.00002, 10, 10)) == replace("┌ PREFIX msg\n│   a =\n│    100×100 Array{Float64,2}:\n│     1.00001  1.00001  1.00001  1.00001  …  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     ⋮                                   ⋱                           EOL\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│   b =\n│    10×10 Array{Float64,2}:\n│     2.00002  2.00002  2.00002  2.00002  …  2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     ⋮                                   ⋱                           EOL\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n└ SUFFIX\n", if VERSION < v"1.4"
+                "EOL"
+            else
+                "       EOL"
+            end => "")
+   Evaluated: "┌ PREFIX msg\n│   a =\n│    100×100 Matrix{Float64}:\n│     1.00001  1.00001  1.00001  1.00001  …  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     ⋮                                   ⋱                    \n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│   b =\n│    10×10 Matrix{Float64}:\n│     2.00002  2.00002  2.00002  2.00002  …  2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     ⋮                                   ⋱                    \n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n└ SUFFIX\n" == "┌ PREFIX msg\n│   a =\n│    100×100 Array{Float64,2}:\n│     1.00001  1.00001  1.00001  1.00001  …  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     ⋮                                   ⋱                    \n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│   b =\n│    10×10 Array{Float64,2}:\n│     2.00002  2.00002  2.00002  2.00002  …  2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     ⋮                                   ⋱                    \n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n└ SUFFIX\n"
+Stacktrace:
+ [1] top-level scope
+   @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:179
+ [2] top-level scope
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113
+ [3] top-level scope
+   @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:179
+ [4] top-level scope
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113
+ [5] top-level scope
+   @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:9
+Limiting large data structures: Test Failed at /home/pkgeval/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:201
+  Expression: genmsg("msg", a = fill(1.00001, 10, 10), show_limited = false) == "┌ PREFIX msg\n│   a =\n│    10×10 Array{Float64,2}:\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n└ SUFFIX\n"
+   Evaluated: "┌ PREFIX msg\n│   a =\n│    10×10 Matrix{Float64}:\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n└ SUFFIX\n" == "┌ PREFIX msg\n│   a =\n│    10×10 Array{Float64,2}:\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n└ SUFFIX\n"
+Stacktrace:
+ [1] top-level scope
+   @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:201
+ [2] top-level scope
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113
+ [3] top-level scope
+   @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:179
+ [4] top-level scope
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1113
+ [5] top-level scope
+   @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:9
+Test Summary:                            | Pass  Fail  Total
+Logging                                  |   50     3     53
+  Logger configuration                   |    6            6
+  configure_logging implementations      |    4            4
+  disable_logging with parse_level       |    1            1
+  ConsoleLogger                          |   30     3     33
+    Default metadata formatting          |    8            8
+    Prefix and suffix layout             |    4            4
+    Metadata suffix, right justification |    7            7
+    Limiting large data structures       |          2      2
+  Sticky messages without ANSI codes     |    3            3
+  Sticky messages with ANSI codes        |    6            6
+ERROR: LoadError: Some tests did not pass: 50 passed, 3 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/MicroLogging/sNmzu/test/runtests.jl:11
+ERROR: Package MicroLogging errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1609
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:331
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:318
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:19

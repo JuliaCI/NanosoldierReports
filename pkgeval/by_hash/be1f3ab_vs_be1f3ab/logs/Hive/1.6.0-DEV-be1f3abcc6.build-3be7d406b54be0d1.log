@@ -1,0 +1,149 @@
+Julia Version 1.6.0-DEV.1139
+Commit be1f3abcc6 (2020-10-06 02:47 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed ThriftJuliaCompiler_jll ─ v0.11.0+0
+  Installed Thrift ────────────────── v0.7.0
+  Installed Hive ──────────────────── v0.3.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [6735fb99] + Hive v0.3.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [6735fb99] + Hive v0.3.0
+  [8d9c9c80] + Thrift v0.7.0
+  [815b9798] + ThriftJuliaCompiler_jll v0.11.0+0
+  [56f22d72] + Artifacts
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [8bb1440f] + DelimitedFiles
+  [8ba89e20] + Distributed
+  [b77e0a4c] + InteractiveUtils
+  [76f85450] + LibGit2
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [a63ad114] + Mmap
+  [44cfe95a] + Pkg
+  [de0858da] + Printf
+  [3fa0cd96] + REPL
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [fa267f1f] + TOML
+  [8dfed614] + Test
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+    Testing Hive
+Status `/tmp/jl_gGrd5X/Project.toml`
+  [6735fb99] Hive v0.3.0
+  [8d9c9c80] Thrift v0.7.0
+  [ade2ca70] Dates
+  [8bb1440f] DelimitedFiles
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [10745b16] Statistics
+  [8dfed614] Test
+  [4ec0a83e] Unicode
+Status `/tmp/jl_gGrd5X/Manifest.toml`
+  [6735fb99] Hive v0.3.0
+  [8d9c9c80] Thrift v0.7.0
+  [815b9798] ThriftJuliaCompiler_jll v0.11.0+0
+  [56f22d72] Artifacts
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8bb1440f] DelimitedFiles
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [fa267f1f] TOML
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+    Testing Running tests...
+ERROR: LoadError: LoadError: IOError: connect: connection refused (ECONNREFUSED)
+Stacktrace:
+  [1] wait_connected(x::Sockets.TCPSocket)
+    @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:532
+  [2] connect(::Sockets.TCPSocket, ::String, ::Int64)
+    @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:567
+  [3] connect(host::String, port::Int64)
+    @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:552
+  [4] open(tsock::Thrift.TSocket)
+    @ Thrift ~/.julia/packages/Thrift/ZcEif/src/transports.jl:148
+  [5] open(t::Thrift.TFramedTransport)
+    @ Thrift ~/.julia/packages/Thrift/ZcEif/src/transports.jl:64
+  [6] open(t::Thrift.TSASLClientTransport)
+    @ Thrift ~/.julia/packages/Thrift/ZcEif/src/transports.jl:51
+  [7] (::Hive.var"#connect#5")(transport::Thrift.TSASLClientTransport, client::Hive.HS2.TCLIServiceClient)
+    @ Hive ~/.julia/packages/Hive/V5G3q/src/sess.jl:58
+  [8] Hive.HiveConn(host::String, port::Int64, auth::HiveAuth; tprotocol::Symbol)
+    @ Hive ~/.julia/packages/Hive/V5G3q/src/sess.jl:54
+  [9] HiveSession
+    @ ~/.julia/packages/Hive/V5G3q/src/sess.jl:84 [inlined]
+ [10] HiveSession
+    @ ~/.julia/packages/Hive/V5G3q/src/sess.jl:84 [inlined]
+ [11] open_database(f::var"#47#48")
+    @ Main ~/.julia/packages/Hive/V5G3q/test/hive_test.jl:9
+ [12] top-level scope
+    @ ~/.julia/packages/Hive/V5G3q/test/hive_test.jl:221
+ [13] include(fname::String)
+    @ Base.MainInclude ./client.jl:444
+ [14] top-level scope
+    @ ~/.julia/packages/Hive/V5G3q/test/runtests.jl:2
+ [15] include(fname::String)
+    @ Base.MainInclude ./client.jl:444
+ [16] top-level scope
+    @ none:6
+in expression starting at /home/pkgeval/.julia/packages/Hive/V5G3q/test/hive_test.jl:221
+in expression starting at /home/pkgeval/.julia/packages/Hive/V5G3q/test/runtests.jl:2
+ERROR: Package Hive errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1609
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:331
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:318
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:19
