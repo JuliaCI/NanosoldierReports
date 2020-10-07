@@ -1,0 +1,73 @@
+Julia Version 1.6.0-DEV.1148
+Commit 7d3dac44dc (2020-10-06 21:26 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed SmolyakApprox ─ v0.1.1
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [6b19cf85] + SmolyakApprox v0.1.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [6b19cf85] + SmolyakApprox v0.1.1
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+    Testing SmolyakApprox
+Status `/tmp/jl_mNQDP1/Project.toml`
+  [6b19cf85] SmolyakApprox v0.1.1
+  [37e2e46d] LinearAlgebra
+Status `/tmp/jl_mNQDP1/Manifest.toml`
+  [6b19cf85] SmolyakApprox v0.1.1
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+    Testing Running tests...
+ERROR: LoadError: LoadError: MethodError: no method matching chebyshev_polynomial(::Int64, ::SubArray{Float64, 1, Matrix{Float64}, Tuple{Int64, Base.Slice{Base.OneTo{Int64}}}, true})
+Closest candidates are:
+  chebyshev_polynomial(::S, !Matched::Vector{T}) where {T<:AbstractFloat, S<:Integer} at /home/pkgeval/.julia/packages/SmolyakApprox/RXS5p/src/chebyshev_polynomial.jl:1
+Stacktrace:
+ [1] smolyak_inverse_interpolation_matrix(nodes::Matrix{Float64}, multi_index::Matrix{Int64})
+   @ SmolyakApprox ~/.julia/packages/SmolyakApprox/RXS5p/src/smolyak_weights.jl:102
+ [2] test_smolyak_derivative()
+   @ Main ~/.julia/packages/SmolyakApprox/RXS5p/test/derivative_example.jl:34
+ [3] top-level scope
+   @ ~/.julia/packages/SmolyakApprox/RXS5p/test/derivative_example.jl:58
+ [4] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [5] top-level scope
+   @ ~/.julia/packages/SmolyakApprox/RXS5p/test/runtests.jl:1
+ [6] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [7] top-level scope
+   @ none:6
+in expression starting at /home/pkgeval/.julia/packages/SmolyakApprox/RXS5p/test/derivative_example.jl:58
+in expression starting at /home/pkgeval/.julia/packages/SmolyakApprox/RXS5p/test/runtests.jl:1
+ERROR: Package SmolyakApprox errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1609
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:331
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:318
+  [5] #test#62
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [7] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:19
