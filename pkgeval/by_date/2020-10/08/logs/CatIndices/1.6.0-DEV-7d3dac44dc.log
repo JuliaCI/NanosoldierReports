@@ -1,0 +1,98 @@
+Julia Version 1.6.0-DEV.1148
+Commit 7d3dac44dc (2020-10-06 21:26 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed CustomUnitRanges ─ v1.0.0
+  Installed CatIndices ─────── v0.2.1
+  Installed OffsetArrays ───── v1.3.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [aafaddc9] + CatIndices v0.2.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [aafaddc9] + CatIndices v0.2.1
+  [dc8bdbbb] + CustomUnitRanges v1.0.0
+  [6fe1bfb0] + OffsetArrays v1.3.0
+    Testing CatIndices
+Status `/tmp/jl_kmy5QX/Project.toml`
+  [aafaddc9] CatIndices v0.2.1
+  [dc8bdbbb] CustomUnitRanges v1.0.0
+  [6fe1bfb0] OffsetArrays v1.3.0
+  [8dfed614] Test
+Status `/tmp/jl_kmy5QX/Manifest.toml`
+  [aafaddc9] CatIndices v0.2.1
+  [dc8bdbbb] CustomUnitRanges v1.0.0
+  [6fe1bfb0] OffsetArrays v1.3.0
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+    Testing Running tests...
+BidirectionalVector: Error During Test at /home/pkgeval/.julia/packages/CatIndices/KDMF7/test/runtests.jl:12
+  Got exception outside of a @test
+  MethodError: similar(::Type{Array{Float64, N} where N}, ::Tuple{CatIndices.URange{Int64}}) is ambiguous. Candidates:
+    similar(::Type{T}, shape::Tuple{Union{Colon, Integer, AbstractUnitRange}, Vararg{Union{Colon, Integer, AbstractUnitRange}, N} where N}) where T<:AbstractArray in OffsetArrays at /home/pkgeval/.julia/packages/OffsetArrays/CXQGe/src/OffsetArrays.jl:236
+    similar(f::Union{Function, Type}, inds::Tuple{CatIndices.URange}) in CatIndices at /home/pkgeval/.julia/packages/CatIndices/KDMF7/src/bidirectional.jl:34
+  Possible fix, define
+    similar(::Type{T}, ::Tuple{CatIndices.URange}) where T<:AbstractArray
+  Stacktrace:
+    [1] top-level scope
+      @ ~/.julia/packages/CatIndices/KDMF7/test/runtests.jl:48
+    [2] top-level scope
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144
+    [3] top-level scope
+      @ ~/.julia/packages/CatIndices/KDMF7/test/runtests.jl:13
+    [4] top-level scope
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144
+    [5] top-level scope
+      @ ~/.julia/packages/CatIndices/KDMF7/test/runtests.jl:6
+    [6] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+    [7] top-level scope
+      @ none:6
+    [8] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+    [9] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [10] _start()
+      @ Base ./client.jl:485
+Test Summary:         | Pass  Error  Total
+CatIndices            |  105      1    106
+  BidirectionalVector |  101      1    102
+  vcat                |    4             4
+ERROR: LoadError: Some tests did not pass: 105 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/CatIndices/KDMF7/test/runtests.jl:5
+ERROR: Package CatIndices errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1609
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:331
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:318
+  [5] #test#62
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [7] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:19
