@@ -1,0 +1,859 @@
+Julia Version 1.6.0-DEV.1169
+Commit 3559b720d1 (2020-10-09 10:19 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+
+  Resolving package versions...
+  Installed Reexport ───────────────────── v0.2.0
+  Installed IteratorInterfaceExtensions ── v1.0.0
+  Installed DiffEqParamEstim ───────────── v1.18.0
+  Installed FiniteDiff ─────────────────── v2.7.0
+  Installed CommonSubexpressions ───────── v0.3.0
+  Installed DiffRules ──────────────────── v1.0.1
+  Installed SLEEFPirates ───────────────── v0.5.5
+  Installed StochasticDiffEq ───────────── v6.26.0
+  Installed GenericSVD ─────────────────── v0.3.0
+  Installed SortingAlgorithms ──────────── v0.3.1
+  Installed DiffEqNoiseProcess ─────────── v5.4.0
+  Installed OptimBase ──────────────────── v2.0.1
+  Installed Zygote ─────────────────────── v0.5.8
+  Installed Tables ─────────────────────── v1.1.0
+  Installed Calculus ───────────────────── v0.5.1
+  Installed FFTW_jll ───────────────────── v3.3.9+5
+  Installed UnPack ─────────────────────── v1.0.2
+  Installed DiffEqJump ─────────────────── v6.10.1
+  Installed OrdinaryDiffEq ─────────────── v5.43.0
+  Installed Distributions ──────────────── v0.23.12
+  Installed Inflate ────────────────────── v0.1.2
+  Installed DiffEqCallbacks ────────────── v2.14.1
+  Installed Dierckx_jll ────────────────── v0.0.1+0
+  Installed Sobol ──────────────────────── v1.4.0
+  Installed DataAPI ────────────────────── v1.3.0
+  Installed PDMats ─────────────────────── v0.10.1
+  Installed Roots ──────────────────────── v1.0.5
+  Installed SparseDiffTools ────────────── v1.10.0
+  Installed LatinHypercubeSampling ─────── v1.6.4
+  Installed StaticArrays ───────────────── v0.12.4
+  Installed Rmath ──────────────────────── v0.6.1
+  Installed AbstractFFTs ───────────────── v0.5.0
+  Installed MacroTools ─────────────────── v0.5.5
+  Installed IRTools ────────────────────── v0.4.1
+  Installed StatsBase ──────────────────── v0.33.2
+  Installed DiffEqBase ─────────────────── v6.48.0
+  Installed ChainRulesCore ─────────────── v0.9.13
+  Installed ResettableStacks ───────────── v1.0.0
+  Installed LightGraphs ────────────────── v1.3.0
+  Installed IntelOpenMP_jll ────────────── v2018.0.3+0
+  Installed QuasiMonteCarlo ────────────── v0.2.1
+  Installed Compat ─────────────────────── v3.19.0
+  Installed CpuId ──────────────────────── v0.2.2
+  Installed ArrayLayouts ───────────────── v0.4.8
+  Installed DocStringExtensions ────────── v0.8.3
+  Installed IterativeSolvers ───────────── v0.8.4
+  Installed DiffEqSensitivity ──────────── v6.33.0
+  Installed Rmath_jll ──────────────────── v0.2.2+1
+  Installed DataValueInterfaces ────────── v1.0.0
+  Installed ExponentialUtilities ───────── v1.8.0
+  Installed FFTW ───────────────────────── v1.2.4
+  Installed MKL_jll ────────────────────── v2020.2.254+0
+  Installed NaNMath ────────────────────── v0.3.4
+  Installed Adapt ──────────────────────── v2.3.0
+  Installed ForwardDiff ────────────────── v0.10.12
+  Installed Requires ───────────────────── v1.1.0
+  Installed FunctionWrappers ───────────── v1.1.1
+  Installed ZygoteRules ────────────────── v0.2.0
+  Installed OffsetArrays ───────────────── v1.3.0
+  Installed OrderedCollections ─────────── v1.3.1
+  Installed RecursiveArrayTools ────────── v2.7.1
+  Installed QuadGK ─────────────────────── v2.4.1
+  Installed Tracker ────────────────────── v0.2.12
+  Installed ReverseDiff ────────────────── v1.4.3
+  Installed PenaltyFunctions ───────────── v0.2.1
+  Installed StatsFuns ──────────────────── v0.9.5
+  Installed CompilerSupportLibraries_jll ─ v0.3.3+0
+  Installed Distances ──────────────────── v0.9.2
+  Installed VertexSafeGraphs ───────────── v0.1.2
+  Installed DiffResults ────────────────── v1.0.2
+  Installed LsqFit ─────────────────────── v0.11.0
+  Installed ArnoldiMethod ──────────────── v0.0.4
+  Installed Parameters ─────────────────── v0.12.1
+  Installed RecursiveFactorization ─────── v0.1.4
+  Installed LearnBase ──────────────────── v0.4.1
+  Installed SpecialFunctions ───────────── v0.10.3
+  Installed NLsolve ────────────────────── v4.4.1
+  Installed LatticeRules ───────────────── v0.0.1
+  Installed FillArrays ─────────────────── v0.9.6
+  Installed LoopVectorization ──────────── v0.8.26
+  Installed PoissonRandom ──────────────── v0.4.0
+  Installed OpenSpecFun_jll ────────────── v0.5.3+3
+  Installed Dierckx ────────────────────── v0.5.0
+  Installed Missings ───────────────────── v0.4.4
+  Installed NLSolversBase ──────────────── v7.7.1
+  Installed ChainRules ─────────────────── v0.7.23
+  Installed MuladdMacro ────────────────── v0.2.2
+  Installed TreeViews ──────────────────── v0.3.0
+  Installed ArrayInterface ─────────────── v2.13.3
+  Installed TableTraits ────────────────── v1.0.0
+  Installed DataStructures ─────────────── v0.18.7
+  Installed RandomNumbers ──────────────── v1.4.0
+  Installed VectorizationBase ──────────── v0.12.33
+  Installed NNlib ──────────────────────── v0.7.5
+  Installed RecipesBase ────────────────── v1.1.0
+  Installed SimpleTraits ───────────────── v0.9.3
+  Installed FastClosures ───────────────── v0.3.2
+  Installed LabelledArrays ─────────────── v1.3.0
+  Installed LineSearches ───────────────── v7.1.0
+  Installed SIMDPirates ────────────────── v0.8.25
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [1130ab10] + DiffEqParamEstim v1.18.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [621f4979] + AbstractFFTs v0.5.0
+  [79e6a3ab] + Adapt v2.3.0
+  [ec485272] + ArnoldiMethod v0.0.4
+  [4fba245c] + ArrayInterface v2.13.3
+  [4c555306] + ArrayLayouts v0.4.8
+  [49dc2e85] + Calculus v0.5.1
+  [082447d4] + ChainRules v0.7.23
+  [d360d2e6] + ChainRulesCore v0.9.13
+  [bbf7d656] + CommonSubexpressions v0.3.0
+  [34da2185] + Compat v3.19.0
+  [e66e0078] + CompilerSupportLibraries_jll v0.3.3+0
+  [adafc99b] + CpuId v0.2.2
+  [9a962f9c] + DataAPI v1.3.0
+  [864edb3b] + DataStructures v0.18.7
+  [e2d170a0] + DataValueInterfaces v1.0.0
+  [39dd38d3] + Dierckx v0.5.0
+  [cd4c43a9] + Dierckx_jll v0.0.1+0
+  [2b5f629d] + DiffEqBase v6.48.0
+  [459566f4] + DiffEqCallbacks v2.14.1
+  [c894b116] + DiffEqJump v6.10.1
+  [77a26b50] + DiffEqNoiseProcess v5.4.0
+  [1130ab10] + DiffEqParamEstim v1.18.0
+  [41bf760c] + DiffEqSensitivity v6.33.0
+  [163ba53b] + DiffResults v1.0.2
+  [b552c78f] + DiffRules v1.0.1
+  [b4f34e82] + Distances v0.9.2
+  [31c24e10] + Distributions v0.23.12
+  [ffbed154] + DocStringExtensions v0.8.3
+  [d4d017d3] + ExponentialUtilities v1.8.0
+  [7a1cc6ca] + FFTW v1.2.4
+  [f5851436] + FFTW_jll v3.3.9+5
+  [9aa1b823] + FastClosures v0.3.2
+  [1a297f60] + FillArrays v0.9.6
+  [6a86dc24] + FiniteDiff v2.7.0
+  [f6369f11] + ForwardDiff v0.10.12
+  [069b7b12] + FunctionWrappers v1.1.1
+  [01680d73] + GenericSVD v0.3.0
+  [7869d1d1] + IRTools v0.4.1
+  [d25df0c9] + Inflate v0.1.2
+  [1d5cc7b8] + IntelOpenMP_jll v2018.0.3+0
+  [42fd0dbc] + IterativeSolvers v0.8.4
+  [82899510] + IteratorInterfaceExtensions v1.0.0
+  [2ee39098] + LabelledArrays v1.3.0
+  [a5e1c1ea] + LatinHypercubeSampling v1.6.4
+  [73f95e8e] + LatticeRules v0.0.1
+  [7f8f8fb0] + LearnBase v0.4.1
+  [093fc24a] + LightGraphs v1.3.0
+  [d3d80556] + LineSearches v7.1.0
+  [bdcacae8] + LoopVectorization v0.8.26
+  [2fda8390] + LsqFit v0.11.0
+  [856f044c] + MKL_jll v2020.2.254+0
+  [1914dd2f] + MacroTools v0.5.5
+  [e1d29d7a] + Missings v0.4.4
+  [46d2c3a1] + MuladdMacro v0.2.2
+  [d41bc354] + NLSolversBase v7.7.1
+  [2774e3e8] + NLsolve v4.4.1
+  [872c559c] + NNlib v0.7.5
+  [77ba4419] + NaNMath v0.3.4
+  [6fe1bfb0] + OffsetArrays v1.3.0
+  [efe28fd5] + OpenSpecFun_jll v0.5.3+3
+  [87e2bd06] + OptimBase v2.0.1
+  [bac558e1] + OrderedCollections v1.3.1
+  [1dea7af3] + OrdinaryDiffEq v5.43.0
+  [90014a1f] + PDMats v0.10.1
+  [d96e819e] + Parameters v0.12.1
+  [06bb1623] + PenaltyFunctions v0.2.1
+  [e409e4f3] + PoissonRandom v0.4.0
+  [1fd47b50] + QuadGK v2.4.1
+  [8a4e6c94] + QuasiMonteCarlo v0.2.1
+  [e6cf234a] + RandomNumbers v1.4.0
+  [3cdcf5f2] + RecipesBase v1.1.0
+  [731186ca] + RecursiveArrayTools v2.7.1
+  [f2c3362d] + RecursiveFactorization v0.1.4
+  [189a3867] + Reexport v0.2.0
+  [ae029012] + Requires v1.1.0
+  [ae5879a3] + ResettableStacks v1.0.0
+  [37e2e3b7] + ReverseDiff v1.4.3
+  [79098fc4] + Rmath v0.6.1
+  [f50d1b31] + Rmath_jll v0.2.2+1
+  [f2b01f46] + Roots v1.0.5
+  [21efa798] + SIMDPirates v0.8.25
+  [476501e8] + SLEEFPirates v0.5.5
+  [699a6c99] + SimpleTraits v0.9.3
+  [ed01d8cd] + Sobol v1.4.0
+  [a2af1166] + SortingAlgorithms v0.3.1
+  [47a9eef4] + SparseDiffTools v1.10.0
+  [276daf66] + SpecialFunctions v0.10.3
+  [90137ffa] + StaticArrays v0.12.4
+  [2913bbd2] + StatsBase v0.33.2
+  [4c63d2b9] + StatsFuns v0.9.5
+  [789caeaf] + StochasticDiffEq v6.26.0
+  [3783bdb8] + TableTraits v1.0.0
+  [bd369af6] + Tables v1.1.0
+  [9f7883ad] + Tracker v0.2.12
+  [a2a6695c] + TreeViews v0.3.0
+  [3a884ed6] + UnPack v1.0.2
+  [3d5dd08c] + VectorizationBase v0.12.33
+  [19fa3120] + VertexSafeGraphs v0.1.2
+  [e88e6eb3] + Zygote v0.5.8
+  [700de1a5] + ZygoteRules v0.2.0
+  [56f22d72] + Artifacts
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [8bb1440f] + DelimitedFiles
+  [8ba89e20] + Distributed
+  [9fa8497b] + Future
+  [b77e0a4c] + InteractiveUtils
+  [76f85450] + LibGit2
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [a63ad114] + Mmap
+  [44cfe95a] + Pkg
+  [de0858da] + Printf
+  [3fa0cd96] + REPL
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [1a1011a3] + SharedArrays
+  [6462fe0b] + Sockets
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [4607b0f0] + SuiteSparse
+  [fa267f1f] + TOML
+  [8dfed614] + Test
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+   Building SLEEFPirates → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/67ae90a18aa8c22bf159318300e765fbd89ddf6e/build.log`
+   Building FFTW ────────→ `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/8b7c16b56936047ca41bf25effa137ae0b381ae8/build.log`
+    Testing DiffEqParamEstim
+Status `/tmp/jl_nqQGrY/Project.toml`
+  [a134a8b2] BlackBoxOptim v0.5.0
+  [49dc2e85] Calculus v0.5.1
+  [bcd4f6db] DelayDiffEq v5.24.2
+  [39dd38d3] Dierckx v0.5.0
+  [2b5f629d] DiffEqBase v6.48.0
+  [1130ab10] DiffEqParamEstim v1.18.0
+  [41bf760c] DiffEqSensitivity v6.33.0
+  [31c24e10] Distributions v0.23.12
+  [f6369f11] ForwardDiff v0.10.12
+  [0fc2ff8b] LeastSquaresOptim v0.8.1
+  [2fda8390] LsqFit v0.11.0
+  [76087f3c] NLopt v0.6.0
+  [429524aa] Optim v1.2.0
+  [1dea7af3] OrdinaryDiffEq v5.43.0
+  [65888b18] ParameterizedFunctions v5.6.0
+  [06bb1623] PenaltyFunctions v0.2.1
+  [731186ca] RecursiveArrayTools v2.7.1
+  [9672c7b4] SteadyStateDiffEq v1.5.1
+  [789caeaf] StochasticDiffEq v6.26.0
+  [37e2e46d] LinearAlgebra
+  [9a3f8284] Random
+  [8dfed614] Test
+Status `/tmp/jl_nqQGrY/Manifest.toml`
+  [c3fe647b] AbstractAlgebra v0.10.0
+  [621f4979] AbstractFFTs v0.5.0
+  [79e6a3ab] Adapt v2.3.0
+  [ec485272] ArnoldiMethod v0.0.4
+  [4fba245c] ArrayInterface v2.13.3
+  [4c555306] ArrayLayouts v0.4.8
+  [a134a8b2] BlackBoxOptim v0.5.0
+  [a9c8d775] CPUTime v1.0.0
+  [49dc2e85] Calculus v0.5.1
+  [a603d957] CanonicalTraits v0.2.2
+  [082447d4] ChainRules v0.7.23
+  [d360d2e6] ChainRulesCore v0.9.13
+  [861a8166] Combinatorics v1.0.2
+  [bbf7d656] CommonSubexpressions v0.3.0
+  [34da2185] Compat v3.19.0
+  [e66e0078] CompilerSupportLibraries_jll v0.3.3+0
+  [187b0558] ConstructionBase v1.0.0
+  [adafc99b] CpuId v0.2.2
+  [9a962f9c] DataAPI v1.3.0
+  [864edb3b] DataStructures v0.18.7
+  [e2d170a0] DataValueInterfaces v1.0.0
+  [bcd4f6db] DelayDiffEq v5.24.2
+  [39dd38d3] Dierckx v0.5.0
+  [cd4c43a9] Dierckx_jll v0.0.1+0
+  [2b5f629d] DiffEqBase v6.48.0
+  [459566f4] DiffEqCallbacks v2.14.1
+  [c894b116] DiffEqJump v6.10.1
+  [77a26b50] DiffEqNoiseProcess v5.4.0
+  [1130ab10] DiffEqParamEstim v1.18.0
+  [41bf760c] DiffEqSensitivity v6.33.0
+  [163ba53b] DiffResults v1.0.2
+  [b552c78f] DiffRules v1.0.1
+  [b4f34e82] Distances v0.9.2
+  [31c24e10] Distributions v0.23.12
+  [ffbed154] DocStringExtensions v0.8.3
+  [d4d017d3] ExponentialUtilities v1.8.0
+  [7a1cc6ca] FFTW v1.2.4
+  [f5851436] FFTW_jll v3.3.9+5
+  [9aa1b823] FastClosures v0.3.2
+  [1a297f60] FillArrays v0.9.6
+  [6a86dc24] FiniteDiff v2.7.0
+  [59287772] Formatting v0.4.1
+  [f6369f11] ForwardDiff v0.10.12
+  [069b7b12] FunctionWrappers v1.1.1
+  [6b9d7cbe] GeneralizedGenerated v0.2.7
+  [01680d73] GenericSVD v0.3.0
+  [7869d1d1] IRTools v0.4.1
+  [615f187c] IfElse v0.1.0
+  [d25df0c9] Inflate v0.1.2
+  [1d5cc7b8] IntelOpenMP_jll v2018.0.3+0
+  [42fd0dbc] IterativeSolvers v0.8.4
+  [82899510] IteratorInterfaceExtensions v1.0.0
+  [b14d175d] JuliaVariables v0.2.3
+  [b964fa9f] LaTeXStrings v1.2.0
+  [2ee39098] LabelledArrays v1.3.0
+  [23fbe1c1] Latexify v0.14.0
+  [a5e1c1ea] LatinHypercubeSampling v1.6.4
+  [73f95e8e] LatticeRules v0.0.1
+  [7f8f8fb0] LearnBase v0.4.1
+  [0fc2ff8b] LeastSquaresOptim v0.8.1
+  [093fc24a] LightGraphs v1.3.0
+  [d3d80556] LineSearches v7.1.0
+  [bdcacae8] LoopVectorization v0.8.26
+  [2fda8390] LsqFit v0.11.0
+  [856f044c] MKL_jll v2020.2.254+0
+  [d8e11817] MLStyle v0.4.6
+  [1914dd2f] MacroTools v0.5.5
+  [fdba3010] MathProgBase v0.7.8
+  [e1d29d7a] Missings v0.4.4
+  [961ee093] ModelingToolkit v3.21.0
+  [46d2c3a1] MuladdMacro v0.2.2
+  [d41bc354] NLSolversBase v7.7.1
+  [76087f3c] NLopt v0.6.0
+  [079eb43e] NLopt_jll v2.6.2+0
+  [2774e3e8] NLsolve v4.4.1
+  [872c559c] NNlib v0.7.5
+  [77ba4419] NaNMath v0.3.4
+  [71a1bf82] NameResolution v0.1.5
+  [6fe1bfb0] OffsetArrays v1.3.0
+  [efe28fd5] OpenSpecFun_jll v0.5.3+3
+  [429524aa] Optim v1.2.0
+  [87e2bd06] OptimBase v2.0.1
+  [bac558e1] OrderedCollections v1.3.1
+  [1dea7af3] OrdinaryDiffEq v5.43.0
+  [90014a1f] PDMats v0.10.1
+  [65888b18] ParameterizedFunctions v5.6.0
+  [d96e819e] Parameters v0.12.1
+  [06bb1623] PenaltyFunctions v0.2.1
+  [e409e4f3] PoissonRandom v0.4.0
+  [85a6dd25] PositiveFactorizations v0.2.3
+  [8162dcfd] PrettyPrint v0.2.0
+  [1fd47b50] QuadGK v2.4.1
+  [8a4e6c94] QuasiMonteCarlo v0.2.1
+  [e6cf234a] RandomNumbers v1.4.0
+  [3cdcf5f2] RecipesBase v1.1.0
+  [731186ca] RecursiveArrayTools v2.7.1
+  [f2c3362d] RecursiveFactorization v0.1.4
+  [189a3867] Reexport v0.2.0
+  [ae029012] Requires v1.1.0
+  [ae5879a3] ResettableStacks v1.0.0
+  [37e2e3b7] ReverseDiff v1.4.3
+  [79098fc4] Rmath v0.6.1
+  [f50d1b31] Rmath_jll v0.2.2+1
+  [f2b01f46] Roots v1.0.5
+  [21efa798] SIMDPirates v0.8.25
+  [476501e8] SLEEFPirates v0.5.5
+  [1bc83da4] SafeTestsets v0.0.1
+  [699a6c99] SimpleTraits v0.9.3
+  [ed01d8cd] Sobol v1.4.0
+  [a2af1166] SortingAlgorithms v0.3.1
+  [47a9eef4] SparseDiffTools v1.10.0
+  [d4ead438] SpatialIndexing v0.1.2
+  [276daf66] SpecialFunctions v0.10.3
+  [90137ffa] StaticArrays v0.12.4
+  [2913bbd2] StatsBase v0.33.2
+  [4c63d2b9] StatsFuns v0.9.5
+  [9672c7b4] SteadyStateDiffEq v1.5.1
+  [789caeaf] StochasticDiffEq v6.26.0
+  [d1185830] SymbolicUtils v0.5.1
+  [3783bdb8] TableTraits v1.0.0
+  [bd369af6] Tables v1.1.0
+  [a759f4b9] TimerOutputs v0.5.6
+  [9f7883ad] Tracker v0.2.12
+  [a2a6695c] TreeViews v0.3.0
+  [3a884ed6] UnPack v1.0.2
+  [1986cc42] Unitful v1.4.1
+  [3d5dd08c] VectorizationBase v0.12.33
+  [19fa3120] VertexSafeGraphs v0.1.2
+  [e88e6eb3] Zygote v0.5.8
+  [700de1a5] ZygoteRules v0.2.0
+  [56f22d72] Artifacts
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8bb1440f] DelimitedFiles
+  [8ba89e20] Distributed
+  [9fa8497b] Future
+  [b77e0a4c] InteractiveUtils
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [1a1011a3] SharedArrays
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [4607b0f0] SuiteSparse
+  [fa267f1f] TOML
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+    Testing Running tests...
+WARNING: could not import LearnBase.addgrad! into PenaltyFunctions
+WARNING: could not import LearnBase.scaled into PenaltyFunctions
+Starting optimization with optimizer DiffEvoOpt{FitPopulation{Float64}, RadiusLimitedSelector, BlackBoxOptim.AdaptiveDiffEvoRandBin{3}, RandomBound{ContinuousRectSearchSpace}}
+0.00 secs, 0 evals, 0 steps
+0.50 secs, 2207 evals, 2083 steps, improv/step: 0.309 (last = 0.3087), fitness=0.039425404
+1.00 secs, 2208 evals, 2084 steps, improv/step: 0.309 (last = 0.0000), fitness=0.039425404
+1.51 secs, 5353 evals, 5232 steps, improv/step: 0.254 (last = 0.2176), fitness=0.039425404
+
+Optimization stopped after 6902 steps and 1.69 seconds
+Termination reason: Too many steps (101) without any function evaluations (probably search has converged)
+Steps per second = 4078.66
+Function evals per second = 3864.15
+Improvements/step = 0.13491
+Total function evaluations = 6539
+
+
+Best candidate found: [1.49999]
+
+Fitness: 0.039425404
+
+Starting optimization with optimizer DiffEvoOpt{FitPopulation{Float64}, RadiusLimitedSelector, BlackBoxOptim.AdaptiveDiffEvoRandBin{3}, RandomBound{ContinuousRectSearchSpace}}
+0.00 secs, 0 evals, 0 steps
+0.50 secs, 3819 evals, 3676 steps, improv/step: 0.277 (last = 0.2772), fitness=0.039354466
+1.00 secs, 8015 evals, 7873 steps, improv/step: 0.174 (last = 0.0839), fitness=0.039354465
+
+Optimization stopped after 11001 steps and 1.42 seconds
+Termination reason: Max number of steps (11000) reached
+Steps per second = 7731.34
+Function evals per second = 7829.73
+Improvements/step = 0.13018
+Total function evaluations = 11141
+
+
+Best candidate found: [1.49993, 3.00037]
+
+Fitness: 0.039354465
+
+Starting optimization with optimizer DiffEvoOpt{FitPopulation{Float64}, RadiusLimitedSelector, BlackBoxOptim.AdaptiveDiffEvoRandBin{3}, RandomBound{ContinuousRectSearchSpace}}
+0.00 secs, 0 evals, 0 steps
+0.50 secs, 3922 evals, 3821 steps, improv/step: 0.205 (last = 0.2054), fitness=0.887951207
+1.00 secs, 7743 evals, 7643 steps, improv/step: 0.190 (last = 0.1753), fitness=0.880812946
+
+Optimization stopped after 11001 steps and 1.38 seconds
+Termination reason: Max number of steps (11000) reached
+Steps per second = 7981.12
+Function evals per second = 8053.67
+Improvements/step = 0.18518
+Total function evaluations = 11101
+
+
+Best candidate found: [1.50013, 1.00007, 2.99978, 0.999762]
+
+Fitness: 0.880811415
+
+Starting optimization with optimizer DiffEvoOpt{FitPopulation{Float64}, RadiusLimitedSelector, BlackBoxOptim.AdaptiveDiffEvoRandBin{3}, RandomBound{ContinuousRectSearchSpace}}
+0.00 secs, 0 evals, 0 steps
+0.50 secs, 3928 evals, 3830 steps, improv/step: 0.198 (last = 0.1979), fitness=0.062834261
+1.00 secs, 8143 evals, 8047 steps, improv/step: 0.181 (last = 0.1658), fitness=0.052711722
+
+Optimization stopped after 11001 steps and 1.38 seconds
+Termination reason: Max number of steps (11000) reached
+Steps per second = 7951.14
+Function evals per second = 8019.80
+Improvements/step = 0.17755
+Total function evaluations = 11096
+
+
+Best candidate found: [1.50037, 1.00016, 2.99911, 0.999522]
+
+Fitness: 0.052711122
+
+LSA for gradient
+Adjoint SA for gradient
+Use Optim Brent to fit the parameter
+Use Optim BFGS to fit the parameter
+Use LM to fit the parameter
+┌ Warning: Assignment to `cost_function` in soft scope is ambiguous because a global variable by the same name exists: `cost_function` will be treated as a new local. Disambiguate by using `local cost_function` to suppress this warning or `global cost_function` to assign to the existing global variable.
+└ @ ~/.julia/packages/DiffEqParamEstim/bfkdB/test/tests_on_odes/lsoptim_test.jl:3
+Use LeastSquaresOptim to fit the parameter
+Use NLOpt to fit the parameter
+Use Two Stage Method to fit the parameter
+┌ Warning: Assignment to `obj` in soft scope is ambiguous because a global variable by the same name exists: `obj` will be treated as a new local. Disambiguate by using `local obj` to suppress this warning or `global obj` to assign to the existing global variable.
+└ @ ~/.julia/packages/DiffEqParamEstim/bfkdB/test/tests_on_odes/two_stage_method_test.jl:22
+┌ Warning: Assignment to `opt` in soft scope is ambiguous because a global variable by the same name exists: `opt` will be treated as a new local. Disambiguate by using `local opt` to suppress this warning or `global opt` to assign to the existing global variable.
+└ @ ~/.julia/packages/DiffEqParamEstim/bfkdB/test/tests_on_odes/two_stage_method_test.jl:23
+┌ Warning: Assignment to `minf` in soft scope is ambiguous because a global variable by the same name exists: `minf` will be treated as a new local. Disambiguate by using `local minf` to suppress this warning or `global minf` to assign to the existing global variable.
+└ @ ~/.julia/packages/DiffEqParamEstim/bfkdB/test/tests_on_odes/two_stage_method_test.jl:25
+┌ Warning: Assignment to `minx` in soft scope is ambiguous because a global variable by the same name exists: `minx` will be treated as a new local. Disambiguate by using `local minx` to suppress this warning or `global minx` to assign to the existing global variable.
+└ @ ~/.julia/packages/DiffEqParamEstim/bfkdB/test/tests_on_odes/two_stage_method_test.jl:25
+┌ Warning: Assignment to `ret` in soft scope is ambiguous because a global variable by the same name exists: `ret` will be treated as a new local. Disambiguate by using `local ret` to suppress this warning or `global ret` to assign to the existing global variable.
+└ @ ~/.julia/packages/DiffEqParamEstim/bfkdB/test/tests_on_odes/two_stage_method_test.jl:25
+Use Optim BFGS to fit the parameter
+Use BlackBoxOptim to fit the parameter
+Starting optimization with optimizer DiffEvoOpt{FitPopulation{Float64}, RadiusLimitedSelector, BlackBoxOptim.AdaptiveDiffEvoRandBin{3}, RandomBound{ContinuousRectSearchSpace}}
+0.00 secs, 0 evals, 0 steps
+0.50 secs, 3455 evals, 3357 steps, improv/step: 0.290 (last = 0.2895), fitness=0.039425404
+
+Optimization stopped after 6537 steps and 0.86 seconds
+Termination reason: Too many steps (101) without any function evaluations (probably search has converged)
+Steps per second = 7583.89
+Function evals per second = 7124.47
+Improvements/step = 0.13436
+Total function evaluations = 6141
+
+
+Best candidate found: [1.49999]
+
+Fitness: 0.039425404
+
+Starting optimization with optimizer DiffEvoOpt{FitPopulation{Float64}, RadiusLimitedSelector, BlackBoxOptim.AdaptiveDiffEvoRandBin{3}, RandomBound{ContinuousRectSearchSpace}}
+0.00 secs, 0 evals, 0 steps
+0.50 secs, 3833 evals, 3717 steps, improv/step: 0.275 (last = 0.2747), fitness=0.039354472
+1.00 secs, 7324 evals, 7210 steps, improv/step: 0.191 (last = 0.1028), fitness=0.039354465
+1.52 secs, 10640 evals, 10528 steps, improv/step: 0.147 (last = 0.0509), fitness=0.039354464
+
+Optimization stopped after 11001 steps and 1.60 seconds
+Termination reason: Max number of steps (11000) reached
+Steps per second = 6872.75
+Function evals per second = 6941.47
+Improvements/step = 0.14473
+Total function evaluations = 11111
+
+
+Best candidate found: [1.49993, 3.00037]
+
+Fitness: 0.039354464
+
+Starting optimization with optimizer DiffEvoOpt{FitPopulation{Float64}, RadiusLimitedSelector, BlackBoxOptim.AdaptiveDiffEvoRandBin{3}, RandomBound{ContinuousRectSearchSpace}}
+0.00 secs, 0 evals, 0 steps
+0.50 secs, 3588 evals, 3488 steps, improv/step: 0.192 (last = 0.1921), fitness=0.062712456
+1.00 secs, 7252 evals, 7153 steps, improv/step: 0.180 (last = 0.1675), fitness=0.039242891
+1.50 secs, 10973 evals, 10876 steps, improv/step: 0.175 (last = 0.1673), fitness=0.039231533
+
+Optimization stopped after 11001 steps and 1.55 seconds
+Termination reason: Max number of steps (11000) reached
+Steps per second = 7090.23
+Function evals per second = 7152.75
+Improvements/step = 0.17545
+Total function evaluations = 11098
+
+
+Best candidate found: [1.50038, 1.00016, 2.99907, 0.999509]
+
+Fitness: 0.039231533
+
+Test Summary: | Pass  Broken  Total
+Tests on ODEs |   38       4     42
+419.090173 seconds (330.78 M allocations: 24.354 GiB, 2.45% gc time, 58.40% compilation time)
+Starting optimization with optimizer DiffEvoOpt{FitPopulation{Float64}, RadiusLimitedSelector, BlackBoxOptim.AdaptiveDiffEvoRandBin{3}, RandomBound{ContinuousRectSearchSpace}}
+0.00 secs, 0 evals, 0 steps
+0.50 secs, 227 evals, 147 steps, improv/step: 0.333 (last = 0.3333), fitness=2201.794930593
+1.00 secs, 402 evals, 291 steps, improv/step: 0.364 (last = 0.3958), fitness=2063.587208965
+1.51 secs, 614 evals, 497 steps, improv/step: 0.354 (last = 0.3398), fitness=1928.509261140
+2.01 secs, 815 evals, 695 steps, improv/step: 0.337 (last = 0.2929), fitness=1460.440777548
+2.54 secs, 1017 evals, 894 steps, improv/step: 0.304 (last = 0.1910), fitness=1453.126325942
+3.05 secs, 1248 evals, 1124 steps, improv/step: 0.288 (last = 0.2261), fitness=1379.112054861
+3.55 secs, 1488 evals, 1364 steps, improv/step: 0.266 (last = 0.1625), fitness=1318.563828146
+4.05 secs, 1732 evals, 1608 steps, improv/step: 0.251 (last = 0.1680), fitness=1285.707059909
+4.55 secs, 1947 evals, 1823 steps, improv/step: 0.243 (last = 0.1814), fitness=1285.707059909
+5.05 secs, 2162 evals, 2038 steps, improv/step: 0.231 (last = 0.1302), fitness=1088.816264729
+5.55 secs, 2367 evals, 2243 steps, improv/step: 0.218 (last = 0.0878), fitness=1088.816264729
+6.05 secs, 2569 evals, 2445 steps, improv/step: 0.211 (last = 0.1287), fitness=940.655818912
+6.55 secs, 2820 evals, 2696 steps, improv/step: 0.207 (last = 0.1753), fitness=940.655818912
+7.05 secs, 3086 evals, 2962 steps, improv/step: 0.207 (last = 0.2030), fitness=857.002874700
+7.55 secs, 3316 evals, 3192 steps, improv/step: 0.203 (last = 0.1522), fitness=809.315699513
+8.05 secs, 3614 evals, 3490 steps, improv/step: 0.201 (last = 0.1812), fitness=587.995652996
+8.57 secs, 3915 evals, 3791 steps, improv/step: 0.200 (last = 0.1927), fitness=575.381286048
+9.07 secs, 4211 evals, 4087 steps, improv/step: 0.198 (last = 0.1689), fitness=487.101573571
+9.57 secs, 4510 evals, 4386 steps, improv/step: 0.197 (last = 0.1773), fitness=425.358804903
+10.07 secs, 4788 evals, 4664 steps, improv/step: 0.195 (last = 0.1727), fitness=425.358804903
+10.57 secs, 5102 evals, 4978 steps, improv/step: 0.193 (last = 0.1561), fitness=306.878301126
+11.07 secs, 5464 evals, 5340 steps, improv/step: 0.191 (last = 0.1657), fitness=306.878301126
+11.57 secs, 5863 evals, 5739 steps, improv/step: 0.192 (last = 0.2005), fitness=174.803007522
+12.08 secs, 6237 evals, 6113 steps, improv/step: 0.189 (last = 0.1497), fitness=174.803007522
+12.58 secs, 6670 evals, 6546 steps, improv/step: 0.187 (last = 0.1640), fitness=87.343742222
+13.08 secs, 7014 evals, 6890 steps, improv/step: 0.186 (last = 0.1541), fitness=87.343742222
+13.58 secs, 7398 evals, 7274 steps, improv/step: 0.185 (last = 0.1719), fitness=86.182978413
+14.08 secs, 7776 evals, 7652 steps, improv/step: 0.184 (last = 0.1587), fitness=71.605859812
+14.58 secs, 8187 evals, 8063 steps, improv/step: 0.182 (last = 0.1509), fitness=50.317697334
+15.08 secs, 8558 evals, 8434 steps, improv/step: 0.181 (last = 0.1590), fitness=36.406435909
+15.58 secs, 8932 evals, 8808 steps, improv/step: 0.179 (last = 0.1310), fitness=36.382056955
+16.08 secs, 9289 evals, 9165 steps, improv/step: 0.177 (last = 0.1317), fitness=34.379266950
+16.58 secs, 9669 evals, 9545 steps, improv/step: 0.175 (last = 0.1211), fitness=25.263053024
+17.08 secs, 10030 evals, 9906 steps, improv/step: 0.174 (last = 0.1468), fitness=23.649015536
+17.59 secs, 10433 evals, 10309 steps, improv/step: 0.176 (last = 0.2233), fitness=22.747108249
+18.09 secs, 10800 evals, 10676 steps, improv/step: 0.177 (last = 0.2044), fitness=20.536962328
+18.59 secs, 11166 evals, 11042 steps, improv/step: 0.177 (last = 0.1776), fitness=17.746791381
+19.09 secs, 11512 evals, 11388 steps, improv/step: 0.177 (last = 0.1792), fitness=15.827254937
+19.59 secs, 11887 evals, 11763 steps, improv/step: 0.179 (last = 0.2293), fitness=12.584735444
+20.09 secs, 12296 evals, 12172 steps, improv/step: 0.179 (last = 0.2029), fitness=9.411854505
+20.59 secs, 12697 evals, 12573 steps, improv/step: 0.180 (last = 0.1895), fitness=8.646748063
+21.09 secs, 13093 evals, 12969 steps, improv/step: 0.181 (last = 0.2247), fitness=6.968080297
+21.59 secs, 13452 evals, 13328 steps, improv/step: 0.182 (last = 0.2340), fitness=6.328029910
+22.09 secs, 13830 evals, 13706 steps, improv/step: 0.183 (last = 0.1852), fitness=6.027236070
+22.59 secs, 14209 evals, 14085 steps, improv/step: 0.183 (last = 0.2032), fitness=5.042945446
+23.10 secs, 14624 evals, 14500 steps, improv/step: 0.183 (last = 0.1928), fitness=4.944457509
+23.60 secs, 15052 evals, 14928 steps, improv/step: 0.183 (last = 0.1869), fitness=4.368340992
+24.10 secs, 15486 evals, 15362 steps, improv/step: 0.184 (last = 0.1889), fitness=3.807808179
+24.60 secs, 15903 evals, 15779 steps, improv/step: 0.183 (last = 0.1463), fitness=2.974408725
+25.10 secs, 16315 evals, 16192 steps, improv/step: 0.183 (last = 0.1889), fitness=2.796353964
+25.60 secs, 16743 evals, 16620 steps, improv/step: 0.184 (last = 0.2196), fitness=2.086798777
+26.10 secs, 17163 evals, 17040 steps, improv/step: 0.184 (last = 0.1786), fitness=2.083565852
+26.60 secs, 17592 evals, 17470 steps, improv/step: 0.184 (last = 0.2047), fitness=1.667925655
+27.10 secs, 17950 evals, 17828 steps, improv/step: 0.185 (last = 0.2151), fitness=1.268123808
+27.60 secs, 18360 evals, 18239 steps, improv/step: 0.185 (last = 0.1995), fitness=1.224348173
+28.10 secs, 18763 evals, 18642 steps, improv/step: 0.186 (last = 0.2084), fitness=1.061917884
+28.60 secs, 19211 evals, 19090 steps, improv/step: 0.186 (last = 0.2031), fitness=0.767888342
+29.10 secs, 19643 evals, 19522 steps, improv/step: 0.186 (last = 0.1690), fitness=0.613366930
+29.60 secs, 20059 evals, 19938 steps, improv/step: 0.185 (last = 0.1611), fitness=0.505952897
+30.10 secs, 20537 evals, 20416 steps, improv/step: 0.185 (last = 0.1757), fitness=0.394240136
+30.61 secs, 20933 evals, 20812 steps, improv/step: 0.184 (last = 0.1288), fitness=0.358169667
+
+Optimization stopped after 21001 steps and 30.81 seconds
+Termination reason: Max number of steps (21000) reached
+Steps per second = 681.65
+Function evals per second = 685.58
+Improvements/step = 0.18410
+Total function evaluations = 21122
+
+
+Best candidate found: [0.976437, 1.04824, 3.73355, 0.287337, 2.09707, 4.37722, 1.4125, 0.457387, 6.1751, 0.690709, 0.911942, 2.054, 2.40233, 0.285464, 5.65075, 3.38618, 1.54367, 1.01185]
+
+Fitness: 0.329318304
+
+┌ Warning: `Truncated(d::UnivariateDistribution, l::Real, u::Real)` is deprecated, use `truncated(d, l, u)` instead.
+│   caller = ip:0x0
+└ @ Core :-1
+Starting optimization with optimizer DiffEvoOpt{FitPopulation{Float64}, RadiusLimitedSelector, BlackBoxOptim.AdaptiveDiffEvoRandBin{3}, RandomBound{ContinuousRectSearchSpace}}
+0.00 secs, 0 evals, 0 steps
+0.50 secs, 237 evals, 159 steps, improv/step: 0.484 (last = 0.4843), fitness=1690.810272649
+1.01 secs, 442 evals, 352 steps, improv/step: 0.435 (last = 0.3938), fitness=1690.810272649
+1.51 secs, 682 evals, 587 steps, improv/step: 0.378 (last = 0.2936), fitness=1351.118622557
+2.01 secs, 937 evals, 837 steps, improv/step: 0.349 (last = 0.2800), fitness=1335.070954899
+2.51 secs, 1171 evals, 1070 steps, improv/step: 0.333 (last = 0.2747), fitness=1335.070954899
+3.01 secs, 1442 evals, 1341 steps, improv/step: 0.314 (last = 0.2399), fitness=983.782634908
+3.51 secs, 1723 evals, 1622 steps, improv/step: 0.287 (last = 0.1601), fitness=829.904545571
+4.01 secs, 1994 evals, 1893 steps, improv/step: 0.278 (last = 0.2251), fitness=829.904545571
+4.51 secs, 2257 evals, 2156 steps, improv/step: 0.266 (last = 0.1787), fitness=680.957672333
+5.01 secs, 2521 evals, 2420 steps, improv/step: 0.256 (last = 0.1705), fitness=621.541901796
+5.51 secs, 2840 evals, 2739 steps, improv/step: 0.244 (last = 0.1567), fitness=604.852068209
+6.02 secs, 3144 evals, 3043 steps, improv/step: 0.239 (last = 0.1875), fitness=452.738966042
+6.52 secs, 3431 evals, 3330 steps, improv/step: 0.235 (last = 0.1916), fitness=452.738966042
+7.02 secs, 3774 evals, 3673 steps, improv/step: 0.227 (last = 0.1574), fitness=388.282845243
+7.52 secs, 4076 evals, 3975 steps, improv/step: 0.222 (last = 0.1523), fitness=273.978171901
+8.02 secs, 4447 evals, 4346 steps, improv/step: 0.219 (last = 0.1860), fitness=213.505215168
+8.52 secs, 4788 evals, 4687 steps, improv/step: 0.215 (last = 0.1701), fitness=162.014212265
+9.02 secs, 5155 evals, 5054 steps, improv/step: 0.213 (last = 0.1853), fitness=139.097895430
+9.52 secs, 5490 evals, 5389 steps, improv/step: 0.212 (last = 0.1910), fitness=103.013375159
+10.02 secs, 5843 evals, 5742 steps, improv/step: 0.210 (last = 0.1841), fitness=103.013375159
+10.52 secs, 6173 evals, 6072 steps, improv/step: 0.208 (last = 0.1727), fitness=72.832297504
+11.02 secs, 6552 evals, 6451 steps, improv/step: 0.207 (last = 0.1873), fitness=72.735827904
+11.53 secs, 6892 evals, 6791 steps, improv/step: 0.205 (last = 0.1676), fitness=47.399298168
+12.03 secs, 7231 evals, 7130 steps, improv/step: 0.202 (last = 0.1475), fitness=47.399298168
+12.53 secs, 7557 evals, 7456 steps, improv/step: 0.201 (last = 0.1902), fitness=38.321264656
+13.03 secs, 7902 evals, 7801 steps, improv/step: 0.198 (last = 0.1304), fitness=38.321264656
+13.53 secs, 8254 evals, 8153 steps, improv/step: 0.198 (last = 0.1960), fitness=36.102366168
+14.03 secs, 8582 evals, 8481 steps, improv/step: 0.200 (last = 0.2317), fitness=28.294905943
+14.53 secs, 8915 evals, 8814 steps, improv/step: 0.200 (last = 0.2072), fitness=18.930506688
+15.03 secs, 9230 evals, 9129 steps, improv/step: 0.199 (last = 0.1841), fitness=18.930506688
+15.53 secs, 9624 evals, 9523 steps, improv/step: 0.199 (last = 0.1827), fitness=15.306335396
+16.04 secs, 9993 evals, 9892 steps, improv/step: 0.198 (last = 0.1789), fitness=15.306335396
+16.54 secs, 10345 evals, 10244 steps, improv/step: 0.197 (last = 0.1790), fitness=13.546128512
+17.04 secs, 10696 evals, 10595 steps, improv/step: 0.196 (last = 0.1624), fitness=12.913773928
+17.54 secs, 11068 evals, 10967 steps, improv/step: 0.197 (last = 0.2151), fitness=11.068277975
+18.04 secs, 11406 evals, 11305 steps, improv/step: 0.196 (last = 0.1805), fitness=9.991611881
+18.54 secs, 11758 evals, 11657 steps, improv/step: 0.197 (last = 0.2074), fitness=9.580198415
+19.04 secs, 12082 evals, 11981 steps, improv/step: 0.196 (last = 0.1790), fitness=7.504168313
+19.54 secs, 12433 evals, 12332 steps, improv/step: 0.195 (last = 0.1567), fitness=7.245438097
+20.04 secs, 12755 evals, 12654 steps, improv/step: 0.194 (last = 0.1677), fitness=7.245438097
+20.54 secs, 13130 evals, 13029 steps, improv/step: 0.194 (last = 0.1973), fitness=6.018413808
+21.04 secs, 13421 evals, 13320 steps, improv/step: 0.193 (last = 0.1512), fitness=5.485915489
+21.54 secs, 13799 evals, 13698 steps, improv/step: 0.193 (last = 0.1667), fitness=5.368567551
+22.04 secs, 14130 evals, 14029 steps, improv/step: 0.193 (last = 0.2266), fitness=4.715814195
+22.54 secs, 14533 evals, 14432 steps, improv/step: 0.192 (last = 0.1315), fitness=4.334732363
+23.04 secs, 14892 evals, 14791 steps, improv/step: 0.192 (last = 0.2089), fitness=3.792761986
+23.54 secs, 15271 evals, 15170 steps, improv/step: 0.192 (last = 0.1926), fitness=3.425500197
+24.05 secs, 15615 evals, 15514 steps, improv/step: 0.192 (last = 0.2035), fitness=2.923696174
+24.55 secs, 16012 evals, 15911 steps, improv/step: 0.192 (last = 0.1763), fitness=2.588917966
+25.05 secs, 16381 evals, 16280 steps, improv/step: 0.192 (last = 0.1762), fitness=1.804237880
+25.55 secs, 16710 evals, 16609 steps, improv/step: 0.193 (last = 0.2614), fitness=1.478766360
+26.05 secs, 17068 evals, 16967 steps, improv/step: 0.194 (last = 0.2486), fitness=1.138392375
+26.55 secs, 17410 evals, 17309 steps, improv/step: 0.194 (last = 0.1988), fitness=1.138392375
+27.05 secs, 17704 evals, 17603 steps, improv/step: 0.194 (last = 0.1497), fitness=0.950018053
+27.55 secs, 18059 evals, 17958 steps, improv/step: 0.194 (last = 0.2394), fitness=0.814409768
+28.05 secs, 18412 evals, 18311 steps, improv/step: 0.194 (last = 0.1671), fitness=0.644877520
+28.55 secs, 18743 evals, 18642 steps, improv/step: 0.194 (last = 0.1813), fitness=0.466534598
+29.05 secs, 19119 evals, 19018 steps, improv/step: 0.194 (last = 0.2021), fitness=0.446763592
+29.55 secs, 19467 evals, 19366 steps, improv/step: 0.194 (last = 0.2011), fitness=0.407713712
+30.05 secs, 19877 evals, 19777 steps, improv/step: 0.194 (last = 0.1825), fitness=0.375503637
+30.56 secs, 20240 evals, 20140 steps, improv/step: 0.193 (last = 0.1680), fitness=0.200993326
+31.09 secs, 20656 evals, 20556 steps, improv/step: 0.192 (last = 0.1442), fitness=0.178126374
+31.59 secs, 21023 evals, 20923 steps, improv/step: 0.191 (last = 0.1199), fitness=0.178126374
+
+Optimization stopped after 21001 steps and 31.70 seconds
+Termination reason: Max number of steps (21000) reached
+Steps per second = 662.51
+Function evals per second = 665.66
+Improvements/step = 0.19086
+Total function evaluations = 21101
+
+
+Best candidate found: [1.0035, 1.01243, 3.79353, 0.275005, 2.08899, 4.33997, 1.45033, 0.464985, 6.19858, 0.678549, 0.96773, 2.05346, 2.43052, 0.273976, 5.63424, 3.37228, 1.5198, 1.01607]
+
+Fitness: 0.136658710
+
+Test Summary:               | Pass  Total
+Multiple Shooting Objective |    2      2
+ 69.288005 seconds (98.22 M allocations: 6.982 GiB, 3.21% gc time, 9.52% compilation time)
+Starting optimization with optimizer DiffEvoOpt{FitPopulation{Float64}, RadiusLimitedSelector, BlackBoxOptim.AdaptiveDiffEvoRandBin{3}, RandomBound{ContinuousRectSearchSpace}}
+0.00 secs, 0 evals, 0 steps
+0.50 secs, 2660 evals, 2546 steps, improv/step: 0.297 (last = 0.2969), fitness=-739.571337411
+1.00 secs, 5922 evals, 5809 steps, improv/step: 0.269 (last = 0.2476), fitness=-739.573698667
+1.53 secs, 9544 evals, 9431 steps, improv/step: 0.192 (last = 0.0693), fitness=-739.573699131
+
+Optimization stopped after 11001 steps and 1.76 seconds
+Termination reason: Max number of steps (11000) reached
+Steps per second = 6265.53
+Function evals per second = 6329.32
+Improvements/step = 0.19164
+Total function evaluations = 11113
+
+
+Best candidate found: [1.50001, 1.00002]
+
+Fitness: -739.573699141
+
+Starting optimization with optimizer DiffEvoOpt{FitPopulation{Float64}, RadiusLimitedSelector, BlackBoxOptim.AdaptiveDiffEvoRandBin{3}, RandomBound{ContinuousRectSearchSpace}}
+0.00 secs, 0 evals, 0 steps
+0.50 secs, 2342 evals, 2222 steps, improv/step: 0.270 (last = 0.2700), fitness=-2073.321470668
+1.00 secs, 4478 evals, 4358 steps, improv/step: 0.282 (last = 0.2935), fitness=-2073.813437892
+1.50 secs, 6978 evals, 6859 steps, improv/step: 0.229 (last = 0.1375), fitness=-2073.813438775
+2.00 secs, 9715 evals, 9597 steps, improv/step: 0.176 (last = 0.0438), fitness=-2073.813438775
+
+Optimization stopped after 11001 steps and 2.25 seconds
+Termination reason: Max number of steps (11000) reached
+Steps per second = 4892.74
+Function evals per second = 4945.22
+Improvements/step = 0.16718
+Total function evaluations = 11119
+
+
+Best candidate found: [1.50001, 1.00002]
+
+Fitness: -2073.813438803
+
+Starting optimization with optimizer DiffEvoOpt{FitPopulation{Float64}, RadiusLimitedSelector, BlackBoxOptim.AdaptiveDiffEvoRandBin{3}, RandomBound{ContinuousRectSearchSpace}}
+0.00 secs, 0 evals, 0 steps
+0.50 secs, 2298 evals, 2187 steps, improv/step: 0.275 (last = 0.2748), fitness=-1139.798533082
+1.00 secs, 5002 evals, 4893 steps, improv/step: 0.278 (last = 0.2805), fitness=-1139.845619959
+1.53 secs, 7378 evals, 7270 steps, improv/step: 0.209 (last = 0.0660), fitness=-1139.845619959
+2.03 secs, 9868 evals, 9761 steps, improv/step: 0.179 (last = 0.0911), fitness=-1139.845619963
+
+Optimization stopped after 11001 steps and 2.29 seconds
+Termination reason: Max number of steps (11000) reached
+Steps per second = 4798.64
+Function evals per second = 4845.32
+Improvements/step = 0.17373
+Total function evaluations = 11108
+
+
+Best candidate found: [1.50001, 1.00002]
+
+Fitness: -1139.845619963
+
+Starting optimization with optimizer DiffEvoOpt{FitPopulation{Float64}, RadiusLimitedSelector, BlackBoxOptim.AdaptiveDiffEvoRandBin{3}, RandomBound{ContinuousRectSearchSpace}}
+0.00 secs, 0 evals, 0 steps
+0.50 secs, 759 evals, 643 steps, improv/step: 0.269 (last = 0.2691), fitness=-902.828130964
+1.01 secs, 1641 evals, 1525 steps, improv/step: 0.272 (last = 0.2744), fitness=-2807.873462134
+1.51 secs, 2772 evals, 2656 steps, improv/step: 0.291 (last = 0.3174), fitness=-2810.398795095
+2.01 secs, 3766 evals, 3650 steps, improv/step: 0.304 (last = 0.3360), fitness=-2810.398863173
+2.51 secs, 4910 evals, 4794 steps, improv/step: 0.280 (last = 0.2037), fitness=-2810.398863773
+3.03 secs, 6075 evals, 5959 steps, improv/step: 0.234 (last = 0.0446), fitness=-2810.398863773
+3.57 secs, 7342 evals, 7226 steps, improv/step: 0.196 (last = 0.0205), fitness=-2810.398863805
+4.07 secs, 8493 evals, 8379 steps, improv/step: 0.172 (last = 0.0173), fitness=-2810.398863805
+4.58 secs, 9435 evals, 9321 steps, improv/step: 0.155 (last = 0.0096), fitness=-2810.398863805
+5.08 secs, 10580 evals, 10471 steps, improv/step: 0.140 (last = 0.0157), fitness=-2810.398863827
+
+Optimization stopped after 11001 steps and 5.27 seconds
+Termination reason: Max number of steps (11000) reached
+Steps per second = 2089.41
+Function evals per second = 2109.73
+Improvements/step = 0.13455
+Total function evaluations = 11108
+
+
+Best candidate found: [1.5, 1.0]
+
+Fitness: -2810.398863827
+
+Test Summary:   | Pass  Total
+Likelihood Loss |    4      4
+ 25.120290 seconds (47.48 M allocations: 4.560 GiB, 6.25% gc time, 52.71% compilation time)
+Test Summary:          | Pass  Total
+Out-of-place ODE Tests |    2      2
+ 14.765206 seconds (10.82 M allocations: 639.994 MiB, 2.54% gc time, 80.35% compilation time)
+sol.u = [0.9999939445818005, 0.2499984861447456]
+sol.u = [1.000006055495901, 0.25000151387327074]
+sol.u = [1.000000000002182, 0.24999999999984102]
+sol.u = [1.023011718099328, 0.25575292952410916]
+sol.u = [1.023024107772379, 0.25575602694237193]
+sol.u = [1.0230179129010026, 0.2557544782245278]
+sol.u = [1.1267538015259926, 0.2816884503806914]
+sol.u = [1.1267674476174874, 0.28169186190356515]
+sol.u = [1.1267606245238548, 0.28169015613015697]
+sol.u = [1.0381945113009552, 0.2595486278245039]
+sol.u = [1.038207084856241, 0.2595517712133253]
+sol.u = [1.0382007980350327, 0.2595501995080232]
+sol.u = [1.042901782955459, 0.260725445738126]
+sol.u = [1.0429144135295694, 0.2607286033816536]
+sol.u = [1.0429080982042722, 0.2607270245503293]
+sol.u = [1.042339948629336, 0.2605849871565958]
+sol.u = [1.0423525723890688, 0.26058814309652895]
+sol.u = [1.0423462604682094, 0.26058656511631406]
+sol.u = [1.0423467097310104, 0.2605866774320143]
+sol.u = [1.0423593335793968, 0.26058983339411096]
+sol.u = [1.0423530216114383, 0.2605882554021213]
+sol.u = [1.042346629253045, 0.26058665731252295]
+sol.u = [1.0423592530943704, 0.26058981327285435]
+sol.u = [1.0423529411382582, 0.26058823528382624]
+Test Summary:      | Pass  Total
+Steady State Tests |    1      1
+ 17.376457 seconds (10.98 M allocations: 631.595 MiB, 2.21% gc time, 68.30% compilation time)
+Test Summary: | Pass  Total
+DDE Tests     |    1      1
+ 43.601240 seconds (102.92 M allocations: 9.780 GiB, 8.04% gc time, 32.52% compilation time)
+Test Summary: | Pass  Total
+Test on Monte |    1      1
+ 34.888349 seconds (39.15 M allocations: 2.443 GiB, 4.35% gc time, 88.62% compilation time)
+    Testing DiffEqParamEstim tests passed 
