@@ -12,9 +12,9 @@ Environment:
 
   Resolving package versions...
   Installed Formatting ─ v0.4.1
-  Installed Parsers ──── v1.0.11
   Installed YAML ─────── v0.4.2
   Installed Cambrian ─── v0.2.1
+  Installed Parsers ──── v1.0.11
   Installed JSON ─────── v0.21.1
 Updating `~/.julia/environments/v1.6/Project.toml`
   [7f27c84d] + Cambrian v0.2.1
@@ -40,14 +40,14 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [10745b16] + Statistics
   [4ec0a83e] + Unicode
     Testing Cambrian
-Status `/tmp/jl_4fPADX/Project.toml`
+Status `/tmp/jl_aVT2J0/Project.toml`
   [7f27c84d] Cambrian v0.2.1
   [ce6b1742] RDatasets v0.6.10
   [ddb6d928] YAML v0.4.2
   [8ba89e20] Distributed
   [10745b16] Statistics
   [8dfed614] Test
-Status `/tmp/jl_4fPADX/Manifest.toml`
+Status `/tmp/jl_aVT2J0/Manifest.toml`
   [336ed68f] CSV v0.7.7
   [7f27c84d] Cambrian v0.2.1
   [324d7699] CategoricalArrays v0.8.3
@@ -63,6 +63,7 @@ Status `/tmp/jl_4fPADX/Manifest.toml`
   [59287772] Formatting v0.4.1
   [41ab1584] InvertedIndices v1.0.0
   [82899510] IteratorInterfaceExtensions v1.0.0
+  [692b3bcd] JLLWrappers v1.1.1
   [682c06a0] JSON v0.21.1
   [94ce4f54] Libiconv_jll v1.16.0+6
   [e1d29d7a] Missings v0.4.4
@@ -84,7 +85,7 @@ Status `/tmp/jl_4fPADX/Manifest.toml`
   [3bb67fe8] TranscodingStreams v0.9.5
   [02c8fc9c] XML2_jll v2.9.10+2
   [ddb6d928] YAML v0.4.2
-  [83775a58] Zlib_jll v1.2.11+16
+  [83775a58] Zlib_jll v1.2.11+17
   [56f22d72] Artifacts
   [2a0f44e3] Base64
   [ade2ca70] Dates
@@ -119,35 +120,63 @@ Test Summary:    | Pass  Total
 float individual |   11     11
 Test Summary:  | Pass  Total
 Random fitness |   31     31
-1+λ step sum_eval  0.000076 seconds (108 allocations: 6.891 KiB)
-elapsed time (ns): 76079
-bytes allocated:   7056
-pool allocs:       108
-1+λ step rosenbrock  0.000031 seconds (148 allocations: 8.797 KiB)
-elapsed time (ns): 31029
-bytes allocated:   9008
-pool allocs:       148
-1+λ step moo  0.000019 seconds (103 allocations: 6.672 KiB)
-elapsed time (ns): 18659
-bytes allocated:   6832
+1+λ step sum_eval  0.000064 seconds (118 allocations: 7.359 KiB)
+elapsed time (ns): 63839
+bytes allocated:   7536
+pool allocs:       118
+1+λ step rosenbrock  0.000027 seconds (138 allocations: 8.391 KiB)
+elapsed time (ns): 27479
+bytes allocated:   8592
+pool allocs:       138
+Multi-objective: Test Failed at /home/pkgeval/.julia/packages/Cambrian/pcP88/test/oneplus.jl:48
+  Expression: !(new_best < best)
+   Evaluated: !({"genes":[0.20073323892970985,0.5768416960331229,0.1480852541610187,0.83690142630316,0.31929530301824105,0.34845021330861004,0.7568223292962699,0.16233196105376302,0.23953296436830218,0.8234887961732393],"fitness":[0.44124831826454375,0.280154960186944,0.1480852541610187]} < {"genes":[0.20073323892970985,0.5768416960331229,0.7040501292611487,0.83690142630316,0.31929530301824105,0.34845021330861004,0.9296773802664988,0.16233196105376302,0.23953296436830218,0.8234887961732393],"fitness":[0.5141303108715796,0.29351501359866095,0.16233196105376302]})
+Stacktrace:
+ [1] test_oneplus_evo(fitness::var"#moo#11", d_fitness::Int64)
+   @ Main ~/.julia/packages/Cambrian/pcP88/test/oneplus.jl:48
+ [2] top-level scope
+   @ ~/.julia/packages/Cambrian/pcP88/test/oneplus.jl:86
+ [3] top-level scope
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144
+ [4] top-level scope
+   @ ~/.julia/packages/Cambrian/pcP88/test/oneplus.jl:83
+ [5] top-level scope
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144
+ [6] top-level scope
+   @ ~/.julia/packages/Cambrian/pcP88/test/oneplus.jl:65
+1+λ step moo  0.000084 seconds (103 allocations: 6.703 KiB)
+elapsed time (ns): 83619
+bytes allocated:   6864
 pool allocs:       103
-Test Summary: | Pass  Total
-1+λ           |  107    107
-GA step sum_eval  0.781167 seconds (702.65 k allocations: 40.778 MiB, 1.96% gc time, 99.48% compilation time)
-elapsed time (ns): 781166707
-gc time (ns):      15280777
-bytes allocated:   42758538
-pool allocs:       702535
-non-pool GC allocs:119
-GC pauses:         1
-GA step rosenbrock  0.000341 seconds (967 allocations: 56.039 KiB)
-elapsed time (ns): 340506
-bytes allocated:   57384
-pool allocs:       967
-GA step moo  0.000356 seconds (1.17 k allocations: 65.961 KiB)
-elapsed time (ns): 356326
-bytes allocated:   67544
-pool allocs:       1165
-Test Summary:     | Pass  Total
-Genetic Algorithm |   75     75
-    Testing Cambrian tests passed 
+Test Summary:     | Pass  Fail  Total
+1+λ               |  106     1    107
+  Sum of genes    |   33           33
+  Rosenbrock      |   33           33
+  Multi-objective |   40     1     41
+ERROR: LoadError: LoadError: Some tests did not pass: 106 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/Cambrian/pcP88/test/oneplus.jl:64
+in expression starting at /home/pkgeval/.julia/packages/Cambrian/pcP88/test/runtests.jl:6
+ERROR: Package Cambrian errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1609
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:331
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:318
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:19

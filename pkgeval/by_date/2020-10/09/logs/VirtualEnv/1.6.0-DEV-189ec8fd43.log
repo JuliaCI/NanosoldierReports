@@ -14,7 +14,7 @@ Environment:
   Installed ExprTools ─────── v0.1.2
   Installed MatchCore ─────── v0.1.0
   Installed VirtualEnv ────── v1.0.0
-  Installed PackageCompiler ─ v1.2.1
+  Installed PackageCompiler ─ v1.2.2
   Installed Comonicon ─────── v0.6.5
 Updating `~/.julia/environments/v1.6/Project.toml`
   [f8ef4a19] + VirtualEnv v1.0.0
@@ -22,7 +22,7 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [863f3e99] + Comonicon v0.6.5
   [e2ba6199] + ExprTools v0.1.2
   [5dd3f0b1] + MatchCore v0.1.0
-  [9b87118b] + PackageCompiler v1.2.1
+  [9b87118b] + PackageCompiler v1.2.2
   [f8ef4a19] + VirtualEnv v1.0.0
   [56f22d72] + Artifacts
   [2a0f44e3] + Base64
@@ -45,76 +45,36 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
    Building VirtualEnv → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/fafe8baaba1f2a5e8e1ebb88d9a13773bf180d89/build.log`
 ERROR: Error building `VirtualEnv`: 
-ERROR: LoadError: LoadError: Cannot locate artifact 'x86_64-w64-mingw32' in '/home/pkgeval/.julia/packages/PackageCompiler/vsMJE/Artifacts.toml'
+[ Info: cannot find Julia bin folder creating .julia/bin
+[ Info: generating /home/pkgeval/.julia/bin/venv.jl
+[ Info: generating /home/pkgeval/.julia/bin/venv
+ERROR: LoadError: cannot find available shell command
 Stacktrace:
   [1] error(s::String)
     @ Base ./error.jl:33
-  [2] artifact_slash_lookup(name::String, artifact_dict::Dict{String, Any}, artifacts_toml::String, platform::Base.BinaryPlatforms.Platform)
-    @ Artifacts /workspace/srcdir/usr/share/julia/stdlib/v1.6/Artifacts/src/Artifacts.jl:555
-  [3] @artifact_str(__source__::LineNumberNode, __module__::Module, name::Any, platform::Nothing)
-    @ Artifacts /workspace/srcdir/usr/share/julia/stdlib/v1.6/Artifacts/src/Artifacts.jl:611
-  [4] @artifact_str(__source__::LineNumberNode, __module__::Module, name::Any)
-    @ Artifacts /workspace/srcdir/usr/share/julia/stdlib/v1.6/Artifacts/src/Artifacts.jl:584
-  [5] include
-    @ ./Base.jl:389 [inlined]
-  [6] include_package_for_output(pkg::Base.PkgId, input::String, depot_path::Vector{String}, dl_load_path::Vector{String}, load_path::Vector{String}, concrete_deps::Vector{Pair{Base.PkgId, UInt64}}, source::String)
-    @ Base ./loading.jl:1169
-  [7] top-level scope
-    @ none:1
-  [8] eval
-    @ ./boot.jl:360 [inlined]
-  [9] eval(x::Expr)
-    @ Base.MainInclude ./client.jl:446
+  [2] detect_shell()
+    @ Comonicon.BuildTools ~/.julia/packages/Comonicon/5Dvqo/src/tools/build.jl:498
+  [3] install_completion(m::Module, path::String)
+    @ Comonicon.BuildTools ~/.julia/packages/Comonicon/5Dvqo/src/tools/build.jl:512
+  [4] install_script(mod::Module, configs::Dict{Any, Any})
+    @ Comonicon.BuildTools ~/.julia/packages/Comonicon/5Dvqo/src/tools/build.jl:247
+  [5] (::Comonicon.BuildTools.var"#14#15"{Module, Dict{Any, Any}})()
+    @ Comonicon.BuildTools ~/.julia/packages/Comonicon/5Dvqo/src/tools/build.jl:196
+  [6] with_logstate(f::Function, logstate::Any)
+    @ Base.CoreLogging ./logging.jl:491
+  [7] with_logger
+    @ ./logging.jl:603 [inlined]
+  [8] install(mod::Module, configs::Dict{Any, Any})
+    @ Comonicon.BuildTools ~/.julia/packages/Comonicon/5Dvqo/src/tools/build.jl:182
+  [9] install(mod::Module; kwargs::Base.Iterators.Pairs{Symbol, Any, NTuple{4, Symbol}, NamedTuple{(:name, :optimize, :compile, :completion), Tuple{String, Int64, String, Bool}}})
+    @ Comonicon.BuildTools ~/.julia/packages/Comonicon/5Dvqo/src/tools/build.jl:74
  [10] top-level scope
-    @ none:1
-in expression starting at /home/pkgeval/.julia/packages/PackageCompiler/vsMJE/src/PackageCompiler.jl:103
-in expression starting at /home/pkgeval/.julia/packages/PackageCompiler/vsMJE/src/PackageCompiler.jl:1
-ERROR: LoadError: Failed to precompile PackageCompiler [9b87118b-4619-50d2-8e1e-99f35a4d4d9d] to /home/pkgeval/.julia/compiled/v1.6/PackageCompiler/MMV8C_78rkL.ji.
-Stacktrace:
-  [1] error(s::String)
-    @ Base ./error.jl:33
-  [2] compilecache(pkg::Base.PkgId, path::String, cache::Base.TOMLCache, show_errors::Bool)
-    @ Base ./loading.jl:1304
-  [3] compilecache
-    @ ./loading.jl:1257 [inlined]
-  [4] _require(pkg::Base.PkgId, cache::Base.TOMLCache)
-    @ Base ./loading.jl:978
-  [5] require(uuidkey::Base.PkgId, cache::Base.TOMLCache)
-    @ Base ./loading.jl:871
-  [6] require(into::Module, mod::Symbol)
-    @ Base ./loading.jl:858
-  [7] include
-    @ ./Base.jl:389 [inlined]
-  [8] include_package_for_output(pkg::Base.PkgId, input::String, depot_path::Vector{String}, dl_load_path::Vector{String}, load_path::Vector{String}, concrete_deps::Vector{Pair{Base.PkgId, UInt64}}, source::String)
-    @ Base ./loading.jl:1169
-  [9] top-level scope
-    @ none:1
- [10] eval
-    @ ./boot.jl:360 [inlined]
- [11] eval(x::Expr)
-    @ Base.MainInclude ./client.jl:446
+    @ ~/.julia/packages/VirtualEnv/N4Dbk/deps/build.jl:2
+ [11] include(fname::String)
+    @ Base.MainInclude ./client.jl:444
  [12] top-level scope
-    @ none:1
-in expression starting at /home/pkgeval/.julia/packages/Comonicon/5Dvqo/src/Comonicon.jl:1
-ERROR: LoadError: Failed to precompile Comonicon [863f3e99-da2a-4334-8734-de3dacbe5542] to /home/pkgeval/.julia/compiled/v1.6/Comonicon/ylrB3_76Bu2.ji.
-Stacktrace:
- [1] error(s::String)
-   @ Base ./error.jl:33
- [2] compilecache(pkg::Base.PkgId, path::String, cache::Base.TOMLCache, show_errors::Bool)
-   @ Base ./loading.jl:1304
- [3] compilecache
-   @ ./loading.jl:1257 [inlined]
- [4] _require(pkg::Base.PkgId, cache::Base.TOMLCache)
-   @ Base ./loading.jl:978
- [5] require(uuidkey::Base.PkgId, cache::Base.TOMLCache)
-   @ Base ./loading.jl:871
- [6] require(into::Module, mod::Symbol)
-   @ Base ./loading.jl:858
- [7] include(fname::String)
-   @ Base.MainInclude ./client.jl:444
- [8] top-level scope
-   @ none:5
-in expression starting at /home/pkgeval/.julia/packages/VirtualEnv/N4Dbk/deps/build.jl:1
+    @ none:5
+in expression starting at /home/pkgeval/.julia/packages/VirtualEnv/N4Dbk/deps/build.jl:2
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52

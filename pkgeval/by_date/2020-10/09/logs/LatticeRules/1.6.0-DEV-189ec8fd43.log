@@ -19,12 +19,12 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [9a3f8284] + Random
   [9e88b42a] + Serialization
     Testing LatticeRules
-Status `/tmp/jl_Ko3sfY/Project.toml`
+Status `/tmp/jl_Wot5E1/Project.toml`
   [73f95e8e] LatticeRules v0.0.1
   [276daf66] SpecialFunctions v0.10.3
   [10745b16] Statistics
   [8dfed614] Test
-Status `/tmp/jl_Ko3sfY/Manifest.toml`
+Status `/tmp/jl_Wot5E1/Manifest.toml`
   [e66e0078] CompilerSupportLibraries_jll v0.3.3+0
   [73f95e8e] LatticeRules v0.0.1
   [efe28fd5] OpenSpecFun_jll v0.5.3+3
@@ -52,6 +52,84 @@ Status `/tmp/jl_Ko3sfY/Manifest.toml`
   [cf7118a7] UUIDs
   [4ec0a83e] Unicode
     Testing Running tests...
-Test Summary: | Pass  Total
-LatticeRules  |   48     48
-    Testing LatticeRules tests passed 
+Computing multidimensional integral from Keister, Bradley: Error During Test at /home/pkgeval/.julia/packages/LatticeRules/T4oqV/test/runtests.jl:166
+  Got exception outside of a @test
+  DomainError with Inf:
+  cos(x) is only defined for finite x.
+  Stacktrace:
+    [1] cos_domain_error(x::Float64)
+      @ Base.Math ./special/trig.jl:98
+    [2] cos(x::Float64)
+      @ Base.Math ./special/trig.jl:109
+    [3] (::var"#f#2")(x::Vector{Float64})
+      @ Main ~/.julia/packages/LatticeRules/T4oqV/test/runtests.jl:169
+    [4] _broadcast_getindex_evalf
+      @ ./broadcast.jl:648 [inlined]
+    [5] _broadcast_getindex
+      @ ./broadcast.jl:621 [inlined]
+    [6] getindex
+      @ ./broadcast.jl:575 [inlined]
+    [7] macro expansion
+      @ ./broadcast.jl:932 [inlined]
+    [8] macro expansion
+      @ ./simdloop.jl:77 [inlined]
+    [9] copyto!
+      @ ./broadcast.jl:931 [inlined]
+   [10] copyto!
+      @ ./broadcast.jl:886 [inlined]
+   [11] copy(bc::Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{1}, Tuple{Base.OneTo{Int64}}, var"#f#2", Tuple{Vector{Vector{Float64}}}})
+      @ Base.Broadcast ./broadcast.jl:862
+   [12] materialize(bc::Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{1}, Nothing, var"#f#2", Tuple{Vector{Vector{Float64}}}})
+      @ Base.Broadcast ./broadcast.jl:837
+   [13] top-level scope
+      @ ~/.julia/packages/LatticeRules/T4oqV/test/runtests.jl:172
+   [14] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144
+   [15] top-level scope
+      @ ~/.julia/packages/LatticeRules/T4oqV/test/runtests.jl:167
+   [16] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144
+   [17] top-level scope
+      @ ~/.julia/packages/LatticeRules/T4oqV/test/runtests.jl:5
+   [18] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [19] top-level scope
+      @ none:6
+   [20] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [21] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [22] _start()
+      @ Base ./client.jl:485
+Test Summary:                                               | Pass  Error  Total
+LatticeRules                                                |   46      1     47
+  Constructing LatticeRule                                  |   31            31
+  Constructing ShiftedLatticeRule                           |   11            11
+  Approximating pi by throwing darts                        |    1             1
+  Computing multidimensional integral from Keister, Bradley |    3      1      4
+ERROR: LoadError: Some tests did not pass: 46 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/LatticeRules/T4oqV/test/runtests.jl:3
+ERROR: Package LatticeRules errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1609
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:331
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:318
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:19

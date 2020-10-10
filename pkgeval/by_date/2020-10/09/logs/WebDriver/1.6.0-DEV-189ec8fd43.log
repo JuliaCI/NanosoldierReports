@@ -15,12 +15,12 @@ Environment:
   Installed UnPack ───────────── v1.0.2
   Installed MbedTLS ──────────── v1.0.2
   Installed Parsers ──────────── v1.0.11
-  Installed StructTypes ──────── v1.1.0
   Installed JSON3 ────────────── v1.3.0
+  Installed StructTypes ──────── v1.1.0
   Installed Parameters ───────── v0.12.1
   Installed WebDriver ────────── v0.1.1
-  Installed IniFile ──────────── v0.5.0
   Installed OrderedCollections ─ v1.3.1
+  Installed IniFile ──────────── v0.5.0
   Installed HTTP ─────────────── v0.8.19
 Updating `~/.julia/environments/v1.6/Project.toml`
   [05625dda] + WebDriver v0.1.1
@@ -57,7 +57,7 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
     Testing WebDriver
-Status `/tmp/jl_nEiq7X/Project.toml`
+Status `/tmp/jl_ODJ1HW/Project.toml`
   [e30172f5] Documenter v0.25.2
   [cd3eb016] HTTP v0.8.19
   [0f8b85d8] JSON3 v1.3.0
@@ -66,7 +66,7 @@ Status `/tmp/jl_nEiq7X/Project.toml`
   [2a0f44e3] Base64
   [ade2ca70] Dates
   [8dfed614] Test
-Status `/tmp/jl_nEiq7X/Manifest.toml`
+Status `/tmp/jl_ODJ1HW/Manifest.toml`
   [ffbed154] DocStringExtensions v0.8.3
   [e30172f5] Documenter v0.25.2
   [cd3eb016] HTTP v0.8.19
@@ -104,195 +104,6 @@ Status `/tmp/jl_nEiq7X/Manifest.toml`
     Testing Running tests...
 [ Info: SetupBuildDirectory: setting up build directory.
 [ Info: Doctest: running doctests.
-┌ Error: doctest failure in ~/.julia/packages/WebDriver/bGMZk/src/01_structs/06_Element.jl:9-20
-│ 
-│ ```jldoctest
-│ julia> capabilities = Capabilities("chrome")
-│ Remote WebDriver Capabilities
-│ browserName: chrome
-│ julia> wd = RemoteWebDriver(capabilities, host = ENV["WEBDRIVER_HOST"], port = parse(Int, ENV["WEBDRIVER_PORT"]))
-│ Remote WebDriver
-│ julia> session = Session(wd)
-│ Session
-│ julia> isa(session, Session)
-│ true
-│ julia> delete!(session);
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ session = Session(wd)
-│ 
-│ Evaluated output:
-│ 
-│ ERROR: IOError(Base.IOError("connect: connection refused (ECONNREFUSED)", -111) during request(http://localhost:4444/wd/hub/session))
-│ 
-│ Stacktrace:
-│   [1] wait_connected(x::Sockets.TCPSocket)
-│     @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:532
-│   [2] connect
-│     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:567 [inlined]
-│   [3] connect(addr::Sockets.IPv4, port::UInt64)
-│     @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:553
-│   [4] getconnection(::Type{Sockets.TCPSocket}, host::SubString{String}, port::SubString{String}; keepalive::Bool, connect_timeout::Int64, kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol, Symbol}, NamedTuple{(:require_ssl_verification, :iofunction, :reached_redirect_limit), Tuple{Bool, Nothing, Bool}}})
-│     @ HTTP.ConnectionPool ~/.julia/packages/HTTP/IAI92/src/ConnectionPool.jl:630
-│   [5] newconnection(pod::HTTP.ConnectionPool.Pod, T::Type, host::SubString{String}, port::SubString{String}, pipeline_limit::Int64, require_ssl_verification::Bool, idle_timeout::Int64; kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
-│     @ HTTP.ConnectionPool ~/.julia/packages/HTTP/IAI92/src/ConnectionPool.jl:597
-│   [6] getconnection(::Type{HTTP.ConnectionPool.Transaction{Sockets.TCPSocket}}, host::SubString{String}, port::SubString{String}; connection_limit::Int64, pipeline_limit::Int64, idle_timeout::Int64, reuse_limit::Int64, require_ssl_verification::Bool, kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
-│     @ HTTP.ConnectionPool ~/.julia/packages/HTTP/IAI92/src/ConnectionPool.jl:541
-│   [7] request(::Type{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}, url::HTTP.URIs.URI, req::HTTP.Messages.Request, body::String; proxy::Nothing, socket_type::Type, reuse_limit::Int64, kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
-│     @ HTTP.ConnectionRequest ~/.julia/packages/HTTP/IAI92/src/ConnectionRequest.jl:73
-│   [8] request(::Type{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}, ::HTTP.URIs.URI, ::Vararg{Any, N} where N; kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
-│     @ HTTP.ExceptionRequest ~/.julia/packages/HTTP/IAI92/src/ExceptionRequest.jl:19
-│   [9] (::Base.var"#67#69"{Base.var"#67#68#70"{ExponentialBackOff, HTTP.RetryRequest.var"#2#3"{Bool, HTTP.Messages.Request}, typeof(HTTP.request)}})(::Type, ::Vararg{Any, N} where N; kwargs::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
-│     @ Base ./error.jl:301
-│  [10] #request#1
-│     @ ~/.julia/packages/HTTP/IAI92/src/RetryRequest.jl:44 [inlined]
-│  [11] request(::Type{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::String; http_version::VersionNumber, target::String, parent::Nothing, iofunction::Nothing, kw::Base.Iterators.Pairs{Symbol, Bool, Tuple{Symbol}, NamedTuple{(:reached_redirect_limit,), Tuple{Bool}}})
-│     @ HTTP.MessageRequest ~/.julia/packages/HTTP/IAI92/src/MessageRequest.jl:51
-│  [12] request(::Type{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::String; kw::Base.Iterators.Pairs{Symbol, Bool, Tuple{Symbol}, NamedTuple{(:reached_redirect_limit,), Tuple{Bool}}})
-│     @ HTTP.BasicAuthRequest ~/.julia/packages/HTTP/IAI92/src/BasicAuthRequest.jl:28
-│  [13] request(::Type{HTTP.RedirectRequest.RedirectLayer{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::String; redirect_limit::Int64, forwardheaders::Bool, kw::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
-│     @ HTTP.RedirectRequest ~/.julia/packages/HTTP/IAI92/src/RedirectRequest.jl:24
-│  [14] request(::Type{HTTP.RedirectRequest.RedirectLayer{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::String)
-│     @ HTTP.RedirectRequest ~/.julia/packages/HTTP/IAI92/src/RedirectRequest.jl:21
-│  [15] request(method::String, url::String, h::Vector{Pair{String, String}}, b::String; headers::Vector{Pair{String, String}}, body::String, query::Nothing, kw::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
-│     @ HTTP ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:314
-│  [16] request
-│     @ ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:314 [inlined]
-│  [17] #post#14
-│     @ ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:405 [inlined]
-│  [18] post
-│     @ ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:405 [inlined]
-│  [19] Session(wd::RemoteWebDriver{Capabilities{Nothing, Nothing, Nothing, Nothing}})
-│     @ WebDriver ~/.julia/packages/WebDriver/bGMZk/src/01_structs/05_Session.jl:26
-│  [20] top-level scope
-│     @ none:1
-│ 
-│ Expected output:
-│ 
-│ Session
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    SessionERROR: IOError(Base.IOError("connect: connection refused (ECONNREFUSED)", -111) during request(http://localhost:4444/wd/hub/session))
-│    
-│    Stacktrace:
-│      [1] wait_connected(x::Sockets.TCPSocket)
-│        @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:532
-│      [2] connect
-│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:567 [inlined]
-│      [3] connect(addr::Sockets.IPv4, port::UInt64)
-│        @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:553
-│      [4] getconnection(::Type{Sockets.TCPSocket}, host::SubString{String}, port::SubString{String}; keepalive::Bool, connect_timeout::Int64, kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol, Symbol}, NamedTuple{(:require_ssl_verification, :iofunction, :reached_redirect_limit), Tuple{Bool, Nothing, Bool}}})
-│        @ HTTP.ConnectionPool ~/.julia/packages/HTTP/IAI92/src/ConnectionPool.jl:630
-│      [5] newconnection(pod::HTTP.ConnectionPool.Pod, T::Type, host::SubString{String}, port::SubString{String}, pipeline_limit::Int64, require_ssl_verification::Bool, idle_timeout::Int64; kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
-│        @ HTTP.ConnectionPool ~/.julia/packages/HTTP/IAI92/src/ConnectionPool.jl:597
-│      [6] getconnection(::Type{HTTP.ConnectionPool.Transaction{Sockets.TCPSocket}}, host::SubString{String}, port::SubString{String}; connection_limit::Int64, pipeline_limit::Int64, idle_timeout::Int64, reuse_limit::Int64, require_ssl_verification::Bool, kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
-│        @ HTTP.ConnectionPool ~/.julia/packages/HTTP/IAI92/src/ConnectionPool.jl:541
-│      [7] request(::Type{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}, url::HTTP.URIs.URI, req::HTTP.Messages.Request, body::String; proxy::Nothing, socket_type::Type, reuse_limit::Int64, kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
-│        @ HTTP.ConnectionRequest ~/.julia/packages/HTTP/IAI92/src/ConnectionRequest.jl:73
-│      [8] request(::Type{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}, ::HTTP.URIs.URI, ::Vararg{Any, N} where N; kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
-│        @ HTTP.ExceptionRequest ~/.julia/packages/HTTP/IAI92/src/ExceptionRequest.jl:19
-│      [9] (::Base.var"#67#69"{Base.var"#67#68#70"{ExponentialBackOff, HTTP.RetryRequest.var"#2#3"{Bool, HTTP.Messages.Request}, typeof(HTTP.request)}})(::Type, ::Vararg{Any, N} where N; kwargs::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
-│        @ Base ./error.jl:301
-│     [10] #request#1
-│        @ ~/.julia/packages/HTTP/IAI92/src/RetryRequest.jl:44 [inlined]
-│     [11] request(::Type{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::String; http_version::VersionNumber, target::String, parent::Nothing, iofunction::Nothing, kw::Base.Iterators.Pairs{Symbol, Bool, Tuple{Symbol}, NamedTuple{(:reached_redirect_limit,), Tuple{Bool}}})
-│        @ HTTP.MessageRequest ~/.julia/packages/HTTP/IAI92/src/MessageRequest.jl:51
-│     [12] request(::Type{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::String; kw::Base.Iterators.Pairs{Symbol, Bool, Tuple{Symbol}, NamedTuple{(:reached_redirect_limit,), Tuple{Bool}}})
-│        @ HTTP.BasicAuthRequest ~/.julia/packages/HTTP/IAI92/src/BasicAuthRequest.jl:28
-│     [13] request(::Type{HTTP.RedirectRequest.RedirectLayer{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::String; redirect_limit::Int64, forwardheaders::Bool, kw::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
-│        @ HTTP.RedirectRequest ~/.julia/packages/HTTP/IAI92/src/RedirectRequest.jl:24
-│     [14] request(::Type{HTTP.RedirectRequest.RedirectLayer{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::String)
-│        @ HTTP.RedirectRequest ~/.julia/packages/HTTP/IAI92/src/RedirectRequest.jl:21
-│     [15] request(method::String, url::String, h::Vector{Pair{String, String}}, b::String; headers::Vector{Pair{String, String}}, body::String, query::Nothing, kw::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
-│        @ HTTP ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:314
-│     [16] request
-│        @ ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:314 [inlined]
-│     [17] #post#14
-│        @ ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:405 [inlined]
-│     [18] post
-│        @ ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:405 [inlined]
-│     [19] Session(wd::RemoteWebDriver{Capabilities{Nothing, Nothing, Nothing, Nothing}})
-│        @ WebDriver ~/.julia/packages/WebDriver/bGMZk/src/01_structs/05_Session.jl:26
-│     [20] top-level scope
-│        @ none:1
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/WebDriver/bGMZk/src/01_structs/06_Element.jl:9-20
-│ 
-│ ```jldoctest
-│ julia> capabilities = Capabilities("chrome")
-│ Remote WebDriver Capabilities
-│ browserName: chrome
-│ julia> wd = RemoteWebDriver(capabilities, host = ENV["WEBDRIVER_HOST"], port = parse(Int, ENV["WEBDRIVER_PORT"]))
-│ Remote WebDriver
-│ julia> session = Session(wd)
-│ Session
-│ julia> isa(session, Session)
-│ true
-│ julia> delete!(session);
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ isa(session, Session)
-│ 
-│ Evaluated output:
-│ 
-│ ERROR: UndefVarError: session not defined
-│ Stacktrace:
-│  [1] top-level scope
-│    @ none:1
-│ 
-│ Expected output:
-│ 
-│ true
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    trueERROR: UndefVarError: session not defined
-│    Stacktrace:
-│     [1] top-level scope
-│       @ none:1
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/WebDriver/bGMZk/src/01_structs/06_Element.jl:9-20
-│ 
-│ ```jldoctest
-│ julia> capabilities = Capabilities("chrome")
-│ Remote WebDriver Capabilities
-│ browserName: chrome
-│ julia> wd = RemoteWebDriver(capabilities, host = ENV["WEBDRIVER_HOST"], port = parse(Int, ENV["WEBDRIVER_PORT"]))
-│ Remote WebDriver
-│ julia> session = Session(wd)
-│ Session
-│ julia> isa(session, Session)
-│ true
-│ julia> delete!(session);
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ delete!(session);
-│ 
-│ Evaluated output:
-│ 
-│ ERROR: UndefVarError: session not defined
-│ Stacktrace:
-│  [1] top-level scope
-│    @ none:1
-│ 
-│ Expected output:
-│ 
-│ 
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    ERROR: UndefVarError: session not defined
-│    Stacktrace:
-│     [1] top-level scope
-│       @ none:1
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/WebDriver/bGMZk/src/01_structs/05_Session.jl:6-17
 │ 
 │ ```jldoctest
@@ -596,6 +407,195 @@ Status `/tmp/jl_nEiq7X/Manifest.toml`
 │        @ WebDriver ~/.julia/packages/WebDriver/bGMZk/src/02_commands/01_Sessions/03_Status.jl:8
 │     [20] top-level scope
 │        @ none:1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/WebDriver/bGMZk/src/01_structs/06_Element.jl:9-20
+│ 
+│ ```jldoctest
+│ julia> capabilities = Capabilities("chrome")
+│ Remote WebDriver Capabilities
+│ browserName: chrome
+│ julia> wd = RemoteWebDriver(capabilities, host = ENV["WEBDRIVER_HOST"], port = parse(Int, ENV["WEBDRIVER_PORT"]))
+│ Remote WebDriver
+│ julia> session = Session(wd)
+│ Session
+│ julia> isa(session, Session)
+│ true
+│ julia> delete!(session);
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ session = Session(wd)
+│ 
+│ Evaluated output:
+│ 
+│ ERROR: IOError(Base.IOError("connect: connection refused (ECONNREFUSED)", -111) during request(http://localhost:4444/wd/hub/session))
+│ 
+│ Stacktrace:
+│   [1] wait_connected(x::Sockets.TCPSocket)
+│     @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:532
+│   [2] connect
+│     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:567 [inlined]
+│   [3] connect(addr::Sockets.IPv4, port::UInt64)
+│     @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:553
+│   [4] getconnection(::Type{Sockets.TCPSocket}, host::SubString{String}, port::SubString{String}; keepalive::Bool, connect_timeout::Int64, kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol, Symbol}, NamedTuple{(:require_ssl_verification, :iofunction, :reached_redirect_limit), Tuple{Bool, Nothing, Bool}}})
+│     @ HTTP.ConnectionPool ~/.julia/packages/HTTP/IAI92/src/ConnectionPool.jl:630
+│   [5] newconnection(pod::HTTP.ConnectionPool.Pod, T::Type, host::SubString{String}, port::SubString{String}, pipeline_limit::Int64, require_ssl_verification::Bool, idle_timeout::Int64; kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
+│     @ HTTP.ConnectionPool ~/.julia/packages/HTTP/IAI92/src/ConnectionPool.jl:597
+│   [6] getconnection(::Type{HTTP.ConnectionPool.Transaction{Sockets.TCPSocket}}, host::SubString{String}, port::SubString{String}; connection_limit::Int64, pipeline_limit::Int64, idle_timeout::Int64, reuse_limit::Int64, require_ssl_verification::Bool, kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
+│     @ HTTP.ConnectionPool ~/.julia/packages/HTTP/IAI92/src/ConnectionPool.jl:541
+│   [7] request(::Type{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}, url::HTTP.URIs.URI, req::HTTP.Messages.Request, body::String; proxy::Nothing, socket_type::Type, reuse_limit::Int64, kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
+│     @ HTTP.ConnectionRequest ~/.julia/packages/HTTP/IAI92/src/ConnectionRequest.jl:73
+│   [8] request(::Type{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}, ::HTTP.URIs.URI, ::Vararg{Any, N} where N; kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
+│     @ HTTP.ExceptionRequest ~/.julia/packages/HTTP/IAI92/src/ExceptionRequest.jl:19
+│   [9] (::Base.var"#67#69"{Base.var"#67#68#70"{ExponentialBackOff, HTTP.RetryRequest.var"#2#3"{Bool, HTTP.Messages.Request}, typeof(HTTP.request)}})(::Type, ::Vararg{Any, N} where N; kwargs::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
+│     @ Base ./error.jl:301
+│  [10] #request#1
+│     @ ~/.julia/packages/HTTP/IAI92/src/RetryRequest.jl:44 [inlined]
+│  [11] request(::Type{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::String; http_version::VersionNumber, target::String, parent::Nothing, iofunction::Nothing, kw::Base.Iterators.Pairs{Symbol, Bool, Tuple{Symbol}, NamedTuple{(:reached_redirect_limit,), Tuple{Bool}}})
+│     @ HTTP.MessageRequest ~/.julia/packages/HTTP/IAI92/src/MessageRequest.jl:51
+│  [12] request(::Type{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::String; kw::Base.Iterators.Pairs{Symbol, Bool, Tuple{Symbol}, NamedTuple{(:reached_redirect_limit,), Tuple{Bool}}})
+│     @ HTTP.BasicAuthRequest ~/.julia/packages/HTTP/IAI92/src/BasicAuthRequest.jl:28
+│  [13] request(::Type{HTTP.RedirectRequest.RedirectLayer{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::String; redirect_limit::Int64, forwardheaders::Bool, kw::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+│     @ HTTP.RedirectRequest ~/.julia/packages/HTTP/IAI92/src/RedirectRequest.jl:24
+│  [14] request(::Type{HTTP.RedirectRequest.RedirectLayer{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::String)
+│     @ HTTP.RedirectRequest ~/.julia/packages/HTTP/IAI92/src/RedirectRequest.jl:21
+│  [15] request(method::String, url::String, h::Vector{Pair{String, String}}, b::String; headers::Vector{Pair{String, String}}, body::String, query::Nothing, kw::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+│     @ HTTP ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:314
+│  [16] request
+│     @ ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:314 [inlined]
+│  [17] #post#14
+│     @ ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:405 [inlined]
+│  [18] post
+│     @ ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:405 [inlined]
+│  [19] Session(wd::RemoteWebDriver{Capabilities{Nothing, Nothing, Nothing, Nothing}})
+│     @ WebDriver ~/.julia/packages/WebDriver/bGMZk/src/01_structs/05_Session.jl:26
+│  [20] top-level scope
+│     @ none:1
+│ 
+│ Expected output:
+│ 
+│ Session
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    SessionERROR: IOError(Base.IOError("connect: connection refused (ECONNREFUSED)", -111) during request(http://localhost:4444/wd/hub/session))
+│    
+│    Stacktrace:
+│      [1] wait_connected(x::Sockets.TCPSocket)
+│        @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:532
+│      [2] connect
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:567 [inlined]
+│      [3] connect(addr::Sockets.IPv4, port::UInt64)
+│        @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:553
+│      [4] getconnection(::Type{Sockets.TCPSocket}, host::SubString{String}, port::SubString{String}; keepalive::Bool, connect_timeout::Int64, kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol, Symbol}, NamedTuple{(:require_ssl_verification, :iofunction, :reached_redirect_limit), Tuple{Bool, Nothing, Bool}}})
+│        @ HTTP.ConnectionPool ~/.julia/packages/HTTP/IAI92/src/ConnectionPool.jl:630
+│      [5] newconnection(pod::HTTP.ConnectionPool.Pod, T::Type, host::SubString{String}, port::SubString{String}, pipeline_limit::Int64, require_ssl_verification::Bool, idle_timeout::Int64; kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
+│        @ HTTP.ConnectionPool ~/.julia/packages/HTTP/IAI92/src/ConnectionPool.jl:597
+│      [6] getconnection(::Type{HTTP.ConnectionPool.Transaction{Sockets.TCPSocket}}, host::SubString{String}, port::SubString{String}; connection_limit::Int64, pipeline_limit::Int64, idle_timeout::Int64, reuse_limit::Int64, require_ssl_verification::Bool, kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
+│        @ HTTP.ConnectionPool ~/.julia/packages/HTTP/IAI92/src/ConnectionPool.jl:541
+│      [7] request(::Type{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}, url::HTTP.URIs.URI, req::HTTP.Messages.Request, body::String; proxy::Nothing, socket_type::Type, reuse_limit::Int64, kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
+│        @ HTTP.ConnectionRequest ~/.julia/packages/HTTP/IAI92/src/ConnectionRequest.jl:73
+│      [8] request(::Type{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}, ::HTTP.URIs.URI, ::Vararg{Any, N} where N; kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
+│        @ HTTP.ExceptionRequest ~/.julia/packages/HTTP/IAI92/src/ExceptionRequest.jl:19
+│      [9] (::Base.var"#67#69"{Base.var"#67#68#70"{ExponentialBackOff, HTTP.RetryRequest.var"#2#3"{Bool, HTTP.Messages.Request}, typeof(HTTP.request)}})(::Type, ::Vararg{Any, N} where N; kwargs::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
+│        @ Base ./error.jl:301
+│     [10] #request#1
+│        @ ~/.julia/packages/HTTP/IAI92/src/RetryRequest.jl:44 [inlined]
+│     [11] request(::Type{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::String; http_version::VersionNumber, target::String, parent::Nothing, iofunction::Nothing, kw::Base.Iterators.Pairs{Symbol, Bool, Tuple{Symbol}, NamedTuple{(:reached_redirect_limit,), Tuple{Bool}}})
+│        @ HTTP.MessageRequest ~/.julia/packages/HTTP/IAI92/src/MessageRequest.jl:51
+│     [12] request(::Type{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::String; kw::Base.Iterators.Pairs{Symbol, Bool, Tuple{Symbol}, NamedTuple{(:reached_redirect_limit,), Tuple{Bool}}})
+│        @ HTTP.BasicAuthRequest ~/.julia/packages/HTTP/IAI92/src/BasicAuthRequest.jl:28
+│     [13] request(::Type{HTTP.RedirectRequest.RedirectLayer{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::String; redirect_limit::Int64, forwardheaders::Bool, kw::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+│        @ HTTP.RedirectRequest ~/.julia/packages/HTTP/IAI92/src/RedirectRequest.jl:24
+│     [14] request(::Type{HTTP.RedirectRequest.RedirectLayer{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::String)
+│        @ HTTP.RedirectRequest ~/.julia/packages/HTTP/IAI92/src/RedirectRequest.jl:21
+│     [15] request(method::String, url::String, h::Vector{Pair{String, String}}, b::String; headers::Vector{Pair{String, String}}, body::String, query::Nothing, kw::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+│        @ HTTP ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:314
+│     [16] request
+│        @ ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:314 [inlined]
+│     [17] #post#14
+│        @ ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:405 [inlined]
+│     [18] post
+│        @ ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:405 [inlined]
+│     [19] Session(wd::RemoteWebDriver{Capabilities{Nothing, Nothing, Nothing, Nothing}})
+│        @ WebDriver ~/.julia/packages/WebDriver/bGMZk/src/01_structs/05_Session.jl:26
+│     [20] top-level scope
+│        @ none:1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/WebDriver/bGMZk/src/01_structs/06_Element.jl:9-20
+│ 
+│ ```jldoctest
+│ julia> capabilities = Capabilities("chrome")
+│ Remote WebDriver Capabilities
+│ browserName: chrome
+│ julia> wd = RemoteWebDriver(capabilities, host = ENV["WEBDRIVER_HOST"], port = parse(Int, ENV["WEBDRIVER_PORT"]))
+│ Remote WebDriver
+│ julia> session = Session(wd)
+│ Session
+│ julia> isa(session, Session)
+│ true
+│ julia> delete!(session);
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ isa(session, Session)
+│ 
+│ Evaluated output:
+│ 
+│ ERROR: UndefVarError: session not defined
+│ Stacktrace:
+│  [1] top-level scope
+│    @ none:1
+│ 
+│ Expected output:
+│ 
+│ true
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    trueERROR: UndefVarError: session not defined
+│    Stacktrace:
+│     [1] top-level scope
+│       @ none:1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/WebDriver/bGMZk/src/01_structs/06_Element.jl:9-20
+│ 
+│ ```jldoctest
+│ julia> capabilities = Capabilities("chrome")
+│ Remote WebDriver Capabilities
+│ browserName: chrome
+│ julia> wd = RemoteWebDriver(capabilities, host = ENV["WEBDRIVER_HOST"], port = parse(Int, ENV["WEBDRIVER_PORT"]))
+│ Remote WebDriver
+│ julia> session = Session(wd)
+│ Session
+│ julia> isa(session, Session)
+│ true
+│ julia> delete!(session);
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ delete!(session);
+│ 
+│ Evaluated output:
+│ 
+│ ERROR: UndefVarError: session not defined
+│ Stacktrace:
+│  [1] top-level scope
+│    @ none:1
+│ 
+│ Expected output:
+│ 
+│ 
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    ERROR: UndefVarError: session not defined
+│    Stacktrace:
+│     [1] top-level scope
+│       @ none:1
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
 ┌ Error: Doctesting failed
 │   exception =
