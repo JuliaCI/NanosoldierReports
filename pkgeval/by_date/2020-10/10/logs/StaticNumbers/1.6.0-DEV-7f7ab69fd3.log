@@ -9,10 +9,11 @@ Platform Info:
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
   JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
   Resolving package versions...
-  Installed StaticNumbers ─ v0.3.3
   Installed Requires ────── v1.1.0
+  Installed StaticNumbers ─ v0.3.3
 Updating `~/.julia/environments/v1.6/Project.toml`
   [c5e4b96a] + StaticNumbers v0.3.3
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -23,7 +24,7 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [9e88b42a] + Serialization
   [cf7118a7] + UUIDs
     Testing StaticNumbers
-Status `/tmp/jl_OBlLR0/Project.toml`
+Status `/tmp/jl_BWifEY/Project.toml`
   [fdea26ae] SIMD v3.1.0
   [90137ffa] StaticArrays v0.12.4
   [c5e4b96a] StaticNumbers v0.3.3
@@ -32,7 +33,7 @@ Status `/tmp/jl_OBlLR0/Project.toml`
   [9a3f8284] Random
   [10745b16] Statistics
   [8dfed614] Test
-Status `/tmp/jl_OBlLR0/Manifest.toml`
+Status `/tmp/jl_BWifEY/Manifest.toml`
   [ae029012] Requires v1.1.0
   [fdea26ae] SIMD v3.1.0
   [90137ffa] StaticArrays v0.12.4
@@ -57,13 +58,19 @@ Skipping Base.active_repl
 Skipping Base.active_repl_backend
 Skipping Base.active_repl
 Skipping Base.active_repl_backend
+(::Type{T})(x::Union{StaticInteger{X}, StaticReal{X}, StaticBool}) where {T<:AbstractFloat, X} in StaticNumbers at /home/pkgeval/.julia/packages/StaticNumbers/1M5qL/src/StaticNumbers.jl:148
+Float16(x::Integer) in Base at float.jl:51
+
 StaticInteger{X}(x::Number) where X in StaticNumbers at /home/pkgeval/.julia/packages/StaticNumbers/1M5qL/src/StaticNumbers.jl:27
-(::Type{T})(x::Rational) where T<:Integer in Base at rational.jl:109
+(::Type{T})(x::Float16) where T<:Integer in Base at float.jl:71
 
 StaticInteger{X}(x::Number) where X in StaticNumbers at /home/pkgeval/.julia/packages/StaticNumbers/1M5qL/src/StaticNumbers.jl:27
 (::Type{T})(x::BigFloat) where T<:Integer in Base.MPFR at mpfr.jl:326
 
-StaticInteger(x::Number) in StaticNumbers at /home/pkgeval/.julia/packages/StaticNumbers/1M5qL/src/StaticNumbers.jl:28
+StaticInteger{X}(x::Number) where X in StaticNumbers at /home/pkgeval/.julia/packages/StaticNumbers/1M5qL/src/StaticNumbers.jl:27
+(::Type{T})(x::Rational) where T<:Integer in Base at rational.jl:109
+
+StaticInteger{X}(x::Number) where X in StaticNumbers at /home/pkgeval/.julia/packages/StaticNumbers/1M5qL/src/StaticNumbers.jl:27
 (::Type{T})(z::Complex) where T<:Real in Base at complex.jl:37
 
 (::Type{T})(x::Union{StaticInteger{X}, StaticReal{X}, StaticBool}) where {T<:AbstractFloat, X} in StaticNumbers at /home/pkgeval/.julia/packages/StaticNumbers/1M5qL/src/StaticNumbers.jl:148
@@ -72,23 +79,17 @@ BigFloat(x::Integer; precision) in Base.MPFR at mpfr.jl:227
 StaticInteger(x::Number) in StaticNumbers at /home/pkgeval/.julia/packages/StaticNumbers/1M5qL/src/StaticNumbers.jl:28
 (::Type{T})(x::Rational) where T<:Integer in Base at rational.jl:109
 
-StaticReal(x::Number) in StaticNumbers at /home/pkgeval/.julia/packages/StaticNumbers/1M5qL/src/StaticNumbers.jl:41
+StaticInteger(x::Number) in StaticNumbers at /home/pkgeval/.julia/packages/StaticNumbers/1M5qL/src/StaticNumbers.jl:28
 (::Type{T})(z::Complex) where T<:Real in Base at complex.jl:37
-
-(::Type{T})(x::Union{StaticInteger{X}, StaticReal{X}, StaticBool}) where {T<:AbstractFloat, X} in StaticNumbers at /home/pkgeval/.julia/packages/StaticNumbers/1M5qL/src/StaticNumbers.jl:148
-Float16(x::Integer) in Base at float.jl:51
 
 StaticReal{X}(x::Number) where X in StaticNumbers at /home/pkgeval/.julia/packages/StaticNumbers/1M5qL/src/StaticNumbers.jl:40
 (::Type{T})(z::Complex) where T<:Real in Base at complex.jl:37
 
-StaticInteger{X}(x::Number) where X in StaticNumbers at /home/pkgeval/.julia/packages/StaticNumbers/1M5qL/src/StaticNumbers.jl:27
-(::Type{T})(x::Float16) where T<:Integer in Base at float.jl:71
+StaticReal(x::Number) in StaticNumbers at /home/pkgeval/.julia/packages/StaticNumbers/1M5qL/src/StaticNumbers.jl:41
+(::Type{T})(z::Complex) where T<:Real in Base at complex.jl:37
 
 StaticInteger(x::Number) in StaticNumbers at /home/pkgeval/.julia/packages/StaticNumbers/1M5qL/src/StaticNumbers.jl:28
 (::Type{T})(x::BigFloat) where T<:Integer in Base.MPFR at mpfr.jl:326
-
-StaticInteger{X}(x::Number) where X in StaticNumbers at /home/pkgeval/.julia/packages/StaticNumbers/1M5qL/src/StaticNumbers.jl:27
-(::Type{T})(z::Complex) where T<:Real in Base at complex.jl:37
 
 StaticInteger(x::Number) in StaticNumbers at /home/pkgeval/.julia/packages/StaticNumbers/1M5qL/src/StaticNumbers.jl:28
 (::Type{T})(x::Float16) where T<:Integer in Base at float.jl:71
@@ -140,4 +141,4 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
  [11] top-level scope
-    @ none:19
+    @ none:31

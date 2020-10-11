@@ -9,6 +9,7 @@ Platform Info:
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
   JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
   Resolving package versions...
   Installed SortingAlgorithms ─────────── v0.3.1
@@ -18,28 +19,28 @@ Environment:
   Installed Missings ──────────────────── v0.4.4
   Installed FilePathsBase ─────────────── v0.8.0
   Installed Tables ────────────────────── v1.1.0
-  Installed DataAPI ───────────────────── v1.3.0
   Installed TableTraits ───────────────── v1.0.0
+  Installed DataAPI ───────────────────── v1.3.0
   Installed YAML ──────────────────────── v0.4.2
-  Installed Compat ────────────────────── v3.19.0
+  Installed Compat ────────────────────── v3.20.0
   Installed OrderedCollections ────────── v1.3.1
   Installed Parsers ───────────────────── v1.0.11
-  Installed DataFrames ────────────────── v0.21.7
   Installed WeakRefStrings ────────────── v0.6.2
-  Installed PooledArrays ──────────────── v0.5.3
-  Installed DataValueInterfaces ───────── v1.0.0
-  Installed IteratorInterfaceExtensions ─ v1.0.0
-  Installed CSV ───────────────────────── v0.6.2
-  Installed StructTypes ───────────────── v1.1.0
+  Installed DataFrames ────────────────── v0.21.7
   Installed CategoricalArrays ─────────── v0.8.3
-  Installed DataStructures ────────────── v0.18.7
+  Installed PooledArrays ──────────────── v0.5.3
+  Installed IteratorInterfaceExtensions ─ v1.0.0
+  Installed StructTypes ───────────────── v1.1.0
   Installed JSON ──────────────────────── v0.21.1
+  Installed CSV ───────────────────────── v0.6.2
+  Installed DataValueInterfaces ───────── v1.0.0
+  Installed DataStructures ────────────── v0.18.7
 Updating `~/.julia/environments/v1.6/Project.toml`
   [b4d66a32] + Schemata v2.0.8
 Updating `~/.julia/environments/v1.6/Manifest.toml`
   [336ed68f] + CSV v0.6.2
   [324d7699] + CategoricalArrays v0.8.3
-  [34da2185] + Compat v3.19.0
+  [34da2185] + Compat v3.20.0
   [9a962f9c] + DataAPI v1.3.0
   [a93c6f00] + DataFrames v0.21.7
   [864edb3b] + DataStructures v0.18.7
@@ -88,7 +89,7 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
     Testing Schemata
-Status `/tmp/jl_VaNmoY/Project.toml`
+Status `/tmp/jl_f9WKv0/Project.toml`
   [336ed68f] CSV v0.6.2
   [324d7699] CategoricalArrays v0.8.3
   [a93c6f00] DataFrames v0.21.7
@@ -99,10 +100,10 @@ Status `/tmp/jl_VaNmoY/Project.toml`
   [ddb6d928] YAML v0.4.2
   [ade2ca70] Dates
   [8dfed614] Test
-Status `/tmp/jl_VaNmoY/Manifest.toml`
+Status `/tmp/jl_f9WKv0/Manifest.toml`
   [336ed68f] CSV v0.6.2
   [324d7699] CategoricalArrays v0.8.3
-  [34da2185] Compat v3.19.0
+  [34da2185] Compat v3.20.0
   [9a962f9c] DataAPI v1.3.0
   [a93c6f00] DataFrames v0.21.7
   [864edb3b] DataStructures v0.18.7
@@ -160,4 +161,57 @@ Status `/tmp/jl_VaNmoY/Manifest.toml`
   [cf7118a7] UUIDs
   [4ec0a83e] Unicode
     Testing Running tests...
-    Testing Schemata tests passed 
+ERROR: LoadError: LoadError: NonExistentTimeError: Local DateTime 2020-10-04T02:00:00 does not exist within Australia/Melbourne
+Stacktrace:
+  [1] (::TimeZones.var"#construct#8"{DateTime, VariableTimeZone})(T::Type{Local})
+    @ TimeZones ~/.julia/packages/TimeZones/tx0tt/src/types/zoneddatetime.jl:44
+  [2] #ZonedDateTime#7
+    @ ~/.julia/packages/TimeZones/tx0tt/src/types/zoneddatetime.jl:50 [inlined]
+  [3] ZonedDateTime(dt::DateTime, tz::VariableTimeZone)
+    @ TimeZones ~/.julia/packages/TimeZones/tx0tt/src/types/zoneddatetime.jl:37
+  [4] (::var"#3#4")(i::Int64)
+    @ Main ./none:0
+  [5] iterate
+    @ ./generator.jl:47 [inlined]
+  [6] collect_to!(dest::Vector{ZonedDateTime}, itr::Base.Generator{UnitRange{Int64}, var"#3#4"}, offs::Int64, st::Int64)
+    @ Base ./array.jl:732
+  [7] collect_to_with_first!(dest::Vector{ZonedDateTime}, v1::ZonedDateTime, itr::Base.Generator{UnitRange{Int64}, var"#3#4"}, st::Int64)
+    @ Base ./array.jl:710
+  [8] collect(itr::Base.Generator{UnitRange{Int64}, var"#3#4"})
+    @ Base ./array.jl:691
+  [9] top-level scope
+    @ ~/.julia/packages/Schemata/ff3gB/test/test_inmemory_tables.jl:123
+ [10] include(fname::String)
+    @ Base.MainInclude ./client.jl:444
+ [11] top-level scope
+    @ ~/.julia/packages/Schemata/ff3gB/test/runtests.jl:13
+ [12] include(fname::String)
+    @ Base.MainInclude ./client.jl:444
+ [13] top-level scope
+    @ none:6
+in expression starting at /home/pkgeval/.julia/packages/Schemata/ff3gB/test/test_inmemory_tables.jl:123
+in expression starting at /home/pkgeval/.julia/packages/Schemata/ff3gB/test/runtests.jl:13
+ERROR: Package Schemata errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1609
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:331
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:318
+  [5] #test#62
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [7] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:31

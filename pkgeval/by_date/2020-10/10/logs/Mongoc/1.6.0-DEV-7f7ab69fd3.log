@@ -9,16 +9,17 @@ Platform Info:
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
   JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
   Resolving package versions...
-  Installed Zstd_jll ──── v1.4.5+1
   Installed MongoC_jll ── v1.16.2+0
+  Installed Zstd_jll ──── v1.4.5+1
   Installed LZO_jll ───── v2.10.0+2
-  Installed snappy_jll ── v1.1.8+0
-  Installed OpenSSL_jll ─ v1.1.1+6
   Installed Zlib_jll ──── v1.2.11+17
+  Installed OpenSSL_jll ─ v1.1.1+6
   Installed Mongoc ────── v0.6.1
   Installed JLLWrappers ─ v1.1.1
+  Installed snappy_jll ── v1.1.8+0
 Updating `~/.julia/environments/v1.6/Project.toml`
   [4fe8b98c] + Mongoc v0.6.1
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -48,14 +49,14 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
     Testing Mongoc
-Status `/tmp/jl_9GTfwX/Project.toml`
+Status `/tmp/jl_BKeTFW/Project.toml`
   [90100e71] MongoC_jll v1.16.2+0
   [4fe8b98c] Mongoc v0.6.1
   [ade2ca70] Dates
   [8ba89e20] Distributed
   [9e88b42a] Serialization
   [8dfed614] Test
-Status `/tmp/jl_9GTfwX/Manifest.toml`
+Status `/tmp/jl_BKeTFW/Manifest.toml`
   [692b3bcd] JLLWrappers v1.1.1
   [dd4b983a] LZO_jll v2.10.0+2
   [90100e71] MongoC_jll v1.16.2+0
@@ -243,7 +244,7 @@ Insert One with custom OID: Error During Test at /home/pkgeval/.julia/packages/M
       @ Base ./client.jl:485
 new_collection: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/test/mongodb_tests.jl:86
   Got exception outside of a @test
-  BSONError: domain=15, code=13053, message=No servers yet eligible for rescan
+  BSONError: domain=15, code=13053, message=No suitable servers found (`serverSelectionTryOnce` set): [connection refused calling ismaster on 'localhost:27017']
   Stacktrace:
     [1] insert_one(collection::Mongoc.Collection, document::Mongoc.BSON; options::Nothing)
       @ Mongoc ~/.julia/packages/Mongoc/ULDwF/src/collection.jl:59
@@ -281,7 +282,7 @@ new_collection: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/
       @ Base ./client.jl:485
 find_databases: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/test/mongodb_tests.jl:144
   Got exception outside of a @test
-  BSONError: domain=15, code=13053, message=No suitable servers found (`serverSelectionTryOnce` set): [connection refused calling ismaster on 'localhost:27017']
+  BSONError: domain=15, code=13053, message=No servers yet eligible for rescan
   Stacktrace:
     [1] _iterate(cursor::Mongoc.Cursor{Mongoc.Client{Nothing}}, state::Nothing)
       @ Mongoc ~/.julia/packages/Mongoc/ULDwF/src/collection.jl:482
@@ -355,7 +356,7 @@ Binary data: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/tes
       @ Base ./client.jl:485
 find_collections: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/test/mongodb_tests.jl:181
   Got exception outside of a @test
-  BSONError: domain=15, code=13053, message=No servers yet eligible for rescan
+  BSONError: domain=15, code=13053, message=No suitable servers found (`serverSelectionTryOnce` set): [connection refused calling ismaster on 'localhost:27017']
   Stacktrace:
     [1] _iterate(cursor::Mongoc.Cursor{Mongoc.Database}, state::Nothing)
       @ Mongoc ~/.julia/packages/Mongoc/ULDwF/src/collection.jl:482
@@ -391,7 +392,7 @@ find_collections: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDw
       @ Base ./client.jl:485
 Cleanup: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/test/mongodb_tests.jl:196
   Got exception outside of a @test
-  BSONError: domain=15, code=13053, message=No suitable servers found (`serverSelectionTryOnce` set): [connection refused calling ismaster on 'localhost:27017']
+  BSONError: domain=15, code=13053, message=No servers yet eligible for rescan
   Stacktrace:
     [1] drop
       @ ~/.julia/packages/Mongoc/ULDwF/src/collection.jl:347 [inlined]
@@ -585,7 +586,7 @@ update_one, update_many: Error During Test at /home/pkgeval/.julia/packages/Mong
       @ Base ./client.jl:485
 aggregation, map_reduce: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/test/mongodb_tests.jl:287
   Got exception outside of a @test
-  BSONError: domain=15, code=13053, message=No servers yet eligible for rescan
+  BSONError: domain=15, code=13053, message=No suitable servers found (`serverSelectionTryOnce` set): [connection refused calling ismaster on 'localhost:27017']
   Stacktrace:
     [1] execute!(bulk_operation::Mongoc.BulkOperation)
       @ Mongoc ~/.julia/packages/Mongoc/ULDwF/src/collection.jl:135
@@ -625,7 +626,7 @@ aggregation, map_reduce: Error During Test at /home/pkgeval/.julia/packages/Mong
       @ Base ./client.jl:485
 main function: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/test/mongodb_tests.jl:384
   Got exception outside of a @test
-  BSONError: domain=15, code=13053, message=No suitable servers found (`serverSelectionTryOnce` set): [connection refused calling ismaster on 'localhost:27017']
+  BSONError: domain=15, code=13053, message=No servers yet eligible for rescan
   Stacktrace:
     [1] execute!(bulk_operation::Mongoc.BulkOperation)
       @ Mongoc ~/.julia/packages/Mongoc/ULDwF/src/collection.jl:135
@@ -724,7 +725,7 @@ Users: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/test/mong
      @ ~/.julia/packages/Mongoc/ULDwF/test/mongodb_tests.jl:23
 Users: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/test/mongodb_tests.jl:494
   Got exception outside of a @test
-  BSONError: domain=15, code=13053, message=No servers yet eligible for rescan
+  BSONError: domain=15, code=13053, message=No suitable servers found (`serverSelectionTryOnce` set): [connection refused calling ismaster on 'localhost:27017']
   Stacktrace:
     [1] command_simple(database::Mongoc.Database, command::Mongoc.BSON)
       @ Mongoc ~/.julia/packages/Mongoc/ULDwF/src/database.jl:33
@@ -756,7 +757,7 @@ Users: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/test/mong
       @ Base ./client.jl:485
 MongoDB: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/test/mongodb_tests.jl:21
   Got exception outside of a @test
-  BSONError: domain=15, code=13053, message=No suitable servers found (`serverSelectionTryOnce` set): [connection refused calling ismaster on 'localhost:27017']
+  BSONError: domain=15, code=13053, message=No servers yet eligible for rescan
   Stacktrace:
     [1] command_simple(database::Mongoc.Database, command::Mongoc.BSON)
       @ Mongoc ~/.julia/packages/Mongoc/ULDwF/src/database.jl:33
@@ -838,4 +839,4 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
  [11] top-level scope
-    @ none:19
+    @ none:31
