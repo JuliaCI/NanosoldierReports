@@ -1,0 +1,124 @@
+Julia Version 1.6.0-DEV.1177
+Commit 113afd9309 (2020-10-10 16:54 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+  Resolving package versions...
+  Installed AbstractAlgebra ─ v0.10.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [c3fe647b] + AbstractAlgebra v0.10.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [c3fe647b] + AbstractAlgebra v0.10.0
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [2f01184e] + SparseArrays
+  [8dfed614] + Test
+    Testing AbstractAlgebra
+Status `/tmp/jl_JH1pdX/Project.toml`
+  [c3fe647b] AbstractAlgebra v0.10.0
+  [b77e0a4c] InteractiveUtils
+  [37e2e46d] LinearAlgebra
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [2f01184e] SparseArrays
+  [8dfed614] Test
+Status `/tmp/jl_JH1pdX/Manifest.toml`
+  [c3fe647b] AbstractAlgebra v0.10.0
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [2f01184e] SparseArrays
+  [8dfed614] Test
+    Testing Running tests...
+Test Summary:               | Pass  Total
+youngtabs.partition_type... |   19     19
+Test Summary:               | Pass  Total
+youngtabs.partition_iter... |    8      8
+Test Summary:                  | Pass  Total
+youngtabs.youngtableau_type... |   27     27
+Test Summary:            | Pass  Total
+youngtabs.conjugation... |   11     11
+Test Summary:    | Pass  Total
+youngtabs.dim... |   34     34
+youngtabs.skewdiags...: Error During Test at /home/pkgeval/.julia/packages/AbstractAlgebra/7m2YN/test/generic/YoungTabs-test.jl:208
+  Test threw exception
+  Expression: matrix_repr(xi) == [if (i, j) in xi
+        1
+    else
+        0
+    end for i = 1:size(xi.lam, 1), j = 1:maximum(xi.lam)]
+  MethodError: no method matching getindex(::Int64, ::UnitRange{Int64})
+  Closest candidates are:
+    getindex(::Number) at number.jl:93
+    getindex(::Number, !Matched::Integer) at number.jl:94
+    getindex(::Number, !Matched::Integer...) at number.jl:99
+    ...
+  Stacktrace:
+   [1] _spsetnz_setindex!(A::SparseMatrixCSC{Int64, Int64}, x::Int64, I::Int64, J::UnitRange{Int64})
+     @ SparseArrays /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/SparseArrays/src/sparsematrix.jl:2707
+   [2] fill!(V::SubArray{Int64, 1, SparseMatrixCSC{Int64, Int64}, Tuple{Int64, UnitRange{Int64}}, false}, x::Int64)
+     @ SparseArrays /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/SparseArrays/src/sparsematrix.jl:2587
+   [3] copyto!
+     @ ./broadcast.jl:894 [inlined]
+   [4] materialize!
+     @ ./broadcast.jl:848 [inlined]
+   [5] materialize!
+     @ ./broadcast.jl:845 [inlined]
+   [6] matrix_repr(xi::AbstractAlgebra.Generic.SkewDiagram{Int64})
+     @ AbstractAlgebra.Generic ~/.julia/packages/AbstractAlgebra/7m2YN/src/generic/YoungTabs.jl:825
+   [7] top-level scope
+     @ ~/.julia/packages/AbstractAlgebra/7m2YN/test/generic/YoungTabs-test.jl:208
+   [8] top-level scope
+     @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144
+   [9] top-level scope
+     @ ~/.julia/packages/AbstractAlgebra/7m2YN/test/generic/YoungTabs-test.jl:176
+Test Summary:          | Pass  Error  Total
+youngtabs.skewdiags... |   31      1     32
+ERROR: LoadError: LoadError: LoadError: LoadError: Some tests did not pass: 31 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/AbstractAlgebra/7m2YN/test/generic/YoungTabs-test.jl:175
+in expression starting at /home/pkgeval/.julia/packages/AbstractAlgebra/7m2YN/test/Groups-test.jl:1
+in expression starting at /home/pkgeval/.julia/packages/AbstractAlgebra/7m2YN/test/AbstractAlgebra-test.jl:5
+in expression starting at /home/pkgeval/.julia/packages/AbstractAlgebra/7m2YN/test/runtests.jl:12
+ERROR: Package AbstractAlgebra errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1609
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:331
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:318
+  [5] #test#62
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [7] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:31
