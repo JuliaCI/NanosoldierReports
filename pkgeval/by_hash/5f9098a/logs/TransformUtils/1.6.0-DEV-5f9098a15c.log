@@ -1,0 +1,72 @@
+Julia Version 1.6.0-DEV.1166
+Commit 5f9098a15c (2020-10-09 07:39 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-10.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+  Resolving package versions...
+  Installed TransformUtils ─ v0.2.6
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [9b8138ad] + TransformUtils v0.2.6
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [9b8138ad] + TransformUtils v0.2.6
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+    Testing TransformUtils
+Status `/tmp/jl_UGloPW/Project.toml`
+  [9b8138ad] TransformUtils v0.2.6
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_UGloPW/Manifest.toml`
+  [9b8138ad] TransformUtils v0.2.6
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+    Testing Running tests...
+Test Summary:                               |
+Constructors SO3, Quaternion, AngleAxis...  | No tests
+Test Summary:                           | Pass  Total
+Ensure basic quaternion operations hold |   10     10
+Test Summary:                                       | Pass  Total
+Comparison functions for SO3, Quaternion, AngleAxis |    5      5
+Test Summary:                                        | Pass  Total
+Trivial case quaterion -> SO3 -> Euler -> quaternion |    2      2
+┌ Warning: Need better coverage on convert function tests
+└ @ Main ~/.julia/packages/TransformUtils/cFZOw/test/runtests.jl:89
+dAA = AngleAxis(0.7853981633974483, [1.0, 0.0, 0.0])
+dAA = so3([0.0 -0.15139854299469083 -0.10399486209314533; 0.15139854299469083 0.0 -0.19200099182551367; 0.10399486209314533 0.19200099182551367 0.0])
+dAA = so3([0.0 0.08606352308173906 -0.09183703192827375; -0.08606352308173906 0.0 0.10165001382822235; 0.09183703192827375 -0.10165001382822235 0.0])
+dAA = so3([0.0 -0.03626250861276744 -0.19446113945860666; 0.03626250861276744 0.0 -0.1160746251036448; 0.19446113945860666 0.1160746251036448 0.0])
+dAA = Quaternion(0.9977142225919702, [-0.02403744242738984, 0.060726139486305654, 0.01734552917441466])
+dAA = SO3([0.9962937751688405 -0.07416622384222464 -0.04356701505503031; 0.07335358130938936 0.9971061092715214 -0.01996644591548372; 0.0449217727711965 0.01669664919659519 0.9988509679810593])
+Test Summary:                        | Pass  Total
+Compare SO3 and quaternion rotations |   24     24
+Test Summary:       | Pass  Total
+Basic SE3 mechanics |    4      4
+Compare operations on two different SE3 transforms
+xi = SE3(SO3([0.9511681302840709 0.23811754346930364 -0.19641594493332026; -0.18056336663833997 0.9453151850401195 0.2716175096726888; 0.25035186949598204 -0.2228883945491758 0.9421489823882196]), [1.9200099182551367, -1.0399486209314532, 1.5139854299469082])
+xj = SE3(SO3([0.9505304597128934 -0.09584318733029662 0.2954757665196336; 0.06084208870570218 0.990229539415107 0.1254738997229006; -0.30461465066526733 -0.10128940078860527 0.9470746390269156]), [1.160746251036448, -1.9446113945860664, 0.3626250861276744])
+Dx = SE3(SO3([0.816867580503246 -0.29532015552250385 0.49549304905814473; 0.35174799884557956 0.9358333078856456 -0.02212159939832567; -0.4571659449597083 0.19235910582546933 0.8683301636907028]), [-0.8470836611962531, -0.7793605979783711, -1.1813437353147982])
+Test Summary:         | Pass  Total
+SE3 ⊕ and ⊖ mechanics |    6      6
+TransformUtils.convert(Euler, q) = Euler(0.7853981633974484, 0.0, 1.5707963267948963, Quaternion(1.0, [0.0, 0.0, 0.0]))
+Test Summary:              | Pass  Total
+Previous discovered issues |    3      3
+Test Summary:      | Pass  Total
+test SO3 logmap... |  301    301
+Test Summary:                              | Pass  Total
+test in-place and efficient inverse SE3... |    1      1
+    Testing TransformUtils tests passed 
