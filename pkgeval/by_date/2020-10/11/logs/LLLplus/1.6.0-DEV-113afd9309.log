@@ -12,10 +12,10 @@ Environment:
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
   Resolving package versions...
-  Installed DocStringExtensions ─ v0.8.3
-  Installed JSON ──────────────── v0.21.1
   Installed Parsers ───────────── v1.0.11
   Installed LLLplus ───────────── v1.2.8
+  Installed DocStringExtensions ─ v0.8.3
+  Installed JSON ──────────────── v0.21.1
   Installed Documenter ────────── v0.24.11
 Updating `~/.julia/environments/v1.6/Project.toml`
   [142c1900] + LLLplus v1.2.8
@@ -48,7 +48,7 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
     Testing LLLplus
-Status `/tmp/jl_RnErYY/Project.toml`
+Status `/tmp/jl_sF4CJX/Project.toml`
   [e30172f5] Documenter v0.24.11
   [142c1900] LLLplus v1.2.8
   [8bb1440f] DelimitedFiles
@@ -56,7 +56,7 @@ Status `/tmp/jl_RnErYY/Project.toml`
   [de0858da] Printf
   [9a3f8284] Random
   [8dfed614] Test
-Status `/tmp/jl_RnErYY/Manifest.toml`
+Status `/tmp/jl_sF4CJX/Manifest.toml`
   [ffbed154] DocStringExtensions v0.8.3
   [e30172f5] Documenter v0.24.11
   [682c06a0] JSON v0.21.1
@@ -93,117 +93,146 @@ for the second execution the compilation is already done and the time
 should be faster.
 
 Testing LLL on 1000x1000 real matrix...
-  4.529005 seconds (1.92 M allocations: 162.576 MiB, 3.01% gc time, 37.75% compilation time)
-  2.324800 seconds (5.85 k allocations: 67.328 MiB, 2.34% gc time)
+  5.658069 seconds (1.92 M allocations: 166.577 MiB, 2.53% gc time, 27.36% compilation time)
+  3.661085 seconds (7.30 k allocations: 71.329 MiB)
 
 Testing LLL on 10x10 complex matrix...
-  7.056392 seconds (7.67 M allocations: 384.987 MiB, 5.79% gc time, 99.94% compilation time)
-  0.000206 seconds (390 allocations: 70.844 KiB)
+  6.840661 seconds (7.66 M allocations: 384.964 MiB, 4.00% gc time, 99.99% compilation time)
+  0.000200 seconds (230 allocations: 46.922 KiB)
 Testing Seysen on same 10x10 complex matrix...
-  2.215267 seconds (2.41 M allocations: 134.988 MiB, 5.07% gc time, 99.64% compilation time)
-  0.037708 seconds (515 allocations: 212.625 KiB)
+  2.270839 seconds (2.41 M allocations: 134.982 MiB, 7.76% gc time, 99.97% compilation time)
+  0.000956 seconds (499 allocations: 206.703 KiB)
 Testing VBLAST on same 10x10 complex matrix...
-  1.719834 seconds (1.51 M allocations: 78.722 MiB, 3.49% gc time, 99.97% compilation time)
-  0.032805 seconds (181 allocations: 121.000 KiB)
+  2.101792 seconds (1.51 M allocations: 78.721 MiB, 3.01% gc time, 96.98% compilation time)
+  0.029658 seconds (181 allocations: 121.000 KiB)
 Testing Brun on real part of same 10x10 matrix...
-  1.835701 seconds (2.17 M allocations: 121.680 MiB, 4.35% gc time, 99.04% compilation time)
-  0.000163 seconds (31 allocations: 13.281 KiB)
+  1.638949 seconds (2.17 M allocations: 121.663 MiB, 6.60% gc time, 99.94% compilation time)
+  0.000118 seconds (24 allocations: 12.188 KiB)
 
 Testing sphere decoder on 100000 samples of 3x3 BPSK system...
-  3.031164 seconds (4.03 M allocations: 320.401 MiB, 40.57% gc time, 89.14% compilation time)
-  0.263160 seconds (2.00 M allocations: 209.811 MiB, 6.83% gc time)
-Error Rate is 0.0. It should be zero or very small.
+  1.682278 seconds (4.14 M allocations: 330.989 MiB, 5.75% gc time, 79.53% compilation time)
+  0.312765 seconds (2.11 M allocations: 220.399 MiB, 5.26% gc time)
+Error Rate is 4.0e-5. It should be zero or very small.
 
 Testing now with 200x200 matrix from latticechallenge.org.
 The min norm of the input should be 30, min norm of the reduced bases is hopefully smaller :-)
 min norm of input is 30.0
-  0.395472 seconds (110.14 k allocations: 75.727 MiB, 8.47% gc time, 4.43% compilation time)
+  0.524519 seconds (107.84 k allocations: 75.597 MiB, 5.79% gc time)
 min norm of lll-reduced basis is 29.30870177950569
-  4.768888 seconds (4.00 M allocations: 1.230 GiB, 6.41% gc time, 80.06% compilation time)
+  6.231828 seconds (4.00 M allocations: 1.230 GiB, 6.35% gc time, 60.01% compilation time)
 min norm of seysen-reduced basis is 30.0
 
 Running doctests...
 [ Info: SetupBuildDirectory: setting up build directory.
 [ Info: Doctest: running doctests.
-┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/lll.jl:194-206
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/seysen.jl:14-24
 │ 
 │ ```jldoctest
-│ julia> H= [1 2; 3 4];B,_ = sizereduction(H); B
+│ julia> H= [1 2; 3 4];B,T = seysen(H); B
 │ 2×2 Array{Int64,2}:
-│  1  1
-│  3  1
+│  -1  1
+│   1  1
 │ 
-│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= sizereduction(H); B
+│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= seysen(H); B
 │ 2×2 Array{Complex{BigFloat},2}:
-│  1.5+2.0im  0.50+0.0im
-│  3.0+2.0im   1.0+0.0im
-│ 
-│ julia> N=100;H = randn(N,N); B,T = sizereduction(H);
+│  0.0+1.0im  0.50+0.0im
+│  0.0+0.0im   1.0+0.0im
 │ 
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ H= [1 2; 3 4];B,_ = sizereduction(H); B
+│ H= [1 2; 3 4];B,T = seysen(H); B
 │ 
 │ Evaluated output:
 │ 
 │ 2×2 Matrix{Int64}:
-│  1  1
-│  3  1
+│  -1  1
+│   1  1
 │ 
 │ Expected output:
 │ 
 │ 2×2 Array{Int64,2}:
-│  1  1
-│  3  1
+│  -1  1
+│   1  1
 │ 
 │   diff =
 │    Warning: Diff output requires color.
 │    2×2 Array{Int64,2}:
 │     Matrix{Int64}:
-│     1  1
-│     3  1
+│     -1  1
+│      1  1
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/lll.jl:194-206
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/seysen.jl:14-24
 │ 
 │ ```jldoctest
-│ julia> H= [1 2; 3 4];B,_ = sizereduction(H); B
+│ julia> H= [1 2; 3 4];B,T = seysen(H); B
 │ 2×2 Array{Int64,2}:
-│  1  1
-│  3  1
+│  -1  1
+│   1  1
 │ 
-│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= sizereduction(H); B
+│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= seysen(H); B
 │ 2×2 Array{Complex{BigFloat},2}:
-│  1.5+2.0im  0.50+0.0im
-│  3.0+2.0im   1.0+0.0im
-│ 
-│ julia> N=100;H = randn(N,N); B,T = sizereduction(H);
+│  0.0+1.0im  0.50+0.0im
+│  0.0+0.0im   1.0+0.0im
 │ 
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= sizereduction(H); B
+│ H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= seysen(H); B
 │ 
 │ Evaluated output:
 │ 
 │ 2×2 Matrix{Complex{BigFloat}}:
-│  1.5+2.0im  0.50+0.0im
-│  3.0+2.0im   1.0+0.0im
+│  0.0+1.0im  0.50+0.0im
+│  0.0+0.0im   1.0+0.0im
 │ 
 │ Expected output:
 │ 
 │ 2×2 Array{Complex{BigFloat},2}:
-│  1.5+2.0im  0.50+0.0im
-│  3.0+2.0im   1.0+0.0im
+│  0.0+1.0im  0.50+0.0im
+│  0.0+0.0im   1.0+0.0im
 │ 
 │   diff =
 │    Warning: Diff output requires color.
 │    2×2 Array{Complex{BigFloat},2}:
 │     Matrix{Complex{BigFloat}}:
-│     1.5+2.0im  0.50+0.0im
-│     3.0+2.0im   1.0+0.0im
+│     0.0+1.0im  0.50+0.0im
+│     0.0+0.0im   1.0+0.0im
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/hard_sphere.jl:77-82
+│ 
+│ ```jldoctest
+│ julia> X = LLLplus.algIIsmart([5. 8]', [1. 2; 0 4],[4,4])
+│ 2×1 Array{Float64,2}:
+│  1.0
+│  2.0
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ X = LLLplus.algIIsmart([5. 8]', [1. 2; 0 4],[4,4])
+│ 
+│ Evaluated output:
+│ 
+│ 2×1 Matrix{Float64}:
+│  1.0
+│  2.0
+│ 
+│ Expected output:
+│ 
+│ 2×1 Array{Float64,2}:
+│  1.0
+│  2.0
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×1 Array{Float64,2}:
+│     Matrix{Float64}:
+│     1.0
+│     2.0
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/hard_sphere.jl:26-31
 │ 
@@ -238,36 +267,117 @@ Running doctests...
 │     -1
 │      1
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/utilities.jl:10-16
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/cvp.jl:15-34
 │ 
 │ ```jldoctest
-│ julia> H= [1 2; 3 4];B,T=lll(H);
+│ julia> H=[1 2; 3 4]; Q,R=qr(H); uhat = cvp(Q'*[0,2],R)
+│ 2-element Array{Float64,1}:
+│   2.0
+│  -1.0
 │ 
-│ julia> [orthogonalitydefect(H) orthogonalitydefect(B)]
-│ 1×2 Array{Float64,2}:
-│  7.07107  1.0
+│ julia> n=100;H=randn(n,n);Q,R=qr(H);
+│ 
+│ julia> u=Int.(rand(0:1e10,n));y=H*u+rand(n)/100;
+│ 
+│ julia> uhat=cvp(Q'*y,R); sum(abs.(u-uhat))
+│ 0.0
+│ 
+│ julia> n=500;H=randn(n,n);Q,R=qr(H);
+│ 
+│ julia> u=Int.(rand(-1:1,n));y=H*u+rand(n)/10;
+│ 
+│ julia> uhat=cvp(Q'*y,R,Val{false},1); sum(abs.(u-uhat))
+│ 0.0
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ H=[1 2; 3 4]; Q,R=qr(H); uhat = cvp(Q'*[0,2],R)
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Vector{Float64}:
+│   2.0
+│  -1.0
+│ 
+│ Expected output:
+│ 
+│ 2-element Array{Float64,1}:
+│   2.0
+│  -1.0
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Array{Float64,1}:
+│      Vector{Float64}:
+│      2.0
+│     -1.0
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/lll.jl:113-118
+│ 
+│ ```jldoctest
+│ julia> H = [1 2; 3 3]; B = gauss(H)
+│ 2×2 Array{Float64,2}:
+│  1.0  0.0
+│  0.0  3.0
 │ 
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ [orthogonalitydefect(H) orthogonalitydefect(B)]
+│ H = [1 2; 3 3]; B = gauss(H)
 │ 
 │ Evaluated output:
 │ 
-│ 1×2 Matrix{Float64}:
-│  7.07107  1.0
+│ 2×2 Matrix{Float64}:
+│  1.0  0.0
+│  0.0  3.0
 │ 
 │ Expected output:
 │ 
-│ 1×2 Array{Float64,2}:
-│  7.07107  1.0
+│ 2×2 Array{Float64,2}:
+│  1.0  0.0
+│  0.0  3.0
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    1×2 Array{Float64,2}:
+│    2×2 Array{Float64,2}:
 │     Matrix{Float64}:
-│     7.07107  1.0
+│     1.0  0.0
+│     0.0  3.0
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/brun.jl:18-23
+│ 
+│ ```jldoctest
+│ julia> H=[1 2; 3 4]; B,T=brun(H); T
+│ 2×2 Array{Int64,2}:
+│   3  -1
+│  -2   1
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ H=[1 2; 3 4]; B,T=brun(H); T
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Int64}:
+│   3  -1
+│  -2   1
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Int64,2}:
+│   3  -1
+│  -2   1
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Int64,2}:
+│      Matrix{Int64}:
+│      3  -1
+│     -2   1
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/applications.jl:20-41
 │ 
@@ -373,160 +483,115 @@ Running doctests...
 │     2.0
 │     9.0
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/hard_sphere.jl:77-82
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/vblast.jl:16-26
 │ 
 │ ```jldoctest
-│ julia> X = LLLplus.algIIsmart([5. 8]', [1. 2; 0 4],[4,4])
-│ 2×1 Array{Float64,2}:
-│  1.0
-│  2.0
+│ julia> H= [1. 2; 3 4];W,_ = vblast(H); W
+│ 2×2 Array{Float64,2}:
+│  1.5  -0.5
+│  0.1   0.3
+│ 
+│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; W,_= vblast(H); W
+│ 2×2 Array{Complex{BigFloat},2}:
+│       -2.0+3.0im            2.0-1.5im     
+│  0.0779221-0.103896im  0.155844-0.103896im
 │ 
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ X = LLLplus.algIIsmart([5. 8]', [1. 2; 0 4],[4,4])
+│ H= [1. 2; 3 4];W,_ = vblast(H); W
 │ 
 │ Evaluated output:
 │ 
-│ 2×1 Matrix{Float64}:
-│  1.0
-│  2.0
+│ 2×2 Matrix{Float64}:
+│  1.5  -0.5
+│  0.1   0.3
 │ 
 │ Expected output:
 │ 
-│ 2×1 Array{Float64,2}:
-│  1.0
-│  2.0
+│ 2×2 Array{Float64,2}:
+│  1.5  -0.5
+│  0.1   0.3
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    2×1 Array{Float64,2}:
+│    2×2 Array{Float64,2}:
 │     Matrix{Float64}:
-│     1.0
-│     2.0
+│     1.5  -0.5
+│     0.1   0.3
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/seysen.jl:14-24
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/vblast.jl:16-26
 │ 
 │ ```jldoctest
-│ julia> H= [1 2; 3 4];B,T = seysen(H); B
-│ 2×2 Array{Int64,2}:
-│  -1  1
-│   1  1
+│ julia> H= [1. 2; 3 4];W,_ = vblast(H); W
+│ 2×2 Array{Float64,2}:
+│  1.5  -0.5
+│  0.1   0.3
 │ 
-│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= seysen(H); B
+│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; W,_= vblast(H); W
 │ 2×2 Array{Complex{BigFloat},2}:
-│  0.0+1.0im  0.50+0.0im
-│  0.0+0.0im   1.0+0.0im
+│       -2.0+3.0im            2.0-1.5im     
+│  0.0779221-0.103896im  0.155844-0.103896im
 │ 
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ H= [1 2; 3 4];B,T = seysen(H); B
+│ H= BigFloat.([1.5 2; 3 4]) .+ 2im; W,_= vblast(H); W
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Complex{BigFloat}}:
+│       -2.0+3.0im            2.0-1.5im
+│  0.0779221-0.103896im  0.155844-0.103896im
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Complex{BigFloat},2}:
+│       -2.0+3.0im            2.0-1.5im     
+│  0.0779221-0.103896im  0.155844-0.103896im
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Complex{BigFloat},2}:
+│          Matrix{Complex{BigFloat}}:
+│          -2.0+3.0im            2.0-1.5im     
+│     2.0-1.5im
+│     0.0779221-0.103896im  0.155844-0.103896im
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/latticegen.jl:30-35
+│ 
+│ ```jldoctest
+│ julia> Random.seed!(0); b=gen_qary_b(Int64,2,1,6)
+│ 2×2 Array{Int64,2}:
+│  1   0
+│  7  32
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Random.seed!(0); b=gen_qary_b(Int64,2,1,6)
 │ 
 │ Evaluated output:
 │ 
 │ 2×2 Matrix{Int64}:
-│  -1  1
-│   1  1
+│   1   0
+│  25  32
 │ 
 │ Expected output:
 │ 
 │ 2×2 Array{Int64,2}:
-│  -1  1
-│   1  1
+│  1   0
+│  7  32
 │ 
 │   diff =
 │    Warning: Diff output requires color.
 │    2×2 Array{Int64,2}:
 │     Matrix{Int64}:
-│     -1  1
-│      1  1
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/seysen.jl:14-24
-│ 
-│ ```jldoctest
-│ julia> H= [1 2; 3 4];B,T = seysen(H); B
-│ 2×2 Array{Int64,2}:
-│  -1  1
-│   1  1
-│ 
-│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= seysen(H); B
-│ 2×2 Array{Complex{BigFloat},2}:
-│  0.0+1.0im  0.50+0.0im
-│  0.0+0.0im   1.0+0.0im
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= seysen(H); B
-│ 
-│ Evaluated output:
-│ 
-│ 2×2 Matrix{Complex{BigFloat}}:
-│  0.0+1.0im  0.50+0.0im
-│  0.0+0.0im   1.0+0.0im
-│ 
-│ Expected output:
-│ 
-│ 2×2 Array{Complex{BigFloat},2}:
-│  0.0+1.0im  0.50+0.0im
-│  0.0+0.0im   1.0+0.0im
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2×2 Array{Complex{BigFloat},2}:
-│     Matrix{Complex{BigFloat}}:
-│     0.0+1.0im  0.50+0.0im
-│     0.0+0.0im   1.0+0.0im
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/cvp.jl:15-34
-│ 
-│ ```jldoctest
-│ julia> H=[1 2; 3 4]; Q,R=qr(H); uhat = cvp(Q'*[0,2],R)
-│ 2-element Array{Float64,1}:
-│   2.0
-│  -1.0
-│ 
-│ julia> n=100;H=randn(n,n);Q,R=qr(H);
-│ 
-│ julia> u=Int.(rand(0:1e10,n));y=H*u+rand(n)/100;
-│ 
-│ julia> uhat=cvp(Q'*y,R); sum(abs.(u-uhat))
-│ 0.0
-│ 
-│ julia> n=500;H=randn(n,n);Q,R=qr(H);
-│ 
-│ julia> u=Int.(rand(-1:1,n));y=H*u+rand(n)/10;
-│ 
-│ julia> uhat=cvp(Q'*y,R,Val{false},1); sum(abs.(u-uhat))
-│ 0.0
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ H=[1 2; 3 4]; Q,R=qr(H); uhat = cvp(Q'*[0,2],R)
-│ 
-│ Evaluated output:
-│ 
-│ 2-element Vector{Float64}:
-│   2.0
-│  -1.0
-│ 
-│ Expected output:
-│ 
-│ 2-element Array{Float64,1}:
-│   2.0
-│  -1.0
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2-element Array{Float64,1}:
-│      Vector{Float64}:
-│      2.0
-│     -1.0
+│      1   0
+│     7  25  32
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/applications.jl:335-343
 │ 
@@ -647,181 +712,116 @@ Running doctests...
 │     0.50+0.0im  0.0+1.0im
 │      1.0+0.0im  0.0+0.0im
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/lll.jl:113-118
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/lll.jl:194-206
 │ 
 │ ```jldoctest
-│ julia> H = [1 2; 3 3]; B = gauss(H)
-│ 2×2 Array{Float64,2}:
-│  1.0  0.0
-│  0.0  3.0
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ H = [1 2; 3 3]; B = gauss(H)
-│ 
-│ Evaluated output:
-│ 
-│ 2×2 Matrix{Float64}:
-│  1.0  0.0
-│  0.0  3.0
-│ 
-│ Expected output:
-│ 
-│ 2×2 Array{Float64,2}:
-│  1.0  0.0
-│  0.0  3.0
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2×2 Array{Float64,2}:
-│     Matrix{Float64}:
-│     1.0  0.0
-│     0.0  3.0
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/vblast.jl:16-26
-│ 
-│ ```jldoctest
-│ julia> H= [1. 2; 3 4];W,_ = vblast(H); W
-│ 2×2 Array{Float64,2}:
-│  1.5  -0.5
-│  0.1   0.3
-│ 
-│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; W,_= vblast(H); W
-│ 2×2 Array{Complex{BigFloat},2}:
-│       -2.0+3.0im            2.0-1.5im     
-│  0.0779221-0.103896im  0.155844-0.103896im
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ H= [1. 2; 3 4];W,_ = vblast(H); W
-│ 
-│ Evaluated output:
-│ 
-│ 2×2 Matrix{Float64}:
-│  1.5  -0.5
-│  0.1   0.3
-│ 
-│ Expected output:
-│ 
-│ 2×2 Array{Float64,2}:
-│  1.5  -0.5
-│  0.1   0.3
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2×2 Array{Float64,2}:
-│     Matrix{Float64}:
-│     1.5  -0.5
-│     0.1   0.3
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/vblast.jl:16-26
-│ 
-│ ```jldoctest
-│ julia> H= [1. 2; 3 4];W,_ = vblast(H); W
-│ 2×2 Array{Float64,2}:
-│  1.5  -0.5
-│  0.1   0.3
-│ 
-│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; W,_= vblast(H); W
-│ 2×2 Array{Complex{BigFloat},2}:
-│       -2.0+3.0im            2.0-1.5im     
-│  0.0779221-0.103896im  0.155844-0.103896im
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ H= BigFloat.([1.5 2; 3 4]) .+ 2im; W,_= vblast(H); W
-│ 
-│ Evaluated output:
-│ 
-│ 2×2 Matrix{Complex{BigFloat}}:
-│       -2.0+3.0im            2.0-1.5im
-│  0.0779221-0.103896im  0.155844-0.103896im
-│ 
-│ Expected output:
-│ 
-│ 2×2 Array{Complex{BigFloat},2}:
-│       -2.0+3.0im            2.0-1.5im     
-│  0.0779221-0.103896im  0.155844-0.103896im
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2×2 Array{Complex{BigFloat},2}:
-│          Matrix{Complex{BigFloat}}:
-│          -2.0+3.0im            2.0-1.5im     
-│     2.0-1.5im
-│     0.0779221-0.103896im  0.155844-0.103896im
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/brun.jl:18-23
-│ 
-│ ```jldoctest
-│ julia> H=[1 2; 3 4]; B,T=brun(H); T
+│ julia> H= [1 2; 3 4];B,_ = sizereduction(H); B
 │ 2×2 Array{Int64,2}:
-│   3  -1
-│  -2   1
+│  1  1
+│  3  1
+│ 
+│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= sizereduction(H); B
+│ 2×2 Array{Complex{BigFloat},2}:
+│  1.5+2.0im  0.50+0.0im
+│  3.0+2.0im   1.0+0.0im
+│ 
+│ julia> N=100;H = randn(N,N); B,T = sizereduction(H);
 │ 
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ H=[1 2; 3 4]; B,T=brun(H); T
+│ H= [1 2; 3 4];B,_ = sizereduction(H); B
 │ 
 │ Evaluated output:
 │ 
 │ 2×2 Matrix{Int64}:
-│   3  -1
-│  -2   1
+│  1  1
+│  3  1
 │ 
 │ Expected output:
 │ 
 │ 2×2 Array{Int64,2}:
-│   3  -1
-│  -2   1
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2×2 Array{Int64,2}:
-│      Matrix{Int64}:
-│      3  -1
-│     -2   1
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/latticegen.jl:30-35
-│ 
-│ ```jldoctest
-│ julia> Random.seed!(0); b=gen_qary_b(Int64,2,1,6)
-│ 2×2 Array{Int64,2}:
-│  1   0
-│  7  32
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ Random.seed!(0); b=gen_qary_b(Int64,2,1,6)
-│ 
-│ Evaluated output:
-│ 
-│ 2×2 Matrix{Int64}:
-│   1   0
-│  25  32
-│ 
-│ Expected output:
-│ 
-│ 2×2 Array{Int64,2}:
-│  1   0
-│  7  32
+│  1  1
+│  3  1
 │ 
 │   diff =
 │    Warning: Diff output requires color.
 │    2×2 Array{Int64,2}:
 │     Matrix{Int64}:
-│      1   0
-│     7  25  32
+│     1  1
+│     3  1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/lll.jl:194-206
+│ 
+│ ```jldoctest
+│ julia> H= [1 2; 3 4];B,_ = sizereduction(H); B
+│ 2×2 Array{Int64,2}:
+│  1  1
+│  3  1
+│ 
+│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= sizereduction(H); B
+│ 2×2 Array{Complex{BigFloat},2}:
+│  1.5+2.0im  0.50+0.0im
+│  3.0+2.0im   1.0+0.0im
+│ 
+│ julia> N=100;H = randn(N,N); B,T = sizereduction(H);
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= sizereduction(H); B
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Complex{BigFloat}}:
+│  1.5+2.0im  0.50+0.0im
+│  3.0+2.0im   1.0+0.0im
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Complex{BigFloat},2}:
+│  1.5+2.0im  0.50+0.0im
+│  3.0+2.0im   1.0+0.0im
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Complex{BigFloat},2}:
+│     Matrix{Complex{BigFloat}}:
+│     1.5+2.0im  0.50+0.0im
+│     3.0+2.0im   1.0+0.0im
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/utilities.jl:10-16
+│ 
+│ ```jldoctest
+│ julia> H= [1 2; 3 4];B,T=lll(H);
+│ 
+│ julia> [orthogonalitydefect(H) orthogonalitydefect(B)]
+│ 1×2 Array{Float64,2}:
+│  7.07107  1.0
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ [orthogonalitydefect(H) orthogonalitydefect(B)]
+│ 
+│ Evaluated output:
+│ 
+│ 1×2 Matrix{Float64}:
+│  7.07107  1.0
+│ 
+│ Expected output:
+│ 
+│ 1×2 Array{Float64,2}:
+│  7.07107  1.0
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    1×2 Array{Float64,2}:
+│     Matrix{Float64}:
+│     7.07107  1.0
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
 ┌ Error: Doctesting failed
 │   exception =

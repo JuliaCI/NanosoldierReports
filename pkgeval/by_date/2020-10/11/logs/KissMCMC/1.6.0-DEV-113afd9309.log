@@ -32,14 +32,14 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [10745b16] + Statistics
   [4ec0a83e] + Unicode
     Testing KissMCMC
-Status `/tmp/jl_aIzrF1/Project.toml`
+Status `/tmp/jl_zvv1PX/Project.toml`
   [31c24e10] Distributions v0.24.0
   [79d62d8d] KissMCMC v0.2.0
   [d96e819e] Parameters v0.12.1
   [2913bbd2] StatsBase v0.33.2
   [10745b16] Statistics
   [8dfed614] Test
-Status `/tmp/jl_aIzrF1/Manifest.toml`
+Status `/tmp/jl_zvv1PX/Manifest.toml`
   [34da2185] Compat v3.20.0
   [e66e0078] CompilerSupportLibraries_jll v0.3.3+0
   [9a962f9c] DataAPI v1.3.0
@@ -105,6 +105,18 @@ Test Summary: | Pass  Total
 g-dist        |    5      5
 atest.dist = Distributions.Normal{Float64}(μ=-5.0, σ=3.0)
 atest.dist = Distributions.LogNormal{Float64}(μ=0.0, σ=1.0)
+emcee: Test Failed at /home/pkgeval/.julia/packages/KissMCMC/z6iaT/test/runtests.jl:39
+  Expression: abs.(SB.skewness(thetas) - skewness_) < abs.(std_ * 2 * tol)
+   Evaluated: 0.8742738906129492 < 0.8644789663580351
+Stacktrace:
+ [1] test_mean_std(thetas::Vector{Float64}, atest::ATest, tol::Float64)
+   @ Main ~/.julia/packages/KissMCMC/z6iaT/test/runtests.jl:39
+ [2] macro expansion
+   @ ~/.julia/packages/KissMCMC/z6iaT/test/emcee.jl:34 [inlined]
+ [3] macro expansion
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [4] top-level scope
+   @ ~/.julia/packages/KissMCMC/z6iaT/test/emcee.jl:18
 atest.dist = FullNormal(
 dim: 2
 μ: [0.5, -0.25]
@@ -112,6 +124,32 @@ dim: 2
 )
 
 atest.dist = var"#9#14"()
-Test Summary: | Pass  Total
-emcee         |   28     28
-    Testing KissMCMC tests passed 
+Test Summary: | Pass  Fail  Total
+emcee         |   27     1     28
+ERROR: LoadError: LoadError: Some tests did not pass: 27 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/KissMCMC/z6iaT/test/emcee.jl:17
+in expression starting at /home/pkgeval/.julia/packages/KissMCMC/z6iaT/test/runtests.jl:86
+ERROR: Package KissMCMC errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1609
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:331
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:318
+  [5] #test#62
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [7] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:31

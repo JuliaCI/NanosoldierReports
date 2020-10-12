@@ -15,9 +15,9 @@ Environment:
   Installed FastClosures ───────────────── v0.3.2
   Installed CompilerSupportLibraries_jll ─ v0.3.3+0
   Installed OpenBLAS_jll ───────────────── v0.3.10+0
-  Installed TimerOutputs ───────────────── v0.5.6
-  Installed PROPACK ────────────────────── v0.3.2
   Installed PROPACK_jll ────────────────── v0.1.0+1
+  Installed PROPACK ────────────────────── v0.3.2
+  Installed TimerOutputs ───────────────── v0.5.6
   Installed LinearOperators ────────────── v1.1.0
 Updating `~/.julia/environments/v1.6/Project.toml`
   [b169e327] + PROPACK v0.3.2
@@ -49,13 +49,13 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
     Testing PROPACK
-Status `/tmp/jl_aNYXF0/Project.toml`
+Status `/tmp/jl_8BhGp9/Project.toml`
   [5c8ed15e] LinearOperators v1.1.0
   [b169e327] PROPACK v0.3.2
   [2c99449f] PROPACK_jll v0.1.0+1
   [37e2e46d] LinearAlgebra
   [8dfed614] Test
-Status `/tmp/jl_aNYXF0/Manifest.toml`
+Status `/tmp/jl_8BhGp9/Manifest.toml`
   [e66e0078] CompilerSupportLibraries_jll v0.3.3+0
   [9aa1b823] FastClosures v0.3.2
   [5c8ed15e] LinearOperators v1.1.0
@@ -86,61 +86,46 @@ Status `/tmp/jl_aNYXF0/Manifest.toml`
   [4ec0a83e] Unicode
     Testing Running tests...
 --- Test functions with Float32 types ---
-computed singular values: Float32[5.0000005, 3.999999, 3.0000002]
+computed singular values: Float32[5.000001, 4.0000005, 2.9999998]
 exact singular values: [5, 4, 3]
 error bounds reported: Float32[0.0, 0.0, 0.0]
 number of matvecs and conjugate transposed matvecs: 8, 7
-computed singular values: Float32[5.0000005, 3.999999, 3.0000002]
+computed singular values: Float32[5.000001, 4.0000005, 2.9999998]
 number of matvecs and conjugate transposed matvecs: 8, 7
-computed smallest singular values: Float32[2.0000002, 1.0000002]
+computed smallest singular values: Float32[0.99999994, 1.8690835f-7]
 exact smallest singular values: [2, 1]
 error bounds reported: Float32[0.0, 0.0]
-number of matvecs and conjugate transposed matvecs: 10, 5
-computed smallest singular values: Float32[2.0000002, 1.0000002]
-number of matvecs and conjugate transposed matvecs: 10, 5
-
---- Test functions with Float64 types ---
-computed singular values: [5.000000000000002, 4.000000000000001, 3.0000000000000013]
-exact singular values: [5, 4, 3]
-error bounds reported: [0.0, 0.0, 0.0]
-number of matvecs and conjugate transposed matvecs: 8, 7
-computed singular values: [5.000000000000002, 4.000000000000001, 3.0000000000000013]
-number of matvecs and conjugate transposed matvecs: 8, 7
-computed smallest singular values: [1.9999999999999996, 0.9999999999999989]
-exact smallest singular values: [2, 1]
-error bounds reported: [0.0, 0.0]
-number of matvecs and conjugate transposed matvecs: 10, 5
-computed smallest singular values: [1.9999999999999996, 0.9999999999999989]
-number of matvecs and conjugate transposed matvecs: 10, 5
-
---- Test functions with ComplexF32 types ---
-computed singular values: Float32[5.0000005, 3.999998, 2.9999998]
-exact singular values: [5, 4, 3]
-error bounds reported: Float32[0.0, 0.0, 0.0]
-number of matvecs and conjugate transposed matvecs: 7, 7
-computed singular values: Float32[5.0000005, 3.999998, 2.9999998]
-number of matvecs and conjugate transposed matvecs: 7, 7
- UNVARIANT SUBSPACE, beta small
-computed smallest singular values: Float32[2.0000002, 1.0000002]
-exact smallest singular values: [2, 1]
-error bounds reported: Float32[0.0, 0.0]
-number of matvecs and conjugate transposed matvecs: 10, 5
- UNVARIANT SUBSPACE, beta small
-computed smallest singular values: Float32[2.0000002, 1.0000002]
-number of matvecs and conjugate transposed matvecs: 10, 5
-
---- Test functions with ComplexF64 types ---
-computed singular values: [5.000000000000002, 3.999999999999999, 3.0]
-exact singular values: [5, 4, 3]
-error bounds reported: [0.0, 0.0, 0.0]
-number of matvecs and conjugate transposed matvecs: 8, 7
-computed singular values: [5.000000000000002, 3.999999999999999, 3.0]
-number of matvecs and conjugate transposed matvecs: 8, 7
-computed smallest singular values: [1.999999999999999, 1.0]
-exact smallest singular values: [2, 1]
-error bounds reported: [0.0, 0.0]
-number of matvecs and conjugate transposed matvecs: 10, 5
-computed smallest singular values: [1.999999999999999, 1.0]
-number of matvecs and conjugate transposed matvecs: 10, 5
-
-    Testing PROPACK tests passed 
+number of matvecs and conjugate transposed matvecs: 8, 6
+ERROR: LoadError: AssertionError: abs(s[i] - σs[i]) ≤ tolin * σs[i]
+Stacktrace:
+ [1] top-level scope
+   @ ~/.julia/packages/PROPACK/flAvz/test/runtests.jl:56
+ [2] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [3] top-level scope
+   @ none:6
+in expression starting at /home/pkgeval/.julia/packages/PROPACK/flAvz/test/runtests.jl:5
+ERROR: Package PROPACK errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1609
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:331
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:318
+  [5] #test#62
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [7] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:65
+ [11] top-level scope
+    @ none:31

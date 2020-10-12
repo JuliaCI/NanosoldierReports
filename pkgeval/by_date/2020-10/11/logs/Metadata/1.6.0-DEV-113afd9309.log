@@ -13,12 +13,12 @@ Environment:
 
   Resolving package versions...
   Installed Metadata ─────── v0.2.0
+  Installed ArrayInterface ─ v2.13.4
   Installed Requires ─────── v1.1.0
-  Installed ArrayInterface ─ v2.13.3
 Updating `~/.julia/environments/v1.6/Project.toml`
   [4fb893c1] + Metadata v0.2.0
 Updating `~/.julia/environments/v1.6/Manifest.toml`
-  [4fba245c] + ArrayInterface v2.13.3
+  [4fba245c] + ArrayInterface v2.13.4
   [4fb893c1] + Metadata v0.2.0
   [ae029012] + Requires v1.1.0
   [8f399da3] + Libdl
@@ -29,13 +29,13 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [2f01184e] + SparseArrays
   [cf7118a7] + UUIDs
     Testing Metadata
-Status `/tmp/jl_1l67p5/Project.toml`
-  [4fba245c] ArrayInterface v2.13.3
+Status `/tmp/jl_57O3WX/Project.toml`
+  [4fba245c] ArrayInterface v2.13.4
   [e30172f5] Documenter v0.25.2
   [4fb893c1] Metadata v0.2.0
   [8dfed614] Test
-Status `/tmp/jl_1l67p5/Manifest.toml`
-  [4fba245c] ArrayInterface v2.13.3
+Status `/tmp/jl_57O3WX/Manifest.toml`
+  [4fba245c] ArrayInterface v2.13.4
   [ffbed154] DocStringExtensions v0.8.3
   [e30172f5] Documenter v0.25.2
   [682c06a0] JSON v0.21.1
@@ -89,53 +89,6 @@ Test Summary:        | Pass  Total
 ElementwiseMetaArray |   10     10
 [ Info: SetupBuildDirectory: setting up build directory.
 [ Info: Doctest: running doctests.
-┌ Error: doctest failure in ~/.julia/packages/Metadata/6ineH/src/metaarray.jl:10-20
-│ 
-│ ```jldoctest
-│ julia> using Metadata
-│ 
-│ julia> Metadata.MetaArray(ones(2,2), metadata=(m1 =1, m2=[1, 2]))
-│ 2×2 attach_metadata(::Array{Float64,2}, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
-│   • metadata:
-│     - m1 = 1
-│     - m2 = [1, 2]
-│  1.0  1.0
-│  1.0  1.0
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ Metadata.MetaArray(ones(2,2), metadata=(m1 =1, m2=[1, 2]))
-│ 
-│ Evaluated output:
-│ 
-│ 2×2 attach_metadata(::Matrix{Float64}, ::NamedTuple{(:m1, :m2), Tuple{Int64, Vector{Int64}}})
-│   • metadata:
-│     - m1 = 1
-│     - m2 = [1, 2]
-│  1.0  1.0
-│  1.0  1.0
-│ 
-│ Expected output:
-│ 
-│ 2×2 attach_metadata(::Array{Float64,2}, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
-│   • metadata:
-│     - m1 = 1
-│     - m2 = [1, 2]
-│  1.0  1.0
-│  1.0  1.0
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2×2 attach_metadata(::Array{Float64,2}, attach_metadata(::Matrix{Float64}, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
-│      :m2), Tuple{Int64, Vector{Int64}}})
-│      • metadata:
-│        - m1 = 1
-│        - m2 = [1, 2]
-│     1.0  1.0
-│     1.0  1.0
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/Metadata/6ineH/src/Metadata.jl
 │ 
 │ ```jldoctest README
@@ -275,6 +228,53 @@ ElementwiseMetaArray |   10     10
 │    Warning: Diff output requires color.
 │    2×2 attach_metadata(::Array{Float64,2}, attach_metadata(::Matrix{Float64}, ::Metadata.MetaID)
 │      • metadata:
+│     1.0  1.0
+│     1.0  1.0
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/Metadata/6ineH/src/metaarray.jl:10-20
+│ 
+│ ```jldoctest
+│ julia> using Metadata
+│ 
+│ julia> Metadata.MetaArray(ones(2,2), metadata=(m1 =1, m2=[1, 2]))
+│ 2×2 attach_metadata(::Array{Float64,2}, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
+│   • metadata:
+│     - m1 = 1
+│     - m2 = [1, 2]
+│  1.0  1.0
+│  1.0  1.0
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Metadata.MetaArray(ones(2,2), metadata=(m1 =1, m2=[1, 2]))
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 attach_metadata(::Matrix{Float64}, ::NamedTuple{(:m1, :m2), Tuple{Int64, Vector{Int64}}})
+│   • metadata:
+│     - m1 = 1
+│     - m2 = [1, 2]
+│  1.0  1.0
+│  1.0  1.0
+│ 
+│ Expected output:
+│ 
+│ 2×2 attach_metadata(::Array{Float64,2}, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
+│   • metadata:
+│     - m1 = 1
+│     - m2 = [1, 2]
+│  1.0  1.0
+│  1.0  1.0
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 attach_metadata(::Array{Float64,2}, attach_metadata(::Matrix{Float64}, ::NamedTuple{(:m1, :m2),Tuple{Int64,Array{Int64,1}}})
+│      :m2), Tuple{Int64, Vector{Int64}}})
+│      • metadata:
+│        - m1 = 1
+│        - m2 = [1, 2]
 │     1.0  1.0
 │     1.0  1.0
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
