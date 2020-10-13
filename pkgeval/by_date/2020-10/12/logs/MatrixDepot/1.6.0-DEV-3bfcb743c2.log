@@ -32,7 +32,7 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4607b0f0] + SuiteSparse
   [8dfed614] + Test
     Testing MatrixDepot
-Status `/tmp/jl_XO1Iw0/Project.toml`
+Status `/tmp/jl_xKXrG0/Project.toml`
   [92fee26a] GZip v0.5.1
   [b51810bb] MatrixDepot v0.8.0
   [37e2e46d] LinearAlgebra
@@ -42,7 +42,7 @@ Status `/tmp/jl_XO1Iw0/Project.toml`
   [2f01184e] SparseArrays
   [4607b0f0] SuiteSparse
   [8dfed614] Test
-Status `/tmp/jl_XO1Iw0/Manifest.toml`
+Status `/tmp/jl_xKXrG0/Manifest.toml`
   [92fee26a] GZip v0.5.1
   [b51810bb] MatrixDepot v0.8.0
   [2a0f44e3] Base64
@@ -505,26 +505,64 @@ dowloading index file https://www.cise.ufl.edu/research/sparse/matrices/list_by_
 ┌ Warning: Base.download is deprecated; use Downloads.download instead
 │   caller = downloadindex(remote::MatrixDepot.TURemoteType) at download.jl:79
 └ @ MatrixDepot ~/.julia/packages/MatrixDepot/E06jU/src/download.jl:79
-dowloading index file http://math.nist.gov/MatrixMarket/matrices.html
-┌ Warning: Base.download is deprecated; use Downloads.download instead
-│   caller = downloadindex(remote::MatrixDepot.MMRemoteType) at download.jl:79
-└ @ MatrixDepot ~/.julia/packages/MatrixDepot/E06jU/src/download.jl:79
-used remote site is https://www.cise.ufl.edu/research/sparse/matrices/list_by_id.html
-populating internal database...
-downloading: https://www.cise.ufl.edu/research/sparse/MM/HB/1138_bus.tar.gz
-1138_bus/1138_bus.mtx
-Test Summary:                   | Pass  Fail  Total
-MatrixDepot remote matrix tests |  220    20    240
-  regu                          |   44           44
-  include_generator             |    5            5
-  download                      |   67     9     76
-  common                        |   99    11    110
-    mdlist                      |   53     7     60
-    logical                     |   21     4     25
-    properties                  |   21           21
-  number                        |    2            2
-  property                      |    2            2
-ERROR: LoadError: Some tests did not pass: 220 passed, 20 failed, 0 errored, 0 broken.
+MatrixDepot remote matrix tests: Error During Test at /home/pkgeval/.julia/packages/MatrixDepot/E06jU/test/runtests.jl:71
+  Got exception outside of a @test
+  HTTP/1.1 502 Bad Gateway
+  Stacktrace:
+    [1] error(s::SubString{String})
+      @ Base ./error.jl:33
+    [2] (::Downloads.var"#2#3"{Vector{Pair{String, String}}, Downloads.Downloader, String})(io::IOStream)
+      @ Downloads /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Downloads/src/Downloads.jl:69
+    [3] open(f::Downloads.var"#2#3"{Vector{Pair{String, String}}, Downloads.Downloader, String}, args::String; kwargs::Base.Iterators.Pairs{Symbol, Bool, Tuple{Symbol}, NamedTuple{(:write,), Tuple{Bool}}})
+      @ Base ./io.jl:330
+    [4] arg_write(f::Function, arg::String)
+      @ ArgTools /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/ArgTools/src/ArgTools.jl:86
+    [5] #download#1
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Downloads/src/Downloads.jl:49 [inlined]
+    [6] download(url::String, output::String)
+      @ Downloads /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Downloads/src/Downloads.jl:48
+    [7] #invokelatest#2
+      @ ./essentials.jl:709 [inlined]
+    [8] invokelatest
+      @ ./essentials.jl:708 [inlined]
+    [9] download
+      @ ./download.jl:30 [inlined]
+   [10] downloadindex(remote::MatrixDepot.TURemoteType)
+      @ MatrixDepot ~/.julia/packages/MatrixDepot/E06jU/src/download.jl:79
+   [11] _downloadindices(db::MatrixDepot.MatrixDatabase)
+      @ MatrixDepot ~/.julia/packages/MatrixDepot/E06jU/src/download.jl:131
+   [12] downloadindices(db::MatrixDepot.MatrixDatabase; ignoredb::Bool)
+      @ MatrixDepot ~/.julia/packages/MatrixDepot/E06jU/src/download.jl:115
+   [13] init(; ignoredb::Bool)
+      @ MatrixDepot ~/.julia/packages/MatrixDepot/E06jU/src/MatrixDepot.jl:128
+   [14] macro expansion
+      @ ~/.julia/packages/MatrixDepot/E06jU/test/runtests.jl:94 [inlined]
+   [15] macro expansion
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [16] top-level scope
+      @ ~/.julia/packages/MatrixDepot/E06jU/test/runtests.jl:72
+   [17] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [18] top-level scope
+      @ none:6
+   [19] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [20] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [21] _start()
+      @ Base ./client.jl:485
+Test Summary:                   | Pass  Fail  Error  Total
+MatrixDepot remote matrix tests |  219    20      1    240
+  regu                          |   44                  44
+  include_generator             |    5                   5
+  download                      |   67     9            76
+  common                        |   99    11           110
+    mdlist                      |   53     7            60
+    logical                     |   21     4            25
+    properties                  |   21                  21
+  number                        |    2                   2
+  property                      |    2                   2
+ERROR: LoadError: Some tests did not pass: 219 passed, 20 failed, 1 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/MatrixDepot/E06jU/test/runtests.jl:71
 ERROR: Package MatrixDepot errored during testing
 Stacktrace:

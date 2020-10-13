@@ -12,15 +12,15 @@ Environment:
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
   Resolving package versions...
-  Installed ArrayLayouts ─── v0.4.8
   Installed Compat ───────── v3.20.0
+  Installed ArrayLayouts ─── v0.4.8
   Installed FillArrays ───── v0.9.6
-  Installed BandedMatrices ─ v0.15.21
+  Installed BandedMatrices ─ v0.15.22
 Updating `~/.julia/environments/v1.6/Project.toml`
-  [aae01518] + BandedMatrices v0.15.21
+  [aae01518] + BandedMatrices v0.15.22
 Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4c555306] + ArrayLayouts v0.4.8
-  [aae01518] + BandedMatrices v0.15.21
+  [aae01518] + BandedMatrices v0.15.22
   [34da2185] + Compat v3.20.0
   [1a297f60] + FillArrays v0.9.6
   [56f22d72] + Artifacts
@@ -50,9 +50,10 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
     Testing BandedMatrices
-Status `/tmp/jl_JnGVMZ/Project.toml`
+Status `/tmp/jl_OGSax0/Project.toml`
   [4c555306] ArrayLayouts v0.4.8
-  [aae01518] BandedMatrices v0.15.21
+  [aae01518] BandedMatrices v0.15.22
+  [34da2185] Compat v3.20.0
   [1a297f60] FillArrays v0.9.6
   [14197337] GenericLinearAlgebra v0.2.4
   [2a0f44e3] Base64
@@ -60,9 +61,9 @@ Status `/tmp/jl_JnGVMZ/Project.toml`
   [9a3f8284] Random
   [2f01184e] SparseArrays
   [8dfed614] Test
-Status `/tmp/jl_JnGVMZ/Manifest.toml`
+Status `/tmp/jl_OGSax0/Manifest.toml`
   [4c555306] ArrayLayouts v0.4.8
-  [aae01518] BandedMatrices v0.15.21
+  [aae01518] BandedMatrices v0.15.22
   [34da2185] Compat v3.20.0
   [1a297f60] FillArrays v0.9.6
   [14197337] GenericLinearAlgebra v0.2.4
@@ -99,7 +100,9 @@ Test Summary:         | Pass  Total
 BandedMatrix SubArray |  139    139
 Test Summary:  |  Pass  Total
 Linear Algebra | 22867  22867
-  0.000046 seconds (449 allocations: 33.195 KiB)
+Test Summary:              | Pass  Total
+dot(x, A::BandedMatrix, y) |    8      8
+  0.000044 seconds (449 allocations: 33.195 KiB)
 Test Summary: | Pass  Total
 broadcasting  |  197    197
 Test Summary: | Pass  Total
@@ -124,32 +127,32 @@ Test Summary:   | Pass  Total
 Bi/Tri/Diagonal |   46     46
 Test Summary: | Pass  Total
 rot180        |    8      8
-  3.744300 seconds (2.51 M allocations: 130.910 MiB, 99.72% compilation time)
-  0.021891 seconds (154 allocations: 30.555 KiB, 97.45% compilation time)
-  1.838638 seconds (841.59 k allocations: 50.330 MiB, 99.54% compilation time)
-  0.491633 seconds (186.07 k allocations: 10.797 MiB, 34.18% gc time, 98.83% compilation time)
-show: Test Failed at /home/pkgeval/.julia/packages/BandedMatrices/i7LFa/test/test_miscs.jl:84
+  2.951430 seconds (2.51 M allocations: 130.917 MiB, 1.71% gc time, 99.84% compilation time)
+  0.023566 seconds (154 allocations: 30.555 KiB, 97.60% compilation time)
+  1.794457 seconds (841.90 k allocations: 50.328 MiB, 4.34% gc time, 99.26% compilation time)
+  0.689979 seconds (186.07 k allocations: 10.797 MiB, 95.55% compilation time)
+show: Test Failed at /home/pkgeval/.julia/packages/BandedMatrices/Iy1B6/test/test_miscs.jl:84
   Expression: occursin("10×10 BandedMatrix{Float64,$(Matrix{Float64})," * string(Base.OneTo{Int}) * "}", sprint() do io
         show(io, (MIME"text/plain")(), brand(10, 10, 3, 3))
     end)
    Evaluated: occursin("10×10 BandedMatrix{Float64,Matrix{Float64},Base.OneTo{Int64}}", "10×10 BandedMatrix{Float64, Matrix{Float64}, Base.OneTo{Int64}}:\n 0.177329   0.973216  0.655448  0.0623676   ⋅         ⋅          ⋅          ⋅         ⋅          ⋅ \n 0.27888    0.585812  0.575887  0.353129   0.605297   ⋅          ⋅          ⋅         ⋅          ⋅ \n 0.203477   0.539289  0.868279  0.767602   0.135745  0.76707     ⋅          ⋅         ⋅          ⋅ \n 0.0423017  0.260036  0.9678    0.043141   0.838118  0.801924   0.124323    ⋅         ⋅          ⋅ \n  ⋅         0.910047  0.76769   0.267985   0.914712  0.0353445  0.114269   0.312145   ⋅          ⋅ \n  ⋅          ⋅        0.469304  0.0668464  0.300075  0.484661   0.0795545  0.196407  0.548342    ⋅ \n  ⋅          ⋅         ⋅        0.156637   0.72285   0.899199   0.776674   0.873581  0.476883   0.842256\n  ⋅          ⋅         ⋅         ⋅         0.119653  0.951691   0.104823   0.654922  0.602375   0.169107\n  ⋅          ⋅         ⋅         ⋅          ⋅        0.801119   0.838075   0.586712  0.791346   0.938857\n  ⋅          ⋅         ⋅         ⋅          ⋅         ⋅         0.184115   0.632696  0.0491219  0.783726")
 Stacktrace:
  [1] top-level scope
-   @ ~/.julia/packages/BandedMatrices/i7LFa/test/test_miscs.jl:84
+   @ ~/.julia/packages/BandedMatrices/Iy1B6/test/test_miscs.jl:84
  [2] top-level scope
    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144
  [3] top-level scope
-   @ ~/.julia/packages/BandedMatrices/i7LFa/test/test_miscs.jl:84
+   @ ~/.julia/packages/BandedMatrices/Iy1B6/test/test_miscs.jl:84
  [4] top-level scope
    @ timing.jl:192
  [5] top-level scope
-   @ ~/.julia/packages/BandedMatrices/i7LFa/test/test_miscs.jl:83
+   @ ~/.julia/packages/BandedMatrices/Iy1B6/test/test_miscs.jl:83
  [6] top-level scope
    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144
  [7] top-level scope
-   @ ~/.julia/packages/BandedMatrices/i7LFa/test/test_miscs.jl:5
-  4.764280 seconds (2.88 M allocations: 158.180 MiB, 96.89% compilation time)
-  0.007653 seconds (189 allocations: 73.586 KiB, 92.23% compilation time)
+   @ ~/.julia/packages/BandedMatrices/Iy1B6/test/test_miscs.jl:5
+  4.983084 seconds (2.88 M allocations: 158.181 MiB, 3.36% gc time, 98.22% compilation time)
+  0.016630 seconds (189 allocations: 73.586 KiB, 48.59% compilation time)
 Test Summary:                  | Pass  Fail  Total
 misc tests                     |   71     1     72
   Diagonal of banded           |    3            3
@@ -162,8 +165,8 @@ misc tests                     |   71     1     72
   defaultdot                   |    1            1
   Offset axes                  |    5            5
 ERROR: LoadError: LoadError: Some tests did not pass: 71 passed, 1 failed, 0 errored, 0 broken.
-in expression starting at /home/pkgeval/.julia/packages/BandedMatrices/i7LFa/test/test_miscs.jl:4
-in expression starting at /home/pkgeval/.julia/packages/BandedMatrices/i7LFa/test/runtests.jl:16
+in expression starting at /home/pkgeval/.julia/packages/BandedMatrices/Iy1B6/test/test_miscs.jl:4
+in expression starting at /home/pkgeval/.julia/packages/BandedMatrices/Iy1B6/test/runtests.jl:17
 ERROR: Package BandedMatrices errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)

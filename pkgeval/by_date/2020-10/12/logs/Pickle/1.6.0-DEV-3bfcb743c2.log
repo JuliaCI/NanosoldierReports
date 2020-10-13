@@ -20,7 +20,7 @@ Environment:
   Installed DataStructures ───── v0.17.20
   Installed Pickle ───────────── v0.2.0
   Installed JLLWrappers ──────── v1.1.1
-  Installed ZipFile ──────────── v0.9.2
+  Installed ZipFile ──────────── v0.9.3
 Updating `~/.julia/environments/v1.6/Project.toml`
   [fbb45041] + Pickle v0.2.0
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -31,7 +31,7 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [fbb45041] + Pickle v0.2.0
   [5e0ebb24] + Strided v1.1.1
   [9d95972d] + TupleTools v1.2.0
-  [a5390f91] + ZipFile v0.9.2
+  [a5390f91] + ZipFile v0.9.3
   [83775a58] + Zlib_jll v1.2.11+17
   [56f22d72] + Artifacts
   [2a0f44e3] + Base64
@@ -54,17 +54,17 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
     Testing Pickle
-Status `/tmp/jl_umq9qZ/Project.toml`
+Status `/tmp/jl_AMTED0/Project.toml`
   [864edb3b] DataStructures v0.17.20
   [e30172f5] Documenter v0.25.2
   [7d512f48] InternedStrings v0.7.0
   [fbb45041] Pickle v0.2.0
   [438e738f] PyCall v1.92.1
   [5e0ebb24] Strided v1.1.1
-  [a5390f91] ZipFile v0.9.2
+  [a5390f91] ZipFile v0.9.3
   [9e88b42a] Serialization
   [8dfed614] Test
-Status `/tmp/jl_umq9qZ/Manifest.toml`
+Status `/tmp/jl_AMTED0/Manifest.toml`
   [8f4d0f93] Conda v1.4.1
   [864edb3b] DataStructures v0.17.20
   [ffbed154] DocStringExtensions v0.8.3
@@ -80,7 +80,7 @@ Status `/tmp/jl_umq9qZ/Manifest.toml`
   [5e0ebb24] Strided v1.1.1
   [9d95972d] TupleTools v1.2.0
   [81def892] VersionParsing v1.2.0
-  [a5390f91] ZipFile v0.9.2
+  [a5390f91] ZipFile v0.9.3
   [83775a58] Zlib_jll v1.2.11+17
   [56f22d72] Artifacts
   [2a0f44e3] Base64
@@ -148,169 +148,6 @@ Executing transaction: ...working... done
 [ Info: Test doctest
 [ Info: SetupBuildDirectory: setting up build directory.
 [ Info: Doctest: running doctests.
-┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/readarg.jl:193-206
-│ 
-│ ```jldoctest
-│ julia> Pickle.read_bytes4(IOBuffer(b"\x00\x00\x00\x00abc")) |> isempty # 0-element Array{UInt8,1}
-│ true
-│ 
-│ julia> Pickle.read_bytes4(IOBuffer(b"\x03\x00\x00\x00abcdef"))
-│ 3-element Array{UInt8,1}:
-│  0x61
-│  0x62
-│  0x63
-│ 
-│ julia> Pickle.read_bytes4(IOBuffer(b"\x00\x00\x00\x03abcdef"))
-│ ERROR: expected 50331648 bytes in bytes4, but only 6 remain
-│ [...]
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ Pickle.read_bytes4(IOBuffer(b"\x03\x00\x00\x00abcdef"))
-│ 
-│ Evaluated output:
-│ 
-│ 3-element Vector{UInt8}:
-│  0x61
-│  0x62
-│  0x63
-│ 
-│ Expected output:
-│ 
-│ 3-element Array{UInt8,1}:
-│  0x61
-│  0x62
-│  0x63
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    3-element Array{UInt8,1}:
-│     Vector{UInt8}:
-│     0x61
-│     0x62
-│     0x63
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/readarg.jl:232-241
-│ 
-│ ```jldoctest
-│ julia> Pickle.read_bytearray8(IOBuffer(b"\x00\x00\x00\x00\x00\x00\x00\x00abc")) |> isempty # 0-element Array{UInt8,1}
-│ true
-│ 
-│ julia> Pickle.read_bytearray8(IOBuffer(b"\x03\x00\x00\x00\x00\x00\x00\x00abcdef"))
-│ 3-element Array{UInt8,1}:
-│  0x61
-│  0x62
-│  0x63
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ Pickle.read_bytearray8(IOBuffer(b"\x03\x00\x00\x00\x00\x00\x00\x00abcdef"))
-│ 
-│ Evaluated output:
-│ 
-│ 3-element Vector{UInt8}:
-│  0x61
-│  0x62
-│  0x63
-│ 
-│ Expected output:
-│ 
-│ 3-element Array{UInt8,1}:
-│  0x61
-│  0x62
-│  0x63
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    3-element Array{UInt8,1}:
-│     Vector{UInt8}:
-│     0x61
-│     0x62
-│     0x63
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/readarg.jl:175-187
-│ 
-│ ```jldoctest
-│ julia> Pickle.read_bytes1(IOBuffer(b"\x00")) |> isempty # 0-element Array{UInt8,1}
-│ true
-│ 
-│ julia> Pickle.read_bytes1(IOBuffer(b"\x03abcdef"))
-│ 3-element Array{UInt8,1}:
-│  0x61
-│  0x62
-│  0x63
-│ 
-│ julia> Pickle.read_bytes1(IOBuffer(b"\x03abcdef")) |> String
-│ "abc"
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ Pickle.read_bytes1(IOBuffer(b"\x03abcdef"))
-│ 
-│ Evaluated output:
-│ 
-│ 3-element Vector{UInt8}:
-│  0x61
-│  0x62
-│  0x63
-│ 
-│ Expected output:
-│ 
-│ 3-element Array{UInt8,1}:
-│  0x61
-│  0x62
-│  0x63
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    3-element Array{UInt8,1}:
-│     Vector{UInt8}:
-│     0x61
-│     0x62
-│     0x63
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/readarg.jl:212-221
-│ 
-│ ```jldoctest
-│ julia> Pickle.read_bytes8(IOBuffer(b"\x00\x00\x00\x00\x00\x00\x00\x00abc")) |> isempty # 0-element Array{UInt8,1}
-│ true
-│ 
-│ julia> Pickle.read_bytes8(IOBuffer(b"\x03\x00\x00\x00\x00\x00\x00\x00abcdef"))
-│ 3-element Array{UInt8,1}:
-│  0x61
-│  0x62
-│  0x63
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ Pickle.read_bytes8(IOBuffer(b"\x03\x00\x00\x00\x00\x00\x00\x00abcdef"))
-│ 
-│ Evaluated output:
-│ 
-│ 3-element Vector{UInt8}:
-│  0x61
-│  0x62
-│  0x63
-│ 
-│ Expected output:
-│ 
-│ 3-element Array{UInt8,1}:
-│  0x61
-│  0x62
-│  0x63
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    3-element Array{UInt8,1}:
-│     Vector{UInt8}:
-│     0x61
-│     0x62
-│     0x63
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/writearg.jl:59-90
 │ 
 │ ```jldoctest
@@ -652,6 +489,169 @@ Executing transaction: ...working... done
 │    1-element Array{UInt8,1}:
 │     Vector{UInt8}:
 │     0x7f
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/readarg.jl:175-187
+│ 
+│ ```jldoctest
+│ julia> Pickle.read_bytes1(IOBuffer(b"\x00")) |> isempty # 0-element Array{UInt8,1}
+│ true
+│ 
+│ julia> Pickle.read_bytes1(IOBuffer(b"\x03abcdef"))
+│ 3-element Array{UInt8,1}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│ julia> Pickle.read_bytes1(IOBuffer(b"\x03abcdef")) |> String
+│ "abc"
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Pickle.read_bytes1(IOBuffer(b"\x03abcdef"))
+│ 
+│ Evaluated output:
+│ 
+│ 3-element Vector{UInt8}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│ Expected output:
+│ 
+│ 3-element Array{UInt8,1}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    3-element Array{UInt8,1}:
+│     Vector{UInt8}:
+│     0x61
+│     0x62
+│     0x63
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/readarg.jl:193-206
+│ 
+│ ```jldoctest
+│ julia> Pickle.read_bytes4(IOBuffer(b"\x00\x00\x00\x00abc")) |> isempty # 0-element Array{UInt8,1}
+│ true
+│ 
+│ julia> Pickle.read_bytes4(IOBuffer(b"\x03\x00\x00\x00abcdef"))
+│ 3-element Array{UInt8,1}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│ julia> Pickle.read_bytes4(IOBuffer(b"\x00\x00\x00\x03abcdef"))
+│ ERROR: expected 50331648 bytes in bytes4, but only 6 remain
+│ [...]
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Pickle.read_bytes4(IOBuffer(b"\x03\x00\x00\x00abcdef"))
+│ 
+│ Evaluated output:
+│ 
+│ 3-element Vector{UInt8}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│ Expected output:
+│ 
+│ 3-element Array{UInt8,1}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    3-element Array{UInt8,1}:
+│     Vector{UInt8}:
+│     0x61
+│     0x62
+│     0x63
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/readarg.jl:232-241
+│ 
+│ ```jldoctest
+│ julia> Pickle.read_bytearray8(IOBuffer(b"\x00\x00\x00\x00\x00\x00\x00\x00abc")) |> isempty # 0-element Array{UInt8,1}
+│ true
+│ 
+│ julia> Pickle.read_bytearray8(IOBuffer(b"\x03\x00\x00\x00\x00\x00\x00\x00abcdef"))
+│ 3-element Array{UInt8,1}:
+│  0x61
+│  0x62
+│  0x63
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Pickle.read_bytearray8(IOBuffer(b"\x03\x00\x00\x00\x00\x00\x00\x00abcdef"))
+│ 
+│ Evaluated output:
+│ 
+│ 3-element Vector{UInt8}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│ Expected output:
+│ 
+│ 3-element Array{UInt8,1}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    3-element Array{UInt8,1}:
+│     Vector{UInt8}:
+│     0x61
+│     0x62
+│     0x63
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/readarg.jl:212-221
+│ 
+│ ```jldoctest
+│ julia> Pickle.read_bytes8(IOBuffer(b"\x00\x00\x00\x00\x00\x00\x00\x00abc")) |> isempty # 0-element Array{UInt8,1}
+│ true
+│ 
+│ julia> Pickle.read_bytes8(IOBuffer(b"\x03\x00\x00\x00\x00\x00\x00\x00abcdef"))
+│ 3-element Array{UInt8,1}:
+│  0x61
+│  0x62
+│  0x63
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Pickle.read_bytes8(IOBuffer(b"\x03\x00\x00\x00\x00\x00\x00\x00abcdef"))
+│ 
+│ Evaluated output:
+│ 
+│ 3-element Vector{UInt8}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│ Expected output:
+│ 
+│ 3-element Array{UInt8,1}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    3-element Array{UInt8,1}:
+│     Vector{UInt8}:
+│     0x61
+│     0x62
+│     0x63
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
 ┌ Error: Doctesting failed
 │   exception =

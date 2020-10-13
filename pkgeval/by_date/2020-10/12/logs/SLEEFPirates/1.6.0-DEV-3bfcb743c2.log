@@ -13,9 +13,9 @@ Environment:
 
   Resolving package versions...
   Installed CpuId ───────────── v0.2.2
+  Installed VectorizationBase ─ v0.12.33
   Installed SIMDPirates ─────── v0.8.25
   Installed SLEEFPirates ────── v0.5.5
-  Installed VectorizationBase ─ v0.12.33
 Updating `~/.julia/environments/v1.6/Project.toml`
   [476501e8] + SLEEFPirates v0.5.5
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -34,13 +34,13 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [8dfed614] + Test
    Building SLEEFPirates → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/67ae90a18aa8c22bf159318300e765fbd89ddf6e/build.log`
     Testing SLEEFPirates
-Status `/tmp/jl_FNzM7X/Project.toml`
+Status `/tmp/jl_uac0w1/Project.toml`
   [21efa798] SIMDPirates v0.8.25
   [476501e8] SLEEFPirates v0.5.5
   [3d5dd08c] VectorizationBase v0.12.33
   [8f399da3] Libdl
   [8dfed614] Test
-Status `/tmp/jl_FNzM7X/Manifest.toml`
+Status `/tmp/jl_uac0w1/Manifest.toml`
   [adafc99b] CpuId v0.2.2
   [21efa798] SIMDPirates v0.8.25
   [476501e8] SLEEFPirates v0.5.5
@@ -57,7 +57,7 @@ Status `/tmp/jl_FNzM7X/Manifest.toml`
     Testing Running tests...
 SLEEFPirates: Test Failed at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:156
   Expression: isempty(detect_unbound_args(SLEEFPirates))
-   Evaluated: isempty(Method[vconvert(::Type{SLEEFPirates.Double{V}}, v::SVec) where {W, T, V<:Union{Tuple{Vararg{VecElement{T}, W}}, VectorizationBase.AbstractStructVec{W, T}}} in SLEEFPirates at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/src/double.jl:18, promote_vtype(::Type{SLEEFPirates.Double{V}}, ::Type{Mask{W, U}}) where {W, U, T, V<:Union{Tuple{Vararg{VecElement{T}, W}}, VectorizationBase.AbstractStructVec{W, T}}} in SLEEFPirates at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/src/double.jl:15, promote_vtype(::Type{Mask{W, U}}, ::Type{SLEEFPirates.Double{V}}) where {W, U, T, V<:Union{Tuple{Vararg{VecElement{T}, W}}, VectorizationBase.AbstractStructVec{W, T}}} in SLEEFPirates at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/src/double.jl:14])
+   Evaluated: isempty(Method[vconvert(::Type{SLEEFPirates.Double{V}}, v::SVec) where {W, T, V<:Union{Tuple{Vararg{VecElement{T}, W}}, VectorizationBase.AbstractStructVec{W, T}}} in SLEEFPirates at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/src/double.jl:18, promote_vtype(::Type{Mask{W, U}}, ::Type{SLEEFPirates.Double{V}}) where {W, U, T, V<:Union{Tuple{Vararg{VecElement{T}, W}}, VectorizationBase.AbstractStructVec{W, T}}} in SLEEFPirates at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/src/double.jl:14, promote_vtype(::Type{SLEEFPirates.Double{V}}, ::Type{Mask{W, U}}) where {W, U, T, V<:Union{Tuple{Vararg{VecElement{T}, W}}, VectorizationBase.AbstractStructVec{W, T}}} in SLEEFPirates at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/src/double.jl:15])
 Stacktrace:
  [1] macro expansion
    @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:156 [inlined]
@@ -419,57 +419,6 @@ accuracy tan: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jG
       @ Base ./client.jl:261
    [23] _start()
       @ Base ./client.jl:485
-tan_fast          : max 3.1237261295318604 at x = 2309.8552                       : mean 0.4886726591135699
-accuracy tan_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
-  Got exception outside of a @test
-  Module IR does not contain specified entry function
-  Stacktrace:
-    [1] macro expansion
-      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:97 [inlined]
-    [2] llvmwrap
-      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:69 [inlined]
-    [3] macro expansion
-      @ ~/.julia/packages/SIMDPirates/EVSvY/src/floating_point_arithmetic.jl:47 [inlined]
-    [4] vmul
-      @ ~/.julia/packages/SIMDPirates/EVSvY/src/SIMDPirates.jl:74 [inlined]
-    [5] *
-      @ ~/.julia/packages/SIMDPirates/EVSvY/src/SIMDPirates.jl:79 [inlined]
-    [6] tan_fast
-      @ ~/.julia/packages/SLEEFPirates/jGsib/src/trig.jl:634 [inlined]
-    [7] test_vector(xfun::typeof(SLEEFPirates.tan_fast), fun::typeof(tan), #unused#::Val{8}, x1::Float32)
-      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:94
-    [8] macro expansion
-      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:145 [inlined]
-    [9] macro expansion
-      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219 [inlined]
-   [10] test_acc(T::Type{Float32}, fun_table::Dict{Function, Function}, xx::Vector{Float32}, tol::Int64; debug::Bool, tol_debug::Int64)
-      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
-   [11] test_acc(T::Type, fun_table::Dict{Function, Function}, xx::Vector{Float32}, tol::Int64)
-      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
-   [12] top-level scope
-      @ ~/.julia/packages/SLEEFPirates/jGsib/test/accuracy.jl:49
-   [13] top-level scope
-      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219
-   [14] include(fname::String)
-      @ Base.MainInclude ./client.jl:444
-   [15] macro expansion
-      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:158 [inlined]
-   [16] macro expansion
-      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
-   [17] runtests()
-      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:156
-   [18] top-level scope
-      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:162
-   [19] include(fname::String)
-      @ Base.MainInclude ./client.jl:444
-   [20] top-level scope
-      @ none:6
-   [21] eval(m::Module, e::Any)
-      @ Core ./boot.jl:360
-   [22] exec_options(opts::Base.JLOptions)
-      @ Base ./client.jl:261
-   [23] _start()
-      @ Base ./client.jl:485
 cos_fast          : max 1.7095487117767334 at x = 7046.593                        : mean 0.34603441400456275
 accuracy cos_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
   Got exception outside of a @test
@@ -522,6 +471,57 @@ accuracy cos_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirat
    [23] exec_options(opts::Base.JLOptions)
       @ Base ./client.jl:261
    [24] _start()
+      @ Base ./client.jl:485
+tan_fast          : max 3.1237261295318604 at x = 2309.8552                       : mean 0.4886726591135699
+accuracy tan_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
+  Got exception outside of a @test
+  Module IR does not contain specified entry function
+  Stacktrace:
+    [1] macro expansion
+      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:97 [inlined]
+    [2] llvmwrap
+      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:69 [inlined]
+    [3] macro expansion
+      @ ~/.julia/packages/SIMDPirates/EVSvY/src/floating_point_arithmetic.jl:47 [inlined]
+    [4] vmul
+      @ ~/.julia/packages/SIMDPirates/EVSvY/src/SIMDPirates.jl:74 [inlined]
+    [5] *
+      @ ~/.julia/packages/SIMDPirates/EVSvY/src/SIMDPirates.jl:79 [inlined]
+    [6] tan_fast
+      @ ~/.julia/packages/SLEEFPirates/jGsib/src/trig.jl:634 [inlined]
+    [7] test_vector(xfun::typeof(SLEEFPirates.tan_fast), fun::typeof(tan), #unused#::Val{8}, x1::Float32)
+      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:94
+    [8] macro expansion
+      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:145 [inlined]
+    [9] macro expansion
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219 [inlined]
+   [10] test_acc(T::Type{Float32}, fun_table::Dict{Function, Function}, xx::Vector{Float32}, tol::Int64; debug::Bool, tol_debug::Int64)
+      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
+   [11] test_acc(T::Type, fun_table::Dict{Function, Function}, xx::Vector{Float32}, tol::Int64)
+      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
+   [12] top-level scope
+      @ ~/.julia/packages/SLEEFPirates/jGsib/test/accuracy.jl:49
+   [13] top-level scope
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219
+   [14] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [15] macro expansion
+      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:158 [inlined]
+   [16] macro expansion
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [17] runtests()
+      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:156
+   [18] top-level scope
+      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:162
+   [19] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [20] top-level scope
+      @ none:6
+   [21] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [22] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [23] _start()
       @ Base ./client.jl:485
 sin_fast          : max 1.6963168382644653 at x = 1908.52                         : mean 0.34382828553004674
 accuracy sin_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
@@ -786,55 +786,6 @@ accuracy cos_sincos: Error During Test at /home/pkgeval/.julia/packages/SLEEFPir
       @ Base ./client.jl:261
    [24] _start()
       @ Base ./client.jl:485
-asin_fast         : max 2.354989767074585 at x = 0.2447                          : mean 0.4620244666696027
-accuracy asin_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
-  Got exception outside of a @test
-  Module IR does not contain specified entry function
-  Stacktrace:
-    [1] macro expansion
-      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:40 [inlined]
-    [2] llvmwrap
-      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:7 [inlined]
-    [3] llvmwrap
-      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:5 [inlined]
-    [4] abs
-      @ ~/.julia/packages/SIMDPirates/EVSvY/src/SIMDPirates.jl:79 [inlined]
-    [5] asin_fast
-      @ ~/.julia/packages/SLEEFPirates/jGsib/src/trig.jl:916 [inlined]
-    [6] test_vector(xfun::typeof(SLEEFPirates.asin_fast), fun::typeof(asin), #unused#::Val{8}, x1::Float32)
-      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:94
-    [7] macro expansion
-      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:145 [inlined]
-    [8] macro expansion
-      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219 [inlined]
-    [9] test_acc(T::Type{Float32}, fun_table::Dict{Function, Function}, xx::Vector{Float32}, tol::Int64; debug::Bool, tol_debug::Int64)
-      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
-   [10] test_acc(T::Type, fun_table::Dict{Function, Function}, xx::Vector{Float32}, tol::Int64)
-      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
-   [11] top-level scope
-      @ ~/.julia/packages/SLEEFPirates/jGsib/test/accuracy.jl:67
-   [12] top-level scope
-      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219
-   [13] include(fname::String)
-      @ Base.MainInclude ./client.jl:444
-   [14] macro expansion
-      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:158 [inlined]
-   [15] macro expansion
-      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
-   [16] runtests()
-      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:156
-   [17] top-level scope
-      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:162
-   [18] include(fname::String)
-      @ Base.MainInclude ./client.jl:444
-   [19] top-level scope
-      @ none:6
-   [20] eval(m::Module, e::Any)
-      @ Core ./boot.jl:360
-   [21] exec_options(opts::Base.JLOptions)
-      @ Base ./client.jl:261
-   [22] _start()
-      @ Base ./client.jl:485
 acos_fast         : max 2.421334743499756 at x = 0.68704                         : mean 0.42344907010014493
 accuracy acos_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
   Got exception outside of a @test
@@ -885,6 +836,55 @@ accuracy acos_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPira
    [22] exec_options(opts::Base.JLOptions)
       @ Base ./client.jl:261
    [23] _start()
+      @ Base ./client.jl:485
+asin_fast         : max 2.354989767074585 at x = 0.2447                          : mean 0.4620244666696027
+accuracy asin_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
+  Got exception outside of a @test
+  Module IR does not contain specified entry function
+  Stacktrace:
+    [1] macro expansion
+      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:40 [inlined]
+    [2] llvmwrap
+      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:7 [inlined]
+    [3] llvmwrap
+      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:5 [inlined]
+    [4] abs
+      @ ~/.julia/packages/SIMDPirates/EVSvY/src/SIMDPirates.jl:79 [inlined]
+    [5] asin_fast
+      @ ~/.julia/packages/SLEEFPirates/jGsib/src/trig.jl:916 [inlined]
+    [6] test_vector(xfun::typeof(SLEEFPirates.asin_fast), fun::typeof(asin), #unused#::Val{8}, x1::Float32)
+      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:94
+    [7] macro expansion
+      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:145 [inlined]
+    [8] macro expansion
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219 [inlined]
+    [9] test_acc(T::Type{Float32}, fun_table::Dict{Function, Function}, xx::Vector{Float32}, tol::Int64; debug::Bool, tol_debug::Int64)
+      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
+   [10] test_acc(T::Type, fun_table::Dict{Function, Function}, xx::Vector{Float32}, tol::Int64)
+      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
+   [11] top-level scope
+      @ ~/.julia/packages/SLEEFPirates/jGsib/test/accuracy.jl:67
+   [12] top-level scope
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219
+   [13] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [14] macro expansion
+      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:158 [inlined]
+   [15] macro expansion
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [16] runtests()
+      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:156
+   [17] top-level scope
+      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:162
+   [18] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [19] top-level scope
+      @ none:6
+   [20] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [21] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [22] _start()
       @ Base ./client.jl:485
 asin              : max 0.8321952223777771 at x = 0.7292                          : mean 0.2546848257920135
 accuracy asin: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
@@ -1796,8 +1796,8 @@ accuracy tanh: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/j
       @ Base ./client.jl:261
    [19] _start()
       @ Base ./client.jl:485
-sinh              : max 0.5648414492607117 at x = 0.3726                          : mean 0.13681719526698063
-accuracy sinh: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
+cosh              : max 0.5266055464744568 at x = 8.003                           : mean 0.13635898251095785
+accuracy cosh: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
   Got exception outside of a @test
   Module IR does not contain specified entry function
   Stacktrace:
@@ -1809,9 +1809,9 @@ accuracy sinh: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/j
       @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:5 [inlined]
     [4] abs
       @ ~/.julia/packages/SIMDPirates/EVSvY/src/SIMDPirates.jl:79 [inlined]
-    [5] sinh
-      @ ~/.julia/packages/SLEEFPirates/jGsib/src/hyp.jl:13 [inlined]
-    [6] test_vector(xfun::typeof(SLEEFPirates.sinh), fun::typeof(sinh), #unused#::Val{8}, x1::Float32)
+    [5] cosh
+      @ ~/.julia/packages/SLEEFPirates/jGsib/src/hyp.jl:33 [inlined]
+    [6] test_vector(xfun::typeof(SLEEFPirates.cosh), fun::typeof(cosh), #unused#::Val{8}, x1::Float32)
       @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:94
     [7] macro expansion
       @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:145 [inlined]
@@ -1845,8 +1845,8 @@ accuracy sinh: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/j
       @ Base ./client.jl:261
    [22] _start()
       @ Base ./client.jl:485
-cosh              : max 0.5266055464744568 at x = 8.003                           : mean 0.13635898251095785
-accuracy cosh: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
+sinh              : max 0.5648414492607117 at x = 0.3726                          : mean 0.13681719526698063
+accuracy sinh: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
   Got exception outside of a @test
   Module IR does not contain specified entry function
   Stacktrace:
@@ -1858,9 +1858,9 @@ accuracy cosh: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/j
       @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:5 [inlined]
     [4] abs
       @ ~/.julia/packages/SIMDPirates/EVSvY/src/SIMDPirates.jl:79 [inlined]
-    [5] cosh
-      @ ~/.julia/packages/SLEEFPirates/jGsib/src/hyp.jl:33 [inlined]
-    [6] test_vector(xfun::typeof(SLEEFPirates.cosh), fun::typeof(cosh), #unused#::Val{8}, x1::Float32)
+    [5] sinh
+      @ ~/.julia/packages/SLEEFPirates/jGsib/src/hyp.jl:13 [inlined]
+    [6] test_vector(xfun::typeof(SLEEFPirates.sinh), fun::typeof(sinh), #unused#::Val{8}, x1::Float32)
       @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:94
     [7] macro expansion
       @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:145 [inlined]
@@ -2248,8 +2248,8 @@ accuracy tan: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jG
       @ Base ./client.jl:261
    [23] _start()
       @ Base ./client.jl:485
-tan_fast          : max 2.603572045148083 at x = 6.5094506e6                     : mean 0.42845124423971814
-accuracy tan_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
+cos_fast          : max 2.380638627677767 at x = 4.7831879e6                     : mean 0.30765049101183917
+accuracy cos_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
   Got exception outside of a @test
   Module IR does not contain specified entry function
   Stacktrace:
@@ -2263,9 +2263,9 @@ accuracy tan_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirat
       @ ~/.julia/packages/SIMDPirates/EVSvY/src/SIMDPirates.jl:74 [inlined]
     [5] *
       @ ~/.julia/packages/SIMDPirates/EVSvY/src/SIMDPirates.jl:79 [inlined]
-    [6] tan_fast
-      @ ~/.julia/packages/SLEEFPirates/jGsib/src/trig.jl:600 [inlined]
-    [7] test_vector(xfun::typeof(SLEEFPirates.tan_fast), fun::typeof(tan), #unused#::Val{4}, x1::Float64)
+    [6] cos_fast
+      @ ~/.julia/packages/SLEEFPirates/jGsib/src/trig.jl:253 [inlined]
+    [7] test_vector(xfun::typeof(SLEEFPirates.cos_fast), fun::typeof(cos), #unused#::Val{4}, x1::Float64)
       @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:94
     [8] macro expansion
       @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:145 [inlined]
@@ -2299,8 +2299,8 @@ accuracy tan_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirat
       @ Base ./client.jl:261
    [23] _start()
       @ Base ./client.jl:485
-cos_fast          : max 2.380638627677767 at x = 4.7831879e6                     : mean 0.30765049101183917
-accuracy cos_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
+tan_fast          : max 2.603572045148083 at x = 6.5094506e6                     : mean 0.42845124423971814
+accuracy tan_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
   Got exception outside of a @test
   Module IR does not contain specified entry function
   Stacktrace:
@@ -2314,9 +2314,9 @@ accuracy cos_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirat
       @ ~/.julia/packages/SIMDPirates/EVSvY/src/SIMDPirates.jl:74 [inlined]
     [5] *
       @ ~/.julia/packages/SIMDPirates/EVSvY/src/SIMDPirates.jl:79 [inlined]
-    [6] cos_fast
-      @ ~/.julia/packages/SLEEFPirates/jGsib/src/trig.jl:253 [inlined]
-    [7] test_vector(xfun::typeof(SLEEFPirates.cos_fast), fun::typeof(cos), #unused#::Val{4}, x1::Float64)
+    [6] tan_fast
+      @ ~/.julia/packages/SLEEFPirates/jGsib/src/trig.jl:600 [inlined]
+    [7] test_vector(xfun::typeof(SLEEFPirates.tan_fast), fun::typeof(tan), #unused#::Val{4}, x1::Float64)
       @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:94
     [8] macro expansion
       @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:145 [inlined]
@@ -2613,55 +2613,6 @@ accuracy cos_sincos: Error During Test at /home/pkgeval/.julia/packages/SLEEFPir
       @ Base ./client.jl:261
    [24] _start()
       @ Base ./client.jl:485
-asin_fast         : max 2.2629442722643422 at x = 0.24504                         : mean 0.4216418019937454
-accuracy asin_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
-  Got exception outside of a @test
-  Module IR does not contain specified entry function
-  Stacktrace:
-    [1] macro expansion
-      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:40 [inlined]
-    [2] llvmwrap
-      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:7 [inlined]
-    [3] llvmwrap
-      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:5 [inlined]
-    [4] abs
-      @ ~/.julia/packages/SIMDPirates/EVSvY/src/SIMDPirates.jl:79 [inlined]
-    [5] asin_fast
-      @ ~/.julia/packages/SLEEFPirates/jGsib/src/trig.jl:916 [inlined]
-    [6] test_vector(xfun::typeof(SLEEFPirates.asin_fast), fun::typeof(asin), #unused#::Val{4}, x1::Float64)
-      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:94
-    [7] macro expansion
-      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:145 [inlined]
-    [8] macro expansion
-      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219 [inlined]
-    [9] test_acc(T::Type{Float64}, fun_table::Dict{Function, Function}, xx::Vector{Float64}, tol::Int64; debug::Bool, tol_debug::Int64)
-      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
-   [10] test_acc(T::Type, fun_table::Dict{Function, Function}, xx::Vector{Float64}, tol::Int64)
-      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
-   [11] top-level scope
-      @ ~/.julia/packages/SLEEFPirates/jGsib/test/accuracy.jl:67
-   [12] top-level scope
-      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219
-   [13] include(fname::String)
-      @ Base.MainInclude ./client.jl:444
-   [14] macro expansion
-      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:158 [inlined]
-   [15] macro expansion
-      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
-   [16] runtests()
-      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:156
-   [17] top-level scope
-      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:162
-   [18] include(fname::String)
-      @ Base.MainInclude ./client.jl:444
-   [19] top-level scope
-      @ none:6
-   [20] eval(m::Module, e::Any)
-      @ Core ./boot.jl:360
-   [21] exec_options(opts::Base.JLOptions)
-      @ Base ./client.jl:261
-   [22] _start()
-      @ Base ./client.jl:485
 acos_fast         : max 2.0827101578368117 at x = 0.96982                         : mean 0.36373525037778104
 accuracy acos_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
   Got exception outside of a @test
@@ -2712,6 +2663,55 @@ accuracy acos_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPira
    [22] exec_options(opts::Base.JLOptions)
       @ Base ./client.jl:261
    [23] _start()
+      @ Base ./client.jl:485
+asin_fast         : max 2.2629442722643422 at x = 0.24504                         : mean 0.4216418019937454
+accuracy asin_fast: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
+  Got exception outside of a @test
+  Module IR does not contain specified entry function
+  Stacktrace:
+    [1] macro expansion
+      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:40 [inlined]
+    [2] llvmwrap
+      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:7 [inlined]
+    [3] llvmwrap
+      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:5 [inlined]
+    [4] abs
+      @ ~/.julia/packages/SIMDPirates/EVSvY/src/SIMDPirates.jl:79 [inlined]
+    [5] asin_fast
+      @ ~/.julia/packages/SLEEFPirates/jGsib/src/trig.jl:916 [inlined]
+    [6] test_vector(xfun::typeof(SLEEFPirates.asin_fast), fun::typeof(asin), #unused#::Val{4}, x1::Float64)
+      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:94
+    [7] macro expansion
+      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:145 [inlined]
+    [8] macro expansion
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219 [inlined]
+    [9] test_acc(T::Type{Float64}, fun_table::Dict{Function, Function}, xx::Vector{Float64}, tol::Int64; debug::Bool, tol_debug::Int64)
+      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
+   [10] test_acc(T::Type, fun_table::Dict{Function, Function}, xx::Vector{Float64}, tol::Int64)
+      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
+   [11] top-level scope
+      @ ~/.julia/packages/SLEEFPirates/jGsib/test/accuracy.jl:67
+   [12] top-level scope
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219
+   [13] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [14] macro expansion
+      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:158 [inlined]
+   [15] macro expansion
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [16] runtests()
+      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:156
+   [17] top-level scope
+      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:162
+   [18] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [19] top-level scope
+      @ none:6
+   [20] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [21] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [22] _start()
       @ Base ./client.jl:485
 asin              : max 0.8723023301581104 at x = 0.689                           : mean 0.25920044465215764
 accuracy asin: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
@@ -3623,55 +3623,6 @@ accuracy tanh: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/j
       @ Base ./client.jl:261
    [19] _start()
       @ Base ./client.jl:485
-sinh              : max 0.5815771544390032 at x = 0.2288                          : mean 0.21355266357902664
-accuracy sinh: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
-  Got exception outside of a @test
-  Module IR does not contain specified entry function
-  Stacktrace:
-    [1] macro expansion
-      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:40 [inlined]
-    [2] llvmwrap
-      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:7 [inlined]
-    [3] llvmwrap
-      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:5 [inlined]
-    [4] abs
-      @ ~/.julia/packages/SIMDPirates/EVSvY/src/SIMDPirates.jl:79 [inlined]
-    [5] sinh
-      @ ~/.julia/packages/SLEEFPirates/jGsib/src/hyp.jl:13 [inlined]
-    [6] test_vector(xfun::typeof(SLEEFPirates.sinh), fun::typeof(sinh), #unused#::Val{4}, x1::Float64)
-      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:94
-    [7] macro expansion
-      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:145 [inlined]
-    [8] macro expansion
-      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219 [inlined]
-    [9] test_acc(T::Type{Float64}, fun_table::Dict{Function, Function}, xx::Vector{Float64}, tol::Int64; debug::Bool, tol_debug::Int64)
-      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
-   [10] test_acc(T::Type, fun_table::Dict{Function, Function}, xx::Vector{Float64}, tol::Int64)
-      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
-   [11] top-level scope
-      @ ~/.julia/packages/SLEEFPirates/jGsib/test/accuracy.jl:163
-   [12] top-level scope
-      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219
-   [13] include(fname::String)
-      @ Base.MainInclude ./client.jl:444
-   [14] macro expansion
-      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:158 [inlined]
-   [15] macro expansion
-      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
-   [16] runtests()
-      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:156
-   [17] top-level scope
-      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:162
-   [18] include(fname::String)
-      @ Base.MainInclude ./client.jl:444
-   [19] top-level scope
-      @ none:6
-   [20] eval(m::Module, e::Any)
-      @ Core ./boot.jl:360
-   [21] exec_options(opts::Base.JLOptions)
-      @ Base ./client.jl:261
-   [22] _start()
-      @ Base ./client.jl:485
 cosh              : max 0.5271522243019784 at x = 196.52                          : mean 0.21327375822714825
 accuracy cosh: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
   Got exception outside of a @test
@@ -3721,6 +3672,55 @@ accuracy cosh: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/j
       @ Base ./client.jl:261
    [22] _start()
       @ Base ./client.jl:485
+sinh              : max 0.5815771544390032 at x = 0.2288                          : mean 0.21355266357902664
+accuracy sinh: Error During Test at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
+  Got exception outside of a @test
+  Module IR does not contain specified entry function
+  Stacktrace:
+    [1] macro expansion
+      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:40 [inlined]
+    [2] llvmwrap
+      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:7 [inlined]
+    [3] llvmwrap
+      @ ~/.julia/packages/SIMDPirates/EVSvY/src/llvmwrap.jl:5 [inlined]
+    [4] abs
+      @ ~/.julia/packages/SIMDPirates/EVSvY/src/SIMDPirates.jl:79 [inlined]
+    [5] sinh
+      @ ~/.julia/packages/SLEEFPirates/jGsib/src/hyp.jl:13 [inlined]
+    [6] test_vector(xfun::typeof(SLEEFPirates.sinh), fun::typeof(sinh), #unused#::Val{4}, x1::Float64)
+      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:94
+    [7] macro expansion
+      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:145 [inlined]
+    [8] macro expansion
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219 [inlined]
+    [9] test_acc(T::Type{Float64}, fun_table::Dict{Function, Function}, xx::Vector{Float64}, tol::Int64; debug::Bool, tol_debug::Int64)
+      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
+   [10] test_acc(T::Type, fun_table::Dict{Function, Function}, xx::Vector{Float64}, tol::Int64)
+      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:115
+   [11] top-level scope
+      @ ~/.julia/packages/SLEEFPirates/jGsib/test/accuracy.jl:163
+   [12] top-level scope
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219
+   [13] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [14] macro expansion
+      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:158 [inlined]
+   [15] macro expansion
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [16] runtests()
+      @ Main ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:156
+   [17] top-level scope
+      @ ~/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:162
+   [18] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [19] top-level scope
+      @ none:6
+   [20] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [21] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [22] _start()
+      @ Base ./client.jl:485
 Test Summary:                             | Pass  Fail  Error  Total
 SLEEFPirates                              |   84     1     72    157
   Accuracy (max error in ulp) for Float32 |   42           36     78
@@ -3731,15 +3731,15 @@ SLEEFPirates                              |   84     1     72    157
     accuracy sin                          |    1            1      2
     accuracy cos                          |    1            1      2
     accuracy tan                          |    1            1      2
-    accuracy tan_fast                     |    1            1      2
     accuracy cos_fast                     |    1            1      2
+    accuracy tan_fast                     |    1            1      2
     accuracy sin_fast                     |    1            1      2
     accuracy sin_sincos_fast              |    1            1      2
     accuracy cos_sincos_fast              |    1            1      2
     accuracy sin_sincos                   |    1            1      2
     accuracy cos_sincos                   |    1            1      2
-    accuracy asin_fast                    |    1            1      2
     accuracy acos_fast                    |    1            1      2
+    accuracy asin_fast                    |    1            1      2
     accuracy asin                         |    1            1      2
     accuracy acos                         |    1            1      2
     accuracy atan_fast                    |    1            1      2
@@ -3758,8 +3758,8 @@ SLEEFPirates                              |   84     1     72    157
     accuracy exp10                        |    1            1      2
     accuracy expm1                        |    1            1      2
     accuracy tanh                         |    1            1      2
-    accuracy sinh                         |    1            1      2
     accuracy cosh                         |    1            1      2
+    accuracy sinh                         |    1            1      2
     xilogb at arbitrary values            |    6                   6
   Accuracy (max error in ulp) for Float64 |   42           36     78
     accuracy exp                          |    1            1      2
@@ -3769,15 +3769,15 @@ SLEEFPirates                              |   84     1     72    157
     accuracy sin                          |    1            1      2
     accuracy cos                          |    1            1      2
     accuracy tan                          |    1            1      2
-    accuracy tan_fast                     |    1            1      2
     accuracy cos_fast                     |    1            1      2
+    accuracy tan_fast                     |    1            1      2
     accuracy sin_fast                     |    1            1      2
     accuracy sin_sincos_fast              |    1            1      2
     accuracy cos_sincos_fast              |    1            1      2
     accuracy sin_sincos                   |    1            1      2
     accuracy cos_sincos                   |    1            1      2
-    accuracy asin_fast                    |    1            1      2
     accuracy acos_fast                    |    1            1      2
+    accuracy asin_fast                    |    1            1      2
     accuracy asin                         |    1            1      2
     accuracy acos                         |    1            1      2
     accuracy atan_fast                    |    1            1      2
@@ -3796,8 +3796,8 @@ SLEEFPirates                              |   84     1     72    157
     accuracy exp10                        |    1            1      2
     accuracy expm1                        |    1            1      2
     accuracy tanh                         |    1            1      2
-    accuracy sinh                         |    1            1      2
     accuracy cosh                         |    1            1      2
+    accuracy sinh                         |    1            1      2
     xilogb at arbitrary values            |    6                   6
 ERROR: LoadError: Some tests did not pass: 84 passed, 1 failed, 72 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/SLEEFPirates/jGsib/test/runtests.jl:162

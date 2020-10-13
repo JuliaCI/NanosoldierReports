@@ -12,20 +12,20 @@ Environment:
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
   Resolving package versions...
-  Installed MicrosoftMPI_jll ───────────── v10.1.2+3
   Installed MKL_jll ────────────────────── v2020.2.254+0
+  Installed MicrosoftMPI_jll ───────────── v10.1.2+3
   Installed OpenMPI_jll ────────────────── v4.0.2+2
   Installed MPICH_jll ──────────────────── v3.3.2+10
   Installed CompilerSupportLibraries_jll ─ v0.3.3+0
   Installed AbstractFFTs ───────────────── v0.5.0
   Installed DocStringExtensions ────────── v0.8.3
   Installed PencilFFTs ─────────────────── v0.9.0
+  Installed FFTW ───────────────────────── v1.2.4
   Installed Requires ───────────────────── v1.1.0
   Installed IntelOpenMP_jll ────────────── v2018.0.3+0
-  Installed FFTW_jll ───────────────────── v3.3.9+5
-  Installed FFTW ───────────────────────── v1.2.4
-  Installed TimerOutputs ───────────────── v0.5.6
   Installed OffsetArrays ───────────────── v1.3.1
+  Installed TimerOutputs ───────────────── v0.5.6
+  Installed FFTW_jll ───────────────────── v3.3.9+5
   Installed StaticArrays ───────────────── v0.12.4
   Installed PencilArrays ───────────────── v0.2.0
   Installed Reexport ───────────────────── v0.2.0
@@ -77,7 +77,7 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
    Building FFTW → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/8b7c16b56936047ca41bf25effa137ae0b381ae8/build.log`
    Building MPI ─→ `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/0bd36605eea7a4d9c3ae0d7f21c10210dd54cb83/build.log`
     Testing PencilFFTs
-Status `/tmp/jl_6DXeu2/Project.toml`
+Status `/tmp/jl_Ke7NhX/Project.toml`
   [621f4979] AbstractFFTs v0.5.0
   [6e4b80f9] BenchmarkTools v0.5.0
   [7a1cc6ca] FFTW v1.2.4
@@ -90,7 +90,7 @@ Status `/tmp/jl_6DXeu2/Project.toml`
   [9abbd945] Profile
   [9a3f8284] Random
   [8dfed614] Test
-Status `/tmp/jl_6DXeu2/Manifest.toml`
+Status `/tmp/jl_Ke7NhX/Manifest.toml`
   [621f4979] AbstractFFTs v0.5.0
   [6e4b80f9] BenchmarkTools v0.5.0
   [e66e0078] CompilerSupportLibraries_jll v0.3.3+0
@@ -139,10 +139,10 @@ Status `/tmp/jl_6DXeu2/Manifest.toml`
   [4ec0a83e] Unicode
     Testing Running tests...
 [ Info: Running taylor_green.jl with 6 processes...
-divergence local...    739.991 ns (0 allocations: 0 bytes)
-divergence global...   2.004 μs (2 allocations: 1.86 KiB)
-curl! local...         1.468 μs (0 allocations: 0 bytes)
-curl! global...        4.111 μs (4 allocations: 3.72 KiB)
+divergence local...    837.650 ns (0 allocations: 0 bytes)
+divergence global...   2.935 μs (2 allocations: 1.86 KiB)
+curl! local...         1.550 μs (0 allocations: 0 bytes)
+curl! global...        4.672 μs (4 allocations: 3.72 KiB)
 Test Summary: | Pass  Total
 Taylor-Green  |    5      5
 
@@ -151,17 +151,17 @@ Taylor-Green  |    5      5
 Test Summary:      | Pass  Total
 Fourier operations |    4      4
 Micro-benchmarks:
- - divergence global_view...  11.380 μs (2 allocations: 1.86 KiB)
- - divergence local...   5.388 μs (0 allocations: 0 bytes)
- - curl! global_view...  24.769 μs (4 allocations: 3.72 KiB)
- - curl! local...        11.139 μs (0 allocations: 0 bytes)
- - norm2(u)...           15.089 μs (0 allocations: 0 bytes)
- - norm2(uF)...          72.679 μs (0 allocations: 0 bytes)
- - norm2(parent(u))...   5.481 μs (0 allocations: 0 bytes)
- - norm2(parent(uF))...  5.305 μs (0 allocations: 0 bytes)
- - sqnorm(u)...          14.030 μs (0 allocations: 0 bytes)
- - sqnorm(parent(u))...  13.479 μs (0 allocations: 0 bytes)
- - sqnorm(uF)...         4.884 μs (0 allocations: 0 bytes)
+ - divergence global_view...  14.620 μs (2 allocations: 1.86 KiB)
+ - divergence local...   5.883 μs (0 allocations: 0 bytes)
+ - curl! global_view...  25.060 μs (4 allocations: 3.72 KiB)
+ - curl! local...        11.320 μs (0 allocations: 0 bytes)
+ - norm2(u)...           16.210 μs (0 allocations: 0 bytes)
+ - norm2(uF)...          53.669 μs (0 allocations: 0 bytes)
+ - norm2(parent(u))...   5.525 μs (0 allocations: 0 bytes)
+ - norm2(parent(uF))...  5.173 μs (0 allocations: 0 bytes)
+ - sqnorm(u)...          13.629 μs (0 allocations: 0 bytes)
+ - sqnorm(parent(u))...  12.749 μs (0 allocations: 0 bytes)
+ - sqnorm(uF)...         5.875 μs (0 allocations: 0 bytes)
 
 [ Info: Input data size: (41, 23, 15)
 Test Summary:      | Pass  Total
@@ -573,18 +573,23 @@ Input type: Float64
 Global dimensions: (64, 32, 64)  ->  (33, 32, 64)
 MPI topology: 2D decomposition (3×2 processes)
 
-gradient_global_view!...                  69.729 μs (0 allocations: 0 bytes)
-gradient_global_view! (lazy)...           101.918 μs (0 allocations: 0 bytes)
-gradient_global_view_explicit!...         123.859 μs (0 allocations: 0 bytes)
-gradient_global_view_explicit! (lazy)...  105.469 μs (0 allocations: 0 bytes)
-gradient_local!...                        87.938 μs (0 allocations: 0 bytes)
-gradient_local_parent!...                 68.009 μs (0 allocations: 0 bytes)
-gradient_local_linear!...                 58.910 μs (0 allocations: 0 bytes)
-gradient_local_linear_explicit!...        58.119 μs (0 allocations: 0 bytes)
+gradient_global_view!...                  71.000 μs (0 allocations: 0 bytes)
+gradient_global_view! (lazy)...           106.259 μs (0 allocations: 0 bytes)
+gradient_global_view_explicit!...         134.499 μs (0 allocations: 0 bytes)
+gradient_global_view_explicit! (lazy)...  118.709 μs (0 allocations: 0 bytes)
+gradient_local!...                        89.359 μs (0 allocations: 0 bytes)
+gradient_local_parent!...                 68.699 μs (0 allocations: 0 bytes)
+gradient_local_linear!...                 60.209 μs (0 allocations: 0 bytes)
+gradient_local_linear_explicit!...        61.229 μs (0 allocations: 0 bytes)
 
 [ Info: Running ../examples/in-place.jl with 6 processes...
 
 signal (15): Terminated
-in expression starting at /home/pkgeval/.julia/packages/PencilFFTs/dA7nP/test/runtests.jl:23
+in expression starting at none:31
 pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+
+signal (15): Terminated
+in expression starting at /home/pkgeval/.julia/packages/PencilFFTs/dA7nP/test/runtests.jl:23
 uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+jl_task_get_next at /buildworker/worker/package_linux64/build/src/partr.c:508
