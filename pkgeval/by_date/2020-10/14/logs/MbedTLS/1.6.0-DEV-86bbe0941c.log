@@ -1,0 +1,120 @@
+Julia Version 1.6.0-DEV.1227
+Commit 86bbe0941c (2020-10-15 00:29 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+  Resolving package versions...
+  Installed MbedTLS_jll ─ v2.16.8+0
+  Installed MbedTLS ───── v1.0.2
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [739be429] + MbedTLS v1.0.2
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [739be429] + MbedTLS v1.0.2
+  [c8ffd9c3] + MbedTLS_jll v2.16.8+0
+  [56f22d72] + Artifacts
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [b77e0a4c] + InteractiveUtils
+  [76f85450] + LibGit2
+  [8f399da3] + Libdl
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [44cfe95a] + Pkg
+  [de0858da] + Printf
+  [3fa0cd96] + REPL
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [fa267f1f] + TOML
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
+[90m[32m  ✓ [39mMbedTLS_jll[39m
+[32m  ✓ [39mMbedTLS
+2 dependencies successfully precompiled
+    Testing MbedTLS
+Status `/tmp/jl_YQUlFZ/Project.toml`
+  [739be429] MbedTLS v1.0.2
+  [c8ffd9c3] MbedTLS_jll v2.16.8+0
+  [ade2ca70] Dates
+  [8ba89e20] Distributed
+  [9a3f8284] Random
+  [6462fe0b] Sockets
+  [8dfed614] Test
+Status `/tmp/jl_YQUlFZ/Manifest.toml`
+  [739be429] MbedTLS v1.0.2
+  [c8ffd9c3] MbedTLS_jll v2.16.8+0
+  [56f22d72] Artifacts
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [fa267f1f] TOML
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+    Testing Running tests...
+ERROR: LoadError: MethodError: no method matching rand!(::Core.Const, ::Vector{UInt8})
+Closest candidates are:
+  rand!(!Matched::AbstractArray{T, N} where N, ::Any) where T at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Random/src/Random.jl:263
+  rand!(!Matched::AbstractRNG, ::AbstractArray{T, N} where N, !Matched::Type{X}) where {T, X} at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Random/src/Random.jl:267
+  rand!(!Matched::CtrDrbg, ::Array) at /home/pkgeval/.julia/packages/MbedTLS/VbsaQ/src/ctr_drbg.jl:37
+  ...
+Stacktrace:
+ [1] f_rng(rng::Core.Const, c_buf::Ptr{UInt8}, sz::UInt64)
+   @ MbedTLS ~/.julia/packages/MbedTLS/VbsaQ/src/ctr_drbg.jl:22
+ [2] ssl_handshake(ctx::MbedTLS.SSLContext)
+   @ MbedTLS ~/.julia/packages/MbedTLS/VbsaQ/src/ssl.jl:614
+ [3] handshake(ctx::MbedTLS.SSLContext)
+   @ MbedTLS ~/.julia/packages/MbedTLS/VbsaQ/src/ssl.jl:74
+ [4] top-level scope
+   @ ~/.julia/packages/MbedTLS/VbsaQ/test/runtests.jl:123
+ [5] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [6] top-level scope
+   @ none:6
+in expression starting at /home/pkgeval/.julia/packages/MbedTLS/VbsaQ/test/runtests.jl:89
+ERROR: Package MbedTLS errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1660
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:333
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:320
+  [5] #test#62
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:69 [inlined]
+  [7] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:66
+ [11] top-level scope
+    @ none:31
