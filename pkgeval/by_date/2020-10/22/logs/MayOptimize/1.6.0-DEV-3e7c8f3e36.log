@@ -1,0 +1,76 @@
+Julia Version 1.6.0-DEV.1316
+Commit 3e7c8f3e36 (2020-10-22 18:54 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+   Resolving package versions...
+   Installed MayOptimize ─ v0.2.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [049513e6] + MayOptimize v0.2.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [049513e6] + MayOptimize v0.2.0
+Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
+[32m  ✓ [39mMayOptimize
+1 dependency successfully precompiled
+     Testing MayOptimize
+Status `/tmp/jl_X5rdmZ/Project.toml`
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [049513e6] MayOptimize v0.2.0
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_X5rdmZ/Manifest.toml`
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [682c06a0] JSON v0.21.1
+  [049513e6] MayOptimize v0.2.0
+  [69de0a69] Parsers v1.0.11
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [de0858da] Printf
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+     Testing Running tests...
+Test Summary: | Pass  Total
+Macros        |   62     62
+
+Tests for T=Float32 and 10000 elements ("Basic" is Julia own implementation):
+ - Time for `sum(Basic,x)` -------->   9.539 μs (0 allocations: 0 bytes)
+ - Time for `sum(Debug,x)` -------->   9.699 μs (0 allocations: 0 bytes)
+ - Time for `sum(InBounds,x)` ----->   10.870 μs (0 allocations: 0 bytes)
+ - Time for `sum(Vectorize,x)` ---->   9.043 μs (0 allocations: 0 bytes)
+
+ - Time for `dot(Basic,x,y)` -------->   764.641 ns (0 allocations: 0 bytes)
+ - Time for `dot(Debug,x,y)` -------->   9.396 μs (0 allocations: 0 bytes)
+ - Time for `dot(InBounds,x,y)` ----->   9.779 μs (0 allocations: 0 bytes)
+ - Time for `dot(Vectorize,x,y)` ---->   16.069 μs (0 allocations: 0 bytes)
+
+Tests for T=Float64 and 10000 elements ("Basic" is Julia own implementation):
+ - Time for `sum(Basic,x)` -------->   10.230 μs (0 allocations: 0 bytes)
+ - Time for `sum(Debug,x)` -------->   8.960 μs (0 allocations: 0 bytes)
+ - Time for `sum(InBounds,x)` ----->   9.580 μs (0 allocations: 0 bytes)
+ - Time for `sum(Vectorize,x)` ---->   9.969 μs (0 allocations: 0 bytes)
+
+ - Time for `dot(Basic,x,y)` -------->   1.790 μs (0 allocations: 0 bytes)
+ - Time for `dot(Debug,x,y)` -------->   9.049 μs (0 allocations: 0 bytes)
+ - Time for `dot(InBounds,x,y)` ----->   9.393 μs (0 allocations: 0 bytes)
+ - Time for `dot(Vectorize,x,y)` ---->   15.419 μs (0 allocations: 0 bytes)
+     Testing MayOptimize tests passed 
