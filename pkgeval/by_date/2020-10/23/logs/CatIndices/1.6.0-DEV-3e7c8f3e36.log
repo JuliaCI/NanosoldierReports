@@ -1,0 +1,108 @@
+Current time is 2020-10-24T10:32:55.455
+Julia Version 1.6.0-DEV.1316
+Commit 3e7c8f3e36 (2020-10-22 18:54 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+  JULIA_PKG_SERVER = 
+
+Starting installation at 2020-10-24T10:32:57.170
+   Resolving package versions...
+   Installed CatIndices ─────── v0.2.1
+   Installed OffsetArrays ───── v1.3.1
+   Installed CustomUnitRanges ─ v1.0.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [aafaddc9] + CatIndices v0.2.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [aafaddc9] + CatIndices v0.2.1
+  [dc8bdbbb] + CustomUnitRanges v1.0.0
+  [6fe1bfb0] + OffsetArrays v1.3.1
+Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
+[32m  ✓ [39m[90mCustomUnitRanges[39m
+[32m  ✓ [39m[90mOffsetArrays[39m
+[32m  ✓ [39mCatIndices
+3 dependencies successfully precompiled
+Starting tests at 2020-10-24T10:33:01.770
+     Testing CatIndices
+Status `/tmp/jl_PXhLe1/Project.toml`
+  [aafaddc9] CatIndices v0.2.1
+  [dc8bdbbb] CustomUnitRanges v1.0.0
+  [6fe1bfb0] OffsetArrays v1.3.1
+  [8dfed614] Test
+Status `/tmp/jl_PXhLe1/Manifest.toml`
+  [aafaddc9] CatIndices v0.2.1
+  [dc8bdbbb] CustomUnitRanges v1.0.0
+  [6fe1bfb0] OffsetArrays v1.3.1
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+BidirectionalVector: Error During Test at /home/pkgeval/.julia/packages/CatIndices/KDMF7/test/runtests.jl:12
+  Got exception outside of a @test
+  MethodError: similar(::Type{Array{Float64, N} where N}, ::Tuple{CatIndices.URange{Int64}}) is ambiguous. Candidates:
+    similar(f::Union{Function, Type}, inds::Tuple{CatIndices.URange}) in CatIndices at /home/pkgeval/.julia/packages/CatIndices/KDMF7/src/bidirectional.jl:34
+    similar(::Type{T}, shape::Tuple{Union{Colon, Integer, AbstractUnitRange}, Vararg{Union{Colon, Integer, AbstractUnitRange}, N} where N}) where T<:AbstractArray in OffsetArrays at /home/pkgeval/.julia/packages/OffsetArrays/sUnpU/src/OffsetArrays.jl:237
+  Possible fix, define
+    similar(::Type{T}, ::Tuple{CatIndices.URange}) where T<:AbstractArray
+  Stacktrace:
+    [1] macro expansion
+      @ ~/.julia/packages/CatIndices/KDMF7/test/runtests.jl:48 [inlined]
+    [2] macro expansion
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+    [3] macro expansion
+      @ ~/.julia/packages/CatIndices/KDMF7/test/runtests.jl:13 [inlined]
+    [4] macro expansion
+      @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+    [5] top-level scope
+      @ ~/.julia/packages/CatIndices/KDMF7/test/runtests.jl:6
+    [6] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+    [7] top-level scope
+      @ none:6
+    [8] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+    [9] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [10] _start()
+      @ Base ./client.jl:485
+Test Summary:         | Pass  Error  Total
+CatIndices            |  105      1    106
+  BidirectionalVector |  101      1    102
+  vcat                |    4             4
+ERROR: LoadError: Some tests did not pass: 105 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/CatIndices/KDMF7/test/runtests.jl:5
+ERROR: Package CatIndices errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1650
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:35
