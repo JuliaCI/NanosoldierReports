@@ -1,0 +1,99 @@
+Current time is 2020-10-24T22:45:42.144
+Julia Version 1.6.0-DEV.1334
+Commit be72f6beb0 (2020-10-24 16:40 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+  JULIA_PKG_SERVER = 
+
+Starting installation at 2020-10-24T22:45:43.461
+   Resolving package versions...
+   Installed XPA ─ v0.0.1
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [d310a076] + XPA v0.0.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [d310a076] + XPA v0.0.1
+    Building XPA → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/bb1b4552c4698d3299d00f2a124d9978be17354d/build.log`
+ERROR: Error building `XPA`: 
+if test "" != ""; then \
+    defs="-DXPA_DLL=\"\\\"\\\"\""; \
+    libs=""; \
+elif test "" != ""; then \
+    defs="-UXPA_DLL"; \
+    libs=""; \
+else \
+    defs="-UXPA_DLL"; \
+    libs="-lxpa"; \
+fi; \
+cc   $defs  -o "gencode" "gencode.c" $libs 
+gencode.c:14:10: fatal error: xpa.h: No such file or directory
+   14 | #include <xpa.h>
+      |          ^~~~~~~
+compilation terminated.
+make: *** [Makefile:28: gencode] Error 1
+ERROR: LoadError: failed process: Process(`make`, ProcessExited(2)) [2]
+
+Stacktrace:
+ [1] pipeline_error
+   @ ./process.jl:525 [inlined]
+ [2] run(::Cmd; wait::Bool)
+   @ Base ./process.jl:440
+ [3] run(::Cmd)
+   @ Base ./process.jl:438
+ [4] top-level scope
+   @ ~/.julia/packages/XPA/DgLur/deps/build.jl:1
+ [5] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [6] top-level scope
+   @ none:5
+in expression starting at /home/pkgeval/.julia/packages/XPA/DgLur/deps/build.jl:1
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] (::Pkg.Operations.var"#77#82"{Bool, Pkg.Types.Context, String, Pkg.Types.PackageSpec})()
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1016
+  [3] withenv(::Pkg.Operations.var"#77#82"{Bool, Pkg.Types.Context, String, Pkg.Types.PackageSpec}, ::Pair{String, String}, ::Vararg{Pair{String, B} where B})
+    @ Base ./env.jl:161
+  [4] (::Pkg.Operations.var"#104#108"{String, Pkg.Operations.var"#77#82"{Bool, Pkg.Types.Context, String, Pkg.Types.PackageSpec}, Pkg.Types.PackageSpec})()
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1506
+  [5] with_temp_env(fn::Pkg.Operations.var"#104#108"{String, Pkg.Operations.var"#77#82"{Bool, Pkg.Types.Context, String, Pkg.Types.PackageSpec}, Pkg.Types.PackageSpec}, temp_env::String)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1420
+  [6] (::Pkg.Operations.var"#103#107"{Pkg.Operations.var"#77#82"{Bool, Pkg.Types.Context, String, Pkg.Types.PackageSpec}, Pkg.Types.Context, Pkg.Types.PackageSpec, String, Pkg.Types.Project, String})(tmp::String)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1491
+  [7] mktempdir(fn::Pkg.Operations.var"#103#107"{Pkg.Operations.var"#77#82"{Bool, Pkg.Types.Context, String, Pkg.Types.PackageSpec}, Pkg.Types.Context, Pkg.Types.PackageSpec, String, Pkg.Types.Project, String}, parent::String; prefix::String)
+    @ Base.Filesystem ./file.jl:711
+  [8] mktempdir(fn::Function, parent::String)
+    @ Base.Filesystem ./file.jl:709
+  [9] sandbox(fn::Function, ctx::Pkg.Types.Context, target::Pkg.Types.PackageSpec, target_path::String, sandbox_path::String, sandbox_project_override::Pkg.Types.Project)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1458
+ [10] build_versions(ctx::Pkg.Types.Context, uuids::Vector{Base.UUID}; verbose::Bool)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:997
+ [11] build_versions
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:926 [inlined]
+ [12] add(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}, new_git::Vector{Base.UUID}; preserve::Pkg.Types.PreserveLevel, platform::Base.BinaryPlatforms.Platform)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1217
+ [13] add(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; preserve::Pkg.Types.PreserveLevel, platform::Base.BinaryPlatforms.Platform, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:195
+ [14] add
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:146 [inlined]
+ [15] add(pkgs::Vector{Pkg.Types.PackageSpec}; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71
+ [16] add
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+ [17] #add#21
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+ [18] add
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+ [19] #add#20
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67 [inlined]
+ [20] add(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [21] top-level scope
+    @ none:33

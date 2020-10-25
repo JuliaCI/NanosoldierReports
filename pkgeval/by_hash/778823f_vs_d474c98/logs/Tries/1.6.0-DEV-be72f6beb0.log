@@ -1,0 +1,296 @@
+Current time is 2020-10-24T18:36:08.219
+Julia Version 1.6.0-DEV.1334
+Commit be72f6beb0 (2020-10-24 16:40 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+  JULIA_PKG_SERVER = 
+
+Starting installation at 2020-10-24T18:36:09.619
+   Resolving package versions...
+   Installed AbstractTrees ─ v0.3.3
+   Installed Tries ───────── v0.1.4
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [666c268a] + Tries v0.1.4
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [1520ce14] + AbstractTrees v0.3.3
+  [666c268a] + Tries v0.1.4
+  [2a0f44e3] + Base64
+  [d6f4376e] + Markdown
+Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
+[32m  ✓ [39m[90mAbstractTrees[39m
+[32m  ✓ [39mTries
+2 dependencies successfully precompiled
+Starting tests at 2020-10-24T18:36:14.317
+     Testing Tries
+Status `/tmp/jl_1sjDOZ/Project.toml`
+  [1520ce14] AbstractTrees v0.3.3
+  [666c268a] Tries v0.1.4
+  [8dfed614] Test
+Status `/tmp/jl_1sjDOZ/Manifest.toml`
+  [1520ce14] AbstractTrees v0.3.3
+  [666c268a] Tries v0.1.4
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+Tries.jl: Error During Test at /home/pkgeval/.julia/packages/Tries/82cgx/test/runtests.jl:8
+  Test threw exception
+  Expression: [n for n = x if n.second !== missing] == [(:a,) => "a", (:a, :b) => "c", (:a, :b, :d) => "y", (:a, :c, :d) => "z"]
+  TypeError: in UnionAll, expected Type, got Vararg{Symbol, N}
+  Stacktrace:
+    [1] UnionAll(v::TypeVar, t::Any)
+      @ Core ./boot.jl:254
+    [2] (::Tries.var"#15#16"{Symbol, String})(x::SubTrie{Symbol, String})
+      @ Tries ./none:0
+    [3] iterate
+      @ ./generator.jl:47 [inlined]
+    [4] iterate(::Trie{Symbol, String})
+      @ Tries ~/.julia/packages/Tries/82cgx/src/Tries.jl:32
+    [5] iterate
+      @ ./iterators.jl:449 [inlined]
+    [6] iterate
+      @ ./generator.jl:44 [inlined]
+    [7] grow_to!(dest::Vector{Pair{_A, Union{Missing, String}} where _A}, itr::Base.Generator{Base.Iterators.Filter{var"#1#6", Trie{Symbol, String}}, typeof(identity)})
+      @ Base ./array.jl:747
+    [8] collect(itr::Base.Generator{Base.Iterators.Filter{var"#1#6", Trie{Symbol, String}}, typeof(identity)})
+      @ Base ./array.jl:684
+    [9] macro expansion
+      @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:8 [inlined]
+   [10] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [11] top-level scope
+      @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:5
+eltype, keytype: Error During Test at /home/pkgeval/.julia/packages/Tries/82cgx/test/runtests.jl:13
+  Test threw exception
+  Expression: eltype(x) == Pair{Tuple{Vararg{Symbol, N} where N}, Union{Missing, String}}
+  TypeError: in UnionAll, expected Type, got Vararg{Symbol, N}
+  Stacktrace:
+   [1] UnionAll(v::TypeVar, t::Any)
+     @ Core ./boot.jl:254
+   [2] eltype(#unused#::Type{Trie{Symbol, String}})
+     @ Tries ~/.julia/packages/Tries/82cgx/src/Tries.jl:222
+   [3] eltype(x::Trie{Symbol, String})
+     @ Tries ~/.julia/packages/Tries/82cgx/src/Tries.jl:223
+   [4] macro expansion
+     @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:13 [inlined]
+   [5] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [6] macro expansion
+     @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:13 [inlined]
+   [7] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [8] top-level scope
+     @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:5
+eltype, keytype: Error During Test at /home/pkgeval/.julia/packages/Tries/82cgx/test/runtests.jl:14
+  Test threw exception
+  Expression: eltype(typeof(x)) == Pair{Tuple{Vararg{Symbol, N} where N}, Union{Missing, String}}
+  TypeError: in UnionAll, expected Type, got Vararg{Symbol, N}
+  Stacktrace:
+   [1] UnionAll(v::TypeVar, t::Any)
+     @ Core ./boot.jl:254
+   [2] eltype(#unused#::Type{Trie{Symbol, String}})
+     @ Tries ~/.julia/packages/Tries/82cgx/src/Tries.jl:222
+   [3] macro expansion
+     @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:14 [inlined]
+   [4] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [5] macro expansion
+     @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:13 [inlined]
+   [6] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [7] top-level scope
+     @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:5
+eltype, keytype: Error During Test at /home/pkgeval/.julia/packages/Tries/82cgx/test/runtests.jl:15
+  Test threw exception
+  Expression: eltype(x[:a]) == Pair{Tuple{Vararg{Symbol, N} where N}, Union{Missing, String}}
+  TypeError: in UnionAll, expected Type, got Vararg{Symbol, N}
+  Stacktrace:
+   [1] UnionAll(v::TypeVar, t::Any)
+     @ Core ./boot.jl:254
+   [2] eltype(#unused#::Type{SubTrie{Symbol, String}})
+     @ Tries ~/.julia/packages/Tries/82cgx/src/Tries.jl:222
+   [3] eltype(x::SubTrie{Symbol, String})
+     @ Tries ~/.julia/packages/Tries/82cgx/src/Tries.jl:223
+   [4] macro expansion
+     @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:15 [inlined]
+   [5] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [6] macro expansion
+     @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:13 [inlined]
+   [7] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [8] top-level scope
+     @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:5
+eltype, keytype: Error During Test at /home/pkgeval/.julia/packages/Tries/82cgx/test/runtests.jl:16
+  Test threw exception
+  Expression: eltype(typeof(x[:a])) == Pair{Tuple{Vararg{Symbol, N} where N}, Union{Missing, String}}
+  TypeError: in UnionAll, expected Type, got Vararg{Symbol, N}
+  Stacktrace:
+   [1] UnionAll(v::TypeVar, t::Any)
+     @ Core ./boot.jl:254
+   [2] eltype(#unused#::Type{SubTrie{Symbol, String}})
+     @ Tries ~/.julia/packages/Tries/82cgx/src/Tries.jl:222
+   [3] macro expansion
+     @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:16 [inlined]
+   [4] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [5] macro expansion
+     @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:13 [inlined]
+   [6] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [7] top-level scope
+     @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:5
+SubTrie{Symbol,String} @ :a, :b => "c"
+└─ :d => "y"
+Trie{Symbol,Int64} => 1
+pairs, keys, values: Error During Test at /home/pkgeval/.julia/packages/Tries/82cgx/test/runtests.jl:87
+  Test threw exception
+  Expression: (collect(values(x)))[2:3] == [2, 1]
+  TypeError: in UnionAll, expected Type, got Vararg{Symbol, N}
+  Stacktrace:
+    [1] UnionAll(v::TypeVar, t::Any)
+      @ Core ./boot.jl:254
+    [2] (::Tries.var"#15#16"{Symbol, Int64})(x::SubTrie{Symbol, Int64})
+      @ Tries ./none:0
+    [3] iterate
+      @ ./generator.jl:47 [inlined]
+    [4] iterate
+      @ ./generator.jl:44 [inlined]
+    [5] grow_to!(dest::Vector{Union{Missing, Int64}}, itr::Base.Generator{Base.Generator{AbstractTrees.PreOrderDFS{SubTrie{Symbol, Int64}}, Tries.var"#15#16"{Symbol, Int64}}, Tries.var"#19#20"})
+      @ Base ./array.jl:747
+    [6] collect(itr::Base.Generator{Base.Generator{AbstractTrees.PreOrderDFS{SubTrie{Symbol, Int64}}, Tries.var"#15#16"{Symbol, Int64}}, Tries.var"#19#20"})
+      @ Base ./array.jl:684
+    [7] macro expansion
+      @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:87 [inlined]
+    [8] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+    [9] macro expansion
+      @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:86 [inlined]
+   [10] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [11] top-level scope
+      @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:5
+pairs, keys, values: Error During Test at /home/pkgeval/.julia/packages/Tries/82cgx/test/runtests.jl:88
+  Test threw exception
+  Expression: collect(keys(x)) == [tuple(), (:a,), (:a, :b)]
+  TypeError: in UnionAll, expected Type, got Vararg{Symbol, N}
+  Stacktrace:
+    [1] UnionAll(v::TypeVar, t::Any)
+      @ Core ./boot.jl:254
+    [2] (::Tries.var"#15#16"{Symbol, Int64})(x::SubTrie{Symbol, Int64})
+      @ Tries ./none:0
+    [3] iterate
+      @ ./generator.jl:47 [inlined]
+    [4] iterate
+      @ ./generator.jl:44 [inlined]
+    [5] grow_to!(dest::Vector{Any}, itr::Base.Generator{Base.Generator{AbstractTrees.PreOrderDFS{SubTrie{Symbol, Int64}}, Tries.var"#15#16"{Symbol, Int64}}, Tries.var"#17#18"})
+      @ Base ./array.jl:747
+    [6] collect(itr::Base.Generator{Base.Generator{AbstractTrees.PreOrderDFS{SubTrie{Symbol, Int64}}, Tries.var"#15#16"{Symbol, Int64}}, Tries.var"#17#18"})
+      @ Base ./array.jl:684
+    [7] macro expansion
+      @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:88 [inlined]
+    [8] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+    [9] macro expansion
+      @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:86 [inlined]
+   [10] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [11] top-level scope
+      @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:5
+pairs, keys, values: Error During Test at /home/pkgeval/.julia/packages/Tries/82cgx/test/runtests.jl:90
+  Test threw exception
+  Expression: (collect(pairs(x)))[2] == ((:a,) => 2)
+  TypeError: in UnionAll, expected Type, got Vararg{Symbol, N}
+  Stacktrace:
+    [1] UnionAll(v::TypeVar, t::Any)
+      @ Core ./boot.jl:254
+    [2] (::Tries.var"#15#16"{Symbol, Int64})(x::SubTrie{Symbol, Int64})
+      @ Tries ./none:0
+    [3] iterate
+      @ ./generator.jl:47 [inlined]
+    [4] grow_to!(dest::Vector{Pair{_A, Union{Missing, Int64}} where _A}, itr::Base.Generator{AbstractTrees.PreOrderDFS{SubTrie{Symbol, Int64}}, Tries.var"#15#16"{Symbol, Int64}})
+      @ Base ./array.jl:747
+    [5] collect(itr::Base.Generator{AbstractTrees.PreOrderDFS{SubTrie{Symbol, Int64}}, Tries.var"#15#16"{Symbol, Int64}})
+      @ Base ./array.jl:684
+    [6] macro expansion
+      @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:90 [inlined]
+    [7] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+    [8] macro expansion
+      @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:86 [inlined]
+    [9] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [10] top-level scope
+      @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:5
+pairs, keys, values: Error During Test at /home/pkgeval/.julia/packages/Tries/82cgx/test/runtests.jl:91
+  Test threw exception
+  Expression: (collect(pairs(x)))[3] == ((:a, :b) => 1)
+  TypeError: in UnionAll, expected Type, got Vararg{Symbol, N}
+  Stacktrace:
+    [1] UnionAll(v::TypeVar, t::Any)
+      @ Core ./boot.jl:254
+    [2] (::Tries.var"#15#16"{Symbol, Int64})(x::SubTrie{Symbol, Int64})
+      @ Tries ./none:0
+    [3] iterate
+      @ ./generator.jl:47 [inlined]
+    [4] grow_to!(dest::Vector{Pair{_A, Union{Missing, Int64}} where _A}, itr::Base.Generator{AbstractTrees.PreOrderDFS{SubTrie{Symbol, Int64}}, Tries.var"#15#16"{Symbol, Int64}})
+      @ Base ./array.jl:747
+    [5] collect(itr::Base.Generator{AbstractTrees.PreOrderDFS{SubTrie{Symbol, Int64}}, Tries.var"#15#16"{Symbol, Int64}})
+      @ Base ./array.jl:684
+    [6] macro expansion
+      @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:91 [inlined]
+    [7] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+    [8] macro expansion
+      @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:86 [inlined]
+    [9] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [10] top-level scope
+      @ ~/.julia/packages/Tries/82cgx/test/runtests.jl:5
+Test Summary:                 | Pass  Error  Broken  Total
+Tries.jl                      |   34      9       1     44
+  eltype, keytype             |    8      4       1     13
+  getting subtries and values |    6                     6
+  keys as vectors             |    1                     1
+  Generator constructor       |    7                     7
+  setting values              |    4                     4
+  populating path             |    4                     4
+  pairs, keys, values         |           4              4
+ERROR: LoadError: Some tests did not pass: 34 passed, 0 failed, 9 errored, 1 broken.
+in expression starting at /home/pkgeval/.julia/packages/Tries/82cgx/test/runtests.jl:4
+ERROR: Package Tries errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:35

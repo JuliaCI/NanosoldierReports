@@ -1,0 +1,126 @@
+Current time is 2020-10-24T22:20:44.481
+Julia Version 1.6.0-DEV.1334
+Commit be72f6beb0 (2020-10-24 16:40 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+  JULIA_PKG_SERVER = 
+
+Starting installation at 2020-10-24T22:20:46.066
+   Resolving package versions...
+   Installed ExprTools ── v0.1.3
+   Installed MacroTools ─ v0.5.6
+   Installed Pretend ──── v1.0.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [8ad1c615] + Pretend v1.0.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [e2ba6199] + ExprTools v0.1.3
+  [1914dd2f] + MacroTools v0.5.6
+  [8ad1c615] + Pretend v1.0.0
+  [2a0f44e3] + Base64
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
+[32m  ✓ [39m[90mExprTools[39m
+[32m  ✓ [39m[90mMacroTools[39m
+[32m  ✓ [39mPretend
+3 dependencies successfully precompiled
+Starting tests at 2020-10-24T22:20:53.401
+     Testing Pretend
+Status `/tmp/jl_kcwUC1/Project.toml`
+  [e2ba6199] ExprTools v0.1.3
+  [1914dd2f] MacroTools v0.5.6
+  [8ad1c615] Pretend v1.0.0
+  [8dfed614] Test
+Status `/tmp/jl_kcwUC1/Manifest.toml`
+  [e2ba6199] ExprTools v0.1.3
+  [1914dd2f] MacroTools v0.5.6
+  [8ad1c615] Pretend v1.0.0
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+Basic: Error During Test at /home/pkgeval/.julia/packages/Pretend/UYQho/test/test_basic.jl:62
+  Test threw exception
+  Expression: splat1(1, 2, 3) == 2
+  TypeError: in UnionAll, expected Type, got Vararg{Any, N}
+  Stacktrace:
+   [1] UnionAll(v::TypeVar, t::Any)
+     @ Core ./boot.jl:254
+   [2] (::var"#splat1#59")(::Int64, ::Vararg{Int64})
+     @ Main ~/.julia/packages/Pretend/UYQho/src/mock.jl:36
+   [3] (::var"#19#60")()
+     @ Main ~/.julia/packages/Pretend/UYQho/test/test_basic.jl:62
+   [4] apply(f::var"#19#60", patches::Pair{var"#splat1#59", var"#20#61"})
+     @ Pretend ~/.julia/packages/Pretend/UYQho/src/mock.jl:152
+   [5] macro expansion
+     @ ~/.julia/packages/Pretend/UYQho/test/test_basic.jl:61 [inlined]
+   [6] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [7] top-level scope
+     @ ~/.julia/packages/Pretend/UYQho/test/test_basic.jl:4
+Basic: Error During Test at /home/pkgeval/.julia/packages/Pretend/UYQho/test/test_basic.jl:68
+  Test threw exception
+  Expression: splat2(1, 2, 3) == 2
+  TypeError: in UnionAll, expected Type, got Vararg{Int64, N}
+  Stacktrace:
+   [1] UnionAll(v::TypeVar, t::Any)
+     @ Core ./boot.jl:254
+   [2] (::var"#splat2#62")(::Int64, ::Vararg{Int64})
+     @ Main ~/.julia/packages/Pretend/UYQho/src/mock.jl:36
+   [3] (::var"#21#63")()
+     @ Main ~/.julia/packages/Pretend/UYQho/test/test_basic.jl:68
+   [4] apply(f::var"#21#63", patches::Pair{var"#splat2#62", var"#22#64"})
+     @ Pretend ~/.julia/packages/Pretend/UYQho/src/mock.jl:152
+   [5] macro expansion
+     @ ~/.julia/packages/Pretend/UYQho/test/test_basic.jl:67 [inlined]
+   [6] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [7] top-level scope
+     @ ~/.julia/packages/Pretend/UYQho/test/test_basic.jl:4
+Test Summary:         | Pass  Error  Total
+Pretend.jl            |   46      2     48
+  Basic               |   21      2     23
+  Anonymous Functions |    6             6
+  Multiple Dispatch   |    4             4
+  Spy                 |   11            11
+  parsing             |    1             1
+  Inner Macro         |    1             1
+ERROR: LoadError: Some tests did not pass: 46 passed, 0 failed, 2 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/Pretend/UYQho/test/runtests.jl:6
+ERROR: Package Pretend errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:35
