@@ -1,0 +1,1879 @@
+Current time is 2020-10-25T19:14:29.673
+Julia Version 1.5.3-pre.0
+Commit 5905edebb1 (2020-09-24 05:09 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+  JULIA_PKG_SERVER = 
+
+Starting installation at 2020-10-25T19:14:33.127
+  Resolving package versions...
+  Installed SIMD ─ v3.1.0
+Updating `~/.julia/environments/v1.5/Project.toml`
+  [fdea26ae] + SIMD v3.1.0
+Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [fdea26ae] + SIMD v3.1.0
+Starting tests at 2020-10-25T19:14:37.03
+    Testing SIMD
+Status `/tmp/jl_OsvkvX/Project.toml`
+  [fdea26ae] SIMD v3.1.0
+  [b77e0a4c] InteractiveUtils
+  [8dfed614] Test
+Status `/tmp/jl_OsvkvX/Manifest.toml`
+  [fdea26ae] SIMD v3.1.0
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+Test Summary:   | Pass  Total
+Type properties |   10     10
+Test Summary:   | Pass  Total
+Type conversion |    8      8
+Test Summary:                   | Pass  Total
+Conversion and reinterpretation |    4      4
+Test Summary:       | Pass  Total
+Element-wise access |   22     22
+Test Summary:                | Pass  Total
+Integer arithmetic functions |  108    108
+Test Summary: | Pass  Total
+saturation    |    4      4
+Test Summary:       | Pass  Total
+overflow arithmetic |   24     24
+Test Summary:                       | Pass  Total
+Floating point arithmetic functions |  101    101
+Test Summary:  | Pass  Total
+Type promotion |   88     88
+Test Summary:        | Pass  Total
+Reduction operations |   19     19
+Test Summary:            | Pass  Total
+Load and store functions |   60     60
+Test Summary: | Pass  Total
+fastmath      |    5      5
+Test Summary:               | Pass  Total
+Gather and scatter function |   84     84
+Test Summary: | Pass  Total
+expandload    |   10     10
+Test Summary: | Pass  Total
+compressstore |   10     10
+Test Summary:          | Pass  Total
+Index-based load/store |  104    104
+
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:650 within `vsum'
+define double @julia_vsum_3564({ %jl_value_t*, [1 x [2 x i64]], i64, i64 }* nocapture nonnull readonly dereferenceable(40)) {
+top:
+  %gcframe = alloca %jl_value_t*, i32 3, align 16
+  %1 = bitcast %jl_value_t** %gcframe to i8*
+  call void @llvm.memset.p0i8.i32(i8* align 16 %1, i8 0, i32 24, i1 false)
+  %2 = alloca [1 x [1 x i64]], align 8
+  %thread_ptr = call i8* asm "movq %fs:0, $0", "=r"()
+  %ptls_i8 = getelementptr i8, i8* %thread_ptr, i64 -15720
+  %ptls = bitcast i8* %ptls_i8 to %jl_value_t***
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:651 within `vsum'
+; ┌ @ abstractarray.jl:206 within `length'
+; │┌ @ subarray.jl:63 within `size'
+; ││┌ @ subarray.jl:426 within `axes'
+; │││┌ @ subarray.jl:431 within `_indices_sub'
+; ││││┌ @ abstractarray.jl:99 within `unsafe_indices'
+; │││││┌ @ range.jl:543 within `unsafe_length'
+; ││││││┌ @ range.jl:597 within `last'
+; │││││││┌ @ Base.jl:33 within `getproperty'
+          %3 = getelementptr %jl_value_t*, %jl_value_t** %gcframe, i32 0
+          %4 = bitcast %jl_value_t** %3 to i64*
+          store i64 4, i64* %4
+          %5 = getelementptr %jl_value_t**, %jl_value_t*** %ptls, i32 0
+          %6 = getelementptr %jl_value_t*, %jl_value_t** %gcframe, i32 1
+          %7 = bitcast %jl_value_t** %6 to %jl_value_t***
+          %8 = load %jl_value_t**, %jl_value_t*** %5
+          store %jl_value_t** %8, %jl_value_t*** %7
+          %9 = bitcast %jl_value_t*** %5 to %jl_value_t***
+          store %jl_value_t** %gcframe, %jl_value_t*** %9
+          %10 = getelementptr inbounds { %jl_value_t*, [1 x [2 x i64]], i64, i64 }, { %jl_value_t*, [1 x [2 x i64]], i64, i64 }* %0, i64 0, i32 1, i64 0, i64 1
+; ││││││└└
+; ││││││┌ @ range.jl:592 within `first'
+; │││││││┌ @ Base.jl:33 within `getproperty'
+          %11 = getelementptr inbounds { %jl_value_t*, [1 x [2 x i64]], i64, i64 }, { %jl_value_t*, [1 x [2 x i64]], i64, i64 }* %0, i64 0, i32 1, i64 0, i64 0
+; ││││││└└
+; ││││││┌ @ int.jl:85 within `-'
+         %12 = load i64, i64* %10, align 8
+         %13 = load i64, i64* %11, align 8
+         %14 = sub i64 %12, %13
+; ││││││└
+; ││││││┌ @ int.jl:86 within `+'
+         %15 = add i64 %14, 1
+; │││││└└
+; │││││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; ││││││┌ @ promotion.jl:409 within `max'
+         %16 = icmp sgt i64 %15, 0
+         %17 = select i1 %16, i64 %15, i64 0
+; └└└└└└└
+; ┌ @ int.jl:261 within `rem'
+   %18 = and i64 %17, 3
+; └
+; ┌ @ promotion.jl:398 within `=='
+   %19 = icmp eq i64 %18, 0
+; └
+  br i1 %19, label %L14, label %L103
+
+L14:                                              ; preds = %top
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:654 within `vsum'
+; ┌ @ range.jl:22 within `Colon'
+; │┌ @ range.jl:24 within `_colon'
+; ││┌ @ range.jl:256 within `StepRange' @ range.jl:205
+     %20 = call i64 @j_steprange_last_3566(i64 1, i64 4, i64 %17)
+; └└└
+; ┌ @ range.jl:620 within `iterate'
+; │┌ @ range.jl:501 within `isempty'
+; ││┌ @ bool.jl:40 within `&'
+     %21 = icmp sgt i64 %20, 0
+; └└└
+  br i1 %21, label %L42.preheader, label %L99
+
+L42.preheader:                                    ; preds = %L14
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:655 within `vsum'
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:285 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl within `_preprocessindices'
+    %22 = getelementptr inbounds [1 x [1 x i64]], [1 x [1 x i64]]* %2, i64 0, i64 0, i64 0
+; │└
+; │ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:286 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:277 within `_pointer'
+; ││┌ @ subarray.jl:412 within `pointer'
+; │││┌ @ Base.jl within `getproperty'
+      %23 = getelementptr inbounds { %jl_value_t*, [1 x [2 x i64]], i64, i64 }, { %jl_value_t*, [1 x [2 x i64]], i64, i64 }* %0, i64 0, i32 0
+      %24 = load %jl_value_t*, %jl_value_t** %23, align 8
+      %25 = getelementptr inbounds { %jl_value_t*, [1 x [2 x i64]], i64, i64 }, { %jl_value_t*, [1 x [2 x i64]], i64, i64 }* %0, i64 0, i32 2
+; │││└
+; │││┌ @ int.jl within `+'
+      %26 = load i64, i64* %25, align 8
+; │└└└
+; │ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:285 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:263 within `_preprocessindices'
+; ││┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; │││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:212 within `checkindex'
+      br label %L42
+
+L42:                                              ; preds = %L72, %L42.preheader
+      %value_phi3 = phi <4 x double> [ %37, %L72 ], [ zeroinitializer, %L42.preheader ]
+      %value_phi4 = phi i64 [ %39, %L72 ], [ 1, %L42.preheader ]
+; ││││┌ @ int.jl:441 within `<='
+       %27 = icmp slt i64 %value_phi4, 1
+; ││││└
+; ││││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:206 within `last'
+; │││││┌ @ int.jl:85 within `-'
+        %28 = add nuw i64 %value_phi4, 3
+; ││││└└
+; ││││┌ @ int.jl:441 within `<='
+       %29 = icmp sgt i64 %28, %17
+; ││││└
+      %or.cond = or i1 %27, %29
+      br i1 %or.cond, label %L68, label %L72
+
+L68:                                              ; preds = %L42
+      %value_phi4.lcssa = phi i64 [ %value_phi4, %L42 ]
+; ││└└
+    store i64 %value_phi4.lcssa, i64* %22, align 8
+; ││┌ @ abstractarray.jl:506 within `checkbounds'
+     %30 = call nonnull %jl_value_t* @j_throw_boundserror_3570({ %jl_value_t*, [1 x [2 x i64]], i64, i64 }* nocapture nonnull readonly %0, [1 x [1 x i64]]* nocapture readonly %2)
+     call void @llvm.trap()
+     unreachable
+
+L72:                                              ; preds = %L42
+; │└└
+; │ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:286 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:277 within `_pointer'
+; ││┌ @ subarray.jl:412 within `pointer'
+; │││┌ @ int.jl:86 within `+'
+      %31 = add i64 %26, %value_phi4
+; │││└
+; │││ @ subarray.jl:412 within `pointer' @ abstractarray.jl:1009
+; │││┌ @ pointer.jl:65 within `unsafe_convert'
+      %32 = bitcast %jl_value_t* %24 to i8**
+      %33 = load i8*, i8** %32, align 8
+; │││└
+; │││┌ @ abstractarray.jl:1013 within `_memory_offset'
+; ││││┌ @ int.jl:87 within `*'
+       %34 = shl i64 %31, 3
+       %35 = add i64 %34, -8
+; │││└└
+; │││┌ @ pointer.jl:159 within `+'
+      %36 = getelementptr i8, i8* %33, i64 %35
+; │└└└
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:45 within `vload' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:45 @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:46
+; ││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:400 within `load'
+; │││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:409 within `macro expansion'
+      %ptr.i = bitcast i8* %36 to <4 x double>*
+      %res.i13 = load <4 x double>, <4 x double>* %ptr.i, align 8
+; └└└└
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/simdvec.jl:253 within `+'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:176 within `fadd' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:176
+; ││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:185 within `macro expansion'
+     %37 = fadd <4 x double> %value_phi3, %res.i13
+; └└└
+; ┌ @ range.jl:624 within `iterate'
+; │┌ @ promotion.jl:398 within `=='
+    %38 = icmp eq i64 %value_phi4, %20
+; │└
+   %39 = add nuw i64 %value_phi4, 4
+; └
+  br i1 %38, label %L99.loopexit, label %L42
+
+L99.loopexit:                                     ; preds = %L72
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/simdvec.jl:253 within `+'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:176 within `fadd' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:176
+; ││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:185 within `macro expansion'
+     %.lcssa = phi <4 x double> [ %37, %L72 ]
+; └└└
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:285 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:263 within `_preprocessindices'
+    store i64 %20, i64* %22, align 8
+; └└
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:657 within `vsum'
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/simdvec.jl:468 within `sum'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/simdvec.jl:458 within `reduce'
+; ││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:719 within `reduce_fadd'
+; │││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:728 within `macro expansion'
+      br label %L99
+
+L99:                                              ; preds = %L99.loopexit, %L14
+      %value_phi10 = phi <4 x double> [ zeroinitializer, %L14 ], [ %.lcssa, %L99.loopexit ]
+      %res.i = call double @llvm.experimental.vector.reduce.v2.fadd.f64.v4f64(double 0.000000e+00, <4 x double> %value_phi10)
+      %40 = getelementptr %jl_value_t*, %jl_value_t** %gcframe, i32 1
+      %41 = load %jl_value_t*, %jl_value_t** %40
+      %42 = getelementptr %jl_value_t**, %jl_value_t*** %ptls, i32 0
+      %43 = bitcast %jl_value_t*** %42 to %jl_value_t**
+      store %jl_value_t* %41, %jl_value_t** %43
+; └└└└
+  ret double %res.i
+
+L103:                                             ; preds = %top
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:651 within `vsum'
+  %44 = bitcast %jl_value_t*** %ptls to i8*
+  %45 = call noalias nonnull %jl_value_t* @jl_gc_pool_alloc(i8* %44, i32 1400, i32 16) #1
+  %46 = bitcast %jl_value_t* %45 to %jl_value_t**
+  %47 = getelementptr %jl_value_t*, %jl_value_t** %46, i64 -1
+  store %jl_value_t* inttoptr (i64 140031878028192 to %jl_value_t*), %jl_value_t** %47
+  %48 = bitcast %jl_value_t* %45 to %jl_value_t**
+  store %jl_value_t* inttoptr (i64 140031795863248 to %jl_value_t*), %jl_value_t** %48, align 8
+  %49 = getelementptr %jl_value_t*, %jl_value_t** %gcframe, i32 2
+  store %jl_value_t* %45, %jl_value_t** %49
+  call void @jl_throw(%jl_value_t* %45)
+  unreachable
+}
+	.text
+; ┌ @ runtests.jl:650 within `vsum'
+	pushq	%r15
+	pushq	%r14
+	pushq	%r12
+	pushq	%rbx
+	subq	$40, %rsp
+	vxorpd	%xmm0, %xmm0, %xmm0
+	movq	$0, 32(%rsp)
+	movq	%fs:0, %rax
+	leaq	16(%rsp), %rdx
+	leaq	-15720(%rax), %r14
+	vmovapd	%xmm0, 16(%rsp)
+; │ @ runtests.jl:651 within `vsum'
+; │┌ @ abstractarray.jl:206 within `length'
+; ││┌ @ subarray.jl:63 within `size'
+; │││┌ @ subarray.jl:426 within `axes'
+; ││││┌ @ subarray.jl:431 within `_indices_sub'
+; │││││┌ @ abstractarray.jl:99 within `unsafe_indices'
+; ││││││┌ @ range.jl:543 within `unsafe_length'
+; │││││││┌ @ range.jl:597 within `last'
+; ││││││││┌ @ Base.jl:33 within `getproperty'
+	movq	$4, 16(%rsp)
+	movq	-15720(%rax), %rcx
+	movq	%rcx, 24(%rsp)
+	movq	%rdx, -15720(%rax)
+; │││││││└└
+; │││││││┌ @ int.jl:85 within `-'
+	movq	16(%rdi), %rax
+	subq	8(%rdi), %rax
+; │││││││└
+; │││││││┌ @ int.jl:86 within `+'
+	incq	%rax
+; ││││││└└
+; ││││││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; │││││││┌ @ promotion.jl:409 within `max'
+	movq	%rax, %rcx
+	sarq	$63, %rcx
+	andnq	%rax, %rcx, %r12
+; │└└└└└└└
+; │┌ @ promotion.jl:398 within `=='
+	testb	$3, %r12b
+; │└
+	jne	L319
+	movq	%rdi, %r15
+; │ @ runtests.jl:654 within `vsum'
+; │┌ @ range.jl:22 within `Colon'
+; ││┌ @ range.jl:24 within `_colon'
+; │││┌ @ range.jl:256 within `StepRange' @ range.jl:205
+	movabsq	$steprange_last, %rax
+	movl	$1, %edi
+	movl	$4, %esi
+	movq	%r12, %rdx
+	movl	$4, %ebx
+	callq	*%rax
+; │└└└
+; │┌ @ range.jl:620 within `iterate'
+; ││┌ @ range.jl:501 within `isempty'
+; │││┌ @ bool.jl:40 within `&'
+	testq	%rax, %rax
+; │└└└
+	jle	L224
+; │ @ runtests.jl:655 within `vsum'
+; │┌ @ arrayops.jl:286 within `getindex'
+; ││┌ @ arrayops.jl:277 within `_pointer'
+; │││┌ @ subarray.jl:412 within `pointer'
+; ││││┌ @ int.jl within `+'
+	movq	24(%r15), %rdx
+	movq	(%r15), %rcx
+	movq	$-3, %rsi
+	vxorpd	%xmm0, %xmm0, %xmm0
+; ││└└└
+; ││ @ arrayops.jl:285 within `getindex'
+; ││┌ @ arrayops.jl:263 within `_preprocessindices'
+; │││┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; ││││┌ @ arrayops.jl:212 within `checkindex'
+	subq	%rax, %rsi
+	shlq	$3, %rdx
+	nop
+; │││││┌ @ int.jl:441 within `<='
+L176:
+	leaq	-3(%rbx), %rdi
+	testq	%rdi, %rdi
+; │││││└
+	jle	L289
+	cmpq	%r12, %rbx
+	jg	L289
+; ││└└└
+	movq	(%rcx), %rdi
+; ││ @ arrayops.jl:286 within `getindex'
+; ││┌ @ arrayops.jl:45 within `vload' @ arrayops.jl:45 @ arrayops.jl:46
+; │││┌ @ LLVM_intrinsics_old.jl:400 within `load'
+; ││││┌ @ LLVM_intrinsics_old.jl:409 within `macro expansion'
+	addq	%rdx, %rdi
+; │└└└└
+; │┌ @ simdvec.jl:253 within `+'
+; ││┌ @ LLVM_intrinsics_old.jl:176 within `fadd' @ LLVM_intrinsics_old.jl:176
+; │││┌ @ LLVM_intrinsics_old.jl:185 within `macro expansion'
+	vaddpd	-32(%rdi,%rbx,8), %ymm0, %ymm0
+; │└└└
+; │┌ @ range.jl:624 within `iterate'
+; ││┌ @ promotion.jl:398 within `=='
+	leaq	4(%rsi,%rbx), %rdi
+	addq	$4, %rbx
+	cmpq	$4, %rdi
+; │└└
+	jne	L176
+; │┌ @ arrayops.jl:285 within `getindex'
+; ││┌ @ arrayops.jl:263 within `_preprocessindices'
+	movq	%rax, 8(%rsp)
+	jmp	L228
+; └└└
+; ┌ @ arrayops.jl within `vsum'
+L224:
+	vxorpd	%xmm0, %xmm0, %xmm0
+L228:
+	vxorpd	%xmm1, %xmm1, %xmm1
+	movq	24(%rsp), %rax
+; └
+; ┌ @ runtests.jl:657 within `vsum'
+; │┌ @ simdvec.jl:468 within `sum'
+; ││┌ @ simdvec.jl:458 within `reduce'
+; │││┌ @ LLVM_intrinsics_old.jl:719 within `reduce_fadd'
+; ││││┌ @ LLVM_intrinsics_old.jl:728 within `macro expansion'
+	vpermilpd	$1, %xmm0, %xmm2 # xmm2 = xmm0[1,0]
+	vaddsd	%xmm1, %xmm0, %xmm1
+	vextractf128	$1, %ymm0, %xmm0
+	vaddsd	%xmm2, %xmm1, %xmm1
+	vaddsd	%xmm0, %xmm1, %xmm1
+	vpermilpd	$1, %xmm0, %xmm0 # xmm0 = xmm0[1,0]
+	movq	%rax, (%r14)
+	vaddsd	%xmm0, %xmm1, %xmm0
+; │└└└└
+	addq	$40, %rsp
+	popq	%rbx
+	popq	%r12
+	popq	%r14
+	popq	%r15
+	vzeroupper
+	retq
+; │ @ runtests.jl:655 within `vsum'
+; │┌ @ arrayops.jl:285 within `getindex'
+; ││┌ @ arrayops.jl:263 within `_preprocessindices'
+L289:
+	movq	%rdi, 8(%rsp)
+; │││┌ @ abstractarray.jl:506 within `checkbounds'
+	movabsq	$throw_boundserror, %rax
+	leaq	8(%rsp), %rsi
+	movq	%r15, %rdi
+	vzeroupper
+	callq	*%rax
+	ud2
+; │└└└
+; │ @ runtests.jl:651 within `vsum'
+L319:
+	movabsq	$jl_gc_pool_alloc, %rax
+	movq	%r14, %rdi
+	movl	$1400, %esi             # imm = 0x578
+	movl	$16, %edx
+	callq	*%rax
+	movabsq	$jl_system_image_data, %rcx
+	movabsq	$140031795863248, %rdx  # imm = 0x7F5BB1731ED0
+	movq	%rax, %rdi
+	movq	%rax, 32(%rsp)
+	movq	%rcx, -8(%rax)
+	movabsq	$jl_throw, %rcx
+	movq	%rdx, (%rax)
+	callq	*%rcx
+	nopw	(%rax,%rax)
+; └
+
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:723 within `vcompress!'
+define nonnull %jl_value_t* @"japi1_vcompress!_3639"(%jl_value_t*, %jl_value_t**, i32) #0 {
+top:
+  %gcframe = alloca %jl_value_t*, i32 3, align 16
+  %3 = bitcast %jl_value_t** %gcframe to i8*
+  call void @llvm.memset.p0i8.i32(i8* align 16 %3, i8 0, i32 24, i1 false)
+  %4 = alloca %jl_value_t**, align 8
+  store volatile %jl_value_t** %1, %jl_value_t*** %4, align 8
+  %5 = alloca [1 x [1 x i64]], align 8
+  %6 = alloca [1 x [1 x [1 x i64]]], align 8
+  %7 = alloca [1 x i64], align 8
+  %8 = alloca [1 x [1 x i64]], align 8
+  %9 = alloca [1 x [1 x [1 x i64]]], align 8
+  %10 = alloca [1 x i64], align 8
+  %11 = alloca [1 x [2 x i64]], align 8
+  %thread_ptr = call i8* asm "movq %fs:0, $0", "=r"()
+  %ptls_i8 = getelementptr i8, i8* %thread_ptr, i64 -15720
+  %ptls = bitcast i8* %ptls_i8 to %jl_value_t***
+  %12 = getelementptr %jl_value_t*, %jl_value_t** %gcframe, i32 0
+  %13 = bitcast %jl_value_t** %12 to i64*
+  store i64 4, i64* %13
+  %14 = getelementptr %jl_value_t**, %jl_value_t*** %ptls, i32 0
+  %15 = getelementptr %jl_value_t*, %jl_value_t** %gcframe, i32 1
+  %16 = bitcast %jl_value_t** %15 to %jl_value_t***
+  %17 = load %jl_value_t**, %jl_value_t*** %14
+  store %jl_value_t** %17, %jl_value_t*** %16
+  %18 = bitcast %jl_value_t*** %14 to %jl_value_t***
+  store %jl_value_t** %gcframe, %jl_value_t*** %18
+  %19 = load %jl_value_t*, %jl_value_t** %1, align 8
+  %20 = getelementptr inbounds %jl_value_t*, %jl_value_t** %1, i64 1
+  %21 = load %jl_value_t*, %jl_value_t** %20, align 8
+  %22 = getelementptr inbounds %jl_value_t*, %jl_value_t** %1, i64 2
+  %23 = load %jl_value_t*, %jl_value_t** %22, align 8
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724
+; ┌ @ abstractarray.jl:75 within `axes'
+; │┌ @ array.jl:155 within `size'
+    %24 = bitcast %jl_value_t* %23 to %jl_value_t**
+    %25 = getelementptr inbounds %jl_value_t*, %jl_value_t** %24, i64 3
+    %26 = bitcast %jl_value_t** %25 to i64*
+    %27 = load i64, i64* %26, align 8
+; │└
+; │┌ @ tuple.jl:157 within `map'
+; ││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; │││┌ @ promotion.jl:409 within `max'
+      %28 = icmp sgt i64 %27, 0
+      %29 = select i1 %28, i64 %27, i64 0
+; │└└└
+; │┌ @ array.jl:155 within `size'
+    %30 = bitcast %jl_value_t* %19 to %jl_value_t**
+    %31 = getelementptr inbounds %jl_value_t*, %jl_value_t** %30, i64 3
+    %32 = bitcast %jl_value_t** %31 to i64*
+    %33 = load i64, i64* %32, align 8
+; │└
+; │┌ @ tuple.jl:157 within `map'
+; ││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; │││┌ @ promotion.jl:409 within `max'
+      %34 = icmp sgt i64 %33, 0
+      %35 = select i1 %34, i64 %33, i64 0
+; └└└└
+; ┌ @ tuple.jl:284 within `=='
+; │┌ @ tuple.jl:288 within `_eq'
+; ││┌ @ range.jl:752 within `=='
+     br i1 %34, label %L11, label %L9
+
+L9:                                               ; preds = %top
+; │││┌ @ range.jl:503 within `isempty'
+; ││││┌ @ operators.jl:303 within `>'
+; │││││┌ @ int.jl:82 within `<'
+        %36 = icmp slt i64 %29, 1
+; └└└└└└
+  br i1 %36, label %L27, label %L234
+
+L11:                                              ; preds = %top
+; ┌ @ tuple.jl:284 within `=='
+; │┌ @ tuple.jl:288 within `_eq'
+; ││┌ @ range.jl:753 within `=='
+; │││┌ @ range.jl:766 within `_has_length_one'
+; ││││┌ @ promotion.jl:398 within `=='
+       %37 = icmp eq i64 %35, 1
+; │││└└
+     br i1 %37, label %L13, label %L19
+
+L13:                                              ; preds = %L11
+; │││┌ @ range.jl:766 within `_has_length_one'
+; ││││┌ @ promotion.jl:398 within `=='
+       %38 = icmp eq i64 %29, 1
+; └└└└└
+  br i1 %38, label %L27, label %L234
+
+L19:                                              ; preds = %L11
+; ┌ @ tuple.jl:284 within `=='
+; │┌ @ tuple.jl:288 within `_eq'
+; ││┌ @ range.jl:754 within `==' @ promotion.jl:398
+     %39 = icmp eq i64 %35, %29
+; └└└
+  br i1 %39, label %L27, label %L234
+
+L27:                                              ; preds = %L19, %L13, %L9
+; ┌ @ abstractarray.jl:75 within `axes'
+; │┌ @ array.jl:155 within `size'
+    %40 = bitcast %jl_value_t* %21 to %jl_value_t**
+    %41 = getelementptr inbounds %jl_value_t*, %jl_value_t** %40, i64 3
+    %42 = bitcast %jl_value_t** %41 to i64*
+    %43 = load i64, i64* %42, align 8
+; │└
+; │┌ @ tuple.jl:157 within `map'
+; ││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; │││┌ @ promotion.jl:409 within `max'
+      %44 = icmp sgt i64 %43, 0
+      %45 = select i1 %44, i64 %43, i64 0
+; └└└└
+; ┌ @ tuple.jl:284 within `=='
+; │┌ @ tuple.jl:288 within `_eq'
+; ││┌ @ range.jl:752 within `=='
+     br i1 %28, label %L34, label %L32
+
+L32:                                              ; preds = %L27
+; │││┌ @ range.jl:503 within `isempty'
+; ││││┌ @ operators.jl:303 within `>'
+; │││││┌ @ int.jl:82 within `<'
+        %46 = icmp slt i64 %45, 1
+; └└└└└└
+  br i1 %46, label %L53, label %L234
+
+L34:                                              ; preds = %L27
+; ┌ @ tuple.jl:284 within `=='
+; │┌ @ tuple.jl:288 within `_eq'
+; ││┌ @ range.jl:753 within `=='
+; │││┌ @ range.jl:766 within `_has_length_one'
+; ││││┌ @ promotion.jl:398 within `=='
+       %47 = icmp eq i64 %29, 1
+; │││└└
+     br i1 %47, label %L36, label %L51
+
+L36:                                              ; preds = %L34
+; │││┌ @ range.jl:766 within `_has_length_one'
+; ││││┌ @ promotion.jl:398 within `=='
+       %48 = icmp eq i64 %45, 1
+; └└└└└
+  br i1 %48, label %L218.preheader, label %L234
+
+L51:                                              ; preds = %L34
+; ┌ @ tuple.jl:284 within `=='
+; │┌ @ tuple.jl:288 within `_eq'
+; ││┌ @ range.jl:754 within `==' @ promotion.jl:398
+     %49 = icmp eq i64 %29, %45
+; └└└
+  br i1 %49, label %L53, label %L234
+
+L53:                                              ; preds = %L51, %L32
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:725
+; ┌ @ int.jl:86 within `+'
+   %50 = add nsw i64 %29, -3
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:729
+; ┌ @ int.jl:441 within `<='
+   %51 = icmp slt i64 %50, 1
+; └
+  br i1 %51, label %L218.preheader, label %L64.lr.ph
+
+L64.lr.ph:                                        ; preds = %L53
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:730
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:285 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl within `_preprocessindices'
+    %52 = getelementptr inbounds [1 x [1 x i64]], [1 x [1 x i64]]* %5, i64 0, i64 0, i64 0
+; │└
+; │ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:286 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:273 within `_pointer'
+; ││┌ @ indices.jl:453 within `LinearIndices' @ indices.jl:444 @ indices.jl:0
+     %.sroa.026.0..sroa_idx = getelementptr inbounds [1 x [1 x [1 x i64]]], [1 x [1 x [1 x i64]]]* %6, i64 0, i64 0, i64 0, i64 0
+; ││└
+; ││┌ @ indices.jl within `getindex'
+     %53 = getelementptr inbounds [1 x i64], [1 x i64]* %7, i64 0, i64 0
+; └└└
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:731
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:285 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl within `_preprocessindices'
+    %54 = getelementptr inbounds [1 x [1 x i64]], [1 x [1 x i64]]* %8, i64 0, i64 0, i64 0
+; │└
+; │ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:286 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:273 within `_pointer'
+; ││┌ @ indices.jl:453 within `LinearIndices' @ indices.jl:444 @ indices.jl:0
+     %.sroa.023.0..sroa_idx = getelementptr inbounds [1 x [1 x [1 x i64]]], [1 x [1 x [1 x i64]]]* %9, i64 0, i64 0, i64 0, i64 0
+; ││└
+; ││┌ @ indices.jl within `getindex'
+     %55 = getelementptr inbounds [1 x i64], [1 x i64]* %10, i64 0, i64 0
+; └└└
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl within `vstorec'
+   %.sroa.0.0..sroa_idx = getelementptr inbounds [1 x [2 x i64]], [1 x [2 x i64]]* %11, i64 0, i64 0, i64 0
+   %.sroa.2.0..sroa_idx22 = getelementptr inbounds [1 x [2 x i64]], [1 x [2 x i64]]* %11, i64 0, i64 0, i64 1
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:729
+  br label %L64
+
+L60.L218.preheader_crit_edge:                     ; preds = %L197
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:732
+; ┌ @ int.jl:86 within `+'
+   %.lcssa219 = phi i64 [ %121, %L197 ]
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:733
+; ┌ @ int.jl:86 within `+'
+   %.lcssa218 = phi i64 [ %122, %L197 ]
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:731
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:101 within `vstorec'
+; │┌ @ range.jl:5 within `Colon'
+; ││┌ @ range.jl:280 within `UnitRange'
+; │││┌ @ range.jl:285 within `unitrange_last'
+      %.lcssa217 = phi i64 [ %96, %L197 ]
+; └└└└
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:285 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:263 within `_preprocessindices'
+; ││┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; │││┌ @ abstractarray.jl:267 within `eachindex'
+; ││││┌ @ abstractarray.jl:95 within `axes1'
+; │││││┌ @ abstractarray.jl:75 within `axes'
+; ││││││┌ @ tuple.jl:157 within `map'
+; │││││││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; ││││││││┌ @ promotion.jl:409 within `max'
+           %.lcssa215 = phi i64 [ %90, %L197 ]
+; └└└└└└└└└
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:730
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:285 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:263 within `_preprocessindices'
+; ││┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; │││┌ @ abstractarray.jl:267 within `eachindex'
+; ││││┌ @ abstractarray.jl:95 within `axes1'
+; │││││┌ @ abstractarray.jl:75 within `axes'
+; ││││││┌ @ tuple.jl:157 within `map'
+; │││││││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; ││││││││┌ @ promotion.jl:409 within `max'
+           %.lcssa211 = phi i64 [ %78, %L197 ]
+           %value_phi654.lcssa207 = phi i64 [ %value_phi654, %L197 ]
+           %value_phi553.lcssa202 = phi i64 [ %value_phi553, %L197 ]
+; ││└└└└└└└
+    store i64 %value_phi553.lcssa202, i64* %52, align 8
+; │└
+; │ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:286 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:273 within `_pointer'
+; ││┌ @ indices.jl:453 within `LinearIndices' @ indices.jl:444 @ indices.jl:444
+     store i64 %.lcssa211, i64* %.sroa.026.0..sroa_idx, align 8
+; ││└
+; ││┌ @ indices.jl:472 within `getindex'
+     store i64 %value_phi553.lcssa202, i64* %53, align 8
+; └└└
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:731
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:285 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:263 within `_preprocessindices'
+    store i64 %value_phi553.lcssa202, i64* %54, align 8
+; │└
+; │ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:286 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:273 within `_pointer'
+; ││┌ @ indices.jl:453 within `LinearIndices' @ indices.jl:444 @ indices.jl:444
+     store i64 %.lcssa215, i64* %.sroa.023.0..sroa_idx, align 8
+; ││└
+; ││┌ @ indices.jl:472 within `getindex'
+     store i64 %value_phi553.lcssa202, i64* %55, align 8
+; └└└
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:101 within `vstorec'
+   store i64 %value_phi654.lcssa207, i64* %.sroa.0.0..sroa_idx, align 8
+   store i64 %.lcssa217, i64* %.sroa.2.0..sroa_idx22, align 8
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:735
+; ┌ @ abstractarray.jl:302 within `lastindex'
+; │┌ @ abstractarray.jl:267 within `eachindex'
+; ││┌ @ abstractarray.jl:95 within `axes1'
+; │││┌ @ abstractarray.jl:75 within `axes'
+; ││││┌ @ array.jl:155 within `size'
+       %.pre169 = load i64, i64* %26, align 8
+; └└└└└
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:729
+  br label %L218.preheader
+
+L218.preheader:                                   ; preds = %L60.L218.preheader_crit_edge, %L53, %L36
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:735
+; ┌ @ abstractarray.jl:302 within `lastindex'
+; │┌ @ abstractarray.jl:267 within `eachindex'
+; ││┌ @ abstractarray.jl:95 within `axes1'
+; │││┌ @ abstractarray.jl:75 within `axes'
+; ││││┌ @ array.jl:155 within `size'
+       %56 = phi i64 [ %.pre169, %L60.L218.preheader_crit_edge ], [ %27, %L53 ], [ %27, %L36 ]
+       %value_phi5.lcssa = phi i64 [ %.lcssa218, %L60.L218.preheader_crit_edge ], [ 1, %L53 ], [ 1, %L36 ]
+       %value_phi6.lcssa = phi i64 [ %.lcssa219, %L60.L218.preheader_crit_edge ], [ 1, %L53 ], [ 1, %L36 ]
+; ││││└
+; ││││┌ @ tuple.jl:157 within `map'
+; │││││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; ││││││┌ @ promotion.jl:409 within `max'
+         %57 = icmp sgt i64 %56, 0
+         %58 = select i1 %57, i64 %56, i64 0
+; └└└└└└└
+; ┌ @ int.jl:441 within `<='
+   %59 = icmp sgt i64 %value_phi5.lcssa, %58
+; └
+  br i1 %59, label %L237, label %L225.lr.ph
+
+L225.lr.ph:                                       ; preds = %L218.preheader
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:736
+; ┌ @ array.jl within `getindex'
+   %60 = bitcast %jl_value_t* %21 to %jl_array_t*
+   %61 = getelementptr inbounds %jl_array_t, %jl_array_t* %60, i64 0, i32 1
+   %62 = load i64, i64* %61, align 8
+   %63 = bitcast %jl_value_t* %21 to i8**
+   %64 = load i8*, i8** %63, align 8
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:737
+; ┌ @ array.jl within `getindex'
+   %65 = bitcast %jl_value_t* %23 to %jl_array_t*
+   %66 = getelementptr inbounds %jl_array_t, %jl_array_t* %65, i64 0, i32 1
+   %67 = load i64, i64* %66, align 8
+; └
+; ┌ @ array.jl within `setindex!'
+   %68 = bitcast %jl_value_t* %19 to %jl_array_t*
+   %69 = getelementptr inbounds %jl_array_t, %jl_array_t* %68, i64 0, i32 1
+   %70 = load i64, i64* %69, align 8
+; └
+; ┌ @ array.jl within `getindex'
+   %71 = bitcast %jl_value_t* %23 to double**
+   %72 = load double*, double** %71, align 8
+; └
+; ┌ @ array.jl within `setindex!'
+   %73 = bitcast %jl_value_t* %19 to double**
+   %74 = load double*, double** %73, align 8
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:735
+  br label %L225
+
+L64:                                              ; preds = %L197.L64_crit_edge, %L64.lr.ph
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:730
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:285 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:263 within `_preprocessindices'
+; ││┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; │││┌ @ abstractarray.jl:267 within `eachindex'
+; ││││┌ @ abstractarray.jl:95 within `axes1'
+; │││││┌ @ abstractarray.jl:75 within `axes'
+; ││││││┌ @ array.jl:155 within `size'
+         %75 = phi i64 [ %43, %L64.lr.ph ], [ %.pre, %L197.L64_crit_edge ]
+         %value_phi654 = phi i64 [ 1, %L64.lr.ph ], [ %121, %L197.L64_crit_edge ]
+         %value_phi553 = phi i64 [ 1, %L64.lr.ph ], [ %122, %L197.L64_crit_edge ]
+; │││└└└└
+; │││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:212 within `checkindex'
+; ││││┌ @ int.jl:441 within `<='
+       %76 = icmp slt i64 %value_phi553, 1
+; ││││└
+      br i1 %76, label %L83, label %L74
+
+L74:                                              ; preds = %L64
+; │││└
+; │││┌ @ abstractarray.jl:267 within `eachindex'
+; ││││┌ @ abstractarray.jl:95 within `axes1'
+; │││││┌ @ abstractarray.jl:75 within `axes'
+; ││││││┌ @ tuple.jl:157 within `map'
+; │││││││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; ││││││││┌ @ promotion.jl:409 within `max'
+           %77 = icmp sgt i64 %75, 0
+           %78 = select i1 %77, i64 %75, i64 0
+; │││└└└└└└
+; │││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:212 within `checkindex'
+; ││││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:206 within `last'
+; │││││┌ @ int.jl:85 within `-'
+        %79 = add nuw i64 %value_phi553, 3
+; ││││└└
+; ││││┌ @ int.jl:441 within `<='
+       %80 = icmp sgt i64 %79, %78
+; │││└└
+; │││ @ abstractarray.jl:506 within `checkbounds'
+     br i1 %80, label %L83, label %L87
+
+L83:                                              ; preds = %L74, %L64
+     %value_phi553.lcssa = phi i64 [ %value_phi553, %L74 ], [ %value_phi553, %L64 ]
+; ││└
+    store i64 %value_phi553.lcssa, i64* %52, align 8
+; ││┌ @ abstractarray.jl:506 within `checkbounds'
+     %81 = call nonnull %jl_value_t* @j_throw_boundserror_3648(%jl_value_t* nonnull %21, [1 x [1 x i64]]* nocapture readonly %5)
+     call void @llvm.trap()
+     unreachable
+
+L87:                                              ; preds = %L74
+; │└└
+; │ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:286 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:273 within `_pointer'
+; ││┌ @ indices.jl:472 within `getindex'
+; │││┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; ││││┌ @ abstractarray.jl:563 within `checkindex'
+; │││││┌ @ int.jl:441 within `<='
+        %82 = icmp sgt i64 %value_phi553, %78
+; ││││└└
+; ││││ @ abstractarray.jl:506 within `checkbounds'
+      br i1 %82, label %L102, label %L106
+
+L102:                                             ; preds = %L87
+; │└└└
+; │ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:285 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:263 within `_preprocessindices'
+; ││┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; │││┌ @ abstractarray.jl:267 within `eachindex'
+; ││││┌ @ abstractarray.jl:95 within `axes1'
+; │││││┌ @ abstractarray.jl:75 within `axes'
+; ││││││┌ @ tuple.jl:157 within `map'
+; │││││││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; ││││││││┌ @ promotion.jl:409 within `max'
+           %.lcssa = phi i64 [ %78, %L87 ]
+           %value_phi553.lcssa198 = phi i64 [ %value_phi553, %L87 ]
+; │└└└└└└└└
+; │ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:286 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:273 within `_pointer'
+; ││┌ @ indices.jl:453 within `LinearIndices' @ indices.jl:444 @ indices.jl:444
+     store i64 %.lcssa, i64* %.sroa.026.0..sroa_idx, align 8
+; ││└
+; ││┌ @ indices.jl:472 within `getindex'
+     store i64 %value_phi553.lcssa198, i64* %53, align 8
+; │││┌ @ abstractarray.jl:506 within `checkbounds'
+      %83 = call nonnull %jl_value_t* @j_throw_boundserror_3647([1 x [1 x [1 x i64]]]* nocapture readonly %6, [1 x i64]* nocapture readonly %7)
+      call void @llvm.trap()
+      unreachable
+
+L106:                                             ; preds = %L87
+; ││└└
+; ││┌ @ abstractarray.jl:1009 within `pointer'
+; │││┌ @ pointer.jl:65 within `unsafe_convert'
+      %84 = bitcast %jl_value_t* %21 to i8**
+      %85 = load i8*, i8** %84, align 8
+; │││└
+; │││┌ @ abstractarray.jl:1013 within `_memory_offset'
+; ││││┌ @ int.jl:85 within `-'
+       %86 = add nsw i64 %value_phi553, -1
+; │││└└
+; │││┌ @ pointer.jl:159 within `+'
+      %87 = getelementptr i8, i8* %85, i64 %86
+; │└└└
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:45 within `vload' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:45 @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:46
+; ││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:400 within `load'
+; │││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:409 within `macro expansion'
+      %ptr.i = bitcast i8* %87 to <4 x i8>*
+      %res.i = load <4 x i8>, <4 x i8>* %ptr.i, align 1
+; └└└└
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:731
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:285 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:263 within `_preprocessindices'
+; ││┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; │││┌ @ abstractarray.jl:267 within `eachindex'
+; ││││┌ @ abstractarray.jl:95 within `axes1'
+; │││││┌ @ abstractarray.jl:75 within `axes'
+; ││││││┌ @ array.jl:155 within `size'
+         %88 = load i64, i64* %26, align 8
+; ││││││└
+; ││││││┌ @ tuple.jl:157 within `map'
+; │││││││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; ││││││││┌ @ promotion.jl:409 within `max'
+           %89 = icmp sgt i64 %88, 0
+           %90 = select i1 %89, i64 %88, i64 0
+; │││└└└└└└
+; │││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:212 within `checkindex'
+; ││││┌ @ int.jl:441 within `<='
+       %91 = icmp sgt i64 %79, %90
+; │││└└
+; │││ @ abstractarray.jl:506 within `checkbounds'
+     br i1 %91, label %L137, label %L141
+
+L137:                                             ; preds = %L106
+     %value_phi553.lcssa199 = phi i64 [ %value_phi553, %L106 ]
+; ││└
+    store i64 %value_phi553.lcssa199, i64* %54, align 8
+; ││┌ @ abstractarray.jl:506 within `checkbounds'
+     %92 = call nonnull %jl_value_t* @j_throw_boundserror_3646(%jl_value_t* nonnull %23, [1 x [1 x i64]]* nocapture readonly %8)
+     call void @llvm.trap()
+     unreachable
+
+L141:                                             ; preds = %L106
+; │└└
+; │ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:286 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:273 within `_pointer'
+; ││┌ @ indices.jl:472 within `getindex'
+; │││┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; ││││┌ @ abstractarray.jl:563 within `checkindex'
+; │││││┌ @ int.jl:441 within `<='
+        %93 = icmp sgt i64 %value_phi553, %90
+; ││││└└
+; ││││ @ abstractarray.jl:506 within `checkbounds'
+      br i1 %93, label %L156, label %L160
+
+L156:                                             ; preds = %L141
+; │└└└
+; │ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:285 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:263 within `_preprocessindices'
+; ││┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; │││┌ @ abstractarray.jl:267 within `eachindex'
+; ││││┌ @ abstractarray.jl:95 within `axes1'
+; │││││┌ @ abstractarray.jl:75 within `axes'
+; ││││││┌ @ tuple.jl:157 within `map'
+; │││││││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; ││││││││┌ @ promotion.jl:409 within `max'
+           %.lcssa213 = phi i64 [ %90, %L141 ]
+           %value_phi553.lcssa200 = phi i64 [ %value_phi553, %L141 ]
+; │└└└└└└└└
+; │ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:286 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:273 within `_pointer'
+; ││┌ @ indices.jl:453 within `LinearIndices' @ indices.jl:444 @ indices.jl:444
+     store i64 %.lcssa213, i64* %.sroa.023.0..sroa_idx, align 8
+; ││└
+; ││┌ @ indices.jl:472 within `getindex'
+     store i64 %value_phi553.lcssa200, i64* %55, align 8
+; │││┌ @ abstractarray.jl:506 within `checkbounds'
+      %94 = call nonnull %jl_value_t* @j_throw_boundserror_3645([1 x [1 x [1 x i64]]]* nocapture readonly %9, [1 x i64]* nocapture readonly %10)
+      call void @llvm.trap()
+      unreachable
+
+L160:                                             ; preds = %L141
+; └└└└
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:101 within `vstorec'
+; │┌ @ range.jl:5 within `Colon'
+; ││┌ @ range.jl:280 within `UnitRange'
+; │││┌ @ range.jl:285 within `unitrange_last'
+; ││││┌ @ operators.jl:350 within `>='
+; │││││┌ @ int.jl:441 within `<='
+        %95 = icmp sgt i64 %value_phi654, 9223372036854775804
+; ││││└└
+      %.v = select i1 %95, i64 -1, i64 3
+      %96 = add i64 %.v, %value_phi654
+; │└└└
+; │┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; ││┌ @ abstractarray.jl:267 within `eachindex'
+; │││┌ @ abstractarray.jl:95 within `axes1'
+; ││││┌ @ abstractarray.jl:75 within `axes'
+; │││││┌ @ array.jl:155 within `size'
+        %97 = load i64, i64* %32, align 8
+; │││││└
+; │││││┌ @ tuple.jl:157 within `map'
+; ││││││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; │││││││┌ @ promotion.jl:409 within `max'
+          %98 = icmp sgt i64 %97, 0
+          %99 = select i1 %98, i64 %97, i64 0
+; ││└└└└└└
+; ││┌ @ abstractarray.jl:568 within `checkindex'
+; │││┌ @ range.jl:503 within `isempty'
+; ││││┌ @ operators.jl:303 within `>'
+; │││││┌ @ int.jl:82 within `<'
+        %100 = icmp slt i64 %96, %value_phi654
+; │││└└└
+; │││ @ abstractarray.jl:568 within `checkindex' @ abstractarray.jl:563
+; │││┌ @ int.jl:441 within `<='
+      %101 = icmp sgt i64 %value_phi654, 0
+      %102 = icmp sle i64 %value_phi654, %99
+; │││└
+; │││┌ @ bool.jl:40 within `&'
+      %103 = and i1 %101, %102
+; │││└
+; │││┌ @ int.jl:441 within `<='
+      %104 = icmp sgt i64 %96, 0
+      %105 = icmp sle i64 %96, %99
+; │││└
+; │││┌ @ bool.jl:40 within `&'
+      %106 = and i1 %104, %105
+; │││└
+; │││ @ abstractarray.jl:568 within `checkindex'
+; │││┌ @ bool.jl:40 within `&'
+      %107 = and i1 %103, %106
+; │││└
+; │││┌ @ bool.jl:41 within `|'
+      %108 = or i1 %100, %107
+; ││└└
+; ││ @ abstractarray.jl:506 within `checkbounds'
+    br i1 %108, label %L197, label %L194
+
+L194:                                             ; preds = %L160
+; │└
+; │┌ @ range.jl:5 within `Colon'
+; ││┌ @ range.jl:280 within `UnitRange'
+; │││┌ @ range.jl:285 within `unitrange_last'
+      %.lcssa216 = phi i64 [ %96, %L160 ]
+      %value_phi654.lcssa206 = phi i64 [ %value_phi654, %L160 ]
+; │└└└
+   store i64 %value_phi654.lcssa206, i64* %.sroa.0.0..sroa_idx, align 8
+   store i64 %.lcssa216, i64* %.sroa.2.0..sroa_idx22, align 8
+; │┌ @ abstractarray.jl:506 within `checkbounds'
+    %109 = call nonnull %jl_value_t* @j_throw_boundserror_3644(%jl_value_t* nonnull %19, [1 x [2 x i64]]* nocapture readonly %11)
+    call void @llvm.trap()
+    unreachable
+
+L197:                                             ; preds = %L160
+; └└
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:286 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:273 within `_pointer'
+; ││┌ @ abstractarray.jl:1009 within `pointer'
+; │││┌ @ pointer.jl:65 within `unsafe_convert'
+      %110 = bitcast %jl_value_t* %23 to i8**
+      %111 = load i8*, i8** %110, align 8
+; │││└
+; │││┌ @ abstractarray.jl:1013 within `_memory_offset'
+; ││││┌ @ int.jl:87 within `*'
+       %112 = shl i64 %value_phi553, 3
+       %113 = add nsw i64 %112, -8
+; │││└└
+; │││┌ @ pointer.jl:159 within `+'
+      %114 = getelementptr i8, i8* %111, i64 %113
+; │└└└
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:45 within `vload' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:45 @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:46
+; ││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:400 within `load'
+; │││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:409 within `macro expansion'
+      %ptr.i32 = bitcast i8* %114 to <4 x double>*
+      %res.i33 = load <4 x double>, <4 x double>* %ptr.i32, align 8
+; └└└└
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:103 within `vstorec'
+; │┌ @ abstractarray.jl:1009 within `pointer'
+; ││┌ @ pointer.jl:65 within `unsafe_convert'
+     %115 = bitcast %jl_value_t* %19 to i8**
+     %116 = load i8*, i8** %115, align 8
+; ││└
+; ││┌ @ abstractarray.jl:1013 within `_memory_offset'
+; │││┌ @ int.jl:87 within `*'
+      %117 = shl i64 %value_phi654, 3
+      %118 = add i64 %117, -8
+; ││└└
+; ││┌ @ pointer.jl:159 within `+'
+     %119 = getelementptr i8, i8* %116, i64 %118
+; │└└
+; │ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:104 within `vstorec' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:96
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:474 within `maskedcompressstore'
+; ││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:485 within `macro expansion'
+     %mask.i30 = trunc <4 x i8> %res.i to <4 x i1>
+     %ptr.i31 = bitcast i8* %119 to double*
+     %120 = call <4 x double> @llvm.masked.compressstore.v4f64(<4 x double> %res.i33, double* %ptr.i31, <4 x i1> %mask.i30)
+; └└└
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:732
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/simdvec.jl:468 within `sum'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/simdvec.jl:458 within `reduce'
+; ││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:734 within `reduce_add'
+; │││┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/LLVM_intrinsics_old.jl:758 within `macro expansion'
+      %maski.i = bitcast <4 x i1> %mask.i30 to i4
+      %maskipopcnt.i = call i4 @llvm.ctpop.i4(i4 %maski.i)
+      %res.i29 = zext i4 %maskipopcnt.i to i64
+; └└└└
+; ┌ @ int.jl:86 within `+'
+   %121 = add i64 %value_phi654, %res.i29
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:733
+; ┌ @ int.jl:86 within `+'
+   %122 = add nuw i64 %value_phi553, 4
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:729
+; ┌ @ int.jl:441 within `<='
+   %123 = icmp sgt i64 %122, %50
+; └
+  br i1 %123, label %L60.L218.preheader_crit_edge, label %L197.L64_crit_edge
+
+L197.L64_crit_edge:                               ; preds = %L197
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:730
+; ┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:285 within `getindex'
+; │┌ @ /home/pkgeval/.julia/packages/SIMD/e6GgT/src/arrayops.jl:263 within `_preprocessindices'
+; ││┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; │││┌ @ abstractarray.jl:267 within `eachindex'
+; ││││┌ @ abstractarray.jl:95 within `axes1'
+; │││││┌ @ abstractarray.jl:75 within `axes'
+; ││││││┌ @ array.jl:155 within `size'
+         %.pre = load i64, i64* %42, align 8
+; └└└└└└└
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:729
+  br label %L64
+
+L225:                                             ; preds = %L230, %L225.lr.ph
+  %value_phi1452 = phi i64 [ %value_phi6.lcssa, %L225.lr.ph ], [ %value_phi19, %L230 ]
+  %value_phi1350 = phi i64 [ %value_phi5.lcssa, %L225.lr.ph ], [ %127, %L230 ]
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:736
+; ┌ @ array.jl:809 within `getindex'
+   %124 = add i64 %value_phi1350, -1
+   %125 = icmp ult i64 %124, %62
+   br i1 %125, label %idxend, label %oob
+
+L227:                                             ; preds = %idxend
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:737
+; ┌ @ array.jl:809 within `getindex'
+   %126 = icmp ult i64 %124, %67
+   br i1 %126, label %idxend16, label %oob15
+
+L230:                                             ; preds = %idxend18, %idxend
+   %value_phi19 = phi i64 [ %153, %idxend18 ], [ %value_phi1452, %idxend ]
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:740
+; ┌ @ int.jl:86 within `+'
+   %127 = add i64 %value_phi1350, 1
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:735
+; ┌ @ int.jl:441 within `<='
+   %128 = icmp sgt i64 %127, %58
+; └
+  br i1 %128, label %L237, label %L225
+
+L234:                                             ; preds = %L51, %L36, %L32, %L19, %L13, %L9
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724
+  %129 = bitcast %jl_value_t*** %ptls to i8*
+  %130 = call noalias nonnull %jl_value_t* @jl_gc_pool_alloc(i8* %129, i32 1400, i32 16) #6
+  %131 = bitcast %jl_value_t* %130 to %jl_value_t**
+  %132 = getelementptr %jl_value_t*, %jl_value_t** %131, i64 -1
+  store %jl_value_t* inttoptr (i64 140031878028192 to %jl_value_t*), %jl_value_t** %132
+  %133 = bitcast %jl_value_t* %130 to %jl_value_t**
+  store %jl_value_t* inttoptr (i64 140031287023056 to %jl_value_t*), %jl_value_t** %133, align 8
+  %134 = getelementptr %jl_value_t*, %jl_value_t** %gcframe, i32 2
+  store %jl_value_t* %130, %jl_value_t** %134
+  call void @jl_throw(%jl_value_t* %130)
+  unreachable
+
+L237:                                             ; preds = %L230, %L218.preheader
+  %135 = getelementptr %jl_value_t*, %jl_value_t** %gcframe, i32 1
+  %136 = load %jl_value_t*, %jl_value_t** %135
+  %137 = getelementptr %jl_value_t**, %jl_value_t*** %ptls, i32 0
+  %138 = bitcast %jl_value_t*** %137 to %jl_value_t**
+  store %jl_value_t* %136, %jl_value_t** %138
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!'
+  ret %jl_value_t* %19
+
+oob:                                              ; preds = %L225
+  %value_phi1350.lcssa = phi i64 [ %value_phi1350, %L225 ]
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:736
+; ┌ @ array.jl:809 within `getindex'
+   %139 = alloca i64, align 8
+   store i64 %value_phi1350.lcssa, i64* %139, align 8
+   call void @jl_bounds_error_ints(%jl_value_t* %21, i64* nonnull %139, i64 1)
+   unreachable
+
+idxend:                                           ; preds = %L225
+   %140 = getelementptr inbounds i8, i8* %64, i64 %124
+   %141 = load i8, i8* %140, align 1
+   %142 = and i8 %141, 1
+   %143 = icmp eq i8 %142, 0
+; └
+  br i1 %143, label %L230, label %L227
+
+oob15:                                            ; preds = %L227
+  %value_phi1350.lcssa220 = phi i64 [ %value_phi1350, %L227 ]
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:737
+; ┌ @ array.jl:809 within `getindex'
+   %144 = alloca i64, align 8
+   store i64 %value_phi1350.lcssa220, i64* %144, align 8
+   call void @jl_bounds_error_ints(%jl_value_t* %23, i64* nonnull %144, i64 1)
+   unreachable
+
+idxend16:                                         ; preds = %L227
+; └
+; ┌ @ array.jl:847 within `setindex!'
+   %145 = add i64 %value_phi1452, -1
+   %146 = icmp ult i64 %145, %70
+   br i1 %146, label %idxend18, label %oob17
+
+oob17:                                            ; preds = %idxend16
+   %value_phi1452.lcssa224 = phi i64 [ %value_phi1452, %idxend16 ]
+   %147 = alloca i64, align 8
+   store i64 %value_phi1452.lcssa224, i64* %147, align 8
+   call void @jl_bounds_error_ints(%jl_value_t* %19, i64* nonnull %147, i64 1)
+   unreachable
+
+idxend18:                                         ; preds = %idxend16
+; └
+; ┌ @ array.jl:809 within `getindex'
+   %148 = getelementptr inbounds double, double* %72, i64 %124
+   %149 = bitcast double* %148 to i64*
+   %150 = load i64, i64* %149, align 8
+; └
+; ┌ @ array.jl:847 within `setindex!'
+   %151 = getelementptr inbounds double, double* %74, i64 %145
+   %152 = bitcast double* %151 to i64*
+   store i64 %150, i64* %152, align 8
+; └
+;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:738
+; ┌ @ int.jl:86 within `+'
+   %153 = add i64 %value_phi1452, 1
+   br label %L230
+; └
+}
+	.text
+; ┌ @ runtests.jl:723 within `vcompress!'
+	pushq	%rbp
+	movq	%rsp, %rbp
+	pushq	%r15
+	pushq	%r14
+	pushq	%r13
+	pushq	%r12
+	pushq	%rbx
+	subq	$120, %rsp
+	vxorps	%xmm0, %xmm0, %xmm0
+	movq	$0, -128(%rbp)
+	movq	%fs:0, %rax
+	leaq	-144(%rbp), %rdx
+	leaq	-15720(%rax), %rbx
+	vmovaps	%xmm0, -144(%rbp)
+	movq	%rsi, -152(%rbp)
+	movq	$4, -144(%rbp)
+	movq	%rbx, -56(%rbp)
+	movq	-15720(%rax), %rcx
+	movq	%rcx, -136(%rbp)
+	movq	%rdx, -15720(%rax)
+	movq	16(%rsi), %rdi
+	movq	(%rsi), %rax
+	movq	8(%rsi), %r10
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:724
+; │┌ @ abstractarray.jl:75 within `axes'
+; ││┌ @ array.jl:155 within `size'
+	movq	24(%rdi), %rcx
+	movq	%rax, -48(%rbp)
+; ││└
+; ││┌ @ tuple.jl:157 within `map'
+; │││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; ││││┌ @ promotion.jl:409 within `max'
+	movq	%rcx, %rdx
+	sarq	$63, %rdx
+	andnq	%rcx, %rdx, %r8
+; ││└└└
+; ││┌ @ array.jl:155 within `size'
+	movq	24(%rax), %rdx
+; ││└
+; ││┌ @ tuple.jl:157 within `map'
+; │││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; ││││┌ @ promotion.jl:409 within `max'
+	testq	%rdx, %rdx
+; │└└└└
+; │┌ @ tuple.jl:284 within `=='
+; ││┌ @ tuple.jl:288 within `_eq'
+; │││┌ @ range.jl:752 within `=='
+	jle	L172
+; │└└└
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:0
+	movq	%rdx, %rsi
+	sarq	$63, %rsi
+	andnq	%rdx, %rsi, %rdx
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:724
+; │┌ @ tuple.jl:284 within `=='
+; ││┌ @ tuple.jl:288 within `_eq'
+; │││┌ @ range.jl:753 within `=='
+; ││││┌ @ range.jl:766 within `_has_length_one'
+; │││││┌ @ promotion.jl:398 within `=='
+	cmpq	$1, %rdx
+; ││││└└
+	jne	L182
+; ││││┌ @ range.jl:766 within `_has_length_one'
+; │││││┌ @ promotion.jl:398 within `=='
+	cmpq	$1, %r8
+; │└└└└└
+	je	L191
+	jmp	L660
+; │┌ @ tuple.jl:284 within `=='
+; ││┌ @ tuple.jl:288 within `_eq'
+; │││┌ @ range.jl:752 within `=='
+; ││││┌ @ range.jl:503 within `isempty'
+; │││││┌ @ operators.jl:303 within `>'
+; ││││││┌ @ int.jl:82 within `<'
+L172:
+	testq	%r8, %r8
+; │└└└└└└
+	jle	L191
+	jmp	L660
+; │┌ @ tuple.jl:284 within `=='
+; ││┌ @ tuple.jl:288 within `_eq'
+; │││┌ @ range.jl:754 within `==' @ promotion.jl:398
+L182:
+	cmpq	%r8, %rdx
+; │└└└
+	jne	L660
+; │┌ @ abstractarray.jl:75 within `axes'
+; ││┌ @ array.jl:155 within `size'
+L191:
+	movq	24(%r10), %rbx
+; ││└
+; ││┌ @ tuple.jl:157 within `map'
+; │││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; ││││┌ @ promotion.jl:409 within `max'
+	movq	%rbx, %rdx
+	sarq	$63, %rdx
+	andnq	%rbx, %rdx, %rsi
+	testq	%rcx, %rcx
+; │└└└└
+; │┌ @ tuple.jl:284 within `=='
+; ││┌ @ tuple.jl:288 within `_eq'
+; │││┌ @ range.jl:752 within `=='
+	jle	L247
+; ││││ @ range.jl:753 within `=='
+; ││││┌ @ range.jl:766 within `_has_length_one'
+; │││││┌ @ promotion.jl:398 within `=='
+	cmpq	$1, %r8
+; ││││└└
+	jne	L651
+	movl	$1, %ebx
+	movl	$1, %edx
+; ││││ @ range.jl:753 within `=='
+; ││││┌ @ range.jl:766 within `_has_length_one'
+; │││││┌ @ promotion.jl:398 within `=='
+	cmpq	$1, %rsi
+; │└└└└└
+	je	L742
+	jmp	L660
+; │┌ @ tuple.jl:284 within `=='
+; ││┌ @ tuple.jl:288 within `_eq'
+; │││┌ @ range.jl:752 within `=='
+; ││││┌ @ range.jl:503 within `isempty'
+; │││││┌ @ operators.jl:303 within `>'
+; ││││││┌ @ int.jl:82 within `<'
+L247:
+	testq	%rsi, %rsi
+; │└└└└└└
+	jg	L660
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:729
+; │┌ @ int.jl:441 within `<='
+L256:
+	addq	$-3, %r8
+; │└
+	jle	L732
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:0
+	movl	$1, %r9d
+	movl	$4, %ecx
+	nopw	%cs:(%rax,%rax)
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:730
+; │┌ @ arrayops.jl:285 within `getindex'
+; ││┌ @ arrayops.jl:263 within `_preprocessindices'
+; │││┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; ││││┌ @ arrayops.jl:212 within `checkindex'
+; │││││┌ @ int.jl:441 within `<='
+L288:
+	leaq	-3(%rcx), %r12
+	testq	%r12, %r12
+; │││││└
+	jle	L937
+; ││││└
+; ││││┌ @ abstractarray.jl:267 within `eachindex'
+; │││││┌ @ abstractarray.jl:95 within `axes1'
+; ││││││┌ @ abstractarray.jl:75 within `axes'
+; │││││││┌ @ tuple.jl:157 within `map'
+; ││││││││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; │││││││││┌ @ promotion.jl:409 within `max'
+	movq	%rbx, %rdx
+	sarq	$63, %rdx
+	andnq	%rbx, %rdx, %r14
+; ││││└└└└└└
+; ││││┌ @ arrayops.jl:212 within `checkindex'
+; │││││┌ @ int.jl:441 within `<='
+	cmpq	%r14, %rcx
+; ││││└└
+; ││││ @ abstractarray.jl:506 within `checkbounds'
+	jg	L942
+; ││└└
+; ││ @ arrayops.jl:286 within `getindex'
+; ││┌ @ arrayops.jl:273 within `_pointer'
+; │││┌ @ indices.jl:472 within `getindex'
+; ││││┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; │││││┌ @ abstractarray.jl:563 within `checkindex'
+; ││││││┌ @ int.jl:441 within `<='
+	cmpq	%r14, %r12
+; │││││└└
+; │││││ @ abstractarray.jl:506 within `checkbounds'
+	jg	L970
+; │└└└└
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:731
+; │┌ @ arrayops.jl:285 within `getindex'
+; ││┌ @ arrayops.jl:263 within `_preprocessindices'
+; │││┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; ││││┌ @ abstractarray.jl:267 within `eachindex'
+; │││││┌ @ abstractarray.jl:95 within `axes1'
+; ││││││┌ @ abstractarray.jl:75 within `axes'
+; │││││││┌ @ array.jl:155 within `size'
+	movq	24(%rdi), %rbx
+; │││││││└
+; │││││││┌ @ tuple.jl:157 within `map'
+; ││││││││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; │││││││││┌ @ promotion.jl:409 within `max'
+	movq	%rbx, %rdx
+	sarq	$63, %rdx
+	andnq	%rbx, %rdx, %r13
+; ││││└└└└└└
+; ││││┌ @ arrayops.jl:212 within `checkindex'
+; │││││┌ @ int.jl:441 within `<='
+	cmpq	%r13, %rcx
+; ││││└└
+; ││││ @ abstractarray.jl:506 within `checkbounds'
+	jg	L1003
+; ││└└
+; ││ @ arrayops.jl:286 within `getindex'
+; ││┌ @ arrayops.jl:273 within `_pointer'
+; │││┌ @ indices.jl:472 within `getindex'
+; ││││┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; │││││┌ @ abstractarray.jl:563 within `checkindex'
+; ││││││┌ @ int.jl:441 within `<='
+	cmpq	%r13, %r12
+; │││││└└
+; │││││ @ abstractarray.jl:506 within `checkbounds'
+	jg	L1028
+; │└└└└
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:0
+	movq	(%r10), %rdx
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:731
+; │┌ @ arrayops.jl:101 within `vstorec'
+; ││┌ @ range.jl:5 within `Colon'
+; │││┌ @ range.jl:280 within `UnitRange'
+; ││││┌ @ range.jl:285 within `unitrange_last'
+; │││││┌ @ operators.jl:350 within `>='
+; ││││││┌ @ int.jl:441 within `<='
+	movabsq	$9223372036854775805, %rsi # imm = 0x7FFFFFFFFFFFFFFD
+	movq	%r10, %rax
+; │└└└└└└
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:0
+	vpmovzxbd	-4(%rdx,%rcx), %xmm0 # xmm0 = mem[0],zero,zero,zero,mem[1],zero,zero,zero,mem[2],zero,zero,zero,mem[3],zero,zero,zero
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:731
+; │┌ @ arrayops.jl:101 within `vstorec'
+; ││┌ @ range.jl:5 within `Colon'
+; │││┌ @ range.jl:280 within `UnitRange'
+; ││││┌ @ range.jl:285 within `unitrange_last'
+; │││││┌ @ operators.jl:350 within `>='
+; ││││││┌ @ int.jl:441 within `<='
+	xorl	%edx, %edx
+	cmpq	%rsi, %r9
+	setl	%dl
+; │││││└└
+	leaq	-1(%r9,%rdx,4), %r15
+	movq	-48(%rbp), %rdx
+; ││└└└
+; ││┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; │││┌ @ abstractarray.jl:267 within `eachindex'
+; ││││┌ @ abstractarray.jl:95 within `axes1'
+; │││││┌ @ abstractarray.jl:75 within `axes'
+; ││││││┌ @ array.jl:155 within `size'
+	movq	24(%rdx), %rbx
+; ││││││└
+; ││││││┌ @ tuple.jl:157 within `map'
+; │││││││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; ││││││││┌ @ promotion.jl:409 within `max'
+	movq	%rbx, %rdx
+	sarq	$63, %rdx
+	andnq	%rbx, %rdx, %rsi
+; │││└└└└└└
+; │││┌ @ abstractarray.jl:568 within `checkindex' @ abstractarray.jl:563
+; ││││┌ @ int.jl:441 within `<='
+	testq	%r9, %r9
+	setg	%dl
+	cmpq	%rsi, %r9
+	setle	%r10b
+	testq	%r15, %r15
+	setg	%bl
+	cmpq	%rsi, %r15
+	setle	%r11b
+; ││││└
+; ││││ @ abstractarray.jl:568 within `checkindex'
+; ││││┌ @ range.jl:503 within `isempty'
+; │││││┌ @ operators.jl:303 within `>'
+; ││││││┌ @ int.jl:82 within `<'
+	cmpq	%r9, %r15
+; │││└└└└
+; │││ @ abstractarray.jl:506 within `checkbounds'
+	jl	L466
+	andb	%r10b, %dl
+	andb	%r11b, %bl
+	andb	%dl, %bl
+; │││ @ abstractarray.jl:506 within `checkbounds'
+	je	L1061
+; │└└
+; │┌ @ arrayops.jl:286 within `getindex'
+; ││┌ @ arrayops.jl:273 within `_pointer'
+; │││┌ @ abstractarray.jl:1009 within `pointer'
+; ││││┌ @ pointer.jl:65 within `unsafe_convert'
+L466:
+	movq	(%rdi), %rdx
+	movq	-48(%rbp), %r10
+; │└└└└
+; │┌ @ arrayops.jl:104 within `vstorec' @ arrayops.jl:96
+; ││┌ @ LLVM_intrinsics_old.jl:474 within `maskedcompressstore'
+; │││┌ @ LLVM_intrinsics_old.jl:485 within `macro expansion'
+	vpextrb	$0, %xmm0, %esi
+; │└└└
+; │┌ @ arrayops.jl:286 within `getindex'
+; ││┌ @ arrayops.jl:45 within `vload' @ arrayops.jl:45 @ arrayops.jl:46
+; │││┌ @ LLVM_intrinsics_old.jl:400 within `load'
+; ││││┌ @ LLVM_intrinsics_old.jl:409 within `macro expansion'
+	vmovups	-32(%rdx,%rcx,8), %ymm1
+; │└└└└
+; │┌ @ arrayops.jl:103 within `vstorec'
+; ││┌ @ abstractarray.jl:1009 within `pointer'
+; │││┌ @ pointer.jl:65 within `unsafe_convert'
+	movq	(%r10), %rdx
+; │││└
+; │││┌ @ pointer.jl:159 within `+'
+	leaq	-8(%rdx,%r9,8), %rdx
+	testb	$1, %sil
+	je	L507
+; ││└└
+; ││ @ arrayops.jl:104 within `vstorec' @ arrayops.jl:96
+; ││┌ @ LLVM_intrinsics_old.jl:474 within `maskedcompressstore'
+; │││┌ @ LLVM_intrinsics_old.jl:485 within `macro expansion'
+	vmovlps	%xmm1, (%rdx)
+	addq	$8, %rdx
+L507:
+	vpextrb	$4, %xmm0, %esi
+	movq	%rax, %r10
+	testb	$1, %sil
+	je	L530
+	vmovhps	%xmm1, (%rdx)
+	addq	$8, %rdx
+L530:
+	vpextrb	$8, %xmm0, %esi
+	vextractf128	$1, %ymm1, %xmm1
+	testb	$1, %sil
+	je	L556
+	vmovlps	%xmm1, (%rdx)
+	addq	$8, %rdx
+L556:
+	vpextrb	$12, %xmm0, %esi
+	testb	$1, %sil
+	je	L572
+	vmovhps	%xmm1, (%rdx)
+; │└└└
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:732
+; │┌ @ simdvec.jl:468 within `sum'
+; ││┌ @ simdvec.jl:458 within `reduce'
+; │││┌ @ LLVM_intrinsics_old.jl:734 within `reduce_add'
+; ││││┌ @ LLVM_intrinsics_old.jl:758 within `macro expansion'
+L572:
+	vpslld	$31, %xmm0, %xmm0
+; │└└└└
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:729
+; │┌ @ int.jl:441 within `<='
+	leaq	1(%rcx), %rbx
+; │└
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:732
+; │┌ @ simdvec.jl:468 within `sum'
+; ││┌ @ simdvec.jl:458 within `reduce'
+; │││┌ @ LLVM_intrinsics_old.jl:734 within `reduce_add'
+; ││││┌ @ LLVM_intrinsics_old.jl:758 within `macro expansion'
+	vmovmskps	%xmm0, %edx
+	popcntl	%edx, %edx
+; │└└└└
+; │┌ @ int.jl:86 within `+'
+	addq	%r9, %rdx
+; │└
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:729
+; │┌ @ int.jl:441 within `<='
+	cmpq	%r8, %rbx
+; │└
+	jg	L613
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:730
+; │┌ @ arrayops.jl:285 within `getindex'
+; ││┌ @ arrayops.jl:263 within `_preprocessindices'
+; │││┌ @ abstractarray.jl:506 within `checkbounds' @ abstractarray.jl:491
+; ││││┌ @ abstractarray.jl:267 within `eachindex'
+; │││││┌ @ abstractarray.jl:95 within `axes1'
+; ││││││┌ @ abstractarray.jl:75 within `axes'
+; │││││││┌ @ array.jl:155 within `size'
+	movq	24(%r10), %rbx
+; │└└└└└└└
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:729
+	addq	$4, %rcx
+	movq	%rdx, %r9
+	jmp	L288
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:731
+; │┌ @ arrayops.jl:101 within `vstorec'
+L613:
+	movq	%r9, -120(%rbp)
+; │└
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:730
+; │┌ @ arrayops.jl:285 within `getindex'
+; ││┌ @ arrayops.jl:263 within `_preprocessindices'
+	movq	%r12, -104(%rbp)
+; ││└
+; ││ @ arrayops.jl:286 within `getindex'
+; ││┌ @ arrayops.jl:273 within `_pointer'
+; │││┌ @ indices.jl:453 within `LinearIndices' @ indices.jl:444 @ indices.jl:444
+	movq	%r14, -96(%rbp)
+; │││└
+; │││┌ @ indices.jl:472 within `getindex'
+	movq	%r12, -88(%rbp)
+; │└└└
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:731
+; │┌ @ arrayops.jl:285 within `getindex'
+; ││┌ @ arrayops.jl:263 within `_preprocessindices'
+	movq	%r12, -80(%rbp)
+; ││└
+; ││ @ arrayops.jl:286 within `getindex'
+; ││┌ @ arrayops.jl:273 within `_pointer'
+; │││┌ @ indices.jl:453 within `LinearIndices' @ indices.jl:444 @ indices.jl:444
+	movq	%r13, -72(%rbp)
+; │││└
+; │││┌ @ indices.jl:472 within `getindex'
+	movq	%r12, -64(%rbp)
+; │└└└
+; │┌ @ arrayops.jl:101 within `vstorec'
+	movq	%r15, -112(%rbp)
+; │└
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:735
+; │┌ @ abstractarray.jl:302 within `lastindex'
+; ││┌ @ abstractarray.jl:267 within `eachindex'
+; │││┌ @ abstractarray.jl:95 within `axes1'
+; ││││┌ @ abstractarray.jl:75 within `axes'
+; │││││┌ @ array.jl:155 within `size'
+	movq	24(%rdi), %rcx
+	jmp	L742
+; │└└└└└
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:724
+; │┌ @ tuple.jl:284 within `=='
+; ││┌ @ tuple.jl:288 within `_eq'
+; │││┌ @ range.jl:754 within `==' @ promotion.jl:398
+L651:
+	cmpq	%rsi, %r8
+; │└└└
+	je	L256
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:0
+L660:
+	movq	-56(%rbp), %rdi
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:724
+	movabsq	$jl_gc_pool_alloc, %rax
+	movl	$1400, %esi             # imm = 0x578
+	movl	$16, %edx
+	callq	*%rax
+	movabsq	$jl_system_image_data, %rcx
+	movabsq	$140031287023056, %rdx  # imm = 0x7F5B931ED5D0
+	movq	%rax, %rdi
+	movq	%rax, -128(%rbp)
+	movq	%rcx, -8(%rax)
+	movabsq	$jl_throw, %rcx
+	movq	%rdx, (%rax)
+	callq	*%rcx
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:0
+L732:
+	movl	$1, %ebx
+	movl	$1, %edx
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:735
+; │┌ @ abstractarray.jl:302 within `lastindex'
+; ││┌ @ abstractarray.jl:267 within `eachindex'
+; │││┌ @ abstractarray.jl:95 within `axes1'
+; ││││┌ @ abstractarray.jl:75 within `axes'
+; │││││┌ @ tuple.jl:157 within `map'
+; ││││││┌ @ range.jl:326 within `OneTo' @ range.jl:317
+; │││││││┌ @ promotion.jl:409 within `max'
+L742:
+	movq	%rcx, %rsi
+	sarq	$63, %rsi
+	andnq	%rcx, %rsi, %r8
+; │└└└└└└└
+; │┌ @ int.jl:441 within `<='
+	cmpq	%r8, %rbx
+; │└
+	jg	L864
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:0
+	movq	-48(%rbp), %rax
+	movq	(%r10), %r9
+	movq	8(%r10), %r13
+	movq	(%rdi), %r11
+	movq	8(%rdi), %r14
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:735
+	decq	%rbx
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:737
+; │┌ @ array.jl within `setindex!'
+	movq	(%rax), %r15
+	movq	8(%rax), %r12
+	jmp	L812
+	nopw	%cs:(%rax,%rax)
+; │└
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:735
+; │┌ @ int.jl:441 within `<='
+L800:
+	addq	$2, %rbx
+	cmpq	%r8, %rbx
+	movq	%rcx, %rbx
+; │└
+	jg	L864
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:736
+; │┌ @ array.jl:809 within `getindex'
+L812:
+	leaq	1(%rbx), %rcx
+	cmpq	%r13, %rbx
+	jae	L900
+	testb	$1, (%r9,%rbx)
+; │└
+	je	L800
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:737
+; │┌ @ array.jl:809 within `getindex'
+	cmpq	%r14, %rbx
+	jae	L1094
+; │└
+; │┌ @ array.jl:847 within `setindex!'
+	leaq	-1(%rdx), %rsi
+	cmpq	%r12, %rsi
+	jae	L1128
+; │└
+; │┌ @ array.jl:809 within `getindex'
+	movq	(%r11,%rbx,8), %rsi
+; │└
+; │┌ @ array.jl:847 within `setindex!'
+	movq	%rsi, -8(%r15,%rdx,8)
+; │└
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:738
+; │┌ @ int.jl:86 within `+'
+	incq	%rdx
+	jmp	L800
+; └└
+; ┌ @ int.jl within `vcompress!'
+L864:
+	movq	-136(%rbp), %rcx
+	movq	-56(%rbp), %rdx
+	movq	-48(%rbp), %rax
+	movq	%rcx, (%rdx)
+; └
+; ┌ @ runtests.jl:724 within `vcompress!'
+	leaq	-40(%rbp), %rsp
+	popq	%rbx
+	popq	%r12
+	popq	%r13
+	popq	%r14
+	popq	%r15
+	popq	%rbp
+	vzeroupper
+	retq
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:736
+; │┌ @ array.jl:809 within `getindex'
+L900:
+	movq	%rsp, %rax
+	leaq	-16(%rax), %rsi
+	movq	%rsi, %rsp
+	movq	%rcx, -16(%rax)
+	movabsq	$jl_bounds_error_ints, %rax
+	movl	$1, %edx
+	movq	%r10, %rdi
+	vzeroupper
+	callq	*%rax
+; │└
+; │ @ runtests.jl:724 within `vcompress!' @ array.jl:0
+L937:
+	movq	%r10, %rdi
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:730
+; │┌ @ arrayops.jl:285 within `getindex'
+; ││┌ @ arrayops.jl:263 within `_preprocessindices'
+	jmp	L945
+L942:
+	movq	%r10, %rdi
+; │││ @ arrayops.jl:263 within `_preprocessindices'
+; │││┌ @ abstractarray.jl:506 within `checkbounds'
+L945:
+	movabsq	$throw_boundserror, %rax
+	leaq	-104(%rbp), %rsi
+; │││└
+	movq	%r12, -104(%rbp)
+; │││┌ @ abstractarray.jl:506 within `checkbounds'
+	vzeroupper
+	callq	*%rax
+	ud2
+; ││└└
+; ││ @ arrayops.jl:286 within `getindex'
+; ││┌ @ arrayops.jl:273 within `_pointer'
+; │││┌ @ indices.jl:472 within `getindex'
+; ││││┌ @ abstractarray.jl:506 within `checkbounds'
+L970:
+	movabsq	$throw_boundserror, %rax
+	leaq	-96(%rbp), %rdi
+	leaq	-88(%rbp), %rsi
+; │││└└
+; │││┌ @ indices.jl:453 within `LinearIndices' @ indices.jl:444 @ indices.jl:444
+	movq	%r14, -96(%rbp)
+; │││└
+; │││┌ @ indices.jl:472 within `getindex'
+	movq	%r12, -88(%rbp)
+; ││││┌ @ abstractarray.jl:506 within `checkbounds'
+	vzeroupper
+	callq	*%rax
+	ud2
+; │└└└└
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:731
+; │┌ @ arrayops.jl:285 within `getindex'
+; ││┌ @ arrayops.jl:263 within `_preprocessindices'
+; │││┌ @ abstractarray.jl:506 within `checkbounds'
+L1003:
+	movabsq	$throw_boundserror, %rax
+	leaq	-80(%rbp), %rsi
+; │││└
+	movq	%r12, -80(%rbp)
+; │││┌ @ abstractarray.jl:506 within `checkbounds'
+	vzeroupper
+	callq	*%rax
+	ud2
+; ││└└
+; ││ @ arrayops.jl:286 within `getindex'
+; ││┌ @ arrayops.jl:273 within `_pointer'
+; │││┌ @ indices.jl:472 within `getindex'
+; ││││┌ @ abstractarray.jl:506 within `checkbounds'
+L1028:
+	movabsq	$throw_boundserror, %rax
+	leaq	-72(%rbp), %rdi
+	leaq	-64(%rbp), %rsi
+; │││└└
+; │││┌ @ indices.jl:453 within `LinearIndices' @ indices.jl:444 @ indices.jl:444
+	movq	%r13, -72(%rbp)
+; │││└
+; │││┌ @ indices.jl:472 within `getindex'
+	movq	%r12, -64(%rbp)
+; ││││┌ @ abstractarray.jl:506 within `checkbounds'
+	vzeroupper
+	callq	*%rax
+	ud2
+; │└└└└
+; │ @ runtests.jl:724 within `vcompress!' @ abstractarray.jl:0
+L1061:
+	movq	-48(%rbp), %rdi
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:731
+; │┌ @ arrayops.jl:101 within `vstorec'
+; ││┌ @ abstractarray.jl:506 within `checkbounds'
+	movabsq	$throw_boundserror, %rcx
+	leaq	-120(%rbp), %rsi
+; ││└
+	movq	%r9, -120(%rbp)
+	movq	%r15, -112(%rbp)
+; ││┌ @ abstractarray.jl:506 within `checkbounds'
+	vzeroupper
+	callq	*%rcx
+	ud2
+; │└└
+; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:737
+; │┌ @ array.jl:809 within `getindex'
+L1094:
+	movq	%rsp, %rax
+	leaq	-16(%rax), %rsi
+	movq	%rsi, %rsp
+	movq	%rcx, -16(%rax)
+	movabsq	$jl_bounds_error_ints, %rax
+	movl	$1, %edx
+	vzeroupper
+	callq	*%rax
+; │└
+; │┌ @ array.jl:847 within `setindex!'
+L1128:
+	movq	%rsp, %rcx
+	leaq	-16(%rcx), %rsi
+	movq	%rsi, %rsp
+	movq	-48(%rbp), %rdi
+	movq	%rdx, -16(%rcx)
+	movabsq	$jl_bounds_error_ints, %rcx
+	movl	$1, %edx
+	vzeroupper
+	callq	*%rcx
+; └└
+Test Summary:       | Pass  Total
+Real-world examples |   17     17
+Test Summary:   | Pass  Total
+Vector shuffles |  202    202
+    Testing SIMD tests passed 
+Finished at 2020-10-25T19:15:32.587

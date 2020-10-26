@@ -1,0 +1,117 @@
+Current time is 2020-10-25T22:48:18.226
+Julia Version 1.5.3-pre.0
+Commit 5905edebb1 (2020-09-24 05:09 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-9.0.1 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+  JULIA_PKG_SERVER = 
+
+Starting installation at 2020-10-25T22:48:21.605
+  Resolving package versions...
+  Installed MKL_jll ───────── v2020.2.254+0
+  Installed MKL ───────────── v0.3.0
+  Installed IntelOpenMP_jll ─ v2018.0.3+0
+  Installed PackageCompiler ─ v1.2.3
+Updating `~/.julia/environments/v1.5/Project.toml`
+  [33e6dc65] + MKL v0.3.0
+Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [1d5cc7b8] + IntelOpenMP_jll v2018.0.3+0
+  [33e6dc65] + MKL v0.3.0
+  [856f044c] + MKL_jll v2020.2.254+0
+  [9b87118b] + PackageCompiler v1.2.3
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [b77e0a4c] + InteractiveUtils
+  [76f85450] + LibGit2
+  [8f399da3] + Libdl
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [44cfe95a] + Pkg
+  [de0858da] + Printf
+  [3fa0cd96] + REPL
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+   Building MKL → `~/.julia/packages/MKL/1aXoN/deps/build.log`
+┌ Error: Error building `MKL`: 
+│ [ Info: Splicing in code to load MKL in /opt/julia/bin/../share/julia/base/sysimg.jl
+│ ERROR: LoadError: SystemError: opening file "/opt/julia/bin/../share/julia/base/sysimg.jl": Read-only file system
+│ Stacktrace:
+│  [1] systemerror(::String, ::Int32; extrainfo::Nothing) at ./error.jl:168
+│  [2] #systemerror#48 at ./error.jl:167 [inlined]
+│  [3] systemerror at ./error.jl:167 [inlined]
+│  [4] open(::String; lock::Bool, read::Nothing, write::Nothing, create::Nothing, truncate::Bool, append::Nothing) at ./iostream.jl:284
+│  [5] open(::String, ::String; lock::Bool) at ./iostream.jl:346
+│  [6] open(::String, ::String) at ./iostream.jl:346
+│  [7] open(::Base.var"#292#293"{String,Tuple{}}, ::String, ::Vararg{String,N} where N; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at ./io.jl:323
+│  [8] open at ./io.jl:323 [inlined]
+│  [9] write at ./io.jl:396 [inlined]
+│  [10] insert_MKL_load(::String) at /home/pkgeval/.julia/packages/MKL/1aXoN/src/install.jl:69
+│  [11] change_blas_library(::String) at /home/pkgeval/.julia/packages/MKL/1aXoN/src/install.jl:116
+│  [12] enable_mkl_startup() at /home/pkgeval/.julia/packages/MKL/1aXoN/src/install.jl:103
+│  [13] top-level scope at /home/pkgeval/.julia/packages/MKL/1aXoN/deps/build.jl:9
+│  [14] include(::String) at ./client.jl:457
+│  [15] top-level scope at none:5
+│ in expression starting at /home/pkgeval/.julia/packages/MKL/1aXoN/deps/build.jl:9
+└ @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/Operations.jl:949
+Starting tests at 2020-10-25T22:48:34.39
+    Testing MKL
+Status `/tmp/jl_ZC5AJ2/Project.toml`
+  [33e6dc65] MKL v0.3.0
+  [856f044c] MKL_jll v2020.2.254+0
+  [9b87118b] PackageCompiler v1.2.3
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_ZC5AJ2/Manifest.toml`
+  [1d5cc7b8] IntelOpenMP_jll v2018.0.3+0
+  [33e6dc65] MKL v0.3.0
+  [856f044c] MKL_jll v2020.2.254+0
+  [9b87118b] PackageCompiler v1.2.3
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+Test Failed at /home/pkgeval/.julia/packages/MKL/1aXoN/test/runtests.jl:4
+  Expression: BLAS.vendor() == :mkl
+   Evaluated: openblas64 == mkl
+ERROR: LoadError: There was an error during testing
+in expression starting at /home/pkgeval/.julia/packages/MKL/1aXoN/test/runtests.jl:4
+ERROR: Package MKL errored during testing
+Stacktrace:
+ [1] pkgerror(::String) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/Types.jl:52
+ [2] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/Operations.jl:1578
+ [3] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:327
+ [4] test(::Pkg.Types.Context, ::Array{Pkg.Types.PackageSpec,1}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:314
+ [5] #test#61 at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:67 [inlined]
+ [6] test at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:67 [inlined]
+ [7] #test#60 at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:66 [inlined]
+ [8] test at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:66 [inlined]
+ [9] test(::String; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:65
+ [10] test(::String) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.5/Pkg/src/API.jl:65
+ [11] top-level scope at none:35
