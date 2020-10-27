@@ -4,28 +4,41 @@
 
 *Commit(s):* [JuliaLang/julia@5d8225a1116685e449fcc08b207acdd0f5106409](https://github.com/JuliaLang/julia/commit/5d8225a1116685e449fcc08b207acdd0f5106409)
 
-*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/5d8225a1116685e449fcc08b207acdd0f5106409#commitcomment-43619912)
+*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/5d8225a1116685e449fcc08b207acdd0f5106409#commitcomment-43620280)
 
 *Package Selection:* `["JSON", "Crayons"]`
 
-## Error
+In total, 2 packages were tested, out of which 2 succeeded, 0 failed and 0 were skipped.
 
-The build could not finish due to an error:
+
+## :heavy_check_mark: Packages that passed tests
+
+2 packages passed tests.
+
+- [Crayons v4.0.4](logs/Crayons/1.6.0-DEV-5d8225a111.log)
+- [JSON v0.21.1](logs/JSON/1.6.0-DEV-5d8225a111.log)
+
+
+## Version Info
+
+#### Primary Build
 
 ```
-NanosoldierError: failed to run tests: UndefVarError: contains not defined
-Stacktrace:
- [1] #run#39(::Int64, ::Int64, ::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}, ::typeof(NewPkgEval.run), ::Array{VersionNumber,1}, ::Array{Any,1}) at /storage/pkgeval/dev/NewPkgEval/src/run.jl:321
- [2] (::NewPkgEval.var"#kw##run")(::NamedTuple{(:ninstances,),Tuple{Int64}}, ::typeof(NewPkgEval.run), ::Array{VersionNumber,1}, ::Array{Any,1}) at ./none:0
- [3] (::Nanosoldier.var"#30#36"{Nanosoldier.PkgEvalJob,Dict{String,VersionNumber},Array{Any,1}})() at /storage/pkgeval/Nanosoldier/src/jobs/PkgEvalJob.jl:230
- [4] withenv(::Nanosoldier.var"#30#36"{Nanosoldier.PkgEvalJob,Dict{String,VersionNumber},Array{Any,1}}, ::Pair{String,Bool}) at ./env.jl:161
- [5] execute_tests!(::Nanosoldier.PkgEvalJob, ::Dict{String,Nanosoldier.BuildRef}, ::Dict{String,Array{String,1}}, ::Dict{Any,Any}) at /storage/pkgeval/Nanosoldier/src/jobs/PkgEvalJob.jl:228
- [6] run(::Nanosoldier.PkgEvalJob) at /storage/pkgeval/Nanosoldier/src/jobs/PkgEvalJob.jl:340
- [7] (::Distributed.var"#108#110"{Distributed.CallMsg{:call_fetch}})() at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.3/Distributed/src/process_messages.jl:294
- [8] run_work_thunk(::Distributed.var"#108#110"{Distributed.CallMsg{:call_fetch}}, ::Bool) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.3/Distributed/src/process_messages.jl:79
- [9] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.3/Distributed/src/process_messages.jl:294 [inlined]
- [10] (::Distributed.var"#107#109"{Distributed.CallMsg{:call_fetch},Distributed.MsgHeader,Sockets.TCPSocket})() at ./task.jl:333
+Julia Version 1.6.0-DEV.1341
+Commit 5d8225a111 (2020-10-26 21:18 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  uname: Linux 4.15.0-121-generic #123-Ubuntu SMP Mon Oct 5 16:16:40 UTC 2020 x86_64 x86_64
+  CPU: AMD EPYC 7502 32-Core Processor: 
+                  speed         user         nice          sys         idle          irq
+       #1-128  1495 MHz  283544463 s    3416057 s   61911569 s  438283844 s          0 s
+       
+  Memory: 503.8203659057617 GB (482849.12109375 MB free)
+  Uptime: 659054.0 sec
+  Load Avg:  0.75  0.37  0.23
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+
 ```
-
-Check the logs folder in this directory for more detailed output.
-
+<!-- Generated on 2020-10-27T09:45:47.34 -->
