@@ -1,0 +1,149 @@
+Current time is 2020-10-26T20:32:35.776
+Julia Version 1.6.0-DEV.1355
+Commit 8dc2fd4e50 (2020-10-26 20:08 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+  JULIA_PKG_SERVER = 
+
+Starting installation at 2020-10-26T20:32:36.776
+   Resolving package versions...
+   Installed GrundmannMoeller ─ v0.1.1
+   Installed StaticArrays ───── v0.12.4
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [36aa67b7] + GrundmannMoeller v0.1.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [36aa67b7] + GrundmannMoeller v0.1.1
+  [90137ffa] + StaticArrays v0.12.4
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [8dfed614] + Test
+Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
+[32m  ✓ [39m[90mStaticArrays[39m
+[32m  ✓ [39mGrundmannMoeller
+2 dependencies successfully precompiled
+Starting tests at 2020-10-26T20:32:45.221
+     Testing GrundmannMoeller
+Status `/tmp/jl_iqSlN4/Project.toml`
+  [36aa67b7] GrundmannMoeller v0.1.1
+  [90137ffa] StaticArrays v0.12.4
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_iqSlN4/Manifest.toml`
+  [36aa67b7] GrundmannMoeller v0.1.1
+  [90137ffa] StaticArrays v0.12.4
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+     Testing Running tests...
+Test Summary: | Pass  Total
+augment       |   10     10
+Test Summary:           | Pass  Total
+get_all_exponents basic |   12     12
+Test Summary:         | Pass  Total
+get_all_exponents D=1 |   61     61
+Test Summary:         | Pass  Total
+get_all_exponents D=2 |  161    161
+Test Summary:         | Pass  Total
+get_all_exponents D=3 |  711    711
+Test Summary:         | Pass  Total
+get_all_exponents D=4 | 2911   2911
+Test Summary:         |  Pass  Total
+get_all_exponents D=5 | 10061  10061
+Test Summary:           | Pass  Total
+grundmann_moeller basic |   24     24
+Test Summary:         | Pass  Total
+grundmann_moeller D=1 |  138    138
+grundmann_moeller D=2: Error During Test at /home/pkgeval/.julia/packages/GrundmannMoeller/xLvM0/test/runtests.jl:176
+  Got exception outside of a @test
+  TypeError: in <:, expected Type, got Vararg
+  Stacktrace:
+    [1] #s26#5
+      @ ~/.julia/packages/StaticArrays/l7lu2/src/util.jl:20 [inlined]
+    [2] var"#s26#5"(T::Any, ::Any, #unused#::Any)
+      @ StaticArrays ./none:0
+    [3] (::Core.GeneratedFunctionStub)(::Any, ::Vararg{Any})
+      @ Core ./boot.jl:574
+    [4] macro expansion
+      @ ~/.julia/packages/StaticArrays/l7lu2/src/SMatrix.jl:35 [inlined]
+    [5] SArray
+      @ ~/.julia/packages/StaticArrays/l7lu2/src/SMatrix.jl:32 [inlined]
+    [6] _convert
+      @ ~/.julia/packages/StaticArrays/l7lu2/src/convert.jl:35 [inlined]
+    [7] convert
+      @ ~/.julia/packages/StaticArrays/l7lu2/src/convert.jl:32 [inlined]
+    [8] (SMatrix{3, 2, T, L} where L where T)(a::Matrix{Int64})
+      @ StaticArrays ~/.julia/packages/StaticArrays/l7lu2/src/convert.jl:7
+    [9] integrate(kernel::Function, scheme::TnScheme{3, Rational{BigInt}}, vertices::Matrix{Int64})
+      @ GrundmannMoeller ~/.julia/packages/GrundmannMoeller/xLvM0/src/GrundmannMoeller.jl:116
+   [10] check_scheme(scheme::TnScheme{3, Rational{BigInt}})
+      @ Main ~/.julia/packages/GrundmannMoeller/xLvM0/test/runtests.jl:168
+   [11] macro expansion
+      @ ~/.julia/packages/GrundmannMoeller/xLvM0/test/runtests.jl:183 [inlined]
+   [12] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219
+   [13] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [14] top-level scope
+      @ none:6
+   [15] eval(m::Module, e::Any)
+      @ Core ./boot.jl:369
+   [16] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [17] _start()
+      @ Base ./client.jl:485
+Test Summary:         | Pass  Error  Total
+grundmann_moeller D=2 |    3      1      4
+Test Summary:         | Pass  Error  Total
+grundmann_moeller D=2 |    3      1      4
+ERROR: LoadError: Some tests did not pass: 3 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/GrundmannMoeller/xLvM0/test/runtests.jl:176
+
+caused by: Some tests did not pass: 3 passed, 0 failed, 1 errored, 0 broken.
+ERROR: Package GrundmannMoeller errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:35

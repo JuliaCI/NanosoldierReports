@@ -1,0 +1,332 @@
+Current time is 2020-10-26T22:51:09.375
+Julia Version 1.6.0-DEV.1355
+Commit 8dc2fd4e50 (2020-10-26 20:08 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+  JULIA_PKG_SERVER = 
+
+Starting installation at 2020-10-26T22:51:11.656
+   Resolving package versions...
+   Installed SimpleBufferStream ─ v1.1.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [777ac1f9] + SimpleBufferStream v1.1.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [777ac1f9] + SimpleBufferStream v1.1.0
+Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
+[32m  ✓ [39mSimpleBufferStream
+1 dependency successfully precompiled
+Starting tests at 2020-10-26T22:51:17.042
+     Testing SimpleBufferStream
+[?25l    Fetching: [>                                        ]  0.0 %[2K[?25hStatus `/tmp/jl_N3YsA0/Project.toml`
+  [cd3eb016] HTTP v0.8.19
+  [777ac1f9] SimpleBufferStream v1.1.0
+  [be1be57a] Gzip_jll v1.10.0+0
+  [a4e569a6] Tar
+  [8dfed614] Test
+Status `/tmp/jl_N3YsA0/Manifest.toml`
+  [cd3eb016] HTTP v0.8.19
+  [83e8ac13] IniFile v0.5.0
+  [739be429] MbedTLS v1.0.2
+  [777ac1f9] SimpleBufferStream v1.1.0
+  [be1be57a] Gzip_jll v1.10.0+0
+  [c8ffd9c3] MbedTLS_jll v2.16.8+0
+  [0dad84c5] ArgTools
+  [56f22d72] Artifacts
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [f43a241f] Downloads
+  [b77e0a4c] InteractiveUtils
+  [b27032c2] LibCURL
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [fa267f1f] TOML
+  [a4e569a6] Tar
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+  [deac9b47] LibCURL_jll
+  [14a3606d] MozillaCACerts_jll
+     Testing Running tests...
+Test Summary: | Pass  Total
+basic usage   |   38     38
+Test Summary: | Pass  Total
+max_len       |    3      3
+Test Summary: | Pass  Total
+Tee'ing       |    3      3
+Test Summary: | Pass  Total
+async passing |    1      1
+HTTP.jl streaming: Error During Test at /home/pkgeval/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:219
+  Test threw exception
+  Expression: (HTTP.get(url, response_stream = file_io)).status == 200
+  HTTP.ExceptionRequest.StatusError(504, "GET", "/registry/23338594-aafe-5451-b93e-139f81909106/433c8c72652d3230287c72184da6be3325155b64", HTTP.Messages.Response:
+  """
+  HTTP/1.1 504 Gateway Time-out
+  Server: nginx/1.19.2
+  Date: Mon, 26 Oct 2020 22:59:02 GMT
+  Content-Type: text/html
+  Content-Length: 167
+  Connection: keep-alive
+  
+  [Message Body was streamed]""")
+  Stacktrace:
+    [1] request(::Type{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}, ::HTTP.URIs.URI, ::Vararg{Any}; kw::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream), Tuple{Nothing, Bool, IOStream}}})
+      @ HTTP.ExceptionRequest ~/.julia/packages/HTTP/IAI92/src/ExceptionRequest.jl:22
+    [2] (::Base.var"#69#71"{Base.var"#69#70#72"{ExponentialBackOff, HTTP.RetryRequest.var"#2#3"{Bool, HTTP.Messages.Request}, typeof(HTTP.request)}})(::Type, ::Vararg{Any}; kwargs::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream), Tuple{Nothing, Bool, IOStream}}})
+      @ Base ./error.jl:301
+    [3] #request#1
+      @ ~/.julia/packages/HTTP/IAI92/src/RetryRequest.jl:44 [inlined]
+    [4] request(::Type{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; http_version::VersionNumber, target::String, parent::Nothing, iofunction::Nothing, kw::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol}, NamedTuple{(:reached_redirect_limit, :response_stream), Tuple{Bool, IOStream}}})
+      @ HTTP.MessageRequest ~/.julia/packages/HTTP/IAI92/src/MessageRequest.jl:51
+    [5] request(::Type{BasicAuthLayer{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; kw::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol}, NamedTuple{(:reached_redirect_limit, :response_stream), Tuple{Bool, IOStream}}})
+      @ HTTP.BasicAuthRequest ~/.julia/packages/HTTP/IAI92/src/BasicAuthRequest.jl:28
+    [6] request(::Type{RedirectLayer{BasicAuthLayer{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; redirect_limit::Int64, forwardheaders::Bool, kw::Base.Iterators.Pairs{Symbol, IOStream, Tuple{Symbol}, NamedTuple{(:response_stream,), Tuple{IOStream}}})
+      @ HTTP.RedirectRequest ~/.julia/packages/HTTP/IAI92/src/RedirectRequest.jl:24
+    [7] request(method::String, url::String, h::Vector{Pair{SubString{String}, SubString{String}}}, b::Vector{UInt8}; headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}, query::Nothing, kw::Base.Iterators.Pairs{Symbol, IOStream, Tuple{Symbol}, NamedTuple{(:response_stream,), Tuple{IOStream}}})
+      @ HTTP ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:314
+    [8] #get#12
+      @ ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:391 [inlined]
+    [9] (::var"#19#27"{String})(file_path::String, file_io::IOStream)
+      @ Main ~/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:219
+   [10] mktemp(fn::var"#19#27"{String}, parent::String)
+      @ Base.Filesystem ./file.jl:688
+   [11] mktemp(fn::Function)
+      @ Base.Filesystem ./file.jl:686
+   [12] macro expansion
+      @ ~/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:217 [inlined]
+   [13] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [14] top-level scope
+      @ ~/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:213
+HTTP.jl streaming: Error During Test at /home/pkgeval/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:224
+  Test threw exception
+  Expression: (HTTP.get(url, response_stream = http_buffio)).status == 200
+  ArgumentError: Stream is closed
+  Stacktrace:
+    [1] append_chunk
+      @ ~/.julia/packages/SimpleBufferStream/N1BA4/src/BufferStream.jl:53 [inlined]
+    [2] unsafe_write(bs::BufferStream, ref::Ptr{UInt8}, nbytes::UInt64)
+      @ SimpleBufferStream ~/.julia/packages/SimpleBufferStream/N1BA4/src/BufferStream.jl:79
+    [3] unsafe_write
+      @ ./io.jl:646 [inlined]
+    [4] write
+      @ ./io.jl:669 [inlined]
+    [5] write(to::BufferStream, from::HTTP.Streams.Stream{HTTP.Messages.Response, HTTP.ConnectionPool.Transaction{MbedTLS.SSLContext}})
+      @ Base ./io.jl:716
+    [6] readbody(http::HTTP.Streams.Stream{HTTP.Messages.Response, HTTP.ConnectionPool.Transaction{MbedTLS.SSLContext}}, res::HTTP.Messages.Response, response_stream::BufferStream, reached_redirect_limit::Bool)
+      @ HTTP.StreamRequest ~/.julia/packages/HTTP/IAI92/src/StreamRequest.jl:148
+    [7] macro expansion
+      @ ~/.julia/packages/HTTP/IAI92/src/StreamRequest.jl:68 [inlined]
+    [8] macro expansion
+      @ ./task.jl:371 [inlined]
+    [9] request(::Type{StreamLayer{Union{}}}, io::HTTP.ConnectionPool.Transaction{MbedTLS.SSLContext}, req::HTTP.Messages.Request, body::Vector{UInt8}; reached_redirect_limit::Bool, response_stream::BufferStream, iofunction::Nothing, verbose::Int64, kw::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+      @ HTTP.StreamRequest ~/.julia/packages/HTTP/IAI92/src/StreamRequest.jl:57
+   [10] request(::Type{ConnectionPoolLayer{StreamLayer{Union{}}}}, url::HTTP.URIs.URI, req::HTTP.Messages.Request, body::Vector{UInt8}; proxy::Nothing, socket_type::Type, reuse_limit::Int64, kw::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream), Tuple{Nothing, Bool, BufferStream}}})
+      @ HTTP.ConnectionRequest ~/.julia/packages/HTTP/IAI92/src/ConnectionRequest.jl:96
+   [11] request(::Type{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}, ::HTTP.URIs.URI, ::Vararg{Any}; kw::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream), Tuple{Nothing, Bool, BufferStream}}})
+      @ HTTP.ExceptionRequest ~/.julia/packages/HTTP/IAI92/src/ExceptionRequest.jl:19
+   [12] (::Base.var"#69#71"{Base.var"#69#70#72"{ExponentialBackOff, HTTP.RetryRequest.var"#2#3"{Bool, HTTP.Messages.Request}, typeof(HTTP.request)}})(::Type, ::Vararg{Any}; kwargs::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream), Tuple{Nothing, Bool, BufferStream}}})
+      @ Base ./error.jl:288
+   [13] #request#1
+      @ ~/.julia/packages/HTTP/IAI92/src/RetryRequest.jl:44 [inlined]
+   [14] request(::Type{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; http_version::VersionNumber, target::String, parent::Nothing, iofunction::Nothing, kw::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol}, NamedTuple{(:reached_redirect_limit, :response_stream), Tuple{Bool, BufferStream}}})
+      @ HTTP.MessageRequest ~/.julia/packages/HTTP/IAI92/src/MessageRequest.jl:51
+   [15] request(::Type{BasicAuthLayer{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; kw::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol}, NamedTuple{(:reached_redirect_limit, :response_stream), Tuple{Bool, BufferStream}}})
+      @ HTTP.BasicAuthRequest ~/.julia/packages/HTTP/IAI92/src/BasicAuthRequest.jl:28
+   [16] request(::Type{RedirectLayer{BasicAuthLayer{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; redirect_limit::Int64, forwardheaders::Bool, kw::Base.Iterators.Pairs{Symbol, BufferStream, Tuple{Symbol}, NamedTuple{(:response_stream,), Tuple{BufferStream}}})
+      @ HTTP.RedirectRequest ~/.julia/packages/HTTP/IAI92/src/RedirectRequest.jl:24
+   [17] request(method::String, url::String, h::Vector{Pair{SubString{String}, SubString{String}}}, b::Vector{UInt8}; headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}, query::Nothing, kw::Base.Iterators.Pairs{Symbol, BufferStream, Tuple{Symbol}, NamedTuple{(:response_stream,), Tuple{BufferStream}}})
+      @ HTTP ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:314
+   [18] #get#12
+      @ ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:391 [inlined]
+   [19] (::var"#19#27"{String})(file_path::String, file_io::IOStream)
+      @ Main ~/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:224
+   [20] mktemp(fn::var"#19#27"{String}, parent::String)
+      @ Base.Filesystem ./file.jl:688
+   [21] mktemp(fn::Function)
+      @ Base.Filesystem ./file.jl:686
+   [22] macro expansion
+      @ ~/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:217 [inlined]
+   [23] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [24] top-level scope
+      @ ~/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:213
+
+gzip: stdin: not in gzip format
+
+gzip: stdin: not in gzip format
+HTTP.jl streaming: Error During Test at /home/pkgeval/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:233
+  Test threw exception
+  Expression: (HTTP.get(url, response_stream = gzip_http.in)).status == 200
+  IOError(Base.IOError("stream is closed or unusable", 0) during request(https://us-east.storage.juliahub.com/registry/23338594-aafe-5451-b93e-139f81909106/433c8c72652d3230287c72184da6be3325155b64))
+  
+  Stacktrace:
+    [1] check_open
+      @ ./stream.jl:386 [inlined]
+    [2] uv_write_async(s::Base.PipeEndpoint, p::Ptr{UInt8}, n::UInt64)
+      @ Base ./stream.jl:1018
+    [3] uv_write(s::Base.PipeEndpoint, p::Ptr{UInt8}, n::UInt64)
+      @ Base ./stream.jl:981
+    [4] unsafe_write(s::Base.PipeEndpoint, p::Ptr{UInt8}, n::UInt64)
+      @ Base ./stream.jl:1064
+    [5] unsafe_write
+      @ ./io.jl:646 [inlined]
+    [6] write
+      @ ./io.jl:669 [inlined]
+    [7] write(to::Base.PipeEndpoint, from::HTTP.Streams.Stream{HTTP.Messages.Response, HTTP.ConnectionPool.Transaction{MbedTLS.SSLContext}})
+      @ Base ./io.jl:716
+    [8] readbody(http::HTTP.Streams.Stream{HTTP.Messages.Response, HTTP.ConnectionPool.Transaction{MbedTLS.SSLContext}}, res::HTTP.Messages.Response, response_stream::Base.PipeEndpoint, reached_redirect_limit::Bool)
+      @ HTTP.StreamRequest ~/.julia/packages/HTTP/IAI92/src/StreamRequest.jl:148
+    [9] macro expansion
+      @ ~/.julia/packages/HTTP/IAI92/src/StreamRequest.jl:68 [inlined]
+   [10] macro expansion
+      @ ./task.jl:371 [inlined]
+   [11] request(::Type{StreamLayer{Union{}}}, io::HTTP.ConnectionPool.Transaction{MbedTLS.SSLContext}, req::HTTP.Messages.Request, body::Vector{UInt8}; reached_redirect_limit::Bool, response_stream::Base.PipeEndpoint, iofunction::Nothing, verbose::Int64, kw::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+      @ HTTP.StreamRequest ~/.julia/packages/HTTP/IAI92/src/StreamRequest.jl:57
+   [12] request(::Type{ConnectionPoolLayer{StreamLayer{Union{}}}}, url::HTTP.URIs.URI, req::HTTP.Messages.Request, body::Vector{UInt8}; proxy::Nothing, socket_type::Type, reuse_limit::Int64, kw::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream), Tuple{Nothing, Bool, Base.PipeEndpoint}}})
+      @ HTTP.ConnectionRequest ~/.julia/packages/HTTP/IAI92/src/ConnectionRequest.jl:96
+   [13] request(::Type{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}, ::HTTP.URIs.URI, ::Vararg{Any}; kw::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream), Tuple{Nothing, Bool, Base.PipeEndpoint}}})
+      @ HTTP.ExceptionRequest ~/.julia/packages/HTTP/IAI92/src/ExceptionRequest.jl:19
+   [14] (::Base.var"#69#71"{Base.var"#69#70#72"{ExponentialBackOff, HTTP.RetryRequest.var"#2#3"{Bool, HTTP.Messages.Request}, typeof(HTTP.request)}})(::Type, ::Vararg{Any}; kwargs::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream), Tuple{Nothing, Bool, Base.PipeEndpoint}}})
+      @ Base ./error.jl:301
+   [15] #request#1
+      @ ~/.julia/packages/HTTP/IAI92/src/RetryRequest.jl:44 [inlined]
+   [16] request(::Type{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; http_version::VersionNumber, target::String, parent::Nothing, iofunction::Nothing, kw::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol}, NamedTuple{(:reached_redirect_limit, :response_stream), Tuple{Bool, Base.PipeEndpoint}}})
+      @ HTTP.MessageRequest ~/.julia/packages/HTTP/IAI92/src/MessageRequest.jl:51
+   [17] request(::Type{BasicAuthLayer{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; kw::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol}, NamedTuple{(:reached_redirect_limit, :response_stream), Tuple{Bool, Base.PipeEndpoint}}})
+      @ HTTP.BasicAuthRequest ~/.julia/packages/HTTP/IAI92/src/BasicAuthRequest.jl:28
+   [18] request(::Type{RedirectLayer{BasicAuthLayer{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; redirect_limit::Int64, forwardheaders::Bool, kw::Base.Iterators.Pairs{Symbol, Base.PipeEndpoint, Tuple{Symbol}, NamedTuple{(:response_stream,), Tuple{Base.PipeEndpoint}}})
+      @ HTTP.RedirectRequest ~/.julia/packages/HTTP/IAI92/src/RedirectRequest.jl:24
+   [19] request(method::String, url::String, h::Vector{Pair{SubString{String}, SubString{String}}}, b::Vector{UInt8}; headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}, query::Nothing, kw::Base.Iterators.Pairs{Symbol, Base.PipeEndpoint, Tuple{Symbol}, NamedTuple{(:response_stream,), Tuple{Base.PipeEndpoint}}})
+      @ HTTP ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:314
+   [20] #get#12
+      @ ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:391 [inlined]
+   [21] (::var"#19#27"{String})(file_path::String, file_io::IOStream)
+      @ Main ~/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:233
+   [22] mktemp(fn::var"#19#27"{String}, parent::String)
+      @ Base.Filesystem ./file.jl:688
+   [23] mktemp(fn::Function)
+      @ Base.Filesystem ./file.jl:686
+   [24] macro expansion
+      @ ~/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:217 [inlined]
+   [25] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [26] top-level scope
+      @ ~/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:213
+
+gzip: stdin: not in gzip format
+
+gzip: stdin: not in gzip format
+HTTP.jl streaming: Error During Test at /home/pkgeval/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:260
+  Test threw exception
+  Expression: (HTTP.get(url, response_stream = http_buffio)).status == 200
+  ArgumentError: Stream is closed
+  Stacktrace:
+    [1] append_chunk
+      @ ~/.julia/packages/SimpleBufferStream/N1BA4/src/BufferStream.jl:53 [inlined]
+    [2] unsafe_write(bs::BufferStream, ref::Ptr{UInt8}, nbytes::UInt64)
+      @ SimpleBufferStream ~/.julia/packages/SimpleBufferStream/N1BA4/src/BufferStream.jl:79
+    [3] unsafe_write
+      @ ./io.jl:646 [inlined]
+    [4] write
+      @ ./io.jl:669 [inlined]
+    [5] write(to::BufferStream, from::HTTP.Streams.Stream{HTTP.Messages.Response, HTTP.ConnectionPool.Transaction{MbedTLS.SSLContext}})
+      @ Base ./io.jl:716
+    [6] readbody(http::HTTP.Streams.Stream{HTTP.Messages.Response, HTTP.ConnectionPool.Transaction{MbedTLS.SSLContext}}, res::HTTP.Messages.Response, response_stream::BufferStream, reached_redirect_limit::Bool)
+      @ HTTP.StreamRequest ~/.julia/packages/HTTP/IAI92/src/StreamRequest.jl:148
+    [7] macro expansion
+      @ ~/.julia/packages/HTTP/IAI92/src/StreamRequest.jl:68 [inlined]
+    [8] macro expansion
+      @ ./task.jl:371 [inlined]
+    [9] request(::Type{StreamLayer{Union{}}}, io::HTTP.ConnectionPool.Transaction{MbedTLS.SSLContext}, req::HTTP.Messages.Request, body::Vector{UInt8}; reached_redirect_limit::Bool, response_stream::BufferStream, iofunction::Nothing, verbose::Int64, kw::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+      @ HTTP.StreamRequest ~/.julia/packages/HTTP/IAI92/src/StreamRequest.jl:57
+   [10] request(::Type{ConnectionPoolLayer{StreamLayer{Union{}}}}, url::HTTP.URIs.URI, req::HTTP.Messages.Request, body::Vector{UInt8}; proxy::Nothing, socket_type::Type, reuse_limit::Int64, kw::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream), Tuple{Nothing, Bool, BufferStream}}})
+      @ HTTP.ConnectionRequest ~/.julia/packages/HTTP/IAI92/src/ConnectionRequest.jl:96
+   [11] request(::Type{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}, ::HTTP.URIs.URI, ::Vararg{Any}; kw::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream), Tuple{Nothing, Bool, BufferStream}}})
+      @ HTTP.ExceptionRequest ~/.julia/packages/HTTP/IAI92/src/ExceptionRequest.jl:19
+   [12] (::Base.var"#69#71"{Base.var"#69#70#72"{ExponentialBackOff, HTTP.RetryRequest.var"#2#3"{Bool, HTTP.Messages.Request}, typeof(HTTP.request)}})(::Type, ::Vararg{Any}; kwargs::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit, :response_stream), Tuple{Nothing, Bool, BufferStream}}})
+      @ Base ./error.jl:288
+   [13] #request#1
+      @ ~/.julia/packages/HTTP/IAI92/src/RetryRequest.jl:44 [inlined]
+   [14] request(::Type{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; http_version::VersionNumber, target::String, parent::Nothing, iofunction::Nothing, kw::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol}, NamedTuple{(:reached_redirect_limit, :response_stream), Tuple{Bool, BufferStream}}})
+      @ HTTP.MessageRequest ~/.julia/packages/HTTP/IAI92/src/MessageRequest.jl:51
+   [15] request(::Type{BasicAuthLayer{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; kw::Base.Iterators.Pairs{Symbol, Any, Tuple{Symbol, Symbol}, NamedTuple{(:reached_redirect_limit, :response_stream), Tuple{Bool, BufferStream}}})
+      @ HTTP.BasicAuthRequest ~/.julia/packages/HTTP/IAI92/src/BasicAuthRequest.jl:28
+   [16] request(::Type{RedirectLayer{BasicAuthLayer{MessageLayer{RetryLayer{ExceptionLayer{ConnectionPoolLayer{StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; redirect_limit::Int64, forwardheaders::Bool, kw::Base.Iterators.Pairs{Symbol, BufferStream, Tuple{Symbol}, NamedTuple{(:response_stream,), Tuple{BufferStream}}})
+      @ HTTP.RedirectRequest ~/.julia/packages/HTTP/IAI92/src/RedirectRequest.jl:24
+   [17] request(method::String, url::String, h::Vector{Pair{SubString{String}, SubString{String}}}, b::Vector{UInt8}; headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}, query::Nothing, kw::Base.Iterators.Pairs{Symbol, BufferStream, Tuple{Symbol}, NamedTuple{(:response_stream,), Tuple{BufferStream}}})
+      @ HTTP ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:314
+   [18] #get#12
+      @ ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:391 [inlined]
+   [19] (::var"#23#31"{String, String})(file_path::String, file_io::IOStream)
+      @ Main ~/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:260
+   [20] mktemp(fn::var"#23#31"{String, String}, parent::String)
+      @ Base.Filesystem ./file.jl:688
+   [21] mktemp(fn::Function)
+      @ Base.Filesystem ./file.jl:686
+   [22] macro expansion
+      @ ~/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:243 [inlined]
+   [23] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [24] top-level scope
+      @ ~/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:213
+HTTP.jl streaming: Test Failed at /home/pkgeval/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:269
+  Expression: calc_skip_hash == calc_noskip_hash == reg_hash
+   Evaluated: "4b825dc642cb6eb9a060e54bf8d69288fbee4904" == "4b825dc642cb6eb9a060e54bf8d69288fbee4904" == "433c8c72652d3230287c72184da6be3325155b64"
+Stacktrace:
+ [1] (::var"#23#31"{String, String})(file_path::String, file_io::IOStream)
+   @ Main ~/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:269
+ [2] mktemp(fn::var"#23#31"{String, String}, parent::String)
+   @ Base.Filesystem ./file.jl:688
+ [3] mktemp(fn::Function)
+   @ Base.Filesystem ./file.jl:686
+ [4] macro expansion
+   @ ~/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:243 [inlined]
+ [5] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [6] top-level scope
+   @ ~/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:213
+Test Summary:     | Pass  Fail  Error  Total
+HTTP.jl streaming |    2     1      4      7
+ERROR: LoadError: Some tests did not pass: 2 passed, 1 failed, 4 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/SimpleBufferStream/N1BA4/test/runtests.jl:212
+ERROR: Package SimpleBufferStream errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:35
