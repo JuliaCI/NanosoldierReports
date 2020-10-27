@@ -1,0 +1,128 @@
+Current time is 2020-10-27T06:16:31.282
+Julia Version 1.6.0-DEV.1331
+Commit bac321d949 (2020-10-25 22:53 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+  JULIA_PKG_SERVER = 
+
+Starting installation at 2020-10-27T06:16:32.709
+   Resolving package versions...
+   Installed PDMats ─ v0.10.1
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [90014a1f] + PDMats v0.10.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [90014a1f] + PDMats v0.10.1
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [2f01184e] + SparseArrays
+  [4607b0f0] + SuiteSparse
+  [8dfed614] + Test
+Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
+[32m  ✓ [39mPDMats
+1 dependency successfully precompiled
+Starting tests at 2020-10-27T06:16:35.650
+     Testing PDMats
+Status `/tmp/jl_jappHZ/Project.toml`
+  [90014a1f] PDMats v0.10.1
+  [37e2e46d] LinearAlgebra
+  [2f01184e] SparseArrays
+  [4607b0f0] SuiteSparse
+  [8dfed614] Test
+Status `/tmp/jl_jappHZ/Manifest.toml`
+  [90014a1f] PDMats v0.10.1
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [2f01184e] SparseArrays
+  [4607b0f0] SuiteSparse
+  [8dfed614] Test
+     Testing Running tests...
+Running tests ...
+* pdmtypes 
+Testing PDMat{Float64, Matrix{Float64}} with dim = 3
+Testing PDiagMat{Float64, Vector{Float64}} with dim = 3
+Testing ScalMat{Float64} with dim = 3
+Testing PDSparseMat{Float64, SparseMatrixCSC{Float64, Int64}} with dim = 3
+Testing PDMat{Float32, Matrix{Float32}} with dim = 3
+Testing PDiagMat{Float32, Vector{Float32}} with dim = 3
+Testing ScalMat{Float32} with dim = 3
+Testing PDSparseMat{Float32, SparseMatrixCSC{Float32, Int64}} with dim = 3
+* addition 
+┌ Warning: Assignment to `X` in soft scope is ambiguous because a global variable by the same name exists: `X` will be treated as a new local. Disambiguate by using `local X` to suppress this warning or `global X` to assign to the existing global variable.
+└ @ ~/.julia/packages/PDMats/G0Prn/test/addition.jl:10
+Testing addition with eltype = Float64
+Testing addition with eltype = Float32
+* generics 
+Testing scalar multiplication
+* kron 
+ERROR: LoadError: LoadError: PosDefException: matrix is not positive definite; Cholesky factorization failed.
+Stacktrace:
+  [1] checkpositivedefinite
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/LinearAlgebra/src/factorization.jl:18 [inlined]
+  [2] cholesky!(A::Hermitian{Float32, Matrix{Float32}}, ::Val{false}; check::Bool)
+    @ LinearAlgebra /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/LinearAlgebra/src/cholesky.jl:253
+  [3] cholesky!(A::Matrix{Float32}, ::Val{false}; check::Bool)
+    @ LinearAlgebra /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/LinearAlgebra/src/cholesky.jl:285
+  [4] #cholesky#130
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/LinearAlgebra/src/cholesky.jl:378 [inlined]
+  [5] cholesky
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/LinearAlgebra/src/cholesky.jl:378 [inlined]
+  [6] PDMat
+    @ ~/.julia/packages/PDMats/G0Prn/src/pdmat.jl:19 [inlined]
+  [7] _pd_kron_compare(A::PDMat{Float32, Matrix{Float32}}, B::PDMat{Float32, Matrix{Float32}})
+    @ Main ~/.julia/packages/PDMats/G0Prn/test/kron.jl:16
+  [8] top-level scope
+    @ ~/.julia/packages/PDMats/G0Prn/test/kron.jl:25
+  [9] include(fname::String)
+    @ Base.MainInclude ./client.jl:444
+ [10] top-level scope
+    @ ~/.julia/packages/PDMats/G0Prn/test/runtests.jl:7
+ [11] include(fname::String)
+    @ Base.MainInclude ./client.jl:444
+ [12] top-level scope
+    @ none:6
+in expression starting at /home/pkgeval/.julia/packages/PDMats/G0Prn/test/kron.jl:24
+in expression starting at /home/pkgeval/.julia/packages/PDMats/G0Prn/test/runtests.jl:5
+ERROR: Package PDMats errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:35
