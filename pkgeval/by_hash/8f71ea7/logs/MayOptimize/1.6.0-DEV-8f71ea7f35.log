@@ -1,0 +1,112 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:12:59.681
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:13:01.507
+#
+
+   Resolving package versions...
+   Installed MayOptimize ─ v0.2.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [049513e6] + MayOptimize v0.2.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [049513e6] + MayOptimize v0.2.0
+
+
+################################################################################
+# Testing: 2020-10-28T11:13:03.375
+#
+
+
+     Testing MayOptimize
+Status `/tmp/jl_oaPM2Z/Project.toml`
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [049513e6] MayOptimize v0.2.0
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_oaPM2Z/Manifest.toml`
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [682c06a0] JSON v0.21.1
+  [049513e6] MayOptimize v0.2.0
+  [69de0a69] Parsers v1.0.11
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [de0858da] Printf
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+     Testing Running tests...
+Test Summary: | Pass  Total
+Macros        |   62     62
+
+Tests for T=Float32 and 10000 elements ("Basic" is Julia own implementation):
+ - Time for `sum(Basic,x)` -------->   10.650 μs (0 allocations: 0 bytes)
+ - Time for `sum(Debug,x)` -------->   10.300 μs (0 allocations: 0 bytes)
+ - Time for `sum(InBounds,x)` ----->   10.199 μs (0 allocations: 0 bytes)
+ - Time for `sum(Vectorize,x)` ---->   10.490 μs (0 allocations: 0 bytes)
+
+ - Time for `dot(Basic,x,y)` -------->   793.153 ns (0 allocations: 0 bytes)
+ - Time for `dot(Debug,x,y)` -------->   10.109 μs (0 allocations: 0 bytes)
+ - Time for `dot(InBounds,x,y)` ----->   10.379 μs (0 allocations: 0 bytes)
+ - Time for `dot(Vectorize,x,y)` ---->   17.020 μs (0 allocations: 0 bytes)
+
+Tests for T=Float64 and 10000 elements ("Basic" is Julia own implementation):
+ - Time for `sum(Basic,x)` -------->   10.500 μs (0 allocations: 0 bytes)
+ - Time for `sum(Debug,x)` -------->   9.479 μs (0 allocations: 0 bytes)
+ - Time for `sum(InBounds,x)` ----->   9.959 μs (0 allocations: 0 bytes)
+ - Time for `sum(Vectorize,x)` ---->   10.390 μs (0 allocations: 0 bytes)
+
+ - Time for `dot(Basic,x,y)` -------->   1.751 μs (0 allocations: 0 bytes)
+ - Time for `dot(Debug,x,y)` -------->   10.300 μs (0 allocations: 0 bytes)
+ - Time for `dot(InBounds,x,y)` ----->   10.029 μs (0 allocations: 0 bytes)
+ - Time for `dot(Vectorize,x,y)` ---->   16.989 μs (0 allocations: 0 bytes)
+     Testing MayOptimize tests passed 
+
+PkgEval succeeded
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:14:58.045
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
+jl_task_get_next at /workspace/srcdir/src/partr.c:508
+
+CPU usage: 109.81s (105.66s user, 4.74s kernel)
+
+Network usage:
+- eth0: 165.766 KiB received, 12.246 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:14:58.0481577Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":109807116349,"percpu_usage":[3550124109,1610556653,2863911826,206396076,393924630,3846902092,1703286718,644697118,5171284805,1464088995,1619507136,4249043359,9234695471,2312884195,2535949317,6040200434,225401674,391975047,365418958,454204379,1549365354,2432649326,4093537729,477641353,272872733,791093236,534775039,411482264,118591986,817343897,694945876,445836847,70173298,351813610,300085479,72484501,98040537,72284457,20022579,98379578,16808158,23177047,940860,107530892,92726026,27283710,133219535,1950041,25064991,14217995,79380,27951861,179407500,129949240,60181684,215100,19420,2650841,51886850,3059361,1768581,782086360,12591885,47296518,884813102,1486240030,297218819,569520031,289702247,995160661,728652993,578704724,196683602,3731986953,1593954354,626852512,2721862079,4019373501,1726515497,8275240266,2021487330,1656088648,79614830,118793937,643658376,1476776415,3262228669,423289361,308318913,1143935379,341894560,529658050,684827425,278548139,676350589,334274528,56848383,64467604,14621606,82940992,52501849,43654277,513261757,15230785,92905290,166990706,315600606,1024271,5229912,435672505,113112454,168491155,8783363,1630001,518710,65910,76460891,12211075,85317945,183364636,88830,1615200,141857127,75904402,10306205,8629583,5645292,0],"usage_in_kernelmode":4740000000,"usage_in_usermode":105660000000},"system_cpu_usage":93884147990000000,"online_cpus":128,"throttling_data":{"periods":1192,"throttled_periods":7,"throttled_time":941005881}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":188329984,"max_usage":751816704,"stats":{"active_anon":169316352,"active_file":0,"cache":3407872,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":774144,"inactive_file":8192,"mapped_file":0,"pgfault":572578,"pgmajfault":0,"pgpgin":290476,"pgpgout":248944,"rss":166707200,"rss_huge":0,"total_active_anon":169316352,"total_active_file":0,"total_cache":3407872,"total_dirty":0,"total_inactive_anon":774144,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":572578,"total_pgmajfault":0,"total_pgpgin":290476,"total_pgpgout":248944,"total_rss":166707200,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/MayOptimize-EhYjYdkL","id":"a56f32d75c8d0dec461a1c3447de0aee41bc37aa67cd81c973e9035055ebfb8b","networks":{"eth0":{"rx_bytes":169744,"rx_packets":241,"rx_errors":0,"rx_dropped":4,"tx_bytes":12540,"tx_packets":89,"tx_errors":0,"tx_dropped":0}}}
+

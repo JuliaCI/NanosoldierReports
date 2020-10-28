@@ -1,0 +1,241 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:42:46.862
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:42:48.689
+#
+
+   Resolving package versions...
+   Installed BlockDiagonals ─ v0.1.6
+   Installed FillArrays ───── v0.8.14
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [0a1fb500] + BlockDiagonals v0.1.6
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [0a1fb500] + BlockDiagonals v0.1.6
+  [1a297f60] + FillArrays v0.8.14
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [2f01184e] + SparseArrays
+
+
+################################################################################
+# Testing: 2020-10-28T11:42:51.262
+#
+
+
+     Testing BlockDiagonals
+Status `/tmp/jl_j9LHRY/Project.toml`
+  [0a1fb500] BlockDiagonals v0.1.6
+  [e30172f5] Documenter v0.25.3
+  [1a297f60] FillArrays v0.8.14
+  [37e2e46d] LinearAlgebra
+  [9a3f8284] Random
+  [8dfed614] Test
+Status `/tmp/jl_j9LHRY/Manifest.toml`
+  [0a1fb500] BlockDiagonals v0.1.6
+  [ffbed154] DocStringExtensions v0.8.3
+  [e30172f5] Documenter v0.25.3
+  [1a297f60] FillArrays v0.8.14
+  [b5f81e59] IOCapture v0.1.0
+  [682c06a0] JSON v0.21.1
+  [69de0a69] Parsers v1.0.11
+  [0dad84c5] ArgTools
+  [56f22d72] Artifacts
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [f43a241f] Downloads
+  [b77e0a4c] InteractiveUtils
+  [b27032c2] LibCURL
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [fa267f1f] TOML
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+  [deac9b47] LibCURL_jll
+  [14a3606d] MozillaCACerts_jll
+     Testing Running tests...
+[ Info: SetupBuildDirectory: setting up build directory.
+[ Info: Doctest: running doctests.
+┌ Error: doctest failure in ~/.julia/packages/BlockDiagonals/Nvfvo/src/blockdiagonal.jl:38-45
+│ 
+│ ```jldoctest; setup = :(using BlockDiagonals)
+│ julia> B = BlockDiagonal([rand(2, 2), rand(3, 3)]);
+│ 
+│ julia> blocksizes(B)
+│ 2-element Array{Tuple{Int64,Int64},1}:
+│  (2, 2)
+│  (3, 3)
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ blocksizes(B)
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Vector{Tuple{Int64, Int64}}:
+│  (2, 2)
+│  (3, 3)
+│ 
+│ Expected output:
+│ 
+│ 2-element Array{Tuple{Int64,Int64},1}:
+│  (2, 2)
+│  (3, 3)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Array{Tuple{Int64,Int64},1}:
+│     Vector{Tuple{Int64, Int64}}:
+│     (2, 2)
+│     (3, 3)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: Doctesting failed
+│   exception =
+│    `makedocs` encountered a doctest error. Terminating build
+│    Stacktrace:
+│      [1] error(s::String)
+│        @ Base ./error.jl:33
+│      [2] runner(#unused#::Type{Documenter.Builder.Doctest}, doc::Documenter.Documents.Document)
+│        @ Documenter.Builder ~/.julia/packages/Documenter/3Y8Kg/src/Builder.jl:217
+│      [3] dispatch(#unused#::Type{Documenter.Builder.DocumentPipeline}, x::Documenter.Documents.Document)
+│        @ Documenter.Utilities.Selectors ~/.julia/packages/Documenter/3Y8Kg/src/Utilities/Selectors.jl:170
+│      [4] #2
+│        @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:245 [inlined]
+│      [5] cd(f::Documenter.var"#2#3"{Documenter.Documents.Document}, dir::String)
+│        @ Base.Filesystem ./file.jl:104
+│      [6] makedocs(; debug::Bool, format::Documenter.Writers.HTMLWriter.HTML, kwargs::Base.Iterators.Pairs{Symbol, Any, NTuple{6, Symbol}, NamedTuple{(:root, :source, :sitename, :doctest, :modules, :doctestfilters), Tuple{String, String, String, Symbol, Vector{Module}, Vector{Regex}}}})
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:244
+│      [7] (::Documenter.var"#all_doctests#33"{Bool, Vector{Regex}, Vector{Module}})()
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:809
+│      [8] macro expansion
+│        @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826 [inlined]
+│      [9] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [10] doctest(source::String, modules::Vector{Module}; fix::Bool, testset::String, doctestfilters::Vector{Regex})
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826
+│     [11] doctest(package::Module; manual::Bool, testset::Nothing, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:765
+│     [12] doctest(package::Module)
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:752
+│     [13] macro expansion
+│        @ ~/.julia/packages/BlockDiagonals/Nvfvo/test/runtests.jl:6 [inlined]
+│     [14] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [15] top-level scope
+│        @ ~/.julia/packages/BlockDiagonals/Nvfvo/test/runtests.jl:6
+│     [16] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [17] top-level scope
+│        @ none:6
+│     [18] eval(m::Module, e::Any)
+│        @ Core ./boot.jl:360
+│     [19] exec_options(opts::Base.JLOptions)
+│        @ Base ./client.jl:261
+│     [20] _start()
+│        @ Base ./client.jl:485
+└ @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:819
+Doctests: BlockDiagonals: Test Failed at /home/pkgeval/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826
+  Expression: all_doctests()
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] doctest(source::String, modules::Vector{Module}; fix::Bool, testset::String, doctestfilters::Vector{Regex})
+   @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826
+Test Summary:              | Pass  Fail  Total
+BlockDiagonals             |  157     1    158
+  Doctests: BlockDiagonals |          1      1
+  blockdiagonal.jl         |   34           34
+  base_maths.jl            |   52           52
+  linalg.jl                |   71           71
+ERROR: LoadError: Some tests did not pass: 157 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/BlockDiagonals/Nvfvo/test/runtests.jl:5
+
+PkgEval failed: Package BlockDiagonals errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:44:17.299
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
+
+CPU usage: 78.35s (71.64s user, 7.13s kernel)
+
+Network usage:
+- eth0: 657.218 KiB received, 23.349 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:44:17.412576704Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":78347858227,"percpu_usage":[106470101,27075161,47123239,90603969,383706923,90259561,609816764,384727124,312194228,11596078,130669838,69741408,161952546,13471246,20313418,13375385,10053193,56417657,488310647,96570778,299028892,405649280,535818153,265141885,664012068,2494621,47557784,327018023,467505690,1041191,51148372,626083669,976193433,1370622504,1581371034,599435818,878919131,1259956172,961964543,2045752570,1039137312,581836801,1077187902,1516787742,1109057774,533535676,1314386113,230613501,788359398,652082254,363251203,524431484,2089458297,1317412457,605411576,739597497,1317277695,1508072228,1321458893,1658652748,917987497,516056598,940213086,385886767,88751895,66398009,38783436,306970701,390412512,213784216,138243677,178233980,28014912,15408168,35583714,32606304,122586609,212955048,160809354,9596434,57455242,22721549,224679451,24596769,552771995,190912588,142347655,475562294,100474112,245301400,97354481,176979351,277847197,38557224,273986989,283003930,1198553328,1623094934,958533333,673427856,920592590,748489537,727943529,1061979354,1103138551,623340110,91233766,503877106,278064981,3184960115,1355648042,1034337686,1662431272,1407611451,441962053,320317437,1250624292,1379915475,1506571023,468152496,1186642260,2107790253,1205980960,334146646,738489532,707527254,1059735519,1719737694],"usage_in_kernelmode":7130000000,"usage_in_usermode":71640000000},"system_cpu_usage":94107585350000000,"online_cpus":128,"throttling_data":{"periods":912,"throttled_periods":12,"throttled_time":2684678564}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":233635840,"max_usage":809705472,"stats":{"active_anon":207626240,"active_file":0,"cache":7380992,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":3022848,"inactive_file":8192,"mapped_file":0,"pgfault":1007157,"pgmajfault":0,"pgpgin":507321,"pgpgout":455891,"rss":203276288,"rss_huge":0,"total_active_anon":207626240,"total_active_file":0,"total_cache":7380992,"total_dirty":0,"total_inactive_anon":3022848,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":1007157,"total_pgmajfault":0,"total_pgpgin":507321,"total_pgpgout":455891,"total_rss":203276288,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/BlockDiagonals-dm3bhuTw","id":"798025fbb6dffe735e51ef35192a9e23f63769e56b76c93566f3e6b52cc76006","networks":{"eth0":{"rx_bytes":672991,"rx_packets":333,"rx_errors":0,"rx_dropped":3,"tx_bytes":23909,"tx_packets":181,"tx_errors":0,"tx_dropped":0}}}
+

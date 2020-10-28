@@ -1,0 +1,149 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:48:01.614
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:48:03.316
+#
+
+   Resolving package versions...
+   Installed ReplMaker ─ v0.2.3
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [b873ce64] + ReplMaker v0.2.3
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [b873ce64] + ReplMaker v0.2.3
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [d6f4376e] + Markdown
+  [3fa0cd96] + REPL
+  [6462fe0b] + Sockets
+  [4ec0a83e] + Unicode
+
+
+################################################################################
+# Testing: 2020-10-28T11:48:05.370
+#
+
+
+     Testing ReplMaker
+Status `/tmp/jl_GBLcT0/Project.toml`
+  [b873ce64] ReplMaker v0.2.3
+  [3fa0cd96] REPL
+  [8dfed614] Test
+  [4ec0a83e] Unicode
+Status `/tmp/jl_GBLcT0/Manifest.toml`
+  [b873ce64] ReplMaker v0.2.3
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+  [4ec0a83e] Unicode
+     Testing Running tests...
+ ^C
+exit()
+
+julia> 
+ using ReplMaker
+function parse_to_expr(s)
+    quote Meta.parse($s) end
+end
+initrepl(parse_to_expr,
+         prompt_text="Expr> ",
+         prompt_color = :blue,
+         start_key=')',
+         mode_name="Expr_mode");
+) x + 1
+^C
+exit()
+
+julia> 
+test opening REPL modes manually: Test Failed at /home/pkgeval/.julia/packages/ReplMaker/pwo5w/test/runtests.jl:85
+  Expression: out1[end - 5] == "\e[?2004h\r\e[0K\e[34m\e[1mExpr> \e[0m\e[0m\r\e[6C\r\e[6C\r\e[0K\e[34m\e[1mExpr> \e[0m\e[0m\r\e[6C\r\e[6C^C\r"
+   Evaluated: "         mode_name=\"Expr_mode\");\r" == "\e[?2004h\r\e[0K\e[34m\e[1mExpr> \e[0m\e[0m\r\e[6C\r\e[6C\r\e[0K\e[34m\e[1mExpr> \e[0m\e[0m\r\e[6C\r\e[6C^C\r"
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/ReplMaker/pwo5w/test/runtests.jl:85 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] top-level scope
+   @ ~/.julia/packages/ReplMaker/pwo5w/test/runtests.jl:84
+Test Summary:                    | Fail  Total
+test opening REPL modes manually |    1      1
+ERROR: LoadError: Some tests did not pass: 0 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/ReplMaker/pwo5w/test/runtests.jl:83
+
+PkgEval failed: Package ReplMaker errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:48:17.621
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
+
+CPU usage: 15.13s (12.71s user, 2.51s kernel)
+
+Network usage:
+- eth0: 18.701 KiB received, 4.447 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:48:18.409525802Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":15128098663,"percpu_usage":[3344142,496890,251020,16359626,246530,122498398,21018329,136650165,23840,0,35288924,0,4967733,287359200,2100971,209467823,0,0,90465316,0,0,34450518,462588494,41670155,0,46473878,155070,0,31168598,584700,1157721,0,2405530,71481737,87221943,24366240,52420,0,202937242,54151442,605780,3786011,33360805,233562548,78168573,100139300,437450,5091863,47707548,333062573,307114865,384099855,0,291001950,209587710,596555268,101264790,481239823,350536901,539973532,248856951,164585566,51592112,113017804,6717181,560486763,0,693151,4630683,263227165,37014295,2417132,30570,0,293161358,348690,122720689,36116990,118836829,192238266,338018583,0,49376651,0,0,637036193,8748763,533410,0,0,253675301,0,152931610,0,276415640,86630,58392996,266010,17485247,36429904,42018936,6948343,0,28773392,219940337,279276835,189580,172810,118965818,252379733,0,35027245,246522777,47559340,64108545,19998639,156915116,168141488,4673271,498103267,568336404,379932212,27453171,12470675,182584882,1080456210,472698611,79660153],"usage_in_kernelmode":2510000000,"usage_in_usermode":12710000000},"system_cpu_usage":94138206810000000,"online_cpus":128,"throttling_data":{"periods":171,"throttled_periods":6,"throttled_time":1016806464}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":206139392,"max_usage":441946112,"stats":{"active_anon":192708608,"active_file":0,"cache":57344,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":28672,"inactive_file":8192,"mapped_file":0,"pgfault":291251,"pgmajfault":0,"pgpgin":191169,"pgpgout":144107,"rss":192708608,"rss_huge":0,"total_active_anon":192708608,"total_active_file":0,"total_cache":57344,"total_dirty":0,"total_inactive_anon":28672,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":291251,"total_pgmajfault":0,"total_pgpgin":191169,"total_pgpgout":144107,"total_rss":192708608,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/ReplMaker-vV6TA8Ch","id":"6fb50f6a410f578431a2ce2724182cca5728523735de7c80101b71026af86b59","networks":{"eth0":{"rx_bytes":19150,"rx_packets":55,"rx_errors":0,"rx_dropped":1,"tx_bytes":4554,"tx_packets":31,"tx_errors":0,"tx_dropped":0}}}
+

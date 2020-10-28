@@ -1,0 +1,149 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T10:50:38.847
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T10:50:40.670
+#
+
+   Resolving package versions...
+   Installed FunctionalCollections ─ v0.5.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [de31a74c] + FunctionalCollections v0.5.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [de31a74c] + FunctionalCollections v0.5.0
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [8dfed614] + Test
+
+
+################################################################################
+# Testing: 2020-10-28T10:50:42.668
+#
+
+
+     Testing FunctionalCollections
+Status `/tmp/jl_iy4ISX/Project.toml`
+  [de31a74c] FunctionalCollections v0.5.0
+  [8dfed614] Test
+Status `/tmp/jl_iy4ISX/Manifest.toml`
+  [de31a74c] FunctionalCollections v0.5.0
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+Test Summary:                 | Pass  Total
+Sparse Bitmapped Vector Tries |   32     32
+WARNING: both FunctionalCollections and Base export "peek"; uses of it in module Main must be qualified
+accessing last: Error During Test at /home/pkgeval/.julia/packages/FunctionalCollections/1e7f3/test/PersistentVectorTest.jl:49
+  Test threw exception
+  Expression: peek(vec(1:1000)) == 1000
+  UndefVarError: peek not defined
+  Stacktrace:
+   [1] macro expansion
+     @ ~/.julia/packages/FunctionalCollections/1e7f3/test/PersistentVectorTest.jl:49 [inlined]
+   [2] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [3] macro expansion
+     @ ~/.julia/packages/FunctionalCollections/1e7f3/test/PersistentVectorTest.jl:49 [inlined]
+   [4] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [5] top-level scope
+     @ ~/.julia/packages/FunctionalCollections/1e7f3/test/PersistentVectorTest.jl:23
+Test Summary:        | Pass  Error  Total
+Persistent Vectors   |   33      1     34
+  range constructor  |    2             2
+  length             |    3             3
+  accessing elements |    8             8
+  accessing last     |    1      1      2
+  associng           |    1             1
+  appending          |    4             4
+  structural sharing |    3             3
+  equality           |    3             3
+  iteration          |    1             1
+  map                |    2             2
+  filter             |    2             2
+  hash               |    1             1
+  isempty            |    2             2
+ERROR: LoadError: LoadError: Some tests did not pass: 33 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/FunctionalCollections/1e7f3/test/PersistentVectorTest.jl:21
+in expression starting at /home/pkgeval/.julia/packages/FunctionalCollections/1e7f3/test/runtests.jl:2
+
+PkgEval failed: Package FunctionalCollections errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T10:50:59.614
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
+
+CPU usage: 18.43s (15.95s user, 2.51s kernel)
+
+Network usage:
+- eth0: 27.186 KiB received, 4.277 KiB sent
+
+Raw statistics: {"read":"2020-10-28T10:50:59.624639189Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":18430726499,"percpu_usage":[96243508,48799489,565302395,453131082,827600202,231270866,105823902,96326227,33368839,79215501,268266988,107740913,19044806,55405450,349196213,266727540,94218625,64219795,98878483,12800275,284849490,202640149,351387599,1342708554,198375451,206472069,531305074,583559252,568892648,257162423,172760038,144846806,3739452,14480515,0,33460,15042796,2223281,0,11599305,0,0,5521443,0,24292800,5461032,0,10141554,409751,433050,7600,4249492,104952720,1169440,10684634,2605431,0,58240,68091248,311911,16814407,84876445,3394941,10348744,372642119,235050317,1495837769,345281747,95131339,293920887,224682548,141208453,100373480,809988237,95711328,110364670,123466377,356745305,130013431,552334453,261405862,57336574,65590799,68571289,129424503,54380324,101294150,43671239,409073996,37998504,71742202,37290215,739820172,574429107,102488831,138091457,47014610,6920,0,192290,12882295,1454131,0,19395898,0,30846303,0,4607602,15660206,126230,0,0,0,6030,624780,9330,1836131,20120318,12077973,41063577,220020,2588341,522121089,104784471,96642816,1386120,89770,123220],"usage_in_kernelmode":2510000000,"usage_in_usermode":15950000000},"system_cpu_usage":93701262730000000,"online_cpus":128,"throttling_data":{"periods":215,"throttled_periods":4,"throttled_time":838682614}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":204394496,"max_usage":399212544,"stats":{"active_anon":191717376,"active_file":0,"cache":253952,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":61440,"inactive_file":8192,"mapped_file":0,"pgfault":309400,"pgmajfault":0,"pgpgin":151647,"pgpgout":104822,"rss":191541248,"rss_huge":0,"total_active_anon":191717376,"total_active_file":0,"total_cache":253952,"total_dirty":0,"total_inactive_anon":61440,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":309400,"total_pgmajfault":0,"total_pgpgin":151647,"total_pgpgout":104822,"total_rss":191541248,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/FunctionalCollections-Acs7GBMB","id":"ed82a3f057e0c63963471f7fe7e1de8727d31e4d4d426777420f5fc5651f73cc","networks":{"eth0":{"rx_bytes":27838,"rx_packets":59,"rx_errors":0,"rx_dropped":1,"tx_bytes":4380,"tx_packets":28,"tx_errors":0,"tx_dropped":0}}}
+

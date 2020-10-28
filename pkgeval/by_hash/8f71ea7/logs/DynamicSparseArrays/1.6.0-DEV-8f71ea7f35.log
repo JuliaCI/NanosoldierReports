@@ -1,0 +1,128 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:54:43.603
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:54:45.234
+#
+
+   Resolving package versions...
+   Installed DynamicSparseArrays ─ v0.2.4
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [8086fd22] + DynamicSparseArrays v0.2.4
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [8086fd22] + DynamicSparseArrays v0.2.4
+
+
+################################################################################
+# Testing: 2020-10-28T11:54:46.802
+#
+
+
+     Testing DynamicSparseArrays
+Status `/tmp/jl_J2LccY/Project.toml`
+  [8086fd22] DynamicSparseArrays v0.2.4
+  [9a3f8284] Random
+  [8dfed614] Test
+Status `/tmp/jl_J2LccY/Manifest.toml`
+  [8086fd22] DynamicSparseArrays v0.2.4
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+Test Summary:      |    Pass    Total
+Moves - unit tests | 3040669  3040669
+Test Summary:      | Pass  Total
+Finds - unit tests |   18     18
+Test Summary:       | Pass  Total
+Writes - unit tests |   13     13
+Test Summary:           | Pass  Total
+Comparison - unit tests |    2      2
+Test Summary: | Pass  Total
+Views         |    6      6
+dynsparsevector (PackedMemoryArray) - func - simple use: Test Failed at /home/pkgeval/.julia/packages/DynamicSparseArrays/ClbZo/test/functional/sparsevector.jl:12
+  Expression: repr(vec) == "16-element PackedMemoryArray{Int64,Float64,DynamicSparseArrays.NoPredictor} with 6 stored entries.\n"
+   Evaluated: "16-element PackedMemoryArray{Int64, Float64, DynamicSparseArrays.NoPredictor} with 6 stored entries.\n" == "16-element PackedMemoryArray{Int64,Float64,DynamicSparseArrays.NoPredictor} with 6 stored entries.\n"
+Stacktrace:
+ [1] dynsparsevec_simple_use()
+   @ Main ~/.julia/packages/DynamicSparseArrays/ClbZo/test/functional/sparsevector.jl:12
+ [2] macro expansion
+   @ ~/.julia/packages/DynamicSparseArrays/ClbZo/test/functional/functionaltests.jl:7 [inlined]
+ [3] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [4] functional_tests()
+   @ Main ~/.julia/packages/DynamicSparseArrays/ClbZo/test/functional/functionaltests.jl:7
+Test Summary:                                           |   Pass  Fail   Total
+dynsparsevector (PackedMemoryArray) - func - simple use | 222276     1  222277
+ERROR: LoadError: Some tests did not pass: 222276 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/DynamicSparseArrays/ClbZo/test/runtests.jl:11
+
+PkgEval failed: Package DynamicSparseArrays errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:55:19.098
+#
+
+
+CPU usage: 32.84s (30.36s user, 2.59s kernel)
+
+Network usage:
+- eth0: 36.948 KiB received, 4.746 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:55:19.147653234Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":32837686440,"percpu_usage":[0,82013501,64987357,397219858,9400,1206241,8850,0,9060,0,0,28998453,57555143,138709495,285173412,19344778,0,149951280,255090821,165717186,38440587,0,0,15711215,1839211,0,57778873,0,15757476,17364766,281393141,179200,658339902,2206470226,89701426,739989947,2311137233,559937956,127631112,674917217,151721583,83985163,75522309,258007621,99256645,338248737,539016944,243028317,118117257,178012352,486249210,233206455,437785512,529590,0,103058570,190243463,653663570,674342059,655151324,11032326,243581914,168933348,102315659,0,0,0,65066137,14902267,0,47464887,0,10190114,30787623,33255943,0,0,736521113,476099459,16740,18538038,135881716,0,61761494,1559540,0,0,18739275,221830,26695002,96914739,48363499,151333923,30985332,344143287,0,147280587,298590214,0,79825423,3120619198,2002727103,285158914,871819831,138289344,246768214,928010,266700759,349307140,1497882389,7829373,21338337,37862934,2422285528,9145193,13997946,19146847,31965982,211658806,152077295,1412678865,103952269,95159329,737464040,1976211,30867401,236364330,148982419],"usage_in_kernelmode":2590000000,"usage_in_usermode":30360000000},"system_cpu_usage":94191625940000000,"online_cpus":128,"throttling_data":{"periods":364,"throttled_periods":4,"throttled_time":271058934}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":207147008,"max_usage":428421120,"stats":{"active_anon":194097152,"active_file":0,"cache":344064,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":57344,"inactive_file":8192,"mapped_file":0,"pgfault":471509,"pgmajfault":0,"pgpgin":245588,"pgpgout":198185,"rss":193818624,"rss_huge":0,"total_active_anon":194097152,"total_active_file":0,"total_cache":344064,"total_dirty":0,"total_inactive_anon":57344,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":471509,"total_pgmajfault":0,"total_pgpgin":245588,"total_pgpgout":198185,"total_rss":193818624,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/DynamicSparseArrays-jp1WNRN9","id":"2771e7f3b5ca77433c6f88bce94796acac5b91882e84e7cc1a0bf00c8f15952f","networks":{"eth0":{"rx_bytes":37835,"rx_packets":72,"rx_errors":0,"rx_dropped":2,"tx_bytes":4860,"tx_packets":36,"tx_errors":0,"tx_dropped":0}}}
+

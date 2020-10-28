@@ -1,0 +1,191 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:03:58.838
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:04:00.771
+#
+
+   Resolving package versions...
+   Installed PrettyPrint ──── v0.2.0
+   Installed NameResolution ─ v0.1.5
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [71a1bf82] + NameResolution v0.1.5
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [71a1bf82] + NameResolution v0.1.5
+  [8162dcfd] + PrettyPrint v0.2.0
+
+
+################################################################################
+# Testing: 2020-10-28T11:04:03.916
+#
+
+
+     Testing NameResolution
+Status `/tmp/jl_yXAsUY/Project.toml`
+  [71a1bf82] NameResolution v0.1.5
+  [8162dcfd] PrettyPrint v0.2.0
+  [8dfed614] Test
+Status `/tmp/jl_yXAsUY/Manifest.toml`
+  [71a1bf82] NameResolution v0.1.5
+  [8162dcfd] PrettyPrint v0.2.0
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+test case:
+function f(x)
+    y = 1 + x
+    g -> begin
+        y = 2
+        y + g
+    end
+end
+
+f Scope(
+  bounds={
+           :f : LocalVar(f, is_mutable=false, is_shared=false),
+           :y : LocalVar(y, is_mutable=true, is_shared=true),
+           :x : LocalVar(x, is_mutable=false, is_shared=false),
+         },
+  freevars={},
+  parent=nothing,
+)
+lambda Scope(
+  bounds={
+           :g : LocalVar(g, is_mutable=false, is_shared=false),
+         },
+  freevars={
+             :y : LocalVar(y, is_mutable=true, is_shared=true),
+           },
+  parent=Scope(
+           bounds={
+                    :f : LocalVar(f, is_mutable=false, is_shared=false),
+                    :y : LocalVar(y, is_mutable=true, is_shared=true),
+                    :x : LocalVar(x, is_mutable=false, is_shared=false),
+                  },
+           freevars={},
+           parent=nothing,
+         ),
+)
+Test Summary: | Pass  Total
+share freevar |    3      3
+test case:
+function f(x)
+    y = 1 + x
+    g -> begin
+        local y = 2
+        y + g
+    end
+end
+
+f Scope(
+  bounds={
+           :f : LocalVar(f, is_mutable=false, is_shared=false),
+           :y : LocalVar(y, is_mutable=false, is_shared=false),
+           :x : LocalVar(x, is_mutable=false, is_shared=false),
+         },
+  freevars={},
+  parent=nothing,
+)
+lambda Scope(
+  bounds={
+           :y : LocalVar(y, is_mutable=false, is_shared=false),
+           :g : LocalVar(g, is_mutable=false, is_shared=false),
+         },
+  freevars={},
+  parent=Scope(
+           bounds={
+                    :f : LocalVar(f, is_mutable=false, is_shared=false),
+                    :y : LocalVar(y, is_mutable=false, is_shared=false),
+                    :x : LocalVar(x, is_mutable=false, is_shared=false),
+                  },
+           freevars={},
+           parent=nothing,
+         ),
+)
+Test Summary: | Pass  Total
+local         |    2      2
+test case:
+function f(x)
+    y = 1 + x
+    g -> begin
+        local y = 2
+        y += 1
+        y + g
+    end
+end
+
+f Scope(
+  bounds={
+           :f : LocalVar(f, is_mutable=false, is_shared=false),
+           :y : LocalVar(y, is_mutable=false, is_shared=false),
+           :x : LocalVar(x, is_mutable=false, is_shared=false),
+         },
+  freevars={},
+  parent=nothing,
+)
+lambda Scope(
+  bounds={
+           :y : LocalVar(y, is_mutable=true, is_shared=false),
+           :g : LocalVar(g, is_mutable=false, is_shared=false),
+         },
+  freevars={},
+  parent=Scope(
+           bounds={
+                    :f : LocalVar(f, is_mutable=false, is_shared=false),
+                    :y : LocalVar(y, is_mutable=false, is_shared=false),
+                    :x : LocalVar(x, is_mutable=false, is_shared=false),
+                  },
+           freevars={},
+           parent=nothing,
+         ),
+)
+Test Summary:   | Pass  Total
+local + mutable |    3      3
+Test Summary:   | Pass  Total
+scope extrusion |    1      1
+Test Summary: | Pass  Total
+deeper scope  |    1      1
+Test Summary: | Pass  Total
+uninitialized |    1      1
+     Testing NameResolution tests passed 
+
+PkgEval succeeded
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:04:12.764
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+
+CPU usage: 12.25s (10.12s user, 2.23s kernel)
+
+Network usage:
+- eth0: 34.314 KiB received, 8.338 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:04:13.151581552Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":12250629559,"percpu_usage":[4584452,81480,77731341,0,14720,0,243540,0,0,11120165,21082399,124168629,0,0,0,8950,18701838,0,687760,7960,4779152,0,31668704,2179830,74570,0,64360,168900,6962883,40583476,81220034,0,64288996,204430360,2585801,352624182,91442928,2603941,41913688,106829042,1014511123,105966262,273757619,96400839,59282685,97843238,297651961,382342671,30172523,65499048,52433012,173788040,300654123,196154907,246471089,79278282,145961639,12871746,66584566,111216965,121985888,170362947,81035923,100157564,774740078,74630680,4115111,53057341,4000373,6630,27970,39064317,0,7495063,17241216,0,0,1697641,0,7160,26479613,31315211,915551,20498768,20739289,0,18744159,6120,333431049,8280,14422287,98640420,0,37545965,3761692,41872377,116489766,109275840,1420791,371898770,212301565,160707766,17985505,322833970,1186110,165381237,147254289,31602005,169511590,42267166,346408525,295476108,102586390,5584874,44710920,20706620,340301587,384026703,31135174,7780,134617152,92540017,228738333,69404199,348527770,378900815,36742245,320394875],"usage_in_kernelmode":2230000000,"usage_in_usermode":10120000000},"system_cpu_usage":93802139620000000,"online_cpus":128,"throttling_data":{"periods":146,"throttled_periods":6,"throttled_time":1477653145}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":190218240,"max_usage":511139840,"stats":{"active_anon":176988160,"active_file":20480,"cache":200704,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":69632,"inactive_file":8192,"mapped_file":0,"pgfault":214367,"pgmajfault":0,"pgpgin":154116,"pgpgout":110882,"rss":176885760,"rss_huge":0,"total_active_anon":176988160,"total_active_file":20480,"total_cache":200704,"total_dirty":0,"total_inactive_anon":69632,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":214367,"total_pgmajfault":0,"total_pgpgin":154116,"total_pgpgout":110882,"total_rss":176885760,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/NameResolution-2CH9oqdq","id":"d70017476ee3d2b88570083024d3137d6d6daf784cc21abc989896910de3c756","networks":{"eth0":{"rx_bytes":35138,"rx_packets":71,"rx_errors":0,"rx_dropped":1,"tx_bytes":8538,"tx_packets":53,"tx_errors":0,"tx_dropped":0}}}
+

@@ -1,0 +1,176 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:00:48.039
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:00:50.061
+#
+
+   Resolving package versions...
+   Installed TimeSeriesInterface ─ v0.1.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [b6905eaa] + TimeSeriesInterface v0.1.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [b6905eaa] + TimeSeriesInterface v0.1.0
+  [ade2ca70] + Dates
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [de0858da] + Printf
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [4ec0a83e] + Unicode
+
+
+################################################################################
+# Testing: 2020-10-28T11:00:51.829
+#
+
+
+     Testing TimeSeriesInterface
+Status `/tmp/jl_WXO81Z/Project.toml`
+  [b6905eaa] TimeSeriesInterface v0.1.0
+  [ade2ca70] Dates
+  [10745b16] Statistics
+  [8dfed614] Test
+Status `/tmp/jl_WXO81Z/Manifest.toml`
+  [b6905eaa] TimeSeriesInterface v0.1.0
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [de0858da] Printf
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+  [4ec0a83e] Unicode
+     Testing Running tests...
+Test Summary: | Pass  Total
+TimeSeries    |   25     25
+┌ Warning: The real observations have values too close to zero. This makes the absolute percentage error impractical, NaNs will be returned.
+└ @ TimeSeriesInterface ~/.julia/packages/TimeSeriesInterface/uWIjm/src/forecast.jl:68
+Test Summary: | Pass  Total
+PointForecast |   15     15
+interval_width: Test Failed at /home/pkgeval/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:186
+  Expression: (scen_forecast_metrics.interval_width[1])[0.85] == 85
+   Evaluated: 85.00000000000001 == 85
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:186 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] macro expansion
+   @ ~/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:174 [inlined]
+ [4] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [5] macro expansion
+   @ ~/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:139 [inlined]
+ [6] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [7] top-level scope
+   @ ~/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:71
+interval_width: Test Failed at /home/pkgeval/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:188
+  Expression: (scen_forecast_metrics.interval_width[1])[0.05] == 5
+   Evaluated: 5.000000000000014 == 5
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:188 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] macro expansion
+   @ ~/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:174 [inlined]
+ [4] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [5] macro expansion
+   @ ~/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:139 [inlined]
+ [6] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [7] top-level scope
+   @ ~/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:71
+Test Summary:                 | Pass  Fail  Total
+ScenariosForecast             |   41     2     43
+  constructor                 |   10           10
+  forecast_metrics            |   31     2     33
+    probabilistic_calibration |   13           13
+    interval_width            |    6     2      8
+    crps                      |   11           11
+    mean_of_metrics           |    1            1
+ERROR: LoadError: LoadError: Some tests did not pass: 41 passed, 2 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:70
+in expression starting at /home/pkgeval/.julia/packages/TimeSeriesInterface/uWIjm/test/runtests.jl:7
+
+PkgEval failed: Package TimeSeriesInterface errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:01:22.661
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+
+CPU usage: 28.84s (24.72s user, 4.32s kernel)
+
+Network usage:
+- eth0: 22.929 KiB received, 4.616 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:01:23.200614187Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":28835328153,"percpu_usage":[62233555,172888378,844133219,130615751,172562080,407975684,603132696,388553968,408210019,475825184,530635973,245767953,182467345,416201966,420546095,100122742,511545651,241843503,743894098,150062096,212525056,86544753,953292311,1020716734,468440787,404003902,381055541,304983343,292551158,260495661,61863582,354862584,16474017,179996720,2715020,137449766,49504202,118318434,115797398,5862603,36088944,131096211,12472174,3028192,21515529,3595852,503930,104579929,85360,12700,1204050,55115694,0,3715892,47234308,18530,24787889,314822719,122314979,16659169,2201341,65739295,53366212,61006046,423301990,361904522,371826463,542948609,368545742,160900901,443156523,258279556,416622877,525171184,569263570,157734596,318947003,270759131,304970801,825992261,340206746,219694745,144698165,121418765,111735734,329353982,353635873,146470679,182845268,542254328,298267365,1537380710,314824875,83496553,288450176,546138471,203953842,129564982,13128695,10688473,95628338,431185503,20993239,48384207,19335288,0,120582538,212425964,51285678,2404872,428243572,12785624,1492400,66554023,39099345,4636361,6252854,141055805,21417189,48673409,16539756,78483343,1235251,155234183,41859456,20228159,273675090,519266077],"usage_in_kernelmode":4320000000,"usage_in_usermode":24720000000},"system_cpu_usage":93780530700000000,"online_cpus":128,"throttling_data":{"periods":357,"throttled_periods":4,"throttled_time":1464881656}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":204980224,"max_usage":387887104,"stats":{"active_anon":192401408,"active_file":0,"cache":204800,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":20480,"inactive_file":8192,"mapped_file":0,"pgfault":523741,"pgmajfault":0,"pgpgin":193202,"pgpgout":146222,"rss":192225280,"rss_huge":0,"total_active_anon":192401408,"total_active_file":0,"total_cache":204800,"total_dirty":0,"total_inactive_anon":20480,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":523741,"total_pgmajfault":0,"total_pgpgin":193202,"total_pgpgout":146222,"total_rss":192225280,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/TimeSeriesInterface-O4sRBmd0","id":"7292b59034b86492449bebadd2a72b8b3405f98dcc1859d671db370be3b16232","networks":{"eth0":{"rx_bytes":23479,"rx_packets":74,"rx_errors":0,"rx_dropped":1,"tx_bytes":4727,"tx_packets":34,"tx_errors":0,"tx_dropped":0}}}
+

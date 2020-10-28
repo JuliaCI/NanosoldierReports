@@ -1,0 +1,171 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:56:32.367
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:56:33.970
+#
+
+   Resolving package versions...
+   Installed SMTPClient ─ v0.6.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [c35d69d1] + SMTPClient v0.6.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [c35d69d1] + SMTPClient v0.6.0
+  [8ba89e20] + Distributed
+  [b27032c2] + LibCURL
+  [8f399da3] + Libdl
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [deac9b47] + LibCURL_jll
+  [14a3606d] + MozillaCACerts_jll
+
+
+################################################################################
+# Testing: 2020-10-28T11:56:36.237
+#
+
+
+     Testing SMTPClient
+Status `/tmp/jl_7TxiW2/Project.toml`
+  [c35d69d1] SMTPClient v0.6.0
+  [8ba89e20] Distributed
+  [b27032c2] LibCURL
+  [6462fe0b] Sockets
+  [8dfed614] Test
+Status `/tmp/jl_7TxiW2/Manifest.toml`
+  [c35d69d1] SMTPClient v0.6.0
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [b27032c2] LibCURL
+  [8f399da3] Libdl
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+  [deac9b47] LibCURL_jll
+  [14a3606d] MozillaCACerts_jll
+     Testing Running tests...
+[ Info: testset: send...
+Send: Error During Test at /home/pkgeval/.julia/packages/SMTPClient/psZKQ/test/send.jl:12
+  Got exception outside of a @test
+  IOError: could not spawn `python3.7 /home/pkgeval/.julia/packages/SMTPClient/psZKQ/test/mock.py /tmp/jl_WLCzdo`: no such file or directory (ENOENT)
+  Stacktrace:
+    [1] _spawn_primitive(file::String, cmd::Cmd, stdio::Vector{Any})
+      @ Base ./process.jl:99
+    [2] #626
+      @ ./process.jl:112 [inlined]
+    [3] setup_stdios(f::Base.var"#626#627"{Cmd}, stdios::Vector{Any})
+      @ Base ./process.jl:196
+    [4] _spawn
+      @ ./process.jl:111 [inlined]
+    [5] _spawn(::Base.CmdRedirect, ::Vector{Any})
+      @ Base ./process.jl:139
+    [6] run(::Base.CmdRedirect; wait::Bool)
+      @ Base ./process.jl:443
+    [7] macro expansion
+      @ ~/.julia/packages/SMTPClient/psZKQ/test/send.jl:19 [inlined]
+    [8] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+    [9] top-level scope
+      @ ~/.julia/packages/SMTPClient/psZKQ/test/send.jl:13
+   [10] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [11] macro expansion
+      @ ~/.julia/packages/SMTPClient/psZKQ/test/runtests.jl:8 [inlined]
+   [12] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [13] top-level scope
+      @ ~/.julia/packages/SMTPClient/psZKQ/test/runtests.jl:6
+   [14] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [15] top-level scope
+      @ none:6
+   [16] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [17] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [18] _start()
+      @ Base ./client.jl:485
+[ Info: testset: error...
+Test Summary: | Pass  Error  Total
+SMTPClient    |    3      1      4
+  Send        |           1      1
+  Errors      |    3             3
+ERROR: LoadError: Some tests did not pass: 3 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/SMTPClient/psZKQ/test/runtests.jl:5
+
+PkgEval failed: Package SMTPClient errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:56:49.242
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
+
+CPU usage: 15.76s (13.81s user, 2.01s kernel)
+
+Network usage:
+- eth0: 21.514 KiB received, 4.808 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:56:49.250768501Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":15757885531,"percpu_usage":[0,0,0,0,0,70474617,0,175971949,0,6304332,32317213,3186961,0,0,69049608,0,0,0,66516757,0,2886431,2033131,0,7169002,0,0,0,0,91956817,3902322,0,0,112741225,282834621,897815569,301294450,4692783,244984336,404048758,2252941,220426577,335962174,341822265,75289341,1295041,2446820,59196741,37251434,306374022,36517626,250880072,80882512,142460,13281477,210664282,5670,212625574,56188313,380426972,0,38903325,195470184,48928670,182758643,0,0,0,0,0,0,0,117482606,0,0,0,20860929,0,0,0,0,0,0,0,0,60298685,14146487,0,0,0,0,0,0,6581653,2111611,0,103550,209389335,1005282573,286207326,12864537,149909860,406082824,554919092,237625506,697397917,479882752,552667453,262186462,6088083,20596638,6300,15870,173089991,151508613,1287769387,223617891,891920,354851123,278010,150753270,402022499,133514703,315621307,48475419,492602636,840548189,152933191,56525315],"usage_in_kernelmode":2010000000,"usage_in_usermode":13810000000},"system_cpu_usage":94203029200000000,"online_cpus":128,"throttling_data":{"periods":177,"throttled_periods":3,"throttled_time":433552779}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":213766144,"max_usage":490598400,"stats":{"active_anon":201580544,"active_file":0,"cache":126976,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":24576,"inactive_file":8192,"mapped_file":0,"pgfault":261795,"pgmajfault":0,"pgpgin":163744,"pgpgout":114518,"rss":201502720,"rss_huge":0,"total_active_anon":201580544,"total_active_file":0,"total_cache":126976,"total_dirty":0,"total_inactive_anon":24576,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":261795,"total_pgmajfault":0,"total_pgpgin":163744,"total_pgpgout":114518,"total_rss":201502720,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/SMTPClient-m1RyybWK","id":"aa863a90e968894a9bae7590a14ff365203621de0a0937935218631dacc16373","networks":{"eth0":{"rx_bytes":22030,"rx_packets":57,"rx_errors":0,"rx_dropped":1,"tx_bytes":4923,"tx_packets":35,"tx_errors":0,"tx_dropped":0}}}
+

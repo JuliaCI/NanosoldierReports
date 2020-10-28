@@ -1,0 +1,143 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:50:06.778
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:50:08.539
+#
+
+   Resolving package versions...
+   Installed CustomUnitRanges ─ v1.0.0
+   Installed CatIndices ─────── v0.2.1
+   Installed OffsetArrays ───── v1.3.1
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [aafaddc9] + CatIndices v0.2.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [aafaddc9] + CatIndices v0.2.1
+  [dc8bdbbb] + CustomUnitRanges v1.0.0
+  [6fe1bfb0] + OffsetArrays v1.3.1
+
+
+################################################################################
+# Testing: 2020-10-28T11:50:10.960
+#
+
+
+     Testing CatIndices
+Status `/tmp/jl_1ciHf1/Project.toml`
+  [aafaddc9] CatIndices v0.2.1
+  [dc8bdbbb] CustomUnitRanges v1.0.0
+  [6fe1bfb0] OffsetArrays v1.3.1
+  [8dfed614] Test
+Status `/tmp/jl_1ciHf1/Manifest.toml`
+  [aafaddc9] CatIndices v0.2.1
+  [dc8bdbbb] CustomUnitRanges v1.0.0
+  [6fe1bfb0] OffsetArrays v1.3.1
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+BidirectionalVector: Error During Test at /home/pkgeval/.julia/packages/CatIndices/KDMF7/test/runtests.jl:12
+  Got exception outside of a @test
+  MethodError: similar(::Type{Array{Float64, N} where N}, ::Tuple{CatIndices.URange{Int64}}) is ambiguous. Candidates:
+    similar(f::Union{Function, Type}, inds::Tuple{CatIndices.URange}) in CatIndices at /home/pkgeval/.julia/packages/CatIndices/KDMF7/src/bidirectional.jl:34
+    similar(::Type{T}, shape::Tuple{Union{Colon, Integer, AbstractUnitRange}, Vararg{Union{Colon, Integer, AbstractUnitRange}, N} where N}) where T<:AbstractArray in OffsetArrays at /home/pkgeval/.julia/packages/OffsetArrays/sUnpU/src/OffsetArrays.jl:237
+  Possible fix, define
+    similar(::Type{T}, ::Tuple{CatIndices.URange}) where T<:AbstractArray
+  Stacktrace:
+    [1] macro expansion
+      @ ~/.julia/packages/CatIndices/KDMF7/test/runtests.jl:48 [inlined]
+    [2] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+    [3] macro expansion
+      @ ~/.julia/packages/CatIndices/KDMF7/test/runtests.jl:13 [inlined]
+    [4] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+    [5] top-level scope
+      @ ~/.julia/packages/CatIndices/KDMF7/test/runtests.jl:6
+    [6] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+    [7] top-level scope
+      @ none:6
+    [8] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+    [9] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [10] _start()
+      @ Base ./client.jl:485
+Test Summary:         | Pass  Error  Total
+CatIndices            |  105      1    106
+  BidirectionalVector |  101      1    102
+  vcat                |    4             4
+ERROR: LoadError: Some tests did not pass: 105 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/CatIndices/KDMF7/test/runtests.jl:5
+
+PkgEval failed: Package CatIndices errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:50:25.278
+#
+
+
+CPU usage: 17.46s (14.43s user, 3.12s kernel)
+
+Network usage:
+- eth0: 68.097 KiB received, 12.521 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:50:26.383719382Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":17462332481,"percpu_usage":[0,25676342,295192637,55242012,294030948,325408650,1842399735,180928921,231043532,654070,92768498,433128192,252608081,97412486,16623446,518054915,331377851,26751519,382162285,136604883,184802776,79036822,3836492,113490,460453784,8267522,164151714,10295944,3956372,108086434,382511620,14742866,85414415,537063604,113254484,221946966,1190790,5881852,82955842,51087456,47535737,6463933,47306390,26138009,539430,112213155,0,453370,131404408,20723079,43420469,108470,24716011,85100,125737779,0,32330782,0,404424612,296334530,1052030,0,0,0,45151058,239935488,643676686,134388346,93302427,134996965,183984014,138566824,228158702,122306829,85386177,777311961,111698553,328573424,38484854,259369422,16601756,10104624,119600817,339925247,3468673,583212405,159698734,9681184,733438042,89795078,237735493,143486535,196378749,21683689,5425553,201409221,484770590,33655662,36716255,250152412,64366618,1227510,422250,38267856,208064323,0,130300963,793520,362630,11162654,2563691,91900,705430,106108338,46184437,1178640,0,62230,79928742,103970,81996612,3018211,65027775,54190,0,0,0,0],"usage_in_kernelmode":3120000000,"usage_in_usermode":14430000000},"system_cpu_usage":94154454130000000,"online_cpus":128,"throttling_data":{"periods":195,"throttled_periods":8,"throttled_time":1413770420}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":216674304,"max_usage":517029888,"stats":{"active_anon":201637888,"active_file":0,"cache":393216,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":184320,"inactive_file":8192,"mapped_file":0,"pgfault":355453,"pgmajfault":0,"pgpgin":227034,"pgpgout":177759,"rss":201437184,"rss_huge":0,"total_active_anon":201637888,"total_active_file":0,"total_cache":393216,"total_dirty":0,"total_inactive_anon":184320,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":355453,"total_pgmajfault":0,"total_pgpgin":227034,"total_pgpgout":177759,"total_rss":201437184,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/CatIndices-pE96LOtb","id":"2af9d3401d1859cf3ffd57750e045b7fd0c4c879c87f8f6de277dae5a6b44e2c","networks":{"eth0":{"rx_bytes":69731,"rx_packets":97,"rx_errors":0,"rx_dropped":1,"tx_bytes":12822,"tx_packets":80,"tx_errors":0,"tx_dropped":0}}}
+

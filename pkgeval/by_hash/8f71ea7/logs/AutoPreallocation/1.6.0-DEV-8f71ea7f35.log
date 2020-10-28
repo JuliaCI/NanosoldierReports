@@ -1,0 +1,528 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T10:32:33.950
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T10:32:34.975
+#
+
+   Resolving package versions...
+   Installed AutoPreallocation ─ v0.3.1
+   Installed Cassette ────────── v0.3.3
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [e7028de2] + AutoPreallocation v0.3.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [e7028de2] + AutoPreallocation v0.3.1
+  [7057c7e9] + Cassette v0.3.3
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+
+
+################################################################################
+# Testing: 2020-10-28T10:32:36.817
+#
+
+
+     Testing AutoPreallocation
+Status `/tmp/jl_PBpDUW/Project.toml`
+  [e7028de2] AutoPreallocation v0.3.1
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [7057c7e9] Cassette v0.3.3
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_PBpDUW/Manifest.toml`
+  [e7028de2] AutoPreallocation v0.3.1
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [7057c7e9] Cassette v0.3.3
+  [682c06a0] JSON v0.21.1
+  [69de0a69] Parsers v1.0.11
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [de0858da] Printf
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+     Testing Running tests...
+ones example: Error During Test at /home/pkgeval/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:11
+  Got exception outside of a @test
+  MethodError: Cannot `convert` an object of type typeof(one) to an object of type Float64
+  Closest candidates are:
+    convert(::Type{T}, !Matched::T) where T<:Number at number.jl:6
+    convert(::Type{T}, !Matched::Number) where T<:Number at number.jl:7
+    convert(::Type{T}, !Matched::Base.TwicePrecision) where T<:Number at twiceprecision.jl:250
+    ...
+  Stacktrace:
+    [1] call
+      @ ~/.julia/packages/Cassette/158rp/src/context.jl:456 [inlined]
+    [2] fallback
+      @ ~/.julia/packages/Cassette/158rp/src/context.jl:454 [inlined]
+    [3] overdub
+      @ ~/.julia/packages/Cassette/158rp/src/overdub.jl:536 [inlined]
+    [4] overdub
+      @ ./array.jl:333 [inlined]
+    [5] overdub(::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(fill!), ::Vector{Float64}, ::typeof(one))
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [6] overdub
+      @ ./array.jl:504 [inlined]
+    [7] overdub(::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(ones), ::Type{Float64}, ::Tuple{Int64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [8] overdub
+      @ ./array.jl:500 [inlined]
+    [9] overdub(::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(ones), ::Tuple{Int64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [10] overdub
+      @ ./array.jl:498 [inlined]
+   [11] overdub(::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(ones), ::Int64)
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [12] overdub
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:6 [inlined]
+   [13] overdub(overdub_context#249::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, overdub_arguments#250::typeof(f_ones))
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [14] record_allocations(::Function; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+      @ AutoPreallocation ~/.julia/packages/AutoPreallocation/pywkM/src/recording.jl:21
+   [15] record_allocations(::Function)
+      @ AutoPreallocation ~/.julia/packages/AutoPreallocation/pywkM/src/recording.jl:20
+   [16] macro expansion
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:13 [inlined]
+   [17] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [18] top-level scope
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:12
+   [19] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [20] macro expansion
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:17 [inlined]
+   [21] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219 [inlined]
+   [22] macro expansion
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:16 [inlined]
+   [23] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [24] top-level scope
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:16
+   [25] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [26] top-level scope
+      @ none:6
+   [27] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [28] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [29] _start()
+      @ Base ./client.jl:485
+matmul example: Error During Test at /home/pkgeval/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:17
+  Got exception outside of a @test
+  MethodError: Cannot `convert` an object of type typeof(one) to an object of type Float64
+  Closest candidates are:
+    convert(::Type{T}, !Matched::T) where T<:Number at number.jl:6
+    convert(::Type{T}, !Matched::Number) where T<:Number at number.jl:7
+    convert(::Type{T}, !Matched::Base.TwicePrecision) where T<:Number at twiceprecision.jl:250
+    ...
+  Stacktrace:
+    [1] call
+      @ ~/.julia/packages/Cassette/158rp/src/context.jl:456 [inlined]
+    [2] fallback
+      @ ~/.julia/packages/Cassette/158rp/src/context.jl:454 [inlined]
+    [3] overdub
+      @ ~/.julia/packages/Cassette/158rp/src/overdub.jl:536 [inlined]
+    [4] overdub
+      @ ./array.jl:333 [inlined]
+    [5] overdub(::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(fill!), ::Matrix{Float64}, ::typeof(one))
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [6] overdub
+      @ ./array.jl:504 [inlined]
+    [7] overdub(::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(ones), ::Type{Float64}, ::Tuple{Int64, Int64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [8] overdub
+      @ ./array.jl:500 [inlined]
+    [9] overdub(::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(ones), ::Tuple{Int64, Int64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [10] overdub
+      @ ./array.jl:498 [inlined]
+   [11] overdub(::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(ones), ::Int64, ::Int64)
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [12] overdub
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:7 [inlined]
+   [13] overdub(overdub_context#249::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, overdub_arguments#250::typeof(f_matmul))
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [14] record_allocations(::Function; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+      @ AutoPreallocation ~/.julia/packages/AutoPreallocation/pywkM/src/recording.jl:21
+   [15] record_allocations(::Function)
+      @ AutoPreallocation ~/.julia/packages/AutoPreallocation/pywkM/src/recording.jl:20
+   [16] macro expansion
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:19 [inlined]
+   [17] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [18] top-level scope
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:18
+   [19] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [20] macro expansion
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:17 [inlined]
+   [21] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219 [inlined]
+   [22] macro expansion
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:16 [inlined]
+   [23] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [24] top-level scope
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:16
+   [25] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [26] top-level scope
+      @ none:6
+   [27] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [28] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [29] _start()
+      @ Base ./client.jl:485
+noprealloc example: Error During Test at /home/pkgeval/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:27
+  Got exception outside of a @test
+  MethodError: Cannot `convert` an object of type typeof(one) to an object of type Float64
+  Closest candidates are:
+    convert(::Type{T}, !Matched::T) where T<:Number at number.jl:6
+    convert(::Type{T}, !Matched::Number) where T<:Number at number.jl:7
+    convert(::Type{T}, !Matched::Base.TwicePrecision) where T<:Number at twiceprecision.jl:250
+    ...
+  Stacktrace:
+    [1] call
+      @ ~/.julia/packages/Cassette/158rp/src/context.jl:456 [inlined]
+    [2] fallback
+      @ ~/.julia/packages/Cassette/158rp/src/context.jl:454 [inlined]
+    [3] overdub
+      @ ~/.julia/packages/Cassette/158rp/src/overdub.jl:536 [inlined]
+    [4] overdub
+      @ ./array.jl:333 [inlined]
+    [5] overdub(::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(fill!), ::Matrix{Float64}, ::typeof(one))
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [6] overdub
+      @ ./array.jl:504 [inlined]
+    [7] overdub(::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(ones), ::Type{Float64}, ::Tuple{Int64, Int64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [8] overdub
+      @ ./array.jl:500 [inlined]
+    [9] overdub(::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(ones), ::Tuple{Int64, Int64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [10] overdub
+      @ ./array.jl:498 [inlined]
+   [11] overdub(::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(ones), ::Int64, ::Int64)
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [12] overdub
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:9 [inlined]
+   [13] overdub(overdub_context#249::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, overdub_arguments#250::typeof(f_matmul_noprealloc))
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [14] record_allocations(::Function; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+      @ AutoPreallocation ~/.julia/packages/AutoPreallocation/pywkM/src/recording.jl:21
+   [15] record_allocations(::Function)
+      @ AutoPreallocation ~/.julia/packages/AutoPreallocation/pywkM/src/recording.jl:20
+   [16] macro expansion
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:29 [inlined]
+   [17] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [18] top-level scope
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:28
+   [19] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [20] macro expansion
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:17 [inlined]
+   [21] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219 [inlined]
+   [22] macro expansion
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:16 [inlined]
+   [23] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [24] top-level scope
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:16
+   [25] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [26] top-level scope
+      @ none:6
+   [27] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [28] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [29] _start()
+      @ Base ./client.jl:485
+check thread-safe: Error During Test at /home/pkgeval/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:35
+  Got exception outside of a @test
+  MethodError: no method matching promote_type(::Matrix{Float64}, ::Matrix{Float64})
+  Closest candidates are:
+    promote_type(::Any, ::Any, !Matched::Any, !Matched::Any...) at promotion.jl:219
+    promote_type(::Any) at promotion.jl:218
+  Stacktrace:
+    [1] call
+      @ ~/.julia/packages/Cassette/158rp/src/context.jl:456 [inlined]
+    [2] fallback
+      @ ~/.julia/packages/Cassette/158rp/src/context.jl:454 [inlined]
+    [3] overdub
+      @ ~/.julia/packages/Cassette/158rp/src/overdub.jl:536 [inlined]
+    [4] overdub
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/LinearAlgebra/src/matmul.jl:159 [inlined]
+    [5] overdub(::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(*), ::Matrix{Float64}, ::Matrix{Float64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [6] overdub
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:36 [inlined]
+    [7] overdub(::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::var"#f#8", ::Matrix{Float64}, ::Matrix{Float64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [8] record_allocations(::Function, ::Matrix{Float64}, ::Vararg{Matrix{Float64}, N} where N; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+      @ AutoPreallocation ~/.julia/packages/AutoPreallocation/pywkM/src/recording.jl:21
+    [9] record_allocations(::Function, ::Matrix{Float64}, ::Vararg{Matrix{Float64}, N} where N)
+      @ AutoPreallocation ~/.julia/packages/AutoPreallocation/pywkM/src/recording.jl:20
+   [10] preallocate(::var"#f#8", ::Matrix{Float64}, ::Vararg{Matrix{Float64}, N} where N)
+      @ AutoPreallocation ~/.julia/packages/AutoPreallocation/pywkM/src/preallocate.jl:27
+   [11] macro expansion
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:41 [inlined]
+   [12] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [13] top-level scope
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:36
+   [14] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [15] macro expansion
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:17 [inlined]
+   [16] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219 [inlined]
+   [17] macro expansion
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:16 [inlined]
+   [18] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [19] top-level scope
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:16
+   [20] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [21] top-level scope
+      @ none:6
+   [22] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [23] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [24] _start()
+      @ Base ./client.jl:485
+resizing operations: Error During Test at /home/pkgeval/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:54
+  Got exception outside of a @test
+  MethodError: no method matching (::Colon)(::Int64, ::Tuple{Int64, Int64, Int64})
+  Closest candidates are:
+    (::Colon)(::T, ::Any, !Matched::T) where T<:Real at range.jl:41
+    (::Colon)(::A, ::Any, !Matched::C) where {A<:Real, C<:Real} at range.jl:10
+    (::Colon)(::T, ::Any, !Matched::T) where T at range.jl:40
+    ...
+  Stacktrace:
+    [1] call
+      @ ~/.julia/packages/Cassette/158rp/src/context.jl:456 [inlined]
+    [2] fallback
+      @ ~/.julia/packages/Cassette/158rp/src/context.jl:454 [inlined]
+    [3] overdub
+      @ ~/.julia/packages/Cassette/158rp/src/overdub.jl:536 [inlined]
+    [4] overdub
+      @ ./array.jl:108 [inlined]
+    [5] overdub(::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(Base.vect), ::Int64, ::Int64, ::Int64)
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [6] overdub
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:56 [inlined]
+    [7] overdub(::Cassette.Context{nametype(RecordingCtx), AutoPreallocation.AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::var"#push_pop_test#12", ::Int64)
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [8] record_allocations(f::Function, args::Int64; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+      @ AutoPreallocation ~/.julia/packages/AutoPreallocation/pywkM/src/recording.jl:21
+    [9] record_allocations(f::Function, args::Int64)
+      @ AutoPreallocation ~/.julia/packages/AutoPreallocation/pywkM/src/recording.jl:20
+   [10] preallocate(f::var"#push_pop_test#12", xs::Int64)
+      @ AutoPreallocation ~/.julia/packages/AutoPreallocation/pywkM/src/preallocate.jl:27
+   [11] macro expansion
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:65 [inlined]
+   [12] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [13] top-level scope
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/integration_tests.jl:55
+   [14] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [15] macro expansion
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:17 [inlined]
+   [16] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219 [inlined]
+   [17] macro expansion
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:16 [inlined]
+   [18] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [19] top-level scope
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:16
+   [20] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [21] top-level scope
+      @ none:6
+   [22] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [23] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [24] _start()
+      @ Base ./client.jl:485
+show: Test Failed at /home/pkgeval/.julia/packages/AutoPreallocation/pywkM/test/record_types.jl:28
+  Expression: repr(record) == "AutoPreallocation.AllocationRecord(\n" * "    [Array{Float64,2}(undef, (3, 7)), Array{Float64,1}(undef, (40,))],\n" * "    [(3, 7), (40,)]\n" * ")"
+   Evaluated: "AutoPreallocation.AllocationRecord(\n    [Matrix{Float64}(undef, (3, 7)), Vector{Float64}(undef, (40,))],\n    [(3, 7), (40,)]\n)" == "AutoPreallocation.AllocationRecord(\n    [Array{Float64,2}(undef, (3, 7)), Array{Float64,1}(undef, (40,))],\n    [(3, 7), (40,)]\n)"
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/AutoPreallocation/pywkM/test/record_types.jl:28 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] top-level scope
+   @ ~/.julia/packages/AutoPreallocation/pywkM/test/record_types.jl:24
+  2.153 ms (7 allocations: 16.41 MiB)
+readme_examples.jl: Error During Test at /home/pkgeval/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:16
+  Got exception outside of a @test
+  LoadError: MethodError: Cannot `convert` an object of type typeof(one) to an object of type Float64
+  Closest candidates are:
+    convert(::Type{T}, !Matched::T) where T<:Number at number.jl:6
+    convert(::Type{T}, !Matched::Number) where T<:Number at number.jl:7
+    convert(::Type{T}, !Matched::Base.TwicePrecision) where T<:Number at twiceprecision.jl:250
+    ...
+  Stacktrace:
+    [1] call
+      @ ~/.julia/packages/Cassette/158rp/src/context.jl:456 [inlined]
+    [2] fallback
+      @ ~/.julia/packages/Cassette/158rp/src/context.jl:454 [inlined]
+    [3] overdub
+      @ ~/.julia/packages/Cassette/158rp/src/overdub.jl:536 [inlined]
+    [4] overdub
+      @ ./array.jl:333 [inlined]
+    [5] overdub(::Cassette.Context{nametype(RecordingCtx), AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(fill!), ::Matrix{Float64}, ::typeof(one))
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [6] overdub
+      @ ./array.jl:504 [inlined]
+    [7] overdub(::Cassette.Context{nametype(RecordingCtx), AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(ones), ::Type{Float64}, ::Tuple{Int64, Int64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+    [8] overdub
+      @ ./array.jl:500 [inlined]
+    [9] overdub(::Cassette.Context{nametype(RecordingCtx), AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(ones), ::Tuple{Int64, Int64})
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [10] overdub
+      @ ./array.jl:498 [inlined]
+   [11] overdub(::Cassette.Context{nametype(RecordingCtx), AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, ::typeof(ones), ::Int64, ::Int64)
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [12] overdub
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/readme_examples.jl:4 [inlined]
+   [13] overdub(overdub_context#249::Cassette.Context{nametype(RecordingCtx), AllocationRecord, Nothing, Cassette.var"##PassType#251", Nothing, Cassette.DisableHooks}, overdub_arguments#250::typeof(foo))
+      @ Cassette ~/.julia/packages/Cassette/158rp/src/overdub.jl:0
+   [14] record_allocations(::Function; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+      @ AutoPreallocation ~/.julia/packages/AutoPreallocation/pywkM/src/recording.jl:21
+   [15] record_allocations(::Function)
+      @ AutoPreallocation ~/.julia/packages/AutoPreallocation/pywkM/src/recording.jl:20
+   [16] top-level scope
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/readme_examples.jl:7
+   [17] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [18] macro expansion
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:17 [inlined]
+   [19] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219 [inlined]
+   [20] macro expansion
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:16 [inlined]
+   [21] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [22] top-level scope
+      @ ~/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:16
+   [23] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [24] top-level scope
+      @ none:6
+   [25] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [26] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [27] _start()
+      @ Base ./client.jl:485
+  in expression starting at /home/pkgeval/.julia/packages/AutoPreallocation/pywkM/test/readme_examples.jl:7
+Test Summary:           | Pass  Fail  Error  Total
+AutoPreallocation.jl    |   18     1      6     25
+  integration_tests.jl  |                 5      5
+    ones example        |                 1      1
+    matmul example      |                 1      1
+    noprealloc example  |                 1      1
+    check thread-safe   |                 1      1
+    resizing operations |                 1      1
+  record_types.jl       |   18     1            19
+    isequal and hash    |    5                   5
+    show                |    1     1             2
+    reinitialize        |   12                  12
+  readme_examples.jl    |                 1      1
+ERROR: LoadError: Some tests did not pass: 18 passed, 1 failed, 6 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/AutoPreallocation/pywkM/test/runtests.jl:15
+
+PkgEval failed: Package AutoPreallocation errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T10:33:59.036
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+
+CPU usage: 79.47s (56.05s user, 22.60s kernel)
+
+Network usage:
+- eth0: 704.651 KiB received, 19.543 KiB sent
+
+Raw statistics: {"read":"2020-10-28T10:33:59.660063348Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":79465475197,"percpu_usage":[31537351,11642355,41423046,23747550,72432151,420263707,51481111,222570066,119187170,95729868,27087220,23323808,63818954,4361874,74147020,15259157,127264579,20633497,175103780,72827688,99210072,81237632,555566345,463211555,35391595,431319374,145190439,90277487,511591626,28218602,295891179,301367557,849903218,1079284789,1688361931,1390582950,1041676457,1133108145,668411919,1286273893,1897660731,1638153738,1001373299,1547776546,1266559604,707613036,2130116673,705550569,2173379141,1237881796,1993077026,1266462680,362291520,757713789,671997958,402436526,544299762,978804558,748387084,884285149,437195717,1412284135,462299429,644063234,1023881,16959716,25852649,142481876,99938072,274659479,197169739,119494434,26065930,37264695,16858229,183828086,73344445,97729299,78893173,1183420,34453920,164809802,47195693,36326454,66432575,33339794,157739913,166743910,33728244,128948622,49822661,279697661,187767515,412891152,190808208,267330567,1494009034,792324367,1117855884,1724350412,940819197,1104099778,945703697,1799484996,2358815626,1871786716,953812346,1789770018,1162266764,1711316149,1396143394,595593209,1260896352,1033983396,684488465,974543775,652430050,1322144375,455838775,779718606,558519683,1104464161,650875743,1324356950,421160934,354657586,1557670607,1179207921],"usage_in_kernelmode":22600000000,"usage_in_usermode":56050000000},"system_cpu_usage":93572011880000000,"online_cpus":128,"throttling_data":{"periods":853,"throttled_periods":117,"throttled_time":55454530230}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":221622272,"max_usage":743673856,"stats":{"active_anon":201859072,"active_file":0,"cache":4747264,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":1650688,"inactive_file":8192,"mapped_file":0,"pgfault":1366278,"pgmajfault":0,"pgpgin":928967,"pgpgout":879280,"rss":198770688,"rss_huge":0,"total_active_anon":201859072,"total_active_file":0,"total_cache":4747264,"total_dirty":0,"total_inactive_anon":1650688,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":1366278,"total_pgmajfault":0,"total_pgpgin":928967,"total_pgpgout":879280,"total_rss":198770688,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/AutoPreallocation-4KwmTxAb","id":"8e0ecef38bab3148e4a12dbce5e91d76bc363255ac984959daae134b0d571122","networks":{"eth0":{"rx_bytes":721563,"rx_packets":395,"rx_errors":0,"rx_dropped":1,"tx_bytes":20012,"tx_packets":164,"tx_errors":0,"tx_dropped":0}}}
+

@@ -1,0 +1,139 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:15:22.310
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:15:24.423
+#
+
+   Resolving package versions...
+   Installed WinReg ─ v0.3.1
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [1b915085] + WinReg v0.3.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [1b915085] + WinReg v0.3.1
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [8dfed614] + Test
+
+
+################################################################################
+# Testing: 2020-10-28T11:15:26.486
+#
+
+
+     Testing WinReg
+Status `/tmp/jl_Xm1RO0/Project.toml`
+  [1b915085] WinReg v0.3.1
+  [8dfed614] Test
+Status `/tmp/jl_Xm1RO0/Manifest.toml`
+  [1b915085] WinReg v0.3.1
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+Error During Test at /home/pkgeval/.julia/packages/WinReg/vJbAg/test/runtests.jl:8
+  Test threw exception
+  Expression: querykey(WinReg.HKEY_LOCAL_MACHINE, "System\\CurrentControlSet\\Control\\Session Manager\\Environment", "OS") == "Windows_NT"
+  could not load library "advapi32"
+  advapi32.so: cannot open shared object file: No such file or directory
+  Stacktrace:
+   [1] openkey(base::UInt32, path::String, accessmask::UInt32)
+     @ WinReg ~/.julia/packages/WinReg/vJbAg/src/WinReg.jl:52
+   [2] openkey
+     @ ~/.julia/packages/WinReg/vJbAg/src/WinReg.jl:51 [inlined]
+   [3] querykey(base::UInt32, path::String, valuename::String)
+     @ WinReg ~/.julia/packages/WinReg/vJbAg/src/WinReg.jl:111
+   [4] top-level scope
+     @ ~/.julia/packages/WinReg/vJbAg/test/runtests.jl:8
+   [5] include(fname::String)
+     @ Base.MainInclude ./client.jl:444
+   [6] top-level scope
+     @ none:6
+   [7] eval(m::Module, e::Any)
+     @ Core ./boot.jl:360
+   [8] exec_options(opts::Base.JLOptions)
+     @ Base ./client.jl:261
+   [9] _start()
+     @ Base ./client.jl:485
+ERROR: LoadError: There was an error during testing
+in expression starting at /home/pkgeval/.julia/packages/WinReg/vJbAg/test/runtests.jl:8
+
+PkgEval failed: Package WinReg errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:15:36.077
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
+
+CPU usage: 12.26s (10.28s user, 2.00s kernel)
+
+Network usage:
+- eth0: 16.435 KiB received, 4.318 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:15:37.017917104Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":12261032361,"percpu_usage":[0,0,15106277,977782,3003131,3569902,0,0,91710,6664424,0,70385559,0,25282250,10040024,3961602,147260,0,0,18070,5224181,1235591,20218818,0,0,0,388680,151543860,314240,0,32362363,111722636,8688464,258157423,232889163,94342087,8784584,506900599,867900718,61659565,0,528630,198643638,8029232,12988955,53843042,114009966,62145044,305688363,39123344,770713331,994421201,68295927,199010,76143970,86270,448407053,45775660,330919723,9803764,130535010,162237866,33941714,34304858,0,26241689,555740,13904765,0,0,5869322,26624681,1488740,9858694,0,1120830,41256724,48058514,0,13065295,48067779,0,92373772,52625890,12362414,45145478,0,1837521,0,0,14041675,7772463,7017442,0,71790199,0,61006715,162634266,59213233,13128405,54218203,3540753,109907273,278513220,13371646,104875833,57174222,233233704,31034572,491961,14461925,449760699,220933010,168428538,856261594,763870250,317415689,581890,291560648,0,44995557,10105605,205447102,125665429,98058039,203683461,210226216,153786542],"usage_in_kernelmode":2000000000,"usage_in_usermode":10280000000},"system_cpu_usage":93889107220000000,"online_cpus":128,"throttling_data":{"periods":147,"throttled_periods":3,"throttled_time":797178282}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":202416128,"max_usage":375840768,"stats":{"active_anon":189820928,"active_file":0,"cache":69632,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":24576,"inactive_file":8192,"mapped_file":0,"pgfault":212131,"pgmajfault":0,"pgpgin":150415,"pgpgout":104064,"rss":189784064,"rss_huge":0,"total_active_anon":189820928,"total_active_file":0,"total_cache":69632,"total_dirty":0,"total_inactive_anon":24576,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":212131,"total_pgmajfault":0,"total_pgpgin":150415,"total_pgpgout":104064,"total_rss":189784064,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/WinReg-CdvXhohl","id":"894e71b0079933d4b1eb18873c4b1a6005715727ab97e7c844f8a525420fe9a3","networks":{"eth0":{"rx_bytes":16829,"rx_packets":48,"rx_errors":0,"rx_dropped":1,"tx_bytes":4422,"tx_packets":29,"tx_errors":0,"tx_dropped":0}}}
+

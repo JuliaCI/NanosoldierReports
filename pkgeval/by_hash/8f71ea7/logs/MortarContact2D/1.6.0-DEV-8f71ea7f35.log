@@ -1,0 +1,223 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:48:54.836
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:48:56.638
+#
+
+   Resolving package versions...
+   Installed MortarContact2D ─ v0.3.1
+   Installed Calculus ──────── v0.5.1
+   Installed FEMBasis ──────── v0.2.0
+   Installed FEMQuad ───────── v0.3.2
+   Installed TimerOutputs ──── v0.5.6
+   Installed FEMBase ───────── v0.3.1
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [048d6160] + MortarContact2D v0.3.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [49dc2e85] + Calculus v0.5.1
+  [fbcbbc08] + FEMBase v0.3.1
+  [353fb843] + FEMBasis v0.2.0
+  [be8e8821] + FEMQuad v0.3.2
+  [048d6160] + MortarContact2D v0.3.1
+  [a759f4b9] + TimerOutputs v0.5.6
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [de0858da] + Printf
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [8dfed614] + Test
+  [4ec0a83e] + Unicode
+
+
+################################################################################
+# Testing: 2020-10-28T11:48:59.615
+#
+
+
+     Testing MortarContact2D
+Status `/tmp/jl_Fv2WGW/Project.toml`
+  [fbcbbc08] FEMBase v0.3.1
+  [048d6160] MortarContact2D v0.3.1
+  [37e2e46d] LinearAlgebra
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+Status `/tmp/jl_Fv2WGW/Manifest.toml`
+  [49dc2e85] Calculus v0.5.1
+  [fbcbbc08] FEMBase v0.3.1
+  [353fb843] FEMBasis v0.2.0
+  [be8e8821] FEMQuad v0.3.2
+  [048d6160] MortarContact2D v0.3.1
+  [a759f4b9] TimerOutputs v0.5.6
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [de0858da] Printf
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+  [4ec0a83e] Unicode
+     Testing Running tests...
+ERROR: LoadError: LoadError: Evaluation into the closed module `Calculus` breaks incremental compilation because the side effects will not be permanent. This is likely due to some other module mutating `Calculus` with `eval` during precompilation - don't do this.
+Stacktrace:
+  [1] eval
+    @ ./boot.jl:360 [inlined]
+  [2] simplify(ex::Expr)
+    @ Calculus ~/.julia/packages/Calculus/mbqhh/src/symbolic.jl:96
+  [3] calculate_interpolation_polynomials(p::Expr, V::Matrix{Float64})
+    @ FEMBasis ~/.julia/packages/FEMBasis/hrK6J/src/create_basis.jl:25
+  [4] create_basis(name::Symbol, description::String, X::Tuple{Tuple{Float64}, Tuple{Float64}}, p::Expr)
+    @ FEMBasis ~/.julia/packages/FEMBasis/hrK6J/src/create_basis.jl:48
+  [5] top-level scope
+    @ ~/.julia/packages/FEMBasis/hrK6J/src/lagrange_segments.jl:4
+  [6] include(mod::Module, _path::String)
+    @ Base ./Base.jl:389
+  [7] include(x::String)
+    @ FEMBasis ~/.julia/packages/FEMBasis/hrK6J/src/FEMBasis.jl:4
+  [8] top-level scope
+    @ ~/.julia/packages/FEMBasis/hrK6J/src/FEMBasis.jl:16
+  [9] include
+    @ ./Base.jl:389 [inlined]
+ [10] include_package_for_output(pkg::Base.PkgId, input::String, depot_path::Vector{String}, dl_load_path::Vector{String}, load_path::Vector{String}, concrete_deps::Vector{Pair{Base.PkgId, UInt64}}, source::String)
+    @ Base ./loading.jl:1201
+ [11] top-level scope
+    @ none:1
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+in expression starting at /home/pkgeval/.julia/packages/FEMBasis/hrK6J/src/lagrange_segments.jl:4
+in expression starting at /home/pkgeval/.julia/packages/FEMBasis/hrK6J/src/FEMBasis.jl:4
+ERROR: LoadError: Failed to precompile FEMBasis [353fb843-c566-51e6-ba49-78b3e3d5ebb5] to /home/pkgeval/.julia/compiled/v1.6/FEMBasis/jl_Ou8pq7.
+Stacktrace:
+  [1] error(s::String)
+    @ Base ./error.jl:33
+  [2] compilecache(pkg::Base.PkgId, path::String, internal_stderr::Base.PipeEndpoint, internal_stdout::Base.PipeEndpoint)
+    @ Base ./loading.jl:1348
+  [3] compilecache(pkg::Base.PkgId, path::String)
+    @ Base ./loading.jl:1294
+  [4] _require(pkg::Base.PkgId)
+    @ Base ./loading.jl:1009
+  [5] require(uuidkey::Base.PkgId)
+    @ Base ./loading.jl:902
+  [6] require(into::Module, mod::Symbol)
+    @ Base ./loading.jl:889
+  [7] include
+    @ ./Base.jl:389 [inlined]
+  [8] include_package_for_output(pkg::Base.PkgId, input::String, depot_path::Vector{String}, dl_load_path::Vector{String}, load_path::Vector{String}, concrete_deps::Vector{Pair{Base.PkgId, UInt64}}, source::String)
+    @ Base ./loading.jl:1201
+  [9] top-level scope
+    @ none:1
+ [10] eval
+    @ ./boot.jl:360 [inlined]
+ [11] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [12] top-level scope
+    @ none:1
+in expression starting at /home/pkgeval/.julia/packages/FEMBase/qGDOl/src/FEMBase.jl:4
+ERROR: LoadError: Failed to precompile FEMBase [fbcbbc08-f1bf-5204-9233-b69f5d396135] to /home/pkgeval/.julia/compiled/v1.6/FEMBase/jl_EFJPlk.
+Stacktrace:
+ [1] error(s::String)
+   @ Base ./error.jl:33
+ [2] compilecache(pkg::Base.PkgId, path::String, internal_stderr::Base.PipeEndpoint, internal_stdout::Base.PipeEndpoint)
+   @ Base ./loading.jl:1348
+ [3] compilecache(pkg::Base.PkgId, path::String)
+   @ Base ./loading.jl:1294
+ [4] _require(pkg::Base.PkgId)
+   @ Base ./loading.jl:1009
+ [5] require(uuidkey::Base.PkgId)
+   @ Base ./loading.jl:902
+ [6] require(into::Module, mod::Symbol)
+   @ Base ./loading.jl:889
+ [7] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [8] top-level scope
+   @ none:6
+in expression starting at /home/pkgeval/.julia/packages/MortarContact2D/LVmtl/test/runtests.jl:4
+
+PkgEval failed: Package MortarContact2D errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:49:15.443
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
+jl_task_get_next at /workspace/srcdir/src/partr.c:508
+
+CPU usage: 19.31s (15.68s user, 3.77s kernel)
+
+Network usage:
+- eth0: 238.798 KiB received, 25.890 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:49:16.12599511Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":19309860917,"percpu_usage":[68500,71721569,5790,0,171113690,31054830,42124027,285968204,165907867,187006259,129440252,27393262,268714949,885935989,498830871,154560321,209678323,617551356,65255195,311440526,175983890,46506738,530115038,27463621,111180,40695834,2134001,239744609,606067652,253689627,385757973,190838194,60975686,290019857,443098426,89266527,14661437,522996960,0,0,0,16634397,27842860,27997840,0,18059136,22840370,35963872,157595659,235274414,153840723,154623879,2909451,140662520,81172222,93940109,14186506,1372461,5030782,806950,149760,37427485,175410479,1301740,16030,0,75637641,11750,47682198,41897486,184252311,53200597,86694663,144221997,119760639,554350,273479558,85293825,363308233,765187135,82757038,332671875,254057583,1151486447,734976314,293237888,1099393249,64363636,104718520,46678809,49461675,168230,30920934,89559539,480873905,585361112,136700,62565546,316715098,3127051,16400287,302408893,747191,17787277,34960,93482427,116117365,636130,78322983,5890832,1046910,1604191,69667845,63145885,33451364,830050,56165552,15348566,80210312,130092482,14823094,63306026,104700,623470,514735375,5112341,77747481,76644721],"usage_in_kernelmode":3770000000,"usage_in_usermode":15680000000},"system_cpu_usage":94145531630000000,"online_cpus":128,"throttling_data":{"periods":216,"throttled_periods":8,"throttled_time":1524714706}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":255811584,"max_usage":664948736,"stats":{"active_anon":236646400,"active_file":0,"cache":1224704,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":872448,"inactive_file":8192,"mapped_file":0,"pgfault":419945,"pgmajfault":0,"pgpgin":295710,"pgpgout":237720,"rss":236302336,"rss_huge":0,"total_active_anon":236646400,"total_active_file":0,"total_cache":1224704,"total_dirty":0,"total_inactive_anon":872448,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":419945,"total_pgmajfault":0,"total_pgpgin":295710,"total_pgpgout":237720,"total_rss":236302336,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/MortarContact2D-5J2S99Ch","id":"f67580492b0275c626f56a6d2301054a71d1d4bdac171e41560ce4f64f26b172","networks":{"eth0":{"rx_bytes":244529,"rx_packets":192,"rx_errors":0,"rx_dropped":1,"tx_bytes":26511,"tx_packets":172,"tx_errors":0,"tx_dropped":0}}}
+

@@ -1,0 +1,184 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T10:50:52.758
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T10:50:54.513
+#
+
+   Resolving package versions...
+   Installed VersionParsing ─ v1.2.0
+   Installed Conda ────────── v1.4.1
+   Installed Crazyflie ────── v0.1.0
+   Installed Parsers ──────── v1.0.11
+   Installed MacroTools ───── v0.5.6
+   Installed PyCall ───────── v1.92.1
+   Installed JSON ─────────── v0.21.1
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [69416ee2] + Crazyflie v0.1.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [8f4d0f93] + Conda v1.4.1
+  [69416ee2] + Crazyflie v0.1.0
+  [682c06a0] + JSON v0.21.1
+  [1914dd2f] + MacroTools v0.5.6
+  [69de0a69] + Parsers v1.0.11
+  [438e738f] + PyCall v1.92.1
+  [81def892] + VersionParsing v1.2.0
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [d6f4376e] + Markdown
+  [a63ad114] + Mmap
+  [de0858da] + Printf
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [4ec0a83e] + Unicode
+    Building Conda ─→ `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/7a58bb32ce5d85f8bf7559aa7c2842f9aecf52fc/build.log`
+    Building PyCall → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/b6dff5fa725eff4f775f472acd86756d6e31fb02/build.log`
+
+
+################################################################################
+# Testing: 2020-10-28T10:51:53.656
+#
+
+
+     Testing Crazyflie
+Status `/tmp/jl_52wRGX/Project.toml`
+  [69416ee2] Crazyflie v0.1.0
+  [438e738f] PyCall v1.92.1
+  [8dfed614] Test
+Status `/tmp/jl_52wRGX/Manifest.toml`
+  [8f4d0f93] Conda v1.4.1
+  [69416ee2] Crazyflie v0.1.0
+  [682c06a0] JSON v0.21.1
+  [1914dd2f] MacroTools v0.5.6
+  [69de0a69] Parsers v1.0.11
+  [438e738f] PyCall v1.92.1
+  [81def892] VersionParsing v1.2.0
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [de0858da] Printf
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+  [4ec0a83e] Unicode
+     Testing Running tests...
+ERROR: LoadError: InitError: PyError (PyImport_ImportModule
+
+The Python package cflib.bootloader could not be imported by pyimport. Usually this means
+that you did not install cflib.bootloader in the Python version being used by PyCall.
+
+PyCall is currently configured to use the Julia-specific Python distribution
+installed by the Conda.jl package.  To install the cflib.bootloader module, you can
+use `pyimport_conda("cflib.bootloader", PKG)`, where PKG is the Anaconda
+package the contains the module cflib.bootloader, or alternatively you can use the
+Conda package directly (via `using Conda` followed by `Conda.add` etcetera).
+
+Alternatively, if you want to use a different Python distribution on your
+system, such as a system-wide Python (as opposed to the Julia-specific Python),
+you can re-configure PyCall with that Python.   As explained in the PyCall
+documentation, set ENV["PYTHON"] to the path/name of the python executable
+you want to use, run Pkg.build("PyCall"), and re-launch Julia.
+
+) <class 'ModuleNotFoundError'>
+ModuleNotFoundError("No module named 'cflib'")
+
+Stacktrace:
+ [1] pyimport(name::String)
+   @ PyCall ~/.julia/packages/PyCall/BcTLp/src/PyCall.jl:547
+ [2] __init__()
+   @ Crazyflie ~/.julia/packages/Crazyflie/fuV6P/src/Crazyflie.jl:17
+ [3] _include_from_serialized(path::String, depmods::Vector{Any})
+   @ Base ./loading.jl:662
+ [4] _require_from_serialized(path::String)
+   @ Base ./loading.jl:715
+ [5] _require(pkg::Base.PkgId)
+   @ Base ./loading.jl:1019
+ [6] require(uuidkey::Base.PkgId)
+   @ Base ./loading.jl:902
+ [7] require(into::Module, mod::Symbol)
+   @ Base ./loading.jl:889
+ [8] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [9] top-level scope
+   @ none:6
+during initialization of module Crazyflie
+in expression starting at /home/pkgeval/.julia/packages/Crazyflie/fuV6P/test/runtests.jl:1
+
+PkgEval failed: Package Crazyflie errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T10:52:22.805
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
+
+CPU usage: 84.21s (71.88s user, 12.34s kernel)
+
+Network usage:
+- eth0: 252.874 MiB received, 912.223 KiB sent
+
+Raw statistics: {"read":"2020-10-28T10:52:22.808140665Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":61440},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":61440},{"major":259,"minor":0,"op":"Total","value":61440},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":61440},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":61440},{"major":253,"minor":2,"op":"Total","value":61440}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":15},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":15},{"major":259,"minor":0,"op":"Total","value":15},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":15},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":15},{"major":253,"minor":2,"op":"Total","value":15}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":84208869334,"percpu_usage":[792552365,558756006,484438142,1438205356,1223264138,1352238532,469320836,2472690647,1514429346,1239573072,150789191,1056442078,606734410,316606000,979703851,339304543,998939972,342578036,859278321,509582053,604549569,539548580,587564714,199749022,1338004263,292764961,646767743,1022527635,689956879,825047209,3303793421,522521280,443368839,915212163,258221944,142520514,174843920,200284020,87383555,65458236,140489129,283497284,370169425,259178460,208441742,197513308,520622042,45811399,217164816,2306065071,80642621,78422062,518937016,212686201,682784466,363549769,79466028,82471155,267248706,297803745,23155568,384618187,88207227,120585449,487342418,722454242,542282679,1282831794,1875397720,2784102817,924095770,3828417730,2426874699,1020994776,785586476,872334412,631063350,935909694,573307640,588127089,1309669484,560667602,412891151,600220449,837483475,448599394,504765366,195861408,500224601,460589417,455339872,523805579,1477350587,1088158316,3335175021,1181011873,42617014,231802602,393515455,140432978,579857424,267752285,51985580,536964605,571878431,202278029,326146577,224544049,59027033,368264468,1031717651,130188451,1773115770,1843554996,105676642,104580205,119204518,544899416,166236708,282515072,93770190,44748761,130736063,212594717,400582833,131048752,312635943,216012977],"usage_in_kernelmode":12340000000,"usage_in_usermode":71880000000},"system_cpu_usage":93711839990000000,"online_cpus":128,"throttling_data":{"periods":908,"throttled_periods":21,"throttled_time":4645387327}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":1862193152,"max_usage":2392408064,"stats":{"active_anon":643194880,"active_file":0,"cache":1580498944,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":1137471488,"inactive_file":8192,"mapped_file":0,"pgfault":1610809,"pgmajfault":0,"pgpgin":1604974,"pgpgout":1170237,"rss":200183808,"rss_huge":0,"total_active_anon":643194880,"total_active_file":0,"total_cache":1580498944,"total_dirty":0,"total_inactive_anon":1137471488,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":1610809,"total_pgmajfault":0,"total_pgpgin":1604974,"total_pgpgout":1170237,"total_rss":200183808,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/Crazyflie-iuTt4jwz","id":"fe7826f4e6cd5a6e3e4c593e4aaf0162a7293c7fa7273db74b6490b5f6f72abd","networks":{"eth0":{"rx_bytes":265158057,"rx_packets":26529,"rx_errors":0,"rx_dropped":3,"tx_bytes":934116,"tx_packets":16508,"tx_errors":0,"tx_dropped":0}}}
+

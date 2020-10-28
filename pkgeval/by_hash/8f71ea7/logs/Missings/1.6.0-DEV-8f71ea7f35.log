@@ -1,0 +1,173 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:31:45.299
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:31:47.211
+#
+
+   Resolving package versions...
+   Installed Missings ─ v0.4.4
+   Installed DataAPI ── v1.3.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [e1d29d7a] + Missings v0.4.4
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [9a962f9c] + DataAPI v1.3.0
+  [e1d29d7a] + Missings v0.4.4
+
+
+################################################################################
+# Testing: 2020-10-28T11:31:49.443
+#
+
+
+     Testing Missings
+Status `/tmp/jl_7HOrx0/Project.toml`
+  [9a962f9c] DataAPI v1.3.0
+  [e1d29d7a] Missings v0.4.4
+  [2f01184e] SparseArrays
+  [8dfed614] Test
+Status `/tmp/jl_7HOrx0/Manifest.toml`
+  [9a962f9c] DataAPI v1.3.0
+  [e1d29d7a] Missings v0.4.4
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [2f01184e] SparseArrays
+  [8dfed614] Test
+     Testing Running tests...
+Missings: Test Failed at /home/pkgeval/.julia/packages/Missings/notdc/test/runtests.jl:87
+  Expression: s == "Missings.SkipMissings{Array{Union{Missing, $(Int)},1}}(" * "Union{Missing, $(Int)}[1, 2, missing, 4]) comprised of 2 iterators"
+   Evaluated: "Missings.SkipMissings{Vector{Union{Missing, Int64}}}(Union{Missing, Int64}[1, 2, missing, 4]) comprised of 2 iterators" == "Missings.SkipMissings{Array{Union{Missing, Int64},1}}(Union{Missing, Int64}[1, 2, missing, 4]) comprised of 2 iterators"
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/Missings/notdc/test/runtests.jl:87 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] top-level scope
+   @ ~/.julia/packages/Missings/notdc/test/runtests.jl:8
+Missings: Error During Test at /home/pkgeval/.julia/packages/Missings/notdc/test/runtests.jl:130
+  Test threw exception
+  Expression: levels(1:1) == levels([1]) == levels([1, missing]) == levels([missing, 1]) == [1]
+  setindex! not defined for UnitRange{Int64}
+  Stacktrace:
+   [1] error(::String, ::Type)
+     @ Base ./error.jl:42
+   [2] error_if_canonical_setindex(#unused#::IndexLinear, A::UnitRange{Int64}, #unused#::Int64)
+     @ Base ./abstractarray.jl:1255
+   [3] setindex!
+     @ ./abstractarray.jl:1246 [inlined]
+   [4] filter!
+     @ ./array.jl:2519 [inlined]
+   [5] levels(x::UnitRange{Int64})
+     @ DataAPI ~/.julia/packages/DataAPI/itVtH/src/DataAPI.jl:88
+   [6] macro expansion
+     @ ~/.julia/packages/Missings/notdc/test/runtests.jl:130 [inlined]
+   [7] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [8] top-level scope
+     @ ~/.julia/packages/Missings/notdc/test/runtests.jl:8
+Missings: Error During Test at /home/pkgeval/.julia/packages/Missings/notdc/test/runtests.jl:131
+  Test threw exception
+  Expression: levels(2:-1:1) == levels([2, 1]) == levels([2, missing, 1]) == [1, 2]
+  setindex! not defined for StepRange{Int64, Int64}
+  Stacktrace:
+   [1] error(::String, ::Type)
+     @ Base ./error.jl:42
+   [2] error_if_canonical_setindex(#unused#::IndexLinear, A::StepRange{Int64, Int64}, #unused#::Int64)
+     @ Base ./abstractarray.jl:1255
+   [3] setindex!
+     @ ./abstractarray.jl:1246 [inlined]
+   [4] filter!
+     @ ./array.jl:2519 [inlined]
+   [5] levels(x::StepRange{Int64, Int64})
+     @ DataAPI ~/.julia/packages/DataAPI/itVtH/src/DataAPI.jl:88
+   [6] macro expansion
+     @ ~/.julia/packages/Missings/notdc/test/runtests.jl:131 [inlined]
+   [7] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [8] top-level scope
+     @ ~/.julia/packages/Missings/notdc/test/runtests.jl:8
+┌ Warning: `T` is deprecated, use `nonmissingtype` instead.
+│   caller = macro expansion at runtests.jl:224 [inlined]
+└ @ Core ~/.julia/packages/Missings/notdc/test/runtests.jl:224
+Test Summary: | Pass  Fail  Error  Total
+Missings      |  147     1      2    150
+  deprecated  |    4                   4
+ERROR: LoadError: Some tests did not pass: 147 passed, 1 failed, 2 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/Missings/notdc/test/runtests.jl:7
+
+PkgEval failed: Package Missings errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:32:20.466
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+
+CPU usage: 29.07s (25.87s user, 3.33s kernel)
+
+Network usage:
+- eth0: 36.354 KiB received, 8.863 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:32:21.042830186Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":29067817839,"percpu_usage":[0,18640097,507280,0,1909351,280190,0,2595771,1084322,0,101400,7285792,0,1026141,3561562,17480,1147240,14515657,63161222,3957841,24937809,883010,148471370,0,4423883,1714531,24787430,0,0,94343157,16258666,35600,458782964,369220885,733397291,420301957,210920797,280220094,393975368,587753219,309577414,459943606,1182964242,244380199,466173040,76077661,470955739,496062771,209914404,158102867,678570363,128042059,1009618948,262483568,453206881,769754628,886849833,690369245,337678809,329563694,195840853,402517123,138733887,383287791,132570,49617930,0,9102863,4143581,7640,1220591,3320322,282970,34220344,118450,0,7834233,0,0,8850,15072096,2323341,58738165,3975383,213342794,100056949,203670420,37547884,97614360,75134700,303331,0,808330,40790,0,10870795,203022754,589655061,177363722,1063512927,726219558,28356271,465048905,759047704,277518263,299489888,219363204,183751163,438070626,753257888,565957496,424795631,164536257,157733764,712764009,890448097,735986804,645015866,469621699,362370664,281463468,276711633,345283818,76058478,466366933,56955053,164399027,527272524],"usage_in_kernelmode":3330000000,"usage_in_usermode":25870000000},"system_cpu_usage":94016628570000000,"online_cpus":128,"throttling_data":{"periods":361,"throttled_periods":6,"throttled_time":1501197339}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":248053760,"max_usage":513384448,"stats":{"active_anon":233451520,"active_file":0,"cache":184320,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":57344,"inactive_file":8192,"mapped_file":0,"pgfault":425374,"pgmajfault":0,"pgpgin":190627,"pgpgout":133616,"rss":233332736,"rss_huge":0,"total_active_anon":233451520,"total_active_file":0,"total_cache":184320,"total_dirty":0,"total_inactive_anon":57344,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":425374,"total_pgmajfault":0,"total_pgpgin":190627,"total_pgpgout":133616,"total_rss":233332736,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/Missings-y5stmpiC","id":"8bee3b211f7ca1b6dfb382a1e593f0703ddfeb56ed0266e2edc4dbd864a13d0a","networks":{"eth0":{"rx_bytes":37226,"rx_packets":89,"rx_errors":0,"rx_dropped":1,"tx_bytes":9076,"tx_packets":62,"tx_errors":0,"tx_dropped":0}}}
+

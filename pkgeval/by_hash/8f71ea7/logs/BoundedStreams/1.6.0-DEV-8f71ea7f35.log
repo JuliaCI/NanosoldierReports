@@ -1,0 +1,139 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:26:41.321
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:26:43.180
+#
+
+   Resolving package versions...
+   Installed BoundedStreams ─ v0.2.1
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [819c7365] + BoundedStreams v0.2.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [819c7365] + BoundedStreams v0.2.1
+
+
+################################################################################
+# Testing: 2020-10-28T11:26:45.017
+#
+
+
+     Testing BoundedStreams
+Status `/tmp/jl_MHIlzZ/Project.toml`
+  [819c7365] BoundedStreams v0.2.1
+  [8dfed614] Test
+Status `/tmp/jl_MHIlzZ/Manifest.toml`
+  [819c7365] BoundedStreams v0.2.1
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+BoundedInputStream general: Error During Test at /home/pkgeval/.julia/packages/BoundedStreams/SdgO2/test/runtests.jl:8
+  Got exception outside of a @test
+  SystemError: opening file "/home/pkgeval/.julia/packages/BoundedStreams/SdgO2/test/data/test.dat": Permission denied
+  Stacktrace:
+    [1] systemerror(p::String, errno::Int32; extrainfo::Nothing)
+      @ Base ./error.jl:168
+    [2] #systemerror#61
+      @ ./error.jl:167 [inlined]
+    [3] systemerror
+      @ ./error.jl:167 [inlined]
+    [4] open(fname::String; lock::Bool, read::Bool, write::Nothing, create::Nothing, truncate::Bool, append::Nothing)
+      @ Base ./iostream.jl:293
+    [5] open(fname::String, mode::String; lock::Bool)
+      @ Base ./iostream.jl:355
+    [6] open(fname::String, mode::String)
+      @ Base ./iostream.jl:355
+    [7] macro expansion
+      @ ~/.julia/packages/BoundedStreams/SdgO2/test/runtests.jl:9 [inlined]
+    [8] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219
+    [9] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [10] top-level scope
+      @ none:6
+   [11] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [12] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [13] _start()
+      @ Base ./client.jl:485
+Test Summary:              | Error  Total
+BoundedInputStream general |     1      1
+Test Summary:              | Error  Total
+BoundedInputStream general |     1      1
+ERROR: LoadError: Some tests did not pass: 0 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/BoundedStreams/SdgO2/test/runtests.jl:8
+
+caused by: Some tests did not pass: 0 passed, 0 failed, 1 errored, 0 broken.
+
+PkgEval failed: Package BoundedStreams errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:26:57.299
+#
+
+
+CPU usage: 13.72s (11.57s user, 2.14s kernel)
+
+Network usage:
+- eth0: 16.745 KiB received, 4.213 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:26:57.303425105Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":13723790357,"percpu_usage":[0,69636907,313190,606973613,10662964,77027968,167811510,3490631,35713624,10602914,86504766,257043146,249149984,512086144,85461707,38884094,58306172,23107860,208821,161703985,498678659,374216566,182365456,303618795,73420051,3089852,314296215,42907617,668198664,113584493,165084545,165296456,0,0,0,150520,0,21140,0,53966761,7201301,0,8980,0,2499431,0,17265027,0,64424405,3992161,6272103,1318112,11430,10523334,574680,0,45231718,0,0,0,24446320,20457608,108694055,8685043,0,786756210,890138789,156933584,585896895,113487996,45232638,280887857,796025569,89713218,10010,85109436,128344771,250785388,279578506,148699014,137240237,21190569,0,161839543,661192180,246182719,521728534,612031872,0,0,39321945,224826750,104539472,324173808,29472312,9647485,0,0,118040,0,45026536,0,1724211,1316240,50991920,7301152,0,0,0,0,0,0,5232380,1730351,37163844,119890,705160,0,0,0,256400,0,0,0,42322147,22696663,38021048,2885570],"usage_in_kernelmode":2140000000,"usage_in_usermode":11570000000},"system_cpu_usage":93975521270000000,"online_cpus":128,"throttling_data":{"periods":167,"throttled_periods":4,"throttled_time":996973158}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":231661568,"max_usage":385773568,"stats":{"active_anon":219287552,"active_file":0,"cache":86016,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":28672,"inactive_file":8192,"mapped_file":0,"pgfault":270418,"pgmajfault":0,"pgpgin":131544,"pgpgout":77988,"rss":219279360,"rss_huge":0,"total_active_anon":219287552,"total_active_file":0,"total_cache":86016,"total_dirty":0,"total_inactive_anon":28672,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":270418,"total_pgmajfault":0,"total_pgpgin":131544,"total_pgpgout":77988,"total_rss":219279360,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/BoundedStreams-cAIdHOZw","id":"163390670b8c615c238941ba276f77af2bc857a7e8ce66d28248745e6e03da27","networks":{"eth0":{"rx_bytes":17147,"rx_packets":49,"rx_errors":0,"rx_dropped":1,"tx_bytes":4314,"tx_packets":27,"tx_errors":0,"tx_dropped":0}}}
+

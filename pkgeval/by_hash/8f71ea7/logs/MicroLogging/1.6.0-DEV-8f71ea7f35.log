@@ -1,0 +1,172 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T10:33:01.045
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T10:33:02.810
+#
+
+   Resolving package versions...
+   Installed MicroLogging ─ v0.4.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [cecf6091] + MicroLogging v0.4.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [cecf6091] + MicroLogging v0.4.0
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [8dfed614] + Test
+
+
+################################################################################
+# Testing: 2020-10-28T10:33:05.630
+#
+
+
+     Testing MicroLogging
+Status `/tmp/jl_4Ds2H2/Project.toml`
+  [cecf6091] MicroLogging v0.4.0
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [8dfed614] Test
+Status `/tmp/jl_4Ds2H2/Manifest.toml`
+  [cecf6091] MicroLogging v0.4.0
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+ConsoleLogger: Test Failed at /home/pkgeval/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:169
+  Expression: startswith(genmsg("msg", exception = (DivideError(), bt)), "┌ PREFIX msg\n│   exception =\n│    DivideError: integer division error\n│    Stacktrace:\n│     [1] func1() at")
+   Evaluated: startswith("┌ PREFIX msg\n│   exception =\n│    DivideError: integer division error\n│    Stacktrace:\n│      [1] func1()\n│        @ Main ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:5\n│      [2] macro expansion\n│        @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:168 [inlined]\n│      [3] macro expansion\n│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]\n│      [4] top-level scope\n│        @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:9\n│      [5] include(fname::String)\n│        @ Base.MainInclude ./client.jl:444\n│      [6] macro expansion\n│        @ ~/.julia/packages/MicroLogging/sNmzu/test/runtests.jl:14 [inlined]\n│      [7] macro expansion\n│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]\n│      [8] top-level scope\n│        @ ~/.julia/packages/MicroLogging/sNmzu/test/runtests.jl:13\n│      [9] include(fname::String)\n│        @ Base.MainInclude ./client.jl:444\n│     [10] top-level scope\n│        @ none:6\n│     [11] eval(m::Module, e::Any)\n│        @ Core ./boot.jl:360\n│     [12] exec_options(opts::Base.JLOptions)\n│        @ Base ./client.jl:261\n│     [13] _start()\n│        @ Base ./client.jl:485\n└ SUFFIX\n", "┌ PREFIX msg\n│   exception =\n│    DivideError: integer division error\n│    Stacktrace:\n│     [1] func1() at")
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:169 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] top-level scope
+   @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:9
+Limiting large data structures: Test Failed at /home/pkgeval/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:179
+  Expression: genmsg("msg", a = fill(1.00001, 100, 100), b = fill(2.00002, 10, 10)) == replace("┌ PREFIX msg\n│   a =\n│    100×100 Array{Float64,2}:\n│     1.00001  1.00001  1.00001  1.00001  …  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     ⋮                                   ⋱                           EOL\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│   b =\n│    10×10 Array{Float64,2}:\n│     2.00002  2.00002  2.00002  2.00002  …  2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     ⋮                                   ⋱                           EOL\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n└ SUFFIX\n", if VERSION < v"1.4"
+                "EOL"
+            else
+                "       EOL"
+            end => "")
+   Evaluated: "┌ PREFIX msg\n│   a =\n│    100×100 Matrix{Float64}:\n│     1.00001  1.00001  1.00001  1.00001  …  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     ⋮                                   ⋱                    \n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│   b =\n│    10×10 Matrix{Float64}:\n│     2.00002  2.00002  2.00002  2.00002  …  2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     ⋮                                   ⋱                    \n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n└ SUFFIX\n" == "┌ PREFIX msg\n│   a =\n│    100×100 Array{Float64,2}:\n│     1.00001  1.00001  1.00001  1.00001  …  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     ⋮                                   ⋱                    \n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001     1.00001  1.00001  1.00001\n│   b =\n│    10×10 Array{Float64,2}:\n│     2.00002  2.00002  2.00002  2.00002  …  2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     ⋮                                   ⋱                    \n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n│     2.00002  2.00002  2.00002  2.00002     2.00002  2.00002  2.00002\n└ SUFFIX\n"
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:179 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] macro expansion
+   @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:179 [inlined]
+ [4] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [5] top-level scope
+   @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:9
+Limiting large data structures: Test Failed at /home/pkgeval/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:201
+  Expression: genmsg("msg", a = fill(1.00001, 10, 10), show_limited = false) == "┌ PREFIX msg\n│   a =\n│    10×10 Array{Float64,2}:\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n└ SUFFIX\n"
+   Evaluated: "┌ PREFIX msg\n│   a =\n│    10×10 Matrix{Float64}:\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n└ SUFFIX\n" == "┌ PREFIX msg\n│   a =\n│    10×10 Array{Float64,2}:\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n│     1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001  1.00001\n└ SUFFIX\n"
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:201 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] macro expansion
+   @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:179 [inlined]
+ [4] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [5] top-level scope
+   @ ~/.julia/packages/MicroLogging/sNmzu/test/ConsoleLogger.jl:9
+Test Summary:                            | Pass  Fail  Total
+Logging                                  |   50     3     53
+  Logger configuration                   |    6            6
+  configure_logging implementations      |    4            4
+  disable_logging with parse_level       |    1            1
+  ConsoleLogger                          |   30     3     33
+    Default metadata formatting          |    8            8
+    Prefix and suffix layout             |    4            4
+    Metadata suffix, right justification |    7            7
+    Limiting large data structures       |          2      2
+  Sticky messages without ANSI codes     |    3            3
+  Sticky messages with ANSI codes        |    6            6
+ERROR: LoadError: Some tests did not pass: 50 passed, 3 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/MicroLogging/sNmzu/test/runtests.jl:11
+
+PkgEval failed: Package MicroLogging errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T10:33:25.693
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
+jl_task_get_next at /workspace/srcdir/src/partr.c:508
+
+CPU usage: 21.26s (18.66s user, 2.51s kernel)
+
+Network usage:
+- eth0: 29.361 KiB received, 4.277 KiB sent
+
+Raw statistics: {"read":"2020-10-28T10:33:26.324943346Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":21255677538,"percpu_usage":[1249810,10190553,61182476,0,103590328,1557980,336200,2096681,5953182,45614671,681775363,91936617,26899561,6210992,0,16141368,96350,14272335,10840964,1902641,37842395,2894471,25832050,3861841,197668704,112107765,84475767,0,0,0,102650,48313938,151473508,735292722,340976686,186984277,122987890,173923420,46466040,146233820,59808262,171764278,53117613,169099799,109167524,475533081,689160645,268705359,318944449,260811768,321236608,914022228,189425009,661804029,543190,232228760,299632378,581827271,665895268,365723368,10363102,312390842,104321999,227850248,9572614,598171,19637228,90329328,29697821,13313173,4572162,21584280,57639285,13579006,75436200,37887625,20884507,1896141,203498149,103081260,8907204,30024302,8640,16371816,0,933611,291354339,6578742,10470,85292612,5410590,5550942,15297264,1916701,15330,0,84384162,434818120,320428179,62766185,180720245,78925181,104568393,61616432,109623076,36995045,28995370,192922218,918847128,362013401,102398329,242766240,230759548,154392913,244518358,280140503,981228156,498117011,130831615,337306776,631828286,152304841,266935347,251601339,133197285,739823749,179936984,586424516],"usage_in_kernelmode":2510000000,"usage_in_usermode":18660000000},"system_cpu_usage":93567777420000000,"online_cpus":128,"throttling_data":{"periods":257,"throttled_periods":4,"throttled_time":993815168}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":212627456,"max_usage":401879040,"stats":{"active_anon":199245824,"active_file":24576,"cache":229376,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":40960,"inactive_file":8192,"mapped_file":0,"pgfault":370558,"pgmajfault":0,"pgpgin":175818,"pgpgout":127156,"rss":199090176,"rss_huge":0,"total_active_anon":199245824,"total_active_file":24576,"total_cache":229376,"total_dirty":0,"total_inactive_anon":40960,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":370558,"total_pgmajfault":0,"total_pgpgin":175818,"total_pgpgout":127156,"total_rss":199090176,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/MicroLogging-0ktj6DQS","id":"9bfc9d408ee17e6e0c9285112960f9adc0001ad7869a7dee17ea46b804397b74","networks":{"eth0":{"rx_bytes":30066,"rx_packets":76,"rx_errors":0,"rx_dropped":0,"tx_bytes":4380,"tx_packets":28,"tx_errors":0,"tx_dropped":0}}}
+

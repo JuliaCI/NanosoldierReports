@@ -1,0 +1,136 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:58:40.033
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:58:41.872
+#
+
+   Resolving package versions...
+   Installed Memcache ─ v0.3.1
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [2542163d] + Memcache v0.3.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [2542163d] + Memcache v0.3.1
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+
+
+################################################################################
+# Testing: 2020-10-28T11:58:43.923
+#
+
+
+     Testing Memcache
+Status `/tmp/jl_suqjNW/Project.toml`
+  [2542163d] Memcache v0.3.1
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+Status `/tmp/jl_suqjNW/Manifest.toml`
+  [2542163d] Memcache v0.3.1
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+     Testing Running tests...
+ERROR: LoadError: LoadError: IOError: connect: connection refused (ECONNREFUSED)
+Stacktrace:
+  [1] wait_connected(x::Sockets.TCPSocket)
+    @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:532
+  [2] connect(::Sockets.TCPSocket, ::String, ::Int64)
+    @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:567
+  [3] connect
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:552 [inlined]
+  [4] MemcacheClient
+    @ ~/.julia/packages/Memcache/EyftV/src/client.jl:8 [inlined]
+  [5] test_begin()
+    @ Main ~/.julia/packages/Memcache/EyftV/test/test.jl:5
+  [6] top-level scope
+    @ ~/.julia/packages/Memcache/EyftV/test/test.jl:104
+  [7] include(fname::String)
+    @ Base.MainInclude ./client.jl:444
+  [8] top-level scope
+    @ ~/.julia/packages/Memcache/EyftV/test/runtests.jl:6
+  [9] include(fname::String)
+    @ Base.MainInclude ./client.jl:444
+ [10] top-level scope
+    @ none:6
+in expression starting at /home/pkgeval/.julia/packages/Memcache/EyftV/test/test.jl:104
+in expression starting at /home/pkgeval/.julia/packages/Memcache/EyftV/test/runtests.jl:6
+
+PkgEval failed: Package Memcache errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:58:53.674
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
+jl_task_get_next at /workspace/srcdir/src/partr.c:508
+
+CPU usage: 12.34s (10.62s user, 1.78s kernel)
+
+Network usage:
+- eth0: 18.208 KiB received, 4.277 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:58:53.974949232Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":12341337559,"percpu_usage":[68630656,159840225,110828525,151453633,283110752,2535720,20550998,0,13538237,77988941,539218094,115704477,244641606,7044812,110677725,1923522,1695771187,34764795,572249557,196918420,38408357,123272298,687111324,91032945,9468424,22354979,32891221,0,0,122913449,1643471,171727819,2409131,3925202,0,159281,46471199,7276112,100080,1436460,189574495,32567683,6929814,62727587,3760742,2248621,1931310,0,5531561,280360,0,515480,123275840,107137623,78792649,182563263,0,0,0,0,81527882,0,8240,0,41787768,118108768,388280,1278831,582006961,0,0,24210,3361952,103208452,84773144,605747442,202529422,96021640,79634152,350306378,0,8178622,259735198,68070326,70177329,615397045,0,377387040,9759574,0,11230,0,379078123,209119977,71230389,167374458,88600,0,21521750,34542905,98340,193620,83812324,47040,12087035,99660239,0,0,18601517,62533895,510281,13213972,627310,0,119490,798390,138381032,29370,332863593,130625655,27545851,9421094,0,115888196,0,4073081,0,79989484],"usage_in_kernelmode":1780000000,"usage_in_usermode":10620000000},"system_cpu_usage":94218859300000000,"online_cpus":128,"throttling_data":{"periods":147,"throttled_periods":3,"throttled_time":695648165}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":211288064,"max_usage":400773120,"stats":{"active_anon":198660096,"active_file":4096,"cache":131072,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":12288,"inactive_file":8192,"mapped_file":0,"pgfault":213709,"pgmajfault":0,"pgpgin":158573,"pgpgout":110066,"rss":198553600,"rss_huge":0,"total_active_anon":198660096,"total_active_file":4096,"total_cache":131072,"total_dirty":0,"total_inactive_anon":12288,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":213709,"total_pgmajfault":0,"total_pgpgin":158573,"total_pgpgout":110066,"total_rss":198553600,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/Memcache-GzTN7FKu","id":"94f69df3f22b914642e3231b7f856f8a85d0cba7a6ac170d548e8cf4c3603c38","networks":{"eth0":{"rx_bytes":18645,"rx_packets":53,"rx_errors":0,"rx_dropped":1,"tx_bytes":4380,"tx_packets":28,"tx_errors":0,"tx_dropped":0}}}
+

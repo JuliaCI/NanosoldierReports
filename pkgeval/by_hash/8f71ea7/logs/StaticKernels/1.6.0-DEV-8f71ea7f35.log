@@ -1,0 +1,156 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:58:38.527
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:58:40.194
+#
+
+   Resolving package versions...
+   Installed StaticKernels ─ v0.5.1
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [4c63dfa8] + StaticKernels v0.5.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [4c63dfa8] + StaticKernels v0.5.1
+
+
+################################################################################
+# Testing: 2020-10-28T11:58:42.043
+#
+
+
+     Testing StaticKernels
+Status `/tmp/jl_SNAtu2/Project.toml`
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [4c63dfa8] StaticKernels v0.5.1
+  [8dfed614] Test
+Status `/tmp/jl_SNAtu2/Manifest.toml`
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [682c06a0] JSON v0.21.1
+  [69de0a69] Parsers v1.0.11
+  [4c63dfa8] StaticKernels v0.5.1
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [de0858da] Printf
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+     Testing Running tests...
+Test Summary: | Pass  Broken  Total
+consistency   |   45       1     46
+Test Summary:  | Pass  Total
+type stability |    7      7
+multiargument: Test Failed at /home/pkgeval/.julia/packages/StaticKernels/8FasK/test/runtests.jl:176
+  Expression: 0 == #= /home/pkgeval/.julia/packages/StaticKernels/8FasK/test/runtests.jl:176 =# @ballocated(map!($k, $b, $a, $a2))
+   Evaluated: 0 == 32
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/StaticKernels/8FasK/test/runtests.jl:176 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] macro expansion
+   @ ~/.julia/packages/StaticKernels/8FasK/test/runtests.jl:174 [inlined]
+ [4] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [5] top-level scope
+   @ ~/.julia/packages/StaticKernels/8FasK/test/runtests.jl:148
+Test Summary:                                        | Pass  Fail  Total
+memory allocations                                   |   20     1     21
+  map! StaticKernels.ExtensionNone()                 |    1            1
+  map! StaticKernels.ExtensionNothing()              |    1            1
+  map! StaticKernels.ExtensionReplicate()            |    1            1
+  map! StaticKernels.ExtensionCircular()             |    1            1
+  map! StaticKernels.ExtensionSymmetric()            |    1            1
+  map! StaticKernels.ExtensionConstant{Float64}(0.0) |    1            1
+  map! StaticKernels.ExtensionNone()                 |    1            1
+  sum StaticKernels.ExtensionNone()                  |    2            2
+  sum StaticKernels.ExtensionNothing()               |    2            2
+  sum StaticKernels.ExtensionReplicate()             |    2            2
+  sum StaticKernels.ExtensionCircular()              |    2            2
+  sum StaticKernels.ExtensionSymmetric()             |    2            2
+  sum StaticKernels.ExtensionConstant{Float64}(0.0)  |    2            2
+  multiargument                                      |    1     1      2
+ERROR: LoadError: Some tests did not pass: 20 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/StaticKernels/8FasK/test/runtests.jl:147
+
+PkgEval failed: Package StaticKernels errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:59:39.508
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
+
+CPU usage: 51.50s (45.14s user, 6.72s kernel)
+
+Network usage:
+- eth0: 165.180 KiB received, 12.259 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:59:39.511210369Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":51504589638,"percpu_usage":[1290489721,853781148,229228540,810358712,1232046757,1227025989,1143290692,935210441,1159787907,1481925858,592334606,917222516,577952050,1080798637,66599179,467061000,867195168,761422117,480334612,269595737,1318952999,418278738,337850748,564697808,771879450,839333825,429593653,430642545,236907185,742695058,72833258,478826993,80461052,240341374,93762501,15429575,37859035,15866877,36498494,23530,268608700,39189349,49165312,59285605,10984464,36973875,42665568,1806220,26302551,35556944,19806258,594940,458648735,242617664,88231186,123485843,278782050,492256286,74905720,75549089,147801601,19800,109163904,7524233,796262940,782172614,740976448,543409899,959774338,1321768300,1607260764,165993678,518183488,726290976,1311990611,653457788,516160873,935057932,69192959,509277555,642612301,1030717596,1447125566,123696618,405040962,147804691,442099660,335944821,202713739,649951758,136521008,450940211,504139914,879764040,1446030613,788493221,164717077,5210372,10687883,25979819,31368472,311442475,229956050,39703087,39691866,21963308,30726543,624088039,9621515,42898460,3312071,50458091,35560946,9426342,38287885,53126971,72284669,52991222,67701987,118621437,17821047,1925121,391092761,167756886,177054740,295622531,105373234,170966867],"usage_in_kernelmode":6720000000,"usage_in_usermode":45140000000},"system_cpu_usage":94224643770000000,"online_cpus":128,"throttling_data":{"periods":618,"throttled_periods":10,"throttled_time":1862971969}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":215953408,"max_usage":721514496,"stats":{"active_anon":198352896,"active_file":4096,"cache":3477504,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":765952,"inactive_file":8192,"mapped_file":0,"pgfault":828471,"pgmajfault":0,"pgpgin":316186,"pgpgout":267567,"rss":195665920,"rss_huge":0,"total_active_anon":198352896,"total_active_file":4096,"total_cache":3477504,"total_dirty":0,"total_inactive_anon":765952,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":828471,"total_pgmajfault":0,"total_pgpgin":316186,"total_pgpgout":267567,"total_rss":195665920,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/StaticKernels-g4JulKAo","id":"f1c68787a1d1dc94f8daf86a5748618ba360bcc62fd22c9c48c110db85930871","networks":{"eth0":{"rx_bytes":169144,"rx_packets":157,"rx_errors":0,"rx_dropped":2,"tx_bytes":12553,"tx_packets":89,"tx_errors":0,"tx_dropped":0}}}
+

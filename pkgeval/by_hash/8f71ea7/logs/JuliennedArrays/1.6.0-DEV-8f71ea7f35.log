@@ -1,0 +1,517 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:32:43.055
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:32:44.905
+#
+
+   Resolving package versions...
+   Installed JuliennedArrays ─ v0.2.2
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [5cadff95] + JuliennedArrays v0.2.2
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [5cadff95] + JuliennedArrays v0.2.2
+
+
+################################################################################
+# Testing: 2020-10-28T11:32:46.728
+#
+
+
+     Testing JuliennedArrays
+Status `/tmp/jl_fbVzRY/Project.toml`
+  [e30172f5] Documenter v0.25.3
+  [5cadff95] JuliennedArrays v0.2.2
+  [8dfed614] Test
+Status `/tmp/jl_fbVzRY/Manifest.toml`
+  [ffbed154] DocStringExtensions v0.8.3
+  [e30172f5] Documenter v0.25.3
+  [b5f81e59] IOCapture v0.1.0
+  [682c06a0] JSON v0.21.1
+  [5cadff95] JuliennedArrays v0.2.2
+  [69de0a69] Parsers v1.0.11
+  [0dad84c5] ArgTools
+  [56f22d72] Artifacts
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [f43a241f] Downloads
+  [b77e0a4c] InteractiveUtils
+  [b27032c2] LibCURL
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [fa267f1f] TOML
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+  [deac9b47] LibCURL_jll
+  [14a3606d] MozillaCACerts_jll
+     Testing Running tests...
+[ Info: SetupBuildDirectory: setting up build directory.
+[ Info: Doctest: running doctests.
+┌ Error: doctest failure in ~/.julia/packages/JuliennedArrays/furG7/src/JuliennedArrays.jl:103-129
+│ 
+│ ```jldoctest
+│ julia> using JuliennedArrays
+│ 
+│ julia> whole = [1 2; 3 4];
+│ 
+│ julia> slices = Slices(whole, False(), True())
+│ 2-element Slices{SubArray{Int64,1,Array{Int64,2},Tuple{Int64,Base.OneTo{Int64}},true},1,Array{Int64,2},Tuple{False,True}}:
+│  [1, 2]
+│  [3, 4]
+│ 
+│ julia> slices[1] == whole[1, :]
+│ true
+│ 
+│ julia> slices[1] = [2, 1];
+│ 
+│ julia> whole
+│ 2×2 Array{Int64,2}:
+│  2  1
+│  3  4
+│ 
+│ julia> larger = rand(5, 5, 5);
+│ 
+│ julia> larger_slices = Slices(larger, True(), False(), False());
+│ 
+│ julia> size(first(larger_slices))
+│ (5,)
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ slices = Slices(whole, False(), True())
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Slices{SubArray{Int64, 1, Matrix{Int64}, Tuple{Int64, Base.OneTo{Int64}}, true}, 1, Matrix{Int64}, Tuple{False, True}}:
+│  [1, 2]
+│  [3, 4]
+│ 
+│ Expected output:
+│ 
+│ 2-element Slices{SubArray{Int64,1,Array{Int64,2},Tuple{Int64,Base.OneTo{Int64}},true},1,Array{Int64,2},Tuple{False,True}}:
+│  [1, 2]
+│  [3, 4]
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Slices{SubArray{Int64,1,Array{Int64,2},Tuple{Int64,Base.OneTo{Int64}},true},1,Array{Int64,2},Tuple{False,True}}:
+│     Slices{SubArray{Int64, 1, Matrix{Int64}, Tuple{Int64, Base.OneTo{Int64}}, true}, 1, Matrix{Int64}, Tuple{False, True}}:
+│     [1, 2]
+│     [3, 4]
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/JuliennedArrays/furG7/src/JuliennedArrays.jl:103-129
+│ 
+│ ```jldoctest
+│ julia> using JuliennedArrays
+│ 
+│ julia> whole = [1 2; 3 4];
+│ 
+│ julia> slices = Slices(whole, False(), True())
+│ 2-element Slices{SubArray{Int64,1,Array{Int64,2},Tuple{Int64,Base.OneTo{Int64}},true},1,Array{Int64,2},Tuple{False,True}}:
+│  [1, 2]
+│  [3, 4]
+│ 
+│ julia> slices[1] == whole[1, :]
+│ true
+│ 
+│ julia> slices[1] = [2, 1];
+│ 
+│ julia> whole
+│ 2×2 Array{Int64,2}:
+│  2  1
+│  3  4
+│ 
+│ julia> larger = rand(5, 5, 5);
+│ 
+│ julia> larger_slices = Slices(larger, True(), False(), False());
+│ 
+│ julia> size(first(larger_slices))
+│ (5,)
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ whole
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Int64}:
+│  2  1
+│  3  4
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Int64,2}:
+│  2  1
+│  3  4
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Int64,2}:
+│     Matrix{Int64}:
+│     2  1
+│     3  4
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/JuliennedArrays/furG7/src/JuliennedArrays.jl:145-162
+│ 
+│ ```jldoctest
+│ julia> using JuliennedArrays
+│ 
+│ julia> input = reshape(1:8, 2, 2, 2)
+│ 2×2×2 reshape(::UnitRange{Int64}, 2, 2, 2) with eltype Int64:
+│ [:, :, 1] =
+│  1  3
+│  2  4
+│ 
+│ [:, :, 2] =
+│  5  7
+│  6  8
+│ 
+│ julia> Slices(input, 1, 3)
+│ 2-element Slices{SubArray{Int64,2,Base.ReshapedArray{Int64,3,UnitRange{Int64},Tuple{}},Tuple{Base.OneTo{Int64},Int64,Base.OneTo{Int64}},false},1,Base.ReshapedArray{Int64,3,UnitRange{Int64},Tuple{}},Tuple{True,False,True}}:
+│  [1 5; 2 6]
+│  [3 7; 4 8]
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Slices(input, 1, 3)
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Slices{SubArray{Int64, 2, Base.ReshapedArray{Int64, 3, UnitRange{Int64}, Tuple{}}, Tuple{Base.OneTo{Int64}, Int64, Base.OneTo{Int64}}, false}, 1, Base.ReshapedArray{Int64, 3, UnitRange{Int64}, Tuple{}}, Tuple{True, False, True}}:
+│  [1 5; 2 6]
+│  [3 7; 4 8]
+│ 
+│ Expected output:
+│ 
+│ 2-element Slices{SubArray{Int64,2,Base.ReshapedArray{Int64,3,UnitRange{Int64},Tuple{}},Tuple{Base.OneTo{Int64},Int64,Base.OneTo{Int64}},false},1,Base.ReshapedArray{Int64,3,UnitRange{Int64},Tuple{}},Tuple{True,False,True}}:
+│  [1 5; 2 6]
+│  [3 7; 4 8]
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Slices{SubArray{Int64,2,Base.ReshapedArray{Int64,3,UnitRange{Int64},Tuple{}},Tuple{Base.OneTo{Int64},Int64,Base.OneTo{Int64}},false},1,Base.ReshapedArray{Int64,3,UnitRange{Int64},Tuple{}},Tuple{True,False,True}}:
+│     Slices{SubArray{Int64, 2, Base.ReshapedArray{Int64, 3, UnitRange{Int64}, Tuple{}}, Tuple{Base.OneTo{Int64}, Int64, Base.OneTo{Int64}}, false}, 1, Base.ReshapedArray{Int64, 3, UnitRange{Int64}, Tuple{}}, Tuple{True, False, True}}:
+│     [1 5; 2 6]
+│     [3 7; 4 8]
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/JuliennedArrays/furG7/src/JuliennedArrays.jl:208-227
+│ 
+│ ```jldoctest
+│ julia> using JuliennedArrays
+│ 
+│ julia> slices = [[1, 2], [3, 4]];
+│ 
+│ julia> aligned = Align(slices, False(), True())
+│ 2×2 Align{Int64,2,Array{Array{Int64,1},1},Tuple{False,True}}:
+│  1  2
+│  3  4
+│ 
+│ julia> aligned[1, :] == slices[1]
+│ true
+│ 
+│ julia> aligned[1, 1] = 0;
+│ 
+│ julia> slices
+│ 2-element Array{Array{Int64,1},1}:
+│  [0, 2]
+│  [3, 4]
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ aligned = Align(slices, False(), True())
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Align{Int64, 2, Vector{Vector{Int64}}, Tuple{False, True}}:
+│  1  2
+│  3  4
+│ 
+│ Expected output:
+│ 
+│ 2×2 Align{Int64,2,Array{Array{Int64,1},1},Tuple{False,True}}:
+│  1  2
+│  3  4
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Align{Int64,2,Array{Array{Int64,1},1},Tuple{False,True}}:
+│     Align{Int64, 2, Vector{Vector{Int64}}, Tuple{False, True}}:
+│     1  2
+│     3  4
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/JuliennedArrays/furG7/src/JuliennedArrays.jl:208-227
+│ 
+│ ```jldoctest
+│ julia> using JuliennedArrays
+│ 
+│ julia> slices = [[1, 2], [3, 4]];
+│ 
+│ julia> aligned = Align(slices, False(), True())
+│ 2×2 Align{Int64,2,Array{Array{Int64,1},1},Tuple{False,True}}:
+│  1  2
+│  3  4
+│ 
+│ julia> aligned[1, :] == slices[1]
+│ true
+│ 
+│ julia> aligned[1, 1] = 0;
+│ 
+│ julia> slices
+│ 2-element Array{Array{Int64,1},1}:
+│  [0, 2]
+│  [3, 4]
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ slices
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Vector{Vector{Int64}}:
+│  [0, 2]
+│  [3, 4]
+│ 
+│ Expected output:
+│ 
+│ 2-element Array{Array{Int64,1},1}:
+│  [0, 2]
+│  [3, 4]
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Array{Array{Int64,1},1}:
+│     Vector{Vector{Int64}}:
+│     [0, 2]
+│     [3, 4]
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/JuliennedArrays/furG7/src/JuliennedArrays.jl:238-265
+│ 
+│ ```jldoctest
+│ julia> using JuliennedArrays
+│ 
+│ julia> input = reshape(1:8, 2, 2, 2)
+│ 2×2×2 reshape(::UnitRange{Int64}, 2, 2, 2) with eltype Int64:
+│ [:, :, 1] =
+│  1  3
+│  2  4
+│ 
+│ [:, :, 2] =
+│  5  7
+│  6  8
+│ 
+│ julia> slices = collect(Slices(input, 1, 3))
+│ 2-element Array{SubArray{Int64,2,Base.ReshapedArray{Int64,3,UnitRange{Int64},Tuple{}},Tuple{Base.OneTo{Int64},Int64,Base.OneTo{Int64}},false},1}:
+│  [1 5; 2 6]
+│  [3 7; 4 8]
+│ 
+│ julia> Align(slices, 1, 3)
+│ 2×2×2 Align{Int64,3,Array{SubArray{Int64,2,Base.ReshapedArray{Int64,3,UnitRange{Int64},Tuple{}},Tuple{Base.OneTo{Int64},Int64,Base.OneTo{Int64}},false},1},Tuple{True,False,True}}:
+│ [:, :, 1] =
+│  1  3
+│  2  4
+│ 
+│ [:, :, 2] =
+│  5  7
+│  6  8
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ slices = collect(Slices(input, 1, 3))
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Vector{SubArray{Int64, 2, Base.ReshapedArray{Int64, 3, UnitRange{Int64}, Tuple{}}, Tuple{Base.OneTo{Int64}, Int64, Base.OneTo{Int64}}, false}}:
+│  [1 5; 2 6]
+│  [3 7; 4 8]
+│ 
+│ Expected output:
+│ 
+│ 2-element Array{SubArray{Int64,2,Base.ReshapedArray{Int64,3,UnitRange{Int64},Tuple{}},Tuple{Base.OneTo{Int64},Int64,Base.OneTo{Int64}},false},1}:
+│  [1 5; 2 6]
+│  [3 7; 4 8]
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Array{SubArray{Int64,2,Base.ReshapedArray{Int64,3,UnitRange{Int64},Tuple{}},Tuple{Base.OneTo{Int64},Int64,Base.OneTo{Int64}},false},1}:
+│     Vector{SubArray{Int64, 2, Base.ReshapedArray{Int64, 3, UnitRange{Int64}, Tuple{}}, Tuple{Base.OneTo{Int64}, Int64, Base.OneTo{Int64}}, false}}:
+│     [1 5; 2 6]
+│     [3 7; 4 8]
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/JuliennedArrays/furG7/src/JuliennedArrays.jl:238-265
+│ 
+│ ```jldoctest
+│ julia> using JuliennedArrays
+│ 
+│ julia> input = reshape(1:8, 2, 2, 2)
+│ 2×2×2 reshape(::UnitRange{Int64}, 2, 2, 2) with eltype Int64:
+│ [:, :, 1] =
+│  1  3
+│  2  4
+│ 
+│ [:, :, 2] =
+│  5  7
+│  6  8
+│ 
+│ julia> slices = collect(Slices(input, 1, 3))
+│ 2-element Array{SubArray{Int64,2,Base.ReshapedArray{Int64,3,UnitRange{Int64},Tuple{}},Tuple{Base.OneTo{Int64},Int64,Base.OneTo{Int64}},false},1}:
+│  [1 5; 2 6]
+│  [3 7; 4 8]
+│ 
+│ julia> Align(slices, 1, 3)
+│ 2×2×2 Align{Int64,3,Array{SubArray{Int64,2,Base.ReshapedArray{Int64,3,UnitRange{Int64},Tuple{}},Tuple{Base.OneTo{Int64},Int64,Base.OneTo{Int64}},false},1},Tuple{True,False,True}}:
+│ [:, :, 1] =
+│  1  3
+│  2  4
+│ 
+│ [:, :, 2] =
+│  5  7
+│  6  8
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Align(slices, 1, 3)
+│ 
+│ Evaluated output:
+│ 
+│ 2×2×2 Align{Int64, 3, Vector{SubArray{Int64, 2, Base.ReshapedArray{Int64, 3, UnitRange{Int64}, Tuple{}}, Tuple{Base.OneTo{Int64}, Int64, Base.OneTo{Int64}}, false}}, Tuple{True, False, True}}:
+│ [:, :, 1] =
+│  1  3
+│  2  4
+│ 
+│ [:, :, 2] =
+│  5  7
+│  6  8
+│ 
+│ Expected output:
+│ 
+│ 2×2×2 Align{Int64,3,Array{SubArray{Int64,2,Base.ReshapedArray{Int64,3,UnitRange{Int64},Tuple{}},Tuple{Base.OneTo{Int64},Int64,Base.OneTo{Int64}},false},1},Tuple{True,False,True}}:
+│ [:, :, 1] =
+│  1  3
+│  2  4
+│ 
+│ [:, :, 2] =
+│  5  7
+│  6  8
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2×2 Align{Int64,3,Array{SubArray{Int64,2,Base.ReshapedArray{Int64,3,UnitRange{Int64},Tuple{}},Tuple{Base.OneTo{Int64},Int64,Base.OneTo{Int64}},false},1},Tuple{True,False,True}}:
+│    Align{Int64, 3, Vector{SubArray{Int64, 2, Base.ReshapedArray{Int64, 3, UnitRange{Int64}, Tuple{}}, Tuple{Base.OneTo{Int64}, Int64, Base.OneTo{Int64}}, false}}, Tuple{True, False, True}}:
+│    [:, :, 1] =
+│     1  3
+│     2  4
+│    
+│    [:, :, 2] =
+│     5  7
+│     6  8
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+ERROR: LoadError: `makedocs` encountered a doctest error. Terminating build
+Stacktrace:
+ [1] error(s::String)
+   @ Base ./error.jl:33
+ [2] runner(#unused#::Type{Documenter.Builder.Doctest}, doc::Documenter.Documents.Document)
+   @ Documenter.Builder ~/.julia/packages/Documenter/3Y8Kg/src/Builder.jl:217
+ [3] dispatch(#unused#::Type{Documenter.Builder.DocumentPipeline}, x::Documenter.Documents.Document)
+   @ Documenter.Utilities.Selectors ~/.julia/packages/Documenter/3Y8Kg/src/Utilities/Selectors.jl:170
+ [4] #2
+   @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:245 [inlined]
+ [5] cd(f::Documenter.var"#2#3"{Documenter.Documents.Document}, dir::String)
+   @ Base.Filesystem ./file.jl:104
+ [6] #makedocs#1
+   @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:244 [inlined]
+ [7] top-level scope
+   @ ~/.julia/packages/JuliennedArrays/furG7/test/runtests.jl:4
+ [8] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [9] top-level scope
+   @ none:6
+in expression starting at /home/pkgeval/.julia/packages/JuliennedArrays/furG7/test/runtests.jl:4
+
+PkgEval failed: Package JuliennedArrays errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:33:31.599
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+
+CPU usage: 41.67s (35.85s user, 5.86s kernel)
+
+Network usage:
+- eth0: 616.209 KiB received, 18.183 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:33:31.602239184Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":41669872424,"percpu_usage":[392826768,162193044,234838112,43062821,11014675,22473298,32062851,4498761,32889224,148141260,1061645197,366025366,193613238,120774419,128768225,80640042,70707578,72044718,231840121,7763993,226496143,49156000,801294631,777719350,518391198,612388525,290236316,179326632,918128489,224501340,681978535,177795922,212488713,369014707,313074007,159502874,670640171,563359240,44383879,146368630,362780256,153734263,254268062,216906798,118237355,10283374,197661740,244709108,1689441213,717956051,890934225,1503247981,226356102,174224417,18524039,578881383,382625921,348588361,56499601,441951510,110238310,495625327,15368916,94243028,41590836,153675612,620163441,311158706,17488216,40682936,86512734,85175495,1087704386,272381633,220325567,713168770,443152780,245220006,157303870,197224450,231290301,295297468,176273173,311805762,138761997,548009509,368934261,261878144,191760795,159552591,70590096,408506150,243086389,862708098,794031644,752813564,60183244,1796198451,98117754,158945243,507323085,928659590,133331751,196087877,11138304,408736392,141405566,405256487,150620362,157204142,248928211,110328583,528959219,1425725278,795260758,853616857,27256581,33335283,477932073,49100579,48941468,45908707,128629992,17919428,153204109,110663845,208809655,86557816],"usage_in_kernelmode":5860000000,"usage_in_usermode":35850000000},"system_cpu_usage":94025574810000000,"online_cpus":128,"throttling_data":{"periods":493,"throttled_periods":13,"throttled_time":3728772540}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":294670336,"max_usage":776089600,"stats":{"active_anon":270995456,"active_file":0,"cache":7008256,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":2936832,"inactive_file":8192,"mapped_file":0,"pgfault":670077,"pgmajfault":0,"pgpgin":421524,"pgpgout":354630,"rss":266989568,"rss_huge":0,"total_active_anon":270995456,"total_active_file":0,"total_cache":7008256,"total_dirty":0,"total_inactive_anon":2936832,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":670077,"total_pgmajfault":0,"total_pgpgin":421524,"total_pgpgout":354630,"total_rss":266989568,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/JuliennedArrays-kfFjv5Jv","id":"a4b2568bdabda1e31589f60c2d71b0a7fedfcc42888f394957b49557d74115c4","networks":{"eth0":{"rx_bytes":630998,"rx_packets":190,"rx_errors":0,"rx_dropped":2,"tx_bytes":18619,"tx_packets":138,"tx_errors":0,"tx_dropped":0}}}
+

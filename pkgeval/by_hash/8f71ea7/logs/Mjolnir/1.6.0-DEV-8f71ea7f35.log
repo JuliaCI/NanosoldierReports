@@ -1,0 +1,327 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T10:55:16.118
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T10:55:18.342
+#
+
+   Resolving package versions...
+   Installed Mjolnir ──── v0.2.1
+   Installed MacroTools ─ v0.5.6
+   Installed IRTools ──── v0.4.1
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [1154507a] + Mjolnir v0.2.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [7869d1d1] + IRTools v0.4.1
+  [1914dd2f] + MacroTools v0.5.6
+  [1154507a] + Mjolnir v0.2.1
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [8dfed614] + Test
+
+
+################################################################################
+# Testing: 2020-10-28T10:55:22.766
+#
+
+
+     Testing Mjolnir
+Status `/tmp/jl_tc5ZG1/Project.toml`
+  [7869d1d1] IRTools v0.4.1
+  [1914dd2f] MacroTools v0.5.6
+  [1154507a] Mjolnir v0.2.1
+  [8dfed614] Test
+Status `/tmp/jl_tc5ZG1/Manifest.toml`
+  [7869d1d1] IRTools v0.4.1
+  [1914dd2f] MacroTools v0.5.6
+  [1154507a] Mjolnir v0.2.1
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+Trace: Error During Test at /home/pkgeval/.julia/packages/Mjolnir/7FUVN/test/trace.jl:7
+  Test threw exception
+  Expression: return_type(ir, Nothing, Int) == Int
+  Unrecognised expression return _2
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:33
+    [2] step!(inf::Inference)
+      @ Mjolnir ~/.julia/packages/Mjolnir/7FUVN/src/infer.jl:200
+    [3] infer!(inf::Inference)
+      @ Mjolnir ~/.julia/packages/Mjolnir/7FUVN/src/infer.jl:225
+    [4] return_type(::IRTools.Inner.IR, ::Any, ::Vararg{Any, N} where N)
+      @ Mjolnir ~/.julia/packages/Mjolnir/7FUVN/src/infer.jl:249
+    [5] top-level scope
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/trace.jl:7
+    [6] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+    [7] macro expansion
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/runtests.jl:6 [inlined]
+    [8] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+    [9] macro expansion
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/runtests.jl:6 [inlined]
+   [10] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [11] top-level scope
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/runtests.jl:5
+Trace: Error During Test at /home/pkgeval/.julia/packages/Mjolnir/7FUVN/test/trace.jl:13
+  Test threw exception
+  Expression: return_type(ir, Nothing, Const(1.0), Const(2)) == Const(3.0)
+  MethodError: no method matching widenconst(::Const{Float64})
+  Closest candidates are:
+    widenconst(!Matched::Core.Compiler.Conditional) at compiler/typelattice.jl:207
+    widenconst(!Matched::Core.Const) at compiler/typelattice.jl:208
+    widenconst(!Matched::Core.Compiler.MaybeUndef) at compiler/typelattice.jl:218
+    ...
+  Stacktrace:
+    [1] exprtype(ir::IRTools.Inner.IR, x::IRTools.Inner.Variable; typeof::Any)
+      @ IRTools.Inner ~/.julia/packages/IRTools/GVPoj/src/ir/utils.jl:74
+    [2] exprtype(ir::Any, x::Any)
+      @ Mjolnir ~/.julia/packages/Mjolnir/7FUVN/src/infer.jl:145
+    [3] _broadcast_getindex_evalf
+      @ ./broadcast.jl:648 [inlined]
+    [4] _broadcast_getindex
+      @ ./broadcast.jl:621 [inlined]
+    [5] getindex
+      @ ./broadcast.jl:575 [inlined]
+    [6] copyto_nonleaf!(dest::Vector{Const{typeof(+)}}, bc::Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{1}, Tuple{Base.OneTo{Int64}}, typeof(exprtype), Tuple{Tuple{IRTools.Inner.IR}, Base.Broadcast.Extruded{Vector{Any}, Tuple{Bool}, Tuple{Int64}}}}, iter::Base.OneTo{Int64}, state::Int64, count::Int64)
+      @ Base.Broadcast ./broadcast.jl:1074
+    [7] copy(bc::Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{1}, Tuple{Base.OneTo{Int64}}, typeof(exprtype), Tuple{Tuple{IRTools.Inner.IR}, Vector{Any}}})
+      @ Base.Broadcast ./broadcast.jl:928
+    [8] materialize
+      @ ./broadcast.jl:881 [inlined]
+    [9] infercall!(inf::Any, loc::Any, block::Any, ex::Any)
+      @ Mjolnir ~/.julia/packages/Mjolnir/7FUVN/src/infer.jl:149
+   [10] step!(inf::Inference)
+      @ Mjolnir ~/.julia/packages/Mjolnir/7FUVN/src/infer.jl:192
+   [11] infer!(inf::Inference)
+      @ Mjolnir ~/.julia/packages/Mjolnir/7FUVN/src/infer.jl:225
+   [12] return_type(::IRTools.Inner.IR, ::Any, ::Vararg{Any, N} where N)
+      @ Mjolnir ~/.julia/packages/Mjolnir/7FUVN/src/infer.jl:249
+   [13] top-level scope
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/trace.jl:13
+   [14] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [15] macro expansion
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/runtests.jl:6 [inlined]
+   [16] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [17] macro expansion
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/runtests.jl:6 [inlined]
+   [18] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [19] top-level scope
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/runtests.jl:5
+Trace: Error During Test at /home/pkgeval/.julia/packages/Mjolnir/7FUVN/test/trace.jl:15
+  Test threw exception
+  Expression: return_type(ir, Nothing, Int, Const(2.0)) == Float64
+  MethodError: no method matching widenconst(::Const{Float64})
+  Closest candidates are:
+    widenconst(!Matched::Core.Compiler.Conditional) at compiler/typelattice.jl:207
+    widenconst(!Matched::Core.Const) at compiler/typelattice.jl:208
+    widenconst(!Matched::Core.Compiler.MaybeUndef) at compiler/typelattice.jl:218
+    ...
+  Stacktrace:
+    [1] exprtype(ir::IRTools.Inner.IR, x::IRTools.Inner.Variable; typeof::Any)
+      @ IRTools.Inner ~/.julia/packages/IRTools/GVPoj/src/ir/utils.jl:74
+    [2] exprtype(ir::Any, x::Any)
+      @ Mjolnir ~/.julia/packages/Mjolnir/7FUVN/src/infer.jl:145
+    [3] _broadcast_getindex_evalf
+      @ ./broadcast.jl:648 [inlined]
+    [4] _broadcast_getindex
+      @ ./broadcast.jl:621 [inlined]
+    [5] getindex
+      @ ./broadcast.jl:575 [inlined]
+    [6] copyto_nonleaf!(dest::Vector{Any}, bc::Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{1}, Tuple{Base.OneTo{Int64}}, typeof(exprtype), Tuple{Tuple{IRTools.Inner.IR}, Base.Broadcast.Extruded{Vector{Any}, Tuple{Bool}, Tuple{Int64}}}}, iter::Base.OneTo{Int64}, state::Int64, count::Int64)
+      @ Base.Broadcast ./broadcast.jl:1074
+    [7] restart_copyto_nonleaf!(newdest::Vector{Any}, dest::Vector{Const{typeof(+)}}, bc::Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{1}, Tuple{Base.OneTo{Int64}}, typeof(exprtype), Tuple{Tuple{IRTools.Inner.IR}, Base.Broadcast.Extruded{Vector{Any}, Tuple{Bool}, Tuple{Int64}}}}, val::Type, I::Int64, iter::Base.OneTo{Int64}, state::Int64, count::Int64)
+      @ Base.Broadcast ./broadcast.jl:1065
+    [8] copyto_nonleaf!(dest::Vector{Const{typeof(+)}}, bc::Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{1}, Tuple{Base.OneTo{Int64}}, typeof(exprtype), Tuple{Tuple{IRTools.Inner.IR}, Base.Broadcast.Extruded{Vector{Any}, Tuple{Bool}, Tuple{Int64}}}}, iter::Base.OneTo{Int64}, state::Int64, count::Int64)
+      @ Base.Broadcast ./broadcast.jl:1081
+    [9] copy(bc::Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{1}, Tuple{Base.OneTo{Int64}}, typeof(exprtype), Tuple{Tuple{IRTools.Inner.IR}, Vector{Any}}})
+      @ Base.Broadcast ./broadcast.jl:928
+   [10] materialize
+      @ ./broadcast.jl:881 [inlined]
+   [11] infercall!(inf::Any, loc::Any, block::Any, ex::Any)
+      @ Mjolnir ~/.julia/packages/Mjolnir/7FUVN/src/infer.jl:149
+   [12] step!(inf::Inference)
+      @ Mjolnir ~/.julia/packages/Mjolnir/7FUVN/src/infer.jl:192
+   [13] infer!(inf::Inference)
+      @ Mjolnir ~/.julia/packages/Mjolnir/7FUVN/src/infer.jl:225
+   [14] return_type(::IRTools.Inner.IR, ::Any, ::Vararg{Any, N} where N)
+      @ Mjolnir ~/.julia/packages/Mjolnir/7FUVN/src/infer.jl:249
+   [15] top-level scope
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/trace.jl:15
+   [16] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [17] macro expansion
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/runtests.jl:6 [inlined]
+   [18] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [19] macro expansion
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/runtests.jl:6 [inlined]
+   [20] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [21] top-level scope
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/runtests.jl:5
+Trace: Error During Test at /home/pkgeval/.julia/packages/Mjolnir/7FUVN/test/runtests.jl:5
+  Got exception outside of a @test
+  LoadError: Tracing Error: deepcopy of Modules not supported
+  in Tuple{typeof(f), Int64, Int64}
+  Stacktrace:
+    [1] trace(::Any, ::Any, ::Vararg{Any, N} where N)
+      @ Mjolnir ~/.julia/packages/Mjolnir/7FUVN/src/trace.jl:268
+    [2] top-level scope
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/trace.jl:19
+    [3] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+    [4] macro expansion
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/runtests.jl:6 [inlined]
+    [5] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+    [6] macro expansion
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/runtests.jl:6 [inlined]
+    [7] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+    [8] top-level scope
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/runtests.jl:5
+    [9] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [10] top-level scope
+      @ none:6
+   [11] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [12] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [13] _start()
+      @ Base ./client.jl:485
+  in expression starting at /home/pkgeval/.julia/packages/Mjolnir/7FUVN/test/trace.jl:19
+  
+  caused by: deepcopy of Modules not supported
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:33
+    [2] deepcopy_internal(x::Module, stackdict::IdDict{Any, Any})
+      @ Base ./deepcopy.jl:33
+    [3] deepcopy_internal(x::Any, stackdict::IdDict{Any, Any})
+      @ Base ./deepcopy.jl:76
+    [4] _deepcopy_array_t(x::Array, T::Type, stackdict::IdDict{Any, Any})
+      @ Base ./deepcopy.jl:105
+    [5] deepcopy_internal(x::Vector{Core.LineInfoNode}, stackdict::IdDict{Any, Any})
+      @ Base ./deepcopy.jl:92
+    [6] deepcopy_internal(x::Any, stackdict::IdDict{Any, Any})
+      @ Base ./deepcopy.jl:76
+    [7] deepcopy(x::IRTools.Inner.IR)
+      @ Base ./deepcopy.jl:26
+    [8] getir(::Mjolnir.Trace, ::Any, ::Vararg{Any, N} where N)
+      @ Mjolnir ~/.julia/packages/Mjolnir/7FUVN/src/trace.jl:18
+    [9] tracecall!(::Mjolnir.Trace, ::Any, ::Any, ::Vararg{Any, N} where N)
+      @ Mjolnir ~/.julia/packages/Mjolnir/7FUVN/src/trace.jl:228
+   [10] trace(::Any, ::Any, ::Vararg{Any, N} where N)
+      @ Mjolnir ~/.julia/packages/Mjolnir/7FUVN/src/trace.jl:263
+   [11] top-level scope
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/trace.jl:19
+   [12] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [13] macro expansion
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/runtests.jl:6 [inlined]
+   [14] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [15] macro expansion
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/runtests.jl:6 [inlined]
+   [16] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [17] top-level scope
+      @ ~/.julia/packages/Mjolnir/7FUVN/test/runtests.jl:5
+   [18] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [19] top-level scope
+      @ none:6
+   [20] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [21] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [22] _start()
+      @ Base ./client.jl:485
+Test Summary: | Error  Total
+Mjolnir       |     4      4
+  Trace       |     4      4
+ERROR: LoadError: Some tests did not pass: 0 passed, 0 failed, 4 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/Mjolnir/7FUVN/test/runtests.jl:3
+
+PkgEval failed: Package Mjolnir errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T10:57:33.510
+#
+
+
+CPU usage: 46.68s (40.28s user, 6.31s kernel)
+
+Network usage:
+- eth0: 111.688 KiB received, 13.192 KiB sent
+
+Raw statistics: {"read":"2020-10-28T10:57:33.764316609Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":46682675558,"percpu_usage":[10147505,191737610,128097560,93698431,65862387,116465605,186110,27512040,27923949,140610114,56386512,67699328,130322272,427832941,143628035,137247374,6442283,23234269,42064187,62257235,211615223,251000772,69083489,60773386,445160,118037977,74399779,223711003,22756860,190837896,275753572,135198821,463025928,265999736,803992580,497824517,574283191,562791781,1160060654,595571870,846491979,476848500,453653383,251727621,692632674,324289443,606603507,844572863,332414546,319272800,563932719,295019785,370466524,374624306,604054002,523600225,436043851,1260249093,257588022,769964563,375720536,567336987,1039857254,346307919,121294199,65670769,37341281,471521041,141941201,34399583,127077170,133016865,253452510,29345992,5334142,10061834,236381855,159501503,109631448,60039696,61548417,70666229,56490725,87489686,73613071,509547224,204301970,51545345,111404804,111634505,151185369,39328556,74656829,165697906,75556781,15495295,888959575,209070904,379970669,447351238,449384258,734721748,338471987,908017476,202153216,3358944305,675090481,334819752,481468290,989858674,704529990,1091292436,696956068,470907661,339227796,602234117,396136377,274185808,1544562760,850131958,439572142,982997311,680733921,383815807,532759579,423100551,191497350,433784508],"usage_in_kernelmode":6310000000,"usage_in_usermode":40280000000},"system_cpu_usage":93751368870000000,"online_cpus":128,"throttling_data":{"periods":1154,"throttled_periods":9,"throttled_time":2692053883}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":230649856,"max_usage":664367104,"stats":{"active_anon":214384640,"active_file":0,"cache":1634304,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":237568,"inactive_file":8192,"mapped_file":0,"pgfault":1055745,"pgmajfault":0,"pgpgin":332169,"pgpgout":279769,"rss":212996096,"rss_huge":0,"total_active_anon":214384640,"total_active_file":0,"total_cache":1634304,"total_dirty":0,"total_inactive_anon":237568,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":1055745,"total_pgmajfault":0,"total_pgpgin":332169,"total_pgpgout":279769,"total_rss":212996096,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/Mjolnir-resubZvE","id":"58c806a00af05412f6dc9f0973e269c66ec8042e5fa3cefe329e523298142fa3","networks":{"eth0":{"rx_bytes":114369,"rx_packets":179,"rx_errors":0,"rx_dropped":5,"tx_bytes":13509,"tx_packets":92,"tx_errors":0,"tx_dropped":0}}}
+

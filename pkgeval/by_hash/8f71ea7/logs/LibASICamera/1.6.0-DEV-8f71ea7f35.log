@@ -1,0 +1,130 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T10:59:24.347
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T10:59:26.237
+#
+
+   Resolving package versions...
+   Installed LibASICamera ─ v0.1.0
+   Installed CEnum ──────── v0.2.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [d52fb188] + LibASICamera v0.1.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [fa961155] + CEnum v0.2.0
+  [d52fb188] + LibASICamera v0.1.0
+  [8f399da3] + Libdl
+    Building LibASICamera → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/655dc935ae8cfe92c07c1b414e629b774e0b42dc/build.log`
+
+
+################################################################################
+# Testing: 2020-10-28T10:59:39.042
+#
+
+
+     Testing LibASICamera
+Status `/tmp/jl_Q3H740/Project.toml`
+  [d52fb188] LibASICamera v0.1.0
+  [8dfed614] Test
+Status `/tmp/jl_Q3H740/Manifest.toml`
+  [fa961155] CEnum v0.2.0
+  [d52fb188] LibASICamera v0.1.0
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+┌ Warning: Assignment to `devices` in soft scope is ambiguous because a global variable by the same name exists: `devices` will be treated as a new local. Disambiguate by using `local devices` to suppress this warning or `global devices` to assign to the existing global variable.
+└ @ ~/.julia/packages/LibASICamera/KNqZ4/test/runtests.jl:6
+
+Connect the camera for testing and make sure you can access the camera
+    without being root by calling "sudo install asi.rules /lib/udev/rules.d"
+    from the lib subdir of the SDK and then relogging / rebooting.
+
+ERROR: LoadError: could not load library "/home/pkgeval/.julia/packages/LibASICamera/KNqZ4/src/../lib/libASICamera2"
+libusb-1.0.so.0: cannot open shared object file: No such file or directory
+Stacktrace:
+ [1] ASIGetNumOfConnectedCameras
+   @ ~/.julia/packages/LibASICamera/KNqZ4/src/LibASICamera_ccalls.jl:2 [inlined]
+ [2] get_num_connected_cameras
+   @ ~/.julia/packages/LibASICamera/KNqZ4/src/LibASICamera_highlevel.jl:58 [inlined]
+ [3] get_connected_devices()
+   @ LibASICamera ~/.julia/packages/LibASICamera/KNqZ4/src/LibASICamera_highlevel.jl:204
+ [4] top-level scope
+   @ ~/.julia/packages/LibASICamera/KNqZ4/test/runtests.jl:6
+ [5] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [6] top-level scope
+   @ none:6
+in expression starting at /home/pkgeval/.julia/packages/LibASICamera/KNqZ4/test/runtests.jl:5
+
+PkgEval failed: Package LibASICamera errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T10:59:52.437
+#
+
+
+CPU usage: 20.93s (17.81s user, 3.17s kernel)
+
+Network usage:
+- eth0: 8.981 MiB received, 166.657 KiB sent
+
+Raw statistics: {"read":"2020-10-28T10:59:53.171037569Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":36864},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":36864},{"major":259,"minor":0,"op":"Total","value":36864},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":36864},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":36864},{"major":253,"minor":2,"op":"Total","value":36864}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":9},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":9},{"major":259,"minor":0,"op":"Total","value":9},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":9},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":9},{"major":253,"minor":2,"op":"Total","value":9}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":20934818908,"percpu_usage":[0,44461867,46470352,8916863,47708158,27074491,8360404,37619555,5372913,292304721,58551685,41793738,6971213,11167564,86767922,108228700,594737270,163121876,40664185,23522070,32555413,110217334,74624259,52418841,88124661,340102697,176676099,50551359,32740643,5121192,450965304,6400963,428758762,245612713,209827024,425735508,273352779,507366772,378409429,36343225,183601136,147610749,940813687,214279048,22310137,79220152,48478807,408802201,92472036,179622691,79537241,5006821,53672251,59628924,35537684,1132889720,147642823,214197965,156605713,26497261,466389936,193253096,322528667,170403487,86981355,161473594,623769672,9692684,23493921,28017221,34768495,89756297,142963108,10064164,14936404,88302455,59366081,112242746,7274723,13942137,529962053,792480,78392231,188104264,491110,132588404,51292269,53680,19142358,39105456,82370853,83003755,88290238,42880090,15554495,62038776,964084472,165008834,66697698,154781971,665044168,81488571,39343513,158386034,92503173,312364408,118572186,12967195,44132528,62671212,19486960,81544923,98200111,108172594,247148941,13815065,309779117,119440747,305530,25084861,260149455,714486507,152337143,934021519,734369150,86979775,32892474,176727747],"usage_in_kernelmode":3170000000,"usage_in_usermode":17810000000},"system_cpu_usage":93769092090000000,"online_cpus":128,"throttling_data":{"periods":265,"throttled_periods":7,"throttled_time":1804914746}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":222085120,"max_usage":518189056,"stats":{"active_anon":202616832,"active_file":4096,"cache":2342912,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":1531904,"inactive_file":8192,"mapped_file":0,"pgfault":401496,"pgmajfault":0,"pgpgin":274832,"pgpgout":224988,"rss":201818112,"rss_huge":0,"total_active_anon":202616832,"total_active_file":4096,"total_cache":2342912,"total_dirty":0,"total_inactive_anon":1531904,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":401496,"total_pgmajfault":0,"total_pgpgin":274832,"total_pgpgout":224988,"total_rss":201818112,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/LibASICamera-BJVoFKew","id":"055c75dc84c2808e3077b955ba360cd79534c477abcfa5ae2f559b015e57b0e3","networks":{"eth0":{"rx_bytes":9417491,"rx_packets":6317,"rx_errors":0,"rx_dropped":1,"tx_bytes":170657,"tx_packets":2496,"tx_errors":0,"tx_dropped":0}}}
+

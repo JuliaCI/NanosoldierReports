@@ -1,0 +1,148 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:43:07.565
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:43:09.415
+#
+
+   Resolving package versions...
+   Installed AtomBase ─ v0.1.0
+   Installed XYZFiles ─ v0.1.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [a225628a] + XYZFiles v0.1.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [ccf6c0ac] + AtomBase v0.1.0
+  [a225628a] + XYZFiles v0.1.0
+
+
+################################################################################
+# Testing: 2020-10-28T11:43:11.593
+#
+
+
+     Testing XYZFiles
+Status `/tmp/jl_eV2fB2/Project.toml`
+  [ccf6c0ac] AtomBase v0.1.0
+  [a225628a] XYZFiles v0.1.0
+  [8dfed614] Test
+Status `/tmp/jl_eV2fB2/Manifest.toml`
+  [ccf6c0ac] AtomBase v0.1.0
+  [a225628a] XYZFiles v0.1.0
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+read: Error During Test at /home/pkgeval/.julia/packages/XYZFiles/wCH1B/test/runtests.jl:4
+  Got exception outside of a @test
+  SystemError: opening file "test_output.xyz": Permission denied
+  Stacktrace:
+    [1] systemerror(p::String, errno::Int32; extrainfo::Nothing)
+      @ Base ./error.jl:168
+    [2] #systemerror#61
+      @ ./error.jl:167 [inlined]
+    [3] systemerror
+      @ ./error.jl:167 [inlined]
+    [4] open(fname::String; lock::Bool, read::Nothing, write::Nothing, create::Nothing, truncate::Bool, append::Nothing)
+      @ Base ./iostream.jl:293
+    [5] open(fname::String, mode::String; lock::Bool)
+      @ Base ./iostream.jl:355
+    [6] open
+      @ ./iostream.jl:355 [inlined]
+    [7] write(file::String, allAtoms::Vector{AtomBase.Atoms})
+      @ XYZFiles ~/.julia/packages/XYZFiles/wCH1B/src/XYZFiles.jl:93
+    [8] macro expansion
+      @ ~/.julia/packages/XYZFiles/wCH1B/test/runtests.jl:17 [inlined]
+    [9] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [10] top-level scope
+      @ ~/.julia/packages/XYZFiles/wCH1B/test/runtests.jl:5
+   [11] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [12] top-level scope
+      @ none:6
+   [13] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [14] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [15] _start()
+      @ Base ./client.jl:485
+Test Summary: | Error  Total
+read          |     1      1
+ERROR: LoadError: Some tests did not pass: 0 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/XYZFiles/wCH1B/test/runtests.jl:4
+
+PkgEval failed: Package XYZFiles errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:43:25.223
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
+
+CPU usage: 15.09s (12.94s user, 2.54s kernel)
+
+Network usage:
+- eth0: 29.747 KiB received, 8.177 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:43:26.175735378Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":15091151123,"percpu_usage":[1385100,20586188,203008465,192642976,11211404,0,4218831,11236025,61215893,14787255,357666978,21647239,352631,28076832,0,16741498,71910908,259620,171142649,42910166,42174517,1458890,473244158,18393477,23965672,179100591,67318109,32931393,1455911,7212414,10723283,68719581,136649373,14338006,41178776,139698866,100744541,101579738,0,59909674,190743947,247103976,348569650,339997005,79025481,15044795,161097443,79750072,7805113,429339337,43679017,181810393,19723599,361320237,589861494,8376103,356571835,443390510,63799727,50620273,40554346,475880709,147009728,153700598,4583620,123021550,42512748,56789992,0,23922931,0,15020556,41718297,623200,111003365,64309014,6357533,21086688,0,1022810,6323403,49240,31333482,10710,14466366,1080350,0,0,52114012,56502214,38595957,45217018,0,0,5361582,47466922,45928669,212955616,55966152,49536550,19664448,414330358,139169934,43311627,608858053,22795639,24008618,538917823,260620206,353825958,405280,362938198,5927613,0,101612941,15340,91783708,10840945,251696998,73808152,170875448,487751555,273334802,23114246,88607405,1083951247,68693566,808837452],"usage_in_kernelmode":2540000000,"usage_in_usermode":12940000000},"system_cpu_usage":94101076000000000,"online_cpus":128,"throttling_data":{"periods":187,"throttled_periods":5,"throttled_time":757327520}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":217694208,"max_usage":502431744,"stats":{"active_anon":202977280,"active_file":0,"cache":126976,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":49152,"inactive_file":8192,"mapped_file":0,"pgfault":283048,"pgmajfault":0,"pgpgin":222487,"pgpgout":172918,"rss":202907648,"rss_huge":0,"total_active_anon":202977280,"total_active_file":0,"total_cache":126976,"total_dirty":0,"total_inactive_anon":49152,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":283048,"total_pgmajfault":0,"total_pgpgin":222487,"total_pgpgout":172918,"total_rss":202907648,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/XYZFiles-tdB9jdJM","id":"5bbd065398e99d4b5efc1bb12edae2bdf243b997b98ef1c10b592cb8c2db54c1","networks":{"eth0":{"rx_bytes":30461,"rx_packets":84,"rx_errors":0,"rx_dropped":0,"tx_bytes":8373,"tx_packets":51,"tx_errors":0,"tx_dropped":0}}}
+

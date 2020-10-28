@@ -1,0 +1,220 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:19:28.210
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:19:29.983
+#
+
+   Resolving package versions...
+   Installed Calculus ───── v0.5.1
+   Installed FEMBasis ───── v0.2.0
+   Installed HeatTransfer ─ v0.3.1
+   Installed FEMQuad ────── v0.3.2
+   Installed TimerOutputs ─ v0.5.6
+   Installed FEMBase ────── v0.3.1
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [4030f512] + HeatTransfer v0.3.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [49dc2e85] + Calculus v0.5.1
+  [fbcbbc08] + FEMBase v0.3.1
+  [353fb843] + FEMBasis v0.2.0
+  [be8e8821] + FEMQuad v0.3.2
+  [4030f512] + HeatTransfer v0.3.1
+  [a759f4b9] + TimerOutputs v0.5.6
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [de0858da] + Printf
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [8dfed614] + Test
+  [4ec0a83e] + Unicode
+
+
+################################################################################
+# Testing: 2020-10-28T11:19:33.295
+#
+
+
+     Testing HeatTransfer
+Status `/tmp/jl_n9Tk3Y/Project.toml`
+  [fbcbbc08] FEMBase v0.3.1
+  [4030f512] HeatTransfer v0.3.1
+  [37e2e46d] LinearAlgebra
+  [2f01184e] SparseArrays
+  [8dfed614] Test
+Status `/tmp/jl_n9Tk3Y/Manifest.toml`
+  [49dc2e85] Calculus v0.5.1
+  [fbcbbc08] FEMBase v0.3.1
+  [353fb843] FEMBasis v0.2.0
+  [be8e8821] FEMQuad v0.3.2
+  [4030f512] HeatTransfer v0.3.1
+  [a759f4b9] TimerOutputs v0.5.6
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [de0858da] Printf
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+  [4ec0a83e] Unicode
+     Testing Running tests...
+ERROR: LoadError: LoadError: Evaluation into the closed module `Calculus` breaks incremental compilation because the side effects will not be permanent. This is likely due to some other module mutating `Calculus` with `eval` during precompilation - don't do this.
+Stacktrace:
+  [1] eval
+    @ ./boot.jl:360 [inlined]
+  [2] simplify(ex::Expr)
+    @ Calculus ~/.julia/packages/Calculus/mbqhh/src/symbolic.jl:96
+  [3] calculate_interpolation_polynomials(p::Expr, V::Matrix{Float64})
+    @ FEMBasis ~/.julia/packages/FEMBasis/hrK6J/src/create_basis.jl:25
+  [4] create_basis(name::Symbol, description::String, X::Tuple{Tuple{Float64}, Tuple{Float64}}, p::Expr)
+    @ FEMBasis ~/.julia/packages/FEMBasis/hrK6J/src/create_basis.jl:48
+  [5] top-level scope
+    @ ~/.julia/packages/FEMBasis/hrK6J/src/lagrange_segments.jl:4
+  [6] include(mod::Module, _path::String)
+    @ Base ./Base.jl:389
+  [7] include(x::String)
+    @ FEMBasis ~/.julia/packages/FEMBasis/hrK6J/src/FEMBasis.jl:4
+  [8] top-level scope
+    @ ~/.julia/packages/FEMBasis/hrK6J/src/FEMBasis.jl:16
+  [9] include
+    @ ./Base.jl:389 [inlined]
+ [10] include_package_for_output(pkg::Base.PkgId, input::String, depot_path::Vector{String}, dl_load_path::Vector{String}, load_path::Vector{String}, concrete_deps::Vector{Pair{Base.PkgId, UInt64}}, source::String)
+    @ Base ./loading.jl:1201
+ [11] top-level scope
+    @ none:1
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+in expression starting at /home/pkgeval/.julia/packages/FEMBasis/hrK6J/src/lagrange_segments.jl:4
+in expression starting at /home/pkgeval/.julia/packages/FEMBasis/hrK6J/src/FEMBasis.jl:4
+ERROR: LoadError: Failed to precompile FEMBasis [353fb843-c566-51e6-ba49-78b3e3d5ebb5] to /home/pkgeval/.julia/compiled/v1.6/FEMBasis/jl_Tye1aY.
+Stacktrace:
+  [1] error(s::String)
+    @ Base ./error.jl:33
+  [2] compilecache(pkg::Base.PkgId, path::String, internal_stderr::Base.PipeEndpoint, internal_stdout::Base.PipeEndpoint)
+    @ Base ./loading.jl:1348
+  [3] compilecache(pkg::Base.PkgId, path::String)
+    @ Base ./loading.jl:1294
+  [4] _require(pkg::Base.PkgId)
+    @ Base ./loading.jl:1009
+  [5] require(uuidkey::Base.PkgId)
+    @ Base ./loading.jl:902
+  [6] require(into::Module, mod::Symbol)
+    @ Base ./loading.jl:889
+  [7] include
+    @ ./Base.jl:389 [inlined]
+  [8] include_package_for_output(pkg::Base.PkgId, input::String, depot_path::Vector{String}, dl_load_path::Vector{String}, load_path::Vector{String}, concrete_deps::Vector{Pair{Base.PkgId, UInt64}}, source::String)
+    @ Base ./loading.jl:1201
+  [9] top-level scope
+    @ none:1
+ [10] eval
+    @ ./boot.jl:360 [inlined]
+ [11] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [12] top-level scope
+    @ none:1
+in expression starting at /home/pkgeval/.julia/packages/FEMBase/qGDOl/src/FEMBase.jl:4
+ERROR: LoadError: Failed to precompile FEMBase [fbcbbc08-f1bf-5204-9233-b69f5d396135] to /home/pkgeval/.julia/compiled/v1.6/FEMBase/jl_m3SCYe.
+Stacktrace:
+ [1] error(s::String)
+   @ Base ./error.jl:33
+ [2] compilecache(pkg::Base.PkgId, path::String, internal_stderr::Base.PipeEndpoint, internal_stdout::Base.PipeEndpoint)
+   @ Base ./loading.jl:1348
+ [3] compilecache(pkg::Base.PkgId, path::String)
+   @ Base ./loading.jl:1294
+ [4] _require(pkg::Base.PkgId)
+   @ Base ./loading.jl:1009
+ [5] require(uuidkey::Base.PkgId)
+   @ Base ./loading.jl:902
+ [6] require(into::Module, mod::Symbol)
+   @ Base ./loading.jl:889
+ [7] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [8] top-level scope
+   @ none:6
+in expression starting at /home/pkgeval/.julia/packages/HeatTransfer/qBdHw/test/runtests.jl:4
+
+PkgEval failed: Package HeatTransfer errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:19:49.418
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+
+CPU usage: 18.60s (15.41s user, 3.36s kernel)
+
+Network usage:
+- eth0: 235.110 KiB received, 26.114 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:19:49.420646247Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":18597218465,"percpu_usage":[100552784,6128443,277911000,30096914,4188211,31830142,28418411,1039880,27140031,20966199,9792144,87403015,63013525,148237519,26240460,188445734,350230,1823391,0,0,31516061,23053530,137200885,437360,11883684,83884831,8966313,9984453,50549819,145460931,18148480,189681425,48164600,54025542,121407096,233330784,383606437,362020307,295629672,366802769,131638461,688256565,4167883,159788445,42556927,70614280,88027132,1666100,328679341,126069194,67138145,376211381,10790753,213962746,31205823,148465319,382736718,100337309,402331736,567976149,69878249,85815707,33131694,49916959,26617772,98663797,0,36945044,276303852,0,13348836,4204843,88029475,14896367,199468021,3460901,14005166,58028562,2715831,52054469,0,1063140,1753471,140571306,281854152,905721,89935649,90343117,38529445,182951535,12787894,101957941,2707751,68626238,92064257,88376702,1037130,177221410,183687184,138477223,131963804,136568213,283482845,665370,272150928,114229829,399757743,131460472,225539020,36622216,173036177,21766399,551304992,24003389,1869691099,557329740,138744706,231721694,181541249,45504718,382432305,950122755,426556401,168555656,98320921,326543337,251515291,71796966],"usage_in_kernelmode":3360000000,"usage_in_usermode":15410000000},"system_cpu_usage":93921164150000000,"online_cpus":128,"throttling_data":{"periods":220,"throttled_periods":9,"throttled_time":2496252020}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":222846976,"max_usage":658722816,"stats":{"active_anon":204046336,"active_file":0,"cache":1183744,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":831488,"inactive_file":8192,"mapped_file":0,"pgfault":371717,"pgmajfault":0,"pgpgin":275125,"pgpgout":225095,"rss":203739136,"rss_huge":0,"total_active_anon":204046336,"total_active_file":0,"total_cache":1183744,"total_dirty":0,"total_inactive_anon":831488,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":371717,"total_pgmajfault":0,"total_pgpgin":275125,"total_pgpgout":225095,"total_rss":203739136,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/HeatTransfer-yDRjs7e6","id":"3b495413b32c1296c7a735cce3e69ffd00dd2fed72baff0473feda83ed912813","networks":{"eth0":{"rx_bytes":240753,"rx_packets":194,"rx_errors":0,"rx_dropped":1,"tx_bytes":26741,"tx_packets":176,"tx_errors":0,"tx_dropped":0}}}
+

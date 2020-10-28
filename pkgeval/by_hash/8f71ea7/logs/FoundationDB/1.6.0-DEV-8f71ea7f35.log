@@ -1,0 +1,160 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:28:10.584
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:28:12.175
+#
+
+   Resolving package versions...
+   Installed FoundationDB ─ v0.1.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [d440507b] + FoundationDB v0.1.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [d440507b] + FoundationDB v0.1.0
+  [2a0f44e3] + Base64
+  [8ba89e20] + Distributed
+  [b77e0a4c] + InteractiveUtils
+  [8f399da3] + Libdl
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [8dfed614] + Test
+
+
+################################################################################
+# Testing: 2020-10-28T11:28:14.337
+#
+
+
+     Testing FoundationDB
+Status `/tmp/jl_jUiMD5/Project.toml`
+  [d440507b] FoundationDB v0.1.0
+  [8ba89e20] Distributed
+  [8f399da3] Libdl
+  [8dfed614] Test
+Status `/tmp/jl_jUiMD5/Manifest.toml`
+  [d440507b] FoundationDB v0.1.0
+  [2a0f44e3] Base64
+  [8ba89e20] Distributed
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+     Testing Running tests...
+Running tests from runtests_capi.jl
+============================================================
+ERROR: LoadError: InitError: Can not open libfdb_c shared library. Please make sure you have Foundation DB client libraries installed.
+Stacktrace:
+ [1] error(s::String)
+   @ Base ./error.jl:33
+ [2] __init__()
+   @ FoundationDB.CApi ~/.julia/packages/FoundationDB/vHKP7/src/capi/capi.jl:11
+ [3] _include_from_serialized(path::String, depmods::Vector{Any})
+   @ Base ./loading.jl:662
+ [4] _require_from_serialized(path::String)
+   @ Base ./loading.jl:715
+ [5] _require(pkg::Base.PkgId)
+   @ Base ./loading.jl:1019
+ [6] require(uuidkey::Base.PkgId)
+   @ Base ./loading.jl:902
+ [7] require(into::Module, mod::Symbol)
+   @ Base ./loading.jl:889
+during initialization of module CApi
+in expression starting at /home/pkgeval/.julia/packages/FoundationDB/vHKP7/test/runtests_capi.jl:1
+ERROR: LoadError: failed process: Process(`/opt/julia/bin/julia runtests_capi.jl`, ProcessExited(1)) [1]
+
+Stacktrace:
+ [1] pipeline_error
+   @ ./process.jl:525 [inlined]
+ [2] run(::Cmd; wait::Bool)
+   @ Base ./process.jl:440
+ [3] run
+   @ ./process.jl:438 [inlined]
+ [4] run_test(script::String)
+   @ Main ~/.julia/packages/FoundationDB/vHKP7/test/runtests.jl:11
+ [5] top-level scope
+   @ ~/.julia/packages/FoundationDB/vHKP7/test/runtests.jl:16
+ [6] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [7] top-level scope
+   @ none:6
+in expression starting at /home/pkgeval/.julia/packages/FoundationDB/vHKP7/test/runtests.jl:16
+
+PkgEval failed: Package FoundationDB errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:28:26.771
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
+jl_task_get_next at /workspace/srcdir/src/partr.c:508
+
+CPU usage: 14.86s (12.64s user, 2.17s kernel)
+
+Network usage:
+- eth0: 37.586 KiB received, 4.342 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:28:26.773834085Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":14856901697,"percpu_usage":[289421096,140707677,10703295,4982191,1121060,0,66102978,11244425,144807330,335300,0,35740,5904582,35206485,56523121,2627001,5009941,214734635,253580,0,101891159,0,0,2003000,217930,47550496,13880,176914630,65710,5922943,300360,0,21569408,102287509,35285224,11207204,32612222,312822415,273034568,394947231,55081333,158233856,197909329,22965979,174929051,168115946,84381035,96724180,51733291,15148466,752861,6126943,290370324,160530964,299886663,1397635921,1139831,2502091,270357567,39045485,90897608,242265398,1943461,186300956,0,272060,762739331,45747202,706651,6343464,117190,88233615,37025183,18643348,0,0,703300,123296879,68047707,372809896,17732787,21854939,34864404,16314226,23136777,524290,19810,304280,0,56734263,102030,417541826,33580,4437892,13205285,6725873,152995821,0,180832881,4854062,87571556,113251225,369050728,481833065,71978826,13359134,111419215,3309660,49082989,12422744,429002190,207897473,3517121,68681327,122024388,84798764,43401878,790198846,152692711,91150426,50919538,284760,162331922,8370,1113163404,137316772,55016785,1030970163],"usage_in_kernelmode":2170000000,"usage_in_usermode":12640000000},"system_cpu_usage":93986869410000000,"online_cpus":128,"throttling_data":{"periods":170,"throttled_periods":6,"throttled_time":1070056856}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":226447360,"max_usage":485826560,"stats":{"active_anon":213118976,"active_file":0,"cache":430080,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":57344,"inactive_file":8192,"mapped_file":0,"pgfault":287636,"pgmajfault":0,"pgpgin":208363,"pgpgout":156303,"rss":212807680,"rss_huge":0,"total_active_anon":213118976,"total_active_file":0,"total_cache":430080,"total_dirty":0,"total_inactive_anon":57344,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":287636,"total_pgmajfault":0,"total_pgpgin":208363,"total_pgpgout":156303,"total_rss":212807680,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/FoundationDB-GfjjEATA","id":"2aa05cb06c12f41b8d775efc962579088557d68432b1f12bfcbdb11230e0b75d","networks":{"eth0":{"rx_bytes":38488,"rx_packets":66,"rx_errors":0,"rx_dropped":1,"tx_bytes":4446,"tx_packets":29,"tx_errors":0,"tx_dropped":0}}}
+

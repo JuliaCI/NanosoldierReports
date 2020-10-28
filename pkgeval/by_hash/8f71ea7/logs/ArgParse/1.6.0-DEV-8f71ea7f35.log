@@ -1,0 +1,125 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T10:56:14.249
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T10:56:23.496
+#
+
+   Resolving package versions...
+   Installed ArgParse ─ v1.1.0
+   Installed TextWrap ─ v1.0.1
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [c7e460c6] + ArgParse v1.1.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [c7e460c6] + ArgParse v1.1.0
+  [b718987f] + TextWrap v1.0.1
+  [56ddb016] + Logging
+
+
+################################################################################
+# Testing: 2020-10-28T10:56:36.821
+#
+
+
+     Testing ArgParse
+Status `/tmp/jl_NAdQ2Y/Project.toml`
+  [c7e460c6] ArgParse v1.1.0
+  [8dfed614] Test
+Status `/tmp/jl_NAdQ2Y/Manifest.toml`
+  [c7e460c6] ArgParse v1.1.0
+  [b718987f] TextWrap v1.0.1
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+Test Summary: | Pass  Total
+test 01       |   32     32
+Test Summary: | Pass  Total
+test 02       |   85     85
+test 03: Test Failed at /home/pkgeval/.julia/packages/ArgParse/WUIf8/test/argparse_test03.jl:82
+  Expression: stringhelp(s) == "usage: $(basename(Base.source_path())) [--opt1] [--opt2] [-k] [-u] [--array ARRAY]\n                        [--custom CUSTOM] [--oddint ODDINT]\n                        [--collect C] [--awkward-option XY [XY...]]\n\nTest 3 for ArgParse.jl\n\noptional arguments:\n  --opt1                append O1\n  --opt2                append O2\n  -k                    provide the answer\n  -u                    provide the answer as floating point\n  --array ARRAY         create an array (type: Array{$(Int),1},\n                        default: $([7, 3, 2]))\n  --custom CUSTOM       the only accepted argument is \"custom\" (type:\n                        CustomType, default: CustomType())\n  --oddint ODDINT       an odd integer (type: $(Int), default: 1)\n  --collect C           collect things (type: $(Int))\n  --awkward-option XY [XY...]\n                        either X or Y; all XY's are stored in chunks\n                        (default: Any[Any[\"X\"]])\n\n"
+   Evaluated: "usage: argparse_test03.jl [--opt1] [--opt2] [-k] [-u] [--array ARRAY]\n                        [--custom CUSTOM] [--oddint ODDINT]\n                        [--collect C] [--awkward-option XY [XY...]]\n\nTest 3 for ArgParse.jl\n\noptional arguments:\n  --opt1                append O1\n  --opt2                append O2\n  -k                    provide the answer\n  -u                    provide the answer as floating point\n  --array ARRAY         create an array (type: Vector{Int64}, default:\n                        [7, 3, 2])\n  --custom CUSTOM       the only accepted argument is \"custom\" (type:\n                        CustomType, default: CustomType())\n  --oddint ODDINT       an odd integer (type: Int64, default: 1)\n  --collect C           collect things (type: Int64)\n  --awkward-option XY [XY...]\n                        either X or Y; all XY's are stored in chunks\n                        (default: Any[Any[\"X\"]])\n\n" == "usage: argparse_test03.jl [--opt1] [--opt2] [-k] [-u] [--array ARRAY]\n                        [--custom CUSTOM] [--oddint ODDINT]\n                        [--collect C] [--awkward-option XY [XY...]]\n\nTest 3 for ArgParse.jl\n\noptional arguments:\n  --opt1                append O1\n  --opt2                append O2\n  -k                    provide the answer\n  -u                    provide the answer as floating point\n  --array ARRAY         create an array (type: Array{Int64,1},\n                        default: [7, 3, 2])\n  --custom CUSTOM       the only accepted argument is \"custom\" (type:\n                        CustomType, default: CustomType())\n  --oddint ODDINT       an odd integer (type: Int64, default: 1)\n  --collect C           collect things (type: Int64)\n  --awkward-option XY [XY...]\n                        either X or Y; all XY's are stored in chunks\n                        (default: Any[Any[\"X\"]])\n\n"
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/ArgParse/WUIf8/test/argparse_test03.jl:82 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] top-level scope
+   @ ~/.julia/packages/ArgParse/WUIf8/test/argparse_test03.jl:9
+Test Summary: | Pass  Fail  Total
+test 03       |   31     1     32
+
+ERROR: LoadError: LoadError: Some tests did not pass: 31 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/ArgParse/WUIf8/test/argparse_test03.jl:7
+in expression starting at /home/pkgeval/.julia/packages/ArgParse/WUIf8/test/runtests.jl:1
+
+PkgEval failed: Package ArgParse errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T10:57:46.853
+#
+
+
+CPU usage: 35.38s (30.36s user, 5.04s kernel)
+
+Network usage:
+- eth0: 86.120 KiB received, 9.181 KiB sent
+
+Raw statistics: {"read":"2020-10-28T10:57:47.836475384Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":35381135499,"percpu_usage":[30200560,731136080,827273810,854002762,393605572,222770805,507618947,423525933,248597528,326777050,251371859,458238442,225180000,956851787,612187113,302604333,326580704,739230019,268182540,212524219,238369616,115138014,364637439,674835877,376540183,305112253,242948128,1249751062,226578814,790091649,350179096,1380659982,966580,301358700,51280592,75859269,72224168,8974293,21823130,79912972,9425132,27936961,4221002,92360116,31638803,135533037,82928765,114381475,2432302,130227413,263621325,15549938,20492639,13570086,31434442,39872047,72024419,489622825,17131549,5465942,58334475,901061,35953435,125815371,291011323,889652037,455519770,589477541,81810145,490096454,590060544,517054127,138332284,145001040,198732209,702437721,111267191,339294347,489917134,225137310,312754098,615612490,103434589,767915088,1474129663,618731866,1045635573,1026162300,552155072,330694964,477010991,126003277,420266516,508327404,302626194,734715827,9102385,960251,7406122,174912421,81056373,2431010,13535698,21733148,2010411,41721086,2509661,5713113,11310533,133632042,74541540,66746567,220442838,43604859,243704788,212392479,97969020,39564536,53715504,6971713,6815113,74280228,7354351,12930166,44233877,261713408,20337549,48229180],"usage_in_kernelmode":5040000000,"usage_in_usermode":30360000000},"system_cpu_usage":93753158740000000,"online_cpus":128,"throttling_data":{"periods":779,"throttled_periods":5,"throttled_time":1806347291}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":215945216,"max_usage":514105344,"stats":{"active_anon":200429568,"active_file":0,"cache":761856,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":266240,"inactive_file":8192,"mapped_file":0,"pgfault":735207,"pgmajfault":0,"pgpgin":240848,"pgpgout":191848,"rss":199942144,"rss_huge":0,"total_active_anon":200429568,"total_active_file":0,"total_cache":761856,"total_dirty":0,"total_inactive_anon":266240,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":735207,"total_pgmajfault":0,"total_pgpgin":240848,"total_pgpgout":191848,"total_rss":199942144,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/ArgParse-HtVwSJ0K","id":"023230114bd9e7f0b2a5c6be6dcc0e60e713b441796a7508d172c33619d70e3e","networks":{"eth0":{"rx_bytes":88187,"rx_packets":135,"rx_errors":0,"rx_dropped":4,"tx_bytes":9401,"tx_packets":68,"tx_errors":0,"tx_dropped":0}}}
+

@@ -1,0 +1,151 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:09:11.691
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:09:13.648
+#
+
+   Resolving package versions...
+   Installed Format ─ v1.2.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [1fa38f19] + Format v1.2.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [1fa38f19] + Format v1.2.0
+  [de0858da] + Printf
+  [4ec0a83e] + Unicode
+
+
+################################################################################
+# Testing: 2020-10-28T11:09:16.169
+#
+
+
+     Testing Format
+Status `/tmp/jl_0GqmRX/Project.toml`
+  [1fa38f19] Format v1.2.0
+  [de0858da] Printf
+  [9a3f8284] Random
+  [8dfed614] Test
+Status `/tmp/jl_0GqmRX/Manifest.toml`
+  [1fa38f19] Format v1.2.0
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [de0858da] Printf
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+  [4ec0a83e] Unicode
+     Testing Running tests...
+test cformat equality...
+cformat: Error During Test at /home/pkgeval/.julia/packages/Format/K3u3F/test/runtests.jl:6
+  Got exception outside of a @test
+  LoadError: UndefVarError: prec not defined
+  Stacktrace:
+    [1] _fmt(buf::Vector{UInt8}, pos::Int64, spec::Format.FmtSpec{Format.Fmt_f}, arg::Float64)
+      @ Format ~/.julia/packages/Format/K3u3F/src/printf.jl:469
+    [2] _cfmt(fspec::Format.FmtSpec{Format.Fmt_f}, x::Float64)
+      @ Format ~/.julia/packages/Format/K3u3F/src/cformat.jl:19
+    [3] cfmt(fspec::Format.FmtSpec{Format.Fmt_f}, x::Float64)
+      @ Format ~/.julia/packages/Format/K3u3F/src/cformat.jl:24
+    [4] cfmt(fmtstr::String, x::Float64)
+      @ Format ~/.julia/packages/Format/K3u3F/src/cformat.jl:25
+    [5] test_equality()
+      @ Main ~/.julia/packages/Format/K3u3F/test/cformat.jl:19
+    [6] top-level scope
+      @ ./timing.jl:192
+    [7] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+    [8] macro expansion
+      @ ~/.julia/packages/Format/K3u3F/test/runtests.jl:6 [inlined]
+    [9] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [10] top-level scope
+      @ ~/.julia/packages/Format/K3u3F/test/runtests.jl:6
+   [11] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [12] top-level scope
+      @ none:6
+   [13] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [14] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [15] _start()
+      @ Base ./client.jl:485
+  in expression starting at /home/pkgeval/.julia/packages/Format/K3u3F/test/cformat.jl:39
+Test Summary: | Error  Total
+cformat       |     1      1
+ERROR: LoadError: Some tests did not pass: 0 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/Format/K3u3F/test/runtests.jl:6
+
+PkgEval failed: Package Format errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:09:31.179
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+
+CPU usage: 16.89s (14.91s user, 2.08s kernel)
+
+Network usage:
+- eth0: 36.568 KiB received, 4.343 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:09:31.895954801Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":16889359566,"percpu_usage":[332587098,172565438,311972617,123897371,795451870,3095862,0,14094855,31592510,30772403,376780,374076561,202354500,211881954,8450,377397044,73909400,624666491,107120303,382151958,217194956,238383606,908171132,595737898,275491838,20697511,35130923,196179195,77984981,147725927,183412556,391600706,150381030,882590,35834865,1458591,186760,63755874,185626241,99634530,0,0,0,95590,0,54420800,16065427,11959295,87590735,118176908,306400854,208515126,50901853,0,87352725,195947247,948130,0,281060,41145655,47536250,1585560,42740366,13440,866194851,234629115,435943390,91893836,12490,29909062,56679162,69098877,318793858,1015450,43066098,44885428,242904396,643945569,86637306,60484486,466891454,14173155,313113621,367956743,14570806,37690895,140568783,109970945,102655420,626061,32136402,94450,95400669,475881716,347554316,400703926,20407858,26309223,1182660,5661713,124246467,0,18191088,7675333,11498946,10537614,0,0,1242911,70867128,51570039,10699244,305453895,174609485,110555607,195573739,30388952,11288086,10469214,209910,0,54671502,47450827,19086638,738030,80701703,265440,74601382],"usage_in_kernelmode":2080000000,"usage_in_usermode":14910000000},"system_cpu_usage":93842671250000000,"online_cpus":128,"throttling_data":{"periods":205,"throttled_periods":3,"throttled_time":1069327061}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":213352448,"max_usage":446644224,"stats":{"active_anon":200470528,"active_file":4096,"cache":430080,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":53248,"inactive_file":8192,"mapped_file":0,"pgfault":305631,"pgmajfault":0,"pgpgin":180424,"pgpgout":131465,"rss":200105984,"rss_huge":0,"total_active_anon":200470528,"total_active_file":4096,"total_cache":430080,"total_dirty":0,"total_inactive_anon":53248,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":305631,"total_pgmajfault":0,"total_pgpgin":180424,"total_pgpgout":131465,"total_rss":200105984,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/Format-GCrnXEZP","id":"fd7f84289a5fa25b9eb153f4277329404b5161ed62ab43238d45f58fb898ed25","networks":{"eth0":{"rx_bytes":37446,"rx_packets":48,"rx_errors":0,"rx_dropped":1,"tx_bytes":4447,"tx_packets":29,"tx_errors":0,"tx_dropped":0}}}
+

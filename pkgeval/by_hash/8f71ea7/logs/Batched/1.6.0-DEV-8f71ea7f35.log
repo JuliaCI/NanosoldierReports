@@ -1,0 +1,155 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T10:43:09.606
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T10:43:11.467
+#
+
+   Resolving package versions...
+   Installed CUDAapi ─ v0.6.3
+   Installed Batched ─ v0.1.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [1629540a] + Batched v0.1.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [1629540a] + Batched v0.1.0
+  [3895d2a7] + CUDAapi v0.6.3
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [8dfed614] + Test
+    Building Batched → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/65927ef98b6764f1eee73494c2f4296de1a44ca8/build.log`
+
+
+################################################################################
+# Testing: 2020-10-28T10:43:17.178
+#
+
+
+     Testing Batched
+Status `/tmp/jl_cucsk0/Project.toml`
+  [1629540a] Batched v0.1.0
+  [3895d2a7] CUDAapi v0.6.3
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_cucsk0/Manifest.toml`
+  [1629540a] Batched v0.1.0
+  [3895d2a7] CUDAapi v0.6.3
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+Testing batched_gemm! with Float32: Error During Test at /home/pkgeval/.julia/packages/Batched/yUbIZ/test/routines/gemm.jl:3
+  Got exception outside of a @test
+  UndefVarError: has_offset_axes not defined
+  Stacktrace:
+    [1] batched_gemm!(transA::Char, transB::Char, alpha::Float32, A::Array{Float32, 3}, B::Array{Float32, 3}, beta::Float32, C::Array{Float32, 3})
+      @ Batched ~/.julia/packages/Batched/yUbIZ/src/routines/blas.jl:88
+    [2] macro expansion
+      @ ~/.julia/packages/Batched/yUbIZ/test/routines/gemm.jl:11 [inlined]
+    [3] top-level scope
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219
+    [4] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+    [5] top-level scope
+      @ ~/.julia/packages/Batched/yUbIZ/test/runtests.jl:3
+    [6] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+    [7] top-level scope
+      @ none:6
+    [8] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+    [9] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [10] _start()
+      @ Base ./client.jl:485
+Test Summary:                      | Error  Total
+Testing batched_gemm! with Float32 |     1      1
+Test Summary:                      | Error  Total
+Testing batched_gemm! with Float32 |     1      1
+ERROR: LoadError: LoadError: Some tests did not pass: 0 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/Batched/yUbIZ/test/routines/gemm.jl:3
+in expression starting at /home/pkgeval/.julia/packages/Batched/yUbIZ/test/runtests.jl:3
+
+caused by: Some tests did not pass: 0 passed, 0 failed, 1 errored, 0 broken.
+
+PkgEval failed: Package Batched errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T10:43:29.150
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+
+CPU usage: 17.11s (14.52s user, 2.67s kernel)
+
+Network usage:
+- eth0: 44.743 KiB received, 8.223 KiB sent
+
+Raw statistics: {"read":"2020-10-28T10:43:29.288081476Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":36864},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":36864},{"major":259,"minor":0,"op":"Total","value":36864},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":36864},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":36864},{"major":253,"minor":2,"op":"Total","value":36864}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":9},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":9},{"major":259,"minor":0,"op":"Total","value":9},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":9},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":9},{"major":253,"minor":2,"op":"Total","value":9}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":17109548576,"percpu_usage":[37861658,92341029,37125765,840950,22862949,308690,1155140,35321814,24020370,31043373,229830,7138812,122708080,210196606,7759865,56336593,109142085,191192857,69592425,8216613,188859336,411893419,116057067,168013160,220986434,62323384,432700,10310,7640,1369981,19836118,3959192,134579942,262754102,422102405,6507752,33180873,75253869,119067685,85870784,3886012,327213553,199838881,111300587,220389326,25733991,146160250,70152649,5982462,80183622,194288187,4031661,622641809,276273263,295520560,57440173,13801155,104292105,119505767,247434653,443051739,26678893,713214726,119059360,41837717,21307269,647040,5638662,2945440,60565244,199910,2051562,53431700,77105351,2155970,431980,3286421,138170229,10437005,1330670,39319356,58438392,112830930,1964111,86693005,424998661,166482527,3289693,221899442,71121528,35146554,55667600,28588811,3043371,33083214,8997274,108232664,97914898,264054648,23878039,180062788,286080211,19295538,241860388,65906106,480184280,374356660,293593297,99392720,31888844,72178425,189153168,60199425,42745316,553237061,423131288,180315563,46831470,253699675,1245587588,459054696,444426979,627409182,194490522,52153820,5469402,75115097,18005138],"usage_in_kernelmode":2670000000,"usage_in_usermode":14520000000},"system_cpu_usage":93644134050000000,"online_cpus":128,"throttling_data":{"periods":204,"throttled_periods":7,"throttled_time":1919795686}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":210546688,"max_usage":422129664,"stats":{"active_anon":195297280,"active_file":4096,"cache":425984,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":110592,"inactive_file":8192,"mapped_file":0,"pgfault":345724,"pgmajfault":0,"pgpgin":243701,"pgpgout":195991,"rss":194994176,"rss_huge":0,"total_active_anon":195297280,"total_active_file":4096,"total_cache":425984,"total_dirty":0,"total_inactive_anon":110592,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":345724,"total_pgmajfault":0,"total_pgpgin":243701,"total_pgpgout":195991,"total_rss":194994176,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/Batched-7TR0jn30","id":"09a7daf8c9a96b9735b79bc9cc7eb31502d1c958c052bea1ce17d68f92941971","networks":{"eth0":{"rx_bytes":45817,"rx_packets":87,"rx_errors":0,"rx_dropped":0,"tx_bytes":8420,"tx_packets":51,"tx_errors":0,"tx_dropped":0}}}
+

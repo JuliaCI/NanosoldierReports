@@ -1,0 +1,173 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:20:14.179
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:20:16.067
+#
+
+   Resolving package versions...
+   Installed IPNets ─ v0.6.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [66763231] + IPNets v0.6.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [66763231] + IPNets v0.6.0
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [8dfed614] + Test
+
+
+################################################################################
+# Testing: 2020-10-28T11:20:18.134
+#
+
+
+     Testing IPNets
+Status `/tmp/jl_dR0T3X/Project.toml`
+  [66763231] IPNets v0.6.0
+  [6462fe0b] Sockets
+  [8dfed614] Test
+Status `/tmp/jl_dR0T3X/Manifest.toml`
+  [66763231] IPNets v0.6.0
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+     Testing Running tests...
+WARNING: could not import Base.start into IPNets
+WARNING: could not import Base.next into IPNets
+WARNING: could not import Base.done into IPNets
+IPv4: Error During Test at /home/pkgeval/.julia/packages/IPNets/KT92T/test/runtests.jl:50
+  Test threw exception
+  Expression: [x for x = n5] == [ip"1.2.3.4", ip"1.2.3.5", ip"1.2.3.6", ip"1.2.3.7"]
+  MethodError: no method matching iterate(::IPv4Net)
+  Closest candidates are:
+    iterate(!Matched::Union{LinRange, StepRangeLen}) at range.jl:651
+    iterate(!Matched::Union{LinRange, StepRangeLen}, !Matched::Int64) at range.jl:651
+    iterate(!Matched::T) where T<:Union{Base.KeySet{var"#s73", var"#s72"} where var"#s72"<:Dict where var"#s73", Base.ValueIterator{var"#s71"} where var"#s71"<:Dict} at dict.jl:693
+    ...
+  Stacktrace:
+   [1] iterate
+     @ ./generator.jl:44 [inlined]
+   [2] collect(itr::Base.Generator{IPv4Net, typeof(identity)})
+     @ Base ./array.jl:664
+   [3] macro expansion
+     @ ~/.julia/packages/IPNets/KT92T/test/runtests.jl:50 [inlined]
+   [4] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [5] macro expansion
+     @ ~/.julia/packages/IPNets/KT92T/test/runtests.jl:26 [inlined]
+   [6] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [7] top-level scope
+     @ ~/.julia/packages/IPNets/KT92T/test/runtests.jl:6
+IPv6: Error During Test at /home/pkgeval/.julia/packages/IPNets/KT92T/test/runtests.jl:88
+  Test threw exception
+  Expression: [x for x = o5] == [ip"2001:1::4", ip"2001:1::5", ip"2001:1::6", ip"2001:1::7"]
+  MethodError: no method matching iterate(::IPv6Net)
+  Closest candidates are:
+    iterate(!Matched::Union{LinRange, StepRangeLen}) at range.jl:651
+    iterate(!Matched::Union{LinRange, StepRangeLen}, !Matched::Int64) at range.jl:651
+    iterate(!Matched::T) where T<:Union{Base.KeySet{var"#s73", var"#s72"} where var"#s72"<:Dict where var"#s73", Base.ValueIterator{var"#s71"} where var"#s71"<:Dict} at dict.jl:693
+    ...
+  Stacktrace:
+   [1] iterate
+     @ ./generator.jl:44 [inlined]
+   [2] collect(itr::Base.Generator{IPv6Net, typeof(identity)})
+     @ Base ./array.jl:664
+   [3] macro expansion
+     @ ~/.julia/packages/IPNets/KT92T/test/runtests.jl:88 [inlined]
+   [4] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [5] macro expansion
+     @ ~/.julia/packages/IPNets/KT92T/test/runtests.jl:69 [inlined]
+   [6] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [7] top-level scope
+     @ ~/.julia/packages/IPNets/KT92T/test/runtests.jl:6
+Test Summary: | Pass  Error  Total
+IPNets        |   67      2     69
+  IPv4        |   37      1     38
+  IPv6        |   30      1     31
+ERROR: LoadError: Some tests did not pass: 67 passed, 0 failed, 2 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/IPNets/KT92T/test/runtests.jl:5
+
+PkgEval failed: Package IPNets errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:20:33.265
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
+
+CPU usage: 16.43s (14.46s user, 2.10s kernel)
+
+Network usage:
+- eth0: 17.797 KiB received, 4.214 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:20:33.484329058Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":16432330643,"percpu_usage":[17342126,255014141,245938112,86732515,70582978,178409613,740537708,1110320,787196164,855012581,327259914,367708503,115209856,13392175,283108493,86781835,0,182091909,50485149,427035359,90666468,32770453,325245336,105168331,480157653,25151001,49319161,1267068700,63266715,492005846,258561635,600219119,585421,43810538,5524053,20677277,38829655,316890,58215156,0,92918978,49557369,44517258,46999709,100932750,75519021,8099404,89034794,170039318,99836480,246837848,36433794,6226433,52273681,2948900,9940,20079588,15909397,0,31990960,5537073,4159313,60401405,0,84931536,0,12183454,60374665,234958042,107154832,118225518,84646163,553064840,231284771,78375170,248292902,241218115,98704381,0,198994372,37443346,143724386,16551337,317751506,18466045,116605352,160883427,369059216,103010819,231250762,50200337,104285143,148319358,112115695,212124884,13009786,2217011,9135535,30711181,0,0,10138885,60890614,31840,48537110,9591212,6072012,6158003,92445989,3427951,12555035,271583847,3598701,16266356,2125201,1190050,65200224,3422472,13642135,1607421,677158179,95276529,2981071,10879254,84784914,35576535,36735493,2407451],"usage_in_kernelmode":2100000000,"usage_in_usermode":14460000000},"system_cpu_usage":93926758750000000,"online_cpus":128,"throttling_data":{"periods":201,"throttled_periods":3,"throttled_time":676264162}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":229974016,"max_usage":393969664,"stats":{"active_anon":217055232,"active_file":8192,"cache":90112,"dirty":4096,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":20480,"inactive_file":8192,"mapped_file":0,"pgfault":296472,"pgmajfault":0,"pgpgin":160287,"pgpgout":107285,"rss":217006080,"rss_huge":0,"total_active_anon":217055232,"total_active_file":8192,"total_cache":90112,"total_dirty":4096,"total_inactive_anon":20480,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":296472,"total_pgmajfault":0,"total_pgpgin":160287,"total_pgpgout":107285,"total_rss":217006080,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/IPNets-WrYKPXhT","id":"2fd2be981141a72c74466562589fe8ca28fbd43bb98726fa418865d8c7d689b4","networks":{"eth0":{"rx_bytes":18224,"rx_packets":47,"rx_errors":0,"rx_dropped":1,"tx_bytes":4315,"tx_packets":27,"tx_errors":0,"tx_dropped":0}}}
+

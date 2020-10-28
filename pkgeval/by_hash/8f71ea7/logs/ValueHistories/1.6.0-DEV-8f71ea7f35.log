@@ -1,0 +1,134 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T10:51:02.651
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T10:51:04.618
+#
+
+   Resolving package versions...
+   Installed ValueHistories ───── v0.5.3
+   Installed OrderedCollections ─ v1.3.1
+   Installed RecipesBase ──────── v1.1.0
+   Installed DataStructures ───── v0.17.20
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [98cad3c8] + ValueHistories v0.5.3
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [864edb3b] + DataStructures v0.17.20
+  [bac558e1] + OrderedCollections v1.3.1
+  [3cdcf5f2] + RecipesBase v1.1.0
+  [98cad3c8] + ValueHistories v0.5.3
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [d6f4376e] + Markdown
+
+
+################################################################################
+# Testing: 2020-10-28T10:51:07.615
+#
+
+
+     Testing ValueHistories
+Status `/tmp/jl_8Lu6e0/Project.toml`
+  [864edb3b] DataStructures v0.17.20
+  [3cdcf5f2] RecipesBase v1.1.0
+  [98cad3c8] ValueHistories v0.5.3
+  [8dfed614] Test
+Status `/tmp/jl_8Lu6e0/Manifest.toml`
+  [864edb3b] DataStructures v0.17.20
+  [bac558e1] OrderedCollections v1.3.1
+  [3cdcf5f2] RecipesBase v1.1.0
+  [98cad3c8] ValueHistories v0.5.3
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+100 elements {Int64,Float64}
+History
+  * types: Int64, Float64
+  * length: 100
+History
+  * types: UInt8, String
+  * length: 100
+100 elements {Int64,Float64}
+QHistory
+    types: Int64, Float64
+    length: 100
+QHistory
+    types: UInt8, String
+    length: 100
+Test Summary:       | Pass  Total
+[->] tst_history.jl | 1033   1033
+MVHistory{History}
+  :myint2 => 5 elements {Int64,Int64}
+  :myf => 56 elements {Int64,Int64}
+  :myint => 5 elements {Int64,Int64}
+MVHistory{History}
+  :myint2 => 5 elements {Int64,Int64}
+  :myf => 56 elements {Int64,Int64}
+  :myint => 5 elements {Int64,Int64}
+Test Summary:         | Pass  Total
+[->] tst_mvhistory.jl |  548    548
+   --> Baseline: 100 loops that accumulates a Float64
+  0.013850 seconds (14.56 k allocations: 933.829 KiB, 99.82% compilation time)
+  0.000007 seconds (1 allocation: 16 bytes)
+   --> History: 100 loops tracking accumulator as Float64
+  0.018750 seconds (14.74 k allocations: 946.675 KiB, 99.76% compilation time)
+  0.000012 seconds (19 allocations: 4.453 KiB)
+   --> History: Converting result into arrays
+  0.000029 seconds (9 allocations: 288 bytes)
+  0.000004 seconds (9 allocations: 288 bytes)
+   --> QHistory: 100 loops tracking accumulator as Float64
+  0.023225 seconds (14.72 k allocations: 940.675 KiB, 99.89% compilation time)
+  0.000006 seconds (7 allocations: 208 bytes)
+   --> QHistory: Converting result into arrays
+  0.000189 seconds (913 allocations: 28.641 KiB)
+  0.000069 seconds (913 allocations: 28.641 KiB)
+   --> MVHistory: 100 loops tracking accumulator as Float64 and String
+  0.355137 seconds (405.04 k allocations: 20.939 MiB, 99.97% compilation time)
+  0.000166 seconds (330 allocations: 52.625 KiB)
+   --> MVHistory: Converting result into arrays
+  0.185497 seconds (54.75 k allocations: 3.277 MiB, 96.26% compilation time)
+  0.000167 seconds (523 allocations: 19.969 KiB)
+Test Summary:      |
+[->] bm_history.jl | No tests
+     Testing ValueHistories tests passed 
+
+PkgEval succeeded
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T10:51:25.614
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+
+CPU usage: 20.73s (17.20s user, 3.51s kernel)
+
+Network usage:
+- eth0: 253.580 KiB received, 16.856 KiB sent
+
+Raw statistics: {"read":"2020-10-28T10:51:25.643669977Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":20733863886,"percpu_usage":[331195626,91282697,131054011,42567738,18145737,9635926,150316620,33880364,131824697,666127495,30801881,215806885,100592053,415689358,284890894,382940426,88957500,1400662,62913223,104140988,61716972,232105005,293430001,50066018,816811586,278979853,92562538,452509701,62310284,88397584,530027215,3851892,86559817,236488446,242390799,216519309,20134720,76599221,16082056,495943636,130966794,0,44053180,26493771,399834269,69473788,324298009,320724362,102988502,750545944,254581282,177214819,51853562,526100,6901742,42116557,176131691,131686931,13851186,91855764,0,222276348,185033217,58983112,220004499,2530421,65958638,133047556,3711491,160008924,3086143,95658061,534541,735966582,114210085,83084779,611318495,544453151,198197302,81499103,584773048,76290650,269259519,28561231,115514894,69481010,436172752,205879674,256447045,813845217,142803006,45106728,68163377,489613858,25034460,26294900,129984051,125666382,113020043,140890869,24174149,46265621,70564788,23742158,23814810,134290964,7910473,50875592,16856067,119293018,84529995,223903760,213847114,24790040,168744357,204817470,372948080,25274530,51371861,104134460,25880,5040971,7354223,135918174,26233563,55917943,11286394,53822582],"usage_in_kernelmode":3510000000,"usage_in_usermode":17200000000},"system_cpu_usage":93704566430000000,"online_cpus":128,"throttling_data":{"periods":238,"throttled_periods":6,"throttled_time":1933659910}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":226123776,"max_usage":658358272,"stats":{"active_anon":208470016,"active_file":0,"cache":2170880,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":757760,"inactive_file":8192,"mapped_file":0,"pgfault":433839,"pgmajfault":0,"pgpgin":279135,"pgpgout":228044,"rss":207097856,"rss_huge":0,"total_active_anon":208470016,"total_active_file":0,"total_cache":2170880,"total_dirty":0,"total_inactive_anon":757760,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":433839,"total_pgmajfault":0,"total_pgpgin":279135,"total_pgpgout":228044,"total_rss":207097856,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/ValueHistories-wPZH88S3","id":"179431e0e39a2cf7406718595cdef76b1ce2a5c2e3a195c2c13049c44c36cc0a","networks":{"eth0":{"rx_bytes":259666,"rx_packets":156,"rx_errors":0,"rx_dropped":1,"tx_bytes":17261,"tx_packets":109,"tx_errors":0,"tx_dropped":0}}}
+

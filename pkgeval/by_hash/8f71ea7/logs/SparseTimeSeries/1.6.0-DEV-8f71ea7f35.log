@@ -1,0 +1,155 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:23:29.488
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:23:31.297
+#
+
+   Resolving package versions...
+   Installed JSON3 ──────────── v1.4.0
+   Installed SparseTimeSeries ─ v0.1.9
+   Installed Parsers ────────── v1.0.11
+   Installed StructTypes ────── v1.1.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [e40787dc] + SparseTimeSeries v0.1.9
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [0f8b85d8] + JSON3 v1.4.0
+  [69de0a69] + Parsers v1.0.11
+  [e40787dc] + SparseTimeSeries v0.1.9
+  [856f2bd8] + StructTypes v1.1.0
+  [ade2ca70] + Dates
+  [a63ad114] + Mmap
+  [de0858da] + Printf
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+
+
+################################################################################
+# Testing: 2020-10-28T11:23:34.254
+#
+
+
+     Testing SparseTimeSeries
+Status `/tmp/jl_CXsf30/Project.toml`
+  [0f8b85d8] JSON3 v1.4.0
+  [e40787dc] SparseTimeSeries v0.1.9
+  [8dfed614] Test
+Status `/tmp/jl_CXsf30/Manifest.toml`
+  [0f8b85d8] JSON3 v1.4.0
+  [69de0a69] Parsers v1.0.11
+  [e40787dc] SparseTimeSeries v0.1.9
+  [856f2bd8] StructTypes v1.1.0
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [de0858da] Printf
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+     Testing Running tests...
+Test Summary: | Pass  Total
+test helpers  |    2      2
+Test Summary:                      | Pass  Total
+test Event, TaggedEventConstructor |   14     14
+Test Summary:            | Pass  Total
+constructing EventSeries |   10     10
+Test Summary:                               | Pass  Total
+push!, append! and getindex, to EventSeries |    9      9
+Test Summary:            | Pass  Total
+fill forward EventSeries |   12     12
+TaggedEventSeries: Error During Test at /home/pkgeval/.julia/packages/SparseTimeSeries/25lgY/test/testset_1.jl:133
+  Test threw exception
+  Expression: value.(EventSeries(y)) == [(capital = 'A', small = nothing), (capital = 'A', small = 'a'), (capital = 'B', small = 'a'), (capital = 'B', small = 'b'), (capital = 'C', small = 'b'), (capital = 'C', small = 'c')]
+  TypeError: in typeassert, expected AbstractVector{var"#s819"} where var"#s819"<:Type, got a value of type Vector{NamedTuple{(:capital, :small), T} where T<:Tuple}
+  Stacktrace:
+   [1] copy
+     @ ./broadcast.jl:928 [inlined]
+   [2] materialize(bc::Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{1}, Nothing, typeof(value), Tuple{EventSeries{Real, Vector{Real}, NamedTuple{(:capital, :small), T} where T<:Tuple, Vector{NamedTuple{(:capital, :small), T} where T<:Tuple}}}})
+     @ Base.Broadcast ./broadcast.jl:881
+   [3] macro expansion
+     @ ~/.julia/packages/SparseTimeSeries/25lgY/test/testset_1.jl:133 [inlined]
+   [4] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [5] top-level scope
+     @ ~/.julia/packages/SparseTimeSeries/25lgY/test/testset_1.jl:123
+Test Summary:     | Pass  Error  Total
+TaggedEventSeries |    8      1      9
+ERROR: LoadError: LoadError: Some tests did not pass: 8 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/SparseTimeSeries/25lgY/test/testset_1.jl:122
+in expression starting at /home/pkgeval/.julia/packages/SparseTimeSeries/25lgY/test/runtests.jl:4
+
+PkgEval failed: Package SparseTimeSeries errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:24:12.656
+#
+
+
+CPU usage: 36.97s (32.22s user, 4.78s kernel)
+
+Network usage:
+- eth0: 151.424 KiB received, 17.673 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:24:12.66453502Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":36966908343,"percpu_usage":[645440798,898547778,430882949,120979329,880181394,185288192,354729300,223123230,612760725,407838742,354549361,605713599,81106301,65249145,423049758,195107230,345394357,173298062,553606299,223047050,502693893,287894319,170142221,620752159,324486301,925164327,279929818,548365360,106426954,1022817851,274146343,445107340,896610,44341307,103294260,14436465,21137828,353920433,2884321,73808840,1394881,9765424,28534508,15774556,14087835,46734669,26597051,32438315,78126811,70259847,287171065,57077092,8348863,60319595,440811600,57443460,213426176,391710017,416827486,128395941,8297373,552385918,733595241,53015321,166066248,1086163189,1426357657,142803076,468107851,972398091,302816249,391482109,970160200,502955528,640190197,1329842677,327595878,352325613,103884564,704333122,417770922,106805994,134526203,301447169,100723238,317005471,156474433,84930443,251772787,1123070601,161862326,1154233675,195389821,629244232,130632631,1178900470,988430,8267623,84125637,73931402,62585863,65047226,60768112,800620,106516401,25448260,242959635,209686854,5456672,86779872,1913981,51469291,216341967,79431122,100835642,63981996,17554900,271368137,57994386,20003308,69238228,117271577,77540473,181325403,76251071,197294799,293630496,72746700],"usage_in_kernelmode":4780000000,"usage_in_usermode":32220000000},"system_cpu_usage":93954621240000000,"online_cpus":128,"throttling_data":{"periods":441,"throttled_periods":9,"throttled_time":2082391080}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":227631104,"max_usage":735424512,"stats":{"active_anon":210657280,"active_file":0,"cache":3100672,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":323584,"inactive_file":8192,"mapped_file":0,"pgfault":636556,"pgmajfault":0,"pgpgin":406117,"pgpgout":354598,"rss":207921152,"rss_huge":0,"total_active_anon":210657280,"total_active_file":0,"total_cache":3100672,"total_dirty":0,"total_inactive_anon":323584,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":636556,"total_pgmajfault":0,"total_pgpgin":406117,"total_pgpgout":354598,"total_rss":207921152,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/SparseTimeSeries-pI99fN5q","id":"dfb1a8e59c2323618fcd32b108c10e6396ebaef225cbd3299280ffae390e681e","networks":{"eth0":{"rx_bytes":155058,"rx_packets":163,"rx_errors":0,"rx_dropped":1,"tx_bytes":18097,"tx_packets":124,"tx_errors":0,"tx_dropped":0}}}
+

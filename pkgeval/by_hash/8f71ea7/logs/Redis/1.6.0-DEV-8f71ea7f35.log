@@ -1,0 +1,216 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:22:40.921
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:22:42.811
+#
+
+   Resolving package versions...
+   Installed Compat ───────────── v3.23.0
+   Installed OrderedCollections ─ v1.3.1
+   Installed Redis ────────────── v1.0.0
+   Installed DataStructures ───── v0.18.8
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [0cf705f9] + Redis v1.0.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [34da2185] + Compat v3.23.0
+  [864edb3b] + DataStructures v0.18.8
+  [bac558e1] + OrderedCollections v1.3.1
+  [0cf705f9] + Redis v1.0.0
+  [0dad84c5] + ArgTools
+  [56f22d72] + Artifacts
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [8bb1440f] + DelimitedFiles
+  [8ba89e20] + Distributed
+  [f43a241f] + Downloads
+  [b77e0a4c] + InteractiveUtils
+  [b27032c2] + LibCURL
+  [76f85450] + LibGit2
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [a63ad114] + Mmap
+  [44cfe95a] + Pkg
+  [de0858da] + Printf
+  [3fa0cd96] + REPL
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [1a1011a3] + SharedArrays
+  [6462fe0b] + Sockets
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [fa267f1f] + TOML
+  [8dfed614] + Test
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+  [deac9b47] + LibCURL_jll
+  [14a3606d] + MozillaCACerts_jll
+
+
+################################################################################
+# Testing: 2020-10-28T11:22:45.527
+#
+
+
+     Testing Redis
+Status `/tmp/jl_gtHOkZ/Project.toml`
+  [864edb3b] DataStructures v0.18.8
+  [0cf705f9] Redis v1.0.0
+  [ade2ca70] Dates
+  [9a3f8284] Random
+  [6462fe0b] Sockets
+  [8dfed614] Test
+Status `/tmp/jl_gtHOkZ/Manifest.toml`
+  [34da2185] Compat v3.23.0
+  [864edb3b] DataStructures v0.18.8
+  [bac558e1] OrderedCollections v1.3.1
+  [0cf705f9] Redis v1.0.0
+  [0dad84c5] ArgTools
+  [56f22d72] Artifacts
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8bb1440f] DelimitedFiles
+  [8ba89e20] Distributed
+  [f43a241f] Downloads
+  [b77e0a4c] InteractiveUtils
+  [b27032c2] LibCURL
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [1a1011a3] SharedArrays
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [fa267f1f] TOML
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+  [deac9b47] LibCURL_jll
+  [14a3606d] MozillaCACerts_jll
+     Testing Running tests...
+Test Summary: | Pass  Total
+Flatten       |    6      6
+Test Summary: | Pass  Total
+Commands      |    1      1
+Test Summary: | Pass  Total
+Convert       |    8      8
+ERROR: LoadError: LoadError: ConnectionException("Failed to connect to Redis server")
+Stacktrace:
+ [1] RedisConnection(; host::String, port::Int64, password::String, db::Int64)
+   @ Redis ~/.julia/packages/Redis/KsyS4/src/connection.jl:55
+ [2] RedisConnection()
+   @ Redis ~/.julia/packages/Redis/KsyS4/src/connection.jl:50
+ [3] top-level scope
+   @ ~/.julia/packages/Redis/KsyS4/test/redis_tests.jl:1
+ [4] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [5] top-level scope
+   @ ~/.julia/packages/Redis/KsyS4/test/runtests.jl:9
+ [6] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [7] top-level scope
+   @ none:6
+in expression starting at /home/pkgeval/.julia/packages/Redis/KsyS4/test/redis_tests.jl:1
+in expression starting at /home/pkgeval/.julia/packages/Redis/KsyS4/test/runtests.jl:9
+
+caused by: IOError: connect: connection refused (ECONNREFUSED)
+Stacktrace:
+  [1] wait_connected(x::Sockets.TCPSocket)
+    @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:532
+  [2] connect(::Sockets.TCPSocket, ::String, ::Int64)
+    @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:567
+  [3] connect
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:552 [inlined]
+  [4] RedisConnection(; host::String, port::Int64, password::String, db::Int64)
+    @ Redis ~/.julia/packages/Redis/KsyS4/src/connection.jl:51
+  [5] RedisConnection()
+    @ Redis ~/.julia/packages/Redis/KsyS4/src/connection.jl:50
+  [6] top-level scope
+    @ ~/.julia/packages/Redis/KsyS4/test/redis_tests.jl:1
+  [7] include(fname::String)
+    @ Base.MainInclude ./client.jl:444
+  [8] top-level scope
+    @ ~/.julia/packages/Redis/KsyS4/test/runtests.jl:9
+  [9] include(fname::String)
+    @ Base.MainInclude ./client.jl:444
+ [10] top-level scope
+    @ none:6
+
+PkgEval failed: Package Redis errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:23:06.642
+#
+
+
+CPU usage: 23.65s (20.29s user, 3.45s kernel)
+
+Network usage:
+- eth0: 245.195 KiB received, 18.265 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:23:06.644458061Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":23653602024,"percpu_usage":[10280904,31700,14260,32314872,24089709,60848455,106431780,39304136,55130132,272600,37473807,16936629,22045598,162230,0,21740829,187126004,140450957,3150312,92326557,10432994,5706523,89391505,143295126,159333716,375245758,65431316,74231680,101472300,45247675,3106882,185110,318773029,126955240,325418401,7152842,399432491,100118310,381748444,107528790,54072013,65334626,54400852,50308341,662666267,77585122,1015409275,210634545,93663017,338865350,159548346,107012153,588571003,79636601,296255114,772789117,25410272,114242734,608103426,207953816,283509335,120981898,346631201,316686163,162554343,43788781,0,65666984,39895733,62290,108211814,199310,60067833,61813345,258740,58380334,24780,21643608,119120,27690671,300699083,64741404,70280968,198947188,38330,92052358,30369811,188677697,24026429,140660,180913042,8730,125597799,191364597,128860,14973436,794697192,48244238,599785380,103602636,329924541,155209903,372296359,48512222,102299261,19317036,20951260,131440231,1399930290,933935555,170126108,86189828,1844235806,32547803,399951192,396355990,559823483,180454993,265723106,350801250,326487807,330066642,208296173,168298186,173282407,114827405,188117773,323921700],"usage_in_kernelmode":3450000000,"usage_in_usermode":20290000000},"system_cpu_usage":93946229810000000,"online_cpus":128,"throttling_data":{"periods":266,"throttled_periods":9,"throttled_time":1718232400}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":252551168,"max_usage":642342912,"stats":{"active_anon":234311680,"active_file":8192,"cache":2711552,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":753664,"inactive_file":8192,"mapped_file":0,"pgfault":412892,"pgmajfault":0,"pgpgin":288475,"pgpgout":231080,"rss":232378368,"rss_huge":0,"total_active_anon":234311680,"total_active_file":8192,"total_cache":2711552,"total_dirty":0,"total_inactive_anon":753664,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":412892,"total_pgmajfault":0,"total_pgpgin":288475,"total_pgpgout":231080,"total_rss":232378368,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/Redis-zDW5FYjj","id":"80aa040de7eb10e8e46a7e096361760d39d24d14659ad7f2534ca1a1db19482a","networks":{"eth0":{"rx_bytes":251080,"rx_packets":163,"rx_errors":0,"rx_dropped":1,"tx_bytes":18703,"tx_packets":129,"tx_errors":0,"tx_dropped":0}}}
+

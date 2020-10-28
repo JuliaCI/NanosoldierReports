@@ -1,0 +1,186 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:01:16.239
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:01:18.203
+#
+
+   Resolving package versions...
+   Installed ReplMaker ─ v0.2.3
+   Installed Maxima ──── v0.1.2
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [e6386f5f] + Maxima v0.1.2
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [e6386f5f] + Maxima v0.1.2
+  [b873ce64] + ReplMaker v0.2.3
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [3fa0cd96] + REPL
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [8dfed614] + Test
+  [4ec0a83e] + Unicode
+
+
+################################################################################
+# Testing: 2020-10-28T11:01:20.206
+#
+
+
+     Testing Maxima
+Status `/tmp/jl_CMWpqY/Project.toml`
+  [e6386f5f] Maxima v0.1.2
+  [b873ce64] ReplMaker v0.2.3
+  [3fa0cd96] REPL
+  [8dfed614] Test
+Status `/tmp/jl_CMWpqY/Manifest.toml`
+  [e6386f5f] Maxima v0.1.2
+  [b873ce64] ReplMaker v0.2.3
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+  [4ec0a83e] Unicode
+     Testing Running tests...
+ERROR: LoadError: InitError: Looks like Maxima is either not installed or not in the path
+Stacktrace:
+  [1] error(s::String)
+    @ Base ./error.jl:33
+  [2] Load(; args::Cmd)
+    @ Maxima ~/.julia/packages/Maxima/bts0O/src/setup.jl:11
+  [3] Load()
+    @ Maxima ~/.julia/packages/Maxima/bts0O/src/setup.jl:8
+  [4] __init__()
+    @ Maxima ~/.julia/packages/Maxima/bts0O/src/setup.jl:5
+  [5] _include_from_serialized(path::String, depmods::Vector{Any})
+    @ Base ./loading.jl:662
+  [6] _require_from_serialized(path::String)
+    @ Base ./loading.jl:715
+  [7] _require(pkg::Base.PkgId)
+    @ Base ./loading.jl:1019
+  [8] require(uuidkey::Base.PkgId)
+    @ Base ./loading.jl:902
+  [9] require(into::Module, mod::Symbol)
+    @ Base ./loading.jl:889
+ [10] include(fname::String)
+    @ Base.MainInclude ./client.jl:444
+ [11] top-level scope
+    @ none:6
+during initialization of module Maxima
+in expression starting at /home/pkgeval/.julia/packages/Maxima/bts0O/test/runtests.jl:3
+
+caused by: IOError: could not spawn `maxima --version`: no such file or directory (ENOENT)
+Stacktrace:
+  [1] _spawn_primitive(file::String, cmd::Cmd, stdio::Vector{Any})
+    @ Base ./process.jl:99
+  [2] #626
+    @ ./process.jl:112 [inlined]
+  [3] setup_stdios(f::Base.var"#626#627"{Cmd}, stdios::Vector{Any})
+    @ Base ./process.jl:196
+  [4] _spawn
+    @ ./process.jl:111 [inlined]
+  [5] open(cmds::Cmd, stdio::Base.DevNull; write::Bool, read::Bool)
+    @ Base ./process.jl:370
+  [6] open
+    @ ./process.jl:361 [inlined]
+  [7] open(cmds::Cmd, mode::String, stdio::Base.DevNull)
+    @ Base ./process.jl:341
+  [8] read(cmd::Cmd)
+    @ Base ./process.jl:410
+  [9] read(cmd::Cmd, #unused#::Type{String})
+    @ Base ./process.jl:421
+ [10] Load(; args::Cmd)
+    @ Maxima ~/.julia/packages/Maxima/bts0O/src/setup.jl:9
+ [11] Load()
+    @ Maxima ~/.julia/packages/Maxima/bts0O/src/setup.jl:8
+ [12] __init__()
+    @ Maxima ~/.julia/packages/Maxima/bts0O/src/setup.jl:5
+ [13] _include_from_serialized(path::String, depmods::Vector{Any})
+    @ Base ./loading.jl:662
+ [14] _require_from_serialized(path::String)
+    @ Base ./loading.jl:715
+ [15] _require(pkg::Base.PkgId)
+    @ Base ./loading.jl:1019
+ [16] require(uuidkey::Base.PkgId)
+    @ Base ./loading.jl:902
+ [17] require(into::Module, mod::Symbol)
+    @ Base ./loading.jl:889
+ [18] include(fname::String)
+    @ Base.MainInclude ./client.jl:444
+ [19] top-level scope
+    @ none:6
+
+PkgEval failed: Package Maxima errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:01:33.704
+#
+
+
+CPU usage: 15.68s (13.13s user, 2.56s kernel)
+
+Network usage:
+- eth0: 49.946 KiB received, 8.393 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:01:33.706307228Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":15680321987,"percpu_usage":[31984133,100973830,38641907,96762128,43007348,627803126,89087125,387236994,262435713,41703387,12106633,363477536,272610880,122327993,475220591,44995827,127879944,89046354,652116363,149977412,199007055,39059956,93650907,300202806,1276621,257650,4792792,12667385,36672715,702509658,50097899,46581170,2866121,61223405,152542721,363850,524640,437410,38470286,422941,11982686,0,1987660,42582877,10734003,48913280,36876024,211196865,73374100,39342876,50946671,188604672,150448911,10438374,46754298,11485484,109902613,58034525,161863519,8353694,3389162,13386096,6831163,543399038,122431069,116933698,1099011811,42790890,126143823,100898671,75241622,401928469,167891201,2287721,789602936,159076393,5445942,11698005,47152101,206329113,340587115,102861569,249728868,76405678,108128975,185183954,485609834,85233444,175485389,49444040,11657446,342831107,42738887,65159576,32048324,57146331,2359360,86918927,47307629,0,26055167,386223123,211458235,84306815,51703900,3372691,8372152,274035350,19007708,0,16940,25336069,113257774,18020427,266260,148928300,98156562,158204323,63418085,77800241,75472571,13727213,48759772,19323207,62527377,24053170,32955444,11390],"usage_in_kernelmode":2560000000,"usage_in_usermode":13130000000},"system_cpu_usage":93781865430000000,"online_cpus":128,"throttling_data":{"periods":183,"throttled_periods":5,"throttled_time":1658806017}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":244678656,"max_usage":536719360,"stats":{"active_anon":228679680,"active_file":0,"cache":532480,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":81920,"inactive_file":8192,"mapped_file":0,"pgfault":315700,"pgmajfault":0,"pgpgin":199320,"pgpgout":143459,"rss":228274176,"rss_huge":0,"total_active_anon":228679680,"total_active_file":0,"total_cache":532480,"total_dirty":0,"total_inactive_anon":81920,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":315700,"total_pgmajfault":0,"total_pgpgin":199320,"total_pgpgout":143459,"total_rss":228274176,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/Maxima-Y8mqzgZ4","id":"fd2ed8fc5f61806a98201071e4364099cf929d20b8eacab4d481c362de74edf8","networks":{"eth0":{"rx_bytes":51145,"rx_packets":72,"rx_errors":0,"rx_dropped":1,"tx_bytes":8594,"tx_packets":54,"tx_errors":0,"tx_dropped":0}}}
+

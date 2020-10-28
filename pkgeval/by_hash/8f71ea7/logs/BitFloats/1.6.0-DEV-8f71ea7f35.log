@@ -1,0 +1,157 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T10:52:23.684
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T10:52:27.259
+#
+
+   Resolving package versions...
+   Installed BitIntegers ─ v0.2.4
+   Installed BitFloats ─── v0.0.3
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [15425d4b] + BitFloats v0.0.3
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [15425d4b] + BitFloats v0.0.3
+  [c3b6d118] + BitIntegers v0.2.4
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+
+
+################################################################################
+# Testing: 2020-10-28T10:52:29.622
+#
+
+
+     Testing BitFloats
+Status `/tmp/jl_0Ld7O3/Project.toml`
+  [15425d4b] BitFloats v0.0.3
+  [c3b6d118] BitIntegers v0.2.4
+  [9a3f8284] Random
+  [8dfed614] Test
+Status `/tmp/jl_0Ld7O3/Manifest.toml`
+  [15425d4b] BitFloats v0.0.3
+  [c3b6d118] BitIntegers v0.2.4
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+Test Summary: | Pass  Total
+definitions   |   14     14
+Test Summary: | Pass  Total
+traits        |   35     35
+Test Summary:          | Pass  Total
+exponent & significand |   84     84
+Test Summary: | Pass  Total
+nextfloat     |   10     10
+Test Summary: | Pass  Total
+issubnormal   |   10     10
+ldexp & eps: Error During Test at /home/pkgeval/.julia/packages/BitFloats/qTO7E/test/runtests.jl:126
+  Test threw exception
+  Expression: eps(F) == eps(F(1))
+  Module IR does not contain specified entry function
+  Stacktrace:
+   [1] abs
+     @ ~/.julia/packages/BitFloats/qTO7E/src/BitFloats.jl:590 [inlined]
+   [2] eps(x::Float80)
+     @ Base ./float.jl:644
+   [3] macro expansion
+     @ ~/.julia/packages/BitFloats/qTO7E/test/runtests.jl:126 [inlined]
+   [4] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [5] top-level scope
+     @ ~/.julia/packages/BitFloats/qTO7E/test/runtests.jl:117
+ldexp & eps: Error During Test at /home/pkgeval/.julia/packages/BitFloats/qTO7E/test/runtests.jl:126
+  Test threw exception
+  Expression: eps(F) == eps(F(1))
+  Module IR does not contain specified entry function
+  Stacktrace:
+   [1] abs
+     @ ~/.julia/packages/BitFloats/qTO7E/src/BitFloats.jl:590 [inlined]
+   [2] eps(x::Float128)
+     @ Base ./float.jl:644
+   [3] macro expansion
+     @ ~/.julia/packages/BitFloats/qTO7E/test/runtests.jl:126 [inlined]
+   [4] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [5] top-level scope
+     @ ~/.julia/packages/BitFloats/qTO7E/test/runtests.jl:117
+Test Summary: | Pass  Error  Total
+ldexp & eps   |    8      2     10
+ERROR: LoadError: Some tests did not pass: 8 passed, 0 failed, 2 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/BitFloats/qTO7E/test/runtests.jl:116
+
+PkgEval failed: Package BitFloats errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T10:52:46.861
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
+
+CPU usage: 19.41s (16.85s user, 2.63s kernel)
+
+Network usage:
+- eth0: 43.441 KiB received, 8.049 KiB sent
+
+Raw statistics: {"read":"2020-10-28T10:52:46.963584108Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":19410318688,"percpu_usage":[349115987,133414468,112424025,55635212,171750058,102568780,315022548,339062513,443812016,380450531,29556021,1642360068,109486805,279708261,63771225,660967445,202623753,172498222,150860463,272216247,319819080,700955631,312227094,266193111,186420106,198717699,221936289,35216781,309452805,119987115,146115041,407665243,10105685,35450734,16038207,223458891,98032669,1786751,21099958,78055882,61529297,4692471,51745220,1618421,4173142,21421699,35141803,186010135,728711,43918850,22742951,1497390,1574070,1303471,30624062,116140,1554120,47215829,0,84410938,142081329,13631246,0,9409514,86655005,53305459,126199722,27448381,252471671,289392951,312463276,570864532,569596555,192378353,105879954,268460996,726425281,982870763,61775015,176266407,214051836,49298317,30272873,159815544,805537597,19190688,251810049,142627938,322662901,64950446,181545682,357271198,214798777,7546243,105987288,102608784,47926958,161781024,39750,3993982,48322269,2271171,157750,57227282,47150102,539560,42962755,0,51012710,9171684,21738878,1100341,145336009,3358643,52501671,60480985,0,53483331,82649643,4592591,28609572,6025652,14959846,8102183,3540982,1826840,87846656,65997157],"usage_in_kernelmode":2630000000,"usage_in_usermode":16850000000},"system_cpu_usage":93714911860000000,"online_cpus":128,"throttling_data":{"periods":239,"throttled_periods":6,"throttled_time":1898429824}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":215023616,"max_usage":529342464,"stats":{"active_anon":200568832,"active_file":0,"cache":319488,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":45056,"inactive_file":8192,"mapped_file":0,"pgfault":413945,"pgmajfault":0,"pgpgin":214323,"pgpgout":165337,"rss":200327168,"rss_huge":0,"total_active_anon":200568832,"total_active_file":0,"total_cache":319488,"total_dirty":0,"total_inactive_anon":45056,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":413945,"total_pgmajfault":0,"total_pgpgin":214323,"total_pgpgout":165337,"total_rss":200327168,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/BitFloats-tE9aHrAR","id":"194081b796423ec09c69695e24e9de8c2d519c072a96dc7c53422f3baaa5dedb","networks":{"eth0":{"rx_bytes":44484,"rx_packets":89,"rx_errors":0,"rx_dropped":0,"tx_bytes":8242,"tx_packets":49,"tx_errors":0,"tx_dropped":0}}}
+

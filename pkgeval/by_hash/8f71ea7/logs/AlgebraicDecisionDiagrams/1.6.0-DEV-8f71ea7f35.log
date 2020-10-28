@@ -1,0 +1,476 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T10:40:00.449
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T10:40:02.677
+#
+
+   Resolving package versions...
+   Installed AlgebraicDecisionDiagrams ─ v0.1.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [fda02c4b] + AlgebraicDecisionDiagrams v0.1.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [fda02c4b] + AlgebraicDecisionDiagrams v0.1.0
+
+
+################################################################################
+# Testing: 2020-10-28T10:40:05
+#
+
+
+     Testing AlgebraicDecisionDiagrams
+Status `/tmp/jl_5EAhxZ/Project.toml`
+  [fda02c4b] AlgebraicDecisionDiagrams v0.1.0
+  [8dfed614] Test
+Status `/tmp/jl_5EAhxZ/Manifest.toml`
+  [fda02c4b] AlgebraicDecisionDiagrams v0.1.0
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+l1 = 
+@╮ V1 [3] 
+ ├─⊂−⊃─(false) [1]
+ ╰─⊂+⊃─(true) [2]
+¬l1 = 
+@╮ V1 [6] 
+ ├─⊂−⊃─(true) [4]
+ ╰─⊂+⊃─(false) [5]
+apply(~, l1) = 
+@╮ V1 [3] 
+ ├─⊂−⊃─(true) [7]
+ ╰─⊂+⊃─(false) [8]
+nliteral(1) = 
+@╮ V1 [11] 
+ ├─⊂−⊃─(true) [9]
+ ╰─⊂+⊃─(false) [10]
+l1 ∧ ¬l1 = (false) [15]
+l1 ∨ ¬l1 = (true) [25]
+[ Info: Fig. 7 in Bryant's paper
+¬(l1 ∧ l3) ∨ l2 ∧ l3 = 
+@╮ V1 [62] 
+ ├─⊂−⊃─(true) [55]
+ ╰─⊂+⊃─╮ V2 [61] 
+       ├─⊂−⊃─╮ V3 [59] 
+       │     ├─⊂−⊃─(true) [55]
+       │     ╰─⊂+⊃─(false) [58]
+       ╰─⊂+⊃─(true) [55]
+
+Test Summary:             | Pass  Total
+Boolean Decision Diagrams |    2      2
+[ Info: ADD
+x1 = indicator(Int, 1) = 
+@╮ V1 [65] 
+ ├─⊂−⊃─(0) [63]
+ ╰─⊂+⊃─(1) [64]
+one(x1) - x1 = 
+@╮ V1 [69] 
+ ├─⊂−⊃─(1) [67]
+ ╰─⊂+⊃─(0) [68]
+¬x1 = 
+@╮ V1 [72] 
+ ├─⊂−⊃─(1) [70]
+ ╰─⊂+⊃─(0) [71]
+apply((x->begin
+            #= /home/pkgeval/.julia/packages/AlgebraicDecisionDiagrams/R2zvO/test/add.jl:8 =#
+            1 - x
+        end), x1) = 
+@╮ V1 [65] 
+ ├─⊂−⊃─(1) [73]
+ ╰─⊂+⊃─(0) [74]
+x1 + ¬x1 = (1) [78]
+x1 * ¬x1 = (0) [83]
+x2 = indicator(Int, 2) = 
+@╮ V2 [87] 
+ ├─⊂−⊃─(0) [85]
+ ╰─⊂+⊃─(1) [86]
+x1 + x2 = 
+@╮ V1 [94] 
+ ├─⊂−⊃─╮ V2 [90] 
+ │     ├─⊂−⊃─(0) [88]
+ │     ╰─⊂+⊃─(1) [89]
+ ╰─⊂+⊃─╮ V2 [93] 
+       ├─⊂−⊃─(1) [89]
+       ╰─⊂+⊃─(2) [92]
+x1 * x2 = 
+@╮ V1 [100] 
+ ├─⊂−⊃─(0) [95]
+ ╰─⊂+⊃─╮ V2 [99] 
+       ├─⊂−⊃─(0) [95]
+       ╰─⊂+⊃─(1) [98]
+apply((x->begin
+            #= /home/pkgeval/.julia/packages/AlgebraicDecisionDiagrams/R2zvO/test/add.jl:14 =#
+            x ^ 2
+        end), x1 + x2) = 
+@╮ V1 [107] 
+ ├─⊂−⊃─╮ V2 [103] 
+ │     ├─⊂−⊃─(0) [108]
+ │     ╰─⊂+⊃─(1) [109]
+ ╰─⊂+⊃─╮ V2 [106] 
+       ├─⊂−⊃─(1) [109]
+       ╰─⊂+⊃─(4) [111]
+x ⊕ y = begin
+        #= /home/pkgeval/.julia/packages/AlgebraicDecisionDiagrams/R2zvO/test/add.jl:15 =#
+        (x + y) % 2
+    end = var"#⊕#6"()
+apply(⊕, x1, x2) = 
+@╮ V1 [118] 
+ ├─⊂−⊃─╮ V2 [114] 
+ │     ├─⊂−⊃─(0) [112]
+ │     ╰─⊂+⊃─(1) [113]
+ ╰─⊂+⊃─╮ V2 [117] 
+       ├─⊂−⊃─(1) [113]
+       ╰─⊂+⊃─(0) [112]
+x3 = indicator(Int, 3) = 
+@╮ V3 [121] 
+ ├─⊂−⊃─(0) [119]
+ ╰─⊂+⊃─(1) [120]
+[ Info: Odd Parity Function
+apply(⊕, x1, apply(⊕, x2, x3)) = 
+@╮ V1 [137] 
+ ├─⊂−⊃─╮ V2 [133] 
+ │     ├─⊂−⊃─╮ V3 [131] 
+ │     │     ├─⊂−⊃─(0) [129]
+ │     │     ╰─⊂+⊃─(1) [130]
+ │     ╰─⊂+⊃─╮ V3 [132] 
+ │           ├─⊂−⊃─(1) [130]
+ │           ╰─⊂+⊃─(0) [129]
+ ╰─⊂+⊃─╮ V2 [136] 
+       ├─⊂−⊃─╮ V3 [132] 
+       │     ├─⊂−⊃─(1) [130]
+       │     ╰─⊂+⊃─(0) [129]
+       ╰─⊂+⊃─╮ V3 [131] 
+             ├─⊂−⊃─(0) [129]
+             ╰─⊂+⊃─(1) [130]
+apply(max, x1 * x2, x3) = 
+@╮ V1 [150] 
+ ├─⊂−⊃─╮ V3 [146] 
+ │     ├─⊂−⊃─(0) [144]
+ │     ╰─⊂+⊃─(1) [145]
+ ╰─⊂+⊃─╮ V2 [149] 
+       ├─⊂−⊃─╮ V3 [146] 
+       │     ├─⊂−⊃─(0) [144]
+       │     ╰─⊂+⊃─(1) [145]
+       ╰─⊂+⊃─(1) [145]
+[ Info: Example from Fig. 1 in Bryant's paper
+apply(max, ¬x1 * x2, x1 * x3) = 
+@╮ V1 [171] 
+ ├─⊂−⊃─╮ V2 [168] 
+ │     ├─⊂−⊃─(0) [166]
+ │     ╰─⊂+⊃─(1) [167]
+ ╰─⊂+⊃─╮ V3 [170] 
+       ├─⊂−⊃─(0) [166]
+       ╰─⊂+⊃─(1) [167]
+[ Info: Example in Fig. 5 of Bryant's paper
+A4 = ADD.reduce(Node(1, Node(2, zero(Int), A3), Node(2, A3, A3))) = 
+@╮ V1 [178] 
+ ├─⊂−⊃─╮ V2 [176] 
+ │     ├─⊂−⊃─(0) [175]
+ │     ╰─⊂+⊃─╮ V3 [174] 
+ │           ├─⊂−⊃─(0) [175]
+ │           ╰─⊂+⊃─(1) [173]
+ ╰─⊂+⊃─╮ V3 [174] 
+       ├─⊂−⊃─(0) [175]
+       ╰─⊂+⊃─(1) [173]
+
+[ Info: Directed Graph ADD
+[ Info: Example in Fig 1. in Bahar et al. 1997's paper
+graph = Terminal(2) * nx0 * nx1 * ny0 * y1 + Terminal(2) * nx0 * nx1 * y0 * ny1 + Terminal(2) * nx0 * x1 * ny0 * y1 + Terminal(2) * nx0 * x1 * y0 * ny1 + Terminal(4) * x0 * nx1 * y0 * y1 + Terminal(4) * x0 * x1 * ny0 * y1 = 
+@╮ V0 [398] 
+ ├─⊂−⊃─╮ V1 [391] 
+ │     ├─⊂−⊃─╮ V3 [389] 
+ │     │     ├─⊂−⊃─(0) [387]
+ │     │     ╰─⊂+⊃─(2) [388]
+ │     ╰─⊂+⊃─╮ V3 [390] 
+ │           ├─⊂−⊃─(2) [388]
+ │           ╰─⊂+⊃─(0) [387]
+ ╰─⊂+⊃─╮ V1 [397] 
+       ├─⊂−⊃─╮ V2 [394] 
+       │     ├─⊂−⊃─(0) [387]
+       │     ╰─⊂+⊃─╮ V3 [393] 
+       │           ├─⊂−⊃─(0) [387]
+       │           ╰─⊂+⊃─(4) [392]
+       ╰─⊂+⊃─╮ V2 [396] 
+             ├─⊂−⊃─╮ V3 [393] 
+             │     ├─⊂−⊃─(0) [387]
+             │     ╰─⊂+⊃─(4) [392]
+             ╰─⊂+⊃─(0) [387]
+[ Info: Get scope
+scope = mapreduce(index, union, nt) = [0, 1, 2, 3]
+
+[ Info: Matrix examples in page 9 of Bryant's paper
+f = ¬x0 * ¬y0 + x0 * y0 = 
+@╮ V0 [422] 
+ ├─⊂−⊃─╮ V1 [419] 
+ │     ├─⊂−⊃─(1) [417]
+ │     ╰─⊂+⊃─(0) [418]
+ ╰─⊂+⊃─╮ V1 [421] 
+       ├─⊂−⊃─(0) [418]
+       ╰─⊂+⊃─(1) [417]
+g = Terminal(4) * nx0 + Terminal(2) * x0 = 
+@╮ V0 [433] 
+ ├─⊂−⊃─(4) [431]
+ ╰─⊂+⊃─(2) [432]
+h = f + g = 
+@╮ V0 [440] 
+ ├─⊂−⊃─╮ V1 [436] 
+ │     ├─⊂−⊃─(5) [434]
+ │     ╰─⊂+⊃─(4) [435]
+ ╰─⊂+⊃─╮ V1 [439] 
+       ├─⊂−⊃─(2) [437]
+       ╰─⊂+⊃─(3) [438]
+
+[ Info: Restriction
+restrict(h, 0, false) = 
+@╮ V1 [441] 
+ ├─⊂−⊃─(5) [434]
+ ╰─⊂+⊃─(4) [435]
+h | (1 => true) = 
+@╮ V0 [442] 
+ ├─⊂−⊃─(4) [435]
+ ╰─⊂+⊃─(3) [438]
+(h | (index(x0) => true)) + (h | (index(x0) => false)) = (7) [445]
+(h | (index(y0) => true)) + (h | (index(y0) => false)) = 
+@╮ V0 [455] 
+ ├─⊂−⊃─(9) [453]
+ ╰─⊂+⊃─(5) [454]
+
+[ Info: marginalization
+marginalize(h, index(x0)) = (7) [458]
+marginalize(h, index(y0)) = 
+@╮ V0 [464] 
+ ├─⊂−⊃─(9) [462]
+ ╰─⊂+⊃─(5) [463]
+A4 = 
+@╮ V1 [178] 
+ ├─⊂−⊃─╮ V2 [176] 
+ │     ├─⊂−⊃─(0) [175]
+ │     ╰─⊂+⊃─╮ V3 [174] 
+ │           ├─⊂−⊃─(0) [175]
+ │           ╰─⊂+⊃─(1) [173]
+ ╰─⊂+⊃─╮ V3 [174] 
+       ├─⊂−⊃─(0) [175]
+       ╰─⊂+⊃─(1) [173]
+(A4 | (2 => true)) + (A4 | (2 => false)) = 
+@╮ V1 [475] 
+ ├─⊂−⊃─╮ V3 [472] 
+ │     ├─⊂−⊃─(0) [470]
+ │     ╰─⊂+⊃─(1) [471]
+ ╰─⊂+⊃─╮ V3 [474] 
+       ├─⊂−⊃─(0) [470]
+       ╰─⊂+⊃─(2) [473]
+A5 = marginalize(A4, 2) = 
+@╮ V1 [486] 
+ ├─⊂−⊃─╮ V3 [483] 
+ │     ├─⊂−⊃─(0) [481]
+ │     ╰─⊂+⊃─(1) [482]
+ ╰─⊂+⊃─╮ V3 [485] 
+       ├─⊂−⊃─(0) [481]
+       ╰─⊂+⊃─(2) [484]
+Test Summary:               | Pass  Total
+Algebraic Decision Diagrams |    2      2
+x1 = indicator(MLE, 1) = 
+@╮ V1 [489] 
+ ├─⊂−⊃─(0) [487]
+ ╰─⊂+⊃─(1) [488]
+x2 = indicator(MLE, 2) = 
+@╮ V2 [492] 
+ ├─⊂−⊃─(0) [490]
+ ╰─⊂+⊃─(1) [491]
+x3 = x1 + x2 = 
+@╮ V1 [499] 
+ ├─⊂−⊃─╮ V2 [495] 
+ │     ├─⊂−⊃─(0) [493]
+ │     ╰─⊂+⊃─(1) [494]
+ ╰─⊂+⊃─╮ V2 [498] 
+       ├─⊂−⊃─(1) [494]
+       ╰─⊂+⊃─(2) [497]
+d1 = Node(1, 1 + MLE(-1.0, 1), MLE(1, 1)) = 
+@╮ V1 [502] 
+ ├─⊂−⊃─(1 + -1χ1) [500]
+ ╰─⊂+⊃─(1χ1) [501]
+m1 = x1 + d1 = 
+@╮ V1 [505] 
+ ├─⊂−⊃─(1 + -1χ1) [503]
+ ╰─⊂+⊃─(1 + 1χ1) [504]
+d2 = Node(2, 1 + MLE(-1.0, 2), MLE(1, 2)) = 
+@╮ V2 [508] 
+ ├─⊂−⊃─(1 + -1χ2) [506]
+ ╰─⊂+⊃─(1χ2) [507]
+m2 = x2 + d2 = 
+@╮ V2 [511] 
+ ├─⊂−⊃─(1 + -1χ2) [509]
+ ╰─⊂+⊃─(1 + 1χ2) [510]
+m3 = d1 * d2 = 
+@╮ V1 [518] 
+ ├─⊂−⊃─╮ V2 [514] 
+ │     ├─⊂−⊃─(1 + 1χ1χ2 + -1χ2 + -1χ1) [512]
+ │     ╰─⊂+⊃─(-1χ1χ2 + 1χ2) [513]
+ ╰─⊂+⊃─╮ V2 [517] 
+       ├─⊂−⊃─(-1χ1χ2 + 1χ1) [515]
+       ╰─⊂+⊃─(1χ1χ2) [516]
+convert(MLE, 1) = 1
+promote(MLE(1.0, 2), 2) = (1.0χ2, 2)
+
+[ Info: Example from the paper
+v = Dict("a" => -1, "b" => -2) = Dict("b" => -2, "a" => -1)
+ϕA = ADD.reduce(Node(0, Node(5, 1 + MLE(-1.0, v["a"]), MLE(1.0, v["a"])), Node(1, Node(5, 1 + MLE(-1.0, v["a"]), MLE(1.0, v["a"])), Node(6, 1 + MLE(-1.0, v["a"]), MLE(1.0, v["a"]))))) = 
+@╮ V0 [529] 
+ ├─⊂−⊃─╮ V5 [521] 
+ │     ├─⊂−⊃─(1 + -1χ-1) [519]
+ │     ╰─⊂+⊃─(1.0χ-1) [520]
+ ╰─⊂+⊃─╮ V1 [528] 
+       ├─⊂−⊃─╮ V5 [521] 
+       │     ├─⊂−⊃─(1 + -1χ-1) [519]
+       │     ╰─⊂+⊃─(1.0χ-1) [520]
+       ╰─⊂+⊃─╮ V6 [527] 
+             ├─⊂−⊃─(1 + -1χ-1) [519]
+             ╰─⊂+⊃─(1.0χ-1) [520]
+ϕ5 = Node(5, MLE(0.6), MLE(0.4)) = 
+@╮ V5 [532] 
+ ├─⊂−⊃─(0.6) [530]
+ ╰─⊂+⊃─(0.4) [531]
+μ1 = marginalize(ϕA * ϕ5, 5) = 
+@╮ V0 [554] 
+ ├─⊂−⊃─(0.6 + -0.19999999999999996χ-1) [549]
+ ╰─⊂+⊃─╮ V1 [553] 
+       ├─⊂−⊃─(0.6 + -0.19999999999999996χ-1) [549]
+       ╰─⊂+⊃─╮ V6 [552] 
+             ├─⊂−⊃─(1.0 + -1.0χ-1) [550]
+             ╰─⊂+⊃─(1.0χ-1) [551]
+μ1p = apply(new_monomial, μ1) = 
+@╮ V0 [554] 
+ ├─⊂−⊃─(1.0χ1) [555]
+ ╰─⊂+⊃─╮ V1 [553] 
+       ├─⊂−⊃─(1.0χ1) [555]
+       ╰─⊂+⊃─╮ V6 [552] 
+             ├─⊂−⊃─(1.0χ2) [557]
+             ╰─⊂+⊃─(1.0χ3) [558]
+ϕ6 = Node(6, MLE(0.1), MLE(0.9)) = 
+@╮ V6 [561] 
+ ├─⊂−⊃─(0.1) [559]
+ ╰─⊂+⊃─(0.9) [560]
+μ2 = marginalize(μ1p * ϕ6, 6) = 
+@╮ V0 [577] 
+ ├─⊂−⊃─(1.0χ1) [574]
+ ╰─⊂+⊃─╮ V1 [576] 
+       ├─⊂−⊃─(1.0χ1) [574]
+       ╰─⊂+⊃─(0.9χ3 + 0.1χ2) [575]
+μ2p = apply(new_monomial, μ2) = 
+@╮ V0 [577] 
+ ├─⊂−⊃─(1.0χ4) [578]
+ ╰─⊂+⊃─╮ V1 [576] 
+       ├─⊂−⊃─(1.0χ4) [578]
+       ╰─⊂+⊃─(1.0χ5) [580]
+ϕ1 = Node(1, MLE(0.625), MLE(0.375)) = 
+@╮ V1 [583] 
+ ├─⊂−⊃─(0.625) [581]
+ ╰─⊂+⊃─(0.375) [582]
+μ3 = marginalize(μ2p * ϕ1, 1) = 
+@╮ V0 [594] 
+ ├─⊂−⊃─(1.0χ4) [592]
+ ╰─⊂+⊃─(0.625χ4 + 0.375χ5) [593]
+μ3p = apply(new_monomial, μ3) = 
+@╮ V0 [594] 
+ ├─⊂−⊃─(1.0χ6) [595]
+ ╰─⊂+⊃─(1.0χ7) [596]
+ϕB = ADD.reduce(Node(0, Node(7, 1 + MLE(-1.0, v["b"]), MLE(1.0, v["b"])), Node(8, 1 + MLE(-1.0, v["b"]), MLE(1.0, v["b"])))) = 
+@╮ V0 [603] 
+ ├─⊂−⊃─╮ V7 [599] 
+ │     ├─⊂−⊃─(1 + -1χ-2) [597]
+ │     ╰─⊂+⊃─(1.0χ-2) [598]
+ ╰─⊂+⊃─╮ V8 [602] 
+       ├─⊂−⊃─(1 + -1χ-2) [597]
+       ╰─⊂+⊃─(1.0χ-2) [598]
+ϕ8 = Node(8, MLE(0.8), MLE(0.2)) = 
+@╮ V8 [606] 
+ ├─⊂−⊃─(0.8) [604]
+ ╰─⊂+⊃─(0.2) [605]
+μ4 = marginalize(μ3p * ϕB * ϕ8, 8) = 
+@╮ V0 [633] 
+ ├─⊂−⊃─╮ V7 [631] 
+ │     ├─⊂−⊃─(1.0χ6 + -1.0χ-2χ6) [629]
+ │     ╰─⊂+⊃─(1.0χ-2χ6) [630]
+ ╰─⊂+⊃─(-0.6000000000000001χ-2χ7 + 0.8χ7) [632]
+μ4p = apply(new_monomial, μ4) = 
+@╮ V0 [633] 
+ ├─⊂−⊃─╮ V7 [631] 
+ │     ├─⊂−⊃─(1.0χ8) [634]
+ │     ╰─⊂+⊃─(1.0χ9) [635]
+ ╰─⊂+⊃─(1.0χ10) [636]
+ϕ0 = Node(0, MLE(0.2), MLE(0.8)) = 
+@╮ V0 [639] 
+ ├─⊂−⊃─(0.2) [637]
+ ╰─⊂+⊃─(0.8) [638]
+μ5 = marginalize(μ4p * ϕ0, 0) = 
+@╮ V7 [648] 
+ ├─⊂−⊃─(0.2χ8 + 0.8χ10) [646]
+ ╰─⊂+⊃─(0.2χ9 + 0.8χ10) [647]
+μ5p = apply(new_monomial, μ5) = 
+@╮ V7 [648] 
+ ├─⊂−⊃─(1.0χ11) [649]
+ ╰─⊂+⊃─(1.0χ12) [650]
+ϕ7 = Node(7, MLE(0.3), MLE(0.7)) = 
+@╮ V7 [653] 
+ ├─⊂−⊃─(0.3) [651]
+ ╰─⊂+⊃─(0.7) [652]
+μ6 = marginalize(μ5p * ϕ7, 7) = (0.7χ12 + 0.3χ11) [657]
+
+[ Info: Bilinear program
+Maximize: 0.7χ12 + 0.3χ11
+Subject to:
+1.0χ1 = 0.6 + -0.19999999999999996χ-1
+1.0χ2 = 1.0 + -1.0χ-1
+1.0χ3 = 1.0χ-1
+1.0χ4 = 1.0χ1
+1.0χ5 = 0.9χ3 + 0.1χ2
+1.0χ6 = 1.0χ4
+1.0χ7 = 0.625χ4 + 0.375χ5
+1.0χ8 = 1.0χ6 + -1.0χ-2χ6
+1.0χ9 = 1.0χ-2χ6
+1.0χ10 = -0.6000000000000001χ-2χ7 + 0.8χ7
+1.0χ11 = 0.2χ8 + 0.8χ10
+1.0χ12 = 0.2χ9 + 0.8χ10
+Test Summary:                            | Pass  Total
+Parametrized Algebraic Decision Diagrams |    1      1
+     Testing AlgebraicDecisionDiagrams tests passed 
+
+PkgEval succeeded
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T10:40:26.775
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+
+CPU usage: 19.75s (16.46s user, 3.32s kernel)
+
+Network usage:
+- eth0: 24.422 KiB received, 4.318 KiB sent
+
+Raw statistics: {"read":"2020-10-28T10:40:27.658593791Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":19749001333,"percpu_usage":[207371,33670976,16520086,113138045,93430758,110851114,9134064,6759483,4974552,823941,0,0,32411984,36573195,256216242,73698870,504400,3072011,172972260,130327905,30884523,146827180,8442573,1485241,21930810,10148674,43453275,40891696,58691104,13515155,116899177,17950677,282702904,143720740,84263882,108036317,148985150,113566231,66375059,843153398,370967739,342467037,843226999,267697990,63330995,305241294,3856021,40352786,337534626,131903144,229510164,665636483,153693529,247593090,221951104,161865606,429536953,106935943,119884498,573892862,238453344,426052501,162165128,84075203,16577358,131290,110482665,6718892,41243016,29400623,1220161,84864874,55520,2971571,9680,17427226,19812937,24710600,19812467,26159876,99861773,11653274,133819233,42922199,27448740,3190951,40442355,23825141,82716945,4520581,18273937,120545858,221526610,163292026,6844021,103077702,129423022,186348294,332646535,777784110,217637125,430004102,549557737,109847065,107995512,155053488,78134030,527042797,55094399,447276929,208478976,15219558,226248889,223593868,511237988,468866069,212153365,178663944,23635010,90949986,224989568,104225309,685436217,105301873,123181700,329218660,202094152,281064892],"usage_in_kernelmode":3320000000,"usage_in_usermode":16460000000},"system_cpu_usage":93621079660000000,"online_cpus":128,"throttling_data":{"periods":274,"throttled_periods":4,"throttled_time":1231322413}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":214519808,"max_usage":426622976,"stats":{"active_anon":200736768,"active_file":0,"cache":196608,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":57344,"inactive_file":8192,"mapped_file":0,"pgfault":329434,"pgmajfault":0,"pgpgin":161389,"pgpgout":112365,"rss":200605696,"rss_huge":0,"total_active_anon":200736768,"total_active_file":0,"total_cache":196608,"total_dirty":0,"total_inactive_anon":57344,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":329434,"total_pgmajfault":0,"total_pgpgin":161389,"total_pgpgout":112365,"total_rss":200605696,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/AlgebraicDecisionDiagrams-sg22VuUb","id":"44b8f93d4eebe1fd80eb716f86afca18f1be889fd28d9ee9dee52df92dbb1bf8","networks":{"eth0":{"rx_bytes":25008,"rx_packets":52,"rx_errors":0,"rx_dropped":1,"tx_bytes":4422,"tx_packets":29,"tx_errors":0,"tx_dropped":0}}}
+

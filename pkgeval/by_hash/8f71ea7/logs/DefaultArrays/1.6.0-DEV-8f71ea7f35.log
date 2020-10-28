@@ -1,0 +1,127 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T12:04:34.674
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T12:04:36.734
+#
+
+   Resolving package versions...
+   Installed DefaultArrays ─ v1.0.1
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [bb1859e0] + DefaultArrays v1.0.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [bb1859e0] + DefaultArrays v1.0.1
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+
+
+################################################################################
+# Testing: 2020-10-28T12:04:39.157
+#
+
+
+     Testing DefaultArrays
+Status `/tmp/jl_90EutY/Project.toml`
+  [bb1859e0] DefaultArrays v1.0.1
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_90EutY/Manifest.toml`
+  [bb1859e0] DefaultArrays v1.0.1
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+Test Summary: | Pass  Total
+Basic Tests   |    8      8
+Test Summary:                    | Pass  Total
+similar(..) Tests + broadcasting |    9      9
+Various Constructors: Test Failed at /home/pkgeval/.julia/packages/DefaultArrays/7VctZ/test/runtests.jl:51
+  Expression: repr((typeof(ugly), ugly)) == "(DefaultArray{Int64,2}, [1 1; 2 2])"
+   Evaluated: "(DefaultArray{Int64, 2}, [1 1; 2 2])" == "(DefaultArray{Int64,2}, [1 1; 2 2])"
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/DefaultArrays/7VctZ/test/runtests.jl:51 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] top-level scope
+   @ ~/.julia/packages/DefaultArrays/7VctZ/test/runtests.jl:46
+Test Summary:        | Pass  Fail  Total
+Various Constructors |    2     1      3
+ERROR: LoadError: Some tests did not pass: 2 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/DefaultArrays/7VctZ/test/runtests.jl:45
+
+PkgEval failed: Package DefaultArrays errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T12:04:58.926
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+
+CPU usage: 17.93s (15.55s user, 2.47s kernel)
+
+Network usage:
+- eth0: 16.409 KiB received, 4.277 KiB sent
+
+Raw statistics: {"read":"2020-10-28T12:04:59.436953346Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":17933411766,"percpu_usage":[22777118,120316201,0,582760,19415878,18390,11320,24894869,4673792,162104256,25748362,0,13130023,0,2651861,1848311,0,95970,98070,42778476,9226174,1080392,0,959181,0,110605546,283129545,596610,20903599,0,1413040,42613957,203653583,109580853,80040070,68712816,9575903,155836367,100782921,894350,519494079,988481888,887016557,187283173,790256566,399788878,853535553,81473472,240049389,182088926,16133047,34988004,284180466,163641844,125988798,578991472,170260828,43734567,112381909,253230614,710326404,20560607,117270617,156706671,80925533,219820,0,370610,2600400,0,2064491,17630,718030,22757299,8570,7849825,9850,0,205005222,0,10800,25131522,390110,14111925,0,5225721,9047605,32740043,0,22738250,27352594,54666033,10630,0,427680683,92277596,393324814,186497464,283933893,260485173,424324110,23518600,286919276,207081442,117249515,234774173,443945261,385538255,266323608,223801629,166882317,484170,243820955,37760705,193713499,126182715,366563988,300852521,359167773,369601031,216573848,104616701,4302771,7727445,113558733,397955878,456141591,137242227],"usage_in_kernelmode":2470000000,"usage_in_usermode":15550000000},"system_cpu_usage":94265129670000000,"online_cpus":128,"throttling_data":{"periods":255,"throttled_periods":4,"throttled_time":1055521694}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":205107200,"max_usage":388976640,"stats":{"active_anon":193769472,"active_file":4096,"cache":73728,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":16384,"inactive_file":8192,"mapped_file":0,"pgfault":352242,"pgmajfault":0,"pgpgin":149016,"pgpgout":101702,"rss":193724416,"rss_huge":0,"total_active_anon":193769472,"total_active_file":4096,"total_cache":73728,"total_dirty":0,"total_inactive_anon":16384,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":352242,"total_pgmajfault":0,"total_pgpgin":149016,"total_pgpgout":101702,"total_rss":193724416,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/DefaultArrays-newrFyN9","id":"9ca213b4d210b0bcc8f4fa3ffdf6d6131ebdaa995854d7774b66c7ac17048bcc","networks":{"eth0":{"rx_bytes":16803,"rx_packets":49,"rx_errors":0,"rx_dropped":1,"tx_bytes":4380,"tx_packets":28,"tx_errors":0,"tx_dropped":0}}}
+

@@ -1,0 +1,204 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T11:55:10.128
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T11:55:12.041
+#
+
+   Resolving package versions...
+   Installed ThriftJuliaCompiler_jll ─ v0.11.0+0
+   Installed Thrift ────────────────── v0.7.1
+   Installed Hive ──────────────────── v0.4.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [6735fb99] + Hive v0.4.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [6735fb99] + Hive v0.4.0
+  [8d9c9c80] + Thrift v0.7.1
+  [815b9798] + ThriftJuliaCompiler_jll v0.11.0+0
+  [0dad84c5] + ArgTools
+  [56f22d72] + Artifacts
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [8bb1440f] + DelimitedFiles
+  [8ba89e20] + Distributed
+  [f43a241f] + Downloads
+  [b77e0a4c] + InteractiveUtils
+  [b27032c2] + LibCURL
+  [76f85450] + LibGit2
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [a63ad114] + Mmap
+  [44cfe95a] + Pkg
+  [de0858da] + Printf
+  [3fa0cd96] + REPL
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [fa267f1f] + TOML
+  [8dfed614] + Test
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+  [deac9b47] + LibCURL_jll
+  [14a3606d] + MozillaCACerts_jll
+
+
+################################################################################
+# Testing: 2020-10-28T11:55:14.843
+#
+
+
+     Testing Hive
+Status `/tmp/jl_hfCUuX/Project.toml`
+  [6735fb99] Hive v0.4.0
+  [8d9c9c80] Thrift v0.7.1
+  [ade2ca70] Dates
+  [8bb1440f] DelimitedFiles
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [10745b16] Statistics
+  [8dfed614] Test
+  [4ec0a83e] Unicode
+Status `/tmp/jl_hfCUuX/Manifest.toml`
+  [6735fb99] Hive v0.4.0
+  [8d9c9c80] Thrift v0.7.1
+  [815b9798] ThriftJuliaCompiler_jll v0.11.0+0
+  [0dad84c5] ArgTools
+  [56f22d72] Artifacts
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8bb1440f] DelimitedFiles
+  [8ba89e20] Distributed
+  [f43a241f] Downloads
+  [b77e0a4c] InteractiveUtils
+  [b27032c2] LibCURL
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [fa267f1f] TOML
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+  [deac9b47] LibCURL_jll
+  [14a3606d] MozillaCACerts_jll
+     Testing Running tests...
+ERROR: LoadError: LoadError: IOError: connect: connection refused (ECONNREFUSED)
+Stacktrace:
+  [1] wait_connected(x::Sockets.TCPSocket)
+    @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:532
+  [2] connect(::Sockets.TCPSocket, ::String, ::Int64)
+    @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:567
+  [3] connect(host::String, port::Int64)
+    @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:552
+  [4] open(tsock::Thrift.TSocket)
+    @ Thrift ~/.julia/packages/Thrift/ja6j8/src/transports.jl:148
+  [5] open(t::Thrift.TFramedTransport)
+    @ Thrift ~/.julia/packages/Thrift/ja6j8/src/transports.jl:64
+  [6] open(t::Thrift.TSASLClientTransport)
+    @ Thrift ~/.julia/packages/Thrift/ja6j8/src/transports.jl:51
+  [7] (::Hive.var"#connect#5")(transport::Thrift.TSASLClientTransport, client::Hive.HS2.TCLIServiceClient)
+    @ Hive ~/.julia/packages/Hive/QIjBc/src/sess.jl:58
+  [8] Hive.HiveConn(host::String, port::Int64, auth::HiveAuth; tprotocol::Symbol)
+    @ Hive ~/.julia/packages/Hive/QIjBc/src/sess.jl:54
+  [9] HiveSession
+    @ ~/.julia/packages/Hive/QIjBc/src/sess.jl:84 [inlined]
+ [10] HiveSession
+    @ ~/.julia/packages/Hive/QIjBc/src/sess.jl:84 [inlined]
+ [11] open_database(f::var"#47#48")
+    @ Main ~/.julia/packages/Hive/QIjBc/test/hive_test.jl:9
+ [12] top-level scope
+    @ ~/.julia/packages/Hive/QIjBc/test/hive_test.jl:221
+ [13] include(fname::String)
+    @ Base.MainInclude ./client.jl:444
+ [14] top-level scope
+    @ ~/.julia/packages/Hive/QIjBc/test/runtests.jl:2
+ [15] include(fname::String)
+    @ Base.MainInclude ./client.jl:444
+ [16] top-level scope
+    @ none:6
+in expression starting at /home/pkgeval/.julia/packages/Hive/QIjBc/test/hive_test.jl:221
+in expression starting at /home/pkgeval/.julia/packages/Hive/QIjBc/test/runtests.jl:2
+
+PkgEval failed: Package Hive errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T11:55:46.473
+#
+
+
+CPU usage: 32.58s (28.62s user, 4.21s kernel)
+
+Network usage:
+- eth0: 103.551 KiB received, 13.023 KiB sent
+
+Raw statistics: {"read":"2020-10-28T11:55:46.476143909Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":32577957245,"percpu_usage":[0,216630,18711265,0,0,568840,0,3008351,137221297,9005884,11830,3780881,177624109,3585010,150287510,64420264,102341035,20018108,36029864,16119887,0,6600553,47346067,0,35039983,69091378,40488718,282659406,2374031,34540303,452562496,0,3031020923,481580572,111500296,447120851,888513092,421536110,204316937,358889144,636361346,413150357,2025394124,1491037166,76884220,526498342,0,870881,554265220,215303987,825593665,409425065,523742551,403031931,254508214,63772059,248518992,234290884,1622861,106848023,172645387,675928568,469801352,528495055,73957078,0,38644706,17882177,126230,1030463947,42140657,149778281,27045101,34239154,98407032,1443650,56198811,99258151,66166714,166693995,10020,0,14156785,31028112,3495741,3634491,0,20156608,91191905,2717222,61824806,12418235,43678644,0,134907133,58868244,313994957,1211634425,51947201,543257238,354767423,96417180,599622390,823648679,434397257,345990405,571465905,877584053,14304895,60208904,371965523,101450,393970285,270644558,1806735302,687578186,100529670,193955340,327956541,35466454,59996875,217595086,80045001,114911097,242208389,281700614,183989163,12711294],"usage_in_kernelmode":4210000000,"usage_in_usermode":28620000000},"system_cpu_usage":94195071090000000,"online_cpus":128,"throttling_data":{"periods":372,"throttled_periods":8,"throttled_time":1566015694}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":213499904,"max_usage":667774976,"stats":{"active_anon":197562368,"active_file":0,"cache":1372160,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":311296,"inactive_file":8192,"mapped_file":0,"pgfault":545712,"pgmajfault":0,"pgpgin":254312,"pgpgout":205991,"rss":196550656,"rss_huge":0,"total_active_anon":197562368,"total_active_file":0,"total_cache":1372160,"total_dirty":0,"total_inactive_anon":311296,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":545716,"total_pgmajfault":0,"total_pgpgin":254312,"total_pgpgout":205991,"total_rss":196550656,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/Hive-YCAeWMfB","id":"b9c69b65931b2a3cacf53ce53c9198b1d4cb7461eda8fb17e7c45472b7fb89c0","networks":{"eth0":{"rx_bytes":106036,"rx_packets":123,"rx_errors":0,"rx_dropped":2,"tx_bytes":13336,"tx_packets":89,"tx_errors":0,"tx_dropped":0}}}
+

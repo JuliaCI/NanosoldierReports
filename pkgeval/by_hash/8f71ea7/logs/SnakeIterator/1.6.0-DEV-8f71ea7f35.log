@@ -1,0 +1,241 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T10:55:28.544
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T10:55:34.341
+#
+
+   Resolving package versions...
+   Installed SnakeIterator ─ v0.1.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [2a3ac32a] + SnakeIterator v0.1.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [2a3ac32a] + SnakeIterator v0.1.0
+
+
+################################################################################
+# Testing: 2020-10-28T10:55:37.236
+#
+
+
+     Testing SnakeIterator
+Status `/tmp/jl_2b0fBW/Project.toml`
+  [e30172f5] Documenter v0.25.3
+  [2a3ac32a] SnakeIterator v0.1.0
+  [8dfed614] Test
+Status `/tmp/jl_2b0fBW/Manifest.toml`
+  [ffbed154] DocStringExtensions v0.8.3
+  [e30172f5] Documenter v0.25.3
+  [b5f81e59] IOCapture v0.1.0
+  [682c06a0] JSON v0.21.1
+  [69de0a69] Parsers v1.0.11
+  [2a3ac32a] SnakeIterator v0.1.0
+  [0dad84c5] ArgTools
+  [56f22d72] Artifacts
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [f43a241f] Downloads
+  [b77e0a4c] InteractiveUtils
+  [b27032c2] LibCURL
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [fa267f1f] TOML
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+  [deac9b47] LibCURL_jll
+  [14a3606d] MozillaCACerts_jll
+     Testing Running tests...
+[ Info: SetupBuildDirectory: setting up build directory.
+[ Info: Doctest: running doctests.
+┌ Error: doctest failure in ~/.julia/packages/SnakeIterator/r3R6F/src/SnakeIterator.jl:18-36
+│ 
+│ ```jldoctest example1
+│ julia> using SnakeIterator
+│ 
+│ julia> arr = reshape(1:16, 4, 4)
+│ 4×4 reshape(::UnitRange{Int64}, 4, 4) with eltype Int64:
+│  1  5   9  13
+│  2  6  10  14
+│  3  7  11  15
+│  4  8  12  16
+│ 
+│ julia> s = collect(snake(arr)); # snake over collection
+│ 
+│ julia> reshape(s, 4, 4) # notice that the even columns are now reversed
+│ 4×4 Array{Int64,2}:
+│  1  8   9  16
+│  2  7  10  15
+│  3  6  11  14
+│  4  5  12  13
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ reshape(s, 4, 4) # notice that the even columns are now reversed
+│ 
+│ Evaluated output:
+│ 
+│ 4×4 Matrix{Int64}:
+│  1  8   9  16
+│  2  7  10  15
+│  3  6  11  14
+│  4  5  12  13
+│ 
+│ Expected output:
+│ 
+│ 4×4 Array{Int64,2}:
+│  1  8   9  16
+│  2  7  10  15
+│  3  6  11  14
+│  4  5  12  13
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    4×4 Array{Int64,2}:
+│     Matrix{Int64}:
+│     1  8   9  16
+│     2  7  10  15
+│     3  6  11  14
+│     4  5  12  13
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: Doctesting failed
+│   exception =
+│    `makedocs` encountered a doctest error. Terminating build
+│    Stacktrace:
+│      [1] error(s::String)
+│        @ Base ./error.jl:33
+│      [2] runner(#unused#::Type{Documenter.Builder.Doctest}, doc::Documenter.Documents.Document)
+│        @ Documenter.Builder ~/.julia/packages/Documenter/3Y8Kg/src/Builder.jl:217
+│      [3] dispatch(#unused#::Type{Documenter.Builder.DocumentPipeline}, x::Documenter.Documents.Document)
+│        @ Documenter.Utilities.Selectors ~/.julia/packages/Documenter/3Y8Kg/src/Utilities/Selectors.jl:170
+│      [4] #2
+│        @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:245 [inlined]
+│      [5] cd(f::Documenter.var"#2#3"{Documenter.Documents.Document}, dir::String)
+│        @ Base.Filesystem ./file.jl:104
+│      [6] makedocs(; debug::Bool, format::Documenter.Writers.HTMLWriter.HTML, kwargs::Base.Iterators.Pairs{Symbol, Any, NTuple{6, Symbol}, NamedTuple{(:root, :source, :sitename, :doctest, :modules, :doctestfilters), Tuple{String, String, String, Symbol, Vector{Module}, Vector{Regex}}}})
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:244
+│      [7] (::Documenter.var"#all_doctests#33"{Bool, Vector{Regex}, Vector{Module}})()
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:809
+│      [8] macro expansion
+│        @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826 [inlined]
+│      [9] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [10] doctest(source::Nothing, modules::Vector{Module}; fix::Bool, testset::String, doctestfilters::Vector{Regex})
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826
+│     [11] doctest(package::Module; manual::Bool, testset::Nothing, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:765
+│     [12] macro expansion
+│        @ ~/.julia/packages/SnakeIterator/r3R6F/test/runtests.jl:6 [inlined]
+│     [13] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [14] top-level scope
+│        @ ~/.julia/packages/SnakeIterator/r3R6F/test/runtests.jl:6
+│     [15] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [16] top-level scope
+│        @ none:6
+│     [17] eval(m::Module, e::Any)
+│        @ Core ./boot.jl:360
+│     [18] exec_options(opts::Base.JLOptions)
+│        @ Base ./client.jl:261
+│     [19] _start()
+│        @ Base ./client.jl:485
+└ @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:819
+Doctests: SnakeIterator: Test Failed at /home/pkgeval/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826
+  Expression: all_doctests()
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] doctest(source::Nothing, modules::Vector{Module}; fix::Bool, testset::String, doctestfilters::Vector{Regex})
+   @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826
+Test Summary:             | Fail  Total
+SnakeIterator.jl          |    1      1
+  Doctests: SnakeIterator |    1      1
+ERROR: LoadError: Some tests did not pass: 0 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/SnakeIterator/r3R6F/test/runtests.jl:5
+
+PkgEval failed: Package SnakeIterator errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T10:57:27.156
+#
+
+
+signal (15): Terminated
+in expression starting at none:1
+pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
+uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
+jl_task_get_next at /workspace/srcdir/src/partr.c:508
+
+CPU usage: 37.23s (30.81s user, 6.34s kernel)
+
+Network usage:
+- eth0: 640.368 KiB received, 20.081 KiB sent
+
+Raw statistics: {"read":"2020-10-28T10:57:27.737150842Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":37233819736,"percpu_usage":[702371515,567489947,323752108,753615714,119073630,736468465,622656831,272709716,280198891,253517109,269997069,134687248,183597504,154733599,536456461,493012970,523105488,472156428,541360662,531994231,564903653,393503269,187870278,314835838,1557238857,378914630,340418759,487943894,464744102,429970321,580056225,278220901,76725261,88651497,138821385,51253621,63530906,2720131,63314115,38066018,136608738,92221374,13613055,193555658,67053396,193443698,40575216,6045531,11154644,229670896,255774982,87758316,13202606,196190,4727312,5104512,6650,4877514,102820083,78106283,22432980,17299965,9200774,31830151,721853874,244407707,693601031,159756045,343833176,180938290,77456403,1363890751,844031374,556713080,453908110,163097200,649265348,355230703,826490925,481238321,1318400866,768451393,1012788253,351056184,765833137,368043197,244044815,215375969,847173872,689468332,603254816,504899349,150755051,271653690,499041466,296936107,309425374,194302495,164510612,25655753,44813579,73569822,22656506,247417029,251787642,90968477,73089221,140563598,18331089,22334428,58793535,1013470,207522184,319357709,159084774,129740031,264719622,197971170,24393389,137038946,29704783,95339657,17116878,68452940,43386716,186800,148627506,37115395],"usage_in_kernelmode":6340000000,"usage_in_usermode":30810000000},"system_cpu_usage":93750602380000000,"online_cpus":128,"throttling_data":{"periods":952,"throttled_periods":13,"throttled_time":3662554567}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":227540992,"max_usage":775364608,"stats":{"active_anon":203476992,"active_file":0,"cache":7016448,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":2969600,"inactive_file":8192,"mapped_file":0,"pgfault":844341,"pgmajfault":0,"pgpgin":392186,"pgpgout":341782,"rss":199438336,"rss_huge":0,"total_active_anon":203476992,"total_active_file":0,"total_cache":7016448,"total_dirty":0,"total_inactive_anon":2969600,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":844341,"total_pgmajfault":0,"total_pgpgin":392186,"total_pgpgout":341782,"total_rss":199438336,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/SnakeIterator-9guoXZdi","id":"ff0b3272707b7a44b944ada5fe6399688ec7ba1e5564863fc45d948a9250c3ce","networks":{"eth0":{"rx_bytes":655737,"rx_packets":258,"rx_errors":0,"rx_dropped":4,"tx_bytes":20563,"tx_packets":168,"tx_errors":0,"tx_dropped":0}}}
+
