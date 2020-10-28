@@ -1,5 +1,5 @@
 ################################################################################
-# PkgEval set-up: 2020-10-28T11:48:51.330
+# PkgEval set-up: 2020-10-28T15:32:17.055
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T11:48:52.972
+# Installation: 2020-10-28T15:32:18.717
 #
 
    Resolving package versions...
@@ -28,18 +27,18 @@ Environment:
    Installed RecipesBase ───────── v1.1.0
    Installed OrderedCollections ── v1.3.1
    Installed Parameters ────────── v0.12.1
-   Installed MLDataPattern ─────── v0.5.3
    Installed DocStringExtensions ─ v0.8.3
-   Installed FixedPointNumbers ─── v0.8.4
-   Installed MappedArrays ──────── v0.3.0
-   Installed UnPack ────────────── v1.0.2
+   Installed MLDataPattern ─────── v0.5.3
    Installed LearnBase ─────────── v0.3.0
+   Installed MappedArrays ──────── v0.3.0
    Installed Compat ────────────── v3.23.0
+   Installed FixedPointNumbers ─── v0.8.4
+   Installed UnPack ────────────── v1.0.2
+   Installed StatsBase ─────────── v0.33.2
+   Installed Missings ──────────── v0.4.4
    Installed ThreadPools ───────── v1.1.3
    Installed MLLabelUtils ──────── v0.5.3
-   Installed StatsBase ─────────── v0.33.2
    Installed DataStructures ────── v0.18.8
-   Installed Missings ──────────── v0.4.4
 Updating `~/.julia/environments/v1.6/Project.toml`
   [2e981812] + DataLoaders v0.1.0
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -95,19 +94,19 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
 
 
 ################################################################################
-# Testing: 2020-10-28T11:48:56.317
+# Testing: 2020-10-28T15:32:22.167
 #
 
 
      Testing DataLoaders
-Status `/tmp/jl_qTyE34/Project.toml`
+Status `/tmp/jl_HgZ4z4/Project.toml`
   [2e981812] DataLoaders v0.1.0
   [7f8f8fb0] LearnBase v0.3.0
   [9920b226] MLDataPattern v0.5.3
   [98d24dd4] TestSetExtensions v2.0.0
   [9a3f8284] Random
   [8dfed614] Test
-Status `/tmp/jl_qTyE34/Manifest.toml`
+Status `/tmp/jl_HgZ4z4/Manifest.toml`
   [34da2185] Compat v3.23.0
   [9a962f9c] DataAPI v1.3.0
   [2e981812] DataLoaders v0.1.0
@@ -176,40 +175,96 @@ BatchViewCollated |    5      5
 
 Test Summary: | Pass  Total
 RingBuffer    |    3      3
-..
 
-Test Summary: | Pass  Total
-WorkerPool    |    2      2
-..
 
-Test Summary:              | Pass  Total
-eachobsparallel unbuffered |    2      2
-..
+Test Summary: | Broken  Total
+WorkerPool    |      1      1
 
-Test Summary:            | Pass  Total
-eachobsparallel buffered |    2      2
-...
+=====================================================
+iterate: Error During Test at /home/pkgeval/.julia/packages/DataLoaders/NKoSS/test/runtests.jl:136
+  Got exception outside of a @test
+  Cannot load data off main thread with only one thread available. Pass `useprimary = true` or start Julia with > 1 threads.
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:33
+    [2] GetObsParallel
+      @ ~/.julia/packages/DataLoaders/NKoSS/src/loaders.jl:7 [inlined]
+    [3] #eachobsparallel#61
+      @ ~/.julia/packages/DataLoaders/NKoSS/src/loaders.jl:125 [inlined]
+    [4] (::var"#make#29")()
+      @ Main ~/.julia/packages/DataLoaders/NKoSS/test/runtests.jl:134
+    [5] macro expansion
+      @ ~/.julia/packages/DataLoaders/NKoSS/test/runtests.jl:137 [inlined]
+    [6] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+    [7] macro expansion
+      @ ~/.julia/packages/DataLoaders/NKoSS/test/runtests.jl:137 [inlined]
+    [8] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+    [9] top-level scope
+      @ ~/.julia/packages/DataLoaders/NKoSS/test/runtests.jl:134
+   [10] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [11] top-level scope
+      @ none:6
+   [12] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [13] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [14] _start()
+      @ Base ./client.jl:485
+=====================================================
 
-Test Summary:     | Pass  Total
-batchviewcollated |    3      3
-.....
 
-Test Summary: | Pass  Total
-DataLoader    |    5      5
-     Testing DataLoaders tests passed 
+Test Summary:              | Error  Total
+eachobsparallel unbuffered |     1      1
+  iterate                  |     1      1
+ERROR: LoadError: Some tests did not pass: 0 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/DataLoaders/NKoSS/test/runtests.jl:133
 
-PkgEval succeeded
+PkgEval failed: Package DataLoaders errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
 
 
 ################################################################################
-# PkgEval teardown: 2020-10-28T11:49:37.553
-#
-
-
-CPU usage: 45.04s (37.10s user, 8.10s kernel)
+# PkgEval teardown: 2020-10-28T15:32:57.334
+CPU usage: 37.07s (33.00s user, 4.15s kernel)
 
 Network usage:
-- eth0: 934.299 KiB received, 64.861 KiB sent
+- eth0: 942.593 KiB received, 69.654 KiB sent
 
-Raw statistics: {"read":"2020-10-28T11:49:37.555659745Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":28672},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":28672},{"major":259,"minor":0,"op":"Total","value":28672},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":28672},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":28672},{"major":253,"minor":2,"op":"Total","value":28672}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":45043540762,"percpu_usage":[299739194,603745465,276484888,242650,1691475295,255535743,406601159,518693446,288003906,137450363,525990145,78535448,48136889,11092915,22386499,98916443,109531595,366527867,152059807,55650801,363653627,309558760,95072618,160626465,2442652,36438115,2181760,200652430,478817471,495636549,427497462,288182596,399631311,474471470,457140025,191019471,375139300,297943920,59355963,347993480,901747593,15445365,189401678,316307906,225230159,550476519,389151353,284941968,220223968,1188980680,805924423,424931653,132449825,221700530,46753480,57140593,651584370,1285940775,16284004,155688335,498584467,1197799601,7683373,153663141,444178119,526768648,319355740,69700907,196600668,413851645,1030070057,620945558,131622821,492179850,64563429,60566139,820789551,10630,441946020,140942921,234333043,451169515,307219987,143479507,170692671,21443777,44386531,106605455,146635880,192655420,64468918,122070817,7988173,154666921,613787742,528905798,178207450,798883769,675622306,1432167410,172522710,128711519,246672261,68465544,172986839,484822174,167409698,219663828,189767103,424828294,495076138,102852612,660510380,847715087,710030485,531004060,52798870,202307463,532934361,665101348,148460748,1000639483,428536767,212915574,252494701,745733900,928385450,732417850],"usage_in_kernelmode":8100000000,"usage_in_usermode":37100000000},"system_cpu_usage":94148255480000000,"online_cpus":128,"throttling_data":{"periods":471,"throttled_periods":31,"throttled_time":5150373063}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":229003264,"max_usage":885940224,"stats":{"active_anon":191520768,"active_file":0,"cache":8364032,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":3932160,"inactive_file":8192,"mapped_file":0,"pgfault":919073,"pgmajfault":0,"pgpgin":719220,"pgpgout":671499,"rss":187101184,"rss_huge":0,"total_active_anon":191520768,"total_active_file":0,"total_cache":8364032,"total_dirty":0,"total_inactive_anon":3932160,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":919073,"total_pgmajfault":0,"total_pgpgin":719220,"total_pgpgout":671499,"total_rss":187101184,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/DataLoaders-DDHRPx7r","id":"c8136dcfcdb4f29e9589001d7b5f7825e39577094764f7bcc706ec1cb46d27ff","networks":{"eth0":{"rx_bytes":956722,"rx_packets":478,"rx_errors":0,"rx_dropped":2,"tx_bytes":66418,"tx_packets":450,"tx_errors":0,"tx_dropped":0}}}
-
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":28672,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":28672,"op":"Async","minor":0},{"major":259,"value":28672,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":28672,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":28672,"op":"Async","minor":2},{"major":253,"value":28672,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":213385216,"max_usage":861270016,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":199024640,"inactive_file":8192,"inactive_anon":3932160,"total_pgfault":990138,"total_cache":8364032,"total_rss_huge":0,"total_active_anon":203431936,"total_pgmajfault":0,"pgpgin":658082,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":607450,"hierarchical_memsw_limit":0,"cache":8364032,"active_file":0,"pgfault":990138,"total_mapped_file":0,"total_pgpgout":607450,"total_writeback":0,"rss":199024640,"unevictable":0,"total_inactive_anon":3932160,"total_pgpgin":658082,"active_anon":203431936,"total_active_file":0},"limit":540972998656},"name":"/DataLoaders-htl1M26b","networks":{"eth0":{"rx_bytes":965215,"rx_packets":585,"tx_packets":520,"tx_bytes":71326,"tx_dropped":0,"rx_dropped":2,"tx_errors":0,"rx_errors":0}},"id":"a566bc3ef392d080c124880e8694fe9ac6a7d24ecdfbe85c6d3e3c81bccb122a","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":95853936810000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":33000000000,"usage_in_kernelmode":4150000000,"total_usage":37065357563,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,37065357563,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-28T15:32:57.941942501Z"}

@@ -1,5 +1,5 @@
 ################################################################################
-# PkgEval set-up: 2020-10-28T11:32:50.196
+# PkgEval set-up: 2020-10-28T15:21:07.316
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,18 +12,17 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T11:32:51.946
+# Installation: 2020-10-28T15:21:08.900
 #
 
    Resolving package versions...
-   Installed IterTools ── v1.3.0
    Installed Compat ───── v3.23.0
+   Installed IterTools ── v1.3.0
    Installed MacroTools ─ v0.5.6
    Installed LightQuery ─ v0.7.0
 Updating `~/.julia/environments/v1.6/Project.toml`
@@ -67,12 +66,12 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
 
 
 ################################################################################
-# Testing: 2020-10-28T11:32:56.820
+# Testing: 2020-10-28T15:21:12.866
 #
 
 
      Testing LightQuery
-Status `/tmp/jl_PdIyOY/Project.toml`
+Status `/tmp/jl_O8vYW4/Project.toml`
   [336ed68f] CSV v0.7.7
   [34da2185] Compat v3.23.0
   [e30172f5] Documenter v0.25.3
@@ -86,7 +85,7 @@ Status `/tmp/jl_PdIyOY/Project.toml`
   [d6f4376e] Markdown
   [10745b16] Statistics
   [8dfed614] Test
-Status `/tmp/jl_PdIyOY/Manifest.toml`
+Status `/tmp/jl_O8vYW4/Manifest.toml`
   [336ed68f] CSV v0.7.7
   [324d7699] CategoricalArrays v0.8.3
   [34da2185] Compat v3.23.0
@@ -2880,7 +2879,7 @@ Status `/tmp/jl_PdIyOY/Manifest.toml`
 │     [1] top-level scope
 │       @ none:1
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:379-399
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:224-233
 │ 
 │ ```jldoctest
 │ julia> using LightQuery
@@ -2889,248 +2888,25 @@ Status `/tmp/jl_PdIyOY/Manifest.toml`
 │ julia> using Test: @inferred
 │ 
 │ 
-│ julia> @inferred collect(InnerJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
-│ 2-element Array{Tuple{Int64,Int64},1}:
-│  (1, -1)
-│  (-6, 6)
-│ 
-│ julia> (@inferred collect(InnerJoin(By(Int[], abs), By(Int[], abs)))) == []
-│ true
-│ 
-│ julia> (@inferred collect(InnerJoin(By([1], abs), By(Int[], abs)))) == []
-│ true
-│ 
-│ julia> (@inferred collect(InnerJoin(By(Int[], abs), By([1], abs)))) == []
-│ true
+│ julia> @inferred By([1, -2], abs)
+│ By{Array{Int64,1},typeof(abs)}([1, -2], abs)
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ @inferred collect(InnerJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
+│ @inferred By([1, -2], abs)
 │ 
 │ Evaluated output:
 │ 
-│ 2-element Vector{Tuple{Int64, Int64}}:
-│  (1, -1)
-│  (-6, 6)
+│ By{Vector{Int64}, typeof(abs)}([1, -2], abs)
 │ 
 │ Expected output:
 │ 
-│ 2-element Array{Tuple{Int64,Int64},1}:
-│  (1, -1)
-│  (-6, 6)
+│ By{Array{Int64,1},typeof(abs)}([1, -2], abs)
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    2-element Array{Tuple{Int64,Int64},1}:
-│     Vector{Tuple{Int64, Int64}}:
-│     (1, -1)
-│     (-6, 6)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:251-266
-│ 
-│ ```jldoctest
-│ julia> using LightQuery
-│ 
-│ 
-│ julia> using Test: @inferred
-│ 
-│ 
-│ julia> @inferred collect(Group(By([1, -1, -2, 2, 3, -3], abs)))
-│ 3-element Array{Tuple{Int64,SubArray{Int64,1,Array{Int64,1},Tuple{UnitRange{Int64}},true}},1}:
-│  (1, [1, -1])
-│  (2, [-2, 2])
-│  (3, [3, -3])
-│ 
-│ julia> (@inferred collect(Group(By(Int[], abs)))) == []
-│ true
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ @inferred collect(Group(By([1, -1, -2, 2, 3, -3], abs)))
-│ 
-│ Evaluated output:
-│ 
-│ 3-element Vector{Tuple{Int64, SubArray{Int64, 1, Vector{Int64}, Tuple{UnitRange{Int64}}, true}}}:
-│  (1, [1, -1])
-│  (2, [-2, 2])
-│  (3, [3, -3])
-│ 
-│ Expected output:
-│ 
-│ 3-element Array{Tuple{Int64,SubArray{Int64,1,Array{Int64,1},Tuple{UnitRange{Int64}},true}},1}:
-│  (1, [1, -1])
-│  (2, [-2, 2])
-│  (3, [3, -3])
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    3-element Array{Tuple{Int64,SubArray{Int64,1,Array{Int64,1},Tuple{UnitRange{Int64}},true}},1}:
-│     Vector{Tuple{Int64, SubArray{Int64, 1, Vector{Int64}, Tuple{UnitRange{Int64}}, true}}}:
-│     (1, [1, -1])
-│     (2, [-2, 2])
-│     (3, [3, -3])
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:270-287
-│ 
-│ ```jldoctest
-│ julia> using LightQuery
-│ 
-│ 
-│ julia> using Test: @inferred
-│ 
-│ 
-│ julia> first_group = @> [2, 1, 2, 1] |> order(_, identity) |> Group(By(_, identity)) |> first;
-│ 
-│ 
-│ julia> key(first_group)
-│ 1
-│ 
-│ julia> collect(value(first_group))
-│ 2-element Array{Int64,1}:
-│  1
-│  1
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ collect(value(first_group))
-│ 
-│ Evaluated output:
-│ 
-│ 2-element Vector{Int64}:
-│  1
-│  1
-│ 
-│ Expected output:
-│ 
-│ 2-element Array{Int64,1}:
-│  1
-│  1
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2-element Array{Int64,1}:
-│     Vector{Int64}:
-│     1
-│     1
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:189-203
-│ 
-│ ```jldoctest
-│ julia> using LightQuery
-│ 
-│ 
-│ julia> using Test: @inferred
-│ 
-│ 
-│ julia> result = @inferred index([-2, 1], abs)
-│ LightQuery.Indexed{Int64,Int64,Array{Int64,1},Dict{Int64,Int64}} with 2 entries:
-│   2 => -2
-│   1 => 1
-│ 
-│ julia> @inferred result[2]
-│ -2
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ result = @inferred index([-2, 1], abs)
-│ 
-│ Evaluated output:
-│ 
-│ LightQuery.Indexed{Int64, Int64, Vector{Int64}, Dict{Int64, Int64}} with 2 entries:
-│   2 => -2
-│   1 => 1
-│ 
-│ Expected output:
-│ 
-│ LightQuery.Indexed{Int64,Int64,Array{Int64,1},Dict{Int64,Int64}} with 2 entries:
-│   2 => -2
-│   1 => 1
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    LightQuery.Indexed{Int64,Int64,Array{Int64,1},Dict{Int64,Int64}} LightQuery.Indexed{Int64, Int64, Vector{Int64}, Dict{Int64, Int64}} with 2 entries:
-│      2 => -2
-│      1 => 1
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:6-17
-│ 
-│ ```jldoctest
-│ julia> using LightQuery
-│ 
-│ 
-│ julia> using Test: @inferred
-│ 
-│ 
-│ julia> @inferred collect(Enumerate(Iterators.filter(iseven, [4, 3, 2, 1])))
-│ 2-element Array{Tuple{Int64,Int64},1}:
-│  (1, 4)
-│  (3, 2)
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ @inferred collect(Enumerate(Iterators.filter(iseven, [4, 3, 2, 1])))
-│ 
-│ Evaluated output:
-│ 
-│ 2-element Vector{Tuple{Int64, Int64}}:
-│  (1, 4)
-│  (3, 2)
-│ 
-│ Expected output:
-│ 
-│ 2-element Array{Tuple{Int64,Int64},1}:
-│  (1, 4)
-│  (3, 2)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2-element Array{Tuple{Int64,Int64},1}:
-│     Vector{Tuple{Int64, Int64}}:
-│     (1, 4)
-│     (3, 2)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:106-117
-│ 
-│ ```jldoctest
-│ julia> using LightQuery
-│ 
-│ 
-│ julia> using Test: @inferred
-│ 
-│ 
-│ julia> collect(@inferred order([1, -2], Backwards))
-│ 2-element Array{Int64,1}:
-│   1
-│  -2
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ collect(@inferred order([1, -2], Backwards))
-│ 
-│ Evaluated output:
-│ 
-│ 2-element Vector{Int64}:
-│   1
-│  -2
-│ 
-│ Expected output:
-│ 
-│ 2-element Array{Int64,1}:
-│   1
-│  -2
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2-element Array{Int64,1}:
-│      Vector{Int64}:
-│      1
-│     -2
+│    By{Array{Int64,1},typeof(abs)}([1, By{Vector{Int64}, typeof(abs)}([1, -2], abs)
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:563-586
 │ 
@@ -3288,132 +3064,6 @@ Status `/tmp/jl_PdIyOY/Manifest.toml`
 │     Vector{Tuple{Union{Missing, Int64}, Union{Missing, Int64}}}:
 │     (missing, 1)
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:431-451
-│ 
-│ ```jldoctest
-│ julia> using LightQuery
-│ 
-│ 
-│ julia> collect(LeftJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
-│ 4-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
-│  (1, -1)
-│  (-2, missing)
-│  (5, missing)
-│  (-6, 6)
-│ 
-│ julia> collect(LeftJoin(By(Int[], abs), By(Int[], abs))) == []
-│ true
-│ 
-│ julia> collect(LeftJoin(By([1], abs), By(Int[], abs)))
-│ 1-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
-│  (1, missing)
-│ 
-│ julia> collect(LeftJoin(By(Int[], abs), By([1], abs))) == []
-│ true
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ collect(LeftJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
-│ 
-│ Evaluated output:
-│ 
-│ 4-element Vector{Tuple{Int64, Union{Missing, Int64}}}:
-│  (1, -1)
-│  (-2, missing)
-│  (5, missing)
-│  (-6, 6)
-│ 
-│ Expected output:
-│ 
-│ 4-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
-│  (1, -1)
-│  (-2, missing)
-│  (5, missing)
-│  (-6, 6)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    4-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
-│     Vector{Tuple{Int64, Union{Missing, Int64}}}:
-│     (1, -1)
-│     (-2, missing)
-│     (5, missing)
-│     (-6, 6)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:431-451
-│ 
-│ ```jldoctest
-│ julia> using LightQuery
-│ 
-│ 
-│ julia> collect(LeftJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
-│ 4-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
-│  (1, -1)
-│  (-2, missing)
-│  (5, missing)
-│  (-6, 6)
-│ 
-│ julia> collect(LeftJoin(By(Int[], abs), By(Int[], abs))) == []
-│ true
-│ 
-│ julia> collect(LeftJoin(By([1], abs), By(Int[], abs)))
-│ 1-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
-│  (1, missing)
-│ 
-│ julia> collect(LeftJoin(By(Int[], abs), By([1], abs))) == []
-│ true
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ collect(LeftJoin(By([1], abs), By(Int[], abs)))
-│ 
-│ Evaluated output:
-│ 
-│ 1-element Vector{Tuple{Int64, Union{Missing, Int64}}}:
-│  (1, missing)
-│ 
-│ Expected output:
-│ 
-│ 1-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
-│  (1, missing)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    1-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
-│     Vector{Tuple{Int64, Union{Missing, Int64}}}:
-│     (1, missing)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:224-233
-│ 
-│ ```jldoctest
-│ julia> using LightQuery
-│ 
-│ 
-│ julia> using Test: @inferred
-│ 
-│ 
-│ julia> @inferred By([1, -2], abs)
-│ By{Array{Int64,1},typeof(abs)}([1, -2], abs)
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ @inferred By([1, -2], abs)
-│ 
-│ Evaluated output:
-│ 
-│ By{Vector{Int64}, typeof(abs)}([1, -2], abs)
-│ 
-│ Expected output:
-│ 
-│ By{Array{Int64,1},typeof(abs)}([1, -2], abs)
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    By{Array{Int64,1},typeof(abs)}([1, By{Vector{Int64}, typeof(abs)}([1, -2], abs)
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/make_columns.jl:51-72
 │ 
 │ ```jldoctest Rows
@@ -3558,41 +3208,6 @@ Status `/tmp/jl_PdIyOY/Manifest.toml`
 │     (a = 1,)
 │     (a = 2,)
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:714-722
-│ 
-│ ```jldoctest
-│ julia> using LightQuery
-│ 
-│ 
-│ julia> collect(Length(Iterators.filter(iseven, 1:4), 2))
-│ 2-element Array{Int64,1}:
-│  2
-│  4
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ collect(Length(Iterators.filter(iseven, 1:4), 2))
-│ 
-│ Evaluated output:
-│ 
-│ 2-element Vector{Int64}:
-│  2
-│  4
-│ 
-│ Expected output:
-│ 
-│ 2-element Array{Int64,1}:
-│  2
-│  4
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2-element Array{Int64,1}:
-│     Vector{Int64}:
-│     2
-│     4
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:81-92
 │ 
 │ ```jldoctest
@@ -3630,6 +3245,169 @@ Status `/tmp/jl_PdIyOY/Manifest.toml`
 │      Vector{Int64}:
 │      1
 │     -2
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:6-17
+│ 
+│ ```jldoctest
+│ julia> using LightQuery
+│ 
+│ 
+│ julia> using Test: @inferred
+│ 
+│ 
+│ julia> @inferred collect(Enumerate(Iterators.filter(iseven, [4, 3, 2, 1])))
+│ 2-element Array{Tuple{Int64,Int64},1}:
+│  (1, 4)
+│  (3, 2)
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ @inferred collect(Enumerate(Iterators.filter(iseven, [4, 3, 2, 1])))
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Vector{Tuple{Int64, Int64}}:
+│  (1, 4)
+│  (3, 2)
+│ 
+│ Expected output:
+│ 
+│ 2-element Array{Tuple{Int64,Int64},1}:
+│  (1, 4)
+│  (3, 2)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Array{Tuple{Int64,Int64},1}:
+│     Vector{Tuple{Int64, Int64}}:
+│     (1, 4)
+│     (3, 2)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:379-399
+│ 
+│ ```jldoctest
+│ julia> using LightQuery
+│ 
+│ 
+│ julia> using Test: @inferred
+│ 
+│ 
+│ julia> @inferred collect(InnerJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
+│ 2-element Array{Tuple{Int64,Int64},1}:
+│  (1, -1)
+│  (-6, 6)
+│ 
+│ julia> (@inferred collect(InnerJoin(By(Int[], abs), By(Int[], abs)))) == []
+│ true
+│ 
+│ julia> (@inferred collect(InnerJoin(By([1], abs), By(Int[], abs)))) == []
+│ true
+│ 
+│ julia> (@inferred collect(InnerJoin(By(Int[], abs), By([1], abs)))) == []
+│ true
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ @inferred collect(InnerJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Vector{Tuple{Int64, Int64}}:
+│  (1, -1)
+│  (-6, 6)
+│ 
+│ Expected output:
+│ 
+│ 2-element Array{Tuple{Int64,Int64},1}:
+│  (1, -1)
+│  (-6, 6)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Array{Tuple{Int64,Int64},1}:
+│     Vector{Tuple{Int64, Int64}}:
+│     (1, -1)
+│     (-6, 6)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:106-117
+│ 
+│ ```jldoctest
+│ julia> using LightQuery
+│ 
+│ 
+│ julia> using Test: @inferred
+│ 
+│ 
+│ julia> collect(@inferred order([1, -2], Backwards))
+│ 2-element Array{Int64,1}:
+│   1
+│  -2
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ collect(@inferred order([1, -2], Backwards))
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Vector{Int64}:
+│   1
+│  -2
+│ 
+│ Expected output:
+│ 
+│ 2-element Array{Int64,1}:
+│   1
+│  -2
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Array{Int64,1}:
+│      Vector{Int64}:
+│      1
+│     -2
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:189-203
+│ 
+│ ```jldoctest
+│ julia> using LightQuery
+│ 
+│ 
+│ julia> using Test: @inferred
+│ 
+│ 
+│ julia> result = @inferred index([-2, 1], abs)
+│ LightQuery.Indexed{Int64,Int64,Array{Int64,1},Dict{Int64,Int64}} with 2 entries:
+│   2 => -2
+│   1 => 1
+│ 
+│ julia> @inferred result[2]
+│ -2
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ result = @inferred index([-2, 1], abs)
+│ 
+│ Evaluated output:
+│ 
+│ LightQuery.Indexed{Int64, Int64, Vector{Int64}, Dict{Int64, Int64}} with 2 entries:
+│   2 => -2
+│   1 => 1
+│ 
+│ Expected output:
+│ 
+│ LightQuery.Indexed{Int64,Int64,Array{Int64,1},Dict{Int64,Int64}} with 2 entries:
+│   2 => -2
+│   1 => 1
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    LightQuery.Indexed{Int64,Int64,Array{Int64,1},Dict{Int64,Int64}} LightQuery.Indexed{Int64, Int64, Vector{Int64}, Dict{Int64, Int64}} with 2 entries:
+│      2 => -2
+│      1 => 1
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:497-517
 │ 
@@ -3728,6 +3506,227 @@ Status `/tmp/jl_PdIyOY/Manifest.toml`
 │     Vector{Tuple{Union{Missing, Int64}, Int64}}:
 │     (missing, 1)
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:714-722
+│ 
+│ ```jldoctest
+│ julia> using LightQuery
+│ 
+│ 
+│ julia> collect(Length(Iterators.filter(iseven, 1:4), 2))
+│ 2-element Array{Int64,1}:
+│  2
+│  4
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ collect(Length(Iterators.filter(iseven, 1:4), 2))
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Vector{Int64}:
+│  2
+│  4
+│ 
+│ Expected output:
+│ 
+│ 2-element Array{Int64,1}:
+│  2
+│  4
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Array{Int64,1}:
+│     Vector{Int64}:
+│     2
+│     4
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:431-451
+│ 
+│ ```jldoctest
+│ julia> using LightQuery
+│ 
+│ 
+│ julia> collect(LeftJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
+│ 4-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
+│  (1, -1)
+│  (-2, missing)
+│  (5, missing)
+│  (-6, 6)
+│ 
+│ julia> collect(LeftJoin(By(Int[], abs), By(Int[], abs))) == []
+│ true
+│ 
+│ julia> collect(LeftJoin(By([1], abs), By(Int[], abs)))
+│ 1-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
+│  (1, missing)
+│ 
+│ julia> collect(LeftJoin(By(Int[], abs), By([1], abs))) == []
+│ true
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ collect(LeftJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
+│ 
+│ Evaluated output:
+│ 
+│ 4-element Vector{Tuple{Int64, Union{Missing, Int64}}}:
+│  (1, -1)
+│  (-2, missing)
+│  (5, missing)
+│  (-6, 6)
+│ 
+│ Expected output:
+│ 
+│ 4-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
+│  (1, -1)
+│  (-2, missing)
+│  (5, missing)
+│  (-6, 6)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    4-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
+│     Vector{Tuple{Int64, Union{Missing, Int64}}}:
+│     (1, -1)
+│     (-2, missing)
+│     (5, missing)
+│     (-6, 6)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:431-451
+│ 
+│ ```jldoctest
+│ julia> using LightQuery
+│ 
+│ 
+│ julia> collect(LeftJoin(By([1, -2, 5, -6], abs), By([-1, 3, -4, 6], abs)))
+│ 4-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
+│  (1, -1)
+│  (-2, missing)
+│  (5, missing)
+│  (-6, 6)
+│ 
+│ julia> collect(LeftJoin(By(Int[], abs), By(Int[], abs))) == []
+│ true
+│ 
+│ julia> collect(LeftJoin(By([1], abs), By(Int[], abs)))
+│ 1-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
+│  (1, missing)
+│ 
+│ julia> collect(LeftJoin(By(Int[], abs), By([1], abs))) == []
+│ true
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ collect(LeftJoin(By([1], abs), By(Int[], abs)))
+│ 
+│ Evaluated output:
+│ 
+│ 1-element Vector{Tuple{Int64, Union{Missing, Int64}}}:
+│  (1, missing)
+│ 
+│ Expected output:
+│ 
+│ 1-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
+│  (1, missing)
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    1-element Array{Tuple{Int64,Union{Missing, Int64}},1}:
+│     Vector{Tuple{Int64, Union{Missing, Int64}}}:
+│     (1, missing)
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:251-266
+│ 
+│ ```jldoctest
+│ julia> using LightQuery
+│ 
+│ 
+│ julia> using Test: @inferred
+│ 
+│ 
+│ julia> @inferred collect(Group(By([1, -1, -2, 2, 3, -3], abs)))
+│ 3-element Array{Tuple{Int64,SubArray{Int64,1,Array{Int64,1},Tuple{UnitRange{Int64}},true}},1}:
+│  (1, [1, -1])
+│  (2, [-2, 2])
+│  (3, [3, -3])
+│ 
+│ julia> (@inferred collect(Group(By(Int[], abs)))) == []
+│ true
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ @inferred collect(Group(By([1, -1, -2, 2, 3, -3], abs)))
+│ 
+│ Evaluated output:
+│ 
+│ 3-element Vector{Tuple{Int64, SubArray{Int64, 1, Vector{Int64}, Tuple{UnitRange{Int64}}, true}}}:
+│  (1, [1, -1])
+│  (2, [-2, 2])
+│  (3, [3, -3])
+│ 
+│ Expected output:
+│ 
+│ 3-element Array{Tuple{Int64,SubArray{Int64,1,Array{Int64,1},Tuple{UnitRange{Int64}},true}},1}:
+│  (1, [1, -1])
+│  (2, [-2, 2])
+│  (3, [3, -3])
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    3-element Array{Tuple{Int64,SubArray{Int64,1,Array{Int64,1},Tuple{UnitRange{Int64}},true}},1}:
+│     Vector{Tuple{Int64, SubArray{Int64, 1, Vector{Int64}, Tuple{UnitRange{Int64}}, true}}}:
+│     (1, [1, -1])
+│     (2, [-2, 2])
+│     (3, [3, -3])
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LightQuery/U9mHU/src/rows.jl:270-287
+│ 
+│ ```jldoctest
+│ julia> using LightQuery
+│ 
+│ 
+│ julia> using Test: @inferred
+│ 
+│ 
+│ julia> first_group = @> [2, 1, 2, 1] |> order(_, identity) |> Group(By(_, identity)) |> first;
+│ 
+│ 
+│ julia> key(first_group)
+│ 1
+│ 
+│ julia> collect(value(first_group))
+│ 2-element Array{Int64,1}:
+│  1
+│  1
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ collect(value(first_group))
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Vector{Int64}:
+│  1
+│  1
+│ 
+│ Expected output:
+│ 
+│ 2-element Array{Int64,1}:
+│  1
+│  1
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Array{Int64,1}:
+│     Vector{Int64}:
+│     1
+│     1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: Doctesting failed
 │   exception =
 │    `makedocs` encountered a doctest error. Terminating build
@@ -3822,19 +3821,10 @@ Stacktrace:
 
 
 ################################################################################
-# PkgEval teardown: 2020-10-28T11:35:55.780
-#
-
-
-signal (15): Terminated
-in expression starting at none:1
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
-
-CPU usage: 162.14s (140.52s user, 22.16s kernel)
+# PkgEval teardown: 2020-10-28T15:23:40.766
+CPU usage: 138.84s (128.88s user, 10.33s kernel)
 
 Network usage:
-- eth0: 16.587 MiB received, 188.830 KiB sent
+- eth0: 16.602 MiB received, 188.017 KiB sent
 
-Raw statistics: {"read":"2020-10-28T11:35:56.804636595Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":45056},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":45056},{"major":259,"minor":0,"op":"Total","value":45056},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":45056},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":45056},{"major":253,"minor":2,"op":"Total","value":45056}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":9},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":9},{"major":259,"minor":0,"op":"Total","value":9},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":9},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":9},{"major":253,"minor":2,"op":"Total","value":9}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":162135834323,"percpu_usage":[1951102034,1275669329,1184446031,2198472547,1462783666,2319026683,1538289045,2435446662,1477986238,1599596978,2419609850,698825760,1720688403,1551243293,1586860146,1791524480,2043051627,2994865802,1331114230,1695456106,1319074928,1459822938,1972794563,1287965810,2362146388,1297262947,2471274367,1300332370,3027972311,2359304075,2783084797,3788950337,247604716,368505988,501592232,1355840956,70154216,728697019,393254566,261787437,477356264,619996339,620157100,190487717,805931343,755140617,293833969,895440754,502601306,178948138,489983657,916095029,333081500,543382154,317147619,452199848,400289307,985094076,816054970,483037942,489664583,422640451,623113551,503261295,2742003350,1524066127,2569156563,2112142826,2970348655,2145811718,1214162738,2079097935,1678836641,1724565675,1517413822,2073972907,1587278393,4507052801,3143366027,2043611703,1797273932,2312028531,1918160670,2380173855,2882046399,1968438665,805981744,1643793425,1345222613,1807597982,2946193329,1527816883,2328471161,2101341775,2716849273,2353601038,682794742,677004166,567621897,1323152979,66487674,309510418,406506256,467294738,579079758,74590260,267166838,137972187,441017184,584383204,316443704,286036084,820714111,428384624,822215662,633532139,955335434,570048762,224985655,552708323,426140334,373212231,604754058,420191463,293824566,393712080,459316136,753396100],"usage_in_kernelmode":22160000000,"usage_in_usermode":140520000000},"system_cpu_usage":94044006870000000,"online_cpus":128,"throttling_data":{"periods":1866,"throttled_periods":53,"throttled_time":10372030967}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":354816000,"max_usage":1140731904,"stats":{"active_anon":228376576,"active_file":4096,"cache":92827648,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":76341248,"inactive_file":8192,"mapped_file":0,"pgfault":3352855,"pgmajfault":0,"pgpgin":1570029,"pgpgout":1495632,"rss":211902464,"rss_huge":0,"total_active_anon":228376576,"total_active_file":4096,"total_cache":92827648,"total_dirty":0,"total_inactive_anon":76341248,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":3352855,"total_pgmajfault":0,"total_pgpgin":1570029,"total_pgpgout":1495632,"total_rss":211902464,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/LightQuery-jFY5R6uH","id":"ef2821b918811264337584072c63117924f06f70063d197c886c31018ad3bf35","networks":{"eth0":{"rx_bytes":17393013,"rx_packets":2459,"rx_errors":0,"rx_dropped":7,"tx_bytes":193362,"tx_packets":2076,"tx_errors":0,"tx_dropped":0}}}
-
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":9,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":9,"op":"Async","minor":0},{"major":259,"value":9,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":9,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":9,"op":"Async","minor":2},{"major":253,"value":9,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":45056,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":45056,"op":"Async","minor":0},{"major":259,"value":45056,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":45056,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":45056,"op":"Async","minor":2},{"major":253,"value":45056,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":312926208,"max_usage":1116282880,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":212021248,"inactive_file":8192,"inactive_anon":76341248,"total_pgfault":2385429,"total_cache":92811264,"total_rss_huge":0,"total_active_anon":228483072,"total_pgmajfault":0,"pgpgin":1367717,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":1293295,"hierarchical_memsw_limit":0,"cache":92811264,"active_file":0,"pgfault":2385429,"total_mapped_file":0,"total_pgpgout":1293295,"total_writeback":0,"rss":212021248,"unevictable":0,"total_inactive_anon":76341248,"total_pgpgin":1367717,"active_anon":228483072,"total_active_file":0},"limit":540972998656},"name":"/LightQuery-TGkvFE4b","networks":{"eth0":{"rx_bytes":17408499,"rx_packets":2745,"tx_packets":2061,"tx_bytes":192529,"tx_dropped":0,"rx_dropped":5,"tx_errors":0,"rx_errors":0}},"id":"a9e6cba2cca66bd95473eaf690954304a263e793089851b7abcdcce2d4f7d3cc","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":95783379830000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":128880000000,"usage_in_kernelmode":10330000000,"total_usage":138841033236,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,138840656656,376580,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-28T15:23:41.430405087Z"}

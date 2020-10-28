@@ -1,5 +1,5 @@
 ################################################################################
-# PkgEval set-up: 2020-10-28T11:05:26.472
+# PkgEval set-up: 2020-10-28T15:34:56.734
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T11:05:28.269
+# Installation: 2020-10-28T15:34:58.738
 #
 
    Resolving package versions...
@@ -40,18 +39,18 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
 
 
 ################################################################################
-# Testing: 2020-10-28T11:05:30.275
+# Testing: 2020-10-28T15:35:00.663
 #
 
 
      Testing IntervalTrees
-Status `/tmp/jl_mn5Tq5/Project.toml`
+Status `/tmp/jl_7SwSy2/Project.toml`
   [524e6230] IntervalTrees v1.0.0
   [b77e0a4c] InteractiveUtils
   [9abbd945] Profile
   [9a3f8284] Random
   [8dfed614] Test
-Status `/tmp/jl_mn5Tq5/Manifest.toml`
+Status `/tmp/jl_7SwSy2/Manifest.toml`
   [524e6230] IntervalTrees v1.0.0
   [2a0f44e3] Base64
   [b77e0a4c] InteractiveUtils
@@ -72,40 +71,64 @@ Test Summary: | Pass  Total
 Search        |   11     11
 Test Summary: | Pass  Total
 Iteration     |    5      5
-Test Summary:         | Pass  Total
-Interval Intersection |   17     17
-Test Summary: | Pass  Total
-Nonunique     |    5      5
-Test Summary:     | Pass  Total
-Tree Intersection |    6      6
-Test Summary: | Pass  Total
-Insertion     |   24     24
-Test Summary: | Pass  Total
-Updates       |    4      4
-Test Summary: | Pass  Total
-Deletion      |   35     35
-Test Summary: | Pass  Total
-Slices        |   11     11
-Test Summary: | Pass  Total
-Low Level     |    8      8
-     Testing IntervalTrees tests passed 
+Interval Intersection: Test Failed at /home/pkgeval/.julia/packages/IntervalTrees/wh2ex/test/runtests.jl:331
+  Expression: !((IntervalTrees.firstintersection(t.root, Interval(4, 4), Interval(2, 2)))[1] === nothing)
+   Evaluated: !(nothing === nothing)
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/IntervalTrees/wh2ex/test/runtests.jl:331 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] top-level scope
+   @ ~/.julia/packages/IntervalTrees/wh2ex/test/runtests.jl:242
+Test Summary:         | Pass  Fail  Total
+Interval Intersection |   16     1     17
+ERROR: LoadError: Some tests did not pass: 16 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/IntervalTrees/wh2ex/test/runtests.jl:240
 
-PkgEval succeeded
+PkgEval failed: Package IntervalTrees errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
 
 
 ################################################################################
-# PkgEval teardown: 2020-10-28T11:06:03.691
-#
-
-
-signal (15): Terminated
-in expression starting at none:1
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-
-CPU usage: 34.59s (31.57s user, 3.12s kernel)
+# PkgEval teardown: 2020-10-28T15:35:20.832
+CPU usage: 17.89s (16.42s user, 1.44s kernel)
 
 Network usage:
-- eth0: 121.107 KiB received, 5.027 KiB sent
+- eth0: 120.700 KiB received, 4.600 KiB sent
 
-Raw statistics: {"read":"2020-10-28T11:06:03.694048701Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":34587311343,"percpu_usage":[19728810,55363421,189101724,224795628,988354836,706965369,1442641736,60578014,511943798,644894397,669432687,349739616,203135752,8210,1136942294,1219197739,102598873,159326833,214892195,239825216,330175966,53878071,150279666,1300996462,1028620091,648137973,2594883908,801001771,315884566,6125943,111029604,201421620,10370,37466338,77668001,94764190,50494622,201522940,121899169,13069805,114415544,200618850,126015071,100906499,31220063,292947225,56069423,163748445,17330,240059174,169244158,25561871,29605723,2880141,26146451,112463443,60797084,15650,57224102,20706189,14222636,30914604,39102456,5979102,436835490,1048297729,197267830,1082032445,3589361,479548402,3075501,588215048,380727602,249168890,11302095,302319042,63096653,30960863,717906815,1138913788,51139030,34795552,417254906,1304106024,372940495,107578873,182714834,169948209,700527646,441469088,662818414,1053971956,41569968,8922555,43490068,939806199,38443076,1110420,90359925,135562235,114353356,17290797,25617709,36616464,14967415,224146572,67879698,5558712,118235568,79878803,25094281,70914929,175942371,349577480,10287393,0,2637251,7030,11737535,54611512,12738216,20580991,72847119,566321,1465381,28357990,309095162,4838802],"usage_in_kernelmode":3120000000,"usage_in_usermode":31570000000},"system_cpu_usage":93816184190000000,"online_cpus":128,"throttling_data":{"periods":380,"throttled_periods":4,"throttled_time":1200295876}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":170668032,"max_usage":482758656,"stats":{"active_anon":157011968,"active_file":0,"cache":495616,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":237568,"inactive_file":8192,"mapped_file":0,"pgfault":629489,"pgmajfault":0,"pgpgin":323070,"pgpgout":284667,"rss":156803072,"rss_huge":0,"total_active_anon":157011968,"total_active_file":0,"total_cache":495616,"total_dirty":0,"total_inactive_anon":237568,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":629489,"total_pgmajfault":0,"total_pgpgin":323070,"total_pgpgout":284667,"total_rss":156803072,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/IntervalTrees-rdzB4FBo","id":"d8c6d7d5d7dce7c7dcfd95ec487f93b86ccd82f61918eeea0e0bbd59049b72b1","networks":{"eth0":{"rx_bytes":124014,"rx_packets":74,"rx_errors":0,"rx_dropped":2,"tx_bytes":5148,"tx_packets":40,"tx_errors":0,"tx_dropped":0}}}
-
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":194310144,"max_usage":382660608,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":189759488,"inactive_file":8192,"inactive_anon":237568,"total_pgfault":327639,"total_cache":495616,"total_rss_huge":0,"total_active_anon":190009344,"total_pgmajfault":0,"pgpgin":159921,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":113472,"hierarchical_memsw_limit":0,"cache":495616,"active_file":0,"pgfault":327639,"total_mapped_file":0,"total_pgpgout":113472,"total_writeback":0,"rss":189759488,"unevictable":0,"total_inactive_anon":237568,"total_pgpgin":159921,"active_anon":190009344,"total_active_file":0},"limit":540972998656},"name":"/IntervalTrees-bVoRXZEQ","networks":{"eth0":{"rx_bytes":123597,"rx_packets":75,"tx_packets":33,"tx_bytes":4710,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"bf3e27ec0b67b464c249a6f3a354b3c49c59cc789f2a70af1efcc4277a49ab4e","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":95872157680000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":16420000000,"usage_in_kernelmode":1440000000,"total_usage":17893094983,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,17893091343,0,0,1310,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2330,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-28T15:35:21.518314359Z"}

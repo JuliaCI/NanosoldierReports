@@ -1,5 +1,5 @@
 ################################################################################
-# PkgEval set-up: 2020-10-28T10:47:52.541
+# PkgEval set-up: 2020-10-28T15:11:35.420
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,18 +12,17 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T10:47:55.167
+# Installation: 2020-10-28T15:11:37.014
 #
 
    Resolving package versions...
-   Installed IterativeSolvers ─ v0.8.4
    Installed RecipesBase ────── v1.1.0
+   Installed IterativeSolvers ─ v0.8.4
 Updating `~/.julia/environments/v1.6/Project.toml`
   [42fd0dbc] + IterativeSolvers v0.8.4
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -39,12 +38,12 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
 
 
 ################################################################################
-# Testing: 2020-10-28T10:50:07.074
+# Testing: 2020-10-28T15:11:39.274
 #
 
 
      Testing IterativeSolvers
-Status `/tmp/jl_ytZENY/Project.toml`
+Status `/tmp/jl_7Cq0c3/Project.toml`
   [42fd0dbc] IterativeSolvers v0.8.4
   [7a12625a] LinearMaps v2.7.0
   [3cdcf5f2] RecipesBase v1.1.0
@@ -53,7 +52,7 @@ Status `/tmp/jl_ytZENY/Project.toml`
   [9a3f8284] Random
   [2f01184e] SparseArrays
   [8dfed614] Test
-Status `/tmp/jl_ytZENY/Manifest.toml`
+Status `/tmp/jl_7Cq0c3/Manifest.toml`
   [42fd0dbc] IterativeSolvers v0.8.4
   [7a12625a] LinearMaps v2.7.0
   [3cdcf5f2] RecipesBase v1.1.0
@@ -80,50 +79,113 @@ Test Summary:      | Pass  Total
 Stationary solvers |  153    153
 Test Summary:       | Pass  Total
 Conjugate Gradients |   46     46
-Test Summary: | Pass  Total
-BiCGStab(l)   |   48     48
-Test Summary: | Pass  Total
-MINRES        |   44     44
-Test Summary: | Pass  Total
-GMRES         |   46     46
-Test Summary: | Pass  Total
-IDR(s)        |   31     31
-Test Summary: | Pass  Total
-QMR           |   22     22
-Test Summary: | Pass  Total
-Chebyshev     |   36     36
-Test Summary:       | Pass  Total
-Simple Eigensolvers |   24     24
-Test Summary:                                           | Pass  Total
-Locally Optimal Block Preconditioned Conjugate Gradient |  322    322
-Test Summary: | Pass  Total
-SVD Lanczos   |   32     32
-Test Summary:         | Pass  Total
-BrokenArrowBidiagonal |    8      8
-Test Summary: | Pass  Total
-LSQR          |   11     11
-Test Summary: | Pass  Total
-LSMR          |    9      9
-Test Summary:      | Pass  Total
-ConvergenceHistory |   17     17
-     Testing IterativeSolvers tests passed 
+BiCGStab(4): Error During Test at /home/pkgeval/.julia/packages/IterativeSolvers/3g7hG/test/bicgstabl.jl:18
+  Got exception outside of a @test
+  SingularException(4)
+  Stacktrace:
+    [1] checknonsingular
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/LinearAlgebra/src/factorization.jl:19 [inlined]
+    [2] checknonsingular
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/LinearAlgebra/src/factorization.jl:21 [inlined]
+    [3] #lu!#132
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/LinearAlgebra/src/lu.jl:85 [inlined]
+    [4] lu!
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/LinearAlgebra/src/lu.jl:81 [inlined]
+    [5] iterate(it::BiCGStabIterable{LU{Float32, Matrix{Float32}}, Matrix{Float32}, Vector{Float32}, Vector{Float32}, Matrix{Float32}, Float32, Float32}, iteration::Int64)
+      @ IterativeSolvers ~/.julia/packages/IterativeSolvers/3g7hG/src/bicgstabl.jl:123
+    [6] iterate
+      @ ~/.julia/packages/IterativeSolvers/3g7hG/src/bicgstabl.jl:80 [inlined]
+    [7] iterate
+      @ ./iterators.jl:159 [inlined]
+    [8] iterate
+      @ ./iterators.jl:158 [inlined]
+    [9] bicgstabl!(x::Vector{Float32}, A::Matrix{Float32}, b::Vector{Float32}, l::Int64; tol::Float32, max_mv_products::Int64, log::Bool, verbose::Bool, Pl::LU{Float32, Matrix{Float32}}, kwargs::Base.Iterators.Pairs{Symbol, Bool, Tuple{Symbol}, NamedTuple{(:initial_zero,), Tuple{Bool}}})
+      @ IterativeSolvers ~/.julia/packages/IterativeSolvers/3g7hG/src/bicgstabl.jl:197
+   [10] bicgstabl(A::Matrix{Float32}, b::Vector{Float32}, l::Int64; kwargs::Base.Iterators.Pairs{Symbol, Any, NTuple{4, Symbol}, NamedTuple{(:Pl, :max_mv_products, :log, :tol), Tuple{LU{Float32, Matrix{Float32}}, Int64, Bool, Float32}}})
+      @ IterativeSolvers ~/.julia/packages/IterativeSolvers/3g7hG/src/bicgstabl.jl:144
+   [11] macro expansion
+      @ ~/.julia/packages/IterativeSolvers/3g7hG/test/bicgstabl.jl:33 [inlined]
+   [12] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219 [inlined]
+   [13] macro expansion
+      @ ~/.julia/packages/IterativeSolvers/3g7hG/test/bicgstabl.jl:18 [inlined]
+   [14] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1219 [inlined]
+   [15] macro expansion
+      @ ~/.julia/packages/IterativeSolvers/3g7hG/test/bicgstabl.jl:11 [inlined]
+   [16] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [17] top-level scope
+      @ ~/.julia/packages/IterativeSolvers/3g7hG/test/bicgstabl.jl:8
+   [18] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [19] top-level scope
+      @ ~/.julia/packages/IterativeSolvers/3g7hG/test/runtests.jl:17
+   [20] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [21] top-level scope
+      @ none:6
+   [22] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [23] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [24] _start()
+      @ Base ./client.jl:485
+Test Summary:        | Pass  Error  Total
+BiCGStab(l)          |   47      1     48
+  Matrix{Float32}    |   11      1     12
+    BiCGStab(2)      |    6             6
+    BiCGStab(4)      |    5      1      6
+  Matrix{Float64}    |   12            12
+  Matrix{ComplexF32} |   12            12
+  Matrix{ComplexF64} |   12            12
+ERROR: LoadError: LoadError: Some tests did not pass: 47 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/IterativeSolvers/3g7hG/test/bicgstabl.jl:6
+in expression starting at /home/pkgeval/.julia/packages/IterativeSolvers/3g7hG/test/runtests.jl:17
 
-PkgEval succeeded
+PkgEval failed: Package IterativeSolvers errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
 
 
 ################################################################################
-# PkgEval teardown: 2020-10-28T10:58:34.765
-#
-
-
-signal (15): Terminated
-in expression starting at none:1
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-
-CPU usage: 368.92s (339.00s user, 30.55s kernel)
+# PkgEval teardown: 2020-10-28T15:12:58.900
+CPU usage: 76.72s (74.05s user, 2.88s kernel)
 
 Network usage:
-- eth0: 187.609 KiB received, 13.904 KiB sent
+- eth0: 145.135 KiB received, 11.827 KiB sent
 
-Raw statistics: {"read":"2020-10-28T10:58:34.775655628Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":368916671021,"percpu_usage":[260262777,313434814,237886194,113748769,176744514,115973647,123676020,188316628,149282007,123694948,71085288,113514222,204666797,349192318,213484558,169981548,201506282,115661079,88549162,265880640,85256055,92204596,208170543,186873194,628407722,136461956,207943690,32077281,193201470,260559753,19830698,137454698,4835563767,6698068115,5584921088,5165875195,5797436539,3211871035,6048310306,3682258927,6208047041,6985272764,4294776911,6910842890,5033787861,3375824095,1939246124,4740710610,5656120156,4078364585,5203787502,10062487421,8238683591,3663705108,3960166422,10058448366,4544989418,2387993059,3657869648,5093110314,6537394584,9540704843,4107441738,9141066693,149811789,309457584,177028868,149482908,141907407,51926163,322099642,31552691,25788513,250708692,128554243,173056179,310590873,276203209,298261710,162236734,159697574,406569016,111251556,58903834,64235228,194276187,126886386,60094815,295535193,140633895,152437476,36513210,128046357,76520569,67948246,83625588,5581550964,5415492519,8870296730,3867899735,4896802442,3251471935,5450203552,3735579313,4974071881,5280430479,8837874278,5887484595,4199926086,2126593955,2933430946,1869406621,7504871027,6406195666,3443099147,5584202042,15646357324,3524897386,2114304634,12512959761,4195765442,4361427536,2299875691,2987479387,12223798340,11117472608,5572026742,4891449338],"usage_in_kernelmode":30550000000,"usage_in_usermode":339000000000},"system_cpu_usage":93759124260000000,"online_cpus":128,"throttling_data":{"periods":4889,"throttled_periods":67,"throttled_time":18437556755}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":203120640,"max_usage":914640896,"stats":{"active_anon":183046144,"active_file":0,"cache":1675264,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":380928,"inactive_file":8192,"mapped_file":0,"pgfault":7038210,"pgmajfault":0,"pgpgin":575530,"pgpgout":530746,"rss":181760000,"rss_huge":0,"total_active_anon":183046144,"total_active_file":0,"total_cache":1675264,"total_dirty":0,"total_inactive_anon":380928,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":7038210,"total_pgmajfault":0,"total_pgpgin":575530,"total_pgpgout":530746,"total_rss":181760000,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/IterativeSolvers-5jdyeo94","id":"c86e0f2a9d683e9ac2929d13e0d07d41c5da2505a6a1fdc5fcfc8c8a68e0aaf7","networks":{"eth0":{"rx_bytes":192112,"rx_packets":826,"rx_errors":0,"rx_dropped":22,"tx_bytes":14238,"tx_packets":115,"tx_errors":0,"tx_dropped":0}}}
-
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":202727424,"max_usage":585306112,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":196444160,"inactive_file":8192,"inactive_anon":438272,"total_pgfault":641417,"total_cache":1675264,"total_rss_huge":0,"total_active_anon":197672960,"total_pgmajfault":0,"pgpgin":274621,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":226252,"hierarchical_memsw_limit":0,"cache":1675264,"active_file":0,"pgfault":641417,"total_mapped_file":0,"total_pgpgout":226252,"total_writeback":0,"rss":196444160,"unevictable":0,"total_inactive_anon":438272,"total_pgpgin":274621,"active_anon":197672960,"total_active_file":0},"limit":540972998656},"name":"/IterativeSolvers-zNLyKtbl","networks":{"eth0":{"rx_bytes":148618,"rx_packets":210,"tx_packets":87,"tx_bytes":12111,"tx_dropped":0,"rx_dropped":3,"tx_errors":0,"rx_errors":0}},"id":"f014e291154699477a0ba23425dbe4fc4c653706396e805ea963e2bc944eca7c","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":95701774860000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":74050000000,"usage_in_kernelmode":2880000000,"total_usage":76720335764,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,76720240644,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95120,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-28T15:12:59.854296913Z"}

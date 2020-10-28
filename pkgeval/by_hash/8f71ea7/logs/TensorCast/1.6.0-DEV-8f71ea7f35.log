@@ -1,5 +1,5 @@
 ################################################################################
-# PkgEval set-up: 2020-10-28T11:51:30.498
+# PkgEval set-up: 2020-10-28T15:26:13.797
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,23 +12,22 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T11:51:32.304
+# Installation: 2020-10-28T15:26:14.926
 #
 
    Resolving package versions...
    Installed ZygoteRules ── v0.2.0
    Installed Compat ─────── v3.23.0
-   Installed TensorCast ─── v0.3.2
-   Installed OffsetArrays ─ v1.3.1
    Installed MacroTools ─── v0.5.6
    Installed Requires ───── v1.1.0
-   Installed NamedDims ──── v0.2.28
+   Installed OffsetArrays ─ v1.3.1
+   Installed TensorCast ─── v0.3.2
+   Installed NamedDims ──── v0.2.29
    Installed StaticArrays ─ v0.12.5
    Installed LazyStack ──── v0.0.7
 Updating `~/.julia/environments/v1.6/Project.toml`
@@ -37,7 +36,7 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [34da2185] + Compat v3.23.0
   [1fad7336] + LazyStack v0.0.7
   [1914dd2f] + MacroTools v0.5.6
-  [356022a1] + NamedDims v0.2.28
+  [356022a1] + NamedDims v0.2.29
   [6fe1bfb0] + OffsetArrays v1.3.1
   [ae029012] + Requires v1.1.0
   [90137ffa] + StaticArrays v0.12.5
@@ -77,12 +76,12 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
 
 
 ################################################################################
-# Testing: 2020-10-28T11:51:35.517
+# Testing: 2020-10-28T15:26:17.420
 #
 
 
      Testing TensorCast
-Status `/tmp/jl_fww3gZ/Project.toml`
+Status `/tmp/jl_DJSTl2/Project.toml`
   [34da2185] Compat v3.23.0
   [b7d42ee7] Einsum v0.4.1
   [5cadff95] JuliennedArrays v0.2.2
@@ -100,7 +99,7 @@ Status `/tmp/jl_fww3gZ/Project.toml`
   [9a3f8284] Random
   [10745b16] Statistics
   [8dfed614] Test
-Status `/tmp/jl_fww3gZ/Manifest.toml`
+Status `/tmp/jl_DJSTl2/Manifest.toml`
   [4c555306] ArrayLayouts v0.4.10
   [34da2185] Compat v3.23.0
   [adafc99b] CpuId v0.2.2
@@ -113,7 +112,7 @@ Status `/tmp/jl_fww3gZ/Manifest.toml`
   [bdcacae8] LoopVectorization v0.8.26
   [1914dd2f] MacroTools v0.5.6
   [a3b82374] MatrixFactorizations v0.6.1
-  [356022a1] NamedDims v0.2.28
+  [356022a1] NamedDims v0.2.29
   [6fe1bfb0] OffsetArrays v1.3.1
   [ae029012] Requires v1.1.0
   [21efa798] SIMDPirates v0.8.25
@@ -169,15 +168,15 @@ Test Summary: | Pass  Total
 slice/view    |   16     16
 begin
     local (sz_i, sz_j) = (size(B, 1), size(B, 2))
-    local flamingo = reshape(A, (sz_i, sz_j))
-    flamingo .= B
+    local leopard = reshape(A, (sz_i, sz_j))
+    leopard .= B
     A
 end
 begin
     @assert_ ndims(B) == 2 "expected a 2-tensor B[i, (j, k)]"
     local (sz_i, sz_j, sz_k) = (size(B, 1), :, length(C))
-    local flamingo = reshape(B, (sz_i, sz_j, sz_k))
-    A = sliceview(flamingo, (:, :, *))
+    local leopard = reshape(B, (sz_i, sz_j, sz_k))
+    A = sliceview(leopard, (:, :, *))
 end
 Test Summary: | Pass  Total
 old readmes   |   16     16
@@ -305,19 +304,10 @@ Stacktrace:
 
 
 ################################################################################
-# PkgEval teardown: 2020-10-28T11:56:20.786
-#
-
-
-signal (15): Terminated
-in expression starting at none:1
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
-
-CPU usage: 254.87s (235.28s user, 21.19s kernel)
+# PkgEval teardown: 2020-10-28T15:30:55.605
+CPU usage: 237.60s (227.98s user, 10.26s kernel)
 
 Network usage:
-- eth0: 7.630 MiB received, 114.983 KiB sent
+- eth0: 7.646 MiB received, 116.485 KiB sent
 
-Raw statistics: {"read":"2020-10-28T11:56:21.40475574Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":45056},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":45056},{"major":259,"minor":0,"op":"Total","value":45056},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":45056},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":45056},{"major":253,"minor":2,"op":"Total","value":45056}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":9},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":9},{"major":259,"minor":0,"op":"Total","value":9},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":9},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":9},{"major":253,"minor":2,"op":"Total","value":9}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":254870878766,"percpu_usage":[0,271559909,33834943,405733805,704001944,409330881,185621846,203887455,393997576,236054185,215059485,709757338,265316259,65684517,545545888,612233701,109755014,303931847,498971307,42415080,18068417,212216577,390813207,830045500,55132092,135950951,83420284,4644643,358660207,28686352,120495571,239463927,3190997725,4736593095,4034384900,7336954599,3734928850,2826531155,3214847085,3337788504,4558723081,3981216711,5765093869,4154231888,4008842195,2903904604,4693072199,3337723535,2994418258,5021762065,5951050884,4703086121,4190012955,5158573155,5978496151,2921252086,3122294572,2670383824,3236519303,2420328072,1632130762,3574827272,1612127235,2831947696,151244152,13671174,18908434,150791242,33645682,527262390,39580674,222764640,278431607,226905489,400444701,448096459,192963955,282002984,601491949,730923213,280703613,494989877,722400474,71173340,70782537,163814737,150678351,57991623,1533791,147590257,214223977,47625549,151479281,48705467,114583246,220453550,2131170262,6182760183,2200114566,3373575000,7154431153,3762904322,3374129571,5384133492,3485977587,3658256169,4744279000,3975810228,5722806893,3653623767,5144498231,3749488811,2374738193,1817304450,3283858423,4161745002,2298555570,3123556083,3668650547,2380515164,3392385332,1608208892,3595992524,3482570526,3007251414,4243592939,2447849541,2482951402],"usage_in_kernelmode":21190000000,"usage_in_usermode":235280000000},"system_cpu_usage":94199498170000000,"online_cpus":128,"throttling_data":{"periods":2915,"throttled_periods":35,"throttled_time":6046010819}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":262316032,"max_usage":1599619072,"stats":{"active_anon":219090944,"active_file":0,"cache":21938176,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":10342400,"inactive_file":8192,"mapped_file":0,"pgfault":4936890,"pgmajfault":0,"pgpgin":1619094,"pgpgout":1563078,"rss":207503360,"rss_huge":0,"total_active_anon":219090944,"total_active_file":0,"total_cache":21938176,"total_dirty":0,"total_inactive_anon":10342400,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":4936890,"total_pgmajfault":0,"total_pgpgin":1619094,"total_pgpgout":1563078,"total_rss":207503360,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/TensorCast-pL8EP0f9","id":"f8399d05468b91e730bc8edefb64473a30bdb7b4a2b96cdf86f300ec85859044","networks":{"eth0":{"rx_bytes":8001010,"rx_packets":1528,"rx_errors":0,"rx_dropped":10,"tx_bytes":117743,"tx_packets":1140,"tx_errors":0,"tx_dropped":0}}}
-
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":9,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":9,"op":"Async","minor":0},{"major":259,"value":9,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":9,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":9,"op":"Async","minor":2},{"major":253,"value":9,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":45056,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":45056,"op":"Async","minor":0},{"major":259,"value":45056,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":45056,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":45056,"op":"Async","minor":2},{"major":253,"value":45056,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":261386240,"max_usage":1579831296,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":233000960,"inactive_file":8192,"inactive_anon":10321920,"total_pgfault":2584743,"total_cache":22196224,"total_rss_huge":0,"total_active_anon":244617216,"total_pgmajfault":0,"pgpgin":1519064,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":1456760,"hierarchical_memsw_limit":0,"cache":22196224,"active_file":233472,"pgfault":2584743,"total_mapped_file":0,"total_pgpgout":1456760,"total_writeback":0,"rss":233000960,"unevictable":0,"total_inactive_anon":10321920,"total_pgpgin":1519064,"active_anon":244617216,"total_active_file":233472},"limit":540972998656},"name":"/TensorCast-8zwG6ZLh","networks":{"eth0":{"rx_bytes":8017718,"rx_packets":1785,"tx_packets":1159,"tx_bytes":119281,"tx_dropped":0,"rx_dropped":8,"tx_errors":0,"rx_errors":0}},"id":"5cd8f8e723410d39c6cb1127de066f8ee5646f81fc341c2045ba5ddd9dd3e2e5","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":95838450340000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":227980000000,"usage_in_kernelmode":10260000000,"total_usage":237596614275,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,237596614275,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-28T15:30:55.888525771Z"}

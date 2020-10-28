@@ -1,5 +1,5 @@
 ################################################################################
-# PkgEval set-up: 2020-10-28T11:42:01.574
+# PkgEval set-up: 2020-10-28T14:35:20.898
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,22 +12,21 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T11:42:03.243
+# Installation: 2020-10-28T14:35:22.434
 #
 
    Resolving package versions...
    Installed CompilerSupportLibraries_jll ─ v0.3.4+0
    Installed OpenSpecFun_jll ────────────── v0.5.3+4
-   Installed NaNMath ────────────────────── v0.3.4
-   Installed Requires ───────────────────── v1.1.0
    Installed DiffRules ──────────────────── v1.0.1
+   Installed NaNMath ────────────────────── v0.3.4
    Installed SpecialFunctions ───────────── v0.10.3
+   Installed Requires ───────────────────── v1.1.0
    Installed Tullio ─────────────────────── v0.2.8
    Installed JLLWrappers ────────────────── v1.1.3
 Updating `~/.julia/environments/v1.6/Project.toml`
@@ -68,18 +67,18 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
 
 
 ################################################################################
-# Testing: 2020-10-28T11:42:06.658
+# Testing: 2020-10-28T14:35:25.784
 #
 
 
      Testing Tullio
-Status `/tmp/jl_rQZa4Z/Project.toml`
+Status `/tmp/jl_WscIm5/Project.toml`
   [052768ef] CUDA v1.3.3
   [b552c78f] DiffRules v1.0.1
   [1a297f60] FillArrays v0.9.7
   [f6369f11] ForwardDiff v0.10.12
   [63c18a36] KernelAbstractions v0.4.5
-  [356022a1] NamedDims v0.2.28
+  [356022a1] NamedDims v0.2.29
   [6fe1bfb0] OffsetArrays v1.3.1
   [ae029012] Requires v1.1.0
   [37e2e3b7] ReverseDiff v1.4.3
@@ -91,7 +90,7 @@ Status `/tmp/jl_rQZa4Z/Project.toml`
   [de0858da] Printf
   [9a3f8284] Random
   [8dfed614] Test
-Status `/tmp/jl_rQZa4Z/Manifest.toml`
+Status `/tmp/jl_WscIm5/Manifest.toml`
   [621f4979] AbstractFFTs v0.5.0
   [79e6a3ab] Adapt v2.3.0
   [4c555306] ArrayLayouts v0.4.10
@@ -126,7 +125,7 @@ Status `/tmp/jl_rQZa4Z/Manifest.toml`
   [46d2c3a1] MuladdMacro v0.2.2
   [872c559c] NNlib v0.7.5
   [77ba4419] NaNMath v0.3.4
-  [356022a1] NamedDims v0.2.28
+  [356022a1] NamedDims v0.2.29
   [6fe1bfb0] OffsetArrays v1.3.1
   [bac558e1] OrderedCollections v1.3.1
   [189a3867] Reexport v0.2.0
@@ -182,21 +181,21 @@ Status `/tmp/jl_rQZa4Z/Manifest.toml`
   [deac9b47] LibCURL_jll
   [14a3606d] MozillaCACerts_jll
      Testing Running tests...
-[ Info: Loading Tullio took 15.9 seconds
-[ Info: Testing with 2 threads
+[ Info: Loading Tullio took 14.5 seconds
+[ Info: Testing with 1 threads
 ┌ Info: symbolic gradients
 │   inbody =
 │    1-element Vector{Any}:
 └     :(var"𝛥≪1:10≫"[i] = var"𝛥≪1:10≫"[i] + conj(conj(𝛥ℛ[i]) * (2 * var"≪1:10≫"[i])))
 ┌ Info: threading threshold (from cost = 3)
-└   block = 11
+└   block = 87382
 ┌ Info: left index ranges
 └   i = Base.OneTo(10)
 Test Summary:          | Pass  Broken  Total
 parsing all the things |  233       3    236
 Test Summary:        | Pass  Broken  Total
 tests from Einsum.jl |  684       5    689
-[ Info: Basic tests took 153.6 seconds
+[ Info: Basic tests took 144.8 seconds
 Test Summary:   | Pass  Total
 internal pieces |  398    398
 Test Summary:         | Pass  Total
@@ -205,7 +204,7 @@ Test Summary:                  | Pass  Broken  Total
 gradients: Tracker + DiffRules |   62       1     63
 Test Summary:                    | Pass  Broken  Total
 gradients: Tracker + ForwardDiff |   37       1     38
-[ Info: Tracker tests took 249.4 seconds
+[ Info: Tracker tests took 242.3 seconds
 KernelAbstractions + gradients: Error During Test at /home/pkgeval/.julia/packages/Tullio/Q2RDS/test/runtests.jl:69
   Got exception outside of a @test
   TaskFailedException
@@ -243,42 +242,30 @@ KernelAbstractions + gradients: Error During Test at /home/pkgeval/.julia/packag
    [16] _start()
       @ Base ./client.jl:485
   
-      nested task error: TaskFailedException
-      
-          nested task error: MethodError: no method matching CartesianIndex(::typeof(first))
-          Closest candidates are:
-            CartesianIndex(!Matched::Tuple{Vararg{Integer, N}}) where N at multidimensional.jl:69
-            CartesianIndex(!Matched::Integer...) at multidimensional.jl:70
-            CartesianIndex(!Matched::Union{Integer, CartesianIndex}...) at multidimensional.jl:77
-            ...
-          Stacktrace:
-           [1] call
-             @ ~/.julia/packages/Cassette/158rp/src/context.jl:456 [inlined]
-           [2] fallback
-             @ ~/.julia/packages/Cassette/158rp/src/context.jl:454 [inlined]
-           [3] overdub
-             @ ~/.julia/packages/Cassette/158rp/src/overdub.jl:536 [inlined]
-           [4] overdub
-             @ ./multidimensional.jl:432 [inlined]
-           [5] overdub
-             @ ./multidimensional.jl:373 [inlined]
-           [6] overdub
-             @ ./none:0 [inlined]
-           [7] __thread_run(tid::Int64, len::Int64, rem::Int64, obj::KernelAbstractions.Kernel{CPU, KernelAbstractions.NDIteration.StaticSize{(4,)}, KernelAbstractions.NDIteration.DynamicSize, var"#cpu_##🇨🇺#464#1682"}, ndrange::Tuple{Int64, Int64}, iterspace::KernelAbstractions.NDIteration.NDRange{2, KernelAbstractions.NDIteration.DynamicSize, KernelAbstractions.NDIteration.StaticSize{(4, 1)}, CartesianIndices{2, Tuple{Base.OneTo{Int64}, Base.OneTo{Int64}}}, Nothing}, args::Tuple{Matrix{Float64}, Matrix{Float64}, Matrix{Float64}, Base.OneTo{Int64}, Base.OneTo{Int64}, Base.OneTo{Int64}, Nothing, Bool}, dynamic::KernelAbstractions.NDIteration.DynamicCheck)
-             @ KernelAbstractions ~/.julia/packages/KernelAbstractions/jAutM/src/backends/cpu.jl:157
-           [8] (::KernelAbstractions.var"#38#39"{KernelAbstractions.Kernel{CPU, KernelAbstractions.NDIteration.StaticSize{(4,)}, KernelAbstractions.NDIteration.DynamicSize, var"#cpu_##🇨🇺#464#1682"}, Tuple{Int64, Int64}, KernelAbstractions.NDIteration.NDRange{2, KernelAbstractions.NDIteration.DynamicSize, KernelAbstractions.NDIteration.StaticSize{(4, 1)}, CartesianIndices{2, Tuple{Base.OneTo{Int64}, Base.OneTo{Int64}}}, Nothing}, Tuple{Matrix{Float64}, Matrix{Float64}, Matrix{Float64}, Base.OneTo{Int64}, Base.OneTo{Int64}, Base.OneTo{Int64}, Nothing, Bool}, KernelAbstractions.NDIteration.DynamicCheck, Int64})()
-             @ KernelAbstractions ./threadingconstructs.jl:169
-      
-      ...and 1 more exception.
-      
+      nested task error: MethodError: no method matching CartesianIndex(::typeof(first))
+      Closest candidates are:
+        CartesianIndex(!Matched::Tuple{Vararg{Integer, N}}) where N at multidimensional.jl:69
+        CartesianIndex(!Matched::Integer...) at multidimensional.jl:70
+        CartesianIndex(!Matched::Union{Integer, CartesianIndex}...) at multidimensional.jl:77
+        ...
       Stacktrace:
-       [1] sync_end(c::Channel{Any})
-         @ Base ./task.jl:353
-       [2] macro expansion
-         @ ./task.jl:372 [inlined]
-       [3] __run(obj::KernelAbstractions.Kernel{CPU, KernelAbstractions.NDIteration.StaticSize{(4,)}, KernelAbstractions.NDIteration.DynamicSize, var"#cpu_##🇨🇺#464#1682"}, ndrange::Tuple{Int64, Int64}, iterspace::KernelAbstractions.NDIteration.NDRange{2, KernelAbstractions.NDIteration.DynamicSize, KernelAbstractions.NDIteration.StaticSize{(4, 1)}, CartesianIndices{2, Tuple{Base.OneTo{Int64}, Base.OneTo{Int64}}}, Nothing}, args::Tuple{Matrix{Float64}, Matrix{Float64}, Matrix{Float64}, Base.OneTo{Int64}, Base.OneTo{Int64}, Base.OneTo{Int64}, Nothing, Bool}, dynamic::KernelAbstractions.NDIteration.DynamicCheck)
-         @ KernelAbstractions ~/.julia/packages/KernelAbstractions/jAutM/src/backends/cpu.jl:132
-       [4] (::KernelAbstractions.var"#30#31"{Nothing, Nothing, typeof(KernelAbstractions.__run), Tuple{KernelAbstractions.Kernel{CPU, KernelAbstractions.NDIteration.StaticSize{(4,)}, KernelAbstractions.NDIteration.DynamicSize, var"#cpu_##🇨🇺#464#1682"}, Tuple{Int64, Int64}, KernelAbstractions.NDIteration.NDRange{2, KernelAbstractions.NDIteration.DynamicSize, KernelAbstractions.NDIteration.StaticSize{(4, 1)}, CartesianIndices{2, Tuple{Base.OneTo{Int64}, Base.OneTo{Int64}}}, Nothing}, Tuple{Matrix{Float64}, Matrix{Float64}, Matrix{Float64}, Base.OneTo{Int64}, Base.OneTo{Int64}, Base.OneTo{Int64}, Nothing, Bool}, KernelAbstractions.NDIteration.DynamicCheck}})()
+       [1] call
+         @ ~/.julia/packages/Cassette/158rp/src/context.jl:456 [inlined]
+       [2] fallback
+         @ ~/.julia/packages/Cassette/158rp/src/context.jl:454 [inlined]
+       [3] overdub
+         @ ~/.julia/packages/Cassette/158rp/src/overdub.jl:536 [inlined]
+       [4] overdub
+         @ ./multidimensional.jl:432 [inlined]
+       [5] overdub
+         @ ./multidimensional.jl:373 [inlined]
+       [6] overdub
+         @ ./none:0 [inlined]
+       [7] __thread_run(tid::Int64, len::Int64, rem::Int64, obj::KernelAbstractions.Kernel{CPU, KernelAbstractions.NDIteration.StaticSize{(4,)}, KernelAbstractions.NDIteration.DynamicSize, var"#cpu_##🇨🇺#464#1682"}, ndrange::Tuple{Int64, Int64}, iterspace::KernelAbstractions.NDIteration.NDRange{2, KernelAbstractions.NDIteration.DynamicSize, KernelAbstractions.NDIteration.StaticSize{(4, 1)}, CartesianIndices{2, Tuple{Base.OneTo{Int64}, Base.OneTo{Int64}}}, Nothing}, args::Tuple{Matrix{Float64}, Matrix{Float64}, Matrix{Float64}, Base.OneTo{Int64}, Base.OneTo{Int64}, Base.OneTo{Int64}, Nothing, Bool}, dynamic::KernelAbstractions.NDIteration.DynamicCheck)
+         @ KernelAbstractions ~/.julia/packages/KernelAbstractions/jAutM/src/backends/cpu.jl:157
+       [8] __run(obj::KernelAbstractions.Kernel{CPU, KernelAbstractions.NDIteration.StaticSize{(4,)}, KernelAbstractions.NDIteration.DynamicSize, var"#cpu_##🇨🇺#464#1682"}, ndrange::Tuple{Int64, Int64}, iterspace::KernelAbstractions.NDIteration.NDRange{2, KernelAbstractions.NDIteration.DynamicSize, KernelAbstractions.NDIteration.StaticSize{(4, 1)}, CartesianIndices{2, Tuple{Base.OneTo{Int64}, Base.OneTo{Int64}}}, Nothing}, args::Tuple{Matrix{Float64}, Matrix{Float64}, Matrix{Float64}, Base.OneTo{Int64}, Base.OneTo{Int64}, Base.OneTo{Int64}, Nothing, Bool}, dynamic::KernelAbstractions.NDIteration.DynamicCheck)
+         @ KernelAbstractions ~/.julia/packages/KernelAbstractions/jAutM/src/backends/cpu.jl:130
+       [9] (::KernelAbstractions.var"#30#31"{Nothing, Nothing, typeof(KernelAbstractions.__run), Tuple{KernelAbstractions.Kernel{CPU, KernelAbstractions.NDIteration.StaticSize{(4,)}, KernelAbstractions.NDIteration.DynamicSize, var"#cpu_##🇨🇺#464#1682"}, Tuple{Int64, Int64}, KernelAbstractions.NDIteration.NDRange{2, KernelAbstractions.NDIteration.DynamicSize, KernelAbstractions.NDIteration.StaticSize{(4, 1)}, CartesianIndices{2, Tuple{Base.OneTo{Int64}, Base.OneTo{Int64}}}, Nothing}, Tuple{Matrix{Float64}, Matrix{Float64}, Matrix{Float64}, Base.OneTo{Int64}, Base.OneTo{Int64}, Base.OneTo{Int64}, Nothing, Bool}, KernelAbstractions.NDIteration.DynamicCheck}})()
          @ KernelAbstractions ~/.julia/packages/KernelAbstractions/jAutM/src/backends/cpu.jl:22
 Test Summary:                  | Error  Total
 KernelAbstractions + gradients |     1      1
@@ -324,14 +311,10 @@ Stacktrace:
 
 
 ################################################################################
-# PkgEval teardown: 2020-10-28T11:52:26.855
-#
-
-
-CPU usage: 553.50s (520.52s user, 36.41s kernel)
+# PkgEval teardown: 2020-10-28T14:45:18.336
+CPU usage: 546.97s (534.20s user, 14.44s kernel)
 
 Network usage:
-- eth0: 10.503 MiB received, 207.844 KiB sent
+- eth0: 10.514 MiB received, 206.796 KiB sent
 
-Raw statistics: {"read":"2020-10-28T11:52:27.003096528Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":61440},{"major":259,"minor":0,"op":"Write","value":49152},{"major":259,"minor":0,"op":"Sync","value":61440},{"major":259,"minor":0,"op":"Async","value":49152},{"major":259,"minor":0,"op":"Total","value":110592},{"major":253,"minor":2,"op":"Read","value":61440},{"major":253,"minor":2,"op":"Write","value":49152},{"major":253,"minor":2,"op":"Sync","value":61440},{"major":253,"minor":2,"op":"Async","value":49152},{"major":253,"minor":2,"op":"Total","value":110592}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":15},{"major":259,"minor":0,"op":"Write","value":9},{"major":259,"minor":0,"op":"Sync","value":15},{"major":259,"minor":0,"op":"Async","value":9},{"major":259,"minor":0,"op":"Total","value":24},{"major":253,"minor":2,"op":"Read","value":15},{"major":253,"minor":2,"op":"Write","value":9},{"major":253,"minor":2,"op":"Sync","value":15},{"major":253,"minor":2,"op":"Async","value":9},{"major":253,"minor":2,"op":"Total","value":24}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":553497530024,"percpu_usage":[4834738093,9295267417,11954561644,10284891359,9541884853,6631968426,8214564815,8676298430,13906722557,7025187215,9099031629,7778144395,8139883235,7335367013,5770159483,6075470586,14037951415,9157585426,11769374690,8157035204,6224407307,6888259190,10817314513,5016604490,7074500574,5352475428,5465652305,5714674977,8078993825,7036850133,7471532497,7331906581,607535154,677186058,937146952,481751189,614747380,193456325,320462147,307998667,669449522,761612165,445125699,506511496,677919904,536650934,535728690,112779563,199951888,941557155,364993726,1314768965,748983534,362008933,1882072845,323113203,867361600,799068750,272127272,468883507,1295162230,511248875,1105259726,1197189284,7667880047,9035118930,9137780203,11383536360,10443798603,5825915887,4513878700,7285667324,5858964926,12630017502,8035259943,6786373527,5487753922,9154172662,7015534962,7501953057,12524298398,8337318516,9526157273,6312669393,6819356366,9833891850,8559207014,6665389160,6450751149,4260624491,6012490116,6321025526,5445985737,14246147050,7524759197,7385905930,195099029,1270439107,209774081,366591204,507039624,671616465,49085169,806943425,350922593,534616715,428689132,800691953,423820308,310515559,1068023578,484794243,428327432,853258950,473795815,449096859,587460669,186585940,563035148,448560632,439070507,485104304,533242616,197257407,813891626,1215777103,1714765616,440980451],"usage_in_kernelmode":36410000000,"usage_in_usermode":520520000000},"system_cpu_usage":94169740470000000,"online_cpus":128,"throttling_data":{"periods":6258,"throttled_periods":58,"throttled_time":12741333634}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":305721344,"max_usage":1517182976,"stats":{"active_anon":236462080,"active_file":192512,"cache":50913280,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":20074496,"inactive_file":8192,"mapped_file":0,"pgfault":8908132,"pgmajfault":0,"pgpgin":2222537,"pgpgout":2159857,"rss":205824000,"rss_huge":0,"total_active_anon":236462080,"total_active_file":192512,"total_cache":50913280,"total_dirty":0,"total_inactive_anon":20074496,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":8908132,"total_pgmajfault":0,"total_pgpgin":2222537,"total_pgpgout":2159857,"total_rss":205824000,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/Tullio-YWTdJPZL","id":"89baf3ee875892d6867f39a4616834656d94ee9abe4a6cb962cffb840bb34319","networks":{"eth0":{"rx_bytes":11013605,"rx_packets":2845,"rx_errors":0,"rx_dropped":21,"tx_bytes":212832,"tx_packets":1805,"tx_errors":0,"tx_dropped":0}}}
-
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":9,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":9,"op":"Async","minor":0},{"major":259,"value":9,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":9,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":9,"op":"Async","minor":2},{"major":253,"value":9,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":49152,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":49152,"op":"Async","minor":0},{"major":259,"value":49152,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":49152,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":49152,"op":"Async","minor":2},{"major":253,"value":49152,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":261103616,"max_usage":1476165632,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":201773056,"inactive_file":8192,"inactive_anon":20074496,"total_pgfault":3954753,"total_cache":51105792,"total_rss_huge":0,"total_active_anon":232284160,"total_pgmajfault":0,"pgpgin":2085119,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":2023381,"hierarchical_memsw_limit":0,"cache":51105792,"active_file":512000,"pgfault":3954753,"total_mapped_file":0,"total_pgpgout":2023381,"total_writeback":0,"rss":201773056,"unevictable":0,"total_inactive_anon":20074496,"total_pgpgin":2085119,"active_anon":232284160,"total_active_file":512000},"limit":540972998656},"name":"/Tullio-oQSOeePG","networks":{"eth0":{"rx_bytes":11025143,"rx_packets":2897,"tx_packets":1860,"tx_bytes":211759,"tx_dropped":0,"rx_dropped":20,"tx_errors":0,"rx_errors":0}},"id":"74625f3b99e68691e3e2f33babe8e41432778d127380eaec81025f9d806dbf5f","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":95490586780000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":534200000000,"usage_in_kernelmode":14440000000,"total_usage":546971611065,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7540,546970424295,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11220,1168010,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-28T14:45:18.73149174Z"}

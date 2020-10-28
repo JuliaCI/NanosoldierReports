@@ -1,5 +1,5 @@
 ################################################################################
-# PkgEval set-up: 2020-10-28T11:18:51.536
+# PkgEval set-up: 2020-10-28T14:24:12.200
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,30 +12,29 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T11:18:53.329
+# Installation: 2020-10-28T14:24:13.912
 #
 
    Resolving package versions...
-   Installed IniFile ──────────── v0.5.0
-   Installed MbedTLS_jll ──────── v2.16.8+0
-   Installed MbedTLS ──────────── v1.0.3
-   Installed OrderedCollections ─ v1.3.1
-   Installed Parsers ──────────── v1.0.11
-   Installed BioServices ──────── v0.3.2
    Installed Zlib_jll ─────────── v1.2.11+18
+   Installed MbedTLS_jll ──────── v2.16.8+0
+   Installed Parsers ──────────── v1.0.11
    Installed XMLDict ──────────── v0.4.1
-   Installed Gumbo_jll ────────── v0.10.1+1
+   Installed MbedTLS ──────────── v1.0.3
+   Installed BioServices ──────── v0.3.2
+   Installed IniFile ──────────── v0.5.0
+   Installed OrderedCollections ─ v1.3.1
    Installed Libiconv_jll ─────── v1.16.0+7
+   Installed Gumbo_jll ────────── v0.10.1+1
    Installed Gumbo ────────────── v0.8.0
    Installed EzXML ────────────── v1.1.0
-   Installed AbstractTrees ────── v0.3.3
    Installed IterTools ────────── v1.3.0
+   Installed AbstractTrees ────── v0.3.3
    Installed HTTP ─────────────── v0.8.19
    Installed JSON ─────────────── v0.21.1
    Installed JLLWrappers ──────── v1.1.3
@@ -89,12 +88,12 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
 
 
 ################################################################################
-# Testing: 2020-10-28T11:18:57.400
+# Testing: 2020-10-28T14:24:17.499
 #
 
 
      Testing BioServices
-Status `/tmp/jl_CD5QTZ/Project.toml`
+Status `/tmp/jl_5sE5o5/Project.toml`
   [a0d4ced5] BioServices v0.3.2
   [708ec375] Gumbo v0.8.0
   [cd3eb016] HTTP v0.8.19
@@ -102,7 +101,7 @@ Status `/tmp/jl_CD5QTZ/Project.toml`
   [228000da] XMLDict v0.4.1
   [ade2ca70] Dates
   [8dfed614] Test
-Status `/tmp/jl_CD5QTZ/Manifest.toml`
+Status `/tmp/jl_5sE5o5/Manifest.toml`
   [1520ce14] AbstractTrees v0.3.3
   [a0d4ced5] BioServices v0.3.2
   [8f5d6c58] EzXML v1.1.0
@@ -153,12 +152,75 @@ Running tests:
        Testing: EUtils
 -----------------------------------------
 -----------------------------------------
+esummary: Error During Test at /home/pkgeval/.julia/packages/BioServices/KPZxN/test/eutils.jl:38
+  Got exception outside of a @test
+  HTTP.ExceptionRequest.StatusError(429, "GET", "/entrez/eutils/esearch.fcgi?usehistory=y&term=asthma%5Bmesh%5D%20AND%20leukotrienes%5Bmesh%5D%20AND%202009%5Bpdat%5D&retmode=xml&db=pubmed", HTTP.Messages.Response:
+  """
+  HTTP/1.1 429 Too Many Requests
+  Date: Wed, 28 Oct 2020 14:25:07 GMT
+  Server: Finatra
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Content-Security-Policy: upgrade-insecure-requests
+  X-RateLimit-Remaining: 0
+  X-RateLimit-Limit: 3
+  Content-Length: 86
+  Content-Type: application/json
+  Retry-After: 2
+  Vary: Accept-Encoding
+  X-UA-Compatible: IE=Edge
+  X-XSS-Protection: 1; mode=block
+  
+  {"error":"API rate limit exceeded","api-key":"128.30.92.239","count":"4","limit":"3"}
+  """)
+  Stacktrace:
+    [1] request(::Type{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}, ::HTTP.URIs.URI, ::Vararg{Any, N} where N; kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
+      @ HTTP.ExceptionRequest ~/.julia/packages/HTTP/IAI92/src/ExceptionRequest.jl:22
+    [2] (::Base.var"#69#71"{Base.var"#69#70#72"{ExponentialBackOff, HTTP.RetryRequest.var"#2#3"{Bool, HTTP.Messages.Request}, typeof(HTTP.request)}})(::Type, ::Vararg{Any, N} where N; kwargs::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
+      @ Base ./error.jl:288
+    [3] #request#1
+      @ ~/.julia/packages/HTTP/IAI92/src/RetryRequest.jl:44 [inlined]
+    [4] request(::Type{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; http_version::VersionNumber, target::String, parent::Nothing, iofunction::Nothing, kw::Base.Iterators.Pairs{Symbol, Bool, Tuple{Symbol, Symbol}, NamedTuple{(:reached_redirect_limit, :retry_non_idempotent), Tuple{Bool, Bool}}})
+      @ HTTP.MessageRequest ~/.julia/packages/HTTP/IAI92/src/MessageRequest.jl:51
+    [5] request(::Type{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; kw::Base.Iterators.Pairs{Symbol, Bool, Tuple{Symbol, Symbol}, NamedTuple{(:reached_redirect_limit, :retry_non_idempotent), Tuple{Bool, Bool}}})
+      @ HTTP.BasicAuthRequest ~/.julia/packages/HTTP/IAI92/src/BasicAuthRequest.jl:28
+    [6] request(::Type{HTTP.RedirectRequest.RedirectLayer{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; redirect_limit::Int64, forwardheaders::Bool, kw::Base.Iterators.Pairs{Symbol, Bool, Tuple{Symbol}, NamedTuple{(:retry_non_idempotent,), Tuple{Bool}}})
+      @ HTTP.RedirectRequest ~/.julia/packages/HTTP/IAI92/src/RedirectRequest.jl:24
+    [7] request(method::String, url::String, h::Vector{Pair{SubString{String}, SubString{String}}}, b::Vector{UInt8}; headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}, query::Dict{Any, Any}, kw::Base.Iterators.Pairs{Symbol, Bool, Tuple{Symbol}, NamedTuple{(:retry_non_idempotent,), Tuple{Bool}}})
+      @ HTTP ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:314
+    [8] esearch(ctx::Dict{Any, Any}; params::Base.Iterators.Pairs{Symbol, Any, NTuple{4, Symbol}, NamedTuple{(:db, :term, :usehistory, :retmode), Tuple{String, String, Bool, String}}})
+      @ BioServices.EUtils ~/.julia/packages/BioServices/KPZxN/src/eutils.jl:78
+    [9] macro expansion
+      @ ~/.julia/packages/BioServices/KPZxN/test/eutils.jl:60 [inlined]
+   [10] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [11] macro expansion
+      @ ~/.julia/packages/BioServices/KPZxN/test/eutils.jl:40 [inlined]
+   [12] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [13] top-level scope
+      @ ~/.julia/packages/BioServices/KPZxN/test/eutils.jl:4
+   [14] include(mod::Module, _path::String)
+      @ Base ./Base.jl:389
+   [15] include(x::String)
+      @ Main.TestBioServices ~/.julia/packages/BioServices/KPZxN/test/runtests.jl:1
+   [16] top-level scope
+      @ ~/.julia/packages/BioServices/KPZxN/test/runtests.jl:23
+   [17] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [18] top-level scope
+      @ none:6
+   [19] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [20] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [21] _start()
+      @ Base ./client.jl:485
 efetch: Error During Test at /home/pkgeval/.julia/packages/BioServices/KPZxN/test/eutils.jl:76
   Got exception outside of a @test
   HTTP.ExceptionRequest.StatusError(429, "POST", "/entrez/eutils/efetch.fcgi", HTTP.Messages.Response:
   """
   HTTP/1.1 429 Too Many Requests
-  Date: Wed, 28 Oct 2020 11:19:58 GMT
+  Date: Wed, 28 Oct 2020 14:25:13 GMT
   Server: Finatra
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Content-Security-Policy: upgrade-insecure-requests
@@ -216,18 +278,83 @@ efetch: Error During Test at /home/pkgeval/.julia/packages/BioServices/KPZxN/tes
       @ Base ./client.jl:261
    [21] _start()
       @ Base ./client.jl:485
+egquery: Error During Test at /home/pkgeval/.julia/packages/BioServices/KPZxN/test/eutils.jl:127
+  Got exception outside of a @test
+  HTTP.ExceptionRequest.StatusError(429, "GET", "/entrez/eutils/egquery.fcgi?term=%28Asthma%5BMeSH%20Major%20Topic%5D%29%20AND%0A%28%221%2F1%2F2018%22%5BDate%20-%20Publication%5D%20%3A%0A%223000%22%5BDate%20-%20Publication%5D%29", HTTP.Messages.Response:
+  """
+  HTTP/1.1 429 Too Many Requests
+  Date: Wed, 28 Oct 2020 14:25:15 GMT
+  Server: Finatra
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Content-Security-Policy: upgrade-insecure-requests
+  X-RateLimit-Remaining: 0
+  X-RateLimit-Limit: 3
+  Content-Length: 86
+  Content-Type: application/json
+  Retry-After: 2
+  Vary: Accept-Encoding
+  X-UA-Compatible: IE=Edge
+  X-XSS-Protection: 1; mode=block
+  
+  {"error":"API rate limit exceeded","api-key":"128.30.92.239","count":"4","limit":"3"}
+  """)
+  Stacktrace:
+    [1] request(::Type{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}, ::HTTP.URIs.URI, ::Vararg{Any, N} where N; kw::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
+      @ HTTP.ExceptionRequest ~/.julia/packages/HTTP/IAI92/src/ExceptionRequest.jl:22
+    [2] (::Base.var"#69#71"{Base.var"#69#70#72"{ExponentialBackOff, HTTP.RetryRequest.var"#2#3"{Bool, HTTP.Messages.Request}, typeof(HTTP.request)}})(::Type, ::Vararg{Any, N} where N; kwargs::Base.Iterators.Pairs{Symbol, Union{Nothing, Bool}, Tuple{Symbol, Symbol}, NamedTuple{(:iofunction, :reached_redirect_limit), Tuple{Nothing, Bool}}})
+      @ Base ./error.jl:288
+    [3] #request#1
+      @ ~/.julia/packages/HTTP/IAI92/src/RetryRequest.jl:44 [inlined]
+    [4] request(::Type{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; http_version::VersionNumber, target::String, parent::Nothing, iofunction::Nothing, kw::Base.Iterators.Pairs{Symbol, Bool, Tuple{Symbol}, NamedTuple{(:reached_redirect_limit,), Tuple{Bool}}})
+      @ HTTP.MessageRequest ~/.julia/packages/HTTP/IAI92/src/MessageRequest.jl:51
+    [5] request(::Type{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; kw::Base.Iterators.Pairs{Symbol, Bool, Tuple{Symbol}, NamedTuple{(:reached_redirect_limit,), Tuple{Bool}}})
+      @ HTTP.BasicAuthRequest ~/.julia/packages/HTTP/IAI92/src/BasicAuthRequest.jl:28
+    [6] request(::Type{HTTP.RedirectRequest.RedirectLayer{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}; redirect_limit::Int64, forwardheaders::Bool, kw::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+      @ HTTP.RedirectRequest ~/.julia/packages/HTTP/IAI92/src/RedirectRequest.jl:24
+    [7] request(::Type{HTTP.RedirectRequest.RedirectLayer{HTTP.BasicAuthRequest.BasicAuthLayer{HTTP.MessageRequest.MessageLayer{HTTP.RetryRequest.RetryLayer{HTTP.ExceptionRequest.ExceptionLayer{HTTP.ConnectionRequest.ConnectionPoolLayer{HTTP.StreamRequest.StreamLayer{Union{}}}}}}}}}, method::String, url::HTTP.URIs.URI, headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8})
+      @ HTTP.RedirectRequest ~/.julia/packages/HTTP/IAI92/src/RedirectRequest.jl:21
+    [8] request(method::String, url::String, h::Vector{Pair{SubString{String}, SubString{String}}}, b::Vector{UInt8}; headers::Vector{Pair{SubString{String}, SubString{String}}}, body::Vector{UInt8}, query::Dict{Symbol, Any}, kw::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+      @ HTTP ~/.julia/packages/HTTP/IAI92/src/HTTP.jl:314
+    [9] #egquery#7
+      @ ~/.julia/packages/BioServices/KPZxN/src/eutils.jl:152 [inlined]
+   [10] macro expansion
+      @ ~/.julia/packages/BioServices/KPZxN/test/eutils.jl:129 [inlined]
+   [11] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [12] macro expansion
+      @ ~/.julia/packages/BioServices/KPZxN/test/eutils.jl:128 [inlined]
+   [13] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [14] top-level scope
+      @ ~/.julia/packages/BioServices/KPZxN/test/eutils.jl:4
+   [15] include(mod::Module, _path::String)
+      @ Base ./Base.jl:389
+   [16] include(x::String)
+      @ Main.TestBioServices ~/.julia/packages/BioServices/KPZxN/test/runtests.jl:1
+   [17] top-level scope
+      @ ~/.julia/packages/BioServices/KPZxN/test/runtests.jl:23
+   [18] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [19] top-level scope
+      @ none:6
+   [20] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [21] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [22] _start()
+      @ Base ./client.jl:485
 Test Summary: | Pass  Error  Total
-EUtils        |   41      1     42
+EUtils        |   34      3     37
   einfo       |    4             4
   esearch     |    4             4
   epost       |    5             5
-  esummary    |   12            12
+  esummary    |    8      1      9
   efetch      |    5      1      6
   elink       |    3             3
-  egquery     |    3             3
+  egquery     |           1      1
   espell      |    4             4
   ecitmatch   |    1             1
-ERROR: LoadError: LoadError: Some tests did not pass: 41 passed, 0 failed, 1 errored, 0 broken.
+ERROR: LoadError: LoadError: Some tests did not pass: 34 passed, 0 failed, 3 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/BioServices/KPZxN/test/eutils.jl:2
 in expression starting at /home/pkgeval/.julia/packages/BioServices/KPZxN/test/runtests.jl:1
 
@@ -270,19 +397,10 @@ Stacktrace:
 
 
 ################################################################################
-# PkgEval teardown: 2020-10-28T11:20:11.339
-#
-
-
-signal (15): Terminated
-in expression starting at none:1
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
-
-CPU usage: 60.29s (49.66s user, 10.69s kernel)
+# PkgEval teardown: 2020-10-28T14:25:20.892
+CPU usage: 54.88s (49.26s user, 5.79s kernel)
 
 Network usage:
-- eth0: 1.307 MiB received, 89.733 KiB sent
+- eth0: 1.037 MiB received, 90.191 KiB sent
 
-Raw statistics: {"read":"2020-10-28T11:20:11.705911967Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":28672},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":28672},{"major":259,"minor":0,"op":"Total","value":28672},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":28672},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":28672},{"major":253,"minor":2,"op":"Total","value":28672}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":60292528306,"percpu_usage":[49393072,142398948,98935709,491457573,26907700,406677344,267500887,201456530,160850025,374866958,141424876,43523908,16912286,270771418,156624272,2545990,105449182,308755445,282241278,348029982,126428233,11359993,218837298,345687502,189208489,72993761,23305378,132830194,174496541,169913341,18405646,251504313,818146297,822131192,796961065,897520972,660465405,418524889,395028688,675152476,632250375,339788783,1154500087,345840098,847191734,505781666,1237806972,392320837,706064183,434402216,1264035089,454389670,985612103,1413070736,965624373,1052249688,300906378,601755346,787578657,1669622467,617546307,359136836,1030631820,962797405,336853914,37412967,96477667,9558523,166437956,212880237,240083874,356123594,309761431,91130277,324191170,254541895,56400943,343387463,352052961,295535959,124012849,740613457,657872773,33044544,65957755,226640949,93987787,79190319,429223157,388508724,95322696,178613042,96964881,177046942,123902869,269129579,1636634115,234569972,547101448,351817489,381686209,256630731,706438254,966989196,311909630,516048385,483580245,398894463,1360522000,553633379,830085088,450729923,1081043293,749704202,1142330488,481278792,1362891822,889907555,1311157732,617868479,627090363,271388679,472639224,651478521,636690313,937467231,598101654,1034827395],"usage_in_kernelmode":10690000000,"usage_in_usermode":49660000000},"system_cpu_usage":93923990380000000,"online_cpus":128,"throttling_data":{"periods":749,"throttled_periods":28,"throttled_time":7333203016}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":265199616,"max_usage":949276672,"stats":{"active_anon":230678528,"active_file":0,"cache":9031680,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":2990080,"inactive_file":8192,"mapped_file":0,"pgfault":1397370,"pgmajfault":0,"pgpgin":877106,"pgpgout":820056,"rss":224645120,"rss_huge":0,"total_active_anon":230678528,"total_active_file":0,"total_cache":9031680,"total_dirty":0,"total_inactive_anon":2990080,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":1397370,"total_pgmajfault":0,"total_pgpgin":877106,"total_pgpgout":820056,"total_rss":224645120,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/BioServices-UTQG8H6Q","id":"f6980fb14f9246d98671eec2c9816d3fcdcd23327ae353252fb7a6f6d83a2558","networks":{"eth0":{"rx_bytes":1369991,"rx_packets":681,"rx_errors":0,"rx_dropped":3,"tx_bytes":91887,"tx_packets":617,"tx_errors":0,"tx_dropped":0}}}
-
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":28672,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":28672,"op":"Async","minor":0},{"major":259,"value":28672,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":28672,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":28672,"op":"Async","minor":2},{"major":253,"value":28672,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":213200896,"max_usage":948674560,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":198049792,"inactive_file":8192,"inactive_anon":2990080,"total_pgfault":1342479,"total_cache":9027584,"total_rss_huge":0,"total_active_anon":204079104,"total_pgmajfault":0,"pgpgin":754215,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":703659,"hierarchical_memsw_limit":0,"cache":9027584,"active_file":0,"pgfault":1342479,"total_mapped_file":0,"total_pgpgout":703659,"total_writeback":0,"rss":198049792,"unevictable":0,"total_inactive_anon":2990080,"total_pgpgin":754215,"active_anon":204079104,"total_active_file":0},"limit":540972998656},"name":"/BioServices-3BtKgjdP","networks":{"eth0":{"rx_bytes":1087606,"rx_packets":679,"tx_packets":604,"tx_bytes":92356,"tx_dropped":0,"rx_dropped":2,"tx_errors":0,"rx_errors":0}},"id":"c61721db0ee4dcbd61e06aeccc38de725cc5b22d07bfcdf9f8e48052b63e165b","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":95338219330000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":49260000000,"usage_in_kernelmode":5790000000,"total_usage":54876378473,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,54876378473,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-28T14:25:21.544346009Z"}

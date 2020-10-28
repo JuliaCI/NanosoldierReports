@@ -1,5 +1,5 @@
 ################################################################################
-# PkgEval set-up: 2020-10-28T11:09:17.361
+# PkgEval set-up: 2020-10-28T15:15:31.055
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T11:09:19.102
+# Installation: 2020-10-28T15:15:32.797
 #
 
    Resolving package versions...
@@ -30,15 +29,15 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
 
 
 ################################################################################
-# Testing: 2020-10-28T11:09:21.150
+# Testing: 2020-10-28T15:15:34.489
 #
 
 
      Testing WorkerUtilities
-Status `/tmp/jl_MHi7GX/Project.toml`
+Status `/tmp/jl_XGOo04/Project.toml`
   [76eceee3] WorkerUtilities v1.0.0
   [8dfed614] Test
-Status `/tmp/jl_MHi7GX/Manifest.toml`
+Status `/tmp/jl_XGOo04/Manifest.toml`
   [76eceee3] WorkerUtilities v1.0.0
   [2a0f44e3] Base64
   [b77e0a4c] InteractiveUtils
@@ -48,26 +47,101 @@ Status `/tmp/jl_MHi7GX/Manifest.toml`
   [9e88b42a] Serialization
   [8dfed614] Test
      Testing Running tests...
-Test Summary:   | Pass  Total
-WorkerUtilities |   10     10
-     Testing WorkerUtilities tests passed 
+WorkerUtilities.@spawn: Error During Test at /home/pkgeval/.julia/packages/WorkerUtilities/P6s29/test/runtests.jl:5
+  Got exception outside of a @test
+  TaskFailedException
+  Stacktrace:
+    [1] wait
+      @ ./task.jl:306 [inlined]
+    [2] threading_run(func::Function)
+      @ Base.Threads ./threadingconstructs.jl:34
+    [3] macro expansion
+      @ ./threadingconstructs.jl:93 [inlined]
+    [4] init(nworkers::Int64)
+      @ WorkerUtilities ~/.julia/packages/WorkerUtilities/P6s29/src/WorkerUtilities.jl:61
+    [5] init()
+      @ WorkerUtilities ~/.julia/packages/WorkerUtilities/P6s29/src/WorkerUtilities.jl:58
+    [6] macro expansion
+      @ ~/.julia/packages/WorkerUtilities/P6s29/test/runtests.jl:7 [inlined]
+    [7] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+    [8] macro expansion
+      @ ~/.julia/packages/WorkerUtilities/P6s29/test/runtests.jl:7 [inlined]
+    [9] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [10] top-level scope
+      @ ~/.julia/packages/WorkerUtilities/P6s29/test/runtests.jl:5
+   [11] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [12] top-level scope
+      @ none:6
+   [13] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [14] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [15] _start()
+      @ Base ./client.jl:485
+  
+      nested task error: BoundsError: attempt to access 0-element Vector{Task} at index [1]
+      Stacktrace:
+       [1] setindex!
+         @ ./array.jl:825 [inlined]
+       [2] macro expansion
+         @ ~/.julia/packages/WorkerUtilities/P6s29/src/WorkerUtilities.jl:63 [inlined]
+       [3] (::WorkerUtilities.var"#2#threadsfor_fun#2"{UnitRange{Int64}, UnitRange{Int64}})(onethread::Bool)
+         @ WorkerUtilities ./threadingconstructs.jl:81
+       [4] (::WorkerUtilities.var"#2#threadsfor_fun#2"{UnitRange{Int64}, UnitRange{Int64}})()
+         @ WorkerUtilities ./threadingconstructs.jl:48
+Test Summary:            | Pass  Error  Total
+WorkerUtilities          |    8      1      9
+  WorkerUtilities.@spawn |           1      1
+  Lockable               |    8             8
+ERROR: LoadError: Some tests did not pass: 8 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/WorkerUtilities/P6s29/test/runtests.jl:3
 
-PkgEval succeeded
+PkgEval failed: Package WorkerUtilities errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
 
 
 ################################################################################
-# PkgEval teardown: 2020-10-28T11:09:28.029
-#
-
-
-signal (15): Terminated
-in expression starting at none:1
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-
-CPU usage: 9.59s (7.59s user, 2.02s kernel)
+# PkgEval teardown: 2020-10-28T15:15:45.592
+CPU usage: 13.32s (12.26s user, 1.10s kernel)
 
 Network usage:
-- eth0: 15.430 KiB received, 4.277 KiB sent
+- eth0: 15.762 KiB received, 4.277 KiB sent
 
-Raw statistics: {"read":"2020-10-28T11:09:28.400784149Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":9588983320,"percpu_usage":[1190,3492681,0,37972415,0,1644111,0,28870493,45131508,25836521,12166394,25876451,213290,0,69974787,619070,298620,84705693,34809862,70532998,7650,6585583,139197878,30957903,0,124916730,2244091,23011558,56035563,0,0,319460,0,2351432,8230623,95312479,80997614,340907457,1570800,905530076,0,46346139,419850,24162650,38461295,217176751,27285749,371114933,26865468,117293657,23413621,291153733,89559873,134844912,54472563,307112522,45195499,1405002,147517308,0,515426976,450775100,293932981,166809395,15475326,17497467,21825690,26162258,587390,28519370,18211558,20023042,0,19767546,1361311,51187359,1428500,29824282,3049390,22534278,3585081,103292802,108790,80267553,829700,3499461,45956779,56446361,128930,4365593,0,274261,19250,1079440,7627844,3381122,5691241,80368475,2858401,12710,403370339,59490505,70037647,245000358,68812168,192931446,2219641,0,90594979,312135098,1363600,77462141,40254984,39803725,17701045,360865773,30881092,93628937,279357501,2249011,73732497,53516903,1667020,190913466,378799234,142750959,24535610,6590122],"usage_in_kernelmode":2020000000,"usage_in_usermode":7590000000},"system_cpu_usage":93842227190000000,"online_cpus":128,"throttling_data":{"periods":118,"throttled_periods":4,"throttled_time":1120621149}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":175677440,"max_usage":383320064,"stats":{"active_anon":163172352,"active_file":4096,"cache":73728,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":16384,"inactive_file":8192,"mapped_file":0,"pgfault":194996,"pgmajfault":0,"pgpgin":141605,"pgpgout":101761,"rss":163127296,"rss_huge":0,"total_active_anon":163172352,"total_active_file":4096,"total_cache":73728,"total_dirty":0,"total_inactive_anon":16384,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":194996,"total_pgmajfault":0,"total_pgpgin":141605,"total_pgpgout":101761,"total_rss":163127296,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/WorkerUtilities-YBF5yYx7","id":"bd6b223fe75d4cb7ea6701ac08457a15e646bb4ed5af85da90e0300672cae162","networks":{"eth0":{"rx_bytes":15800,"rx_packets":38,"rx_errors":0,"rx_dropped":1,"tx_bytes":4380,"tx_packets":28,"tx_errors":0,"tx_dropped":0}}}
-
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":202579968,"max_usage":380440576,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":198414336,"inactive_file":8192,"inactive_anon":16384,"total_pgfault":296659,"total_cache":69632,"total_rss_huge":0,"total_active_anon":198455296,"total_pgmajfault":0,"pgpgin":140758,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":92300,"hierarchical_memsw_limit":0,"cache":69632,"active_file":0,"pgfault":296659,"total_mapped_file":0,"total_pgpgout":92300,"total_writeback":0,"rss":198414336,"unevictable":0,"total_inactive_anon":16384,"total_pgpgin":140758,"active_anon":198455296,"total_active_file":0},"limit":540972998656},"name":"/WorkerUtilities-4Nlnpjju","networks":{"eth0":{"rx_bytes":16140,"rx_packets":46,"tx_packets":28,"tx_bytes":4380,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"d3d1edeb9a1e58b2d9b0792a1aade33ad9754479bd55d2dde226b1e60f6d3b34","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":95722936000000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":12260000000,"usage_in_kernelmode":1100000000,"total_usage":13320160244,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13320160244,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-28T15:15:46.169766595Z"}

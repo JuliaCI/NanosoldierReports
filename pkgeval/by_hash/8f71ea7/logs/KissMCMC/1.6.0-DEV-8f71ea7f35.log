@@ -1,5 +1,5 @@
 ################################################################################
-# PkgEval set-up: 2020-10-28T10:58:31.672
+# PkgEval set-up: 2020-10-28T15:14:11.324
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,18 +12,17 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T10:58:33.472
+# Installation: 2020-10-28T15:14:12.879
 #
 
    Resolving package versions...
-   Installed KissMCMC ────── v0.2.0
    Installed ProgressMeter ─ v1.4.0
+   Installed KissMCMC ────── v0.2.0
    Installed StaticArrays ── v0.12.5
 Updating `~/.julia/environments/v1.6/Project.toml`
   [79d62d8d] + KissMCMC v0.2.0
@@ -44,19 +43,19 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
 
 
 ################################################################################
-# Testing: 2020-10-28T10:58:35.699
+# Testing: 2020-10-28T15:14:14.785
 #
 
 
      Testing KissMCMC
-Status `/tmp/jl_K3Wrv0/Project.toml`
+Status `/tmp/jl_C00bY3/Project.toml`
   [31c24e10] Distributions v0.24.1
   [79d62d8d] KissMCMC v0.2.0
   [d96e819e] Parameters v0.12.1
   [2913bbd2] StatsBase v0.33.2
   [10745b16] Statistics
   [8dfed614] Test
-Status `/tmp/jl_K3Wrv0/Manifest.toml`
+Status `/tmp/jl_C00bY3/Manifest.toml`
   [34da2185] Compat v3.23.0
   [9a962f9c] DataAPI v1.3.0
   [864edb3b] DataStructures v0.18.8
@@ -122,70 +121,31 @@ dim: 2
 )
 
 atest.dist = var"#9#14"()
-metropolis: Test Failed at /home/pkgeval/.julia/packages/KissMCMC/z6iaT/test/runtests.jl:37
-  Expression: all(abs.(std(thetas) - std_) .< abs.(std_ * tol))
-Stacktrace:
- [1] test_mean_std(thetas::Vector{Vector{Float64}}, atest::ATest, tol::Float64)
-   @ Main ~/.julia/packages/KissMCMC/z6iaT/test/runtests.jl:37
- [2] macro expansion
-   @ ~/.julia/packages/KissMCMC/z6iaT/test/metro.jl:16 [inlined]
- [3] macro expansion
-   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
- [4] top-level scope
-   @ ~/.julia/packages/KissMCMC/z6iaT/test/metro.jl:3
-Test Summary: | Pass  Fail  Total
-metropolis    |   27     1     28
-ERROR: LoadError: LoadError: Some tests did not pass: 27 passed, 1 failed, 0 errored, 0 broken.
-in expression starting at /home/pkgeval/.julia/packages/KissMCMC/z6iaT/test/metro.jl:2
-in expression starting at /home/pkgeval/.julia/packages/KissMCMC/z6iaT/test/runtests.jl:85
+Test Summary: | Pass  Total
+metropolis    |   28     28
+Test Summary: | Pass  Total
+g-dist        |    5      5
+atest.dist = Distributions.Normal{Float64}(μ=-5.0, σ=3.0)
+atest.dist = Distributions.LogNormal{Float64}(μ=0.0, σ=1.0)
+atest.dist = FullNormal(
+dim: 2
+μ: [0.5, -0.25]
+Σ: [0.47 1.8; 1.8 7.0]
+)
 
-PkgEval failed: Package KissMCMC errored during testing
-Stacktrace:
-  [1] pkgerror(msg::String)
-    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
-  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
-    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
-  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
-    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
-  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
-    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
-  [5] #test#62
-    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
-  [6] test
-    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
-  [7] #test#61
-    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
-  [8] test
-    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
-  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
-    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
- [10] test(pkg::String)
-    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
- [11] top-level scope
-    @ none:44
- [12] eval
-    @ ./boot.jl:360 [inlined]
- [13] eval(x::Expr)
-    @ Base.MainInclude ./client.jl:446
- [14] top-level scope
-    @ none:1
- [15] eval(m::Module, e::Any)
-    @ Core ./boot.jl:360
- [16] exec_options(opts::Base.JLOptions)
-    @ Base ./client.jl:261
- [17] _start()
-    @ Base ./client.jl:485
+atest.dist = var"#9#14"()
+Test Summary: | Pass  Total
+emcee         |   28     28
+     Testing KissMCMC tests passed 
+
+PkgEval succeeded
 
 
 ################################################################################
-# PkgEval teardown: 2020-10-28T10:59:58.818
-#
-
-
-CPU usage: 80.35s (67.21s user, 13.42s kernel)
+# PkgEval teardown: 2020-10-28T15:15:47.043
+CPU usage: 89.42s (81.31s user, 8.23s kernel)
 
 Network usage:
-- eth0: 1.126 MiB received, 63.845 KiB sent
+- eth0: 1.124 MiB received, 64.827 KiB sent
 
-Raw statistics: {"read":"2020-10-28T10:59:59.219247719Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":24576},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":24576},{"major":259,"minor":0,"op":"Total","value":24576},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":24576},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":24576},{"major":253,"minor":2,"op":"Total","value":24576}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":80346153889,"percpu_usage":[0,1149504606,621566526,1554109949,1816431939,576017758,401666967,664733977,598347774,230730793,617001455,404066965,752436935,854810332,1217561896,426232397,1485950179,697532908,551773090,3249822180,652035331,530003756,1057145373,632435568,859675106,1403902504,1173541306,884351008,1651391107,1750838515,819309636,1269736959,138880407,186397626,38779135,223181458,280192005,821238502,233804809,191707696,2603651,121140269,60521524,131374356,460378387,103641186,18738588,329362529,255345583,95014650,322323921,222373532,26687220,173631920,113696916,205002792,131257315,286918144,660598601,1506416806,81958260,334051562,94571731,154071772,361157909,2581036316,1366598086,1671481171,1800046868,1194680236,749174552,683672723,1405823446,603280142,901313684,218142345,619331206,743371969,1064950146,440629678,781361125,1019676059,358762446,1077283936,1512230895,963822032,861067776,705864268,1942091964,1924687192,664880787,724720560,1149292894,649258291,1720980263,737611691,191488823,270617148,83488992,98352020,367095334,48185409,43336699,395673639,445898038,96884449,239557350,163000165,450713262,346176868,555067842,304796578,163642516,183524885,100891342,96076778,341647616,129716459,78500032,103610963,258751586,217155158,279570238,354261000,169243019,478820524,1346028588,185570265],"usage_in_kernelmode":13420000000,"usage_in_usermode":67210000000},"system_cpu_usage":93769862260000000,"online_cpus":128,"throttling_data":{"periods":878,"throttled_periods":36,"throttled_time":9101561438}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":255700992,"max_usage":1178177536,"stats":{"active_anon":215711744,"active_file":0,"cache":13840384,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":4415488,"inactive_file":8192,"mapped_file":0,"pgfault":2212600,"pgmajfault":0,"pgpgin":1451069,"pgpgout":1397325,"rss":206295040,"rss_huge":0,"total_active_anon":215711744,"total_active_file":0,"total_cache":13840384,"total_dirty":0,"total_inactive_anon":4415488,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":2212600,"total_pgmajfault":0,"total_pgpgin":1451069,"total_pgpgout":1397325,"total_rss":206295040,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/KissMCMC-wrzAvkXR","id":"86eddb5bee1c43e725028bfbbfe0f5c4402ad2f3764966b5c56cac7c09625a64","networks":{"eth0":{"rx_bytes":1180832,"rx_packets":591,"rx_errors":0,"rx_dropped":1,"tx_bytes":65377,"tx_packets":451,"tx_errors":0,"tx_dropped":0}}}
-
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":24576,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":24576,"op":"Async","minor":0},{"major":259,"value":24576,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":24576,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":24576,"op":"Async","minor":2},{"major":253,"value":24576,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":242982912,"max_usage":1250959360,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":222556160,"inactive_file":8192,"inactive_anon":4395008,"total_pgfault":2412436,"total_cache":13889536,"total_rss_huge":0,"total_active_anon":231972864,"total_pgmajfault":0,"pgpgin":1667220,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":1609494,"hierarchical_memsw_limit":0,"cache":13889536,"active_file":65536,"pgfault":2412436,"total_mapped_file":0,"total_pgpgout":1609494,"total_writeback":0,"rss":222556160,"unevictable":0,"total_inactive_anon":4395008,"total_pgpgin":1667220,"active_anon":231972864,"total_active_file":65536},"limit":540972998656},"name":"/KissMCMC-f6yAaFnR","networks":{"eth0":{"rx_bytes":1178563,"rx_packets":609,"tx_packets":467,"tx_bytes":66383,"tx_dropped":0,"rx_dropped":3,"tx_errors":0,"rx_errors":0}},"id":"624b151d3dc9aa0bd46fe1311e955790d72e3954fc5b29e7f1ae28689ea5b71f","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":95723064010000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":81310000000,"usage_in_kernelmode":8230000000,"total_usage":89422814525,"percpu_usage":[0,0,0,0,89422647275,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167250,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-28T15:15:47.174538224Z"}

@@ -1,5 +1,5 @@
 ################################################################################
-# PkgEval set-up: 2020-10-28T11:53:59.537
+# PkgEval set-up: 2020-10-28T14:26:18.251
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,21 +12,20 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T11:54:01.270
+# Installation: 2020-10-28T14:26:19.920
 #
 
    Resolving package versions...
-   Installed Reexport ───────── v0.2.0
    Installed EllipsisNotation ─ v0.4.0
+   Installed Reexport ───────── v0.2.0
    Installed IntervalSets ───── v0.5.1
-   Installed ChainedFixes ───── v0.2.1
    Installed ArrayInterface ─── v2.13.7
+   Installed ChainedFixes ───── v0.2.1
    Installed Requires ───────── v1.1.0
    Installed StaticRanges ───── v0.8.3
 Updating `~/.julia/environments/v1.6/Project.toml`
@@ -68,12 +67,12 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
 
 
 ################################################################################
-# Testing: 2020-10-28T11:54:04.311
+# Testing: 2020-10-28T14:26:22.717
 #
 
 
      Testing StaticRanges
-Status `/tmp/jl_40HI80/Project.toml`
+Status `/tmp/jl_qgBuO1/Project.toml`
   [4fba245c] ArrayInterface v2.13.7
   [9706b775] ChainedFixes v0.2.1
   [e30172f5] Documenter v0.25.3
@@ -87,7 +86,7 @@ Status `/tmp/jl_40HI80/Project.toml`
   [37e2e46d] LinearAlgebra
   [2f01184e] SparseArrays
   [8dfed614] Test
-Status `/tmp/jl_40HI80/Manifest.toml`
+Status `/tmp/jl_qgBuO1/Manifest.toml`
   [4fba245c] ArrayInterface v2.13.7
   [9706b775] ChainedFixes v0.2.1
   [ffbed154] DocStringExtensions v0.8.3
@@ -581,122 +580,193 @@ cont          | 1940   1940
 │     4
 │     5
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/vcat.jl:68-90
+┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:320-347
 │ 
 │ ```jldoctest
 │ julia> using StaticRanges
 │ 
-│ julia> StaticRanges.vcat_sort(1:10)  # it's already sorted, nothing happens
-│ 1:10
+│ julia> x = collect(1:5);
 │ 
-│ julia> StaticRanges.vcat_sort([3, 1, 2, 5])  # sort unordered collection
-│ 4-element Array{Int64,1}:
+│ julia> StaticRanges.resize_last(x, 2)
+│ 2-element Array{Int64,1}:
 │  1
 │  2
-│  3
-│  5
 │ 
-│ 
-│ julia> StaticRanges.vcat_sort([3, 4, 5], [1, 2, 5])
-│ 6-element Array{Int64,1}:
+│ julia> StaticRanges.resize_last(x, 7)
+│ 7-element Array{Int64,1}:
 │  1
 │  2
 │  3
 │  4
 │  5
+│  6
+│  7
+│ 
+│ julia>  StaticRanges.resize_last(x, 5)
+│ 5-element Array{Int64,1}:
+│  1
+│  2
+│  3
+│  4
 │  5
 │ 
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ StaticRanges.vcat_sort([3, 1, 2, 5])  # sort unordered collection
+│ StaticRanges.resize_last(x, 2)
 │ 
 │ Evaluated output:
 │ 
-│ 4-element Vector{Int64}:
+│ 2-element Vector{Int64}:
 │  1
 │  2
-│  3
-│  5
 │ 
 │ Expected output:
 │ 
-│ 4-element Array{Int64,1}:
+│ 2-element Array{Int64,1}:
 │  1
 │  2
-│  3
-│  5
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    4-element Array{Int64,1}:
+│    2-element Array{Int64,1}:
 │     Vector{Int64}:
 │     1
 │     2
-│     3
-│     5
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/vcat.jl:68-90
+┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:320-347
 │ 
 │ ```jldoctest
 │ julia> using StaticRanges
 │ 
-│ julia> StaticRanges.vcat_sort(1:10)  # it's already sorted, nothing happens
-│ 1:10
+│ julia> x = collect(1:5);
 │ 
-│ julia> StaticRanges.vcat_sort([3, 1, 2, 5])  # sort unordered collection
-│ 4-element Array{Int64,1}:
+│ julia> StaticRanges.resize_last(x, 2)
+│ 2-element Array{Int64,1}:
 │  1
 │  2
-│  3
-│  5
 │ 
-│ 
-│ julia> StaticRanges.vcat_sort([3, 4, 5], [1, 2, 5])
-│ 6-element Array{Int64,1}:
+│ julia> StaticRanges.resize_last(x, 7)
+│ 7-element Array{Int64,1}:
 │  1
 │  2
 │  3
 │  4
 │  5
+│  6
+│  7
+│ 
+│ julia>  StaticRanges.resize_last(x, 5)
+│ 5-element Array{Int64,1}:
+│  1
+│  2
+│  3
+│  4
 │  5
 │ 
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ StaticRanges.vcat_sort([3, 4, 5], [1, 2, 5])
+│ StaticRanges.resize_last(x, 7)
 │ 
 │ Evaluated output:
 │ 
-│ 6-element Vector{Int64}:
+│ 7-element Vector{Int64}:
 │  1
 │  2
 │  3
 │  4
 │  5
-│  5
+│  6
+│  7
 │ 
 │ Expected output:
 │ 
-│ 6-element Array{Int64,1}:
+│ 7-element Array{Int64,1}:
 │  1
 │  2
 │  3
 │  4
 │  5
-│  5
+│  6
+│  7
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    6-element Array{Int64,1}:
+│    7-element Array{Int64,1}:
 │     Vector{Int64}:
 │     1
 │     2
 │     3
 │     4
 │     5
+│     6
+│     7
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:320-347
+│ 
+│ ```jldoctest
+│ julia> using StaticRanges
+│ 
+│ julia> x = collect(1:5);
+│ 
+│ julia> StaticRanges.resize_last(x, 2)
+│ 2-element Array{Int64,1}:
+│  1
+│  2
+│ 
+│ julia> StaticRanges.resize_last(x, 7)
+│ 7-element Array{Int64,1}:
+│  1
+│  2
+│  3
+│  4
+│  5
+│  6
+│  7
+│ 
+│ julia>  StaticRanges.resize_last(x, 5)
+│ 5-element Array{Int64,1}:
+│  1
+│  2
+│  3
+│  4
+│  5
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│  StaticRanges.resize_last(x, 5)
+│ 
+│ Evaluated output:
+│ 
+│ 5-element Vector{Int64}:
+│  1
+│  2
+│  3
+│  4
+│  5
+│ 
+│ Expected output:
+│ 
+│ 5-element Array{Int64,1}:
+│  1
+│  2
+│  3
+│  4
+│  5
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    5-element Array{Int64,1}:
+│     Vector{Int64}:
+│     1
+│     2
+│     3
+│     4
 │     5
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/GapRange/type.jl:9-29
@@ -924,193 +994,122 @@ cont          | 1940   1940
 │     4
 │     5
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:320-347
+┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/vcat.jl:68-90
 │ 
 │ ```jldoctest
 │ julia> using StaticRanges
 │ 
-│ julia> x = collect(1:5);
+│ julia> StaticRanges.vcat_sort(1:10)  # it's already sorted, nothing happens
+│ 1:10
 │ 
-│ julia> StaticRanges.resize_last(x, 2)
-│ 2-element Array{Int64,1}:
+│ julia> StaticRanges.vcat_sort([3, 1, 2, 5])  # sort unordered collection
+│ 4-element Array{Int64,1}:
 │  1
 │  2
+│  3
+│  5
 │ 
-│ julia> StaticRanges.resize_last(x, 7)
-│ 7-element Array{Int64,1}:
+│ 
+│ julia> StaticRanges.vcat_sort([3, 4, 5], [1, 2, 5])
+│ 6-element Array{Int64,1}:
 │  1
 │  2
 │  3
 │  4
 │  5
-│  6
-│  7
-│ 
-│ julia>  StaticRanges.resize_last(x, 5)
-│ 5-element Array{Int64,1}:
-│  1
-│  2
-│  3
-│  4
 │  5
 │ 
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ StaticRanges.resize_last(x, 2)
+│ StaticRanges.vcat_sort([3, 1, 2, 5])  # sort unordered collection
 │ 
 │ Evaluated output:
 │ 
-│ 2-element Vector{Int64}:
+│ 4-element Vector{Int64}:
 │  1
 │  2
+│  3
+│  5
 │ 
 │ Expected output:
 │ 
-│ 2-element Array{Int64,1}:
+│ 4-element Array{Int64,1}:
 │  1
 │  2
+│  3
+│  5
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    2-element Array{Int64,1}:
+│    4-element Array{Int64,1}:
 │     Vector{Int64}:
 │     1
 │     2
+│     3
+│     5
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:320-347
+┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/vcat.jl:68-90
 │ 
 │ ```jldoctest
 │ julia> using StaticRanges
 │ 
-│ julia> x = collect(1:5);
+│ julia> StaticRanges.vcat_sort(1:10)  # it's already sorted, nothing happens
+│ 1:10
 │ 
-│ julia> StaticRanges.resize_last(x, 2)
-│ 2-element Array{Int64,1}:
+│ julia> StaticRanges.vcat_sort([3, 1, 2, 5])  # sort unordered collection
+│ 4-element Array{Int64,1}:
 │  1
 │  2
+│  3
+│  5
 │ 
-│ julia> StaticRanges.resize_last(x, 7)
-│ 7-element Array{Int64,1}:
+│ 
+│ julia> StaticRanges.vcat_sort([3, 4, 5], [1, 2, 5])
+│ 6-element Array{Int64,1}:
 │  1
 │  2
 │  3
 │  4
 │  5
-│  6
-│  7
-│ 
-│ julia>  StaticRanges.resize_last(x, 5)
-│ 5-element Array{Int64,1}:
-│  1
-│  2
-│  3
-│  4
 │  5
 │ 
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ StaticRanges.resize_last(x, 7)
+│ StaticRanges.vcat_sort([3, 4, 5], [1, 2, 5])
 │ 
 │ Evaluated output:
 │ 
-│ 7-element Vector{Int64}:
+│ 6-element Vector{Int64}:
 │  1
 │  2
 │  3
 │  4
 │  5
-│  6
-│  7
+│  5
 │ 
 │ Expected output:
 │ 
-│ 7-element Array{Int64,1}:
+│ 6-element Array{Int64,1}:
 │  1
 │  2
 │  3
 │  4
 │  5
-│  6
-│  7
+│  5
 │ 
 │   diff =
 │    Warning: Diff output requires color.
-│    7-element Array{Int64,1}:
+│    6-element Array{Int64,1}:
 │     Vector{Int64}:
 │     1
 │     2
 │     3
 │     4
 │     5
-│     6
-│     7
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:320-347
-│ 
-│ ```jldoctest
-│ julia> using StaticRanges
-│ 
-│ julia> x = collect(1:5);
-│ 
-│ julia> StaticRanges.resize_last(x, 2)
-│ 2-element Array{Int64,1}:
-│  1
-│  2
-│ 
-│ julia> StaticRanges.resize_last(x, 7)
-│ 7-element Array{Int64,1}:
-│  1
-│  2
-│  3
-│  4
-│  5
-│  6
-│  7
-│ 
-│ julia>  StaticRanges.resize_last(x, 5)
-│ 5-element Array{Int64,1}:
-│  1
-│  2
-│  3
-│  4
-│  5
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│  StaticRanges.resize_last(x, 5)
-│ 
-│ Evaluated output:
-│ 
-│ 5-element Vector{Int64}:
-│  1
-│  2
-│  3
-│  4
-│  5
-│ 
-│ Expected output:
-│ 
-│ 5-element Array{Int64,1}:
-│  1
-│  2
-│  3
-│  4
-│  5
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    5-element Array{Int64,1}:
-│     Vector{Int64}:
-│     1
-│     2
-│     3
-│     4
 │     5
 └ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: Doctesting failed
@@ -1210,19 +1209,10 @@ Stacktrace:
 
 
 ################################################################################
-# PkgEval teardown: 2020-10-28T12:12:10.537
-#
-
-
-signal (15): Terminated
-in expression starting at none:1
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
-
-CPU usage: 1014.38s (986.10s user, 32.90s kernel)
+# PkgEval teardown: 2020-10-28T14:45:32.807
+CPU usage: 1102.57s (1094.38s user, 10.85s kernel)
 
 Network usage:
-- eth0: 1.029 MiB received, 53.507 KiB sent
+- eth0: 1.048 MiB received, 55.062 KiB sent
 
-Raw statistics: {"read":"2020-10-28T12:12:11.292695056Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":24576},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":24576},{"major":259,"minor":0,"op":"Total","value":24576},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":24576},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":24576},{"major":253,"minor":2,"op":"Total","value":24576}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":1014381410382,"percpu_usage":[171165659,202505800,214030644,242012147,383962365,260802665,507420688,183157283,359376289,229570362,192606536,445888145,401794230,204797168,165592258,235300274,233062533,361243512,172096318,603207915,466884667,475446983,203804731,131395062,205177679,272937762,297314907,387026050,384825713,219359737,346443215,137131442,17944124105,15983055080,17458160938,16816835505,16899612590,21624611061,34841708047,24946622134,22453593024,9734954840,11660167004,24753611555,10923008821,12468895058,10512985851,15558474998,21127088371,20669013371,12767452870,9539668867,13424951387,13629151381,31111131418,25184874862,8912745655,11719086787,11958783450,9373690631,16890774645,11848296340,13260855800,12844888141,159809564,652930132,273556089,366547359,344280646,196137591,46913630,414093219,605252254,383432456,441188535,570966135,146438494,183111741,35114556,208551728,517441226,635178371,410289726,737029374,317480943,298421970,572683778,467095385,106195189,442932997,158463287,342340786,198058511,145642704,183216444,463721155,15613821560,13546162590,21582002569,18294768748,23641079035,19387086363,17291854250,27040559627,16270396352,9033417532,15108294126,13260831011,8542922943,7002676011,9977447226,12122886865,22210397348,25234599516,11893941378,6242350469,16970677096,7010062920,18656625017,11494298332,12347875296,6069201922,12428587489,10516215958,21440369608,8517955460,11695176280,14772138184],"usage_in_kernelmode":32900000000,"usage_in_usermode":986100000000},"system_cpu_usage":94319908280000000,"online_cpus":128,"throttling_data":{"periods":10919,"throttled_periods":22,"throttled_time":4064603193}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":240619520,"max_usage":1019785216,"stats":{"active_anon":208629760,"active_file":0,"cache":11894784,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":4370432,"inactive_file":8192,"mapped_file":0,"pgfault":12722526,"pgmajfault":0,"pgpgin":3652980,"pgpgout":3600976,"rss":201113600,"rss_huge":0,"total_active_anon":208629760,"total_active_file":0,"total_cache":11894784,"total_dirty":0,"total_inactive_anon":4370432,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":12722526,"total_pgmajfault":0,"total_pgpgin":3652980,"total_pgpgout":3600976,"total_rss":201113600,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/StaticRanges-kVad8127","id":"bfcfcbc0b95eb8a284889feb46ce1fac109ff79ce22a402adb7db1dce10937e7","networks":{"eth0":{"rx_bytes":1078612,"rx_packets":1485,"rx_errors":0,"rx_dropped":37,"tx_bytes":54791,"tx_packets":415,"tx_errors":0,"tx_dropped":0}}}
-
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":24576,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":24576,"op":"Async","minor":0},{"major":259,"value":24576,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":24576,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":24576,"op":"Async","minor":2},{"major":253,"value":24576,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":220651520,"max_usage":1029902336,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":202399744,"inactive_file":8192,"inactive_anon":4370432,"total_pgfault":3640166,"total_cache":11886592,"total_rss_huge":0,"total_active_anon":209907712,"total_pgmajfault":0,"pgpgin":2391980,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":2339664,"hierarchical_memsw_limit":0,"cache":11886592,"active_file":0,"pgfault":3640166,"total_mapped_file":0,"total_pgpgout":2339664,"total_writeback":0,"rss":202399744,"unevictable":0,"total_inactive_anon":4370432,"total_pgpgin":2391980,"active_anon":209907712,"total_active_file":0},"limit":540972998656},"name":"/StaticRanges-s0N8WKZF","networks":{"eth0":{"rx_bytes":1098880,"rx_packets":1898,"tx_packets":435,"tx_bytes":56383,"tx_dropped":0,"rx_dropped":38,"tx_errors":0,"rx_errors":0}},"id":"050c24305d5991f9331d7ce3b6ecf4fdc4933053fc3d982b960a26337193dc43","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":95492402640000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":1094380000000,"usage_in_kernelmode":10850000000,"total_usage":1102571991895,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1102571991895,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-28T14:45:33.009002646Z"}

@@ -1,5 +1,5 @@
 ################################################################################
-# PkgEval set-up: 2020-10-28T11:14:28.130
+# PkgEval set-up: 2020-10-28T14:24:42.835
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T11:14:29.953
+# Installation: 2020-10-28T14:24:44.425
 #
 
    Resolving package versions...
@@ -59,12 +58,12 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
 
 
 ################################################################################
-# Testing: 2020-10-28T11:14:34.180
+# Testing: 2020-10-28T14:24:47.472
 #
 
 
      Testing Diagonalizations
-Status `/tmp/jl_pqJf4W/Project.toml`
+Status `/tmp/jl_cN5Ct3/Project.toml`
   [587fd27a] CovarianceEstimation v0.2.5
   [9cd687f3] Diagonalizations v0.1.11
   [f45a3650] PosDefManifold v0.4.8
@@ -72,7 +71,7 @@ Status `/tmp/jl_pqJf4W/Project.toml`
   [37e2e46d] LinearAlgebra
   [10745b16] Statistics
   [8dfed614] Test
-Status `/tmp/jl_pqJf4W/Manifest.toml`
+Status `/tmp/jl_cN5Ct3/Manifest.toml`
   [587fd27a] CovarianceEstimation v0.2.5
   [9a962f9c] DataAPI v1.3.0
   [864edb3b] DataStructures v0.17.20
@@ -100,20 +99,20 @@ Status `/tmp/jl_pqJf4W/Manifest.toml`
 ⭐  Welcome to the[91m PosDefManifold.jl [0mpackage ⭐
 
 [ Info:  
- Your Machine `3f00dace3d10` (x86_64-linux-gnu)
+ Your Machine `7cd98f6fecbe` (x86_64-linux-gnu)
  runs on kernel Linux with word size 64.
  CPU  Threads: 128
- Base.Threads: 2
+ Base.Threads: 1
  BLAS Threads: 128
 
 
 ⭐  Welcome to the[35m Diagonalizations.jl [0mpackage ⭐
 
 [ Info:  
- Your Machine `3f00dace3d10` (x86_64-linux-gnu)
+ Your Machine `7cd98f6fecbe` (x86_64-linux-gnu)
  runs on kernel Linux with word size 64.
  CPU  Threads: 128
- Base.Threads: 2
+ Base.Threads: 1
  BLAS Threads: 128
 
 Test Summary: | Pass  Total
@@ -134,28 +133,64 @@ Test Summary: | Pass  Total
 gMCA          |    3      3
 Test Summary: | Pass  Total
 gCCA          |   12     12
-Test Summary: | Pass  Total
+mAJD: Test Failed at /home/pkgeval/.julia/packages/Diagonalizations/noSKS/test/runtests.jl:342
+  Expression: mean((spForm((aX.F[i])' * 𝐕[i]) for i = 1:m)) < 0.05
+   Evaluated: 0.05179368296589326 < 0.05
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/Diagonalizations/noSKS/test/runtests.jl:342 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] top-level scope
+   @ ~/.julia/packages/Diagonalizations/noSKS/test/runtests.jl:337
+Test Summary: | Fail  Total
 mAJD          |    1      1
-     Testing Diagonalizations tests passed 
+ERROR: LoadError: Some tests did not pass: 0 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/Diagonalizations/noSKS/test/runtests.jl:335
 
-PkgEval succeeded
+PkgEval failed: Package Diagonalizations errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
 
 
 ################################################################################
-# PkgEval teardown: 2020-10-28T11:16:46.114
-#
-
-
-signal (15): Terminated
-in expression starting at none:1
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-uv_cond_wait at /workspace/srcdir/libuv/src/unix/thread.c:847
-jl_task_get_next at /workspace/srcdir/src/partr.c:508
-
-CPU usage: 125.13s (112.30s user, 13.12s kernel)
+# PkgEval teardown: 2020-10-28T14:26:46.693
+CPU usage: 113.28s (108.80s user, 4.68s kernel)
 
 Network usage:
-- eth0: 2.191 MiB received, 49.350 KiB sent
+- eth0: 2.193 MiB received, 50.689 KiB sent
 
-Raw statistics: {"read":"2020-10-28T11:16:46.244979969Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":125128096468,"percpu_usage":[1882803121,1044899510,2628703641,2677589079,757673845,941035387,1639981984,2845883315,1227084427,1783551951,1107464158,1133738426,1243342580,736845782,1608601727,3027642314,2242029304,1512434342,2228108542,874975918,1185449843,4671529908,1394730444,2403834180,1107332655,1500536896,1371337641,2568422297,1864308713,1299838081,1716841954,1948267741,92233596,44748221,88494325,273220180,56890462,131536520,368732005,274749179,648856174,298558290,12810825,269927902,314115785,69362738,111338816,435296323,371154101,175028546,369813465,237072055,275916634,67617509,144565149,17018258,227010297,175304359,579446714,15095394,93913351,271147950,536390993,270328926,613252054,4702031574,1572189613,3004434284,2061204326,1297224481,1562186995,1262701024,1067595483,822457240,1291987871,1061993314,956248077,1809833248,1494510133,727753482,997718541,1335236137,941964677,1790502875,927640284,2759123654,1777108811,2845478354,1499217607,1248116056,3173663663,2504094095,1777518335,946480864,2349076961,2434098833,122653669,83198804,264616965,237828676,230440544,296726723,101120698,40618944,226168778,177685892,111468712,631227960,208222026,100069920,285891762,283659472,86807849,370695200,370405899,273885149,319832368,56483755,162327297,146060108,332551603,113303076,248247180,129144163,310267583,305402663,221754087,170171249],"usage_in_kernelmode":13120000000,"usage_in_usermode":112300000000},"system_cpu_usage":93897898310000000,"online_cpus":128,"throttling_data":{"periods":1386,"throttled_periods":28,"throttled_time":6018024261}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":233259008,"max_usage":780357632,"stats":{"active_anon":203735040,"active_file":0,"cache":8970240,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":4345856,"inactive_file":8192,"mapped_file":0,"pgfault":2032900,"pgmajfault":0,"pgpgin":640918,"pgpgout":590115,"rss":199118848,"rss_huge":0,"total_active_anon":203735040,"total_active_file":0,"total_cache":8970240,"total_dirty":0,"total_inactive_anon":4345856,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":2032900,"total_pgmajfault":0,"total_pgpgin":640918,"total_pgpgout":590115,"total_rss":199118848,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/Diagonalizations-HShQAXRe","id":"3f00dace3d101e2479dad1248241c08bd2e0128575c7b80cdecc50bc7dd70eea","networks":{"eth0":{"rx_bytes":2297120,"rx_packets":661,"rx_errors":0,"rx_dropped":5,"tx_bytes":50534,"tx_packets":441,"tx_errors":0,"tx_dropped":0}}}
-
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":229031936,"max_usage":759496704,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":214171648,"inactive_file":8192,"inactive_anon":4345856,"total_pgfault":1000519,"total_cache":9035776,"total_rss_huge":0,"total_active_anon":218791936,"total_pgmajfault":0,"pgpgin":545428,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":8192,"total_unevictable":0,"total_dirty":8192,"writeback":0,"pgpgout":490934,"hierarchical_memsw_limit":0,"cache":9035776,"active_file":61440,"pgfault":1000519,"total_mapped_file":0,"total_pgpgout":490934,"total_writeback":0,"rss":214171648,"unevictable":0,"total_inactive_anon":4345856,"total_pgpgin":545428,"active_anon":218791936,"total_active_file":61440},"limit":540972998656},"name":"/Diagonalizations-P9MkFy0m","networks":{"eth0":{"rx_bytes":2299253,"rx_packets":741,"tx_packets":459,"tx_bytes":51906,"tx_dropped":0,"rx_dropped":5,"tx_errors":0,"rx_errors":0}},"id":"7cd98f6fecbec0f1b85cca3dc4989a5c5fc0bbb122ff5675138f2ee3e1d40395","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":95349123960000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":108800000000,"usage_in_kernelmode":4680000000,"total_usage":113281788763,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,113281788763,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-28T14:26:47.228889642Z"}

@@ -1,5 +1,5 @@
 ################################################################################
-# PkgEval set-up: 2020-10-28T11:44:21.748
+# PkgEval set-up: 2020-10-28T15:00:01.272
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,21 +12,20 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T11:44:23.488
+# Installation: 2020-10-28T15:00:02.826
 #
 
    Resolving package versions...
-   Installed snappy_jll ── v1.1.8+0
-   Installed Zlib_jll ──── v1.2.11+18
-   Installed OpenSSL_jll ─ v1.1.1+6
-   Installed MongoC_jll ── v1.16.2+0
    Installed Zstd_jll ──── v1.4.5+2
+   Installed snappy_jll ── v1.1.8+0
+   Installed MongoC_jll ── v1.16.2+0
+   Installed OpenSSL_jll ─ v1.1.1+6
+   Installed Zlib_jll ──── v1.2.11+18
    Installed LZO_jll ───── v2.10.0+3
    Installed Mongoc ────── v0.6.1
    Installed JLLWrappers ─ v1.1.3
@@ -67,19 +66,19 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
 
 
 ################################################################################
-# Testing: 2020-10-28T11:44:27.225
+# Testing: 2020-10-28T15:00:06.260
 #
 
 
      Testing Mongoc
-Status `/tmp/jl_hajB2Y/Project.toml`
+Status `/tmp/jl_2PW2E1/Project.toml`
   [4fe8b98c] Mongoc v0.6.1
   [90100e71] MongoC_jll v1.16.2+0
   [ade2ca70] Dates
   [8ba89e20] Distributed
   [9e88b42a] Serialization
   [8dfed614] Test
-Status `/tmp/jl_hajB2Y/Manifest.toml`
+Status `/tmp/jl_2PW2E1/Manifest.toml`
   [692b3bcd] JLLWrappers v1.1.3
   [4fe8b98c] Mongoc v0.6.1
   [dd4b983a] LZO_jll v2.10.0+3
@@ -346,7 +345,7 @@ find_databases: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/
       @ Base ./client.jl:485
 Binary data: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/test/mongodb_tests.jl:164
   Got exception outside of a @test
-  BSONError: domain=15, code=13053, message=No suitable servers found (`serverSelectionTryOnce` set): [connection refused calling ismaster on 'localhost:27017']
+  BSONError: domain=15, code=13053, message=No servers yet eligible for rescan
   Stacktrace:
     [1] insert_one(collection::Mongoc.Collection, document::Mongoc.BSON; options::Nothing)
       @ Mongoc ~/.julia/packages/Mongoc/ULDwF/src/collection.jl:59
@@ -384,7 +383,7 @@ Binary data: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/tes
       @ Base ./client.jl:485
 find_collections: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/test/mongodb_tests.jl:181
   Got exception outside of a @test
-  BSONError: domain=15, code=13053, message=No servers yet eligible for rescan
+  BSONError: domain=15, code=13053, message=No suitable servers found (`serverSelectionTryOnce` set): [connection refused calling ismaster on 'localhost:27017']
   Stacktrace:
     [1] _iterate(cursor::Mongoc.Cursor{Mongoc.Database}, state::Nothing)
       @ Mongoc ~/.julia/packages/Mongoc/ULDwF/src/collection.jl:482
@@ -614,7 +613,7 @@ update_one, update_many: Error During Test at /home/pkgeval/.julia/packages/Mong
       @ Base ./client.jl:485
 aggregation, map_reduce: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/test/mongodb_tests.jl:287
   Got exception outside of a @test
-  BSONError: domain=15, code=13053, message=No suitable servers found (`serverSelectionTryOnce` set): [connection refused calling ismaster on 'localhost:27017']
+  BSONError: domain=15, code=13053, message=No servers yet eligible for rescan
   Stacktrace:
     [1] execute!(bulk_operation::Mongoc.BulkOperation)
       @ Mongoc ~/.julia/packages/Mongoc/ULDwF/src/collection.jl:135
@@ -694,7 +693,7 @@ main function: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/t
       @ Base ./client.jl:485
 command: Error During Test at /home/pkgeval/.julia/packages/Mongoc/ULDwF/test/mongodb_tests.jl:461
   Got exception outside of a @test
-  BSONError: domain=15, code=13053, message=No servers yet eligible for rescan
+  BSONError: domain=15, code=13053, message=No suitable servers found (`serverSelectionTryOnce` set): [connection refused calling ismaster on 'localhost:27017']
   Stacktrace:
     [1] execute!(bulk_operation::Mongoc.BulkOperation)
       @ Mongoc ~/.julia/packages/Mongoc/ULDwF/src/collection.jl:135
@@ -884,14 +883,10 @@ Stacktrace:
 
 
 ################################################################################
-# PkgEval teardown: 2020-10-28T11:45:26.009
-#
-
-
-CPU usage: 61.05s (53.93s user, 7.68s kernel)
+# PkgEval teardown: 2020-10-28T15:01:06.874
+CPU usage: 60.51s (56.44s user, 4.20s kernel)
 
 Network usage:
-- eth0: 181.006 KiB received, 36.224 KiB sent
+- eth0: 181.771 KiB received, 38.040 KiB sent
 
-Raw statistics: {"read":"2020-10-28T11:45:26.805940357Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":61054070738,"percpu_usage":[324512201,934229147,723183918,795925106,490510774,2070675928,341150027,1597794047,632408893,1340286406,506165731,752671480,673885701,908369590,733844605,358707212,160651766,347927752,647626569,1048044633,1627108217,534226922,523549388,836095746,510464095,968261516,1163082492,1391428502,383284108,206618216,664949431,156374541,270980899,987020,24698159,106823541,352487120,428154266,377910432,570368167,127986832,39668545,7102002,3282052,0,617699926,188640824,77626745,141728074,140768874,369043067,453834883,89317834,61255003,263326635,33193583,74547800,137513599,99689434,1235390,99231894,135827123,2190590,21240768,351420548,514139849,478505839,949997960,1671381970,1108342027,696182856,1309008673,2245232368,532392648,706091539,1314224223,156837393,1440816338,957150917,947056537,642694948,250444159,1077881816,191472673,95702010,756302798,152896635,511764374,363004026,2285161874,1210854081,1034975623,446241888,163534914,1264077210,1470341357,89223867,41644947,40961636,381080,139324897,469436632,150302151,297095416,41953778,279648626,5775042,77089452,234494940,81977204,35101645,428503749,290153584,409959015,655520,18134437,15290306,9871544,27463652,19697859,87512167,156886163,280441053,59267944,77396163,147551279,33741353,38625825],"usage_in_kernelmode":7680000000,"usage_in_usermode":53930000000},"system_cpu_usage":94116404190000000,"online_cpus":128,"throttling_data":{"periods":653,"throttled_periods":16,"throttled_time":1895618056}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":220307456,"max_usage":864026624,"stats":{"active_anon":197083136,"active_file":53248,"cache":2183168,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":753664,"inactive_file":8192,"mapped_file":0,"pgfault":1089695,"pgmajfault":0,"pgpgin":516725,"pgpgout":468410,"rss":195715072,"rss_huge":0,"total_active_anon":197083136,"total_active_file":53248,"total_cache":2183168,"total_dirty":0,"total_inactive_anon":753664,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":1089695,"total_pgmajfault":0,"total_pgpgin":516725,"total_pgpgout":468410,"total_rss":195715072,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/Mongoc-wQWJSP9G","id":"44f8adb88f67173396e2f93809ff5411cbf3a12df561c6714dcb62cf2f98f89d","networks":{"eth0":{"rx_bytes":185350,"rx_packets":291,"rx_errors":0,"rx_dropped":2,"tx_bytes":37093,"tx_packets":260,"tx_errors":0,"tx_dropped":0}}}
-
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":203120640,"max_usage":866111488,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":195624960,"inactive_file":8192,"inactive_anon":753664,"total_pgfault":1002237,"total_cache":2150400,"total_rss_huge":0,"total_active_anon":196993024,"total_pgmajfault":0,"pgpgin":463435,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":415150,"hierarchical_memsw_limit":0,"cache":2150400,"active_file":20480,"pgfault":1002237,"total_mapped_file":0,"total_pgpgout":415150,"total_writeback":0,"rss":195624960,"unevictable":0,"total_inactive_anon":753664,"total_pgpgin":463435,"active_anon":196993024,"total_active_file":20480},"limit":540972998656},"name":"/Mongoc-KOzBeKva","networks":{"eth0":{"rx_bytes":186133,"rx_packets":315,"tx_packets":285,"tx_bytes":38953,"tx_dropped":0,"rx_dropped":2,"tx_errors":0,"rx_errors":0}},"id":"3fc57729990627f5ceef0ca4ca94816910d6a7462324ba9fb21000feae4f16df","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":95611134270000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":56440000000,"usage_in_kernelmode":4200000000,"total_usage":60506586355,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4356422,0,6310302,60495919631,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-28T15:01:07.252653089Z"}

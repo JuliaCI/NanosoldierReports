@@ -1,5 +1,5 @@
 ################################################################################
-# PkgEval set-up: 2020-10-28T11:57:39.703
+# PkgEval set-up: 2020-10-28T14:30:13.215
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T11:57:41.417
+# Installation: 2020-10-28T14:30:14.904
 #
 
    Resolving package versions...
@@ -54,19 +53,19 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
 
 
 ################################################################################
-# Testing: 2020-10-28T11:57:43.902
+# Testing: 2020-10-28T14:30:17.430
 #
 
 
      Testing ClusterManagers
-Status `/tmp/jl_oKXyv1/Project.toml`
+Status `/tmp/jl_OxB333/Project.toml`
   [34f1f09b] ClusterManagers v0.4.0
   [8ba89e20] Distributed
   [56ddb016] Logging
   [44cfe95a] Pkg
   [6462fe0b] Sockets
   [8dfed614] Test
-Status `/tmp/jl_oKXyv1/Manifest.toml`
+Status `/tmp/jl_OxB333/Manifest.toml`
   [34f1f09b] ClusterManagers v0.4.0
   [0dad84c5] ArgTools
   [56f22d72] Artifacts
@@ -94,26 +93,66 @@ Status `/tmp/jl_oKXyv1/Manifest.toml`
   [deac9b47] LibCURL_jll
   [14a3606d] MozillaCACerts_jll
      Testing Running tests...
-Test Summary:  | Pass  Total
+ElasticManager: Test Failed at /home/pkgeval/.julia/packages/ClusterManagers/Mq0H0/test/runtests.jl:14
+  Expression: :ok == timedwait(TIMEOUT) do 
+        length(em.active) == 1
+    end
+   Evaluated: ok == timed_out
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/ClusterManagers/Mq0H0/test/runtests.jl:14 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] top-level scope
+   @ ~/.julia/packages/ClusterManagers/Mq0H0/test/runtests.jl:6
+Test Summary:  | Fail  Total
 ElasticManager |    1      1
-     Testing ClusterManagers tests passed 
+ERROR: LoadError: Some tests did not pass: 0 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/ClusterManagers/Mq0H0/test/runtests.jl:5
 
-PkgEval succeeded
+PkgEval failed: Package ClusterManagers errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
 
 
 ################################################################################
-# PkgEval teardown: 2020-10-28T11:58:02.716
-#
-
-
-signal (15): Terminated
-in expression starting at none:1
-pthread_cond_wait at /lib/x86_64-linux-gnu/libpthread.so.0 (unknown line)
-
-CPU usage: 24.34s (21.17s user, 3.48s kernel)
+# PkgEval teardown: 2020-10-28T14:30:43.262
+CPU usage: 28.42s (25.48s user, 3.00s kernel)
 
 Network usage:
-- eth0: 24.169 KiB received, 4.278 KiB sent
+- eth0: 24.501 KiB received, 4.214 KiB sent
 
-Raw statistics: {"read":"2020-10-28T11:58:02.71857052Z","preread":"0001-01-01T00:00:00Z","pids_stats":{"current":46},"blkio_stats":{"io_service_bytes_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":20480},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":20480},{"major":259,"minor":0,"op":"Total","value":20480},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":20480},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":20480},{"major":253,"minor":2,"op":"Total","value":20480}],"io_serviced_recursive":[{"major":259,"minor":0,"op":"Read","value":0},{"major":259,"minor":0,"op":"Write","value":5},{"major":259,"minor":0,"op":"Sync","value":0},{"major":259,"minor":0,"op":"Async","value":5},{"major":259,"minor":0,"op":"Total","value":5},{"major":253,"minor":2,"op":"Read","value":0},{"major":253,"minor":2,"op":"Write","value":5},{"major":253,"minor":2,"op":"Sync","value":0},{"major":253,"minor":2,"op":"Async","value":5},{"major":253,"minor":2,"op":"Total","value":5}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]},"num_procs":0,"storage_stats":{},"cpu_stats":{"cpu_usage":{"total_usage":24342030198,"percpu_usage":[505178661,224293762,250863233,144496451,187999485,160999374,90574286,189308001,627765867,91746664,1360002261,29166343,1190500134,297137620,133661995,2722831,344845096,936637661,30573683,234591992,128330462,211281294,322253346,84082665,117966138,577319617,273267901,208709769,206824424,468912676,406477373,0,2517692,117240556,7830,18097258,89740276,34710795,131078812,157034307,0,108906645,66457745,3470631,850790020,241079359,186756625,129554833,32763333,8629364,86424356,257860131,343357587,464537324,7817243,779643472,108404424,75270750,237217055,80329461,50636020,55712581,78552850,35927793,12574724,83262816,31532153,129032141,49901639,11405024,10096724,409046259,511046579,100205098,339810946,223580332,449454021,201640139,769193036,16473527,70966149,85087815,87273708,118899685,32069693,76748310,229676903,138825476,211879983,241086323,271037920,77598368,44902108,157999314,235864372,71331173,100173159,9001844,26280,5797643,3825381,17774860,180981812,4726650,592742,544274779,0,84827106,55048373,32392123,337565609,315702077,162541334,64730336,524791,12013615,342539810,100949230,14900946,713883776,24566739,22894218,509144665,508780,108903912,90483957,102213000,0],"usage_in_kernelmode":3480000000,"usage_in_usermode":21170000000},"system_cpu_usage":94212351420000000,"online_cpus":128,"throttling_data":{"periods":238,"throttled_periods":5,"throttled_time":958037873}},"precpu_stats":{"cpu_usage":{"total_usage":0,"usage_in_kernelmode":0,"usage_in_usermode":0},"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},"memory_stats":{"usage":191025152,"max_usage":530472960,"stats":{"active_anon":175828992,"active_file":0,"cache":188416,"dirty":0,"hierarchical_memory_limit":9223372036854771712,"hierarchical_memsw_limit":0,"inactive_anon":28672,"inactive_file":8192,"mapped_file":0,"pgfault":394698,"pgmajfault":0,"pgpgin":213971,"pgpgout":171028,"rss":175706112,"rss_huge":0,"total_active_anon":175828992,"total_active_file":0,"total_cache":188416,"total_dirty":0,"total_inactive_anon":28672,"total_inactive_file":8192,"total_mapped_file":0,"total_pgfault":394698,"total_pgmajfault":0,"total_pgpgin":213971,"total_pgpgout":171028,"total_rss":175706112,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"limit":540972998656},"name":"/ClusterManagers-QgGTmaeP","id":"122c9570bc3768c0ae3f532234447ef9a36082f7120b48d0056eb6bea06ae5e0","networks":{"eth0":{"rx_bytes":24749,"rx_packets":58,"rx_errors":0,"rx_dropped":1,"tx_bytes":4381,"tx_packets":28,"tx_errors":0,"tx_dropped":0}}}
-
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":201867264,"max_usage":550019072,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":197541888,"inactive_file":8192,"inactive_anon":28672,"total_pgfault":413140,"total_cache":188416,"total_rss_huge":0,"total_active_anon":197693440,"total_pgmajfault":0,"pgpgin":180690,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":132416,"hierarchical_memsw_limit":0,"cache":188416,"active_file":0,"pgfault":413140,"total_mapped_file":0,"total_pgpgout":132416,"total_writeback":0,"rss":197541888,"unevictable":0,"total_inactive_anon":28672,"total_pgpgin":180690,"active_anon":197693440,"total_active_file":0},"limit":540972998656},"name":"/ClusterManagers-20IFv7m8","networks":{"eth0":{"rx_bytes":25089,"rx_packets":66,"tx_packets":27,"tx_bytes":4315,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"ff6b13cc3ce3873e792b045a90181f94771a7cc36bc998c92570aef7f040c53e","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":95379230490000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":25480000000,"usage_in_kernelmode":3000000000,"total_usage":28423386403,"percpu_usage":[0,0,0,0,0,0,0,0,10134233,1529940,0,123910,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,28393715744,17882576,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-28T14:30:43.831559089Z"}
