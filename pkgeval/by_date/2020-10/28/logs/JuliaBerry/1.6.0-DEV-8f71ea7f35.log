@@ -1,0 +1,150 @@
+################################################################################
+# Set-up: 2020-10-28T08:41:15.533
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T08:41:18.727
+#
+
+   Resolving package versions...
+   Installed JuliaBerry ─ v0.1.0
+   Installed PiGPIO ───── v0.2.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [c0b9960a] + JuliaBerry v0.1.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [c0b9960a] + JuliaBerry v0.1.0
+  [bb151fc1] + PiGPIO v0.2.0
+  [6462fe0b] + Sockets
+Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
+[32m  ✓ [39m[90mPiGPIO[39m
+1 dependency successfully precompiled
+
+
+################################################################################
+# Testing: 2020-10-28T08:41:26.732
+#
+
+     Testing JuliaBerry
+Status `/tmp/jl_5eQ2J0/Project.toml`
+  [c0b9960a] JuliaBerry v0.1.0
+  [bb151fc1] PiGPIO v0.2.0
+  [8dfed614] Test
+Status `/tmp/jl_5eQ2J0/Manifest.toml`
+  [c0b9960a] JuliaBerry v0.1.0
+  [bb151fc1] PiGPIO v0.2.0
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+     Testing Running tests...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Can't connect to pigpio at localhost:8888
+Did you start the pigpio daemon? E.g. sudo pigpiod
+
+Did you specify the correct Pi host/port in the environment
+variables PIGPIO_ADDR/PIGPIO_PORT?
+E.g. export PIGPIO_ADDR=soft, export PIGPIO_PORT=8888
+
+Did you specify the correct Pi host/port in the
+Pi() function? E.g. Pi('soft', 8888))
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ERROR: LoadError: LoadError: IOError: connect: connection refused (ECONNREFUSED)
+Stacktrace:
+  [1] PiGPIO.Pi(; host::String, port::Int64)
+    @ PiGPIO ~/.julia/packages/PiGPIO/bH87w/src/pi.jl:1322
+  [2] PiGPIO.Pi()
+    @ PiGPIO ~/.julia/packages/PiGPIO/bH87w/src/pi.jl:1298
+  [3] __init__()
+    @ JuliaBerry ~/.julia/packages/JuliaBerry/GB6KC/src/JuliaBerry.jl:88
+  [4] top-level scope
+    @ ~/.julia/packages/JuliaBerry/GB6KC/src/JuliaBerry.jl:91
+  [5] include
+    @ ./Base.jl:389 [inlined]
+  [6] _require(pkg::Base.PkgId)
+    @ Base ./loading.jl:1038
+  [7] require(uuidkey::Base.PkgId)
+    @ Base ./loading.jl:902
+  [8] require(into::Module, mod::Symbol)
+    @ Base ./loading.jl:889
+  [9] include(fname::String)
+    @ Base.MainInclude ./client.jl:444
+ [10] top-level scope
+    @ none:6
+in expression starting at /home/pkgeval/.julia/packages/JuliaBerry/GB6KC/src/JuliaBerry.jl:1
+in expression starting at /home/pkgeval/.julia/packages/JuliaBerry/GB6KC/test/runtests.jl:1
+
+caused by: IOError: connect: connection refused (ECONNREFUSED)
+Stacktrace:
+  [1] wait_connected(x::Sockets.TCPSocket)
+    @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:532
+  [2] connect(::Sockets.TCPSocket, ::String, ::Int64)
+    @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:567
+  [3] connect
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:552 [inlined]
+  [4] PiGPIO.Pi(; host::String, port::Int64)
+    @ PiGPIO ~/.julia/packages/PiGPIO/bH87w/src/pi.jl:1304
+  [5] PiGPIO.Pi()
+    @ PiGPIO ~/.julia/packages/PiGPIO/bH87w/src/pi.jl:1298
+  [6] __init__()
+    @ JuliaBerry ~/.julia/packages/JuliaBerry/GB6KC/src/JuliaBerry.jl:88
+  [7] top-level scope
+    @ ~/.julia/packages/JuliaBerry/GB6KC/src/JuliaBerry.jl:91
+  [8] include
+    @ ./Base.jl:389 [inlined]
+  [9] _require(pkg::Base.PkgId)
+    @ Base ./loading.jl:1038
+ [10] require(uuidkey::Base.PkgId)
+    @ Base ./loading.jl:902
+ [11] require(into::Module, mod::Symbol)
+    @ Base ./loading.jl:889
+ [12] include(fname::String)
+    @ Base.MainInclude ./client.jl:444
+ [13] top-level scope
+    @ none:6
+ERROR: Package JuliaBerry errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:39
+CPU usage: 14.88s (11.29s user, 3.71s kernel)
+
+Network usage:
+- eth0: 55.979 KiB received, 8.916 KiB sent

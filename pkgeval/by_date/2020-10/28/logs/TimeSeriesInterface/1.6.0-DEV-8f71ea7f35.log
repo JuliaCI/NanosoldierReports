@@ -1,0 +1,151 @@
+################################################################################
+# Set-up: 2020-10-28T08:08:45.650
+#
+
+Julia Version 1.6.0-DEV.1352
+Commit 8f71ea7f35 (2020-10-28 02:10 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_NUM_THREADS = 2
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T08:08:49.275
+#
+
+   Resolving package versions...
+   Installed TimeSeriesInterface ─ v0.1.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [b6905eaa] + TimeSeriesInterface v0.1.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [b6905eaa] + TimeSeriesInterface v0.1.0
+  [ade2ca70] + Dates
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [de0858da] + Printf
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [4ec0a83e] + Unicode
+Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
+[32m  ✓ [39mTimeSeriesInterface
+1 dependency successfully precompiled
+
+
+################################################################################
+# Testing: 2020-10-28T08:08:56.052
+#
+
+     Testing TimeSeriesInterface
+Status `/tmp/jl_y7vMxZ/Project.toml`
+  [b6905eaa] TimeSeriesInterface v0.1.0
+  [ade2ca70] Dates
+  [10745b16] Statistics
+  [8dfed614] Test
+Status `/tmp/jl_y7vMxZ/Manifest.toml`
+  [b6905eaa] TimeSeriesInterface v0.1.0
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [de0858da] Printf
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+  [4ec0a83e] Unicode
+     Testing Running tests...
+Test Summary: | Pass  Total
+TimeSeries    |   25     25
+┌ Warning: The real observations have values too close to zero. This makes the absolute percentage error impractical, NaNs will be returned.
+└ @ TimeSeriesInterface ~/.julia/packages/TimeSeriesInterface/uWIjm/src/forecast.jl:68
+Test Summary: | Pass  Total
+PointForecast |   15     15
+interval_width: Test Failed at /home/pkgeval/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:186
+  Expression: (scen_forecast_metrics.interval_width[1])[0.85] == 85
+   Evaluated: 85.00000000000001 == 85
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:186 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] macro expansion
+   @ ~/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:174 [inlined]
+ [4] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [5] macro expansion
+   @ ~/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:139 [inlined]
+ [6] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [7] top-level scope
+   @ ~/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:71
+interval_width: Test Failed at /home/pkgeval/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:188
+  Expression: (scen_forecast_metrics.interval_width[1])[0.05] == 5
+   Evaluated: 5.000000000000014 == 5
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:188 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] macro expansion
+   @ ~/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:174 [inlined]
+ [4] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [5] macro expansion
+   @ ~/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:139 [inlined]
+ [6] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [7] top-level scope
+   @ ~/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:71
+Test Summary:                 | Pass  Fail  Total
+ScenariosForecast             |   41     2     43
+  constructor                 |   10           10
+  forecast_metrics            |   31     2     33
+    probabilistic_calibration |   13           13
+    interval_width            |    6     2      8
+    crps                      |   11           11
+    mean_of_metrics           |    1            1
+ERROR: LoadError: LoadError: Some tests did not pass: 41 passed, 2 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/TimeSeriesInterface/uWIjm/test/forecast.jl:70
+in expression starting at /home/pkgeval/.julia/packages/TimeSeriesInterface/uWIjm/test/runtests.jl:7
+ERROR: Package TimeSeriesInterface errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:39
+CPU usage: 32.08s (24.45s user, 7.67s kernel)
+
+Network usage:
+- eth0: 23.729 KiB received, 4.657 KiB sent
