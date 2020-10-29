@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:47:16.439
+# PkgEval set-up: 2020-10-29T05:44:25.623
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,20 +12,19 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:47:19.596
+# Installation: 2020-10-29T05:44:27.174
 #
 
    Resolving package versions...
-   Installed OrderedCollections ─ v1.3.1
-   Installed Compat ───────────── v3.23.0
    Installed Requires ─────────── v1.1.0
    Installed YAXArrayBase ─────── v0.2.1
+   Installed Compat ───────────── v3.23.0
+   Installed OrderedCollections ─ v1.3.1
    Installed DataStructures ───── v0.18.8
 Updating `~/.julia/environments/v1.6/Project.toml`
   [90b8fcef] + YAXArrayBase v0.2.1
@@ -66,36 +65,30 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mOrderedCollections[39m
-[32m  ✓ [39m[90mRequires[39m
-[32m  ✓ [39m[90mCompat[39m
-[32m  ✓ [39m[90mDataStructures[39m
-[32m  ✓ [39mYAXArrayBase
-5 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T08:47:32.706
+# Testing: 2020-10-29T05:44:29.429
 #
+
 
      Testing YAXArrayBase
 ┌ Error: Pkg.Resolve.ResolverError("Unsatisfiable requirements detected for package Zarr [0a941bbe]:\n Zarr [0a941bbe] log:\n ├─possible versions are: 0.2.0-0.5.1 or uninstalled\n ├─restricted to versions * by an explicit requirement, leaving only versions 0.2.0-0.5.1\n └─restricted by compatibility requirements with DataStructures [864edb3b] to versions: uninstalled — no versions left\n   └─DataStructures [864edb3b] log:\n     ├─possible versions are: 0.9.0-0.18.8 or uninstalled\n     └─restricted to versions 0.18.8 by an explicit requirement, leaving only versions 0.18.8", nothing)
 └ @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1499
-Status `/tmp/jl_oNQmHX/Project.toml`
+Status `/tmp/jl_Govpr0/Project.toml`
   [c9ce4bd3] ArchGDAL v0.5.2
   [39de3d68] AxisArrays v0.4.3
   [f52c9ee2] AxisIndices v0.7.0
   [864edb3b] DataStructures v0.17.20
   [0703355e] DimensionalData v0.13.3
-  [356022a1] NamedDims v0.2.28
+  [356022a1] NamedDims v0.2.29
   [30363a11] NetCDF v0.10.3
   [ae029012] Requires v1.1.0
   [90b8fcef] YAXArrayBase v0.2.1
   [0a941bbe] Zarr v0.5.1
   [ade2ca70] Dates
   [8dfed614] Test
-Status `/tmp/jl_oNQmHX/Manifest.toml`
+Status `/tmp/jl_Govpr0/Manifest.toml`
   [4f1ea46c] AWSCore v0.6.15
   [1c724243] AWSS3 v0.7.4
   [0d499d91] AWSSDK v0.5.0
@@ -138,7 +131,7 @@ Status `/tmp/jl_oNQmHX/Manifest.toml`
   [739be429] MbedTLS v1.0.3
   [4fb893c1] Metadata v0.2.1
   [78c3b35d] Mocking v0.7.1
-  [356022a1] NamedDims v0.2.28
+  [356022a1] NamedDims v0.2.29
   [30363a11] NetCDF v0.10.3
   [6fe1bfb0] OffsetArrays v1.3.1
   [bac558e1] OrderedCollections v1.3.1
@@ -283,7 +276,8 @@ Datasets         |   21      1     22
   Writing Zarr   |    6             6
 ERROR: LoadError: Some tests did not pass: 21 passed, 0 failed, 1 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/YAXArrayBase/OgYsV/test/runtests.jl:6
-ERROR: Package YAXArrayBase errored during testing
+
+PkgEval failed: Package YAXArrayBase errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -306,8 +300,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 280.55s (224.94s user, 55.19s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T05:49:13.800
+CPU usage: 249.26s (230.31s user, 19.73s kernel)
 
 Network usage:
-- eth0: 129.736 MiB received, 909.123 KiB sent
+- eth0: 129.796 MiB received, 959.409 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":5,"op":"Read","minor":0},{"major":259,"value":13,"op":"Write","minor":0},{"major":259,"value":5,"op":"Sync","minor":0},{"major":259,"value":13,"op":"Async","minor":0},{"major":259,"value":18,"op":"Total","minor":0},{"major":253,"value":5,"op":"Read","minor":2},{"major":253,"value":13,"op":"Write","minor":2},{"major":253,"value":5,"op":"Sync","minor":2},{"major":253,"value":13,"op":"Async","minor":2},{"major":253,"value":18,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":258048,"op":"Read","minor":0},{"major":259,"value":69632,"op":"Write","minor":0},{"major":259,"value":258048,"op":"Sync","minor":0},{"major":259,"value":69632,"op":"Async","minor":0},{"major":259,"value":327680,"op":"Total","minor":0},{"major":253,"value":258048,"op":"Read","minor":2},{"major":253,"value":69632,"op":"Write","minor":2},{"major":253,"value":258048,"op":"Sync","minor":2},{"major":253,"value":69632,"op":"Async","minor":2},{"major":253,"value":327680,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":1041252352,"max_usage":2022293504,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":1,"total_rss":235532288,"inactive_file":2998272,"inactive_anon":382865408,"total_pgfault":5380057,"total_cache":773234688,"total_rss_huge":0,"total_active_anon":622866432,"total_pgmajfault":1,"pgpgin":3948287,"rss_huge":0,"mapped_file":24576,"total_inactive_file":2998272,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":3702006,"hierarchical_memsw_limit":0,"cache":773234688,"active_file":36864,"pgfault":5380057,"total_mapped_file":24576,"total_pgpgout":3702006,"total_writeback":0,"rss":235532288,"unevictable":0,"total_inactive_anon":382865408,"total_pgpgin":3948287,"active_anon":622866432,"total_active_file":36864},"limit":540972998656},"name":"/YAXArrayBase-SvhGlXYX","networks":{"eth0":{"rx_bytes":136100460,"rx_packets":23283,"tx_packets":14328,"tx_bytes":982435,"tx_dropped":0,"rx_dropped":9,"tx_errors":0,"rx_errors":0}},"id":"e2230fb27bfef52a7ca67326c6f5f65ab887c415669a2f4178014d6df53348da","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102423675920000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":230310000000,"usage_in_kernelmode":19730000000,"total_usage":249262889672,"percpu_usage":[0,0,0,0,0,0,0,0,249244944944,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,17944728,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:49:13.808917242Z"}

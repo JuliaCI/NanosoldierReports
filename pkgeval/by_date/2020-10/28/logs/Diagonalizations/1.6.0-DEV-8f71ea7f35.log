@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:46:16.810
+# PkgEval set-up: 2020-10-29T04:03:52.590
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:46:20.571
+# Installation: 2020-10-29T04:03:54.034
 #
 
    Resolving package versions...
@@ -56,25 +55,15 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [10745b16] + Statistics
   [8dfed614] + Test
   [4ec0a83e] + Unicode
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mDataAPI[39m
-[32m  ✓ [39m[90mOrderedCollections[39m
-[32m  ✓ [39m[90mMissings[39m
-[32m  ✓ [39m[90mDataStructures[39m
-[32m  ✓ [39m[90mPosDefManifold[39m
-[32m  ✓ [39m[90mSortingAlgorithms[39m
-[32m  ✓ [39m[90mStatsBase[39m
-[32m  ✓ [39m[90mCovarianceEstimation[39m
-[32m  ✓ [39mDiagonalizations
-9 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T08:46:41.878
+# Testing: 2020-10-29T04:03:56.608
 #
 
+
      Testing Diagonalizations
-Status `/tmp/jl_h6bYq0/Project.toml`
+Status `/tmp/jl_xg50Y3/Project.toml`
   [587fd27a] CovarianceEstimation v0.2.5
   [9cd687f3] Diagonalizations v0.1.11
   [f45a3650] PosDefManifold v0.4.8
@@ -82,7 +71,7 @@ Status `/tmp/jl_h6bYq0/Project.toml`
   [37e2e46d] LinearAlgebra
   [10745b16] Statistics
   [8dfed614] Test
-Status `/tmp/jl_h6bYq0/Manifest.toml`
+Status `/tmp/jl_xg50Y3/Manifest.toml`
   [587fd27a] CovarianceEstimation v0.2.5
   [9a962f9c] DataAPI v1.3.0
   [864edb3b] DataStructures v0.17.20
@@ -106,6 +95,26 @@ Status `/tmp/jl_h6bYq0/Manifest.toml`
   [8dfed614] Test
   [4ec0a83e] Unicode
      Testing Running tests...
+
+⭐  Welcome to the[91m PosDefManifold.jl [0mpackage ⭐
+
+[ Info:  
+ Your Machine `5715fd52d3de` (x86_64-linux-gnu)
+ runs on kernel Linux with word size 64.
+ CPU  Threads: 128
+ Base.Threads: 1
+ BLAS Threads: 128
+
+
+⭐  Welcome to the[35m Diagonalizations.jl [0mpackage ⭐
+
+[ Info:  
+ Your Machine `5715fd52d3de` (x86_64-linux-gnu)
+ runs on kernel Linux with word size 64.
+ CPU  Threads: 128
+ Base.Threads: 1
+ BLAS Threads: 128
+
 Test Summary: | Pass  Total
 PCA           |   10     10
 Test Summary: | Pass  Total
@@ -118,22 +127,64 @@ Test Summary: | Pass  Total
 CSP           |    7      7
 Test Summary: | Pass  Total
 CSTP          |    3      3
-Test Summary: | Pass  Total
-AJD           |   14     14
-Test Summary: | Pass  Total
-gMCA          |    3      3
-Test Summary: | Pass  Total
-gCCA          |   12     12
-Test Summary: | Pass  Total
-mAJD          |    1      1
-     Testing Diagonalizations tests passed 
+AJD: Test Failed at /home/pkgeval/.julia/packages/Diagonalizations/noSKS/test/runtests.jl:256
+  Expression: spForm((a.F)' * A) < √err
+   Evaluated: 0.0026363156561238776 < 0.001
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/Diagonalizations/noSKS/test/runtests.jl:256 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] top-level scope
+   @ ~/.julia/packages/Diagonalizations/noSKS/test/runtests.jl:220
+Test Summary: | Pass  Fail  Total
+AJD           |   13     1     14
+ERROR: LoadError: Some tests did not pass: 13 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/Diagonalizations/noSKS/test/runtests.jl:219
+
+PkgEval failed: Package Diagonalizations errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
 
 
 ################################################################################
-# Teardown: 2020-10-28T08:49:40.546
-#
-
-CPU usage: 128.39s (112.01s user, 16.48s kernel)
+# PkgEval teardown: 2020-10-29T04:05:46.926
+CPU usage: 109.66s (106.03s user, 3.67s kernel)
 
 Network usage:
-- eth0: 2.189 MiB received, 50.150 KiB sent
+- eth0: 2.185 MiB received, 49.818 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":229048320,"max_usage":760635392,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":214036480,"inactive_file":8192,"inactive_anon":4345856,"total_pgfault":986116,"total_cache":8970240,"total_rss_huge":0,"total_active_anon":218648576,"total_pgmajfault":0,"pgpgin":529791,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":475346,"hierarchical_memsw_limit":0,"cache":8970240,"active_file":0,"pgfault":986116,"total_mapped_file":0,"total_pgpgout":475346,"total_writeback":0,"rss":214036480,"unevictable":0,"total_inactive_anon":4345856,"total_pgpgin":529791,"active_anon":218648576,"total_active_file":0},"limit":540972998656},"name":"/Diagonalizations-1PxIKNde","networks":{"eth0":{"rx_bytes":2291114,"rx_packets":642,"tx_packets":446,"tx_bytes":51014,"tx_dropped":0,"rx_dropped":4,"tx_errors":0,"rx_errors":0}},"id":"5715fd52d3dedfbf9f7223df18fbb04a5616ecd9dece7d4ab2402ba7789e2ab2","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101633079350000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":106030000000,"usage_in_kernelmode":3670000000,"total_usage":109655171341,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21380,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,109655016281,0,133680,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T04:05:46.961266616Z"}

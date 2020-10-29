@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T07:18:11.855
+# PkgEval set-up: 2020-10-29T03:38:09.240
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,18 +12,17 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T07:18:15.037
+# Installation: 2020-10-29T03:38:10.835
 #
 
    Resolving package versions...
-   Installed Lazy ─────── v0.15.1
    Installed Media ────── v0.5.0
+   Installed Lazy ─────── v0.15.1
    Installed DataFlow ─── v0.5.0
    Installed Juno ─────── v0.8.4
    Installed MacroTools ─ v0.5.6
@@ -45,27 +44,21 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [9e88b42a] + Serialization
   [8dfed614] + Test
   [4ec0a83e] + Unicode
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mMacroTools[39m
-[32m  ✓ [39m[90mMedia[39m
-[32m  ✓ [39m[90mJuno[39m
-[32m  ✓ [39m[90mLazy[39m
-[32m  ✓ [39mDataFlow
-5 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T07:18:45.763
+# Testing: 2020-10-29T03:38:13.254
 #
 
+
      Testing DataFlow
-Status `/tmp/jl_0YbaU0/Project.toml`
+Status `/tmp/jl_lLTaF1/Project.toml`
   [a237f610] DataFlow v0.5.0
   [e5e0dc1b] Juno v0.8.4
   [50d2b5c4] Lazy v0.15.1
   [1914dd2f] MacroTools v0.5.6
   [8dfed614] Test
-Status `/tmp/jl_0YbaU0/Manifest.toml`
+Status `/tmp/jl_lLTaF1/Manifest.toml`
   [a237f610] DataFlow v0.5.0
   [e5e0dc1b] Juno v0.8.4
   [50d2b5c4] Lazy v0.15.1
@@ -82,6 +75,12 @@ Status `/tmp/jl_0YbaU0/Manifest.toml`
   [8dfed614] Test
   [4ec0a83e] Unicode
      Testing Running tests...
+WARNING: Method definition iterate(DataFlow.ObjectArraySet{T} where T, Any...) in module DataFlow at /home/pkgeval/.julia/packages/Lazy/9Xnd3/src/macros.jl:297 overwritten on the same line (check for duplicate calls to `include`).
+  ** incremental compilation may be fatally broken for this module **
+
+WARNING: Method definition iterate##kw(Any, typeof(Base.iterate), DataFlow.ObjectArraySet{T} where T, Any...) in module DataFlow at /home/pkgeval/.julia/packages/Lazy/9Xnd3/src/macros.jl:297 overwritten on the same line (check for duplicate calls to `include`).
+  ** incremental compilation may be fatally broken for this module **
+
 ERROR: LoadError: syntax: unexpected semicolon in tuple around /home/pkgeval/.julia/packages/DataFlow/nNf8v/src/syntax/dump.jl:54
 Stacktrace:
  [1] top-level scope
@@ -91,7 +90,8 @@ Stacktrace:
  [3] top-level scope
    @ none:6
 in expression starting at /home/pkgeval/.julia/packages/DataFlow/nNf8v/test/runtests.jl:6
-ERROR: Package DataFlow errored during testing
+
+PkgEval failed: Package DataFlow errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -114,8 +114,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 35.62s (30.86s user, 4.43s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T03:38:45.414
+CPU usage: 35.82s (33.28s user, 2.64s kernel)
 
 Network usage:
-- eth0: 118.767 KiB received, 22.197 KiB sent
+- eth0: 118.377 KiB received, 23.653 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":201953280,"max_usage":705568768,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":195543040,"inactive_file":8192,"inactive_anon":217088,"total_pgfault":728107,"total_cache":1531904,"total_rss_huge":0,"total_active_anon":196820992,"total_pgmajfault":0,"pgpgin":323603,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":275489,"hierarchical_memsw_limit":0,"cache":1531904,"active_file":0,"pgfault":728107,"total_mapped_file":0,"total_pgpgout":275489,"total_writeback":0,"rss":195543040,"unevictable":0,"total_inactive_anon":217088,"total_pgpgin":323603,"active_anon":196820992,"total_active_file":0},"limit":540972998656},"name":"/DataFlow-Ga9coaz9","networks":{"eth0":{"rx_bytes":121218,"rx_packets":192,"tx_packets":166,"tx_bytes":24221,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"69bdd23e66a7c6634ee72c9b9f3fa1923b99c1ff1daf04347e9eee3b5a7ea716","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101426249530000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":33280000000,"usage_in_kernelmode":2640000000,"total_usage":35822316993,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,35822316993,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T03:38:45.423933577Z"}

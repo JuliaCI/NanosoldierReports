@@ -1,0 +1,124 @@
+################################################################################
+# PkgEval set-up: 2020-10-29T04:33:57.264
+#
+
+Julia Version 1.6.0-DEV.1363
+Commit f727f4ba82 (2020-10-28 23:50 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-29T04:33:58.663
+#
+
+   Resolving package versions...
+   Installed AMQPClient ─ v0.3.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [79c8b4cd] + AMQPClient v0.3.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [79c8b4cd] + AMQPClient v0.3.0
+  [56ddb016] + Logging
+  [6462fe0b] + Sockets
+
+
+################################################################################
+# Testing: 2020-10-29T04:34:01.138
+#
+
+
+     Testing AMQPClient
+Status `/tmp/jl_LpvklZ/Project.toml`
+  [79c8b4cd] AMQPClient v0.3.0
+  [56ddb016] Logging
+  [9a3f8284] Random
+  [6462fe0b] Sockets
+  [8dfed614] Test
+Status `/tmp/jl_LpvklZ/Manifest.toml`
+  [79c8b4cd] AMQPClient v0.3.0
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [8dfed614] Test
+     Testing Running tests...
+opening connection...
+ERROR: LoadError: IOError: connect: connection refused (ECONNREFUSED)
+Stacktrace:
+ [1] wait_connected(x::Sockets.TCPSocket)
+   @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:532
+ [2] connect(::Sockets.TCPSocket, ::String, ::Int64)
+   @ Sockets /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:567
+ [3] connect
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/Sockets.jl:552 [inlined]
+ [4] connection(; virtualhost::String, host::String, port::Int64, auth_params::Dict{String, Any}, channelmax::Int64, framemax::Int64, heartbeat::Int64, connect_timeout::Int64)
+   @ AMQPClient ~/.julia/packages/AMQPClient/OTAAr/src/protocol.jl:500
+ [5] runtests(; virtualhost::String, host::String, port::Int64, auth_params::Dict{String, Any})
+   @ Main.AMQPTestCoverage ~/.julia/packages/AMQPClient/OTAAr/test/test_coverage.jl:23
+ [6] runtests()
+   @ Main.AMQPTestCoverage ~/.julia/packages/AMQPClient/OTAAr/test/test_coverage.jl:15
+ [7] top-level scope
+   @ ~/.julia/packages/AMQPClient/OTAAr/test/runtests.jl:5
+ [8] include(fname::String)
+   @ Base.MainInclude ./client.jl:444
+ [9] top-level scope
+   @ none:6
+in expression starting at /home/pkgeval/.julia/packages/AMQPClient/OTAAr/test/runtests.jl:5
+
+PkgEval failed: Package AMQPClient errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T04:34:19.803
+CPU usage: 22.06s (20.52s user, 1.54s kernel)
+
+Network usage:
+- eth0: 85.603 KiB received, 4.472 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":241606656,"max_usage":445685760,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":236662784,"inactive_file":8192,"inactive_anon":307200,"total_pgfault":408851,"total_cache":819200,"total_rss_huge":0,"total_active_anon":237166592,"total_pgmajfault":0,"pgpgin":167799,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":109820,"hierarchical_memsw_limit":0,"cache":819200,"active_file":0,"pgfault":408851,"total_mapped_file":0,"total_pgpgout":109820,"total_writeback":0,"rss":236662784,"unevictable":0,"total_inactive_anon":307200,"total_pgpgin":167799,"active_anon":237166592,"total_active_file":0},"limit":540972998656},"name":"/AMQPClient-53UQtU5I","networks":{"eth0":{"rx_bytes":87657,"rx_packets":63,"tx_packets":31,"tx_bytes":4579,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"663dfe8dda84d6b72da9ba147a803579c709e6a276c77ccfd87fa59581c618cc","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101851644390000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":20520000000,"usage_in_kernelmode":1540000000,"total_usage":22057617569,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,22057615789,1780,0,0,0,0,0,0]}},"read":"2020-10-29T04:34:20.521978645Z"}

@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:31:07.062
+# PkgEval set-up: 2020-10-29T04:20:34.684
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:31:09.244
+# Installation: 2020-10-29T04:20:36.260
 #
 
    Resolving package versions...
@@ -34,20 +33,18 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [9a3f8284] + Random
   [9e88b42a] + Serialization
   [8dfed614] + Test
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39mLowLevelFloatFunctions
-1 dependency successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T08:31:12.949
+# Testing: 2020-10-29T04:20:37.967
 #
 
+
      Testing LowLevelFloatFunctions
-Status `/tmp/jl_UEHAZ4/Project.toml`
+Status `/tmp/jl_ua5re2/Project.toml`
   [15a4fa57] LowLevelFloatFunctions v0.1.0
   [8dfed614] Test
-Status `/tmp/jl_UEHAZ4/Manifest.toml`
+Status `/tmp/jl_ua5re2/Manifest.toml`
   [15a4fa57] LowLevelFloatFunctions v0.1.0
   [2a0f44e3] Base64
   [b77e0a4c] InteractiveUtils
@@ -57,6 +54,15 @@ Status `/tmp/jl_UEHAZ4/Manifest.toml`
   [9e88b42a] Serialization
   [8dfed614] Test
      Testing Running tests...
+WARNING: Method definition exponent_bias(Type{Float16}) in module Base at float.jl:79 overwritten in module LowLevelFloatFunctions at /home/pkgeval/.julia/packages/LowLevelFloatFunctions/RmGP5/src/LowLevelFloatFunctions.jl:47.
+  ** incremental compilation may be fatally broken for this module **
+
+WARNING: Method definition exponent_bias(Type{Float32}) in module Base at float.jl:79 overwritten in module LowLevelFloatFunctions at /home/pkgeval/.julia/packages/LowLevelFloatFunctions/RmGP5/src/LowLevelFloatFunctions.jl:48.
+  ** incremental compilation may be fatally broken for this module **
+
+WARNING: Method definition exponent_bias(Type{Float64}) in module Base at float.jl:79 overwritten in module LowLevelFloatFunctions at /home/pkgeval/.julia/packages/LowLevelFloatFunctions/RmGP5/src/LowLevelFloatFunctions.jl:49.
+  ** incremental compilation may be fatally broken for this module **
+
 Test Summary: | Pass  Total
 constants     |   24     24
 Test Summary:    | Pass  Total
@@ -93,7 +99,8 @@ Test Summary: | Pass  Error  Total
 utilitiarian  |    2      2      4
 ERROR: LoadError: Some tests did not pass: 2 passed, 0 failed, 2 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/LowLevelFloatFunctions/RmGP5/test/runtests.jl:86
-ERROR: Package LowLevelFloatFunctions errored during testing
+
+PkgEval failed: Package LowLevelFloatFunctions errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -116,8 +123,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 15.07s (12.25s user, 2.82s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T04:20:48.751
+CPU usage: 14.23s (13.40s user, 0.87s kernel)
 
 Network usage:
-- eth0: 18.253 KiB received, 4.319 KiB sent
+- eth0: 18.206 KiB received, 4.214 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":193925120,"max_usage":378585088,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":189747200,"inactive_file":8192,"inactive_anon":36864,"total_pgfault":254040,"total_cache":151552,"total_rss_huge":0,"total_active_anon":189841408,"total_pgmajfault":0,"pgpgin":143206,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":96844,"hierarchical_memsw_limit":0,"cache":151552,"active_file":12288,"pgfault":254040,"total_mapped_file":0,"total_pgpgout":96844,"total_writeback":0,"rss":189747200,"unevictable":0,"total_inactive_anon":36864,"total_pgpgin":143206,"active_anon":189841408,"total_active_file":12288},"limit":540972998656},"name":"/LowLevelFloatFunctions-Abj66AbN","networks":{"eth0":{"rx_bytes":18643,"rx_packets":52,"tx_packets":27,"tx_bytes":4315,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"acb755d453b11bcf5d90cb63edebe16b378d1f93d482165fe06c5074b234b68e","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101748113510000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":13400000000,"usage_in_kernelmode":870000000,"total_usage":14227327928,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14227327928,0,0]}},"read":"2020-10-29T04:20:49.58912765Z"}

@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T09:06:59.439
+# PkgEval set-up: 2020-10-29T05:15:31.105
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T09:07:02.410
+# Installation: 2020-10-29T05:15:32.562
 #
 
    Resolving package versions...
@@ -35,17 +34,15 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [6462fe0b] + Sockets
   [2f01184e] + SparseArrays
   [10745b16] + Statistics
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39mBoltzmannMachines
-1 dependency successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T09:07:10.394
+# Testing: 2020-10-29T05:15:36.397
 #
 
+
      Testing BoltzmannMachines
-Status `/tmp/jl_JcF7LY/Project.toml`
+Status `/tmp/jl_SL97c5/Project.toml`
   [4f8fbe5d] BoltzmannMachines v1.2.0
   [8bb1440f] DelimitedFiles
   [8ba89e20] Distributed
@@ -53,7 +50,7 @@ Status `/tmp/jl_JcF7LY/Project.toml`
   [9a3f8284] Random
   [10745b16] Statistics
   [8dfed614] Test
-Status `/tmp/jl_JcF7LY/Manifest.toml`
+Status `/tmp/jl_SL97c5/Manifest.toml`
   [4f8fbe5d] BoltzmannMachines v1.2.0
   [2a0f44e3] Base64
   [8bb1440f] DelimitedFiles
@@ -75,34 +72,42 @@ Finished deterministic tests
 Non-deterministic test #1 passed after 1 trie(s).
 Non-deterministic test #2 passed after 1 trie(s).
 ┌ Warning: Check failed:
-│ 	isapprox(logp1, logp2, rtol = 0.055)
+│ 	sign(lldiff1) == sign(lldiff2)
 └ @ BMTest ~/.julia/packages/BoltzmannMachines/KkTqD/test/BMTest.jl:17
-Non-deterministic test #3 passed after 2 trie(s).
+┌ Warning: Check failed:
+│ 	abs(BMs.logmeanexp(logimpweights) - (logz2 - logz1)) < max(logz2, logz1) * 0.03
+└ @ BMTest ~/.julia/packages/BoltzmannMachines/KkTqD/test/BMTest.jl:17
+Non-deterministic test #3 passed after 3 trie(s).
 Non-deterministic test #4 passed after 1 trie(s).
 Non-deterministic test #5 passed after 1 trie(s).
 Non-deterministic test #6 passed after 1 trie(s).
-Non-deterministic test #7 passed after 1 trie(s).
+┌ Warning: Check failed:
+│ 	abs(logzdiff - (logz2 - logz1)) < max(logz2, logz1) * 0.03
+└ @ BMTest ~/.julia/packages/BoltzmannMachines/KkTqD/test/BMTest.jl:17
+Non-deterministic test #7 passed after 2 trie(s).
 Non-deterministic test #8 passed after 1 trie(s).
 Non-deterministic test #9 passed after 1 trie(s).
 Non-deterministic test #10 passed after 1 trie(s).
-┌ Warning: Check failed:
-│ 	abs((exact - estimated) / exact) < percentalloweddiff / 100
-└ @ BMTest ~/.julia/packages/BoltzmannMachines/KkTqD/test/BMTest.jl:17
-┌ Warning: Check failed:
-│ 	BMTest.checkaisvsexact(dbm1, 0.6)
-└ @ BMTest ~/.julia/packages/BoltzmannMachines/KkTqD/test/BMTest.jl:17
-Non-deterministic test #11 passed after 2 trie(s).
+Non-deterministic test #11 passed after 1 trie(s).
 Non-deterministic test #12 passed after 1 trie(s).
-Non-deterministic test #13 passed after 1 trie(s).
+┌ Warning: Check failed:
+│ 	all(1.12 .> (sampled ./ nsampled) ./ probs .> 0.88)
+└ @ BMTest ~/.julia/packages/BoltzmannMachines/KkTqD/test/BMTest.jl:17
+┌ Warning: Check failed:
+│ 	all(1.12 .> (sampled ./ nsampled) ./ probs .> 0.88)
+└ @ BMTest ~/.julia/packages/BoltzmannMachines/KkTqD/test/BMTest.jl:17
+Non-deterministic test #13 passed after 3 trie(s).
 Non-deterministic test #14 passed after 1 trie(s).
      Testing BoltzmannMachines tests passed 
 
+PkgEval succeeded
+
 
 ################################################################################
-# Teardown: 2020-10-28T09:32:30.118
-#
-
-CPU usage: 2260.45s (986.66s user, 1176.52s kernel)
+# PkgEval teardown: 2020-10-29T05:33:39.728
+CPU usage: 1057.18s (1003.47s user, 55.82s kernel)
 
 Network usage:
-- eth0: 120.060 KiB received, 4.842 KiB sent
+- eth0: 141.446 KiB received, 4.924 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[{"major":8,"value":0,"op":"Read","minor":0},{"major":8,"value":0,"op":"Write","minor":0},{"major":8,"value":0,"op":"Sync","minor":0},{"major":8,"value":0,"op":"Async","minor":0},{"major":8,"value":0,"op":"Total","minor":0}],"io_serviced_recursive":[{"major":8,"value":13,"op":"Read","minor":0},{"major":8,"value":448,"op":"Write","minor":0},{"major":8,"value":13,"op":"Sync","minor":0},{"major":8,"value":448,"op":"Async","minor":0},{"major":8,"value":461,"op":"Total","minor":0}],"io_time_recursive":[{"major":8,"value":479914811,"op":"","minor":0}],"sectors_recursive":[{"major":8,"value":3688,"op":"","minor":0}],"io_service_bytes_recursive":[{"major":8,"value":53248,"op":"Read","minor":0},{"major":8,"value":1835008,"op":"Write","minor":0},{"major":8,"value":53248,"op":"Sync","minor":0},{"major":8,"value":1835008,"op":"Async","minor":0},{"major":8,"value":1888256,"op":"Total","minor":0}],"io_wait_time_recursive":[{"major":8,"value":137756888,"op":"Read","minor":0},{"major":8,"value":36537848587,"op":"Write","minor":0},{"major":8,"value":137756888,"op":"Sync","minor":0},{"major":8,"value":36537848587,"op":"Async","minor":0},{"major":8,"value":36675605475,"op":"Total","minor":0}],"io_merged_recursive":[{"major":8,"value":0,"op":"Read","minor":0},{"major":8,"value":0,"op":"Write","minor":0},{"major":8,"value":0,"op":"Sync","minor":0},{"major":8,"value":0,"op":"Async","minor":0},{"major":8,"value":0,"op":"Total","minor":0}],"io_service_time_recursive":[{"major":8,"value":3380690,"op":"Read","minor":0},{"major":8,"value":172065405,"op":"Write","minor":0},{"major":8,"value":3380690,"op":"Sync","minor":0},{"major":8,"value":172065405,"op":"Async","minor":0},{"major":8,"value":175446095,"op":"Total","minor":0}]},"memory_stats":{"usage":177139712,"max_usage":2230194176,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":341,"total_rss":171577344,"inactive_file":20480,"inactive_anon":47398912,"total_pgfault":5927715,"total_cache":1728512,"total_rss_huge":0,"total_active_anon":125337600,"total_pgmajfault":341,"pgpgin":4439393,"rss_huge":0,"mapped_file":540672,"total_inactive_file":20480,"dirty":4096,"total_unevictable":0,"total_dirty":4096,"writeback":0,"pgpgout":4397082,"hierarchical_memsw_limit":0,"cache":1728512,"active_file":548864,"pgfault":5927715,"total_mapped_file":540672,"total_pgpgout":4397082,"total_writeback":0,"rss":171577344,"unevictable":0,"total_inactive_anon":47398912,"total_pgpgin":4439393,"active_anon":125337600,"total_active_file":548864},"limit":540972998656},"name":"/BoltzmannMachines-RWd7gmN9","networks":{"eth0":{"rx_bytes":144841,"rx_packets":1635,"tx_packets":40,"tx_bytes":5042,"tx_dropped":0,"rx_dropped":36,"tx_errors":0,"rx_errors":0}},"id":"17bd66cae792c037e1f3cd9d594d7f60b253d207acf9eca1cdeb33c8610e2c60","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102304587050000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":1003470000000,"usage_in_kernelmode":55820000000,"total_usage":1057175099783,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1057134682659,8136513,5048393,12331353,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8633502,0,253520,6013843,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:33:40.48947469Z"}

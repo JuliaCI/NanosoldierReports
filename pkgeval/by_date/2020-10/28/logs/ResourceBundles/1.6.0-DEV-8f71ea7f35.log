@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:26:14.254
+# PkgEval set-up: 2020-10-29T04:23:26.861
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:26:17.697
+# Installation: 2020-10-29T04:23:28.300
 #
 
    Resolving package versions...
@@ -35,22 +34,20 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [9e88b42a] + Serialization
   [8dfed614] + Test
   [4ec0a83e] + Unicode
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39mResourceBundles
-1 dependency successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T08:26:27.458
+# Testing: 2020-10-29T04:23:30.819
 #
 
+
      Testing ResourceBundles
-Status `/tmp/jl_wRXCS0/Project.toml`
+Status `/tmp/jl_BDRu82/Project.toml`
   [a9a2f26c] ResourceBundles v0.1.0
   [56ddb016] Logging
   [8dfed614] Test
   [4ec0a83e] Unicode
-Status `/tmp/jl_wRXCS0/Manifest.toml`
+Status `/tmp/jl_BDRu82/Manifest.toml`
   [a9a2f26c] ResourceBundles v0.1.0
   [2a0f44e3] Base64
   [b77e0a4c] InteractiveUtils
@@ -142,8 +139,9 @@ repl_entrypoint at /workspace/srcdir/src/jlapi.c:672
 main at /workspace/srcdir/cli/loader_exe.c:46
 __libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
 unknown function (ip: 0x400bae)
-Allocations: 15966597 (Pool: 15961677; Big: 4920); GC: 20
-ERROR: Package ResourceBundles errored during testing (received signal: 11)
+Allocations: 15926926 (Pool: 15922079; Big: 4847); GC: 20
+
+PkgEval failed: Package ResourceBundles errored during testing (received signal: 11)
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -166,8 +164,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 30.70s (25.51s user, 4.92s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T04:23:57.314
+CPU usage: 29.60s (28.15s user, 1.53s kernel)
 
 Network usage:
-- eth0: 61.348 KiB received, 4.682 KiB sent
+- eth0: 60.308 KiB received, 4.512 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":444534784,"max_usage":619864064,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":188858368,"inactive_file":8192,"inactive_anon":250056704,"total_pgfault":370533,"total_cache":250740736,"total_rss_huge":0,"total_active_anon":189493248,"total_pgmajfault":0,"pgpgin":216534,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":109210,"hierarchical_memsw_limit":0,"cache":250740736,"active_file":8192,"pgfault":370533,"total_mapped_file":0,"total_pgpgout":109210,"total_writeback":0,"rss":188858368,"unevictable":0,"total_inactive_anon":250056704,"total_pgpgin":216534,"active_anon":189493248,"total_active_file":8192},"limit":540972998656},"name":"/ResourceBundles-zgDYEhLm","networks":{"eth0":{"rx_bytes":61755,"rx_packets":76,"tx_packets":32,"tx_bytes":4620,"tx_dropped":0,"rx_dropped":0,"tx_errors":0,"rx_errors":0}},"id":"7624fcb8c9da7f0c7e6f429e110eaea71b1421fa1de4bf94fe10d4b15f542e0c","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101772086180000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":28150000000,"usage_in_kernelmode":1530000000,"total_usage":29599711921,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,29599711921,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T04:23:57.31615477Z"}

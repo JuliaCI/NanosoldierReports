@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:37:34.174
+# PkgEval set-up: 2020-10-29T04:05:05.650
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,21 +12,20 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:37:37.664
+# Installation: 2020-10-29T04:05:07.177
 #
 
    Resolving package versions...
-   Installed VersionParsing ─ v1.2.0
    Installed Crazyflie ────── v0.1.0
-   Installed MacroTools ───── v0.5.6
-   Installed Parsers ──────── v1.0.11
+   Installed VersionParsing ─ v1.2.0
    Installed Conda ────────── v1.4.1
+   Installed Parsers ──────── v1.0.11
+   Installed MacroTools ───── v0.5.6
    Installed PyCall ───────── v1.92.1
    Installed JSON ─────────── v0.21.1
 Updating `~/.julia/environments/v1.6/Project.toml`
@@ -51,23 +50,19 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
     Building Conda ─→ `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/7a58bb32ce5d85f8bf7559aa7c2842f9aecf52fc/build.log`
     Building PyCall → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/b6dff5fa725eff4f775f472acd86756d6e31fb02/build.log`
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mMacroTools[39m
-[32m  ✓ [39m[90mPyCall[39m
-[32m  ✓ [39mCrazyflie
-3 dependencies successfully precompiled (4 already precompiled)
 
 
 ################################################################################
-# Testing: 2020-10-28T08:39:25.728
+# Testing: 2020-10-29T04:06:08.382
 #
 
+
      Testing Crazyflie
-Status `/tmp/jl_JmKPBX/Project.toml`
+Status `/tmp/jl_bqMSj5/Project.toml`
   [69416ee2] Crazyflie v0.1.0
   [438e738f] PyCall v1.92.1
   [8dfed614] Test
-Status `/tmp/jl_JmKPBX/Manifest.toml`
+Status `/tmp/jl_bqMSj5/Manifest.toml`
   [8f4d0f93] Conda v1.4.1
   [69416ee2] Crazyflie v0.1.0
   [682c06a0] JSON v0.21.1
@@ -116,10 +111,10 @@ Stacktrace:
    @ Crazyflie ~/.julia/packages/Crazyflie/fuV6P/src/Crazyflie.jl:17
  [3] _include_from_serialized(path::String, depmods::Vector{Any})
    @ Base ./loading.jl:662
- [4] _require_search_from_serialized(pkg::Base.PkgId, sourcepath::String)
-   @ Base ./loading.jl:748
+ [4] _require_from_serialized(path::String)
+   @ Base ./loading.jl:715
  [5] _require(pkg::Base.PkgId)
-   @ Base ./loading.jl:986
+   @ Base ./loading.jl:1019
  [6] require(uuidkey::Base.PkgId)
    @ Base ./loading.jl:902
  [7] require(into::Module, mod::Symbol)
@@ -130,7 +125,8 @@ Stacktrace:
    @ none:6
 during initialization of module Crazyflie
 in expression starting at /home/pkgeval/.julia/packages/Crazyflie/fuV6P/test/runtests.jl:1
-ERROR: Package Crazyflie errored during testing
+
+PkgEval failed: Package Crazyflie errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -153,8 +149,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 77.59s (64.24s user, 13.14s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T04:06:35.111
+CPU usage: 82.60s (73.80s user, 9.00s kernel)
 
 Network usage:
-- eth0: 252.868 MiB received, 923.855 KiB sent
+- eth0: 253.038 MiB received, 924.336 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":15,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":15,"op":"Async","minor":0},{"major":259,"value":15,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":15,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":15,"op":"Async","minor":2},{"major":253,"value":15,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":61440,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":61440,"op":"Async","minor":0},{"major":259,"value":61440,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":61440,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":61440,"op":"Async","minor":2},{"major":253,"value":61440,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":1812115456,"max_usage":2406227968,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":199884800,"inactive_file":8192,"inactive_anon":1137373184,"total_pgfault":1519038,"total_cache":1580625920,"total_rss_huge":0,"total_active_anon":642981888,"total_pgmajfault":0,"pgpgin":1427950,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":993255,"hierarchical_memsw_limit":0,"cache":1580625920,"active_file":147456,"pgfault":1519038,"total_mapped_file":0,"total_pgpgout":993255,"total_writeback":0,"rss":199884800,"unevictable":0,"total_inactive_anon":1137373184,"total_pgpgin":1427950,"active_anon":642981888,"total_active_file":147456},"limit":540972998656},"name":"/Crazyflie-Dw9CTNC1","networks":{"eth0":{"rx_bytes":265329732,"rx_packets":29884,"tx_packets":16724,"tx_bytes":946520,"tx_dropped":0,"rx_dropped":3,"tx_errors":0,"rx_errors":0}},"id":"c7951d85043ccd5228e222b14b1d797a33411bdbd87c042bb437993bd37e7b57","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101639232880000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":73800000000,"usage_in_kernelmode":9000000000,"total_usage":82604686065,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,82604686065,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T04:06:35.277191724Z"}

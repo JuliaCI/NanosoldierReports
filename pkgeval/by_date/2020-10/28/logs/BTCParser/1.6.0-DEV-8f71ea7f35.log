@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T07:46:56.251
+# PkgEval set-up: 2020-10-29T04:26:33.535
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,20 +12,19 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T07:47:00.472
+# Installation: 2020-10-29T04:26:35.050
 #
 
    Resolving package versions...
    Installed Base58 ──── v0.3.0
+   Installed Compat ──── v3.23.0
    Installed BTCParser ─ v0.1.0
    Installed Ripemd ──── v0.3.0
-   Installed Compat ──── v3.23.0
 Updating `~/.julia/environments/v1.6/Project.toml`
   [27a35ec8] + BTCParser v0.1.0
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -64,27 +63,22 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mCompat[39m
-[32m  ✓ [39m[90mBase58[39m
-[32m  ✓ [39m[90mRipemd[39m
-[32m  ✓ [39mBTCParser
-4 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T07:47:12.058
+# Testing: 2020-10-29T04:26:37.300
 #
 
+
      Testing BTCParser
-Status `/tmp/jl_74CeQY/Project.toml`
+Status `/tmp/jl_YUQ8D4/Project.toml`
   [27a35ec8] BTCParser v0.1.0
   [a832ea1e] Base58 v0.3.0
   [92ef3814] Ripemd v0.3.0
   [de0858da] Printf
   [ea8e919c] SHA
   [8dfed614] Test
-Status `/tmp/jl_74CeQY/Manifest.toml`
+Status `/tmp/jl_YUQ8D4/Manifest.toml`
   [27a35ec8] BTCParser v0.1.0
   [a832ea1e] Base58 v0.3.0
   [34da2185] Compat v3.23.0
@@ -121,7 +115,7 @@ Status `/tmp/jl_74CeQY/Manifest.toml`
   [deac9b47] LibCURL_jll
   [14a3606d] MozillaCACerts_jll
      Testing Running tests...
-first header: Error During Test at /home/pkgeval/.julia/packages/BTCParser/rLZZT/test/test_header_hash.jl:2
+BCIterator: Error During Test at /home/pkgeval/.julia/packages/BTCParser/rLZZT/test/test_bciterator.jl:6
   Got exception outside of a @test
   SystemError: opening file "/home/pkgeval/.bitcoin/blocks/blk00000.dat": No such file or directory
   Stacktrace:
@@ -137,34 +131,33 @@ first header: Error During Test at /home/pkgeval/.julia/packages/BTCParser/rLZZT
       @ ./iostream.jl:282 [inlined]
     [6] BCIterator
       @ ~/.julia/packages/BTCParser/rLZZT/src/lib/file_ops.jl:18 [inlined]
-    [7] BTCParser.BCIterator()
-      @ BTCParser ~/.julia/packages/BTCParser/rLZZT/src/lib/file_ops.jl:21
+    [7] macro expansion
+      @ ~/.julia/packages/BTCParser/rLZZT/test/test_bciterator.jl:8 [inlined]
     [8] macro expansion
-      @ ~/.julia/packages/BTCParser/rLZZT/test/test_header_hash.jl:4 [inlined]
-    [9] macro expansion
       @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
-   [10] top-level scope
-      @ ~/.julia/packages/BTCParser/rLZZT/test/test_header_hash.jl:4
-   [11] include(fname::String)
+    [9] top-level scope
+      @ ~/.julia/packages/BTCParser/rLZZT/test/test_bciterator.jl:7
+   [10] include(fname::String)
       @ Base.MainInclude ./client.jl:444
-   [12] top-level scope
+   [11] top-level scope
       @ ~/.julia/packages/BTCParser/rLZZT/test/runtests.jl:17
-   [13] include(fname::String)
+   [12] include(fname::String)
       @ Base.MainInclude ./client.jl:444
-   [14] top-level scope
+   [13] top-level scope
       @ none:6
-   [15] eval(m::Module, e::Any)
+   [14] eval(m::Module, e::Any)
       @ Core ./boot.jl:360
-   [16] exec_options(opts::Base.JLOptions)
+   [15] exec_options(opts::Base.JLOptions)
       @ Base ./client.jl:261
-   [17] _start()
+   [16] _start()
       @ Base ./client.jl:485
 Test Summary: | Error  Total
-first header  |     1      1
+BCIterator    |     1      1
 ERROR: LoadError: LoadError: Some tests did not pass: 0 passed, 0 failed, 1 errored, 0 broken.
-in expression starting at /home/pkgeval/.julia/packages/BTCParser/rLZZT/test/test_header_hash.jl:2
+in expression starting at /home/pkgeval/.julia/packages/BTCParser/rLZZT/test/test_bciterator.jl:6
 in expression starting at /home/pkgeval/.julia/packages/BTCParser/rLZZT/test/runtests.jl:16
-ERROR: Package BTCParser errored during testing
+
+PkgEval failed: Package BTCParser errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -187,8 +180,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 17.98s (14.10s user, 3.83s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T04:26:51.645
+CPU usage: 18.24s (16.98s user, 1.28s kernel)
 
 Network usage:
-- eth0: 99.412 KiB received, 17.412 KiB sent
+- eth0: 98.609 KiB received, 16.814 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":206716928,"max_usage":619896832,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":201396224,"inactive_file":8192,"inactive_anon":212992,"total_pgfault":418950,"total_cache":753664,"total_rss_huge":0,"total_active_anon":201863168,"total_pgmajfault":0,"pgpgin":238555,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":189202,"hierarchical_memsw_limit":0,"cache":753664,"active_file":65536,"pgfault":418950,"total_mapped_file":0,"total_pgpgout":189202,"total_writeback":0,"rss":201396224,"unevictable":0,"total_inactive_anon":212992,"total_pgpgin":238555,"active_anon":201863168,"total_active_file":65536},"limit":540972998656},"name":"/BTCParser-hyDgBFZF","networks":{"eth0":{"rx_bytes":100976,"rx_packets":125,"tx_packets":107,"tx_bytes":17218,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"a8c2410b33fb5f13b5b000c80170384818e5a0f2202115ace6e078c3ed252118","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101794454050000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":16980000000,"usage_in_kernelmode":1280000000,"total_usage":18236296330,"percpu_usage":[18236296330,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T04:26:52.51637528Z"}

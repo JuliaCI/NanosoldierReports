@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T09:07:02.588
+# PkgEval set-up: 2020-10-29T05:27:03.937
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,23 +12,22 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T09:07:06.066
+# Installation: 2020-10-29T05:27:05.158
 #
 
    Resolving package versions...
-   Installed MbedTLS_jll ─────── v2.16.8+0
    Installed IniFile ─────────── v0.5.0
+   Installed MbedTLS_jll ─────── v2.16.8+0
    Installed PkgAuthentication ─ v0.3.0
    Installed Parsers ─────────── v1.0.11
    Installed MbedTLS ─────────── v1.0.3
-   Installed JSON ────────────── v0.21.1
    Installed HTTP ────────────── v0.8.19
+   Installed JSON ────────────── v0.21.1
 Updating `~/.julia/environments/v1.6/Project.toml`
   [4722fa14] + PkgAuthentication v0.3.0
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -64,23 +63,15 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mIniFile[39m
-[32m  ✓ [39m[90mMbedTLS_jll[39m
-[32m  ✓ [39m[90mMbedTLS[39m
-[32m  ✓ [39m[90mParsers[39m
-[32m  ✓ [39m[90mJSON[39m
-[32m  ✓ [39m[90mHTTP[39m
-[32m  ✓ [39mPkgAuthentication
-7 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T09:07:22.103
+# Testing: 2020-10-29T05:27:07.956
 #
 
+
      Testing PkgAuthentication
-Status `/tmp/jl_Y6uhQX/Project.toml`
+Status `/tmp/jl_uYRxA1/Project.toml`
   [cd3eb016] HTTP v0.8.19
   [682c06a0] JSON v0.21.1
   [4722fa14] PkgAuthentication v0.3.0
@@ -88,7 +79,7 @@ Status `/tmp/jl_Y6uhQX/Project.toml`
   [44cfe95a] Pkg
   [9a3f8284] Random
   [8dfed614] Test
-Status `/tmp/jl_Y6uhQX/Manifest.toml`
+Status `/tmp/jl_uYRxA1/Manifest.toml`
   [cd3eb016] HTTP v0.8.19
   [83e8ac13] IniFile v0.5.0
   [682c06a0] JSON v0.21.1
@@ -182,10 +173,10 @@ PkgAuthentication: Error During Test at /home/pkgeval/.julia/packages/PkgAuthent
 /usr/bin/xdg-open: 869: links: not found
 /usr/bin/xdg-open: 869: lynx: not found
 /usr/bin/xdg-open: 869: w3m: not found
-xdg-open: no method available for opening 'https://juliahub.com/auth/response?768cca1367c4c1666563ec23c53f72f8'
+xdg-open: no method available for opening 'https://juliahub.com/auth/response?ddc6f9788c274aa64b70b04b7b2ee923'
 
 Authentication required.
-Opening https://juliahub.com/auth/response?768cca1367c4c1666563ec23c53f72f8 to authenticate.
+Opening https://juliahub.com/auth/response?ddc6f9788c274aa64b70b04b7b2ee923 to authenticate.
 
 Authentication timed out. Please try again.
 
@@ -233,7 +224,8 @@ Test Summary:     | Pass  Error  Total
 PkgAuthentication |    3      2      5
 ERROR: LoadError: Some tests did not pass: 3 passed, 0 failed, 2 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/PkgAuthentication/Hb8va/test/runtests.jl:4
-ERROR: Package PkgAuthentication errored during testing
+
+PkgEval failed: Package PkgAuthentication errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -256,8 +248,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 38.35s (33.39s user, 5.14s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T05:29:41.876
+CPU usage: 38.86s (36.61s user, 2.37s kernel)
 
 Network usage:
-- eth0: 521.566 KiB received, 63.537 KiB sent
+- eth0: 528.687 KiB received, 64.966 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":211238912,"max_usage":791748608,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":199540736,"inactive_file":8192,"inactive_anon":1269760,"total_pgfault":794109,"total_cache":5939200,"total_rss_huge":0,"total_active_anon":204201984,"total_pgmajfault":0,"pgpgin":394601,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":344435,"hierarchical_memsw_limit":0,"cache":5939200,"active_file":0,"pgfault":794109,"total_mapped_file":0,"total_pgpgout":344435,"total_writeback":0,"rss":199540736,"unevictable":0,"total_inactive_anon":1269760,"total_pgpgin":394601,"active_anon":204201984,"total_active_file":0},"limit":540972998656},"name":"/PkgAuthentication-knNSjNaz","networks":{"eth0":{"rx_bytes":541375,"rx_packets":715,"tx_packets":475,"tx_bytes":66525,"tx_dropped":0,"rx_dropped":5,"tx_errors":0,"rx_errors":0}},"id":"f258e4860d31c5d9f4c0ca8d88d358c63f0797e13b22e63a7ef2615346aef911","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102274136450000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":36610000000,"usage_in_kernelmode":2370000000,"total_usage":38859417061,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38859417061,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:29:42.031128616Z"}

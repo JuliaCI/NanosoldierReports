@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:58:58.370
+# PkgEval set-up: 2020-10-29T03:58:21.862
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,25 +12,24 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:59:02.208
+# Installation: 2020-10-29T03:58:23.310
 #
 
    Resolving package versions...
    Installed Zlib_jll ─────────── v1.2.11+18
+   Installed JLLWrappers ──────── v1.1.3
+   Installed TupleTools ───────── v1.2.0
+   Installed Pickle ───────────── v0.2.0
+   Installed ZipFile ──────────── v0.9.3
+   Installed DataStructures ───── v0.17.20
    Installed InternedStrings ──── v0.7.0
    Installed Strided ──────────── v1.1.1
-   Installed TupleTools ───────── v1.2.0
    Installed OrderedCollections ─ v1.3.1
-   Installed DataStructures ───── v0.17.20
-   Installed Pickle ───────────── v0.2.0
-   Installed JLLWrappers ──────── v1.1.3
-   Installed ZipFile ──────────── v0.9.3
 Updating `~/.julia/environments/v1.6/Project.toml`
   [fbb45041] + Pickle v0.2.0
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -68,27 +67,17 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mInternedStrings[39m
-[32m  ✓ [39m[90mTupleTools[39m
-[32m  ✓ [39m[90mJLLWrappers[39m
-[32m  ✓ [39m[90mOrderedCollections[39m
-[32m  ✓ [39m[90mStrided[39m
-[32m  ✓ [39m[90mZlib_jll[39m
-[32m  ✓ [39m[90mZipFile[39m
-[32m  ✓ [39m[90mDataStructures[39m
-[32m  ✓ [39mPickle
-9 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T08:59:19.541
+# Testing: 2020-10-29T03:58:56.446
 #
 
+
      Testing Pickle
-Status `/tmp/jl_2DTpYX/Project.toml`
+Status `/tmp/jl_ao3g52/Project.toml`
   [864edb3b] DataStructures v0.17.20
-  [e30172f5] Documenter v0.25.2
+  [e30172f5] Documenter v0.25.3
   [7d512f48] InternedStrings v0.7.0
   [fbb45041] Pickle v0.2.0
   [438e738f] PyCall v1.92.1
@@ -96,11 +85,12 @@ Status `/tmp/jl_2DTpYX/Project.toml`
   [a5390f91] ZipFile v0.9.3
   [9e88b42a] Serialization
   [8dfed614] Test
-Status `/tmp/jl_2DTpYX/Manifest.toml`
+Status `/tmp/jl_ao3g52/Manifest.toml`
   [8f4d0f93] Conda v1.4.1
   [864edb3b] DataStructures v0.17.20
   [ffbed154] DocStringExtensions v0.8.3
-  [e30172f5] Documenter v0.25.2
+  [e30172f5] Documenter v0.25.3
+  [b5f81e59] IOCapture v0.1.1
   [7d512f48] InternedStrings v0.7.0
   [692b3bcd] JLLWrappers v1.1.3
   [682c06a0] JSON v0.21.1
@@ -185,6 +175,45 @@ Executing transaction: ...working... done
 [ Info: Test doctest
 [ Info: SetupBuildDirectory: setting up build directory.
 [ Info: Doctest: running doctests.
+┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/readarg.jl:232-241
+│ 
+│ ```jldoctest
+│ julia> Pickle.read_bytearray8(IOBuffer(b"\x00\x00\x00\x00\x00\x00\x00\x00abc")) |> isempty # 0-element Array{UInt8,1}
+│ true
+│ 
+│ julia> Pickle.read_bytearray8(IOBuffer(b"\x03\x00\x00\x00\x00\x00\x00\x00abcdef"))
+│ 3-element Array{UInt8,1}:
+│  0x61
+│  0x62
+│  0x63
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Pickle.read_bytearray8(IOBuffer(b"\x03\x00\x00\x00\x00\x00\x00\x00abcdef"))
+│ 
+│ Evaluated output:
+│ 
+│ 3-element Vector{UInt8}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│ Expected output:
+│ 
+│ 3-element Array{UInt8,1}:
+│  0x61
+│  0x62
+│  0x63
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    3-element Array{UInt8,1}:
+│     Vector{UInt8}:
+│     0x61
+│     0x62
+│     0x63
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/writearg.jl:59-90
 │ 
 │ ```jldoctest
@@ -242,7 +271,7 @@ Executing transaction: ...working... done
 │     Vector{UInt8}:
 │     0xff
 │     0x00
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/writearg.jl:59-90
 │ 
 │ ```jldoctest
@@ -300,7 +329,7 @@ Executing transaction: ...working... done
 │     Vector{UInt8}:
 │     0xff
 │     0x7f
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/writearg.jl:59-90
 │ 
 │ ```jldoctest
@@ -358,7 +387,7 @@ Executing transaction: ...working... done
 │     Vector{UInt8}:
 │     0x00
 │     0xff
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/writearg.jl:59-90
 │ 
 │ ```jldoctest
@@ -416,7 +445,7 @@ Executing transaction: ...working... done
 │     Vector{UInt8}:
 │     0x00
 │     0x80
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/writearg.jl:59-90
 │ 
 │ ```jldoctest
@@ -471,7 +500,7 @@ Executing transaction: ...working... done
 │    1-element Array{UInt8,1}:
 │     Vector{UInt8}:
 │     0x80
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/writearg.jl:59-90
 │ 
 │ ```jldoctest
@@ -526,26 +555,23 @@ Executing transaction: ...working... done
 │    1-element Array{UInt8,1}:
 │     Vector{UInt8}:
 │     0x7f
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/readarg.jl:175-187
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/readarg.jl:212-221
 │ 
 │ ```jldoctest
-│ julia> Pickle.read_bytes1(IOBuffer(b"\x00")) |> isempty # 0-element Array{UInt8,1}
+│ julia> Pickle.read_bytes8(IOBuffer(b"\x00\x00\x00\x00\x00\x00\x00\x00abc")) |> isempty # 0-element Array{UInt8,1}
 │ true
 │ 
-│ julia> Pickle.read_bytes1(IOBuffer(b"\x03abcdef"))
+│ julia> Pickle.read_bytes8(IOBuffer(b"\x03\x00\x00\x00\x00\x00\x00\x00abcdef"))
 │ 3-element Array{UInt8,1}:
 │  0x61
 │  0x62
 │  0x63
-│ 
-│ julia> Pickle.read_bytes1(IOBuffer(b"\x03abcdef")) |> String
-│ "abc"
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ Pickle.read_bytes1(IOBuffer(b"\x03abcdef"))
+│ Pickle.read_bytes8(IOBuffer(b"\x03\x00\x00\x00\x00\x00\x00\x00abcdef"))
 │ 
 │ Evaluated output:
 │ 
@@ -568,7 +594,7 @@ Executing transaction: ...working... done
 │     0x61
 │     0x62
 │     0x63
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/readarg.jl:193-206
 │ 
 │ ```jldoctest
@@ -611,23 +637,26 @@ Executing transaction: ...working... done
 │     0x61
 │     0x62
 │     0x63
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/readarg.jl:212-221
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/readarg.jl:175-187
 │ 
 │ ```jldoctest
-│ julia> Pickle.read_bytes8(IOBuffer(b"\x00\x00\x00\x00\x00\x00\x00\x00abc")) |> isempty # 0-element Array{UInt8,1}
+│ julia> Pickle.read_bytes1(IOBuffer(b"\x00")) |> isempty # 0-element Array{UInt8,1}
 │ true
 │ 
-│ julia> Pickle.read_bytes8(IOBuffer(b"\x03\x00\x00\x00\x00\x00\x00\x00abcdef"))
+│ julia> Pickle.read_bytes1(IOBuffer(b"\x03abcdef"))
 │ 3-element Array{UInt8,1}:
 │  0x61
 │  0x62
 │  0x63
+│ 
+│ julia> Pickle.read_bytes1(IOBuffer(b"\x03abcdef")) |> String
+│ "abc"
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ Pickle.read_bytes8(IOBuffer(b"\x03\x00\x00\x00\x00\x00\x00\x00abcdef"))
+│ Pickle.read_bytes1(IOBuffer(b"\x03abcdef"))
 │ 
 │ Evaluated output:
 │ 
@@ -650,46 +679,7 @@ Executing transaction: ...working... done
 │     0x61
 │     0x62
 │     0x63
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/Pickle/Njhfn/src/readarg.jl:232-241
-│ 
-│ ```jldoctest
-│ julia> Pickle.read_bytearray8(IOBuffer(b"\x00\x00\x00\x00\x00\x00\x00\x00abc")) |> isempty # 0-element Array{UInt8,1}
-│ true
-│ 
-│ julia> Pickle.read_bytearray8(IOBuffer(b"\x03\x00\x00\x00\x00\x00\x00\x00abcdef"))
-│ 3-element Array{UInt8,1}:
-│  0x61
-│  0x62
-│  0x63
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ Pickle.read_bytearray8(IOBuffer(b"\x03\x00\x00\x00\x00\x00\x00\x00abcdef"))
-│ 
-│ Evaluated output:
-│ 
-│ 3-element Vector{UInt8}:
-│  0x61
-│  0x62
-│  0x63
-│ 
-│ Expected output:
-│ 
-│ 3-element Array{UInt8,1}:
-│  0x61
-│  0x62
-│  0x63
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    3-element Array{UInt8,1}:
-│     Vector{UInt8}:
-│     0x61
-│     0x62
-│     0x63
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: Doctesting failed
 │   exception =
 │    `makedocs` encountered a doctest error. Terminating build
@@ -697,27 +687,27 @@ Executing transaction: ...working... done
 │      [1] error(s::String)
 │        @ Base ./error.jl:33
 │      [2] runner(#unused#::Type{Documenter.Builder.Doctest}, doc::Documenter.Documents.Document)
-│        @ Documenter.Builder ~/.julia/packages/Documenter/pjwqp/src/Builder.jl:217
+│        @ Documenter.Builder ~/.julia/packages/Documenter/3Y8Kg/src/Builder.jl:217
 │      [3] dispatch(#unused#::Type{Documenter.Builder.DocumentPipeline}, x::Documenter.Documents.Document)
-│        @ Documenter.Utilities.Selectors ~/.julia/packages/Documenter/pjwqp/src/Utilities/Selectors.jl:167
+│        @ Documenter.Utilities.Selectors ~/.julia/packages/Documenter/3Y8Kg/src/Utilities/Selectors.jl:170
 │      [4] #2
-│        @ ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:241 [inlined]
+│        @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:245 [inlined]
 │      [5] cd(f::Documenter.var"#2#3"{Documenter.Documents.Document}, dir::String)
 │        @ Base.Filesystem ./file.jl:104
-│      [6] makedocs(; debug::Bool, format::Documenter.Writers.HTMLWriter.HTML, kwargs::Base.Iterators.Pairs{Symbol, Any, NTuple{5, Symbol}, NamedTuple{(:root, :source, :sitename, :doctest, :modules), Tuple{String, String, String, Symbol, Vector{Module}}}})
-│        @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:240
-│      [7] (::Documenter.var"#all_doctests#31"{Bool, Vector{Module}})()
-│        @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:802
+│      [6] makedocs(; debug::Bool, format::Documenter.Writers.HTMLWriter.HTML, kwargs::Base.Iterators.Pairs{Symbol, Any, NTuple{6, Symbol}, NamedTuple{(:root, :source, :sitename, :doctest, :modules, :doctestfilters), Tuple{String, String, String, Symbol, Vector{Module}, Vector{Regex}}}})
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:244
+│      [7] (::Documenter.var"#all_doctests#33"{Bool, Vector{Regex}, Vector{Module}})()
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:809
 │      [8] macro expansion
-│        @ ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:818 [inlined]
+│        @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826 [inlined]
 │      [9] macro expansion
 │        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
-│     [10] doctest(source::String, modules::Vector{Module}; fix::Bool, testset::String)
-│        @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:818
+│     [10] doctest(source::String, modules::Vector{Module}; fix::Bool, testset::String, doctestfilters::Vector{Regex})
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826
 │     [11] doctest(package::Module; manual::Bool, testset::Nothing, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
-│        @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:761
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:765
 │     [12] doctest
-│        @ ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:748 [inlined]
+│        @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:752 [inlined]
 │     [13] macro expansion
 │        @ ~/.julia/packages/Pickle/Njhfn/test/runtests.jl:33 [inlined]
 │     [14] macro expansion
@@ -734,16 +724,16 @@ Executing transaction: ...working... done
 │        @ Base ./client.jl:261
 │     [20] _start()
 │        @ Base ./client.jl:485
-└ @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:811
-Doctests: Pickle: Test Failed at /home/pkgeval/.julia/packages/Documenter/pjwqp/src/Documenter.jl:818
+└ @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:819
+Doctests: Pickle: Test Failed at /home/pkgeval/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826
   Expression: all_doctests()
 Stacktrace:
  [1] macro expansion
-   @ ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:818 [inlined]
+   @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826 [inlined]
  [2] macro expansion
    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
- [3] doctest(source::String, modules::Vector{Module}; fix::Bool, testset::String)
-   @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:818
+ [3] doctest(source::String, modules::Vector{Module}; fix::Bool, testset::String, doctestfilters::Vector{Regex})
+   @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826
 [ Info: Test LOAD
 [ Info: Test STORE
 STORE: Error During Test at /home/pkgeval/.julia/packages/Pickle/Njhfn/test/test_store.jl:1
@@ -869,7 +859,8 @@ Pickle             |   99     1      2    102
     PREBUILD       |    2            1      3
 ERROR: LoadError: Some tests did not pass: 99 passed, 1 failed, 2 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/Pickle/Njhfn/test/runtests.jl:30
-ERROR: Package Pickle errored during testing
+
+PkgEval failed: Package Pickle errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -892,8 +883,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 184.81s (156.04s user, 28.32s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T04:02:41.545
+CPU usage: 183.05s (168.99s user, 14.58s kernel)
 
 Network usage:
-- eth0: 961.005 MiB received, 2.694 MiB sent
+- eth0: 958.867 MiB received, 2.579 MiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":15,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":15,"op":"Async","minor":0},{"major":259,"value":15,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":15,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":15,"op":"Async","minor":2},{"major":253,"value":15,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":65536,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":65536,"op":"Async","minor":0},{"major":259,"value":65536,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":65536,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":65536,"op":"Async","minor":2},{"major":253,"value":65536,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":4696178688,"max_usage":5400915968,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":233140224,"inactive_file":8192,"inactive_anon":3062657024,"total_pgfault":2504945,"total_cache":4417802240,"total_rss_huge":0,"total_active_anon":1587613696,"total_pgmajfault":0,"pgpgin":2892464,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":1756980,"hierarchical_memsw_limit":0,"cache":4417802240,"active_file":663552,"pgfault":2504945,"total_mapped_file":0,"total_pgpgout":1756980,"total_writeback":0,"rss":233140224,"unevictable":0,"total_inactive_anon":3062657024,"total_pgpgin":2892464,"active_anon":1587613696,"total_active_file":663552},"limit":540972998656},"name":"/Pickle-evYhoEX0","networks":{"eth0":{"rx_bytes":1005445272,"rx_packets":79486,"tx_packets":48698,"tx_bytes":2704173,"tx_dropped":0,"rx_dropped":9,"tx_errors":0,"rx_errors":0}},"id":"d392c1772d69a19a4d9ff3dace94c0bf6354e2cfcd7ec65143b2b4c7e5e98caf","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101609451610000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":168990000000,"usage_in_kernelmode":14580000000,"total_usage":183047197582,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183047191432,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T04:02:41.757718015Z"}

@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T07:42:50.385
+# PkgEval set-up: 2020-10-29T03:38:58.155
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,21 +12,20 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T07:42:56.236
+# Installation: 2020-10-29T03:38:59.690
 #
 
    Resolving package versions...
-   Installed Flatten ────────── v0.3.5
    Installed UnitlessFlatten ── v0.0.1
+   Installed FieldMetadata ──── v0.3.0
+   Installed Flatten ────────── v0.3.5
    Installed Unitful ────────── v0.18.0
    Installed ConstructionBase ─ v1.0.0
-   Installed FieldMetadata ──── v0.3.0
 Updating `~/.julia/environments/v1.6/Project.toml`
   [03de777c] + UnitlessFlatten v0.0.1
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -44,26 +43,20 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [9a3f8284] + Random
   [9e88b42a] + Serialization
   [8dfed614] + Test
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mFieldMetadata[39m
-[32m  ✓ [39m[90mConstructionBase[39m
-[32m  ✓ [39m[90mFlatten[39m
-[32m  ✓ [39m[90mUnitful[39m
-[32m  ✓ [39mUnitlessFlatten
-5 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T07:44:04.660
+# Testing: 2020-10-29T03:39:02.039
 #
 
+
      Testing UnitlessFlatten
-Status `/tmp/jl_nEz2bX/Project.toml`
+Status `/tmp/jl_DnxDV5/Project.toml`
   [4c728ea3] Flatten v0.3.5
   [1986cc42] Unitful v0.18.0
   [03de777c] UnitlessFlatten v0.0.1
   [8dfed614] Test
-Status `/tmp/jl_nEz2bX/Manifest.toml`
+Status `/tmp/jl_DnxDV5/Manifest.toml`
   [187b0558] ConstructionBase v1.0.0
   [bf96fef3] FieldMetadata v0.3.0
   [4c728ea3] Flatten v0.3.5
@@ -79,6 +72,7 @@ Status `/tmp/jl_nEz2bX/Manifest.toml`
   [9e88b42a] Serialization
   [8dfed614] Test
      Testing Running tests...
+WARNING: could not import Flatten.retype into UnitlessFlatten
 Error During Test at /home/pkgeval/.julia/packages/UnitlessFlatten/yibSK/test/runtests.jl:19
   Test threw exception
   Expression: flatten(Vector, partialunits) == [1.0, 2.0]
@@ -104,7 +98,8 @@ Error During Test at /home/pkgeval/.julia/packages/UnitlessFlatten/yibSK/test/ru
      @ Base ./client.jl:485
 ERROR: LoadError: There was an error during testing
 in expression starting at /home/pkgeval/.julia/packages/UnitlessFlatten/yibSK/test/runtests.jl:19
-ERROR: Package UnitlessFlatten errored during testing
+
+PkgEval failed: Package UnitlessFlatten errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -127,8 +122,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 81.40s (74.44s user, 6.97s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T03:40:25.344
+CPU usage: 86.53s (83.56s user, 3.24s kernel)
 
 Network usage:
-- eth0: 164.195 KiB received, 23.488 KiB sent
+- eth0: 163.287 KiB received, 23.178 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":206114816,"max_usage":2136940544,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":199282688,"inactive_file":8192,"inactive_anon":356352,"total_pgfault":1206160,"total_cache":2088960,"total_rss_huge":0,"total_active_anon":201003008,"total_pgmajfault":0,"pgpgin":805737,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":756574,"hierarchical_memsw_limit":0,"cache":2088960,"active_file":4096,"pgfault":1206160,"total_mapped_file":0,"total_pgpgout":756574,"total_writeback":0,"rss":199282688,"unevictable":0,"total_inactive_anon":356352,"total_pgpgin":805737,"active_anon":201003008,"total_active_file":4096},"limit":540972998656},"name":"/UnitlessFlatten-AwRSEwqF","networks":{"eth0":{"rx_bytes":167206,"rx_packets":292,"tx_packets":169,"tx_bytes":23734,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"a5bc32ed3bb1f3940bd81db3dc0b835c6817b8c032c228f81276e01100aa723f","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101439082420000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":83560000000,"usage_in_kernelmode":3240000000,"total_usage":86533491394,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,86533491394,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T03:40:25.979502081Z"}

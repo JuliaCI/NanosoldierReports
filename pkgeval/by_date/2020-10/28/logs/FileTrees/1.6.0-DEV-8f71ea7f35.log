@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T07:13:04.364
+# PkgEval set-up: 2020-10-29T04:20:02.815
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,29 +12,28 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T07:13:07.708
+# Installation: 2020-10-29T04:20:04.274
 #
 
    Resolving package versions...
    Installed SortingAlgorithms ── v0.3.1
-   Installed DataAPI ──────────── v1.3.0
    Installed MemPool ──────────── v0.3.2
+   Installed DataAPI ──────────── v1.3.0
    Installed Compat ───────────── v3.23.0
    Installed OrderedCollections ─ v1.3.1
    Installed AbstractTrees ────── v0.3.3
    Installed Dagger ───────────── v0.10.0
-   Installed FilePathsBase ────── v0.9.5
    Installed Glob ─────────────── v1.3.0
+   Installed FilePathsBase ────── v0.9.5
+   Installed StatsBase ────────── v0.33.2
    Installed FileTrees ────────── v0.1.4
    Installed Missings ─────────── v0.4.4
    Installed DataStructures ───── v0.18.8
-   Installed StatsBase ────────── v0.33.2
 Updating `~/.julia/environments/v1.6/Project.toml`
   [72696420] + FileTrees v0.1.4
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -83,29 +82,15 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mDataAPI[39m
-[32m  ✓ [39m[90mGlob[39m
-[32m  ✓ [39m[90mAbstractTrees[39m
-[32m  ✓ [39m[90mOrderedCollections[39m
-[32m  ✓ [39m[90mMissings[39m
-[32m  ✓ [39m[90mCompat[39m
-[32m  ✓ [39m[90mFilePathsBase[39m
-[32m  ✓ [39m[90mDataStructures[39m
-[32m  ✓ [39m[90mSortingAlgorithms[39m
-[32m  ✓ [39m[90mMemPool[39m
-[32m  ✓ [39m[90mStatsBase[39m
-[32m  ✓ [39m[90mDagger[39m
-[32m  ✓ [39mFileTrees
-13 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T07:13:36.745
+# Testing: 2020-10-29T04:20:07.238
 #
 
+
      Testing FileTrees
-Status `/tmp/jl_FGAolZ/Project.toml`
+Status `/tmp/jl_EvNUD1/Project.toml`
   [1520ce14] AbstractTrees v0.3.3
   [336ed68f] CSV v0.7.7
   [d58978e5] Dagger v0.10.0
@@ -116,7 +101,7 @@ Status `/tmp/jl_FGAolZ/Project.toml`
   [ade2ca70] Dates
   [8ba89e20] Distributed
   [8dfed614] Test
-Status `/tmp/jl_FGAolZ/Manifest.toml`
+Status `/tmp/jl_EvNUD1/Manifest.toml`
   [1520ce14] AbstractTrees v0.3.3
   [336ed68f] CSV v0.7.7
   [324d7699] CategoricalArrays v0.8.3
@@ -178,6 +163,7 @@ Status `/tmp/jl_FGAolZ/Manifest.toml`
   [deac9b47] LibCURL_jll
   [14a3606d] MozillaCACerts_jll
      Testing Running tests...
+Adding a proc
 Test Summary: | Pass  Total
 basics        |   51     51
 loading: Error During Test at /home/pkgeval/.julia/packages/FileTrees/ZfGJB/test/taxi.jl:14
@@ -304,57 +290,27 @@ mv: Error During Test at /home/pkgeval/.julia/packages/FileTrees/ZfGJB/test/taxi
       @ Base ./client.jl:485
 metadata: Error During Test at /home/pkgeval/.julia/packages/FileTrees/ZfGJB/test/taxi.jl:57
   Got exception outside of a @test
+  On worker 2:
   TaskFailedException
   Stacktrace:
-    [1] wait
-      @ ./task.jl:306 [inlined]
-    [2] fetch
-      @ ./task.jl:321 [inlined]
-    [3] execute!(proc::Dagger.ThreadProc, f::Function, args::File)
-      @ Dagger ~/.julia/packages/Dagger/rDbfk/src/processor.jl:225
-    [4] do_task(ctx::Dagger.Context, proc::Dagger.OSProc, thunk_id::Int64, f::Function, data::Tuple{File}, send_result::Bool, persist::Bool, cache::Bool, options::Dagger.Sch.ThunkOptions, ids::Tuple{Nothing})
-      @ Dagger.Sch ~/.julia/packages/Dagger/rDbfk/src/scheduler.jl:353
-    [5] #137
-      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Distributed/src/remotecall.jl:354 [inlined]
-    [6] run_work_thunk(thunk::Distributed.var"#137#138"{typeof(Dagger.Sch.do_task), Tuple{Dagger.Context, Dagger.OSProc, Int64, var"#55#58", Tuple{File}, Bool, Bool, Bool, Dagger.Sch.ThunkOptions, Tuple{Nothing}}, Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}}}, print_error::Bool)
-      @ Distributed /workspace/srcdir/usr/share/julia/stdlib/v1.6/Distributed/src/process_messages.jl:63
-    [7] remotecall_fetch(::Function, ::Distributed.LocalProcess, ::Dagger.Context, ::Vararg{Any, N} where N; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
-      @ Distributed /workspace/srcdir/usr/share/julia/stdlib/v1.6/Distributed/src/remotecall.jl:379
-    [8] remotecall_fetch(::Function, ::Distributed.LocalProcess, ::Dagger.Context, ::Vararg{Any, N} where N)
-      @ Distributed /workspace/srcdir/usr/share/julia/stdlib/v1.6/Distributed/src/remotecall.jl:379
-    [9] remotecall_fetch(::Function, ::Int64, ::Dagger.Context, ::Vararg{Any, N} where N; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
-      @ Distributed /workspace/srcdir/usr/share/julia/stdlib/v1.6/Distributed/src/remotecall.jl:421
-   [10] remotecall_fetch
-      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Distributed/src/remotecall.jl:421 [inlined]
-   [11] macro expansion
-      @ ~/.julia/packages/Dagger/rDbfk/src/scheduler.jl:366 [inlined]
-   [12] (::Dagger.Sch.var"#30#31"{Dagger.Context, Dagger.OSProc, Int64, var"#55#58", Tuple{File}, Channel{Any}, Bool, Bool, Bool, Dagger.Sch.ThunkOptions, Tuple{Nothing}})()
-      @ Dagger.Sch ./task.jl:395
+   [1] wait
+     @ ./task.jl:306 [inlined]
+   [2] fetch
+     @ ./task.jl:321 [inlined]
+   [3] execute!
+     @ ~/.julia/packages/Dagger/rDbfk/src/processor.jl:225
+   [4] do_task
+     @ ~/.julia/packages/Dagger/rDbfk/src/scheduler.jl:353
+   [5] #106
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Distributed/src/process_messages.jl:278
+   [6] run_work_thunk
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Distributed/src/process_messages.jl:63
+   [7] macro expansion
+     @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Distributed/src/process_messages.jl:278 [inlined]
+   [8] #105
+     @ ./task.jl:395
   
-      nested task error: MethodError: no method matching typesubtract(::Type{Union{}}, ::Type{Int64})
-      Closest candidates are:
-        typesubtract(::Any, ::Any, !Matched::Int64) at compiler/typeutils.jl:66
-      Stacktrace:
-        [1] ts(T::Type, S::Type)
-          @ CSV ~/.julia/packages/CSV/MKemC/src/utils.jl:214
-        [2] nonstandardtype(T::Type)
-          @ CSV ~/.julia/packages/CSV/MKemC/src/utils.jl:217
-        [3] (::CSV.var"#17#23")(T::Type)
-          @ CSV ./none:0
-        [4] iterate(::Base.Iterators.Filter{CSV.var"#17#23", Vector{Type}})
-          @ Base.Iterators ./iterators.jl:451
-        [5] iterate
-          @ ./generator.jl:44 [inlined]
-        [6] Header
-          @ ~/.julia/packages/CSV/MKemC/src/header.jl:232 [inlined]
-        [7] CSV.File(source::FilePathsBase.PosixPath; header::Int64, normalizenames::Bool, datarow::Int64, skipto::Nothing, footerskip::Int64, transpose::Bool, comment::Nothing, use_mmap::Nothing, ignoreemptylines::Bool, select::Nothing, drop::Nothing, missingstrings::Vector{String}, missingstring::String, delim::Nothing, ignorerepeated::Bool, quotechar::Char, openquotechar::Nothing, closequotechar::Nothing, escapechar::Char, dateformat::Nothing, dateformats::Nothing, decimal::UInt8, truestrings::Vector{String}, falsestrings::Vector{String}, type::Nothing, types::Nothing, typemap::Dict{Type, Type}, categorical::Nothing, pool::Float64, lazystrings::Bool, strict::Bool, silencewarnings::Bool, debug::Bool, parsingdebug::Bool, kw::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
-          @ CSV ~/.julia/packages/CSV/MKemC/src/file.jl:216
-        [8] CSV.File(source::FilePathsBase.PosixPath)
-          @ CSV ~/.julia/packages/CSV/MKemC/src/file.jl:216
-        [9] (::var"#55#58")(file::File)
-          @ Main ~/.julia/packages/FileTrees/ZfGJB/test/taxi.jl:62
-       [10] (::Dagger.var"#47#48"{var"#55#58", Tuple{File}})()
-          @ Dagger ./threadingconstructs.jl:169
+      nested task error: 
   Stacktrace:
     [1] compute_dag(ctx::Dagger.Context, d::Thunk; options::Nothing)
       @ Dagger.Sch ~/.julia/packages/Dagger/rDbfk/src/scheduler.jl:137
@@ -404,7 +360,8 @@ taxi          |    4      3      7
   metadata    |           1      1
 ERROR: LoadError: Some tests did not pass: 4 passed, 0 failed, 3 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/FileTrees/ZfGJB/test/runtests.jl:11
-ERROR: Package FileTrees errored during testing
+
+PkgEval failed: Package FileTrees errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -427,8 +384,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 161.79s (138.53s user, 23.21s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T04:23:22.644
+CPU usage: 197.71s (191.20s user, 6.98s kernel)
 
 Network usage:
-- eth0: 8.758 MiB received, 146.719 KiB sent
+- eth0: 8.686 MiB received, 133.541 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":32768,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":32768,"op":"Async","minor":0},{"major":259,"value":32768,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":32768,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":32768,"op":"Async","minor":2},{"major":253,"value":32768,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":292364288,"max_usage":1280282624,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":237236224,"inactive_file":8192,"inactive_anon":35450880,"total_pgfault":2193620,"total_cache":48545792,"total_rss_huge":0,"total_active_anon":250322944,"total_pgmajfault":0,"pgpgin":1255573,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":1185802,"hierarchical_memsw_limit":0,"cache":48545792,"active_file":0,"pgfault":2193620,"total_mapped_file":0,"total_pgpgout":1185802,"total_writeback":0,"rss":237236224,"unevictable":0,"total_inactive_anon":35450880,"total_pgpgin":1255573,"active_anon":250322944,"total_active_file":0},"limit":540972998656},"name":"/FileTrees-fcR1knzj","networks":{"eth0":{"rx_bytes":9108342,"rx_packets":1767,"tx_packets":1361,"tx_bytes":136746,"tx_dropped":0,"rx_dropped":7,"tx_errors":0,"rx_errors":0}},"id":"d523cfafa1529a4103ad193e1c0d9b79c4247746b94890a65ad284874b96cf1f","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101767778380000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":191200000000,"usage_in_kernelmode":6980000000,"total_usage":197706373341,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,197705497491,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,875850,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T04:23:23.575372436Z"}

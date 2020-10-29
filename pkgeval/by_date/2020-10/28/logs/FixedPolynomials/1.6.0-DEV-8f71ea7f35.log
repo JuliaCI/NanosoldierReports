@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T07:13:08.068
+# PkgEval set-up: 2020-10-29T05:47:37.113
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,21 +12,20 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T07:13:11.902
+# Installation: 2020-10-29T05:47:38.590
 #
 
    Resolving package versions...
    Installed FixedPolynomials ──────── v0.4.0
-   Installed Compat ────────────────── v3.23.0
    Installed OrderedCollections ────── v1.3.1
+   Installed Compat ────────────────── v3.23.0
    Installed MutableArithmetics ────── v0.2.10
-   Installed MultivariatePolynomials ─ v0.3.11
+   Installed MultivariatePolynomials ─ v0.3.12
    Installed DataStructures ────────── v0.18.8
 Updating `~/.julia/environments/v1.6/Project.toml`
   [3dd14ad9] + FixedPolynomials v0.4.0
@@ -34,7 +33,7 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [34da2185] + Compat v3.23.0
   [864edb3b] + DataStructures v0.18.8
   [3dd14ad9] + FixedPolynomials v0.4.0
-  [102ac46a] + MultivariatePolynomials v0.3.11
+  [102ac46a] + MultivariatePolynomials v0.3.12
   [d8a4904e] + MutableArithmetics v0.2.10
   [bac558e1] + OrderedCollections v1.3.1
   [0dad84c5] + ArgTools
@@ -68,35 +67,28 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mOrderedCollections[39m
-[32m  ✓ [39m[90mCompat[39m
-[32m  ✓ [39m[90mDataStructures[39m
-[32m  ✓ [39m[90mMutableArithmetics[39m
-[32m  ✓ [39m[90mMultivariatePolynomials[39m
-[32m  ✓ [39mFixedPolynomials
-6 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T07:13:54.988
+# Testing: 2020-10-29T05:47:41.345
 #
+
 
 ┌ Warning: using test/REQUIRE files is deprecated and current support is lacking in some areas
 └ @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1547
      Testing FixedPolynomials
-Status `/tmp/jl_8NBGy5/Project.toml`
+Status `/tmp/jl_FMndk2/Project.toml`
   [7c1d4256] DynamicPolynomials v0.3.14
   [3dd14ad9] FixedPolynomials v0.4.0
-  [102ac46a] MultivariatePolynomials v0.3.11
+  [102ac46a] MultivariatePolynomials v0.3.12
   [37e2e46d] LinearAlgebra
   [8dfed614] Test
-Status `/tmp/jl_8NBGy5/Manifest.toml`
+Status `/tmp/jl_FMndk2/Manifest.toml`
   [34da2185] Compat v3.23.0
   [864edb3b] DataStructures v0.18.8
   [7c1d4256] DynamicPolynomials v0.3.14
   [3dd14ad9] FixedPolynomials v0.4.0
-  [102ac46a] MultivariatePolynomials v0.3.11
+  [102ac46a] MultivariatePolynomials v0.3.12
   [d8a4904e] MutableArithmetics v0.2.10
   [bac558e1] OrderedCollections v1.3.1
   [189a3867] Reexport v0.2.0
@@ -228,7 +220,8 @@ poly          |   42     9     51
 ERROR: LoadError: LoadError: Some tests did not pass: 42 passed, 9 failed, 0 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/FixedPolynomials/finrc/test/poly_test.jl:1
 in expression starting at /home/pkgeval/.julia/packages/FixedPolynomials/finrc/test/runtests.jl:6
-ERROR: Package FixedPolynomials errored during testing
+
+PkgEval failed: Package FixedPolynomials errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -251,8 +244,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 48.91s (40.07s user, 8.39s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T05:48:43.484
+CPU usage: 47.28s (44.21s user, 3.15s kernel)
 
 Network usage:
-- eth0: 387.650 KiB received, 37.957 KiB sent
+- eth0: 373.827 KiB received, 33.421 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":24576,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":24576,"op":"Async","minor":0},{"major":259,"value":24576,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":24576,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":24576,"op":"Async","minor":2},{"major":253,"value":24576,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":213561344,"max_usage":742174720,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":203718656,"inactive_file":8192,"inactive_anon":1179648,"total_pgfault":858395,"total_cache":4579328,"total_rss_huge":0,"total_active_anon":207110144,"total_pgmajfault":0,"pgpgin":447035,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":396181,"hierarchical_memsw_limit":0,"cache":4579328,"active_file":0,"pgfault":858395,"total_mapped_file":0,"total_pgpgout":396181,"total_writeback":0,"rss":203718656,"unevictable":0,"total_inactive_anon":1179648,"total_pgpgin":447035,"active_anon":207110144,"total_active_file":0},"limit":540972998656},"name":"/FixedPolynomials-hMY5AyNJ","networks":{"eth0":{"rx_bytes":382799,"rx_packets":350,"tx_packets":247,"tx_bytes":34223,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"25343ed6271dd9ef4f4d3a7e35010c4048edbfb5b5ba636e5ff102cb99f7ebf4","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102419886690000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":44210000000,"usage_in_kernelmode":3150000000,"total_usage":47278666660,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,47278657200,9460,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:48:44.096116117Z"}

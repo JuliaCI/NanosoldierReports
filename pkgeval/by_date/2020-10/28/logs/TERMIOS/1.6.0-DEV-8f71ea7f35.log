@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T07:31:53.271
+# PkgEval set-up: 2020-10-29T05:03:32.932
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T07:32:26.916
+# Installation: 2020-10-29T05:03:34.378
 #
 
    Resolving package versions...
@@ -27,20 +26,18 @@ Updating `~/.julia/environments/v1.6/Project.toml`
   [10233e3b] + TERMIOS v0.2.1
 Updating `~/.julia/environments/v1.6/Manifest.toml`
   [10233e3b] + TERMIOS v0.2.1
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39mTERMIOS
-1 dependency successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T07:32:44.568
+# Testing: 2020-10-29T05:03:36.739
 #
 
+
      Testing TERMIOS
-Status `/tmp/jl_vmAyDW/Project.toml`
+Status `/tmp/jl_uCPA2W/Project.toml`
   [10233e3b] TERMIOS v0.2.1
   [8dfed614] Test
-Status `/tmp/jl_vmAyDW/Manifest.toml`
+Status `/tmp/jl_uCPA2W/Manifest.toml`
   [10233e3b] TERMIOS v0.2.1
   [2a0f44e3] Base64
   [b77e0a4c] InteractiveUtils
@@ -80,31 +77,31 @@ termios.jl stdout: Error During Test at /home/pkgeval/.julia/packages/TERMIOS/00
       @ Base ./client.jl:485
 termios.jl stdin: Error During Test at /home/pkgeval/.julia/packages/TERMIOS/00cfD/test/runtests.jl:54
   Got exception outside of a @test
-  MethodError: no method matching tcgetattr(::IOStream, ::TERMIOS.termios)
-  Closest candidates are:
-    tcgetattr(!Matched::RawFD, ::TERMIOS.termios) at /home/pkgeval/.julia/packages/TERMIOS/00cfD/src/TERMIOS.jl:608
-    tcgetattr(!Matched::Base.LibuvStream, ::Any) at /home/pkgeval/.julia/packages/TERMIOS/00cfD/src/TERMIOS.jl:612
-    tcgetattr(!Matched::Int64, ::Any) at /home/pkgeval/.julia/packages/TERMIOS/00cfD/src/TERMIOS.jl:613
+  TERMIOSError: tcgetattr failed: Inappropriate ioctl for device
   Stacktrace:
-    [1] macro expansion
-      @ ~/.julia/packages/TERMIOS/00cfD/test/runtests.jl:57 [inlined]
-    [2] macro expansion
-      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+    [1] tcgetattr(fd::RawFD, term::TERMIOS.termios)
+      @ TERMIOS ~/.julia/packages/TERMIOS/00cfD/src/TERMIOS.jl:610
+    [2] tcgetattr(s::Base.PipeEndpoint, term::TERMIOS.termios)
+      @ TERMIOS ~/.julia/packages/TERMIOS/00cfD/src/TERMIOS.jl:612
     [3] macro expansion
-      @ ~/.julia/packages/TERMIOS/00cfD/test/runtests.jl:56 [inlined]
+      @ ~/.julia/packages/TERMIOS/00cfD/test/runtests.jl:57 [inlined]
     [4] macro expansion
       @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
-    [5] top-level scope
-      @ ~/.julia/packages/TERMIOS/00cfD/test/runtests.jl:13
-    [6] include(fname::String)
-      @ Base.MainInclude ./client.jl:444
+    [5] macro expansion
+      @ ~/.julia/packages/TERMIOS/00cfD/test/runtests.jl:56 [inlined]
+    [6] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
     [7] top-level scope
+      @ ~/.julia/packages/TERMIOS/00cfD/test/runtests.jl:13
+    [8] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+    [9] top-level scope
       @ none:6
-    [8] eval(m::Module, e::Any)
+   [10] eval(m::Module, e::Any)
       @ Core ./boot.jl:360
-    [9] exec_options(opts::Base.JLOptions)
+   [11] exec_options(opts::Base.JLOptions)
       @ Base ./client.jl:261
-   [10] _start()
+   [12] _start()
       @ Base ./client.jl:485
 Test Summary:       | Error  Total
 All                 |     2      2
@@ -112,7 +109,8 @@ All                 |     2      2
   termios.jl stdin  |     1      1
 ERROR: LoadError: Some tests did not pass: 0 passed, 0 failed, 2 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/TERMIOS/00cfD/test/runtests.jl:12
-ERROR: Package TERMIOS errored during testing
+
+PkgEval failed: Package TERMIOS errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -135,8 +133,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 14.26s (11.37s user, 2.84s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T05:03:48.517
+CPU usage: 12.47s (11.48s user, 0.96s kernel)
 
 Network usage:
-- eth0: 23.452 KiB received, 4.682 KiB sent
+- eth0: 22.713 KiB received, 4.391 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":1,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":1,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":6,"op":"Total","minor":0},{"major":253,"value":1,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":1,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":6,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":4096,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":4096,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":24576,"op":"Total","minor":0},{"major":253,"value":4096,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":4096,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":24576,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":199041024,"max_usage":382562304,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":194629632,"inactive_file":12288,"inactive_anon":36864,"total_pgfault":283889,"total_cache":188416,"total_rss_huge":0,"total_active_anon":194711552,"total_pgmajfault":0,"pgpgin":124072,"rss_huge":0,"mapped_file":0,"total_inactive_file":12288,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":76509,"hierarchical_memsw_limit":0,"cache":188416,"active_file":4096,"pgfault":283889,"total_mapped_file":0,"total_pgpgout":76509,"total_writeback":0,"rss":194629632,"unevictable":0,"total_inactive_anon":36864,"total_pgpgin":124072,"active_anon":194711552,"total_active_file":4096},"limit":540972998656},"name":"/TERMIOS-oywvDuqz","networks":{"eth0":{"rx_bytes":23258,"rx_packets":73,"tx_packets":30,"tx_bytes":4496,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"d2404fdec7b3b9400d81f1f3fb3df3a92da302299cc59e8d9a24255005bcffc1","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102076980270000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":11480000000,"usage_in_kernelmode":960000000,"total_usage":12466469610,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,930,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12466468680,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:03:48.681619868Z"}

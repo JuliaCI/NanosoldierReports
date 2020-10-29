@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T09:15:30.464
+# PkgEval set-up: 2020-10-29T04:50:26.017
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,27 +12,26 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T09:15:33.455
+# Installation: 2020-10-29T04:50:27.481
 #
 
    Resolving package versions...
-   Installed DataAPI ──────────── v1.3.0
    Installed Missings ─────────── v0.4.4
-   Installed Compat ───────────── v3.23.0
    Installed MappedArrays ─────── v0.3.0
+   Installed DataAPI ──────────── v1.3.0
+   Installed Compat ───────────── v3.23.0
    Installed OrderedCollections ─ v1.3.1
+   Installed StatsBase ────────── v0.33.2
    Installed MLLabelUtils ─────── v0.5.3
    Installed DataStructures ───── v0.18.8
-   Installed StatsBase ────────── v0.33.2
+   Installed FixedPointNumbers ── v0.8.4
    Installed SortingAlgorithms ── v0.3.1
    Installed LearnBase ────────── v0.3.0
-   Installed FixedPointNumbers ── v0.8.4
 Updating `~/.julia/environments/v1.6/Project.toml`
   [66a33bbf] + MLLabelUtils v0.5.3
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -78,33 +77,21 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mDataAPI[39m
-[32m  ✓ [39m[90mOrderedCollections[39m
-[32m  ✓ [39m[90mCompat[39m
-[32m  ✓ [39m[90mMissings[39m
-[32m  ✓ [39m[90mFixedPointNumbers[39m
-[32m  ✓ [39m[90mMappedArrays[39m
-[32m  ✓ [39m[90mDataStructures[39m
-[32m  ✓ [39m[90mSortingAlgorithms[39m
-[32m  ✓ [39m[90mStatsBase[39m
-[32m  ✓ [39m[90mLearnBase[39m
-[32m  ✓ [39mMLLabelUtils
-11 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T09:15:51.771
+# Testing: 2020-10-29T04:50:30.556
 #
 
+
      Testing MLLabelUtils
-Status `/tmp/jl_6F41CW/Project.toml`
+Status `/tmp/jl_jTzSp5/Project.toml`
   [7f8f8fb0] LearnBase v0.3.0
   [66a33bbf] MLLabelUtils v0.5.3
   [dbb5928d] MappedArrays v0.3.0
   [2913bbd2] StatsBase v0.33.2
   [8dfed614] Test
-Status `/tmp/jl_6F41CW/Manifest.toml`
+Status `/tmp/jl_jTzSp5/Manifest.toml`
   [34da2185] Compat v3.23.0
   [9a962f9c] DataAPI v1.3.0
   [864edb3b] DataStructures v0.18.8
@@ -222,7 +209,8 @@ tst_labelencoding.jl | 1473      1   1474
   islabelenc OneOfK  |   60            60
 ERROR: LoadError: Some tests did not pass: 1473 passed, 0 failed, 1 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/MLLabelUtils/4i59Y/test/runtests.jl:17
-ERROR: Package MLLabelUtils errored during testing
+
+PkgEval failed: Package MLLabelUtils errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -245,8 +233,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 77.69s (70.11s user, 7.72s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T04:51:47.359
+CPU usage: 81.21s (78.85s user, 2.50s kernel)
 
 Network usage:
-- eth0: 528.559 KiB received, 45.383 KiB sent
+- eth0: 532.639 KiB received, 46.573 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":28672,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":28672,"op":"Async","minor":0},{"major":259,"value":28672,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":28672,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":28672,"op":"Async","minor":2},{"major":253,"value":28672,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":205422592,"max_usage":785711104,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":194633728,"inactive_file":8192,"inactive_anon":1617920,"total_pgfault":885771,"total_cache":5111808,"total_rss_huge":0,"total_active_anon":197898240,"total_pgmajfault":0,"pgpgin":507446,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":458680,"hierarchical_memsw_limit":0,"cache":5111808,"active_file":221184,"pgfault":885771,"total_mapped_file":0,"total_pgpgout":458680,"total_writeback":0,"rss":194633728,"unevictable":0,"total_inactive_anon":1617920,"total_pgpgin":507446,"active_anon":197898240,"total_active_file":221184},"limit":540972998656},"name":"/MLLabelUtils-AfGheIAb","networks":{"eth0":{"rx_bytes":545422,"rx_packets":409,"tx_packets":354,"tx_bytes":47691,"tx_dropped":0,"rx_dropped":3,"tx_errors":0,"rx_errors":0}},"id":"25ea5ea85cd64b5c8e123be26bab9e1016fe86ce1d245e688aafc72b5f72807f","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101985338570000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":78850000000,"usage_in_kernelmode":2500000000,"total_usage":81207638155,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,81207638155,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T04:51:47.935515661Z"}

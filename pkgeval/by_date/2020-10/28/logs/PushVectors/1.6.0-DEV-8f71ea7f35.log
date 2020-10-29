@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:30:15.168
+# PkgEval set-up: 2020-10-29T03:40:06.766
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:30:17.963
+# Installation: 2020-10-29T03:40:08.296
 #
 
    Resolving package versions...
@@ -27,21 +26,19 @@ Updating `~/.julia/environments/v1.6/Project.toml`
   [36b54c61] + PushVectors v0.2.1
 Updating `~/.julia/environments/v1.6/Manifest.toml`
   [36b54c61] + PushVectors v0.2.1
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39mPushVectors
-1 dependency successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T08:30:22.862
+# Testing: 2020-10-29T03:40:09.917
 #
 
+
      Testing PushVectors
-Status `/tmp/jl_5Vapp0/Project.toml`
+Status `/tmp/jl_dFBbM4/Project.toml`
   [6e4b80f9] BenchmarkTools v0.5.0
   [36b54c61] PushVectors v0.2.1
   [8dfed614] Test
-Status `/tmp/jl_5Vapp0/Manifest.toml`
+Status `/tmp/jl_dFBbM4/Manifest.toml`
   [6e4b80f9] BenchmarkTools v0.5.0
   [682c06a0] JSON v0.21.1
   [69de0a69] Parsers v1.0.11
@@ -69,12 +66,12 @@ implementation sanity checks |   20     20
 Test Summary: | Pass  Total
 append!       | 2000   2000
 ┌ Info: benchmarks
-│   T_PushVector = 7.8089e-5
-│   T_Vector = 6.8259e-5
-└   push!_ratio = 1.14
+│   T_PushVector = 9.4179e-5
+│   T_Vector = 8.0229e-5
+└   push!_ratio = 1.17
 relative benchmarking: Test Failed at /home/pkgeval/.julia/packages/PushVectors/NPYKe/test/runtests.jl:97
   Expression: T_PushVector ≤ T_Vector
-   Evaluated: 7.8089e-5 ≤ 6.8259e-5
+   Evaluated: 9.4179e-5 ≤ 8.0229e-5
 Stacktrace:
  [1] macro expansion
    @ ~/.julia/packages/PushVectors/NPYKe/test/runtests.jl:97 [inlined]
@@ -83,14 +80,15 @@ Stacktrace:
  [3] top-level scope
    @ ~/.julia/packages/PushVectors/NPYKe/test/runtests.jl:72
 ┌ Info: benchmarks
-│   A_PushVector = 6.9049e-5
-│   A_Vector = 6.6479e-5
-└   append!_ratio = 1.04
+│   A_PushVector = 9.1019e-5
+│   A_Vector = 8.1339e-5
+└   append!_ratio = 1.12
 Test Summary:         | Fail  Total
 relative benchmarking |    1      1
 ERROR: LoadError: Some tests did not pass: 0 passed, 1 failed, 0 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/PushVectors/NPYKe/test/runtests.jl:71
-ERROR: Package PushVectors errored during testing
+
+PkgEval failed: Package PushVectors errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -113,8 +111,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 54.98s (41.97s user, 12.93s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T03:41:02.203
+CPU usage: 55.07s (46.54s user, 8.66s kernel)
 
 Network usage:
-- eth0: 160.510 KiB received, 11.977 KiB sent
+- eth0: 160.043 KiB received, 11.871 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":206811136,"max_usage":717754368,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":198504448,"inactive_file":8192,"inactive_anon":774144,"total_pgfault":3766164,"total_cache":3424256,"total_rss_huge":0,"total_active_anon":201121792,"total_pgmajfault":0,"pgpgin":3426092,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":3376793,"hierarchical_memsw_limit":0,"cache":3424256,"active_file":24576,"pgfault":3766164,"total_mapped_file":0,"total_pgpgout":3376793,"total_writeback":0,"rss":198504448,"unevictable":0,"total_inactive_anon":774144,"total_pgpgin":3426092,"active_anon":201121792,"total_active_file":24576},"limit":540972998656},"name":"/PushVectors-LTbc8tVd","networks":{"eth0":{"rx_bytes":163884,"rx_packets":170,"tx_packets":83,"tx_bytes":12156,"tx_dropped":0,"rx_dropped":2,"tx_errors":0,"rx_errors":0}},"id":"14ce33ae37577d0da826948c750a6be603a3b6fe6c2c3d56336253470ff4390b","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101443828740000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":46540000000,"usage_in_kernelmode":8660000000,"total_usage":55065932633,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,55065932633,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T03:41:03.152417794Z"}

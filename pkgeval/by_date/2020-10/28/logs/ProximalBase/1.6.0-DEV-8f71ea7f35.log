@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:31:12.508
+# PkgEval set-up: 2020-10-29T04:39:50.446
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:31:14.491
+# Installation: 2020-10-29T04:39:51.874
 #
 
    Resolving package versions...
@@ -32,17 +31,15 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [9a3f8284] + Random
   [9e88b42a] + Serialization
   [2f01184e] + SparseArrays
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39mProximalBase
-1 dependency successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T08:31:20.886
+# Testing: 2020-10-29T04:39:53.919
 #
 
+
      Testing ProximalBase
-Status `/tmp/jl_tLxSm5/Project.toml`
+Status `/tmp/jl_YofUb3/Project.toml`
   [31c24e10] Distributions v0.23.12
   [b6b21f68] Ipopt v0.6.3
   [4076af6c] JuMP v0.21.5
@@ -52,7 +49,7 @@ Status `/tmp/jl_tLxSm5/Project.toml`
   [2f01184e] SparseArrays
   [10745b16] Statistics
   [8dfed614] Test
-Status `/tmp/jl_tLxSm5/Manifest.toml`
+Status `/tmp/jl_YofUb3/Manifest.toml`
   [6e4b80f9] BenchmarkTools v0.5.0
   [b99e7846] BinaryProvider v0.5.10
   [49dc2e85] Calculus v0.5.1
@@ -89,7 +86,7 @@ Status `/tmp/jl_tLxSm5/Manifest.toml`
   [79098fc4] Rmath v0.6.1
   [a2af1166] SortingAlgorithms v0.3.1
   [276daf66] SpecialFunctions v0.10.3
-  [90137ffa] StaticArrays v0.12.4
+  [90137ffa] StaticArrays v0.12.5
   [2913bbd2] StatsBase v0.33.2
   [4c63d2b9] StatsFuns v0.9.5
   [3bb67fe8] TranscodingStreams v0.9.5
@@ -143,7 +140,7 @@ Test Summary: | Pass  Total
 shrink        |    7      7
 Test Summary: | Pass  Total
 multiply      |  803    803
-done (took 24.038269142 seconds).
+done (took 15.007868746 seconds).
 * running sparseIterate.jl ...
 show: Test Failed at /home/pkgeval/.julia/packages/ProximalBase/8Bmae/test/sparseIterate.jl:46
   Expression: String(take!(io)) == "3-element ProximalBase.SparseIterate{Float64,1} with 0 stored entries"
@@ -239,7 +236,8 @@ sparseIterate       |   29     6     35
 ERROR: LoadError: LoadError: Some tests did not pass: 29 passed, 6 failed, 0 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/ProximalBase/8Bmae/test/sparseIterate.jl:1
 in expression starting at /home/pkgeval/.julia/packages/ProximalBase/8Bmae/test/runtests.jl:10
-ERROR: Package ProximalBase errored during testing
+
+PkgEval failed: Package ProximalBase errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -262,8 +260,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 34.79s (27.79s user, 6.83s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T04:40:24.061
+CPU usage: 33.58s (32.03s user, 1.61s kernel)
 
 Network usage:
-- eth0: 3.903 MiB received, 137.407 KiB sent
+- eth0: 3.907 MiB received, 137.722 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":9,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":9,"op":"Async","minor":0},{"major":259,"value":9,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":9,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":9,"op":"Async","minor":2},{"major":253,"value":9,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":57344,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":57344,"op":"Async","minor":0},{"major":259,"value":57344,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":57344,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":57344,"op":"Async","minor":2},{"major":253,"value":57344,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":258592768,"max_usage":477085696,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":228950016,"inactive_file":8192,"inactive_anon":20672512,"total_pgfault":418707,"total_cache":21282816,"total_rss_huge":0,"total_active_anon":229347328,"total_pgmajfault":0,"pgpgin":199259,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":20480,"total_unevictable":0,"total_dirty":20480,"writeback":0,"pgpgout":138167,"hierarchical_memsw_limit":0,"cache":21282816,"active_file":192512,"pgfault":418707,"total_mapped_file":0,"total_pgpgout":138167,"total_writeback":0,"rss":228950016,"unevictable":0,"total_inactive_anon":20672512,"total_pgpgin":199259,"active_anon":229347328,"total_active_file":192512},"limit":540972998656},"name":"/ProximalBase-bVd1IzgB","networks":{"eth0":{"rx_bytes":4096486,"rx_packets":1226,"tx_packets":1015,"tx_bytes":141027,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"d8cafca2ee5d8147dfa97375b7401b118b77c013f132df72db7978eaf6198b54","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101898040530000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":32030000000,"usage_in_kernelmode":1610000000,"total_usage":33575069394,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33575069394,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T04:40:24.0639996Z"}

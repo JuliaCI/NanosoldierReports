@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T09:25:39.075
+# PkgEval set-up: 2020-10-29T06:08:41.924
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,19 +12,18 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T09:25:42.887
+# Installation: 2020-10-29T06:08:43.420
 #
 
    Resolving package versions...
    Installed MKL_jll ───────── v2020.2.254+0
-   Installed MKL ───────────── v0.3.0
    Installed IntelOpenMP_jll ─ v2018.0.3+0
+   Installed MKL ───────────── v0.3.0
    Installed PackageCompiler ─ v1.2.3
 Updating `~/.julia/environments/v1.6/Project.toml`
   [33e6dc65] + MKL v0.3.0
@@ -57,7 +56,8 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
     Building MKL → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/e01175ff53c062c52b6cbe441a4382e132f7c82e/build.log`
-ERROR: Error building `MKL`: 
+
+PkgEval failed: Error building `MKL`: 
 [ Info: Splicing in code to load MKL in /opt/julia/bin/../share/julia/base/sysimg.jl
 ERROR: LoadError: SystemError: opening file "/opt/julia/bin/../share/julia/base/sysimg.jl": Read-only file system
 Stacktrace:
@@ -134,8 +134,26 @@ Stacktrace:
  [20] add(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [21] top-level scope
-    @ none:35
-CPU usage: 14.42s (11.40s user, 2.88s kernel)
+    @ none:39
+ [22] eval
+    @ ./boot.jl:360 [inlined]
+ [23] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [24] top-level scope
+    @ none:1
+ [25] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [26] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [27] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T06:08:55.541
+CPU usage: 13.55s (12.24s user, 1.33s kernel)
 
 Network usage:
-- eth0: 192.731 KiB received, 17.448 KiB sent
+- eth0: 192.874 KiB received, 17.571 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":3,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":3,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":8,"op":"Total","minor":0},{"major":253,"value":3,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":3,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":8,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":12288,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":12288,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":32768,"op":"Total","minor":0},{"major":253,"value":12288,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":12288,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":32768,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":194711552,"max_usage":579530752,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":189177856,"inactive_file":12288,"inactive_anon":393216,"total_pgfault":336566,"total_cache":974848,"total_rss_huge":0,"total_active_anon":189693952,"total_pgmajfault":0,"pgpgin":203065,"rss_huge":0,"mapped_file":0,"total_inactive_file":12288,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":156641,"hierarchical_memsw_limit":0,"cache":974848,"active_file":8192,"pgfault":336566,"total_mapped_file":0,"total_pgpgout":156641,"total_writeback":0,"rss":189177856,"unevictable":0,"total_inactive_anon":393216,"total_pgpgin":203065,"active_anon":189693952,"total_active_file":8192},"limit":540972998656},"name":"/MKL-Fqzld0CV","networks":{"eth0":{"rx_bytes":197503,"rx_packets":137,"tx_packets":118,"tx_bytes":17993,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"30f6e7f619ba3020c2028752d78948fec12ef0360b8f780ca0bff0203f78ee08","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102574423200000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":12240000000,"usage_in_kernelmode":1330000000,"total_usage":13554341471,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13554341471,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T06:08:55.543647039Z"}

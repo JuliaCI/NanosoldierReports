@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:51:28.778
+# PkgEval set-up: 2020-10-29T05:11:09.553
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,22 +12,21 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:51:31.831
+# Installation: 2020-10-29T05:11:10.990
 #
 
    Resolving package versions...
    Installed Compat ───────────── v3.23.0
-   Installed DataStructures ───── v0.18.8
-   Installed SimJulia ─────────── v0.8.0
+   Installed OrderedCollections ─ v1.3.1
    Installed ResumableFunctions ─ v0.5.1
    Installed MacroTools ───────── v0.5.6
-   Installed OrderedCollections ─ v1.3.1
+   Installed SimJulia ─────────── v0.8.0
+   Installed DataStructures ───── v0.18.8
 Updating `~/.julia/environments/v1.6/Project.toml`
   [428bdadb] + SimJulia v0.8.0
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -68,28 +67,21 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mOrderedCollections[39m
-[32m  ✓ [39m[90mCompat[39m
-[32m  ✓ [39m[90mDataStructures[39m
-[32m  ✓ [39m[90mMacroTools[39m
-[91m  ✗ [39m[90mResumableFunctions[39m
-[91m  ✗ [39mSimJulia
-4 dependencies successfully precompiled, 2 errored
 
 
 ################################################################################
-# Testing: 2020-10-28T08:52:13.206
+# Testing: 2020-10-29T05:11:13.715
 #
 
+
      Testing SimJulia
-Status `/tmp/jl_p78NS0/Project.toml`
+Status `/tmp/jl_hTROQ2/Project.toml`
   [864edb3b] DataStructures v0.18.8
   [c5292f4c] ResumableFunctions v0.5.1
   [428bdadb] SimJulia v0.8.0
   [ade2ca70] Dates
   [8dfed614] Test
-Status `/tmp/jl_p78NS0/Manifest.toml`
+Status `/tmp/jl_hTROQ2/Manifest.toml`
   [34da2185] Compat v3.23.0
   [864edb3b] DataStructures v0.18.8
   [1914dd2f] MacroTools v0.5.6
@@ -154,7 +146,7 @@ Stacktrace:
     @ none:1
 in expression starting at /home/pkgeval/.julia/packages/ResumableFunctions/bdcq7/src/utils.jl:80
 in expression starting at /home/pkgeval/.julia/packages/ResumableFunctions/bdcq7/src/ResumableFunctions.jl:1
-ERROR: LoadError: Failed to precompile ResumableFunctions [c5292f4c-5179-55e1-98c5-05642aab7184] to /home/pkgeval/.julia/compiled/v1.6/ResumableFunctions/jl_dVuJpl.
+ERROR: LoadError: Failed to precompile ResumableFunctions [c5292f4c-5179-55e1-98c5-05642aab7184] to /home/pkgeval/.julia/compiled/v1.6/ResumableFunctions/jl_ZGvl8h.
 Stacktrace:
   [1] error(s::String)
     @ Base ./error.jl:33
@@ -181,7 +173,7 @@ Stacktrace:
  [12] top-level scope
     @ none:1
 in expression starting at /home/pkgeval/.julia/packages/SimJulia/alkAr/src/SimJulia.jl:1
-ERROR: LoadError: LoadError: Failed to precompile SimJulia [428bdadb-6287-5aa5-874b-9969638295fd] to /home/pkgeval/.julia/compiled/v1.6/SimJulia/jl_CzUAwB.
+ERROR: LoadError: LoadError: Failed to precompile SimJulia [428bdadb-6287-5aa5-874b-9969638295fd] to /home/pkgeval/.julia/compiled/v1.6/SimJulia/jl_W15o8a.
 Stacktrace:
   [1] error(s::String)
     @ Base ./error.jl:33
@@ -205,7 +197,8 @@ Stacktrace:
     @ none:6
 in expression starting at /home/pkgeval/.julia/packages/SimJulia/alkAr/test/base.jl:1
 in expression starting at /home/pkgeval/.julia/packages/SimJulia/alkAr/test/runtests.jl:3
-ERROR: Package SimJulia errored during testing
+
+PkgEval failed: Package SimJulia errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -228,8 +221,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 33.12s (26.48s user, 6.70s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T05:11:29.577
+CPU usage: 19.49s (17.72s user, 1.78s kernel)
 
 Network usage:
-- eth0: 309.783 KiB received, 28.345 KiB sent
+- eth0: 310.319 KiB received, 26.788 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":3,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":3,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":8,"op":"Total","minor":0},{"major":253,"value":3,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":3,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":8,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":12288,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":12288,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":32768,"op":"Total","minor":0},{"major":253,"value":12288,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":12288,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":32768,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":208683008,"max_usage":681971712,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":200028160,"inactive_file":8192,"inactive_anon":1105920,"total_pgfault":499641,"total_cache":3096576,"total_rss_huge":0,"total_active_anon":201990144,"total_pgmajfault":0,"pgpgin":317371,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":267780,"hierarchical_memsw_limit":0,"cache":3096576,"active_file":16384,"pgfault":499641,"total_mapped_file":0,"total_pgpgout":267780,"total_writeback":0,"rss":200028160,"unevictable":0,"total_inactive_anon":1105920,"total_pgpgin":317371,"active_anon":201990144,"total_active_file":16384},"limit":540972998656},"name":"/SimJulia-G1CxGO55","networks":{"eth0":{"rx_bytes":317767,"rx_packets":231,"tx_packets":185,"tx_bytes":27431,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"026a198c77db2a2f9e9374d7d264866e6e5083cf9161cb048fad02511ae1bc41","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102135523410000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":17720000000,"usage_in_kernelmode":1780000000,"total_usage":19488433097,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,19488433097,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:11:30.191460445Z"}

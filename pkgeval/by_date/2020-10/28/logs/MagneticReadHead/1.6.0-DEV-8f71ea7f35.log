@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:05:31.838
+# PkgEval set-up: 2020-10-29T05:46:22.708
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,22 +12,21 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:05:36.226
+# Installation: 2020-10-29T05:46:24.256
 #
 
    Resolving package versions...
-   Installed LoweredCodeUtils ─── v0.4.9
    Installed CodeTracking ─────── v0.5.12
+   Installed LoweredCodeUtils ─── v0.4.9
    Installed OrderedCollections ─ v1.3.1
    Installed MacroTools ───────── v0.5.6
-   Installed Cassette ─────────── v0.2.6
    Installed JuliaInterpreter ─── v0.7.26
+   Installed Cassette ─────────── v0.2.6
    Installed MagneticReadHead ─── v0.3.0
    Installed Revise ───────────── v2.7.6
 Updating `~/.julia/environments/v1.6/Project.toml`
@@ -66,24 +65,15 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mOrderedCollections[39m
-[32m  ✓ [39m[90mCassette[39m
-[32m  ✓ [39m[90mCodeTracking[39m
-[32m  ✓ [39m[90mMacroTools[39m
-[32m  ✓ [39m[90mJuliaInterpreter[39m
-[32m  ✓ [39m[90mLoweredCodeUtils[39m
-[32m  ✓ [39m[90mRevise[39m
-[91m  ✗ [39mMagneticReadHead
-7 dependencies successfully precompiled, 1 errored
 
 
 ################################################################################
-# Testing: 2020-10-28T08:06:52.757
+# Testing: 2020-10-29T05:46:27.303
 #
 
+
      Testing MagneticReadHead
-Status `/tmp/jl_StXzr0/Project.toml`
+Status `/tmp/jl_gtGWd0/Project.toml`
   [7057c7e9] Cassette v0.2.6
   [da1fd8a2] CodeTracking v0.5.12
   [1914dd2f] MacroTools v0.5.6
@@ -92,7 +82,7 @@ Status `/tmp/jl_StXzr0/Project.toml`
   [295af30f] Revise v2.7.6
   [b77e0a4c] InteractiveUtils
   [8dfed614] Test
-Status `/tmp/jl_StXzr0/Manifest.toml`
+Status `/tmp/jl_gtGWd0/Manifest.toml`
   [7057c7e9] Cassette v0.2.6
   [da1fd8a2] CodeTracking v0.5.12
   [aa1ae85d] JuliaInterpreter v0.7.26
@@ -141,10 +131,10 @@ Stacktrace:
     @ Revise ~/.julia/packages/Revise/qxX5H/src/Revise.jl:1334
   [4] _include_from_serialized(path::String, depmods::Vector{Any})
     @ Base ./loading.jl:662
-  [5] _require_search_from_serialized(pkg::Base.PkgId, sourcepath::String)
-    @ Base ./loading.jl:748
+  [5] _require_from_serialized(path::String)
+    @ Base ./loading.jl:715
   [6] _require(pkg::Base.PkgId)
-    @ Base ./loading.jl:986
+    @ Base ./loading.jl:1019
   [7] require(uuidkey::Base.PkgId)
     @ Base ./loading.jl:902
   [8] require(into::Module, mod::Symbol)
@@ -155,7 +145,8 @@ Stacktrace:
     @ none:6
 during initialization of module Revise
 in expression starting at /home/pkgeval/.julia/packages/MagneticReadHead/Y7dxs/test/runtests.jl:1
-ERROR: Package MagneticReadHead errored during testing
+
+PkgEval failed: Package MagneticReadHead errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -178,8 +169,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 51.63s (41.27s user, 10.42s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T05:47:04.215
+CPU usage: 40.44s (37.31s user, 3.22s kernel)
 
 Network usage:
-- eth0: 1.835 MiB received, 44.718 KiB sent
+- eth0: 1.843 MiB received, 48.046 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":2,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":2,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":7,"op":"Total","minor":0},{"major":253,"value":2,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":2,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":7,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":8192,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":8192,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":28672,"op":"Total","minor":0},{"major":253,"value":8192,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":8192,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":28672,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":216522752,"max_usage":627777536,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":203096064,"inactive_file":8192,"inactive_anon":3579904,"total_pgfault":714555,"total_cache":8167424,"total_rss_huge":0,"total_active_anon":207667200,"total_pgmajfault":0,"pgpgin":369118,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":317540,"hierarchical_memsw_limit":0,"cache":8167424,"active_file":8192,"pgfault":714555,"total_mapped_file":0,"total_pgpgout":317540,"total_writeback":0,"rss":203096064,"unevictable":0,"total_inactive_anon":3579904,"total_pgpgin":369118,"active_anon":207667200,"total_active_file":8192},"limit":540972998656},"name":"/MagneticReadHead-8FezQ05m","networks":{"eth0":{"rx_bytes":1932426,"rx_packets":592,"tx_packets":441,"tx_bytes":49199,"tx_dropped":0,"rx_dropped":2,"tx_errors":0,"rx_errors":0}},"id":"af0322637eecb215a0ac6fc509e2c772f851c3c6650ae994e30c503094750242","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102407237470000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":37310000000,"usage_in_kernelmode":3220000000,"total_usage":40442478933,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40442478933,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:47:04.829415132Z"}

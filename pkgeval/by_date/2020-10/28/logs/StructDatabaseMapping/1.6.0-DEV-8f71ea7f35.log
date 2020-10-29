@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T07:17:41.656
+# PkgEval set-up: 2020-10-29T05:52:43.288
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T07:17:45.760
+# Installation: 2020-10-29T05:52:44.754
 #
 
    Resolving package versions...
@@ -43,26 +42,20 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [9e88b42a] + Serialization
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mDBInterface[39m
-[32m  ✓ [39m[90mRequires[39m
-[32m  ✓ [39m[90mParsers[39m
-[32m  ✓ [39m[90mJSON[39m
-[32m  ✓ [39mStructDatabaseMapping
-5 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T07:18:05.475
+# Testing: 2020-10-29T05:52:47.395
 #
 
+
      Testing StructDatabaseMapping
-Status `/tmp/jl_sCpbuY/Project.toml`
+Status `/tmp/jl_ann9O1/Project.toml`
   [66daddfc] StructDatabaseMapping v0.3.3
   [ade2ca70] Dates
   [44cfe95a] Pkg
   [8dfed614] Test
-Status `/tmp/jl_sCpbuY/Manifest.toml`
+Status `/tmp/jl_ann9O1/Manifest.toml`
   [a10d1c49] DBInterface v2.2.0
   [682c06a0] JSON v0.21.1
   [69de0a69] Parsers v1.0.11
@@ -102,11 +95,11 @@ Mapper        | No tests
 [?25l    Fetching: [>                                        ]  0.0 %[2K[?25h    Updating git-repo `https://github.com/JuliaDatabases/Redis.jl.git`
 [?25l    Fetching: [>                                        ]  0.0 %[2K[?25h   Resolving package versions...
    Installed Compat ───────────── v3.23.0
-   Installed OrderedCollections ─ v1.3.1
    Installed DataStructures ───── v0.18.8
-Updating `/tmp/jl_sCpbuY/Project.toml`
+   Installed OrderedCollections ─ v1.3.1
+Updating `/tmp/jl_ann9O1/Project.toml`
   [0cf705f9] + Redis v1.0.0 `https://github.com/JuliaDatabases/Redis.jl.git#master`
-Updating `/tmp/jl_sCpbuY/Manifest.toml`
+Updating `/tmp/jl_ann9O1/Manifest.toml`
   [34da2185] + Compat v3.23.0
   [864edb3b] + DataStructures v0.18.8
   [bac558e1] + OrderedCollections v1.3.1
@@ -117,12 +110,6 @@ Updating `/tmp/jl_sCpbuY/Manifest.toml`
   [1a1011a3] + SharedArrays
   [2f01184e] + SparseArrays
   [10745b16] + Statistics
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mOrderedCollections[39m
-[32m  ✓ [39m[90mCompat[39m
-[32m  ✓ [39m[90mDataStructures[39m
-[32m  ✓ [39mRedis
-4 dependencies successfully precompiled (5 already precompiled)
 Redis: Error During Test at /home/pkgeval/.julia/packages/StructDatabaseMapping/XTzHJ/test/runtests.jl:17
   Got exception outside of a @test
   Redis.ConnectionException("Failed to connect to Redis server")
@@ -260,7 +247,8 @@ Test Summary: | Error  Total
 Redis         |     1      1
 ERROR: LoadError: Some tests did not pass: 0 passed, 0 failed, 1 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/StructDatabaseMapping/XTzHJ/test/runtests.jl:17
-ERROR: Package StructDatabaseMapping errored during testing
+
+PkgEval failed: Package StructDatabaseMapping errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -283,8 +271,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 43.62s (36.07s user, 7.48s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T05:53:27.108
+CPU usage: 42.65s (39.68s user, 3.10s kernel)
 
 Network usage:
-- eth0: 582.425 KiB received, 48.862 KiB sent
+- eth0: 581.803 KiB received, 49.003 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":2,"op":"Read","minor":0},{"major":259,"value":7,"op":"Write","minor":0},{"major":259,"value":2,"op":"Sync","minor":0},{"major":259,"value":7,"op":"Async","minor":0},{"major":259,"value":9,"op":"Total","minor":0},{"major":253,"value":2,"op":"Read","minor":2},{"major":253,"value":7,"op":"Write","minor":2},{"major":253,"value":2,"op":"Sync","minor":2},{"major":253,"value":7,"op":"Async","minor":2},{"major":253,"value":9,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":8192,"op":"Read","minor":0},{"major":259,"value":32768,"op":"Write","minor":0},{"major":259,"value":8192,"op":"Sync","minor":0},{"major":259,"value":32768,"op":"Async","minor":0},{"major":259,"value":40960,"op":"Total","minor":0},{"major":253,"value":8192,"op":"Read","minor":2},{"major":253,"value":32768,"op":"Write","minor":2},{"major":253,"value":8192,"op":"Sync","minor":2},{"major":253,"value":32768,"op":"Async","minor":2},{"major":253,"value":40960,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":212160512,"max_usage":754917376,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":200048640,"inactive_file":8192,"inactive_anon":1650688,"total_pgfault":822061,"total_cache":6647808,"total_rss_huge":0,"total_active_anon":205029376,"total_pgmajfault":0,"pgpgin":462844,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":412381,"hierarchical_memsw_limit":0,"cache":6647808,"active_file":8192,"pgfault":822061,"total_mapped_file":0,"total_pgpgout":412381,"total_writeback":0,"rss":200048640,"unevictable":0,"total_inactive_anon":1650688,"total_pgpgin":462844,"active_anon":205029376,"total_active_file":8192},"limit":540972998656},"name":"/StructDatabaseMapping-bLz3Du0P","networks":{"eth0":{"rx_bytes":595766,"rx_packets":497,"tx_packets":367,"tx_bytes":50179,"tx_dropped":0,"rx_dropped":2,"tx_errors":0,"rx_errors":0}},"id":"9d8cac9e99f497e7d72b3feb4ce3629a6600eb5f6813e6ad38713eec61c5351d","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102456033040000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":39680000000,"usage_in_kernelmode":3100000000,"total_usage":42645672196,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,42645672196,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:53:27.5728208Z"}

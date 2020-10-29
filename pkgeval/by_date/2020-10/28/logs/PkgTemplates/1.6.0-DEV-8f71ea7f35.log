@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T07:12:52.274
+# PkgEval set-up: 2020-10-29T04:07:59.501
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,23 +12,22 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T07:12:53.434
+# Installation: 2020-10-29T04:08:00.991
 #
 
    Resolving package versions...
-   Installed Parameters ────────────────── v0.12.1
    Installed DataAPI ───────────────────── v1.3.0
    Installed Mustache ──────────────────── v1.0.8
    Installed TableTraits ───────────────── v1.0.0
-   Installed OrderedCollections ────────── v1.3.1
-   Installed Tables ────────────────────── v1.1.0
    Installed DataValueInterfaces ───────── v1.0.0
+   Installed OrderedCollections ────────── v1.3.1
+   Installed Parameters ────────────────── v0.12.1
+   Installed Tables ────────────────────── v1.1.0
    Installed PkgTemplates ──────────────── v0.7.11
    Installed IteratorInterfaceExtensions ─ v1.0.0
    Installed UnPack ────────────────────── v1.0.2
@@ -70,26 +69,15 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mIteratorInterfaceExtensions[39m
-[32m  ✓ [39m[90mDataValueInterfaces[39m
-[32m  ✓ [39m[90mDataAPI[39m
-[32m  ✓ [39m[90mUnPack[39m
-[32m  ✓ [39m[90mOrderedCollections[39m
-[32m  ✓ [39m[90mTableTraits[39m
-[32m  ✓ [39m[90mParameters[39m
-[32m  ✓ [39m[90mTables[39m
-[32m  ✓ [39m[90mMustache[39m
-[32m  ✓ [39mPkgTemplates
-10 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T07:13:02.249
+# Testing: 2020-10-29T04:08:04.061
 #
 
+
      Testing PkgTemplates
-Status `/tmp/jl_sW1lXY/Project.toml`
+Status `/tmp/jl_bjobt5/Project.toml`
   [ab62b9b5] DeepDiffs v1.2.0
   [ffc61752] Mustache v1.0.8
   [d96e819e] Parameters v0.12.1
@@ -104,7 +92,7 @@ Status `/tmp/jl_sW1lXY/Project.toml`
   [9a3f8284] Random
   [8dfed614] Test
   [cf7118a7] UUIDs
-Status `/tmp/jl_sW1lXY/Manifest.toml`
+Status `/tmp/jl_bjobt5/Manifest.toml`
   [7057c7e9] Cassette v0.3.3
   [9a962f9c] DataAPI v1.3.0
   [e2d170a0] DataValueInterfaces v1.0.0
@@ -145,7 +133,7 @@ Status `/tmp/jl_sW1lXY/Manifest.toml`
   [deac9b47] LibCURL_jll
   [14a3606d] MozillaCACerts_jll
      Testing Running tests...
-  Activating new environment at `/tmp/jl_tLnyFZ/Project.toml`
+  Activating new environment at `/tmp/jl_odX41j/Project.toml`
 [ Info: Running template tests
 Internal error: encountered unexpected error in runtime:
 BoundsError(a=svec(), i=1)
@@ -505,8 +493,9 @@ repl_entrypoint at /workspace/srcdir/src/jlapi.c:672
 main at /workspace/srcdir/cli/loader_exe.c:46
 __libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
 unknown function (ip: 0x400bae)
-Allocations: 7437229 (Pool: 7434229; Big: 3000); GC: 10
-ERROR: Package PkgTemplates errored during testing (received signal: 11)
+Allocations: 7437220 (Pool: 7434215; Big: 3005); GC: 9
+
+PkgEval failed: Package PkgTemplates errored during testing (received signal: 11)
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -529,8 +518,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 28.99s (23.28s user, 5.64s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T04:08:30.310
+CPU usage: 30.56s (27.52s user, 3.10s kernel)
 
 Network usage:
-- eth0: 880.595 KiB received, 51.031 KiB sent
+- eth0: 877.285 KiB received, 52.130 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":24576,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":24576,"op":"Async","minor":0},{"major":259,"value":24576,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":24576,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":24576,"op":"Async","minor":2},{"major":253,"value":24576,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":504664064,"max_usage":856309760,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":208809984,"inactive_file":8192,"inactive_anon":287498240,"total_pgfault":768380,"total_cache":289431552,"total_rss_huge":0,"total_active_anon":210731008,"total_pgmajfault":0,"pgpgin":598854,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":477213,"hierarchical_memsw_limit":0,"cache":289431552,"active_file":0,"pgfault":768380,"total_mapped_file":0,"total_pgpgout":477213,"total_writeback":0,"rss":208809984,"unevictable":0,"total_inactive_anon":287498240,"total_pgpgin":598854,"active_anon":210731008,"total_active_file":0},"limit":540972998656},"name":"/PkgTemplates-tBttPpG4","networks":{"eth0":{"rx_bytes":898340,"rx_packets":384,"tx_packets":367,"tx_bytes":53381,"tx_dropped":0,"rx_dropped":0,"tx_errors":0,"rx_errors":0}},"id":"db4a58bbd63bc313d94c566b140f191e36bcfc8a982b1790537f252142a7c8e2","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101653991760000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":27520000000,"usage_in_kernelmode":3100000000,"total_usage":30561366531,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30561365131,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1400,0,0,0]}},"read":"2020-10-29T04:08:31.057037843Z"}

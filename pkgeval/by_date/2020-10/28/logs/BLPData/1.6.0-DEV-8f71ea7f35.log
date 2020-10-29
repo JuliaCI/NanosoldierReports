@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:28:17.516
+# PkgEval set-up: 2020-10-29T05:27:02.403
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:28:19.864
+# Installation: 2020-10-29T05:27:03.840
 #
 
    Resolving package versions...
@@ -50,17 +49,15 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39mBLPData
-1 dependency successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T08:28:27.214
+# Testing: 2020-10-29T05:27:05.842
 #
 
+
      Testing BLPData
-Status `/tmp/jl_a1XbqY/Project.toml`
+Status `/tmp/jl_yBCP32/Project.toml`
   [eb622722] BLPData v0.4.2
   [a93c6f00] DataFrames v0.21.8
   [ade2ca70] Dates
@@ -68,7 +65,7 @@ Status `/tmp/jl_a1XbqY/Project.toml`
   [44cfe95a] Pkg
   [de0858da] Printf
   [8dfed614] Test
-Status `/tmp/jl_a1XbqY/Manifest.toml`
+Status `/tmp/jl_yBCP32/Manifest.toml`
   [eb622722] BLPData v0.4.2
   [324d7699] CategoricalArrays v0.8.3
   [34da2185] Compat v3.23.0
@@ -139,10 +136,10 @@ Status `/tmp/jl_a1XbqY/Manifest.toml`
 │        @ BLPData ~/.julia/packages/BLPData/karhx/src/BLPData.jl:30
 │      [7] _include_from_serialized(path::String, depmods::Vector{Any})
 │        @ Base ./loading.jl:662
-│      [8] _require_search_from_serialized(pkg::Base.PkgId, sourcepath::String)
-│        @ Base ./loading.jl:748
+│      [8] _require_from_serialized(path::String)
+│        @ Base ./loading.jl:715
 │      [9] _require(pkg::Base.PkgId)
-│        @ Base ./loading.jl:986
+│        @ Base ./loading.jl:1019
 │     [10] require(uuidkey::Base.PkgId)
 │        @ Base ./loading.jl:902
 │     [11] require(into::Module, mod::Symbol)
@@ -185,7 +182,8 @@ Test Summary: | Error  Total
 Error Codes   |     1      1
 ERROR: LoadError: Some tests did not pass: 0 passed, 0 failed, 1 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/BLPData/karhx/test/runtests.jl:10
-ERROR: Package BLPData errored during testing
+
+PkgEval failed: Package BLPData errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -208,8 +206,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 52.93s (42.66s user, 10.31s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T05:27:52.669
+CPU usage: 49.83s (46.40s user, 3.52s kernel)
 
 Network usage:
-- eth0: 879.661 KiB received, 50.905 KiB sent
+- eth0: 875.288 KiB received, 49.390 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":2,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":2,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":7,"op":"Total","minor":0},{"major":253,"value":2,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":2,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":7,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":8192,"op":"Read","minor":0},{"major":259,"value":24576,"op":"Write","minor":0},{"major":259,"value":8192,"op":"Sync","minor":0},{"major":259,"value":24576,"op":"Async","minor":0},{"major":259,"value":32768,"op":"Total","minor":0},{"major":253,"value":8192,"op":"Read","minor":2},{"major":253,"value":24576,"op":"Write","minor":2},{"major":253,"value":8192,"op":"Sync","minor":2},{"major":253,"value":24576,"op":"Async","minor":2},{"major":253,"value":32768,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":227672064,"max_usage":882851840,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":210370560,"inactive_file":8192,"inactive_anon":3235840,"total_pgfault":1201416,"total_cache":11272192,"total_rss_huge":0,"total_active_anon":218390528,"total_pgmajfault":0,"pgpgin":742575,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":688463,"hierarchical_memsw_limit":0,"cache":11272192,"active_file":8192,"pgfault":1201416,"total_mapped_file":0,"total_pgpgout":688463,"total_writeback":0,"rss":210370560,"unevictable":0,"total_inactive_anon":3235840,"total_pgpgin":742575,"active_anon":218390528,"total_active_file":8192},"limit":540972998656},"name":"/BLPData-EZWlrFHY","networks":{"eth0":{"rx_bytes":896295,"rx_packets":422,"tx_packets":346,"tx_bytes":50575,"tx_dropped":0,"rx_dropped":2,"tx_errors":0,"rx_errors":0}},"id":"6d4de7982c95a6594209714367e9d85eb2228eaf0d800a7cdc6ffadc871e6cd7","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102260225840000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":46400000000,"usage_in_kernelmode":3520000000,"total_usage":49832419519,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,227890,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,49832191629,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:27:53.047761299Z"}
