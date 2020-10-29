@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:41:51.634
+# PkgEval set-up: 2020-10-29T05:30:02.092
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,21 +12,20 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:41:55.498
+# Installation: 2020-10-29T05:30:03.620
 #
 
    Resolving package versions...
    Installed ReplMaker ──────── v0.2.3
-   Installed AbstractLattices ─ v0.2.1
-   Installed ReduceLinAlg ───── v0.1.0
-   Installed SyntaxTree ─────── v1.0.1
    Installed AbstractTensors ── v0.6.3
+   Installed AbstractLattices ─ v0.2.1
+   Installed SyntaxTree ─────── v1.0.1
+   Installed ReduceLinAlg ───── v0.1.0
    Installed ForceImport ────── v0.0.3
    Installed Reduce ─────────── v1.2.9
 Updating `~/.julia/environments/v1.6/Project.toml`
@@ -52,28 +51,20 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [8dfed614] + Test
   [4ec0a83e] + Unicode
     Building Reduce → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/86278d0eab64c426848402f6b0d552d864e0cbf1/build.log`
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mForceImport[39m
-[32m  ✓ [39m[90mAbstractLattices[39m
-[32m  ✓ [39m[90mSyntaxTree[39m
-[32m  ✓ [39m[90mReplMaker[39m
-[32m  ✓ [39m[90mAbstractTensors[39m
-[32m  ✓ [39m[90mReduce[39m
-[91m  ✗ [39mReduceLinAlg
-6 dependencies successfully precompiled, 1 errored
 
 
 ################################################################################
-# Testing: 2020-10-28T08:43:28.157
+# Testing: 2020-10-29T05:30:10.790
 #
 
+
      Testing ReduceLinAlg
-Status `/tmp/jl_FzxIlX/Project.toml`
+Status `/tmp/jl_HoOLU1/Project.toml`
   [93e0c654] Reduce v1.2.9
   [bfcbc1eb] ReduceLinAlg v0.1.0
   [37e2e46d] LinearAlgebra
   [8dfed614] Test
-Status `/tmp/jl_FzxIlX/Manifest.toml`
+Status `/tmp/jl_HoOLU1/Manifest.toml`
   [398f06c4] AbstractLattices v0.2.1
   [a8e43f4a] AbstractTensors v0.6.3
   [9dda63f9] ForceImport v0.0.3
@@ -95,37 +86,32 @@ Status `/tmp/jl_FzxIlX/Manifest.toml`
   [4ec0a83e] Unicode
      Testing Running tests...
 /home/pkgeval/.julia/packages/Reduce/1n3pM/deps/usr/lib/reduce/cslbuild/csl/reduce: error while loading shared libraries: libXft.so.2: cannot open shared object file: No such file or directory
-ERROR: LoadError: InitError: IOError: write: broken pipe (EPIPE)
+ERROR: LoadError: InitError: BoundsError: attempt to access 1-element Vector{SubString{String}} at index [-2]
 Stacktrace:
-  [1] uv_write(s::Base.PipeEndpoint, p::Ptr{UInt8}, n::UInt64)
-    @ Base ./stream.jl:1010
-  [2] unsafe_write(s::Base.PipeEndpoint, p::Ptr{UInt8}, n::UInt64)
-    @ Base ./stream.jl:1064
-  [3] unsafe_write
-    @ ./io.jl:361 [inlined]
-  [4] write(io::Pipe, s::String)
-    @ Base ./strings/io.jl:185
-  [5] Load()
-    @ Reduce ~/.julia/packages/Reduce/1n3pM/src/Reduce.jl:333
-  [6] __init__()
+  [1] getindex(A::Vector{SubString{String}}, i1::Int64)
+    @ Base ./array.jl:787
+  [2] Load()
+    @ Reduce ~/.julia/packages/Reduce/1n3pM/src/Reduce.jl:342
+  [3] __init__()
     @ Reduce ~/.julia/packages/Reduce/1n3pM/src/Reduce.jl:322
-  [7] _include_from_serialized(path::String, depmods::Vector{Any})
+  [4] _include_from_serialized(path::String, depmods::Vector{Any})
     @ Base ./loading.jl:662
-  [8] _require_search_from_serialized(pkg::Base.PkgId, sourcepath::String)
-    @ Base ./loading.jl:748
-  [9] _require(pkg::Base.PkgId)
-    @ Base ./loading.jl:986
- [10] require(uuidkey::Base.PkgId)
+  [5] _require_from_serialized(path::String)
+    @ Base ./loading.jl:715
+  [6] _require(pkg::Base.PkgId)
+    @ Base ./loading.jl:1019
+  [7] require(uuidkey::Base.PkgId)
     @ Base ./loading.jl:902
- [11] require(into::Module, mod::Symbol)
+  [8] require(into::Module, mod::Symbol)
     @ Base ./loading.jl:889
- [12] include(fname::String)
+  [9] include(fname::String)
     @ Base.MainInclude ./client.jl:444
- [13] top-level scope
+ [10] top-level scope
     @ none:6
 during initialization of module Reduce
 in expression starting at /home/pkgeval/.julia/packages/ReduceLinAlg/cPkDZ/test/runtests.jl:1
-ERROR: Package ReduceLinAlg errored during testing
+
+PkgEval failed: Package ReduceLinAlg errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -148,8 +134,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 82.70s (72.53s user, 10.79s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T05:31:08.473
+CPU usage: 64.54s (61.48s user, 3.12s kernel)
 
 Network usage:
-- eth0: 17.764 MiB received, 246.534 KiB sent
+- eth0: 17.761 MiB received, 295.031 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":19,"op":"Read","minor":0},{"major":259,"value":9,"op":"Write","minor":0},{"major":259,"value":19,"op":"Sync","minor":0},{"major":259,"value":9,"op":"Async","minor":0},{"major":259,"value":28,"op":"Total","minor":0},{"major":253,"value":19,"op":"Read","minor":2},{"major":253,"value":9,"op":"Write","minor":2},{"major":253,"value":19,"op":"Sync","minor":2},{"major":253,"value":9,"op":"Async","minor":2},{"major":253,"value":28,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":118784,"op":"Read","minor":0},{"major":259,"value":36864,"op":"Write","minor":0},{"major":259,"value":118784,"op":"Sync","minor":0},{"major":259,"value":36864,"op":"Async","minor":0},{"major":259,"value":155648,"op":"Total","minor":0},{"major":253,"value":118784,"op":"Read","minor":2},{"major":253,"value":36864,"op":"Write","minor":2},{"major":253,"value":118784,"op":"Sync","minor":2},{"major":253,"value":36864,"op":"Async","minor":2},{"major":253,"value":155648,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":259555328,"max_usage":751669248,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":1,"total_rss":223920128,"inactive_file":53248,"inactive_anon":17805312,"total_pgfault":744148,"total_cache":30400512,"total_rss_huge":0,"total_active_anon":236335104,"total_pgmajfault":1,"pgpgin":396690,"rss_huge":0,"mapped_file":0,"total_inactive_file":53248,"dirty":4096,"total_unevictable":0,"total_dirty":4096,"writeback":0,"pgpgout":334600,"hierarchical_memsw_limit":0,"cache":30400512,"active_file":126976,"pgfault":744148,"total_mapped_file":0,"total_pgpgout":334600,"total_writeback":0,"rss":223920128,"unevictable":0,"total_inactive_anon":17805312,"total_pgpgin":396690,"active_anon":236335104,"total_active_file":126976},"limit":540972998656},"name":"/ReduceLinAlg-THiRgLHP","networks":{"eth0":{"rx_bytes":18623281,"rx_packets":12377,"tx_packets":4267,"tx_bytes":302112,"tx_dropped":0,"rx_dropped":2,"tx_errors":0,"rx_errors":0}},"id":"ca5e4188a0f1c9622e92ac5354720a183a903cbd9195dd24633fe25baf9cb784","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102285264310000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":61480000000,"usage_in_kernelmode":3120000000,"total_usage":64538278878,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,64538278878,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:31:09.168986103Z"}

@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:31:14.107
+# PkgEval set-up: 2020-10-29T04:24:06.564
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:31:16.344
+# Installation: 2020-10-29T04:24:08.046
 #
 
    Resolving package versions...
@@ -35,25 +34,22 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [9e88b42a] + Serialization
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mRequires[39m
-[32m  ✓ [39mQuadmath
-2 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T08:31:29.319
+# Testing: 2020-10-29T04:24:10.230
 #
 
+
      Testing Quadmath
-Status `/tmp/jl_qlmPd0/Project.toml`
+Status `/tmp/jl_pWCOHW/Project.toml`
   [be4d8f0f] Quadmath v0.5.4
   [ae029012] Requires v1.1.0
   [276daf66] SpecialFunctions v0.10.3
   [de0858da] Printf
   [9a3f8284] Random
   [8dfed614] Test
-Status `/tmp/jl_qlmPd0/Manifest.toml`
+Status `/tmp/jl_pWCOHW/Manifest.toml`
   [692b3bcd] JLLWrappers v1.1.3
   [be4d8f0f] Quadmath v0.5.4
   [ae029012] Requires v1.1.0
@@ -85,6 +81,8 @@ Status `/tmp/jl_qlmPd0/Manifest.toml`
   [deac9b47] LibCURL_jll
   [14a3606d] MozillaCACerts_jll
      Testing Running tests...
+WARNING: could not import Printf.ini_hex into Quadmath
+WARNING: could not import Printf.ini_HEX into Quadmath
 Test Summary: | Pass  Total
 fp decomp     |    3      3
 Test Summary: | Pass  Total
@@ -133,7 +131,8 @@ printf        |   29     1     30
 ERROR: LoadError: LoadError: Some tests did not pass: 29 passed, 1 failed, 0 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/Quadmath/p3Xt7/test/printf.jl:3
 in expression starting at /home/pkgeval/.julia/packages/Quadmath/p3Xt7/test/runtests.jl:233
-ERROR: Package Quadmath errored during testing
+
+PkgEval failed: Package Quadmath errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -156,8 +155,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 39.36s (32.34s user, 6.90s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T04:24:43.847
+CPU usage: 37.20s (34.92s user, 2.32s kernel)
 
 Network usage:
-- eth0: 301.553 KiB received, 18.955 KiB sent
+- eth0: 300.445 KiB received, 19.102 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":210669568,"max_usage":821104640,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":203313152,"inactive_file":8192,"inactive_anon":1011712,"total_pgfault":673253,"total_cache":2334720,"total_rss_huge":0,"total_active_anon":204627968,"total_pgmajfault":0,"pgpgin":350659,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":300452,"hierarchical_memsw_limit":0,"cache":2334720,"active_file":0,"pgfault":673253,"total_mapped_file":0,"total_pgpgout":300452,"total_writeback":0,"rss":203313152,"unevictable":0,"total_inactive_anon":1011712,"total_pgpgin":350659,"active_anon":204627968,"total_active_file":0},"limit":540972998656},"name":"/Quadmath-G3y2DJX1","networks":{"eth0":{"rx_bytes":307656,"rx_packets":182,"tx_packets":135,"tx_bytes":19560,"tx_dropped":0,"rx_dropped":2,"tx_errors":0,"rx_errors":0}},"id":"45760b8e5123a96701fed29c957a0b6b5a8352e180eee9f782abeb7085d82eb6","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101778118390000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":34920000000,"usage_in_kernelmode":2320000000,"total_usage":37204136323,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21820,37204114503,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T04:24:44.526347967Z"}

@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:05:14.346
+# PkgEval set-up: 2020-10-29T05:12:04.427
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:05:20.406
+# Installation: 2020-10-29T05:12:05.943
 #
 
    Resolving package versions...
@@ -27,20 +26,18 @@ Updating `~/.julia/environments/v1.6/Project.toml`
   [76eceee3] + WorkerUtilities v1.0.0
 Updating `~/.julia/environments/v1.6/Manifest.toml`
   [76eceee3] + WorkerUtilities v1.0.0
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39mWorkerUtilities
-1 dependency successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T08:05:26.368
+# Testing: 2020-10-29T05:12:08.147
 #
 
+
      Testing WorkerUtilities
-Status `/tmp/jl_bjTrrX/Project.toml`
+Status `/tmp/jl_elApC1/Project.toml`
   [76eceee3] WorkerUtilities v1.0.0
   [8dfed614] Test
-Status `/tmp/jl_bjTrrX/Manifest.toml`
+Status `/tmp/jl_elApC1/Manifest.toml`
   [76eceee3] WorkerUtilities v1.0.0
   [2a0f44e3] Base64
   [b77e0a4c] InteractiveUtils
@@ -50,16 +47,101 @@ Status `/tmp/jl_bjTrrX/Manifest.toml`
   [9e88b42a] Serialization
   [8dfed614] Test
      Testing Running tests...
-Test Summary:   | Pass  Total
-WorkerUtilities |   10     10
-     Testing WorkerUtilities tests passed 
+WorkerUtilities.@spawn: Error During Test at /home/pkgeval/.julia/packages/WorkerUtilities/P6s29/test/runtests.jl:5
+  Got exception outside of a @test
+  TaskFailedException
+  Stacktrace:
+    [1] wait
+      @ ./task.jl:306 [inlined]
+    [2] threading_run(func::Function)
+      @ Base.Threads ./threadingconstructs.jl:34
+    [3] macro expansion
+      @ ./threadingconstructs.jl:93 [inlined]
+    [4] init(nworkers::Int64)
+      @ WorkerUtilities ~/.julia/packages/WorkerUtilities/P6s29/src/WorkerUtilities.jl:61
+    [5] init()
+      @ WorkerUtilities ~/.julia/packages/WorkerUtilities/P6s29/src/WorkerUtilities.jl:58
+    [6] macro expansion
+      @ ~/.julia/packages/WorkerUtilities/P6s29/test/runtests.jl:7 [inlined]
+    [7] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+    [8] macro expansion
+      @ ~/.julia/packages/WorkerUtilities/P6s29/test/runtests.jl:7 [inlined]
+    [9] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [10] top-level scope
+      @ ~/.julia/packages/WorkerUtilities/P6s29/test/runtests.jl:5
+   [11] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [12] top-level scope
+      @ none:6
+   [13] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [14] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [15] _start()
+      @ Base ./client.jl:485
+  
+      nested task error: BoundsError: attempt to access 0-element Vector{Task} at index [1]
+      Stacktrace:
+       [1] setindex!
+         @ ./array.jl:825 [inlined]
+       [2] macro expansion
+         @ ~/.julia/packages/WorkerUtilities/P6s29/src/WorkerUtilities.jl:63 [inlined]
+       [3] (::WorkerUtilities.var"#2#threadsfor_fun#2"{UnitRange{Int64}, UnitRange{Int64}})(onethread::Bool)
+         @ WorkerUtilities ./threadingconstructs.jl:81
+       [4] (::WorkerUtilities.var"#2#threadsfor_fun#2"{UnitRange{Int64}, UnitRange{Int64}})()
+         @ WorkerUtilities ./threadingconstructs.jl:48
+Test Summary:            | Pass  Error  Total
+WorkerUtilities          |    8      1      9
+  WorkerUtilities.@spawn |           1      1
+  Lockable               |    8             8
+ERROR: LoadError: Some tests did not pass: 8 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/WorkerUtilities/P6s29/test/runtests.jl:3
+
+PkgEval failed: Package WorkerUtilities errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
 
 
 ################################################################################
-# Teardown: 2020-10-28T08:05:37.263
-#
-
-CPU usage: 9.76s (7.78s user, 1.95s kernel)
+# PkgEval teardown: 2020-10-29T05:12:18.334
+CPU usage: 13.46s (12.50s user, 0.96s kernel)
 
 Network usage:
-- eth0: 15.724 KiB received, 4.277 KiB sent
+- eth0: 16.312 KiB received, 4.254 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":1,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":1,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":6,"op":"Total","minor":0},{"major":253,"value":1,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":1,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":6,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":4096,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":4096,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":24576,"op":"Total","minor":0},{"major":253,"value":4096,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":4096,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":24576,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":198893568,"max_usage":373334016,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":194830336,"inactive_file":12288,"inactive_anon":16384,"total_pgfault":295168,"total_cache":94208,"total_rss_huge":0,"total_active_anon":194875392,"total_pgmajfault":0,"pgpgin":133163,"rss_huge":0,"mapped_file":0,"total_inactive_file":12288,"dirty":8192,"total_unevictable":0,"total_dirty":8192,"writeback":0,"pgpgout":85574,"hierarchical_memsw_limit":0,"cache":94208,"active_file":20480,"pgfault":295168,"total_mapped_file":0,"total_pgpgout":85574,"total_writeback":0,"rss":194830336,"unevictable":0,"total_inactive_anon":16384,"total_pgpgin":133163,"active_anon":194875392,"total_active_file":20480},"limit":540972998656},"name":"/WorkerUtilities-a0yyVFVq","networks":{"eth0":{"rx_bytes":16703,"rx_packets":60,"tx_packets":28,"tx_bytes":4356,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"6efa4fe9849250d7b5c7391df20141fb364a8fb05470d8f50cb4e4e4fa35871f","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102141663400000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":12500000000,"usage_in_kernelmode":960000000,"total_usage":13463749545,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13463749545,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:12:18.606411956Z"}

@@ -1,0 +1,667 @@
+################################################################################
+# PkgEval set-up: 2020-10-29T04:10:52.914
+#
+
+Julia Version 1.6.0-DEV.1363
+Commit f727f4ba82 (2020-10-28 23:50 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-29T04:10:54.518
+#
+
+   Resolving package versions...
+   Installed HierarchicalUtils ── v1.2.0
+   Installed Compat ───────────── v3.23.0
+   Installed OrderedCollections ─ v1.3.1
+   Installed DataStructures ───── v0.18.8
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [f9ccea15] + HierarchicalUtils v1.2.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [34da2185] + Compat v3.23.0
+  [864edb3b] + DataStructures v0.18.8
+  [f9ccea15] + HierarchicalUtils v1.2.0
+  [bac558e1] + OrderedCollections v1.3.1
+  [0dad84c5] + ArgTools
+  [56f22d72] + Artifacts
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [8bb1440f] + DelimitedFiles
+  [8ba89e20] + Distributed
+  [f43a241f] + Downloads
+  [b77e0a4c] + InteractiveUtils
+  [b27032c2] + LibCURL
+  [76f85450] + LibGit2
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [a63ad114] + Mmap
+  [44cfe95a] + Pkg
+  [de0858da] + Printf
+  [3fa0cd96] + REPL
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [1a1011a3] + SharedArrays
+  [6462fe0b] + Sockets
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [fa267f1f] + TOML
+  [8dfed614] + Test
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+  [deac9b47] + LibCURL_jll
+  [14a3606d] + MozillaCACerts_jll
+
+
+################################################################################
+# Testing: 2020-10-29T04:10:57.295
+#
+
+
+     Testing HierarchicalUtils
+Status `/tmp/jl_1gNxh4/Project.toml`
+  [861a8166] Combinatorics v1.0.2
+  [f9ccea15] HierarchicalUtils v1.2.0
+  [9a3f8284] Random
+  [8dfed614] Test
+Status `/tmp/jl_1gNxh4/Manifest.toml`
+  [861a8166] Combinatorics v1.0.2
+  [34da2185] Compat v3.23.0
+  [864edb3b] DataStructures v0.18.8
+  [f9ccea15] HierarchicalUtils v1.2.0
+  [bac558e1] OrderedCollections v1.3.1
+  [0dad84c5] ArgTools
+  [56f22d72] Artifacts
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8bb1440f] DelimitedFiles
+  [8ba89e20] Distributed
+  [f43a241f] Downloads
+  [b77e0a4c] InteractiveUtils
+  [b27032c2] LibCURL
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [1a1011a3] SharedArrays
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [fa267f1f] TOML
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+  [deac9b47] LibCURL_jll
+  [14a3606d] MozillaCACerts_jll
+     Testing Running tests...
+Test Summary: | Pass  Total
+Utilities     |  445    445
+Test Summary:     | Pass  Total
+Simple statistics |  239    239
+Test Summary: |
+Traversals    | No tests
+printtree labelled children sorted: Test Failed at /home/pkgeval/.julia/packages/HierarchicalUtils/OL8Qc/test/printing.jl:36
+  Expression: all([t1, t2, t3]) do t
+    buf = IOBuffer()
+    printtree(buf, t)
+    String(take!(buf)) === "Dict of\n  ├── a: Leaf (1)\n  ├── b: Leaf (2)\n  └── c: Leaf (3)"
+end
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/HierarchicalUtils/OL8Qc/test/printing.jl:36 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] top-level scope
+   @ ~/.julia/packages/HierarchicalUtils/OL8Qc/test/printing.jl:33
+printtree traversal encoding: Test Failed at /home/pkgeval/.julia/packages/HierarchicalUtils/OL8Qc/test/printing.jl:52
+  Expression: String(take!(buf)) === "BinaryVertex (1)\n  ├── BinaryVertex (2)\n  │     ├── Leaf (4)\n  │     └── Leaf (5)\n  └── BinaryVertex (3)\n        ├── Leaf (6)\n        └── Leaf (7)"
+   Evaluated: "typename(BinaryVertex) (1)\n  ├── typename(BinaryVertex) (2)\n  │     ├── typename(Leaf) (4)\n  │     └── typename(Leaf) (5)\n  └── typename(BinaryVertex) (3)\n        ├── typename(Leaf) (6)\n        └── typename(Leaf) (7)" === "BinaryVertex (1)\n  ├── BinaryVertex (2)\n  │     ├── Leaf (4)\n  │     └── Leaf (5)\n  └── BinaryVertex (3)\n        ├── Leaf (6)\n        └── Leaf (7)"
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/HierarchicalUtils/OL8Qc/test/printing.jl:52 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] top-level scope
+   @ ~/.julia/packages/HierarchicalUtils/OL8Qc/test/printing.jl:49
+printtree traversal encoding: Test Failed at /home/pkgeval/.julia/packages/HierarchicalUtils/OL8Qc/test/printing.jl:63
+  Expression: String(take!(buf)) === "BinaryVertex (1) [\"\"]\n  ├── BinaryVertex (2) [\"E\"]\n  │     ├── Leaf (4) [\"I\"]\n  │     └── Leaf (5) [\"M\"]\n  └── BinaryVertex (3) [\"U\"]\n        ├── Leaf (6) [\"Y\"]\n        └── Leaf (7) [\"c\"]"
+   Evaluated: "typename(BinaryVertex) (1) [\"\"]\n  ├── typename(BinaryVertex) (2) [\"E\"]\n  │     ├── typename(Leaf) (4) [\"I\"]\n  │     └── typename(Leaf) (5) [\"M\"]\n  └── typename(BinaryVertex) (3) [\"U\"]\n        ├── typename(Leaf) (6) [\"Y\"]\n        └── typename(Leaf) (7) [\"c\"]" === "BinaryVertex (1) [\"\"]\n  ├── BinaryVertex (2) [\"E\"]\n  │     ├── Leaf (4) [\"I\"]\n  │     └── Leaf (5) [\"M\"]\n  └── BinaryVertex (3) [\"U\"]\n        ├── Leaf (6) [\"Y\"]\n        └── Leaf (7) [\"c\"]"
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/HierarchicalUtils/OL8Qc/test/printing.jl:63 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] top-level scope
+   @ ~/.julia/packages/HierarchicalUtils/OL8Qc/test/printing.jl:49
+Test Summary:                                        | Pass  Fail  Total
+Printing                                             |  460     3    463
+  printtree length                                   |    1            1
+  printtree length                                   |    1            1
+  printtree length                                   |    1            1
+  printtree length                                   |    1            1
+  printtree length                                   |    1            1
+  printtree length                                   |    1            1
+  printtree length                                   |    1            1
+  printtree length                                   |    1            1
+  printtree length                                   |    1            1
+  printtree length                                   |    1            1
+  printtree length                                   |    1            1
+  printtree length                                   |    1            1
+  printtree length                                   |    1            1
+  printtree length                                   |    1            1
+  printtree length                                   |    1            1
+  printtree length                                   |    1            1
+  printtree length                                   |    1            1
+  printtree horizontal truncation for infinite trees |    2            2
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree vertical truncation for many children    |    1            1
+  printtree labelled children sorted                 |          1      1
+  printtree traversal encoding                       |          2      2
+ERROR: LoadError: Some tests did not pass: 460 passed, 3 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/HierarchicalUtils/OL8Qc/test/runtests.jl:170
+
+PkgEval failed: Package HierarchicalUtils errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T04:13:34.066
+CPU usage: 156.76s (154.60s user, 2.70s kernel)
+
+Network usage:
+- eth0: 285.933 KiB received, 21.058 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":204595200,"max_usage":625168384,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":196722688,"inactive_file":8192,"inactive_anon":1044480,"total_pgfault":796466,"total_cache":3031040,"total_rss_huge":0,"total_active_anon":198696960,"total_pgmajfault":0,"pgpgin":331683,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":282915,"hierarchical_memsw_limit":0,"cache":3031040,"active_file":4096,"pgfault":796466,"total_mapped_file":0,"total_pgpgout":282915,"total_writeback":0,"rss":196722688,"unevictable":0,"total_inactive_anon":1044480,"total_pgpgin":331683,"active_anon":198696960,"total_active_file":4096},"limit":540972998656},"name":"/HierarchicalUtils-9eOIYKBK","networks":{"eth0":{"rx_bytes":292795,"rx_packets":397,"tx_packets":154,"tx_bytes":21563,"tx_dropped":0,"rx_dropped":5,"tx_errors":0,"rx_errors":0}},"id":"48aa80eb616c1cdf3a926388c52d141bf2e56a4366ecd1e20d2e5a15ed757a85","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101692638740000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":154600000000,"usage_in_kernelmode":2700000000,"total_usage":156760335783,"percpu_usage":[0,0,0,0,0,0,0,156760335783,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T04:13:34.428980056Z"}

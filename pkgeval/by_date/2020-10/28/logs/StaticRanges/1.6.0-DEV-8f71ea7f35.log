@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T07:45:56.353
+# PkgEval set-up: 2020-10-29T04:43:13.640
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,22 +12,21 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T07:45:59.689
+# Installation: 2020-10-29T04:43:15.363
 #
 
    Resolving package versions...
-   Installed EllipsisNotation ─ v0.4.0
    Installed Reexport ───────── v0.2.0
    Installed IntervalSets ───── v0.5.1
+   Installed EllipsisNotation ─ v0.4.0
    Installed ChainedFixes ───── v0.2.1
-   Installed ArrayInterface ─── v2.13.7
    Installed Requires ───────── v1.1.0
+   Installed ArrayInterface ─── v2.13.7
    Installed StaticRanges ───── v0.8.3
 Updating `~/.julia/environments/v1.6/Project.toml`
   [d8176aec] + StaticRanges v0.8.3
@@ -65,49 +64,42 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mReexport[39m
-[32m  ✓ [39m[90mEllipsisNotation[39m
-[32m  ✓ [39m[90mChainedFixes[39m
-[32m  ✓ [39m[90mRequires[39m
-[32m  ✓ [39m[90mIntervalSets[39m
-[32m  ✓ [39m[90mArrayInterface[39m
-[32m  ✓ [39mStaticRanges
-7 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T07:46:15.065
+# Testing: 2020-10-29T04:43:18.226
 #
 
+
      Testing StaticRanges
-Status `/tmp/jl_PjDiF2/Project.toml`
+Status `/tmp/jl_MIDlS5/Project.toml`
   [4fba245c] ArrayInterface v2.13.7
   [9706b775] ChainedFixes v0.2.1
-  [e30172f5] Documenter v0.25.2
+  [e30172f5] Documenter v0.25.3
   [8197267c] IntervalSets v0.5.1
   [6fe1bfb0] OffsetArrays v1.3.1
   [189a3867] Reexport v0.2.0
   [ae029012] Requires v1.1.0
-  [90137ffa] StaticArrays v0.12.4
+  [90137ffa] StaticArrays v0.12.5
   [d8176aec] StaticRanges v0.8.3
   [ade2ca70] Dates
   [37e2e46d] LinearAlgebra
   [2f01184e] SparseArrays
   [8dfed614] Test
-Status `/tmp/jl_PjDiF2/Manifest.toml`
+Status `/tmp/jl_MIDlS5/Manifest.toml`
   [4fba245c] ArrayInterface v2.13.7
   [9706b775] ChainedFixes v0.2.1
   [ffbed154] DocStringExtensions v0.8.3
-  [e30172f5] Documenter v0.25.2
+  [e30172f5] Documenter v0.25.3
   [da5c29d0] EllipsisNotation v0.4.0
+  [b5f81e59] IOCapture v0.1.1
   [8197267c] IntervalSets v0.5.1
   [682c06a0] JSON v0.21.1
   [6fe1bfb0] OffsetArrays v1.3.1
   [69de0a69] Parsers v1.0.11
   [189a3867] Reexport v0.2.0
   [ae029012] Requires v1.1.0
-  [90137ffa] StaticArrays v0.12.4
+  [90137ffa] StaticArrays v0.12.5
   [d8176aec] StaticRanges v0.8.3
   [0dad84c5] ArgTools
   [56f22d72] Artifacts
@@ -284,163 +276,84 @@ Test Summary: | Pass  Total
 cont          | 1940   1940
 [ Info: SetupBuildDirectory: setting up build directory.
 [ Info: Doctest: running doctests.
-┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:412-439
+┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:369-390
 │ 
 │ ```jldoctest
 │ julia> using StaticRanges
 │ 
 │ julia> x = collect(1:5);
 │ 
-│ julia> StaticRanges.resize_first(x, 2)
+│ julia> StaticRanges.resize_last!(x, 2);
+│ 
+│ julia> x
 │ 2-element Array{Int64,1}:
-│  4
-│  5
+│  1
+│  2
 │ 
-│ julia> StaticRanges.resize_first(x, 7)
-│ 7-element Array{Int64,1}:
-│  -1
-│   0
-│   1
-│   2
-│   3
-│   4
-│   5
+│ julia> StaticRanges.resize_last!(x, 5);
 │ 
-│ julia> StaticRanges.resize_first(x, 5)
+│ julia> x
 │ 5-element Array{Int64,1}:
 │  1
 │  2
 │  3
 │  4
 │  5
+│ 
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ StaticRanges.resize_first(x, 2)
+│ x
 │ 
 │ Evaluated output:
 │ 
 │ 2-element Vector{Int64}:
-│  4
-│  5
+│  1
+│  2
 │ 
 │ Expected output:
 │ 
 │ 2-element Array{Int64,1}:
-│  4
-│  5
+│  1
+│  2
 │ 
 │   diff =
 │    Warning: Diff output requires color.
 │    2-element Array{Int64,1}:
 │     Vector{Int64}:
-│     4
-│     5
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:412-439
+│     1
+│     2
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:369-390
 │ 
 │ ```jldoctest
 │ julia> using StaticRanges
 │ 
 │ julia> x = collect(1:5);
 │ 
-│ julia> StaticRanges.resize_first(x, 2)
+│ julia> StaticRanges.resize_last!(x, 2);
+│ 
+│ julia> x
 │ 2-element Array{Int64,1}:
-│  4
-│  5
+│  1
+│  2
 │ 
-│ julia> StaticRanges.resize_first(x, 7)
-│ 7-element Array{Int64,1}:
-│  -1
-│   0
-│   1
-│   2
-│   3
-│   4
-│   5
+│ julia> StaticRanges.resize_last!(x, 5);
 │ 
-│ julia> StaticRanges.resize_first(x, 5)
+│ julia> x
 │ 5-element Array{Int64,1}:
 │  1
 │  2
 │  3
 │  4
 │  5
+│ 
 │ ```
 │ 
 │ Subexpression:
 │ 
-│ StaticRanges.resize_first(x, 7)
-│ 
-│ Evaluated output:
-│ 
-│ 7-element Vector{Int64}:
-│  -1
-│   0
-│   1
-│   2
-│   3
-│   4
-│   5
-│ 
-│ Expected output:
-│ 
-│ 7-element Array{Int64,1}:
-│  -1
-│   0
-│   1
-│   2
-│   3
-│   4
-│   5
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    7-element Array{Int64,1}:
-│     Vector{Int64}:
-│     -1
-│      0
-│      1
-│      2
-│      3
-│      4
-│      5
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:412-439
-│ 
-│ ```jldoctest
-│ julia> using StaticRanges
-│ 
-│ julia> x = collect(1:5);
-│ 
-│ julia> StaticRanges.resize_first(x, 2)
-│ 2-element Array{Int64,1}:
-│  4
-│  5
-│ 
-│ julia> StaticRanges.resize_first(x, 7)
-│ 7-element Array{Int64,1}:
-│  -1
-│   0
-│   1
-│   2
-│   3
-│   4
-│   5
-│ 
-│ julia> StaticRanges.resize_first(x, 5)
-│ 5-element Array{Int64,1}:
-│  1
-│  2
-│  3
-│  4
-│  5
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ StaticRanges.resize_first(x, 5)
+│ x
 │ 
 │ Evaluated output:
 │ 
@@ -469,125 +382,7 @@ cont          | 1940   1940
 │     3
 │     4
 │     5
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/vcat.jl:68-90
-│ 
-│ ```jldoctest
-│ julia> using StaticRanges
-│ 
-│ julia> StaticRanges.vcat_sort(1:10)  # it's already sorted, nothing happens
-│ 1:10
-│ 
-│ julia> StaticRanges.vcat_sort([3, 1, 2, 5])  # sort unordered collection
-│ 4-element Array{Int64,1}:
-│  1
-│  2
-│  3
-│  5
-│ 
-│ 
-│ julia> StaticRanges.vcat_sort([3, 4, 5], [1, 2, 5])
-│ 6-element Array{Int64,1}:
-│  1
-│  2
-│  3
-│  4
-│  5
-│  5
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ StaticRanges.vcat_sort([3, 1, 2, 5])  # sort unordered collection
-│ 
-│ Evaluated output:
-│ 
-│ 4-element Vector{Int64}:
-│  1
-│  2
-│  3
-│  5
-│ 
-│ Expected output:
-│ 
-│ 4-element Array{Int64,1}:
-│  1
-│  2
-│  3
-│  5
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    4-element Array{Int64,1}:
-│     Vector{Int64}:
-│     1
-│     2
-│     3
-│     5
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/vcat.jl:68-90
-│ 
-│ ```jldoctest
-│ julia> using StaticRanges
-│ 
-│ julia> StaticRanges.vcat_sort(1:10)  # it's already sorted, nothing happens
-│ 1:10
-│ 
-│ julia> StaticRanges.vcat_sort([3, 1, 2, 5])  # sort unordered collection
-│ 4-element Array{Int64,1}:
-│  1
-│  2
-│  3
-│  5
-│ 
-│ 
-│ julia> StaticRanges.vcat_sort([3, 4, 5], [1, 2, 5])
-│ 6-element Array{Int64,1}:
-│  1
-│  2
-│  3
-│  4
-│  5
-│  5
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ StaticRanges.vcat_sort([3, 4, 5], [1, 2, 5])
-│ 
-│ Evaluated output:
-│ 
-│ 6-element Vector{Int64}:
-│  1
-│  2
-│  3
-│  4
-│  5
-│  5
-│ 
-│ Expected output:
-│ 
-│ 6-element Array{Int64,1}:
-│  1
-│  2
-│  3
-│  4
-│  5
-│  5
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    6-element Array{Int64,1}:
-│     Vector{Int64}:
-│     1
-│     2
-│     3
-│     4
-│     5
-│     5
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:320-347
 │ 
 │ ```jldoctest
@@ -642,7 +437,7 @@ cont          | 1940   1940
 │     Vector{Int64}:
 │     1
 │     2
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:320-347
 │ 
 │ ```jldoctest
@@ -712,7 +507,7 @@ cont          | 1940   1940
 │     5
 │     6
 │     7
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:320-347
 │ 
 │ ```jldoctest
@@ -776,7 +571,7 @@ cont          | 1940   1940
 │     3
 │     4
 │     5
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:460-485
 │ 
 │ ```jldoctest
@@ -829,7 +624,7 @@ cont          | 1940   1940
 │     Vector{Int64}:
 │     4
 │     5
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:460-485
 │ 
 │ ```jldoctest
@@ -894,7 +689,311 @@ cont          | 1940   1940
 │     3
 │     4
 │     5
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:412-439
+│ 
+│ ```jldoctest
+│ julia> using StaticRanges
+│ 
+│ julia> x = collect(1:5);
+│ 
+│ julia> StaticRanges.resize_first(x, 2)
+│ 2-element Array{Int64,1}:
+│  4
+│  5
+│ 
+│ julia> StaticRanges.resize_first(x, 7)
+│ 7-element Array{Int64,1}:
+│  -1
+│   0
+│   1
+│   2
+│   3
+│   4
+│   5
+│ 
+│ julia> StaticRanges.resize_first(x, 5)
+│ 5-element Array{Int64,1}:
+│  1
+│  2
+│  3
+│  4
+│  5
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ StaticRanges.resize_first(x, 2)
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Vector{Int64}:
+│  4
+│  5
+│ 
+│ Expected output:
+│ 
+│ 2-element Array{Int64,1}:
+│  4
+│  5
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Array{Int64,1}:
+│     Vector{Int64}:
+│     4
+│     5
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:412-439
+│ 
+│ ```jldoctest
+│ julia> using StaticRanges
+│ 
+│ julia> x = collect(1:5);
+│ 
+│ julia> StaticRanges.resize_first(x, 2)
+│ 2-element Array{Int64,1}:
+│  4
+│  5
+│ 
+│ julia> StaticRanges.resize_first(x, 7)
+│ 7-element Array{Int64,1}:
+│  -1
+│   0
+│   1
+│   2
+│   3
+│   4
+│   5
+│ 
+│ julia> StaticRanges.resize_first(x, 5)
+│ 5-element Array{Int64,1}:
+│  1
+│  2
+│  3
+│  4
+│  5
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ StaticRanges.resize_first(x, 7)
+│ 
+│ Evaluated output:
+│ 
+│ 7-element Vector{Int64}:
+│  -1
+│   0
+│   1
+│   2
+│   3
+│   4
+│   5
+│ 
+│ Expected output:
+│ 
+│ 7-element Array{Int64,1}:
+│  -1
+│   0
+│   1
+│   2
+│   3
+│   4
+│   5
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    7-element Array{Int64,1}:
+│     Vector{Int64}:
+│     -1
+│      0
+│      1
+│      2
+│      3
+│      4
+│      5
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:412-439
+│ 
+│ ```jldoctest
+│ julia> using StaticRanges
+│ 
+│ julia> x = collect(1:5);
+│ 
+│ julia> StaticRanges.resize_first(x, 2)
+│ 2-element Array{Int64,1}:
+│  4
+│  5
+│ 
+│ julia> StaticRanges.resize_first(x, 7)
+│ 7-element Array{Int64,1}:
+│  -1
+│   0
+│   1
+│   2
+│   3
+│   4
+│   5
+│ 
+│ julia> StaticRanges.resize_first(x, 5)
+│ 5-element Array{Int64,1}:
+│  1
+│  2
+│  3
+│  4
+│  5
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ StaticRanges.resize_first(x, 5)
+│ 
+│ Evaluated output:
+│ 
+│ 5-element Vector{Int64}:
+│  1
+│  2
+│  3
+│  4
+│  5
+│ 
+│ Expected output:
+│ 
+│ 5-element Array{Int64,1}:
+│  1
+│  2
+│  3
+│  4
+│  5
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    5-element Array{Int64,1}:
+│     Vector{Int64}:
+│     1
+│     2
+│     3
+│     4
+│     5
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/vcat.jl:68-90
+│ 
+│ ```jldoctest
+│ julia> using StaticRanges
+│ 
+│ julia> StaticRanges.vcat_sort(1:10)  # it's already sorted, nothing happens
+│ 1:10
+│ 
+│ julia> StaticRanges.vcat_sort([3, 1, 2, 5])  # sort unordered collection
+│ 4-element Array{Int64,1}:
+│  1
+│  2
+│  3
+│  5
+│ 
+│ 
+│ julia> StaticRanges.vcat_sort([3, 4, 5], [1, 2, 5])
+│ 6-element Array{Int64,1}:
+│  1
+│  2
+│  3
+│  4
+│  5
+│  5
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ StaticRanges.vcat_sort([3, 1, 2, 5])  # sort unordered collection
+│ 
+│ Evaluated output:
+│ 
+│ 4-element Vector{Int64}:
+│  1
+│  2
+│  3
+│  5
+│ 
+│ Expected output:
+│ 
+│ 4-element Array{Int64,1}:
+│  1
+│  2
+│  3
+│  5
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    4-element Array{Int64,1}:
+│     Vector{Int64}:
+│     1
+│     2
+│     3
+│     5
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/vcat.jl:68-90
+│ 
+│ ```jldoctest
+│ julia> using StaticRanges
+│ 
+│ julia> StaticRanges.vcat_sort(1:10)  # it's already sorted, nothing happens
+│ 1:10
+│ 
+│ julia> StaticRanges.vcat_sort([3, 1, 2, 5])  # sort unordered collection
+│ 4-element Array{Int64,1}:
+│  1
+│  2
+│  3
+│  5
+│ 
+│ 
+│ julia> StaticRanges.vcat_sort([3, 4, 5], [1, 2, 5])
+│ 6-element Array{Int64,1}:
+│  1
+│  2
+│  3
+│  4
+│  5
+│  5
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ StaticRanges.vcat_sort([3, 4, 5], [1, 2, 5])
+│ 
+│ Evaluated output:
+│ 
+│ 6-element Vector{Int64}:
+│  1
+│  2
+│  3
+│  4
+│  5
+│  5
+│ 
+│ Expected output:
+│ 
+│ 6-element Array{Int64,1}:
+│  1
+│  2
+│  3
+│  4
+│  5
+│  5
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    6-element Array{Int64,1}:
+│     Vector{Int64}:
+│     1
+│     2
+│     3
+│     4
+│     5
+│     5
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/GapRange/type.jl:9-29
 │ 
 │ ```jldoctest
@@ -950,7 +1049,7 @@ cont          | 1940   1940
 │     7
 │     8
 │     9
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/GapRange/type.jl:9-29
 │ 
 │ ```jldoctest
@@ -1012,114 +1111,7 @@ cont          | 1940   1940
 │      8
 │      9
 │     10
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:369-390
-│ 
-│ ```jldoctest
-│ julia> using StaticRanges
-│ 
-│ julia> x = collect(1:5);
-│ 
-│ julia> StaticRanges.resize_last!(x, 2);
-│ 
-│ julia> x
-│ 2-element Array{Int64,1}:
-│  1
-│  2
-│ 
-│ julia> StaticRanges.resize_last!(x, 5);
-│ 
-│ julia> x
-│ 5-element Array{Int64,1}:
-│  1
-│  2
-│  3
-│  4
-│  5
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ x
-│ 
-│ Evaluated output:
-│ 
-│ 2-element Vector{Int64}:
-│  1
-│  2
-│ 
-│ Expected output:
-│ 
-│ 2-element Array{Int64,1}:
-│  1
-│  2
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    2-element Array{Int64,1}:
-│     Vector{Int64}:
-│     1
-│     2
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
-┌ Error: doctest failure in ~/.julia/packages/StaticRanges/pepl0/src/resize.jl:369-390
-│ 
-│ ```jldoctest
-│ julia> using StaticRanges
-│ 
-│ julia> x = collect(1:5);
-│ 
-│ julia> StaticRanges.resize_last!(x, 2);
-│ 
-│ julia> x
-│ 2-element Array{Int64,1}:
-│  1
-│  2
-│ 
-│ julia> StaticRanges.resize_last!(x, 5);
-│ 
-│ julia> x
-│ 5-element Array{Int64,1}:
-│  1
-│  2
-│  3
-│  4
-│  5
-│ 
-│ ```
-│ 
-│ Subexpression:
-│ 
-│ x
-│ 
-│ Evaluated output:
-│ 
-│ 5-element Vector{Int64}:
-│  1
-│  2
-│  3
-│  4
-│  5
-│ 
-│ Expected output:
-│ 
-│ 5-element Array{Int64,1}:
-│  1
-│  2
-│  3
-│  4
-│  5
-│ 
-│   diff =
-│    Warning: Diff output requires color.
-│    5-element Array{Int64,1}:
-│     Vector{Int64}:
-│     1
-│     2
-│     3
-│     4
-│     5
-└ @ Documenter.DocTests ~/.julia/packages/Documenter/pjwqp/src/DocTests.jl:369
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
 ┌ Error: Doctesting failed
 │   exception =
 │    `makedocs` encountered a doctest error. Terminating build
@@ -1127,25 +1119,25 @@ cont          | 1940   1940
 │      [1] error(s::String)
 │        @ Base ./error.jl:33
 │      [2] runner(#unused#::Type{Documenter.Builder.Doctest}, doc::Documenter.Documents.Document)
-│        @ Documenter.Builder ~/.julia/packages/Documenter/pjwqp/src/Builder.jl:217
+│        @ Documenter.Builder ~/.julia/packages/Documenter/3Y8Kg/src/Builder.jl:217
 │      [3] dispatch(#unused#::Type{Documenter.Builder.DocumentPipeline}, x::Documenter.Documents.Document)
-│        @ Documenter.Utilities.Selectors ~/.julia/packages/Documenter/pjwqp/src/Utilities/Selectors.jl:167
+│        @ Documenter.Utilities.Selectors ~/.julia/packages/Documenter/3Y8Kg/src/Utilities/Selectors.jl:170
 │      [4] #2
-│        @ ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:241 [inlined]
+│        @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:245 [inlined]
 │      [5] cd(f::Documenter.var"#2#3"{Documenter.Documents.Document}, dir::String)
 │        @ Base.Filesystem ./file.jl:104
-│      [6] makedocs(; debug::Bool, format::Documenter.Writers.HTMLWriter.HTML, kwargs::Base.Iterators.Pairs{Symbol, Any, NTuple{5, Symbol}, NamedTuple{(:root, :source, :sitename, :doctest, :modules), Tuple{String, String, String, Symbol, Vector{Module}}}})
-│        @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:240
-│      [7] (::Documenter.var"#all_doctests#31"{Bool, Vector{Module}})()
-│        @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:802
+│      [6] makedocs(; debug::Bool, format::Documenter.Writers.HTMLWriter.HTML, kwargs::Base.Iterators.Pairs{Symbol, Any, NTuple{6, Symbol}, NamedTuple{(:root, :source, :sitename, :doctest, :modules, :doctestfilters), Tuple{String, String, String, Symbol, Vector{Module}, Vector{Regex}}}})
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:244
+│      [7] (::Documenter.var"#all_doctests#33"{Bool, Vector{Regex}, Vector{Module}})()
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:809
 │      [8] macro expansion
-│        @ ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:818 [inlined]
+│        @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826 [inlined]
 │      [9] macro expansion
 │        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
-│     [10] doctest(source::Nothing, modules::Vector{Module}; fix::Bool, testset::String)
-│        @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:818
+│     [10] doctest(source::Nothing, modules::Vector{Module}; fix::Bool, testset::String, doctestfilters::Vector{Regex})
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826
 │     [11] doctest(package::Module; manual::Bool, testset::Nothing, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
-│        @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:761
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:765
 │     [12] macro expansion
 │        @ ~/.julia/packages/StaticRanges/pepl0/test/runtests.jl:815 [inlined]
 │     [13] macro expansion
@@ -1162,22 +1154,23 @@ cont          | 1940   1940
 │        @ Base ./client.jl:261
 │     [19] _start()
 │        @ Base ./client.jl:485
-└ @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:811
-Doctests: StaticRanges: Test Failed at /home/pkgeval/.julia/packages/Documenter/pjwqp/src/Documenter.jl:818
+└ @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:819
+Doctests: StaticRanges: Test Failed at /home/pkgeval/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826
   Expression: all_doctests()
 Stacktrace:
  [1] macro expansion
-   @ ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:818 [inlined]
+   @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826 [inlined]
  [2] macro expansion
    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
- [3] doctest(source::Nothing, modules::Vector{Module}; fix::Bool, testset::String)
-   @ Documenter ~/.julia/packages/Documenter/pjwqp/src/Documenter.jl:818
+ [3] doctest(source::Nothing, modules::Vector{Module}; fix::Bool, testset::String, doctestfilters::Vector{Regex})
+   @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826
 Test Summary:            | Fail  Total
 docs                     |    1      1
   Doctests: StaticRanges |    1      1
 ERROR: LoadError: Some tests did not pass: 0 passed, 1 failed, 0 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/StaticRanges/pepl0/test/runtests.jl:813
-ERROR: Package StaticRanges errored during testing
+
+PkgEval failed: Package StaticRanges errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -1200,8 +1193,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 907.33s (863.57s user, 44.82s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T05:02:05.007
+CPU usage: 1126.56s (1115.48s user, 13.27s kernel)
 
 Network usage:
-- eth0: 1.016 MiB received, 49.359 KiB sent
+- eth0: 1.066 MiB received, 54.206 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":88,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":88,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":93,"op":"Total","minor":0},{"major":253,"value":88,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":88,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":93,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":1196032,"op":"Read","minor":0},{"major":259,"value":24576,"op":"Write","minor":0},{"major":259,"value":1196032,"op":"Sync","minor":0},{"major":259,"value":24576,"op":"Async","minor":0},{"major":259,"value":1220608,"op":"Total","minor":0},{"major":253,"value":1196032,"op":"Read","minor":2},{"major":253,"value":24576,"op":"Write","minor":2},{"major":253,"value":1196032,"op":"Sync","minor":2},{"major":253,"value":24576,"op":"Async","minor":2},{"major":253,"value":1220608,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":220438528,"max_usage":998146048,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":13,"total_rss":200773632,"inactive_file":929792,"inactive_anon":7000064,"total_pgfault":4138846,"total_cache":13127680,"total_rss_huge":0,"total_active_anon":205639680,"total_pgmajfault":13,"pgpgin":2868958,"rss_huge":0,"mapped_file":0,"total_inactive_file":929792,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":2816736,"hierarchical_memsw_limit":0,"cache":13127680,"active_file":307200,"pgfault":4138846,"total_mapped_file":0,"total_pgpgout":2816736,"total_writeback":0,"rss":200773632,"unevictable":0,"total_inactive_anon":7000064,"total_pgpgin":2868958,"active_anon":205639680,"total_active_file":307200},"limit":540972998656},"name":"/StaticRanges-PQVp3wZc","networks":{"eth0":{"rx_bytes":1117547,"rx_packets":2181,"tx_packets":421,"tx_bytes":55507,"tx_dropped":0,"rx_dropped":37,"tx_errors":0,"rx_errors":0}},"id":"31b0bb84f282734a5d4c7db7636f34c5f2fa09f1d3a4a5f26b661725071deea8","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102063847930000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":1115480000000,"usage_in_kernelmode":13270000000,"total_usage":1126561209976,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1126561209976,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:02:05.009412256Z"}

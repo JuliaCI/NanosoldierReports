@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:01:19.434
+# PkgEval set-up: 2020-10-29T03:36:20.889
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,21 +12,20 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:01:23.388
+# Installation: 2020-10-29T03:36:22.449
 #
 
    Resolving package versions...
    Installed Reexport ──────────────── v0.2.0
    Installed DynamicPolynomials ────── v0.3.14
    Installed OrderedCollections ────── v1.3.1
-   Installed MultivariatePolynomials ─ v0.3.11
    Installed MutableArithmetics ────── v0.2.10
+   Installed MultivariatePolynomials ─ v0.3.12
    Installed DataStructures ────────── v0.17.20
    Installed MultivariateSeries ────── v0.1.2
 Updating `~/.julia/environments/v1.6/Project.toml`
@@ -34,7 +33,7 @@ Updating `~/.julia/environments/v1.6/Project.toml`
 Updating `~/.julia/environments/v1.6/Manifest.toml`
   [864edb3b] + DataStructures v0.17.20
   [7c1d4256] + DynamicPolynomials v0.3.14
-  [102ac46a] + MultivariatePolynomials v0.3.11
+  [102ac46a] + MultivariatePolynomials v0.3.12
   [08acae6c] + MultivariateSeries v0.1.2
   [d8a4904e] + MutableArithmetics v0.2.10
   [bac558e1] + OrderedCollections v1.3.1
@@ -66,32 +65,24 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mReexport[39m
-[32m  ✓ [39m[90mOrderedCollections[39m
-[32m  ✓ [39m[90mDataStructures[39m
-[32m  ✓ [39m[90mMutableArithmetics[39m
-[32m  ✓ [39m[90mMultivariatePolynomials[39m
-[32m  ✓ [39m[90mDynamicPolynomials[39m
-[32m  ✓ [39mMultivariateSeries
-7 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T08:02:04.179
+# Testing: 2020-10-29T03:36:25.574
 #
 
+
      Testing MultivariateSeries
-Status `/tmp/jl_2tRmnY/Project.toml`
+Status `/tmp/jl_OMFSk0/Project.toml`
   [864edb3b] DataStructures v0.17.20
   [7c1d4256] DynamicPolynomials v0.3.14
-  [102ac46a] MultivariatePolynomials v0.3.11
+  [102ac46a] MultivariatePolynomials v0.3.12
   [08acae6c] MultivariateSeries v0.1.2
   [37e2e46d] LinearAlgebra
-Status `/tmp/jl_2tRmnY/Manifest.toml`
+Status `/tmp/jl_OMFSk0/Manifest.toml`
   [864edb3b] DataStructures v0.17.20
   [7c1d4256] DynamicPolynomials v0.3.14
-  [102ac46a] MultivariatePolynomials v0.3.11
+  [102ac46a] MultivariatePolynomials v0.3.12
   [08acae6c] MultivariateSeries v0.1.2
   [d8a4904e] MutableArithmetics v0.2.10
   [bac558e1] OrderedCollections v1.3.1
@@ -138,7 +129,8 @@ Stacktrace:
    @ none:6
 in expression starting at /home/pkgeval/.julia/packages/MultivariateSeries/38sPY/test/tst0.jl:10
 in expression starting at /home/pkgeval/.julia/packages/MultivariateSeries/38sPY/test/runtests.jl:1
-ERROR: Package MultivariateSeries errored during testing
+
+PkgEval failed: Package MultivariateSeries errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -161,8 +153,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 31.99s (25.79s user, 5.92s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T03:36:53.557
+CPU usage: 31.93s (29.35s user, 2.71s kernel)
 
 Network usage:
-- eth0: 1.038 MiB received, 35.811 KiB sent
+- eth0: 1.043 MiB received, 35.033 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":242405376,"max_usage":735731712,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":231817216,"inactive_file":8192,"inactive_anon":1925120,"total_pgfault":766438,"total_cache":5005312,"total_rss_huge":0,"total_active_anon":234889216,"total_pgmajfault":0,"pgpgin":453742,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":395924,"hierarchical_memsw_limit":0,"cache":5005312,"active_file":0,"pgfault":766438,"total_mapped_file":0,"total_pgpgout":395924,"total_writeback":0,"rss":231817216,"unevictable":0,"total_inactive_anon":1925120,"total_pgpgin":453742,"active_anon":234889216,"total_active_file":0},"limit":540972998656},"name":"/MultivariateSeries-5f4Tka7r","networks":{"eth0":{"rx_bytes":1093302,"rx_packets":369,"tx_packets":274,"tx_bytes":35874,"tx_dropped":0,"rx_dropped":0,"tx_errors":0,"rx_errors":0}},"id":"0a7bb4e01676aea42d86fbefdadd0a8a4c1a0e838fe27389408fdf6384eaa0ec","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101412064130000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":29350000000,"usage_in_kernelmode":2710000000,"total_usage":31932851115,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,31932851115,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T03:36:54.255482998Z"}

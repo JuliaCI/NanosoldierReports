@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T09:24:39.682
+# PkgEval set-up: 2020-10-29T04:21:17.112
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,24 +12,23 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T09:24:42.096
+# Installation: 2020-10-29T04:21:18.652
 #
 
    Resolving package versions...
-   Installed SortingAlgorithms ──────────── v0.3.1
-   Installed CompilerSupportLibraries_jll ─ v0.3.4+0
-   Installed OpenSpecFun_jll ────────────── v0.5.3+4
    Installed Reexport ───────────────────── v0.2.0
-   Installed DataAPI ────────────────────── v1.3.0
+   Installed SortingAlgorithms ──────────── v0.3.1
    Installed Compat ─────────────────────── v3.23.0
-   Installed DataArrays ─────────────────── v0.7.0
+   Installed DataAPI ────────────────────── v1.3.0
+   Installed OpenSpecFun_jll ────────────── v0.5.3+4
    Installed OrderedCollections ─────────── v1.3.1
+   Installed CompilerSupportLibraries_jll ─ v0.3.4+0
+   Installed DataArrays ─────────────────── v0.7.0
    Installed SpecialFunctions ───────────── v0.10.3
    Installed Missings ───────────────────── v0.4.4
    Installed DataStructures ─────────────── v0.18.8
@@ -82,35 +81,21 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mReexport[39m
-[32m  ✓ [39m[90mDataAPI[39m
-[32m  ✓ [39m[90mJLLWrappers[39m
-[32m  ✓ [39m[90mOrderedCollections[39m
-[32m  ✓ [39m[90mCompat[39m
-[32m  ✓ [39m[90mMissings[39m
-[32m  ✓ [39m[90mCompilerSupportLibraries_jll[39m
-[32m  ✓ [39m[90mDataStructures[39m
-[32m  ✓ [39m[90mSortingAlgorithms[39m
-[32m  ✓ [39m[90mOpenSpecFun_jll[39m
-[32m  ✓ [39m[90mStatsBase[39m
-[32m  ✓ [39m[90mSpecialFunctions[39m
-[91m  ✗ [39mDataArrays
-12 dependencies successfully precompiled, 1 errored
 
 
 ################################################################################
-# Testing: 2020-10-28T09:25:07.861
+# Testing: 2020-10-29T04:21:22.115
 #
 
+
      Testing DataArrays
-Status `/tmp/jl_0HvaSc/Project.toml`
+Status `/tmp/jl_RhByL2/Project.toml`
   [0fe7c1db] DataArrays v0.7.0
   [e1d29d7a] Missings v0.4.4
   [189a3867] Reexport v0.2.0
   [276daf66] SpecialFunctions v0.10.3
   [2913bbd2] StatsBase v0.33.2
-Status `/tmp/jl_0HvaSc/Manifest.toml`
+Status `/tmp/jl_RhByL2/Manifest.toml`
   [34da2185] Compat v3.23.0
   [9a962f9c] DataAPI v1.3.0
   [0fe7c1db] DataArrays v0.7.0
@@ -163,7 +148,8 @@ Stacktrace:
  [2] top-level scope
    @ none:6
 in expression starting at /home/pkgeval/.julia/packages/DataArrays/mcLPH/test/runtests.jl:5
-ERROR: Package DataArrays errored during testing
+
+PkgEval failed: Package DataArrays errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -186,8 +172,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 29.06s (23.82s user, 5.17s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T04:21:28.699
+CPU usage: 11.84s (11.05s user, 0.83s kernel)
 
 Network usage:
-- eth0: 614.133 KiB received, 48.646 KiB sent
+- eth0: 612.132 KiB received, 49.143 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":28672,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":28672,"op":"Async","minor":0},{"major":259,"value":28672,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":28672,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":28672,"op":"Async","minor":2},{"major":253,"value":28672,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":241639424,"max_usage":388169728,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":232288256,"inactive_file":8192,"inactive_anon":3375104,"total_pgfault":193615,"total_cache":3756032,"total_rss_huge":0,"total_active_anon":232353792,"total_pgmajfault":0,"pgpgin":116137,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":58509,"hierarchical_memsw_limit":0,"cache":3756032,"active_file":307200,"pgfault":193615,"total_mapped_file":0,"total_pgpgout":58509,"total_writeback":0,"rss":232288256,"unevictable":0,"total_inactive_anon":3375104,"total_pgpgin":116137,"active_anon":232353792,"total_active_file":307200},"limit":540972998656},"name":"/DataArrays-lsAFasao","networks":{"eth0":{"rx_bytes":626823,"rx_packets":334,"tx_packets":350,"tx_bytes":50322,"tx_dropped":0,"rx_dropped":0,"tx_errors":0,"rx_errors":0}},"id":"0de9128e2465866946b7853b967db5d15dcee64d433aac053a4c9c6b4ce0b592","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101753122520000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":11050000000,"usage_in_kernelmode":830000000,"total_usage":11842486135,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11842486135,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T04:21:28.8161541Z"}

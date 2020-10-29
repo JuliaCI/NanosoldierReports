@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:37:48.376
+# PkgEval set-up: 2020-10-29T05:48:11.718
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:37:52.089
+# Installation: 2020-10-29T05:48:13.342
 #
 
    Resolving package versions...
@@ -34,20 +33,18 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [9a3f8284] + Random
   [9e88b42a] + Serialization
   [8dfed614] + Test
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39mJudycon
-1 dependency successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T08:37:57.882
+# Testing: 2020-10-29T05:48:15.552
 #
 
+
      Testing Judycon
-Status `/tmp/jl_ES13aZ/Project.toml`
+Status `/tmp/jl_5JicN3/Project.toml`
   [821431bb] Judycon v0.1.0
   [8dfed614] Test
-Status `/tmp/jl_ES13aZ/Manifest.toml`
+Status `/tmp/jl_5JicN3/Manifest.toml`
   [821431bb] Judycon v0.1.0
   [2a0f44e3] Base64
   [b77e0a4c] InteractiveUtils
@@ -57,6 +54,9 @@ Status `/tmp/jl_ES13aZ/Manifest.toml`
   [9e88b42a] Serialization
   [8dfed614] Test
      Testing Running tests...
+WARNING: Method definition (::Type{Judycon.QuickFind})(Any) in module Judycon at /home/pkgeval/.julia/packages/Judycon/Zc2IV/src/Judycon.jl:7 overwritten at /home/pkgeval/.julia/packages/Judycon/Zc2IV/src/Judycon.jl:10.
+  ** incremental compilation may be fatally broken for this module **
+
 ERROR: LoadError: MethodError: Cannot `convert` an object of type Int64 to an object of type Vector{Int64}
 Closest candidates are:
   convert(::Type{T}, !Matched::AbstractArray) where T<:Array at array.jl:532
@@ -73,7 +73,8 @@ Stacktrace:
  [4] top-level scope
    @ none:6
 in expression starting at /home/pkgeval/.julia/packages/Judycon/Zc2IV/test/runtests.jl:9
-ERROR: Package Judycon errored during testing
+
+PkgEval failed: Package Judycon errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -96,8 +97,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 15.98s (11.87s user, 3.98s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T05:48:35.849
+CPU usage: 13.28s (11.82s user, 1.42s kernel)
 
 Network usage:
-- eth0: 226.925 KiB received, 5.284 KiB sent
+- eth0: 226.641 KiB received, 4.921 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":193937408,"max_usage":367378432,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":189677568,"inactive_file":8192,"inactive_anon":282624,"total_pgfault":246898,"total_cache":327680,"total_rss_huge":0,"total_active_anon":189714432,"total_pgmajfault":0,"pgpgin":136691,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":90303,"hierarchical_memsw_limit":0,"cache":327680,"active_file":0,"pgfault":246898,"total_mapped_file":0,"total_pgpgout":90303,"total_writeback":0,"rss":189677568,"unevictable":0,"total_inactive_anon":282624,"total_pgpgin":136691,"active_anon":189714432,"total_active_file":0},"limit":540972998656},"name":"/Judycon-QAT2gsIk","networks":{"eth0":{"rx_bytes":232080,"rx_packets":93,"tx_packets":38,"tx_bytes":5039,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"4979288e81932b7f8d94f5e34df05691fe8054205c262bb63f3af423af520843","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102418915910000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":11820000000,"usage_in_kernelmode":1420000000,"total_usage":13276349137,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13276349137,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:48:36.459208654Z"}

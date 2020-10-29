@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T09:10:40.247
+# PkgEval set-up: 2020-10-29T05:08:51.763
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T09:10:43.867
+# Installation: 2020-10-29T05:08:53.252
 #
 
    Resolving package versions...
@@ -33,25 +32,22 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [ea8e919c] + SHA
   [9e88b42a] + Serialization
   [cf7118a7] + UUIDs
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mRequires[39m
-[32m  ✓ [39mMathematicalPredicates
-2 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T09:10:53.791
+# Testing: 2020-10-29T05:08:55.042
 #
+
 
      Testing MathematicalPredicates
 ┌ Error: Pkg.Types.PkgError("Error building `LazySets`: \nERROR: LoadError: ArgumentError: Package Pkg not found in current path:\n- Run `import Pkg; Pkg.add(\"Pkg\")` to install the Pkg package.\n\nStacktrace:\n [1] require(into::Module, mod::Symbol)\n   @ Base ./loading.jl:859\n [2] include(fname::String)\n   @ Base.MainInclude ./client.jl:444\n [3] top-level scope\n   @ none:5\nin expression starting at /home/pkgeval/.julia/packages/LazySets/97RBw/deps/build.jl:1")
 └ @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1499
-Status `/tmp/jl_wLuVVW/Project.toml`
+Status `/tmp/jl_BSONA4/Project.toml`
   [b4f0291d] LazySets v1.37.12
   [d92ed5c0] MathematicalPredicates v0.1.0
   [ae029012] Requires v1.1.0
   [8dfed614] Test
-Status `/tmp/jl_wLuVVW/Manifest.toml`
+Status `/tmp/jl_BSONA4/Manifest.toml`
   [6e4b80f9] BenchmarkTools v0.5.0
   [b99e7846] BinaryProvider v0.5.10
   [96374032] CRlibm v0.8.0
@@ -91,7 +87,7 @@ Status `/tmp/jl_wLuVVW/Manifest.toml`
   [5eaf0fd0] RoundingEmulator v0.2.1
   [3cc68bcd] SetRounding v0.2.0
   [276daf66] SpecialFunctions v0.10.3
-  [90137ffa] StaticArrays v0.12.4
+  [90137ffa] StaticArrays v0.12.5
   [3bb67fe8] TranscodingStreams v0.9.5
   [a5390f91] ZipFile v0.9.3
   [6e34b625] Bzip2_jll v1.0.6+5
@@ -135,7 +131,7 @@ Status `/tmp/jl_wLuVVW/Manifest.toml`
      Testing Running tests...
 Test Summary:       | Pass  Total
 Basic functionality |   32     32
-  5.971531 seconds (3.31 M allocations: 198.987 MiB, 3.91% gc time, 96.79% compilation time)
+  4.384810 seconds (3.31 M allocations: 198.977 MiB, 2.43% gc time, 94.79% compilation time)
 WARNING: both MathematicalPredicates and Base export "contains"; uses of it in module Main must be qualified
 LazySets support: Error During Test at /home/pkgeval/.julia/packages/MathematicalPredicates/zjOyo/test/runtests.jl:4
   Got exception outside of a @test
@@ -168,7 +164,8 @@ Test Summary:    | Pass  Error  Total
 LazySets support |    1      1      2
 ERROR: LoadError: Some tests did not pass: 1 passed, 0 failed, 1 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/MathematicalPredicates/zjOyo/test/runtests.jl:4
-ERROR: Package MathematicalPredicates errored during testing
+
+PkgEval failed: Package MathematicalPredicates errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -191,8 +188,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 139.20s (114.99s user, 24.62s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T05:11:00.531
+CPU usage: 116.93s (107.42s user, 9.18s kernel)
 
 Network usage:
-- eth0: 6.444 MiB received, 151.026 KiB sent
+- eth0: 6.454 MiB received, 153.236 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":15,"op":"Read","minor":0},{"major":259,"value":127,"op":"Write","minor":0},{"major":259,"value":15,"op":"Sync","minor":0},{"major":259,"value":127,"op":"Async","minor":0},{"major":259,"value":142,"op":"Total","minor":0},{"major":253,"value":15,"op":"Read","minor":2},{"major":253,"value":127,"op":"Write","minor":2},{"major":253,"value":15,"op":"Sync","minor":2},{"major":253,"value":127,"op":"Async","minor":2},{"major":253,"value":142,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":61440,"op":"Read","minor":0},{"major":259,"value":5955584,"op":"Write","minor":0},{"major":259,"value":61440,"op":"Sync","minor":0},{"major":259,"value":5955584,"op":"Async","minor":0},{"major":259,"value":6017024,"op":"Total","minor":0},{"major":253,"value":61440,"op":"Read","minor":2},{"major":253,"value":37912576,"op":"Write","minor":2},{"major":253,"value":61440,"op":"Sync","minor":2},{"major":253,"value":37912576,"op":"Async","minor":2},{"major":253,"value":37974016,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":301359104,"max_usage":1552506880,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":234184704,"inactive_file":8192,"inactive_anon":20582400,"total_pgfault":2892487,"total_cache":57638912,"total_rss_huge":0,"total_active_anon":271134720,"total_pgmajfault":0,"pgpgin":1944550,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":1873304,"hierarchical_memsw_limit":0,"cache":57638912,"active_file":98304,"pgfault":2892487,"total_mapped_file":0,"total_pgpgout":1873304,"total_writeback":0,"rss":234184704,"unevictable":0,"total_inactive_anon":20582400,"total_pgpgin":1944550,"active_anon":271134720,"total_active_file":98304},"limit":540972998656},"name":"/MathematicalPredicates-VzknnNoz","networks":{"eth0":{"rx_bytes":6767036,"rx_packets":1681,"tx_packets":1294,"tx_bytes":156914,"tx_dropped":0,"rx_dropped":4,"tx_errors":0,"rx_errors":0}},"id":"05784d6ed5d4bb0320b3f9bed807511e53299d97a73794a3b1d4eff2fcc0cafb","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102131871440000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":107420000000,"usage_in_kernelmode":9180000000,"total_usage":116933182231,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,116932632980,132370,416881,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:11:01.290553764Z"}

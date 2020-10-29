@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T07:18:53.292
+# PkgEval set-up: 2020-10-29T04:05:50.915
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,19 +12,18 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T07:18:56.863
+# Installation: 2020-10-29T04:05:52.362
 #
 
    Resolving package versions...
-   Installed FunctionWrappers ─ v1.1.1
-   Installed Blades ─────────── v0.1.0
    Installed Combinatorics ──── v1.0.2
+   Installed Blades ─────────── v0.1.0
+   Installed FunctionWrappers ─ v1.1.1
 Updating `~/.julia/environments/v1.6/Project.toml`
   [ab78ad86] + Blades v0.1.0
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -40,25 +39,21 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [9a3f8284] + Random
   [9e88b42a] + Serialization
   [8dfed614] + Test
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mFunctionWrappers[39m
-[32m  ✓ [39m[90mCombinatorics[39m
-[32m  ✓ [39mBlades
-3 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T07:19:06.103
+# Testing: 2020-10-29T04:05:54.622
 #
 
+
      Testing Blades
-Status `/tmp/jl_zpVOIW/Project.toml`
+Status `/tmp/jl_1IFCF3/Project.toml`
   [ab78ad86] Blades v0.1.0
   [861a8166] Combinatorics v1.0.2
   [069b7b12] FunctionWrappers v1.1.1
   [37e2e46d] LinearAlgebra
   [8dfed614] Test
-Status `/tmp/jl_zpVOIW/Manifest.toml`
+Status `/tmp/jl_1IFCF3/Manifest.toml`
   [ab78ad86] Blades v0.1.0
   [861a8166] Combinatorics v1.0.2
   [069b7b12] FunctionWrappers v1.1.1
@@ -176,7 +171,8 @@ Test Summary: | Error  Total
 PGA3D         |     3      3
 ERROR: LoadError: Some tests did not pass: 0 passed, 0 failed, 3 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/Blades/nO5Pt/test/runtests.jl:79
-ERROR: Package Blades errored during testing
+
+PkgEval failed: Package Blades errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -199,8 +195,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 26.62s (22.84s user, 3.67s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T04:06:23.153
+CPU usage: 27.31s (25.37s user, 1.96s kernel)
 
 Network usage:
-- eth0: 78.231 KiB received, 13.948 KiB sent
+- eth0: 75.864 KiB received, 12.362 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":199462912,"max_usage":539086848,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":194314240,"inactive_file":8192,"inactive_anon":131072,"total_pgfault":437217,"total_cache":729088,"total_rss_huge":0,"total_active_anon":194904064,"total_pgmajfault":0,"pgpgin":221774,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":174156,"hierarchical_memsw_limit":0,"cache":729088,"active_file":0,"pgfault":437217,"total_mapped_file":0,"total_pgpgout":174156,"total_writeback":0,"rss":194314240,"unevictable":0,"total_inactive_anon":131072,"total_pgpgin":221774,"active_anon":194904064,"total_active_file":0},"limit":540972998656},"name":"/Blades-t03F2UA4","networks":{"eth0":{"rx_bytes":77685,"rx_packets":129,"tx_packets":77,"tx_bytes":12659,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"9961edb57ded6bf817c3ac655a1c922980aaac50c4a44c0afbd703771fff2ad3","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101637763920000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":25370000000,"usage_in_kernelmode":1960000000,"total_usage":27308840145,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2670,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,27308837475,0,0,0,0]}},"read":"2020-10-29T04:06:23.728599327Z"}

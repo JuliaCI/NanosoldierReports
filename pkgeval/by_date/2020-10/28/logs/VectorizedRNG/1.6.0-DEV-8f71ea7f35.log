@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T07:42:40.831
+# PkgEval set-up: 2020-10-29T05:42:38.403
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,20 +12,19 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T07:42:43.166
+# Installation: 2020-10-29T05:42:39.975
 #
 
    Resolving package versions...
    Installed UnPack ──────────── v1.0.2
-   Installed SIMDPirates ─────── v0.8.25
    Installed CpuId ───────────── v0.2.2
    Installed VectorizedRNG ───── v0.1.13
+   Installed SIMDPirates ─────── v0.8.25
    Installed VectorizationBase ─ v0.12.33
 Updating `~/.julia/environments/v1.6/Project.toml`
   [33b4df10] + VectorizedRNG v0.1.13
@@ -46,21 +45,15 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [9e88b42a] + Serialization
   [6462fe0b] + Sockets
   [8dfed614] + Test
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mUnPack[39m
-[32m  ✓ [39m[90mCpuId[39m
-[32m  ✓ [39m[90mVectorizationBase[39m
-[32m  ✓ [39m[90mSIMDPirates[39m
-[32m  ✓ [39mVectorizedRNG
-5 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T07:43:26.448
+# Testing: 2020-10-29T05:42:42.580
 #
 
+
      Testing VectorizedRNG
-Status `/tmp/jl_NN6aFW/Project.toml`
+Status `/tmp/jl_e0Vnl2/Project.toml`
   [97cc5700] RNGTest v1.5.0
   [21efa798] SIMDPirates v0.8.25
   [3a884ed6] UnPack v1.0.2
@@ -69,7 +62,7 @@ Status `/tmp/jl_NN6aFW/Project.toml`
   [8ba89e20] Distributed
   [9a3f8284] Random
   [8dfed614] Test
-Status `/tmp/jl_NN6aFW/Manifest.toml`
+Status `/tmp/jl_e0Vnl2/Manifest.toml`
   [b99e7846] BinaryProvider v0.5.10
   [adafc99b] CpuId v0.2.2
   [97cc5700] RNGTest v1.5.0
@@ -100,10 +93,10 @@ Stacktrace:
     @ VectorizedRNG ~/.julia/packages/VectorizedRNG/UPhb5/src/VectorizedRNG.jl:38
   [4] _include_from_serialized(path::String, depmods::Vector{Any})
     @ Base ./loading.jl:662
-  [5] _require_search_from_serialized(pkg::Base.PkgId, sourcepath::String)
-    @ Base ./loading.jl:748
+  [5] _require_from_serialized(path::String)
+    @ Base ./loading.jl:715
   [6] _require(pkg::Base.PkgId)
-    @ Base ./loading.jl:986
+    @ Base ./loading.jl:1019
   [7] require(uuidkey::Base.PkgId)
     @ Base ./loading.jl:902
   [8] require(into::Module, mod::Symbol)
@@ -114,7 +107,8 @@ Stacktrace:
     @ none:6
 during initialization of module VectorizedRNG
 in expression starting at /home/pkgeval/.julia/packages/VectorizedRNG/UPhb5/test/runtests.jl:1
-ERROR: Package VectorizedRNG errored during testing
+
+PkgEval failed: Package VectorizedRNG errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -137,8 +131,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 38.13s (31.36s user, 6.61s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T05:43:19.891
+CPU usage: 37.48s (34.44s user, 3.16s kernel)
 
 Network usage:
-- eth0: 4.952 MiB received, 102.854 KiB sent
+- eth0: 4.944 MiB received, 117.489 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":5,"op":"Read","minor":0},{"major":259,"value":9,"op":"Write","minor":0},{"major":259,"value":5,"op":"Sync","minor":0},{"major":259,"value":9,"op":"Async","minor":0},{"major":259,"value":14,"op":"Total","minor":0},{"major":253,"value":5,"op":"Read","minor":2},{"major":253,"value":9,"op":"Write","minor":2},{"major":253,"value":5,"op":"Sync","minor":2},{"major":253,"value":9,"op":"Async","minor":2},{"major":253,"value":14,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":20480,"op":"Read","minor":0},{"major":259,"value":36864,"op":"Write","minor":0},{"major":259,"value":20480,"op":"Sync","minor":0},{"major":259,"value":36864,"op":"Async","minor":0},{"major":259,"value":57344,"op":"Total","minor":0},{"major":253,"value":20480,"op":"Read","minor":2},{"major":253,"value":36864,"op":"Write","minor":2},{"major":253,"value":20480,"op":"Sync","minor":2},{"major":253,"value":36864,"op":"Async","minor":2},{"major":253,"value":57344,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":225509376,"max_usage":723345408,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":200904704,"inactive_file":8192,"inactive_anon":6533120,"total_pgfault":942304,"total_cache":19550208,"total_rss_huge":0,"total_active_anon":213893120,"total_pgmajfault":0,"pgpgin":537060,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":483238,"hierarchical_memsw_limit":0,"cache":19550208,"active_file":20480,"pgfault":942304,"total_mapped_file":0,"total_pgpgout":483238,"total_writeback":0,"rss":200904704,"unevictable":0,"total_inactive_anon":6533120,"total_pgpgin":537060,"active_anon":213893120,"total_active_file":20480},"limit":540972998656},"name":"/VectorizedRNG-Kh7cOAXY","networks":{"eth0":{"rx_bytes":5183885,"rx_packets":3568,"tx_packets":1853,"tx_bytes":120309,"tx_dropped":0,"rx_dropped":2,"tx_errors":0,"rx_errors":0}},"id":"a81b1a9260b4251470acaa6c6325e148386fd122861c4676de503d1189863616","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102378567160000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":34440000000,"usage_in_kernelmode":3160000000,"total_usage":37484508427,"percpu_usage":[0,0,0,37484508427,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:43:20.084732228Z"}

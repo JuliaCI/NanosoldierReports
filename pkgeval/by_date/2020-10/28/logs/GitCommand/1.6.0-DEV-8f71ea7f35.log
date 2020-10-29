@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:15:41.563
+# PkgEval set-up: 2020-10-29T05:36:44.544
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,24 +12,23 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:15:44.577
+# Installation: 2020-10-29T05:36:46.113
 #
 
    Resolving package versions...
    Installed Zlib_jll ───── v1.2.11+18
-   Installed Gettext_jll ── v0.20.1+7
    Installed Expat_jll ──── v2.2.7+6
-   Installed OpenSSL_jll ── v1.1.1+6
    Installed Git_jll ────── v2.27.0+1
-   Installed GitCommand ─── v1.1.0
-   Installed ReplMaker ──── v0.2.3
+   Installed Gettext_jll ── v0.20.1+7
+   Installed OpenSSL_jll ── v1.1.1+6
    Installed PCRE2_jll ──── v10.34.0+2
+   Installed ReplMaker ──── v0.2.3
+   Installed GitCommand ─── v1.1.0
    Installed Libiconv_jll ─ v1.16.0+7
    Installed XML2_jll ───── v2.9.10+3
    Installed JLLWrappers ── v1.1.3
@@ -70,30 +69,18 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mReplMaker[39m
-[32m  ✓ [39m[90mJLLWrappers[39m
-[32m  ✓ [39m[90mPCRE2_jll[39m
-[32m  ✓ [39m[90mOpenSSL_jll[39m
-[32m  ✓ [39m[90mZlib_jll[39m
-[32m  ✓ [39m[90mExpat_jll[39m
-[32m  ✓ [39m[90mLibiconv_jll[39m
-[32m  ✓ [39m[90mXML2_jll[39m
-[32m  ✓ [39m[90mGettext_jll[39m
-[32m  ✓ [39m[90mGit_jll[39m
-[32m  ✓ [39mGitCommand
-11 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T08:16:10.142
+# Testing: 2020-10-29T05:36:49.075
 #
 
+
      Testing GitCommand
-Status `/tmp/jl_g2N6KX/Project.toml`
+Status `/tmp/jl_bh6R01/Project.toml`
   [49b5b516] GitCommand v1.1.0
   [8dfed614] Test
-Status `/tmp/jl_g2N6KX/Manifest.toml`
+Status `/tmp/jl_bh6R01/Manifest.toml`
   [49b5b516] GitCommand v1.1.0
   [692b3bcd] JLLWrappers v1.1.3
   [b873ce64] ReplMaker v0.2.3
@@ -132,11 +119,11 @@ Status `/tmp/jl_g2N6KX/Manifest.toml`
      Testing Running tests...
 Cloning into 'General'...
 Cloning into 'General'...
+Updating files:  97% (17658/18102)Updating files:  98% (17740/18102)Updating files:  99% (17921/18102)Updating files: 100% (18102/18102)Updating files: 100% (18102/18102), done.
 Cloning into 'General'...
  import GitCommand
 GitCommand.gitrepl()
-,clone https://github.com/JuliaRegistries/General
-^C
+,clone https://github.com/JuliaRegi^C
 exit()
 
 julia> 
@@ -170,7 +157,8 @@ Test Summary: | Pass  Fail  Total
 GitCommand.jl |   24     2     26
 ERROR: LoadError: Some tests did not pass: 24 passed, 2 failed, 0 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/GitCommand/Wgb8H/test/runtests.jl:57
-ERROR: Package GitCommand errored during testing
+
+PkgEval failed: Package GitCommand errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -193,8 +181,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 97.70s (83.49s user, 13.76s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T05:38:34.414
+CPU usage: 108.32s (96.85s user, 11.75s kernel)
 
 Network usage:
-- eth0: 299.040 MiB received, 805.896 KiB sent
+- eth0: 299.956 MiB received, 1.116 MiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":231,"op":"Read","minor":0},{"major":259,"value":200,"op":"Write","minor":0},{"major":259,"value":402,"op":"Sync","minor":0},{"major":259,"value":29,"op":"Async","minor":0},{"major":259,"value":431,"op":"Total","minor":0},{"major":253,"value":231,"op":"Read","minor":2},{"major":253,"value":200,"op":"Write","minor":2},{"major":253,"value":402,"op":"Sync","minor":2},{"major":253,"value":29,"op":"Async","minor":2},{"major":253,"value":431,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":946176,"op":"Read","minor":0},{"major":259,"value":22134784,"op":"Write","minor":0},{"major":259,"value":22958080,"op":"Sync","minor":0},{"major":259,"value":122880,"op":"Async","minor":0},{"major":259,"value":23080960,"op":"Total","minor":0},{"major":253,"value":946176,"op":"Read","minor":2},{"major":253,"value":180359168,"op":"Write","minor":2},{"major":253,"value":181182464,"op":"Sync","minor":2},{"major":253,"value":122880,"op":"Async","minor":2},{"major":253,"value":181305344,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":232075264,"max_usage":986705920,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":195629056,"inactive_file":12288,"inactive_anon":811008,"total_pgfault":915884,"total_cache":29908992,"total_rss_huge":0,"total_active_anon":196481024,"total_pgmajfault":0,"pgpgin":743674,"rss_huge":0,"mapped_file":0,"total_inactive_file":12288,"dirty":163840,"total_unevictable":0,"total_dirty":163840,"writeback":0,"pgpgout":688611,"hierarchical_memsw_limit":0,"cache":29908992,"active_file":28233728,"pgfault":915884,"total_mapped_file":0,"total_pgpgout":688611,"total_writeback":0,"rss":195629056,"unevictable":0,"total_inactive_anon":811008,"total_pgpgin":743674,"active_anon":196481024,"total_active_file":28233728},"limit":540972998656},"name":"/GitCommand-gBZvKv9Q","networks":{"eth0":{"rx_bytes":314526401,"rx_packets":25512,"tx_packets":17197,"tx_bytes":1170581,"tx_dropped":0,"rx_dropped":3,"tx_errors":0,"rx_errors":0}},"id":"04695eba58a2d17087b218bea7a0c4d1a8a170c354c09b41e307252a4fd51fca","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102342115880000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":96850000000,"usage_in_kernelmode":11750000000,"total_usage":108318673394,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,372330,58620,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,311530,108317389943,141280,399691,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:38:34.564591153Z"}

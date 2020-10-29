@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T09:24:35.336
+# PkgEval set-up: 2020-10-29T05:42:25.785
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,21 +12,20 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T09:24:38.154
+# Installation: 2020-10-29T05:42:27.258
 #
 
    Resolving package versions...
    Installed Compat ──── v2.2.1
    Installed Homebrew ── v0.7.1
-   Installed BinDeps ─── v0.8.10
    Installed URIParser ─ v0.4.1
    Installed Parsers ─── v1.0.11
+   Installed BinDeps ─── v0.8.10
    Installed CLBlast ─── v0.2.0
    Installed JSON ────── v0.21.1
    Installed OpenCL ──── v0.8.1
@@ -74,11 +73,12 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [14a3606d] + MozillaCACerts_jll
     Building Homebrew → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/f01fb2f34675f9839d55ba7238bab63ebd2e531e/build.log`
     Building CLBlast ─→ `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/48e5cfba99403037e35a4ca9eb6c56aaea9c8a12/build.log`
-ERROR: Error building `CLBlast`: 
+
+PkgEval failed: Error building `CLBlast`: 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   124  100   124    0     0   1008      0 --:--:-- --:--:-- --:--:--  1008
-100  381k    0  381k    0     0  1072k      0 --:--:-- --:--:-- --:--:-- 1072k
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   124  100   124    0     0    946      0 --:--:-- --:--:-- --:--:--   946
+100  381k    0  381k    0     0  1023k      0 --:--:-- --:--:-- --:--:-- 1023k
 ERROR: LoadError: IOError: could not spawn `cmake -DSAMPLES=OFF -DTESTS=OFF -DTUNERS=OFF -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ ..`: no such file or directory (ENOENT)
 Stacktrace:
  [1] _spawn_primitive(file::String, cmd::Cmd, stdio::Vector{Any})
@@ -143,8 +143,26 @@ Stacktrace:
  [20] add(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [21] top-level scope
-    @ none:35
-CPU usage: 14.81s (11.47s user, 3.29s kernel)
+    @ none:39
+ [22] eval
+    @ ./boot.jl:360 [inlined]
+ [23] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [24] top-level scope
+    @ none:1
+ [25] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [26] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [27] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T05:42:40.997
+CPU usage: 14.83s (13.12s user, 1.71s kernel)
 
 Network usage:
-- eth0: 1.152 MiB received, 41.504 KiB sent
+- eth0: 1.155 MiB received, 43.672 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":7,"op":"Read","minor":0},{"major":259,"value":9,"op":"Write","minor":0},{"major":259,"value":7,"op":"Sync","minor":0},{"major":259,"value":9,"op":"Async","minor":0},{"major":259,"value":16,"op":"Total","minor":0},{"major":253,"value":7,"op":"Read","minor":2},{"major":253,"value":9,"op":"Write","minor":2},{"major":253,"value":7,"op":"Sync","minor":2},{"major":253,"value":9,"op":"Async","minor":2},{"major":253,"value":16,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":28672,"op":"Read","minor":0},{"major":259,"value":45056,"op":"Write","minor":0},{"major":259,"value":28672,"op":"Sync","minor":0},{"major":259,"value":45056,"op":"Async","minor":0},{"major":259,"value":73728,"op":"Total","minor":0},{"major":253,"value":28672,"op":"Read","minor":2},{"major":253,"value":45056,"op":"Write","minor":2},{"major":253,"value":28672,"op":"Sync","minor":2},{"major":253,"value":45056,"op":"Async","minor":2},{"major":253,"value":73728,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":216616960,"max_usage":571228160,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":201109504,"inactive_file":8192,"inactive_anon":6692864,"total_pgfault":393380,"total_cache":9277440,"total_rss_huge":0,"total_active_anon":203624448,"total_pgmajfault":0,"pgpgin":229010,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":177646,"hierarchical_memsw_limit":0,"cache":9277440,"active_file":28672,"pgfault":393380,"total_mapped_file":0,"total_pgpgout":177646,"total_writeback":0,"rss":201109504,"unevictable":0,"total_inactive_anon":6692864,"total_pgpgin":229010,"active_anon":203624448,"total_active_file":28672},"limit":540972998656},"name":"/CLBlast-hVqbiUeb","networks":{"eth0":{"rx_bytes":1210636,"rx_packets":380,"tx_packets":346,"tx_bytes":44720,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"0f661104de80f12ee5a30ef02ccc65e105355b80136b529c86a6e0022837d1dd","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102373578780000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":13120000000,"usage_in_kernelmode":1710000000,"total_usage":14832031912,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14832031912,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:42:40.999394598Z"}

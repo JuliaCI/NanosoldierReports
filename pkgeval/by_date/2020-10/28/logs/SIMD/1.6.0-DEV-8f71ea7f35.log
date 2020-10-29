@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T07:17:02.075
+# PkgEval set-up: 2020-10-29T03:43:08.971
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,13 +12,12 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T07:17:06.414
+# Installation: 2020-10-29T03:43:10.430
 #
 
    Resolving package versions...
@@ -27,21 +26,19 @@ Updating `~/.julia/environments/v1.6/Project.toml`
   [fdea26ae] + SIMD v3.1.0
 Updating `~/.julia/environments/v1.6/Manifest.toml`
   [fdea26ae] + SIMD v3.1.0
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39mSIMD
-1 dependency successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T07:17:28.031
+# Testing: 2020-10-29T03:43:12.543
 #
 
+
      Testing SIMD
-Status `/tmp/jl_f69Ns0/Project.toml`
+Status `/tmp/jl_qiztN0/Project.toml`
   [fdea26ae] SIMD v3.1.0
   [b77e0a4c] InteractiveUtils
   [8dfed614] Test
-Status `/tmp/jl_f69Ns0/Manifest.toml`
+Status `/tmp/jl_qiztN0/Manifest.toml`
   [fdea26ae] SIMD v3.1.0
   [2a0f44e3] Base64
   [b77e0a4c] InteractiveUtils
@@ -84,7 +81,7 @@ compressstore |   10     10
 Test Summary:          | Pass  Total
 Index-based load/store |  104    104
 ;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:650 within `vsum'
-define double @julia_vsum_4154({ {}*, [1 x [2 x i64]], i64, i64 }* nocapture nonnull readonly align 8 dereferenceable(40) %0) {
+define double @julia_vsum_4168({ {}*, [1 x [2 x i64]], i64, i64 }* nocapture nonnull readonly align 8 dereferenceable(40) %0) {
 top:
   %1 = alloca {}*, align 8
   %2 = alloca [1 x [1 x i64]], align 8
@@ -129,11 +126,11 @@ L14:                                              ; preds = %top
 ; ┌ @ range.jl:22 within `Colon'
 ; │┌ @ range.jl:24 within `_colon'
 ; ││┌ @ range.jl:260 within `StepRange' @ range.jl:208
-     %12 = call i64 @j_steprange_last_4157(i64 1, i64 4, i64 %10)
+     %12 = call i64 @j_steprange_last_4171(i64 1, i64 4, i64 %10)
 ; └└└
 ; ┌ @ range.jl:657 within `iterate'
    %13 = icmp sgt i64 %12, 0
-   %14 = or i1 %13, icmp eq ({}* inttoptr (i64 140151001990496 to {}*), {}* inttoptr (i64 140151002024064 to {}*))
+   %14 = or i1 %13, icmp eq ({}* inttoptr (i64 139752159724896 to {}*), {}* inttoptr (i64 139752159758464 to {}*))
 ; └
   br i1 %14, label %L41.preheader, label %L98
 
@@ -178,7 +175,7 @@ L67:                                              ; preds = %L41
 ; ││└
     store i64 %value_phi3, i64* %15, align 8
 ; ││┌ @ abstractarray.jl:596 within `checkbounds'
-     %24 = call nonnull {}* @j_throw_boundserror_4161({ {}*, [1 x [2 x i64]], i64, i64 }* nocapture nonnull readonly %0, [1 x [1 x i64]]* nocapture readonly %2)
+     %24 = call nonnull {}* @j_throw_boundserror_4175({ {}*, [1 x [2 x i64]], i64, i64 }* nocapture nonnull readonly %0, [1 x [1 x i64]]* nocapture readonly %2)
      call void @llvm.trap()
      unreachable
 
@@ -241,8 +238,8 @@ L98:                                              ; preds = %L98.loopexit, %L14
 
 L102:                                             ; preds = %top
 ;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:651 within `vsum'
-  store {}* inttoptr (i64 140150977820176 to {}*), {}** %1, align 8
-  %32 = call nonnull {}* @jl_apply_generic({}* inttoptr (i64 140151017002624 to {}*), {}** nonnull %1, i32 1)
+  store {}* inttoptr (i64 139752100158672 to {}*), {}** %1, align 8
+  %32 = call nonnull {}* @jl_apply_generic({}* inttoptr (i64 139752174737024 to {}*), {}** nonnull %1, i32 1)
   call void @jl_throw({}* %32)
   unreachable
 }
@@ -391,7 +388,7 @@ L224:
 ; │└└└
 ; │ @ abstractarray.jl within `vsum'
 L251:
-	movabsq	$140150977820176, %rax          # imm = 0x7F77713F7610
+	movabsq	$139752100158672, %rax          # imm = 0x7F1A92495CD0
 	movabsq	$jl_system_image_data, %rdi
 	leaq	8(%rsp), %rsi
 ; │ @ runtests.jl:651 within `vsum'
@@ -405,7 +402,7 @@ L251:
 	nopl	(%rax)
 ; └
 ;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:723 within `vcompress!'
-define nonnull {}* @"japi1_vcompress!_4242"({}* %0, {}** %1, i32 %2) #0 {
+define nonnull {}* @"japi1_vcompress!_4256"({}* %0, {}** %1, i32 %2) #0 {
 top:
   %3 = alloca {}*, align 8
   %4 = alloca {}**, align 8
@@ -470,7 +467,7 @@ L19:                                              ; preds = %L16, %L13, %L9
      %value_phi.in = phi i1 [ %25, %L9 ], [ %26, %L13 ], [ %27, %L16 ]
 ; │└└
 ; │┌ @ tuple.jl:365 within `_eq'
-    %28 = and i1 %value_phi.in, icmp ne ({}* inttoptr (i64 140151002024064 to {}*), {}* inttoptr (i64 140151001990496 to {}*))
+    %28 = and i1 %value_phi.in, icmp ne ({}* inttoptr (i64 139752159758464 to {}*), {}* inttoptr (i64 139752159724896 to {}*))
 ; └└
   br i1 %28, label %L27, label %L234
 
@@ -518,7 +515,7 @@ L42:                                              ; preds = %L39, %L36, %L32
      %value_phi2.in = phi i1 [ %33, %L32 ], [ %34, %L36 ], [ %35, %L39 ]
 ; │└└
 ; │┌ @ tuple.jl:365 within `_eq'
-    %36 = and i1 %value_phi2.in, icmp ne ({}* inttoptr (i64 140151002024064 to {}*), {}* inttoptr (i64 140151001990496 to {}*))
+    %36 = and i1 %value_phi2.in, icmp ne ({}* inttoptr (i64 139752159758464 to {}*), {}* inttoptr (i64 139752159724896 to {}*))
 ; └└
   br i1 %36, label %L53, label %L234
 
@@ -680,7 +677,7 @@ L83:                                              ; preds = %L64
 ; ││└
     store i64 %value_phi664, i64* %38, align 8
 ; ││┌ @ abstractarray.jl:596 within `checkbounds'
-     %61 = call nonnull {}* @j_throw_boundserror_4251({}* nonnull %14, [1 x [1 x i64]]* nocapture readonly %5)
+     %61 = call nonnull {}* @j_throw_boundserror_4265({}* nonnull %14, [1 x [1 x i64]]* nocapture readonly %5)
      call void @llvm.trap()
      unreachable
 
@@ -705,7 +702,7 @@ L102:                                             ; preds = %L87
 ; ││┌ @ indices.jl:478 within `getindex'
      store i64 %value_phi664, i64* %39, align 8
 ; │││┌ @ abstractarray.jl:596 within `checkbounds'
-      %62 = call nonnull {}* @j_throw_boundserror_4250([1 x [1 x [1 x i64]]]* nocapture readonly %6, [1 x i64]* nocapture readonly %7)
+      %62 = call nonnull {}* @j_throw_boundserror_4264([1 x [1 x [1 x i64]]]* nocapture readonly %6, [1 x i64]* nocapture readonly %7)
       call void @llvm.trap()
       unreachable
 
@@ -749,7 +746,7 @@ L137:                                             ; preds = %L106
 ; ││└
     store i64 %value_phi664, i64* %40, align 8
 ; ││┌ @ abstractarray.jl:596 within `checkbounds'
-     %69 = call nonnull {}* @j_throw_boundserror_4249({}* nonnull %16, [1 x [1 x i64]]* nocapture readonly %8)
+     %69 = call nonnull {}* @j_throw_boundserror_4263({}* nonnull %16, [1 x [1 x i64]]* nocapture readonly %8)
      call void @llvm.trap()
      unreachable
 
@@ -774,7 +771,7 @@ L156:                                             ; preds = %L141
 ; ││┌ @ indices.jl:478 within `getindex'
      store i64 %value_phi664, i64* %41, align 8
 ; │││┌ @ abstractarray.jl:596 within `checkbounds'
-      %70 = call nonnull {}* @j_throw_boundserror_4248([1 x [1 x [1 x i64]]]* nocapture readonly %9, [1 x i64]* nocapture readonly %10)
+      %70 = call nonnull {}* @j_throw_boundserror_4262([1 x [1 x [1 x i64]]]* nocapture readonly %9, [1 x i64]* nocapture readonly %10)
       call void @llvm.trap()
       unreachable
 
@@ -834,7 +831,7 @@ L194:                                             ; preds = %L160
    store i64 %value_phi563, i64* %.sroa.0.0..sroa_idx, align 8
    store i64 %72, i64* %.sroa.2.0..sroa_idx22, align 8
 ; │┌ @ abstractarray.jl:596 within `checkbounds'
-    %83 = call nonnull {}* @j_throw_boundserror_4247({}* nonnull %12, [1 x [2 x i64]]* nocapture readonly %11)
+    %83 = call nonnull {}* @j_throw_boundserror_4261({}* nonnull %12, [1 x [2 x i64]]* nocapture readonly %11)
     call void @llvm.trap()
     unreachable
 
@@ -949,8 +946,8 @@ L230:                                             ; preds = %idxend18, %idxend
 
 L234:                                             ; preds = %L42, %L19
 ;  @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724 within `vcompress!' @ /home/pkgeval/.julia/packages/SIMD/e6GgT/test/runtests.jl:724
-  store {}* inttoptr (i64 140150081411184 to {}*), {}** %3, align 8
-  %100 = call nonnull {}* @jl_apply_generic({}* inttoptr (i64 140151017002624 to {}*), {}** nonnull %3, i32 1)
+  store {}* inttoptr (i64 139752134623088 to {}*), {}** %3, align 8
+  %100 = call nonnull {}* @jl_apply_generic({}* inttoptr (i64 139752174737024 to {}*), {}** nonnull %3, i32 1)
   call void @jl_throw({}* %100)
   unreachable
 
@@ -1594,7 +1591,7 @@ L863:
 ; │└
 ; │ @ runtests.jl:724 within `vcompress!' @ array.jl:0
 L900:
-	movabsq	$140150081411184, %rax          # imm = 0x7F773BD15870
+	movabsq	$139752134623088, %rax          # imm = 0x7F1A94573F70
 	movabsq	$jl_system_image_data, %rdi
 	leaq	-120(%rbp), %rsi
 ; │ @ runtests.jl:724 within `vcompress!' @ runtests.jl:724
@@ -1612,12 +1609,14 @@ Test Summary:   | Pass  Total
 Vector shuffles |  202    202
      Testing SIMD tests passed 
 
+PkgEval succeeded
+
 
 ################################################################################
-# Teardown: 2020-10-28T07:18:47.437
-#
-
-CPU usage: 44.12s (38.96s user, 5.04s kernel)
+# PkgEval teardown: 2020-10-29T03:43:52.306
+CPU usage: 43.07s (41.20s user, 2.00s kernel)
 
 Network usage:
-- eth0: 42.179 KiB received, 4.478 KiB sent
+- eth0: 38.747 KiB received, 4.683 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":181149696,"max_usage":459784192,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":176627712,"inactive_file":8192,"inactive_anon":57344,"total_pgfault":500329,"total_cache":581632,"total_rss_huge":0,"total_active_anon":177143808,"total_pgmajfault":0,"pgpgin":171156,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":127892,"hierarchical_memsw_limit":0,"cache":581632,"active_file":0,"pgfault":500329,"total_mapped_file":0,"total_pgpgout":127892,"total_writeback":0,"rss":176627712,"unevictable":0,"total_inactive_anon":57344,"total_pgpgin":171156,"active_anon":177143808,"total_active_file":0},"limit":540972998656},"name":"/SIMD-HNbQpkOz","networks":{"eth0":{"rx_bytes":39677,"rx_packets":101,"tx_packets":35,"tx_bytes":4795,"tx_dropped":0,"rx_dropped":0,"tx_errors":0,"rx_errors":0}},"id":"38b4866889dd0b09cb4b1efb44b638df49c330c26b73298fae6fa01bc2c2787c","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101465439190000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":41200000000,"usage_in_kernelmode":2000000000,"total_usage":43073051478,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,43073051478,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T03:43:52.579794368Z"}

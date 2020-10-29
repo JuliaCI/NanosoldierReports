@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:06:45.232
+# PkgEval set-up: 2020-10-29T06:04:29.324
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,20 +12,19 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:06:49.554
+# Installation: 2020-10-29T06:04:30.814
 #
 
    Resolving package versions...
-   Installed SparseTimeSeries ─ v0.1.9
+   Installed JSON3 ──────────── v1.4.0
    Installed StructTypes ────── v1.1.0
    Installed Parsers ────────── v1.0.11
-   Installed JSON3 ──────────── v1.4.0
+   Installed SparseTimeSeries ─ v0.1.9
 Updating `~/.julia/environments/v1.6/Project.toml`
   [e40787dc] + SparseTimeSeries v0.1.9
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -41,24 +40,19 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [9e88b42a] + Serialization
   [cf7118a7] + UUIDs
   [4ec0a83e] + Unicode
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mStructTypes[39m
-[32m  ✓ [39m[90mParsers[39m
-[32m  ✓ [39m[90mJSON3[39m
-[32m  ✓ [39mSparseTimeSeries
-4 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T08:07:20.956
+# Testing: 2020-10-29T06:04:33.065
 #
 
+
      Testing SparseTimeSeries
-Status `/tmp/jl_mVdvfZ/Project.toml`
+Status `/tmp/jl_cFuozZ/Project.toml`
   [0f8b85d8] JSON3 v1.4.0
   [e40787dc] SparseTimeSeries v0.1.9
   [8dfed614] Test
-Status `/tmp/jl_mVdvfZ/Manifest.toml`
+Status `/tmp/jl_cFuozZ/Manifest.toml`
   [0f8b85d8] JSON3 v1.4.0
   [69de0a69] Parsers v1.0.11
   [e40787dc] SparseTimeSeries v0.1.9
@@ -107,7 +101,8 @@ TaggedEventSeries |    8      1      9
 ERROR: LoadError: LoadError: Some tests did not pass: 8 passed, 0 failed, 1 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/SparseTimeSeries/25lgY/test/testset_1.jl:122
 in expression starting at /home/pkgeval/.julia/packages/SparseTimeSeries/25lgY/test/runtests.jl:4
-ERROR: Package SparseTimeSeries errored during testing
+
+PkgEval failed: Package SparseTimeSeries errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -130,8 +125,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 37.95s (31.30s user, 6.57s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T06:05:05.705
+CPU usage: 36.09s (34.36s user, 1.71s kernel)
 
 Network usage:
-- eth0: 153.976 KiB received, 18.394 KiB sent
+- eth0: 153.497 KiB received, 18.095 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":2,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":2,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":7,"op":"Total","minor":0},{"major":253,"value":2,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":2,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":7,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":8192,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":8192,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":28672,"op":"Total","minor":0},{"major":253,"value":8192,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":8192,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":28672,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":211279872,"max_usage":694714368,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":203497472,"inactive_file":8192,"inactive_anon":323584,"total_pgfault":587507,"total_cache":3108864,"total_rss_huge":0,"total_active_anon":206262272,"total_pgmajfault":0,"pgpgin":300081,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":249640,"hierarchical_memsw_limit":0,"cache":3108864,"active_file":8192,"pgfault":587507,"total_mapped_file":0,"total_pgpgout":249640,"total_writeback":0,"rss":203497472,"unevictable":0,"total_inactive_anon":323584,"total_pgpgin":300081,"active_anon":206262272,"total_active_file":8192},"limit":540972998656},"name":"/SparseTimeSeries-jcOS2pRZ","networks":{"eth0":{"rx_bytes":157181,"rx_packets":166,"tx_packets":129,"tx_bytes":18529,"tx_dropped":0,"rx_dropped":2,"tx_errors":0,"rx_errors":0}},"id":"8537b15eda49de4fb2ecc2354a9fe9f6aa15c12b3134f34e2659136885f9955f","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102545130810000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":34360000000,"usage_in_kernelmode":1710000000,"total_usage":36085324613,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,36085324613,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T06:05:05.860058811Z"}

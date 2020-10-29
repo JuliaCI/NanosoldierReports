@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T07:18:55.549
+# PkgEval set-up: 2020-10-29T06:03:04.537
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,24 +12,23 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T07:18:58.028
+# Installation: 2020-10-29T06:03:06.039
 #
 
    Resolving package versions...
    Installed CompilerSupportLibraries_jll ─ v0.3.4+0
-   Installed OpenSpecFun_jll ────────────── v0.5.3+4
    Installed ReadableNumbers ────────────── v0.2.1
+   Installed OpenSpecFun_jll ────────────── v0.5.3+4
    Installed Compat ─────────────────────── v2.2.1
    Installed BinDeps ────────────────────── v0.8.10
+   Installed JLLWrappers ────────────────── v1.1.3
    Installed SpecialFunctions ───────────── v0.10.3
    Installed ArbFloats ──────────────────── v0.3.2
-   Installed JLLWrappers ────────────────── v1.1.3
    Installed URIParser ──────────────────── v0.4.1
 Updating `~/.julia/environments/v1.6/Project.toml`
   [9689d877] + ArbFloats v0.3.2
@@ -75,7 +74,8 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
     Building ArbFloats → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/8d8928161cb7a4e3ca263334948c8acaa71392b7/build.log`
-ERROR: Error building `ArbFloats`: 
+
+PkgEval failed: Error building `ArbFloats`: 
 m4-1.4.17/
 m4-1.4.17/.prev-version
 m4-1.4.17/.tarball-version
@@ -1259,8 +1259,8 @@ checking for gcc option to accept ISO C99... none needed
 checking for gcc option to accept ISO Standard C... (cached) none needed
 configure: autobuild project... GNU M4
 configure: autobuild revision... 1.4.17
-configure: autobuild hostname... c8598dc3db75
-configure: autobuild timestamp... 20201028T071908Z
+configure: autobuild hostname... 73874e466404
+configure: autobuild timestamp... 20201029T060313Z
 checking for unsigned long long int... yes
 checking for long long int... yes
 checking for unsigned long long int... (cached) yes
@@ -3143,8 +3143,26 @@ Stacktrace:
  [20] add(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [21] top-level scope
-    @ none:35
-CPU usage: 39.63s (24.71s user, 14.12s kernel)
+    @ none:39
+ [22] eval
+    @ ./boot.jl:360 [inlined]
+ [23] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [24] top-level scope
+    @ none:1
+ [25] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [26] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [27] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T06:03:48.167
+CPU usage: 41.31s (27.50s user, 14.08s kernel)
 
 Network usage:
-- eth0: 1.830 MiB received, 59.466 KiB sent
+- eth0: 1.840 MiB received, 64.151 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":9,"op":"Read","minor":0},{"major":259,"value":609,"op":"Write","minor":0},{"major":259,"value":9,"op":"Sync","minor":0},{"major":259,"value":609,"op":"Async","minor":0},{"major":259,"value":618,"op":"Total","minor":0},{"major":253,"value":9,"op":"Read","minor":2},{"major":253,"value":609,"op":"Write","minor":2},{"major":253,"value":9,"op":"Sync","minor":2},{"major":253,"value":609,"op":"Async","minor":2},{"major":253,"value":618,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":36864,"op":"Read","minor":0},{"major":259,"value":8609792,"op":"Write","minor":0},{"major":259,"value":36864,"op":"Sync","minor":0},{"major":259,"value":8609792,"op":"Async","minor":0},{"major":259,"value":8646656,"op":"Total","minor":0},{"major":253,"value":36864,"op":"Read","minor":2},{"major":253,"value":9117696,"op":"Write","minor":2},{"major":253,"value":36864,"op":"Sync","minor":2},{"major":253,"value":9117696,"op":"Async","minor":2},{"major":253,"value":9154560,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":216297472,"max_usage":358195200,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":188710912,"inactive_file":8192,"inactive_anon":9904128,"total_pgfault":2604552,"total_cache":18472960,"total_rss_huge":0,"total_active_anon":197218304,"total_pgmajfault":0,"pgpgin":1805390,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":1754808,"hierarchical_memsw_limit":0,"cache":18472960,"active_file":36864,"pgfault":2604552,"total_mapped_file":0,"total_pgpgout":1754808,"total_writeback":0,"rss":188710912,"unevictable":0,"total_inactive_anon":9904128,"total_pgpgin":1805390,"active_anon":197218304,"total_active_file":36864},"limit":540972998656},"name":"/ArbFloats-O7zm6lV3","networks":{"eth0":{"rx_bytes":1929199,"rx_packets":943,"tx_packets":667,"tx_bytes":65691,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"73874e466404e38abdbd44d0e4a11d257d04e70c7851aa61f3a4f891df47c113","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102535215860000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":27500000000,"usage_in_kernelmode":14080000000,"total_usage":41310480327,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,41310480327,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T06:03:48.169431498Z"}

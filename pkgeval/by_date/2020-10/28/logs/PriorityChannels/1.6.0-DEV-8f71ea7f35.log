@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:02:22.630
+# PkgEval set-up: 2020-10-29T05:34:05.882
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,19 +12,18 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:02:26.162
+# Installation: 2020-10-29T05:34:06.937
 #
 
    Resolving package versions...
-   Installed PriorityChannels ─── v0.1.0
    Installed Compat ───────────── v3.23.0
    Installed OrderedCollections ─ v1.3.1
+   Installed PriorityChannels ─── v0.1.0
    Installed DataStructures ───── v0.18.8
 Updating `~/.julia/environments/v1.6/Project.toml`
   [a2669504] + PriorityChannels v0.1.0
@@ -64,27 +63,22 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mOrderedCollections[39m
-[32m  ✓ [39m[90mCompat[39m
-[32m  ✓ [39m[90mDataStructures[39m
-[32m  ✓ [39mPriorityChannels
-4 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T08:02:38.670
+# Testing: 2020-10-29T05:34:08.761
 #
 
+
      Testing PriorityChannels
-Status `/tmp/jl_kbvPl0/Project.toml`
+Status `/tmp/jl_rrr9c3/Project.toml`
   [864edb3b] DataStructures v0.18.8
   [a2669504] PriorityChannels v0.1.0
   [ade2ca70] Dates
   [8ba89e20] Distributed
   [9a3f8284] Random
   [8dfed614] Test
-Status `/tmp/jl_kbvPl0/Manifest.toml`
+Status `/tmp/jl_rrr9c3/Manifest.toml`
   [34da2185] Compat v3.23.0
   [864edb3b] DataStructures v0.18.8
   [bac558e1] OrderedCollections v1.3.1
@@ -121,6 +115,7 @@ Status `/tmp/jl_kbvPl0/Manifest.toml`
   [deac9b47] LibCURL_jll
   [14a3606d] MozillaCACerts_jll
      Testing Running tests...
+WARNING: could not import Base.register_taskdone_hook into PriorityChannels
 Test Summary:        | Pass  Total
 various constructors |   13     13
 Test Summary: | Pass  Total
@@ -157,7 +152,8 @@ Test Summary:           | Error  Total
 channels bound to tasks |     1      1
 ERROR: LoadError: Some tests did not pass: 0 passed, 0 failed, 1 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/PriorityChannels/5SBT7/test/runtests.jl:89
-ERROR: Package PriorityChannels errored during testing
+
+PkgEval failed: Package PriorityChannels errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -180,8 +176,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 24.98s (20.56s user, 4.28s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T05:34:28.603
+CPU usage: 19.68s (17.85s user, 1.77s kernel)
 
 Network usage:
-- eth0: 232.422 KiB received, 18.438 KiB sent
+- eth0: 230.173 KiB received, 17.326 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":2,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":2,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":7,"op":"Total","minor":0},{"major":253,"value":2,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":2,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":7,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":8192,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":8192,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":28672,"op":"Total","minor":0},{"major":253,"value":8192,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":8192,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":28672,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":205717504,"max_usage":655380480,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":198225920,"inactive_file":8192,"inactive_anon":741376,"total_pgfault":499018,"total_cache":2387968,"total_rss_huge":0,"total_active_anon":199856128,"total_pgmajfault":0,"pgpgin":328312,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":279334,"hierarchical_memsw_limit":0,"cache":2387968,"active_file":8192,"pgfault":499018,"total_mapped_file":0,"total_pgpgout":279334,"total_writeback":0,"rss":198225920,"unevictable":0,"total_inactive_anon":741376,"total_pgpgin":328312,"active_anon":199856128,"total_active_file":8192},"limit":540972998656},"name":"/PriorityChannels-9FDVgkw3","networks":{"eth0":{"rx_bytes":235697,"rx_packets":151,"tx_packets":116,"tx_bytes":17742,"tx_dropped":0,"rx_dropped":0,"tx_errors":0,"rx_errors":0}},"id":"97699169fd679dd377082af466cc5a729bc7030b525388c95eda6f8ed5dd4162","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102310819050000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":17850000000,"usage_in_kernelmode":1770000000,"total_usage":19675745626,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,19675745626,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:34:29.327375503Z"}

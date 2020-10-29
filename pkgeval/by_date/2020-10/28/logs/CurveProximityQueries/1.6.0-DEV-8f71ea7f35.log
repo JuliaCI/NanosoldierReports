@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T07:14:59.865
+# PkgEval set-up: 2020-10-29T06:10:58.168
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,25 +12,24 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T07:15:03.770
+# Installation: 2020-10-29T06:10:59.580
 #
 
    Resolving package versions...
    Installed RecipesBase ──────────────── v0.6.0
    Installed FastRounding ─────────────── v0.2.0
+   Installed OrderedCollections ───────── v1.3.1
    Installed ErrorfreeArithmetic ──────── v0.5.2
    Installed DataStructures ───────────── v0.15.0
    Installed StaticArrays ─────────────── v0.10.3
-   Installed OrderedCollections ───────── v1.3.1
    Installed SetRounding ──────────────── v0.2.0
-   Installed CurveProximityQueries ────── v0.1.5
    Installed Requires ─────────────────── v1.1.0
+   Installed CurveProximityQueries ────── v0.1.5
    Installed ConvexBodyProximityQueries ─ v0.1.8
    Installed IntervalArithmetic ───────── v0.15.2
    Installed CRlibm ───────────────────── v0.8.0
@@ -63,28 +62,15 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [8dfed614] + Test
   [cf7118a7] + UUIDs
     Building CRlibm → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/9d1c22cff9c04207f336b8e64840d0bd40d86e0e/build.log`
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mSetRounding[39m
-[32m  ✓ [39m[90mRecipesBase[39m
-[32m  ✓ [39m[90mOrderedCollections[39m
-[32m  ✓ [39m[90mErrorfreeArithmetic[39m
-[32m  ✓ [39m[90mRequires[39m
-[32m  ✓ [39m[90mCRlibm[39m
-[32m  ✓ [39m[90mFastRounding[39m
-[32m  ✓ [39m[90mDataStructures[39m
-[32m  ✓ [39m[90mStaticArrays[39m
-[32m  ✓ [39m[90mConvexBodyProximityQueries[39m
-[32m  ✓ [39m[90mIntervalArithmetic[39m
-[32m  ✓ [39mCurveProximityQueries
-12 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T07:15:48.719
+# Testing: 2020-10-29T06:11:17.378
 #
 
+
      Testing CurveProximityQueries
-Status `/tmp/jl_KLtWc0/Project.toml`
+Status `/tmp/jl_Qomo64/Project.toml`
   [e9983d58] ConvexBodyProximityQueries v0.1.8
   [e79eea86] CurveProximityQueries v0.1.5
   [864edb3b] DataStructures v0.15.0
@@ -95,7 +81,7 @@ Status `/tmp/jl_KLtWc0/Project.toml`
   [37e2e46d] LinearAlgebra
   [9a3f8284] Random
   [8dfed614] Test
-Status `/tmp/jl_KLtWc0/Manifest.toml`
+Status `/tmp/jl_Qomo64/Manifest.toml`
   [96374032] CRlibm v0.8.0
   [187b0558] ConstructionBase v1.0.0
   [e9983d58] ConvexBodyProximityQueries v0.1.8
@@ -690,7 +676,8 @@ CurveProximityQueries   |   17     26     43
   Dimensionful curves   |    5      3      8
 ERROR: LoadError: Some tests did not pass: 17 passed, 0 failed, 26 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/CurveProximityQueries/6vKub/test/runtests.jl:12
-ERROR: Package CurveProximityQueries errored during testing
+
+PkgEval failed: Package CurveProximityQueries errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -713,8 +700,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 99.59s (84.13s user, 14.60s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T06:12:33.345
+CPU usage: 93.44s (86.90s user, 6.70s kernel)
 
 Network usage:
-- eth0: 8.676 MiB received, 100.330 KiB sent
+- eth0: 8.675 MiB received, 104.003 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":2,"op":"Read","minor":0},{"major":259,"value":83,"op":"Write","minor":0},{"major":259,"value":2,"op":"Sync","minor":0},{"major":259,"value":83,"op":"Async","minor":0},{"major":259,"value":85,"op":"Total","minor":0},{"major":253,"value":2,"op":"Read","minor":2},{"major":253,"value":83,"op":"Write","minor":2},{"major":253,"value":2,"op":"Sync","minor":2},{"major":253,"value":83,"op":"Async","minor":2},{"major":253,"value":85,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":8192,"op":"Read","minor":0},{"major":259,"value":1380352,"op":"Write","minor":0},{"major":259,"value":8192,"op":"Sync","minor":0},{"major":259,"value":1380352,"op":"Async","minor":0},{"major":259,"value":1388544,"op":"Total","minor":0},{"major":253,"value":8192,"op":"Read","minor":2},{"major":253,"value":1409024,"op":"Write","minor":2},{"major":253,"value":8192,"op":"Sync","minor":2},{"major":253,"value":1409024,"op":"Async","minor":2},{"major":253,"value":1417216,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":247046144,"max_usage":842416128,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":206979072,"inactive_file":8192,"inactive_anon":13279232,"total_pgfault":1687005,"total_cache":33366016,"total_rss_huge":0,"total_active_anon":227037184,"total_pgmajfault":0,"pgpgin":980256,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":921578,"hierarchical_memsw_limit":0,"cache":33366016,"active_file":20480,"pgfault":1687005,"total_mapped_file":0,"total_pgpgout":921578,"total_writeback":0,"rss":206979072,"unevictable":0,"total_inactive_anon":13279232,"total_pgpgin":980256,"active_anon":227037184,"total_active_file":20480},"limit":540972998656},"name":"/CurveProximityQueries-wQR5NNJk","networks":{"eth0":{"rx_bytes":9096534,"rx_packets":1719,"tx_packets":1178,"tx_bytes":106499,"tx_dropped":0,"rx_dropped":4,"tx_errors":0,"rx_errors":0}},"id":"6ca2856b16b5cbc6bb791f66fba1fe8026fdba0809b589d0b6691a57788a749a","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102602324730000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":86900000000,"usage_in_kernelmode":6700000000,"total_usage":93435028183,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,93434995123,26690,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6370,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T06:12:34.239261125Z"}

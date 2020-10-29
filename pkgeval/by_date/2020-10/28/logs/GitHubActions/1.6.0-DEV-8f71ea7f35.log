@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T07:43:32.308
+# PkgEval set-up: 2020-10-29T04:04:20.817
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,19 +12,18 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T07:43:36.836
+# Installation: 2020-10-29T04:04:22.303
 #
 
    Resolving package versions...
-   Installed GitHubActions ─ v0.1.0
-   Installed Parsers ─────── v1.0.11
    Installed JSON ────────── v0.21.1
+   Installed Parsers ─────── v1.0.11
+   Installed GitHubActions ─ v0.1.0
 Updating `~/.julia/environments/v1.6/Project.toml`
   [6b79fd1a] + GitHubActions v0.1.0
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -36,26 +35,22 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [a63ad114] + Mmap
   [de0858da] + Printf
   [4ec0a83e] + Unicode
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mParsers[39m
-[32m  ✓ [39m[90mJSON[39m
-[32m  ✓ [39mGitHubActions
-3 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T07:43:53.075
+# Testing: 2020-10-29T04:04:24.540
 #
 
+
      Testing GitHubActions
-Status `/tmp/jl_DOeVf0/Project.toml`
+Status `/tmp/jl_EGA4t4/Project.toml`
   [6b79fd1a] GitHubActions v0.1.0
   [682c06a0] JSON v0.21.1
   [a896ed2c] SimpleMock v1.1.4
   [fd094767] Suppressor v0.2.0
   [56ddb016] Logging
   [8dfed614] Test
-Status `/tmp/jl_DOeVf0/Manifest.toml`
+Status `/tmp/jl_EGA4t4/Manifest.toml`
   [7057c7e9] Cassette v0.3.3
   [6b79fd1a] GitHubActions v0.1.0
   [682c06a0] JSON v0.21.1
@@ -312,8 +307,9 @@ repl_entrypoint at /workspace/srcdir/src/jlapi.c:672
 main at /workspace/srcdir/cli/loader_exe.c:46
 __libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
 unknown function (ip: 0x400bae)
-Allocations: 8020258 (Pool: 8017440; Big: 2818); GC: 10
-ERROR: Package GitHubActions errored during testing (received signal: 11)
+Allocations: 8015785 (Pool: 8012962; Big: 2823); GC: 11
+
+PkgEval failed: Package GitHubActions errored during testing (received signal: 11)
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -336,8 +332,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 27.79s (22.42s user, 5.18s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T04:04:51.147
+CPU usage: 28.37s (25.78s user, 2.63s kernel)
 
 Network usage:
-- eth0: 683.889 KiB received, 23.008 KiB sent
+- eth0: 679.324 KiB received, 21.957 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":456830976,"max_usage":744824832,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":204193792,"inactive_file":8192,"inactive_anon":244137984,"total_pgfault":582699,"total_cache":247037952,"total_rss_huge":0,"total_active_anon":207052800,"total_pgmajfault":0,"pgpgin":395623,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":285459,"hierarchical_memsw_limit":0,"cache":247037952,"active_file":32768,"pgfault":582699,"total_mapped_file":0,"total_pgpgout":285459,"total_writeback":0,"rss":204193792,"unevictable":0,"total_inactive_anon":244137984,"total_pgpgin":395623,"active_anon":207052800,"total_active_file":32768},"limit":540972998656},"name":"/GitHubActions-7xAzETEe","networks":{"eth0":{"rx_bytes":695628,"rx_packets":251,"tx_packets":162,"tx_bytes":22484,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"769142818d7531695e6b92b8150070d2b02daffca9908ee7a8891073c5f88e20","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101625976390000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":25780000000,"usage_in_kernelmode":2630000000,"total_usage":28373794888,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,550980,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,28373243908,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T04:04:51.299757291Z"}

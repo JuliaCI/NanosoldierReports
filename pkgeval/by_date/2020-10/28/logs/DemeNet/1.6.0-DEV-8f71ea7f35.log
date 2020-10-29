@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T08:22:57.163
+# PkgEval set-up: 2020-10-29T04:00:09.643
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,24 +12,23 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T08:23:00.403
+# Installation: 2020-10-29T04:00:10.843
 #
 
    Resolving package versions...
    Installed CryptoGroups ── v0.1.2
-   Installed Primes ──────── v0.4.0
-   Installed ECC ─────────── v0.2.3
    Installed RecipesBase ─── v0.8.0
-   Installed DiffieHellman ─ v0.4.0
+   Installed ECC ─────────── v0.2.3
+   Installed Primes ──────── v0.4.0
    Installed Paillier ────── v0.2.4
-   Installed Polynomials ─── v0.6.1
+   Installed DiffieHellman ─ v0.4.0
    Installed DemeNet ─────── v0.1.3
+   Installed Polynomials ─── v0.6.1
    Installed BitConverter ── v0.1.1
    Installed Mods ────────── v0.1.0
 Updating `~/.julia/environments/v1.6/Project.toml`
@@ -70,31 +69,20 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mBitConverter[39m
-[32m  ✓ [39m[90mRecipesBase[39m
-[32m  ✓ [39m[90mMods[39m
-[32m  ✓ [39m[90mECC[39m
-[32m  ✓ [39m[90mPrimes[39m
-[32m  ✓ [39m[90mPolynomials[39m
-[32m  ✓ [39m[90mPaillier[39m
-[32m  ✓ [39m[90mCryptoGroups[39m
-[32m  ✓ [39m[90mDiffieHellman[39m
-[32m  ✓ [39mDemeNet
-10 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T08:23:19.758
+# Testing: 2020-10-29T04:00:13.888
 #
 
+
      Testing DemeNet
-Status `/tmp/jl_fBFDKY/Project.toml`
+Status `/tmp/jl_jNjFj3/Project.toml`
   [311d44f8] DemeNet v0.1.3
   [0e61fee8] DiffieHellman v0.4.0
   [7743456c] PeaceCypher v0.3.5
   [44cfe95a] Pkg
-Status `/tmp/jl_fBFDKY/Manifest.toml`
+Status `/tmp/jl_jNjFj3/Manifest.toml`
   [9e28174c] BinDeps v0.8.10
   [b99e7846] BinaryProvider v0.5.10
   [3a3ce9e8] BitConverter v0.1.1
@@ -145,6 +133,7 @@ Status `/tmp/jl_fBFDKY/Manifest.toml`
   [deac9b47] LibCURL_jll
   [14a3606d] MozillaCACerts_jll
      Testing Running tests...
+WARNING: could not import Base.ctranspose into Mods
 WARNING: using PeaceCypher.Signer in module Main conflicts with an existing identifier.
 ERROR: LoadError: MethodError: no method matching DemeNet.Plugins.Notary(::Type{DemeNet.Plugins.CypherSuite{0x7743456ce0c54477a2b6196c240b0368}}, ::Symbol)
 Closest candidates are:
@@ -164,7 +153,8 @@ Stacktrace:
  [6] top-level scope
    @ none:6
 in expression starting at /home/pkgeval/.julia/packages/DemeNet/SlARk/test/runtests.jl:4
-ERROR: Package DemeNet errored during testing
+
+PkgEval failed: Package DemeNet errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -187,8 +177,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 40.45s (30.10s user, 10.22s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T04:00:44.385
+CPU usage: 34.45s (31.26s user, 3.36s kernel)
 
 Network usage:
-- eth0: 3.873 MiB received, 122.068 KiB sent
+- eth0: 3.770 MiB received, 73.424 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":9,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":9,"op":"Async","minor":0},{"major":259,"value":9,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":9,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":9,"op":"Async","minor":2},{"major":253,"value":9,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":40960,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":40960,"op":"Async","minor":0},{"major":259,"value":40960,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":40960,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":40960,"op":"Async","minor":2},{"major":253,"value":40960,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":231841792,"max_usage":886894592,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":210718720,"inactive_file":8192,"inactive_anon":6889472,"total_pgfault":885443,"total_cache":15671296,"total_rss_huge":0,"total_active_anon":219480064,"total_pgmajfault":0,"pgpgin":611109,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":555838,"hierarchical_memsw_limit":0,"cache":15671296,"active_file":12288,"pgfault":885443,"total_mapped_file":0,"total_pgpgout":555838,"total_writeback":0,"rss":210718720,"unevictable":0,"total_inactive_anon":6889472,"total_pgpgin":611109,"active_anon":219480064,"total_active_file":12288},"limit":540972998656},"name":"/DemeNet-vB75XmYO","networks":{"eth0":{"rx_bytes":3953551,"rx_packets":718,"tx_packets":623,"tx_bytes":75186,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"b2e27931f9f4ae0fa6568bf9c265a1752a605511560d46fee951d828208963ed","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101594539740000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":31260000000,"usage_in_kernelmode":3360000000,"total_usage":34452415134,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34452415134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T04:00:44.884049499Z"}

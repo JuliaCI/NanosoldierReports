@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T07:40:43.179
+# PkgEval set-up: 2020-10-29T04:05:28.658
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,19 +12,18 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T07:40:46.400
+# Installation: 2020-10-29T04:05:30.204
 #
 
    Resolving package versions...
-   Installed Compat ─────── v3.23.0
-   Installed BlockArrays ── v0.12.14
    Installed FillArrays ─── v0.10.0
+   Installed BlockArrays ── v0.12.14
+   Installed Compat ─────── v3.23.0
    Installed ArrayLayouts ─ v0.4.10
 Updating `~/.julia/environments/v1.6/Project.toml`
   [8e7c35d0] + BlockArrays v0.12.14
@@ -64,20 +63,15 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mCompat[39m
-[32m  ✓ [39m[90mFillArrays[39m
-[32m  ✓ [39m[90mArrayLayouts[39m
-[32m  ✓ [39mBlockArrays
-4 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T07:41:02.364
+# Testing: 2020-10-29T04:05:32.553
 #
 
+
      Testing BlockArrays
-Status `/tmp/jl_3P6hoX/Project.toml`
+Status `/tmp/jl_eZ0TI2/Project.toml`
   [4c555306] ArrayLayouts v0.4.10
   [8e7c35d0] BlockArrays v0.12.14
   [34da2185] Compat v3.23.0
@@ -87,7 +81,7 @@ Status `/tmp/jl_3P6hoX/Project.toml`
   [37e2e46d] LinearAlgebra
   [2f01184e] SparseArrays
   [8dfed614] Test
-Status `/tmp/jl_3P6hoX/Manifest.toml`
+Status `/tmp/jl_eZ0TI2/Manifest.toml`
   [4c555306] ArrayLayouts v0.4.10
   [8e7c35d0] BlockArrays v0.12.14
   [34da2185] Compat v3.23.0
@@ -329,7 +323,8 @@ BlockArrays.jl                                |  984    10       1    995
   popfirst!                                   |    2                    2
 ERROR: LoadError: Some tests did not pass: 984 passed, 10 failed, 0 errored, 1 broken.
 in expression starting at /home/pkgeval/.julia/packages/BlockArrays/iETfZ/test/runtests.jl:3
-ERROR: Package BlockArrays errored during testing
+
+PkgEval failed: Package BlockArrays errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -352,8 +347,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 226.20s (212.22s user, 14.24s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T04:10:12.831
+CPU usage: 255.51s (250.92s user, 5.20s kernel)
 
 Network usage:
-- eth0: 221.031 KiB received, 20.112 KiB sent
+- eth0: 220.087 KiB received, 21.024 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":202526720,"max_usage":868716544,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":195403776,"inactive_file":8192,"inactive_anon":479232,"total_pgfault":1263531,"total_cache":2347008,"total_rss_huge":0,"total_active_anon":197226496,"total_pgmajfault":0,"pgpgin":666177,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":617898,"hierarchical_memsw_limit":0,"cache":2347008,"active_file":0,"pgfault":1263531,"total_mapped_file":0,"total_pgpgout":617898,"total_writeback":0,"rss":195403776,"unevictable":0,"total_inactive_anon":479232,"total_pgpgin":666177,"active_anon":197226496,"total_active_file":0},"limit":540972998656},"name":"/BlockArrays-6Jud6CVL","networks":{"eth0":{"rx_bytes":225369,"rx_packets":534,"tx_packets":154,"tx_bytes":21529,"tx_dropped":0,"rx_dropped":9,"tx_errors":0,"rx_errors":0}},"id":"69313436cf688b0e1e5a38be1574d3f47bf9ee66e62d8ec9b10b9487c0f4c190","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":101667047750000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":250920000000,"usage_in_kernelmode":5200000000,"total_usage":255507324019,"percpu_usage":[0,0,0,0,255507324019,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T04:10:13.544727957Z"}

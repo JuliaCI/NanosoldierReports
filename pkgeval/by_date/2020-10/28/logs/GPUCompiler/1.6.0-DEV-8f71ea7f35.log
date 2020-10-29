@@ -1,5 +1,5 @@
 ################################################################################
-# Set-up: 2020-10-28T09:30:24.549
+# PkgEval set-up: 2020-10-29T05:15:33.240
 #
 
 Julia Version 1.6.0-DEV.1352
@@ -12,24 +12,23 @@ Platform Info:
   LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
 Environment:
   JULIA_DEPOT_PATH = ::/usr/local/share/julia
-  JULIA_NUM_THREADS = 2
   JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
 
 
 
 ################################################################################
-# Installation: 2020-10-28T09:30:27.536
+# Installation: 2020-10-29T05:15:34.838
 #
 
    Resolving package versions...
    Installed CEnum ────────────── v0.4.1
-   Installed Compat ───────────── v3.23.0
    Installed TimerOutputs ─────── v0.5.6
+   Installed Compat ───────────── v3.23.0
+   Installed LLVM ─────────────── v3.2.0
    Installed Scratch ──────────── v1.0.3
+   Installed DataStructures ───── v0.18.8
    Installed OrderedCollections ─ v1.3.1
    Installed GPUCompiler ──────── v0.8.2
-   Installed DataStructures ───── v0.18.8
-   Installed LLVM ─────────────── v3.2.0
 Updating `~/.julia/environments/v1.6/Project.toml`
   [61eb1bfa] + GPUCompiler v0.8.2
 Updating `~/.julia/environments/v1.6/Manifest.toml`
@@ -72,24 +71,15 @@ Updating `~/.julia/environments/v1.6/Manifest.toml`
   [4ec0a83e] + Unicode
   [deac9b47] + LibCURL_jll
   [14a3606d] + MozillaCACerts_jll
-Precompiling project... (tip: to disable auto-precompilation set ENV["JULIA_PKG_PRECOMPILE_AUTO"]=0)
-[32m  ✓ [39m[90mScratch[39m
-[32m  ✓ [39m[90mCEnum[39m
-[32m  ✓ [39m[90mOrderedCollections[39m
-[32m  ✓ [39m[90mTimerOutputs[39m
-[32m  ✓ [39m[90mCompat[39m
-[32m  ✓ [39m[90mDataStructures[39m
-[32m  ✓ [39m[90mLLVM[39m
-[32m  ✓ [39mGPUCompiler
-8 dependencies successfully precompiled
 
 
 ################################################################################
-# Testing: 2020-10-28T09:30:57.497
+# Testing: 2020-10-29T05:15:40.406
 #
 
+
      Testing GPUCompiler
-Status `/tmp/jl_70RjHW/Project.toml`
+Status `/tmp/jl_PPzbvY/Project.toml`
   [864edb3b] DataStructures v0.18.8
   [61eb1bfa] GPUCompiler v0.8.2
   [929cbde3] LLVM v3.2.0
@@ -103,7 +93,7 @@ Status `/tmp/jl_70RjHW/Project.toml`
   [9e88b42a] Serialization
   [8dfed614] Test
   [cf7118a7] UUIDs
-Status `/tmp/jl_70RjHW/Manifest.toml`
+Status `/tmp/jl_PPzbvY/Manifest.toml`
   [fa961155] CEnum v0.4.1
   [34da2185] Compat v3.23.0
   [864edb3b] DataStructures v0.18.8
@@ -2711,7 +2701,8 @@ GPUCompiler                        |    2    20     27     49
       float boxes                  |                 1      1
 ERROR: LoadError: Some tests did not pass: 2 passed, 20 failed, 27 errored, 0 broken.
 in expression starting at /home/pkgeval/.julia/packages/GPUCompiler/NF78v/test/runtests.jl:12
-ERROR: Package GPUCompiler errored during testing
+
+PkgEval failed: Package GPUCompiler errored during testing
 Stacktrace:
   [1] pkgerror(msg::String)
     @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
@@ -2734,8 +2725,26 @@ Stacktrace:
  [10] test(pkg::String)
     @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
  [11] top-level scope
-    @ none:39
-CPU usage: 55.98s (47.99s user, 8.29s kernel)
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-29T05:17:33.565
+CPU usage: 85.01s (50.80s user, 35.49s kernel)
 
 Network usage:
-- eth0: 481.449 KiB received, 46.720 KiB sent
+- eth0: 473.404 KiB received, 42.868 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[{"major":8,"value":0,"op":"Read","minor":0},{"major":8,"value":0,"op":"Write","minor":0},{"major":8,"value":0,"op":"Sync","minor":0},{"major":8,"value":0,"op":"Async","minor":0},{"major":8,"value":0,"op":"Total","minor":0}],"io_serviced_recursive":[{"major":8,"value":31,"op":"Read","minor":0},{"major":8,"value":148,"op":"Write","minor":0},{"major":8,"value":31,"op":"Sync","minor":0},{"major":8,"value":148,"op":"Async","minor":0},{"major":8,"value":179,"op":"Total","minor":0}],"io_time_recursive":[{"major":8,"value":187556303,"op":"","minor":0}],"sectors_recursive":[{"major":8,"value":1432,"op":"","minor":0}],"io_service_bytes_recursive":[{"major":8,"value":126976,"op":"Read","minor":0},{"major":8,"value":606208,"op":"Write","minor":0},{"major":8,"value":126976,"op":"Sync","minor":0},{"major":8,"value":606208,"op":"Async","minor":0},{"major":8,"value":733184,"op":"Total","minor":0}],"io_wait_time_recursive":[{"major":8,"value":15427128,"op":"Read","minor":0},{"major":8,"value":754853702,"op":"Write","minor":0},{"major":8,"value":15427128,"op":"Sync","minor":0},{"major":8,"value":754853702,"op":"Async","minor":0},{"major":8,"value":770280830,"op":"Total","minor":0}],"io_merged_recursive":[{"major":8,"value":0,"op":"Read","minor":0},{"major":8,"value":0,"op":"Write","minor":0},{"major":8,"value":0,"op":"Sync","minor":0},{"major":8,"value":0,"op":"Async","minor":0},{"major":8,"value":0,"op":"Total","minor":0}],"io_service_time_recursive":[{"major":8,"value":5408523,"op":"Read","minor":0},{"major":8,"value":17685951,"op":"Write","minor":0},{"major":8,"value":5408523,"op":"Sync","minor":0},{"major":8,"value":17685951,"op":"Async","minor":0},{"major":8,"value":23094474,"op":"Total","minor":0}]},"memory_stats":{"usage":208592896,"max_usage":634847232,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":394,"total_rss":194043904,"inactive_file":1896448,"inactive_anon":142999552,"total_pgfault":815369,"total_cache":9543680,"total_rss_huge":0,"total_active_anon":58048512,"total_pgmajfault":394,"pgpgin":468032,"rss_huge":0,"mapped_file":57344,"total_inactive_file":1896448,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":418328,"hierarchical_memsw_limit":0,"cache":9543680,"active_file":643072,"pgfault":815369,"total_mapped_file":57344,"total_pgpgout":418328,"total_writeback":0,"rss":194043904,"unevictable":0,"total_inactive_anon":142999552,"total_pgpgin":468032,"active_anon":58048512,"total_active_file":643072},"limit":540972998656},"name":"/GPUCompiler-hzHAkQ3M","networks":{"eth0":{"rx_bytes":484766,"rx_packets":464,"tx_packets":319,"tx_bytes":43897,"tx_dropped":0,"rx_dropped":4,"tx_errors":0,"rx_errors":0}},"id":"8e930227cf2ac66ea967a814aa5a9ae0795f2c04dacf83e2f7e02e7fccdc1cd6","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":102181533920000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":50800000000,"usage_in_kernelmode":35490000000,"total_usage":85012972127,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,85012754057,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7820,0,210250,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-29T05:17:34.473741956Z"}
