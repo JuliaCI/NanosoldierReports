@@ -1,0 +1,536 @@
+################################################################################
+# PkgEval set-up: 2020-10-28T22:59:58.122
+#
+
+Julia Version 1.6.0-DEV.1379
+Commit 4d5bd7e4a5 (2020-10-28 22:12 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-28T22:59:59.834
+#
+
+   Resolving package versions...
+   Installed MuladdMacro ──── v0.2.2
+   Installed ChainRulesCore ─ v0.9.17
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [d360d2e6] + ChainRulesCore v0.9.17
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [d360d2e6] + ChainRulesCore v0.9.17
+  [46d2c3a1] + MuladdMacro v0.2.2
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [2f01184e] + SparseArrays
+
+
+################################################################################
+# Testing: 2020-10-28T23:00:02.589
+#
+
+
+     Testing ChainRulesCore
+Status `/tmp/jl_488EBZ/Project.toml`
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [d360d2e6] ChainRulesCore v0.9.17
+  [26cc04aa] FiniteDifferences v0.10.9
+  [46d2c3a1] MuladdMacro v0.2.2
+  [90137ffa] StaticArrays v0.12.5
+  [37e2e46d] LinearAlgebra
+  [2f01184e] SparseArrays
+  [8dfed614] Test
+Status `/tmp/jl_488EBZ/Manifest.toml`
+  [6e4b80f9] BenchmarkTools v0.5.0
+  [d360d2e6] ChainRulesCore v0.9.17
+  [26cc04aa] FiniteDifferences v0.10.9
+  [682c06a0] JSON v0.21.1
+  [46d2c3a1] MuladdMacro v0.2.2
+  [69de0a69] Parsers v1.0.11
+  [90137ffa] StaticArrays v0.12.5
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [de0858da] Printf
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+     Testing Running tests...
+┌ Error: Error triggering hook
+│   hook_fun = define_dual_overload (generic function with 1 method)
+│   sig = Tuple{typeof(varargs_function), Vararg{Any}}
+│   exception =
+│    TypeError: in <:, expected Type, got Vararg{Any}
+│    Stacktrace:
+│      [1] #3
+│        @ ./essentials.jl:0 [inlined]
+│      [2] iterate
+│        @ ./generator.jl:47 [inlined]
+│      [3] _all(f::typeof(identity), itr::Base.Generator{Base.Iterators.Rest{Core.SimpleVector, Int64}, Main.ForwardDiffZero.var"#3#4"}, #unused#::Colon)
+│        @ Base ./reduce.jl:922
+│      [4] all
+│        @ ./reduce.jl:918 [inlined]
+│      [5] all(itr::Base.Generator{Base.Iterators.Rest{Core.SimpleVector, Int64}, Main.ForwardDiffZero.var"#3#4"})
+│        @ Base ./reduce.jl:836
+│      [6] define_dual_overload(sig::Type)
+│        @ Main.ForwardDiffZero ~/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:34
+│      [7] _safe_hook_fun(hook_fun::typeof(Main.ForwardDiffZero.define_dual_overload), sig::Type)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:137
+│      [8] (::ChainRulesCore.var"#64#65"{typeof(Main.ForwardDiffZero.define_dual_overload), typeof(frule)})(method::Method)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:33
+│      [9] iterate
+│        @ ./generator.jl:47 [inlined]
+│     [10] grow_to!(dest::Vector{Nothing}, itr::Base.Generator{Base.Generator{Base.Iterators.Filter{ChainRulesCore.var"#66#67", Base.MethodList}, typeof(identity)}, ChainRulesCore.var"#64#65"{typeof(Main.ForwardDiffZero.define_dual_overload), typeof(frule)}}, st::Int64)
+│        @ Base ./array.jl:756
+│     [11] grow_to!(dest::Vector{Any}, itr::Base.Generator{Base.Generator{Base.Iterators.Filter{ChainRulesCore.var"#66#67", Base.MethodList}, typeof(identity)}, ChainRulesCore.var"#64#65"{typeof(Main.ForwardDiffZero.define_dual_overload), typeof(frule)}})
+│        @ Base ./array.jl:729
+│     [12] collect(itr::Base.Generator{Base.Generator{Base.Iterators.Filter{ChainRulesCore.var"#66#67", Base.MethodList}, typeof(identity)}, ChainRulesCore.var"#64#65"{typeof(Main.ForwardDiffZero.define_dual_overload), typeof(frule)}})
+│        @ Base ./array.jl:662
+│     [13] map(f::Function, A::Base.Generator{Base.Iterators.Filter{ChainRulesCore.var"#66#67", Base.MethodList}, typeof(identity)})
+│        @ Base ./abstractarray.jl:2297
+│     [14] on_new_rule(hook_fun::Function, rule_kind::Function)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:31
+│     [15] top-level scope
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:51
+│     [16] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [17] macro expansion
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:25 [inlined]
+│     [18] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [19] macro expansion
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:25 [inlined]
+│     [20] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [21] top-level scope
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:10
+│     [22] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [23] top-level scope
+│        @ none:6
+│     [24] eval(m::Module, e::Any)
+│        @ Core ./boot.jl:369
+│     [25] exec_options(opts::Base.JLOptions)
+│        @ Base ./client.jl:261
+│     [26] _start()
+│        @ Base ./client.jl:485
+└ @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:139
+┌ Error: Error triggering hook
+│   hook_fun = define_dual_overload (generic function with 1 method)
+│   sig = Tuple{typeof(Core._apply), Any, Vararg{Any}}
+│   exception =
+│    TypeError: in <:, expected Type, got Vararg{Any}
+│    Stacktrace:
+│      [1] #3
+│        @ ./none:0 [inlined]
+│      [2] iterate
+│        @ ./generator.jl:47 [inlined]
+│      [3] _all(f::typeof(identity), itr::Base.Generator{Base.Iterators.Rest{Core.SimpleVector, Int64}, Main.ForwardDiffZero.var"#3#4"}, #unused#::Colon)
+│        @ Base ./reduce.jl:930
+│      [4] all
+│        @ ./reduce.jl:918 [inlined]
+│      [5] all(itr::Base.Generator{Base.Iterators.Rest{Core.SimpleVector, Int64}, Main.ForwardDiffZero.var"#3#4"})
+│        @ Base ./reduce.jl:836
+│      [6] define_dual_overload(sig::Type)
+│        @ Main.ForwardDiffZero ~/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:34
+│      [7] _safe_hook_fun(hook_fun::typeof(Main.ForwardDiffZero.define_dual_overload), sig::Type)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:137
+│      [8] (::ChainRulesCore.var"#64#65"{typeof(Main.ForwardDiffZero.define_dual_overload), typeof(frule)})(method::Method)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:33
+│      [9] iterate
+│        @ ./generator.jl:47 [inlined]
+│     [10] grow_to!(dest::Vector{Nothing}, itr::Base.Generator{Base.Generator{Base.Iterators.Filter{ChainRulesCore.var"#66#67", Base.MethodList}, typeof(identity)}, ChainRulesCore.var"#64#65"{typeof(Main.ForwardDiffZero.define_dual_overload), typeof(frule)}}, st::Int64)
+│        @ Base ./array.jl:756
+│     [11] grow_to!(dest::Vector{Any}, itr::Base.Generator{Base.Generator{Base.Iterators.Filter{ChainRulesCore.var"#66#67", Base.MethodList}, typeof(identity)}, ChainRulesCore.var"#64#65"{typeof(Main.ForwardDiffZero.define_dual_overload), typeof(frule)}})
+│        @ Base ./array.jl:729
+│     [12] collect(itr::Base.Generator{Base.Generator{Base.Iterators.Filter{ChainRulesCore.var"#66#67", Base.MethodList}, typeof(identity)}, ChainRulesCore.var"#64#65"{typeof(Main.ForwardDiffZero.define_dual_overload), typeof(frule)}})
+│        @ Base ./array.jl:662
+│     [13] map(f::Function, A::Base.Generator{Base.Iterators.Filter{ChainRulesCore.var"#66#67", Base.MethodList}, typeof(identity)})
+│        @ Base ./abstractarray.jl:2297
+│     [14] on_new_rule(hook_fun::Function, rule_kind::Function)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:31
+│     [15] top-level scope
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:51
+│     [16] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [17] macro expansion
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:25 [inlined]
+│     [18] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [19] macro expansion
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:25 [inlined]
+│     [20] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [21] top-level scope
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:10
+│     [22] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [23] top-level scope
+│        @ none:6
+│     [24] eval(m::Module, e::Any)
+│        @ Core ./boot.jl:369
+│     [25] exec_options(opts::Base.JLOptions)
+│        @ Base ./client.jl:261
+│     [26] _start()
+│        @ Base ./client.jl:485
+└ @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:139
+┌ Error: Error triggering hook
+│   hook_fun = define_dual_overload (generic function with 1 method)
+│   sig = Tuple{typeof(mixed_vararg), Any, Any, Vararg{Any}}
+│   exception =
+│    TypeError: in <:, expected Type, got Vararg{Any}
+│    Stacktrace:
+│      [1] #3
+│        @ ./none:0 [inlined]
+│      [2] iterate
+│        @ ./generator.jl:47 [inlined]
+│      [3] _all(f::typeof(identity), itr::Base.Generator{Base.Iterators.Rest{Core.SimpleVector, Int64}, Main.ForwardDiffZero.var"#3#4"}, #unused#::Colon)
+│        @ Base ./reduce.jl:930
+│      [4] all
+│        @ ./reduce.jl:918 [inlined]
+│      [5] all(itr::Base.Generator{Base.Iterators.Rest{Core.SimpleVector, Int64}, Main.ForwardDiffZero.var"#3#4"})
+│        @ Base ./reduce.jl:836
+│      [6] define_dual_overload(sig::Type)
+│        @ Main.ForwardDiffZero ~/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:34
+│      [7] _safe_hook_fun(hook_fun::typeof(Main.ForwardDiffZero.define_dual_overload), sig::Type)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:137
+│      [8] (::ChainRulesCore.var"#64#65"{typeof(Main.ForwardDiffZero.define_dual_overload), typeof(frule)})(method::Method)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:33
+│      [9] iterate
+│        @ ./generator.jl:47 [inlined]
+│     [10] grow_to!(dest::Vector{Nothing}, itr::Base.Generator{Base.Generator{Base.Iterators.Filter{ChainRulesCore.var"#66#67", Base.MethodList}, typeof(identity)}, ChainRulesCore.var"#64#65"{typeof(Main.ForwardDiffZero.define_dual_overload), typeof(frule)}}, st::Int64)
+│        @ Base ./array.jl:756
+│     [11] grow_to!(dest::Vector{Any}, itr::Base.Generator{Base.Generator{Base.Iterators.Filter{ChainRulesCore.var"#66#67", Base.MethodList}, typeof(identity)}, ChainRulesCore.var"#64#65"{typeof(Main.ForwardDiffZero.define_dual_overload), typeof(frule)}})
+│        @ Base ./array.jl:729
+│     [12] collect(itr::Base.Generator{Base.Generator{Base.Iterators.Filter{ChainRulesCore.var"#66#67", Base.MethodList}, typeof(identity)}, ChainRulesCore.var"#64#65"{typeof(Main.ForwardDiffZero.define_dual_overload), typeof(frule)}})
+│        @ Base ./array.jl:662
+│     [13] map(f::Function, A::Base.Generator{Base.Iterators.Filter{ChainRulesCore.var"#66#67", Base.MethodList}, typeof(identity)})
+│        @ Base ./abstractarray.jl:2297
+│     [14] on_new_rule(hook_fun::Function, rule_kind::Function)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:31
+│     [15] top-level scope
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:51
+│     [16] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [17] macro expansion
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:25 [inlined]
+│     [18] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [19] macro expansion
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:25 [inlined]
+│     [20] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [21] top-level scope
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:10
+│     [22] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [23] top-level scope
+│        @ none:6
+│     [24] eval(m::Module, e::Any)
+│        @ Core ./boot.jl:369
+│     [25] exec_options(opts::Base.JLOptions)
+│        @ Base ./client.jl:261
+│     [26] _start()
+│        @ Base ./client.jl:485
+└ @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:139
+┌ Error: Error triggering hook
+│   hook_fun = define_dual_overload (generic function with 1 method)
+│   sig = Tuple{typeof(mixed_vararg_type_constaint), Float64, Real, Vararg{Float64}}
+│   exception =
+│    TypeError: in <:, expected Type, got Vararg{Float64}
+│    Stacktrace:
+│      [1] #3
+│        @ ./none:0 [inlined]
+│      [2] iterate
+│        @ ./generator.jl:47 [inlined]
+│      [3] _all(f::typeof(identity), itr::Base.Generator{Base.Iterators.Rest{Core.SimpleVector, Int64}, Main.ForwardDiffZero.var"#3#4"}, #unused#::Colon)
+│        @ Base ./reduce.jl:930
+│      [4] all
+│        @ ./reduce.jl:918 [inlined]
+│      [5] all(itr::Base.Generator{Base.Iterators.Rest{Core.SimpleVector, Int64}, Main.ForwardDiffZero.var"#3#4"})
+│        @ Base ./reduce.jl:836
+│      [6] define_dual_overload(sig::Type)
+│        @ Main.ForwardDiffZero ~/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:34
+│      [7] _safe_hook_fun(hook_fun::typeof(Main.ForwardDiffZero.define_dual_overload), sig::Type)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:137
+│      [8] (::ChainRulesCore.var"#64#65"{typeof(Main.ForwardDiffZero.define_dual_overload), typeof(frule)})(method::Method)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:33
+│      [9] iterate
+│        @ ./generator.jl:47 [inlined]
+│     [10] grow_to!(dest::Vector{Nothing}, itr::Base.Generator{Base.Generator{Base.Iterators.Filter{ChainRulesCore.var"#66#67", Base.MethodList}, typeof(identity)}, ChainRulesCore.var"#64#65"{typeof(Main.ForwardDiffZero.define_dual_overload), typeof(frule)}}, st::Int64)
+│        @ Base ./array.jl:756
+│     [11] grow_to!(dest::Vector{Any}, itr::Base.Generator{Base.Generator{Base.Iterators.Filter{ChainRulesCore.var"#66#67", Base.MethodList}, typeof(identity)}, ChainRulesCore.var"#64#65"{typeof(Main.ForwardDiffZero.define_dual_overload), typeof(frule)}})
+│        @ Base ./array.jl:729
+│     [12] collect(itr::Base.Generator{Base.Generator{Base.Iterators.Filter{ChainRulesCore.var"#66#67", Base.MethodList}, typeof(identity)}, ChainRulesCore.var"#64#65"{typeof(Main.ForwardDiffZero.define_dual_overload), typeof(frule)}})
+│        @ Base ./array.jl:662
+│     [13] map(f::Function, A::Base.Generator{Base.Iterators.Filter{ChainRulesCore.var"#66#67", Base.MethodList}, typeof(identity)})
+│        @ Base ./abstractarray.jl:2297
+│     [14] on_new_rule(hook_fun::Function, rule_kind::Function)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:31
+│     [15] top-level scope
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:51
+│     [16] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [17] macro expansion
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:25 [inlined]
+│     [18] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [19] macro expansion
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:25 [inlined]
+│     [20] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [21] top-level scope
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:10
+│     [22] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [23] top-level scope
+│        @ none:6
+│     [24] eval(m::Module, e::Any)
+│        @ Core ./boot.jl:369
+│     [25] exec_options(opts::Base.JLOptions)
+│        @ Base ./client.jl:261
+│     [26] _start()
+│        @ Base ./client.jl:485
+└ @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:139
+WARNING: Method definition nondiff_1_2(Union{Float64, ForwardDiffZero.Dual}) in module ForwardDiffZero at /home/pkgeval/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:40 overwritten on the same line.
+WARNING: Method definition simo(Union{Float64, ForwardDiffZero.Dual}) in module ForwardDiffZero at /home/pkgeval/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:40 overwritten on the same line.
+┌ Error: Error triggering hook
+│   hook_fun = define_dual_overload (generic function with 1 method)
+│   sig = Tuple{typeof(varargs_function), Vararg{Any}}
+│   exception =
+│    TypeError: in <:, expected Type, got Vararg{Any}
+│    Stacktrace:
+│      [1] #3
+│        @ ./essentials.jl:0 [inlined]
+│      [2] iterate
+│        @ ./generator.jl:47 [inlined]
+│      [3] _all(f::typeof(identity), itr::Base.Generator{Base.Iterators.Rest{Core.SimpleVector, Int64}, Main.ForwardDiffZero.var"#3#4"}, #unused#::Colon)
+│        @ Base ./reduce.jl:922
+│      [4] all
+│        @ ./reduce.jl:918 [inlined]
+│      [5] all(itr::Base.Generator{Base.Iterators.Rest{Core.SimpleVector, Int64}, Main.ForwardDiffZero.var"#3#4"})
+│        @ Base ./reduce.jl:836
+│      [6] define_dual_overload(sig::Type)
+│        @ Main.ForwardDiffZero ~/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:34
+│      [7] _safe_hook_fun(hook_fun::typeof(Main.ForwardDiffZero.define_dual_overload), sig::Type)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:137
+│      [8] _trigger_new_rule_hooks(rule_kind::Function, sig::Type)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:131
+│      [9] refresh_rules(rule_kind::Function)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:90
+│     [10] refresh_rules()
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:80
+│     [11] top-level scope
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:68
+│     [12] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [13] macro expansion
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:25 [inlined]
+│     [14] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [15] macro expansion
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:25 [inlined]
+│     [16] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [17] top-level scope
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:10
+│     [18] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [19] top-level scope
+│        @ none:6
+│     [20] eval(m::Module, e::Any)
+│        @ Core ./boot.jl:369
+│     [21] exec_options(opts::Base.JLOptions)
+│        @ Base ./client.jl:261
+│     [22] _start()
+│        @ Base ./client.jl:485
+└ @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:139
+┌ Error: Error triggering hook
+│   hook_fun = define_dual_overload (generic function with 1 method)
+│   sig = Tuple{typeof(Core._apply), Any, Vararg{Any}}
+│   exception =
+│    TypeError: in <:, expected Type, got Vararg{Any}
+│    Stacktrace:
+│      [1] #3
+│        @ ./none:0 [inlined]
+│      [2] iterate
+│        @ ./generator.jl:47 [inlined]
+│      [3] _all(f::typeof(identity), itr::Base.Generator{Base.Iterators.Rest{Core.SimpleVector, Int64}, Main.ForwardDiffZero.var"#3#4"}, #unused#::Colon)
+│        @ Base ./reduce.jl:930
+│      [4] all
+│        @ ./reduce.jl:918 [inlined]
+│      [5] all(itr::Base.Generator{Base.Iterators.Rest{Core.SimpleVector, Int64}, Main.ForwardDiffZero.var"#3#4"})
+│        @ Base ./reduce.jl:836
+│      [6] define_dual_overload(sig::Type)
+│        @ Main.ForwardDiffZero ~/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:34
+│      [7] _safe_hook_fun(hook_fun::typeof(Main.ForwardDiffZero.define_dual_overload), sig::Type)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:137
+│      [8] _trigger_new_rule_hooks(rule_kind::Function, sig::Type)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:131
+│      [9] refresh_rules(rule_kind::Function)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:90
+│     [10] refresh_rules()
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:80
+│     [11] top-level scope
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:68
+│     [12] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [13] macro expansion
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:25 [inlined]
+│     [14] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [15] macro expansion
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:25 [inlined]
+│     [16] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [17] top-level scope
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:10
+│     [18] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [19] top-level scope
+│        @ none:6
+│     [20] eval(m::Module, e::Any)
+│        @ Core ./boot.jl:369
+│     [21] exec_options(opts::Base.JLOptions)
+│        @ Base ./client.jl:261
+│     [22] _start()
+│        @ Base ./client.jl:485
+└ @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:139
+WARNING: Method definition nondiff_2_1(Union{Float64, ForwardDiffZero.Dual}, Union{Float64, ForwardDiffZero.Dual}) in module ForwardDiffZero at /home/pkgeval/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:40 overwritten on the same line.
+┌ Error: Error triggering hook
+│   hook_fun = define_dual_overload (generic function with 1 method)
+│   sig = Tuple{typeof(mixed_vararg), Any, Any, Vararg{Any}}
+│   exception =
+│    TypeError: in <:, expected Type, got Vararg{Any}
+│    Stacktrace:
+│      [1] #3
+│        @ ./none:0 [inlined]
+│      [2] iterate
+│        @ ./generator.jl:47 [inlined]
+│      [3] _all(f::typeof(identity), itr::Base.Generator{Base.Iterators.Rest{Core.SimpleVector, Int64}, Main.ForwardDiffZero.var"#3#4"}, #unused#::Colon)
+│        @ Base ./reduce.jl:930
+│      [4] all
+│        @ ./reduce.jl:918 [inlined]
+│      [5] all(itr::Base.Generator{Base.Iterators.Rest{Core.SimpleVector, Int64}, Main.ForwardDiffZero.var"#3#4"})
+│        @ Base ./reduce.jl:836
+│      [6] define_dual_overload(sig::Type)
+│        @ Main.ForwardDiffZero ~/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:34
+│      [7] _safe_hook_fun(hook_fun::typeof(Main.ForwardDiffZero.define_dual_overload), sig::Type)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:137
+│      [8] _trigger_new_rule_hooks(rule_kind::Function, sig::Type)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:131
+│      [9] refresh_rules(rule_kind::Function)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:90
+│     [10] refresh_rules()
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:80
+│     [11] top-level scope
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:68
+│     [12] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [13] macro expansion
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:25 [inlined]
+│     [14] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [15] macro expansion
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:25 [inlined]
+│     [16] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [17] top-level scope
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:10
+│     [18] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [19] top-level scope
+│        @ none:6
+│     [20] eval(m::Module, e::Any)
+│        @ Core ./boot.jl:369
+│     [21] exec_options(opts::Base.JLOptions)
+│        @ Base ./client.jl:261
+│     [22] _start()
+│        @ Base ./client.jl:485
+└ @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:139
+┌ Error: Error triggering hook
+│   hook_fun = define_dual_overload (generic function with 1 method)
+│   sig = Tuple{typeof(mixed_vararg_type_constaint), Float64, Real, Vararg{Float64}}
+│   exception =
+│    TypeError: in <:, expected Type, got Vararg{Float64}
+│    Stacktrace:
+│      [1] #3
+│        @ ./none:0 [inlined]
+│      [2] iterate
+│        @ ./generator.jl:47 [inlined]
+│      [3] _all(f::typeof(identity), itr::Base.Generator{Base.Iterators.Rest{Core.SimpleVector, Int64}, Main.ForwardDiffZero.var"#3#4"}, #unused#::Colon)
+│        @ Base ./reduce.jl:930
+│      [4] all
+│        @ ./reduce.jl:918 [inlined]
+│      [5] all(itr::Base.Generator{Base.Iterators.Rest{Core.SimpleVector, Int64}, Main.ForwardDiffZero.var"#3#4"})
+│        @ Base ./reduce.jl:836
+│      [6] define_dual_overload(sig::Type)
+│        @ Main.ForwardDiffZero ~/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:34
+│      [7] _safe_hook_fun(hook_fun::typeof(Main.ForwardDiffZero.define_dual_overload), sig::Type)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:137
+│      [8] _trigger_new_rule_hooks(rule_kind::Function, sig::Type)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:131
+│      [9] refresh_rules(rule_kind::Function)
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:90
+│     [10] refresh_rules()
+│        @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:80
+│     [11] top-level scope
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/demos/forwarddiffzero.jl:68
+│     [12] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [13] macro expansion
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:25 [inlined]
+│     [14] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [15] macro expansion
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:25 [inlined]
+│     [16] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [17] top-level scope
+│        @ ~/.julia/packages/ChainRulesCore/UayCG/test/runtests.jl:10
+│     [18] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [19] top-level scope
+│        @ none:6
+│     [20] eval(m::Module, e::Any)
+│        @ Core ./boot.jl:369
+│     [21] exec_options(opts::Base.JLOptions)
+│        @ Base ./client.jl:261
+│     [22] _start()
+│        @ Base ./client.jl:485
+└ @ ChainRulesCore ~/.julia/packages/ChainRulesCore/UayCG/src/ruleset_loading.jl:139
+Test Summary:  | Pass  Total
+ChainRulesCore |  316    316
+     Testing ChainRulesCore tests passed 
+
+PkgEval succeeded
+
+
+################################################################################
+# PkgEval teardown: 2020-10-28T23:00:56.835
+CPU usage: 58.44s (55.58s user, 3.00s kernel)
+
+Network usage:
+- eth0: 450.745 KiB received, 22.155 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":193454080,"max_usage":751259648,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":181616640,"inactive_file":8192,"inactive_anon":1974272,"total_pgfault":815219,"total_cache":6299648,"total_rss_huge":0,"total_active_anon":185929728,"total_pgmajfault":0,"pgpgin":431170,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":385292,"hierarchical_memsw_limit":0,"cache":6299648,"active_file":4096,"pgfault":815219,"total_mapped_file":0,"total_pgpgout":385292,"total_writeback":0,"rss":181616640,"unevictable":0,"total_inactive_anon":1974272,"total_pgpgin":431170,"active_anon":185929728,"total_active_file":4096},"limit":540972998656},"name":"/ChainRulesCore-KNF8oCap","networks":{"eth0":{"rx_bytes":461563,"rx_packets":214,"tx_packets":162,"tx_bytes":22687,"tx_dropped":0,"rx_dropped":2,"tx_errors":0,"rx_errors":0}},"id":"818f1069cceb3e9fbf7a8fb6773a9e341ff5739f91930847ba9726d01a447adb","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":99293419520000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":55580000000,"usage_in_kernelmode":3000000000,"total_usage":58443938912,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,58443889702,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,49210,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-28T23:00:57.605837283Z"}
