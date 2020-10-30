@@ -1,0 +1,138 @@
+################################################################################
+# PkgEval set-up: 2020-10-30T03:49:55.667
+#
+
+Julia Version 1.6.0-DEV.1380
+Commit 300e34cf74 (2020-10-30 02:28 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-30T03:49:57.004
+#
+
+   Resolving package versions...
+   Installed SpatialJackknife ─ v1.0.1
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [e2fa44a5] + SpatialJackknife v1.0.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [e2fa44a5] + SpatialJackknife v1.0.1
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+  [8dfed614] + Test
+
+
+################################################################################
+# Testing: 2020-10-30T03:49:58.635
+#
+
+
+     Testing SpatialJackknife
+Status `/tmp/jl_MgMaq3/Project.toml`
+  [b4f34e82] Distances v0.10.0
+  [b8a86587] NearestNeighbors v0.4.7
+  [e2fa44a5] SpatialJackknife v1.0.1
+  [37e2e46d] LinearAlgebra
+  [10745b16] Statistics
+  [8dfed614] Test
+Status `/tmp/jl_MgMaq3/Manifest.toml`
+  [b4f34e82] Distances v0.10.0
+  [b8a86587] NearestNeighbors v0.4.7
+  [e2fa44a5] SpatialJackknife v1.0.1
+  [90137ffa] StaticArrays v0.12.5
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [8dfed614] Test
+     Testing Running tests...
+┌ Warning: Package SpatialJackknife does not have NearestNeighbors in its dependencies:
+│ - If you have SpatialJackknife checked out for development and have
+│   added NearestNeighbors as a dependency but haven't updated your primary
+│   environment's manifest file, try `Pkg.resolve()`.
+│ - Otherwise you may need to report an issue with SpatialJackknife
+└ Loading NearestNeighbors into SpatialJackknife from project dependency, future warnings for SpatialJackknife are suppressed.
+Running tests: Test Failed at /home/pkgeval/.julia/packages/SpatialJackknife/HyX8b/test/runtests.jl:140
+  Expression: ≈(mean_errs[1], testmeans, atol = maximum(sqrt.(diag(mean_errs[2]) + mean_bias .^ 2)))
+   Evaluated: [52.57048024119559, 79.18371346311493] ≈ [52.7, 79.3] (atol=0.16259246951397374)
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/SpatialJackknife/HyX8b/test/runtests.jl:140 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] top-level scope
+   @ ~/.julia/packages/SpatialJackknife/HyX8b/test/runtests.jl:124
+Test Summary: | Pass  Fail  Total
+Running tests |    3     1      4
+ERROR: LoadError: Some tests did not pass: 3 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/SpatialJackknife/HyX8b/test/runtests.jl:122
+
+PkgEval failed: Package SpatialJackknife errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-30T03:50:29.216
+CPU usage: 33.20s (30.86s user, 2.40s kernel)
+
+Network usage:
+- eth0: 495.125 KiB received, 13.314 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":206114816,"max_usage":721977344,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":197918720,"inactive_file":8192,"inactive_anon":1380352,"total_pgfault":662166,"total_cache":3264512,"total_rss_huge":0,"total_active_anon":199794688,"total_pgmajfault":0,"pgpgin":383718,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":334601,"hierarchical_memsw_limit":0,"cache":3264512,"active_file":0,"pgfault":662166,"total_mapped_file":0,"total_pgpgout":334601,"total_writeback":0,"rss":197918720,"unevictable":0,"total_inactive_anon":1380352,"total_pgpgin":383718,"active_anon":199794688,"total_active_file":0},"limit":540972998656},"name":"/SpatialJackknife-XLKjIfkI","networks":{"eth0":{"rx_bytes":507008,"rx_packets":214,"tx_packets":105,"tx_bytes":13634,"tx_dropped":0,"rx_dropped":0,"tx_errors":0,"rx_errors":0}},"id":"fd07faf99d2bc6821f918277d6510470f81152ac65c5bd13cc810e40cb3743ee","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":112568028840000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":30860000000,"usage_in_kernelmode":2400000000,"total_usage":33195397366,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33195397366,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-30T03:50:29.511487969Z"}

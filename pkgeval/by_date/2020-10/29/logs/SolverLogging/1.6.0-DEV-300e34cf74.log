@@ -1,0 +1,163 @@
+################################################################################
+# PkgEval set-up: 2020-10-30T03:59:30.488
+#
+
+Julia Version 1.6.0-DEV.1380
+Commit 300e34cf74 (2020-10-30 02:28 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-30T03:59:31.916
+#
+
+   Resolving package versions...
+   Installed Formatting ──── v0.4.1
+   Installed SolverLogging ─ v0.1.0
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [c2e08473] + SolverLogging v0.1.0
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [59287772] + Formatting v0.4.1
+  [c2e08473] + SolverLogging v0.1.0
+  [56ddb016] + Logging
+  [de0858da] + Printf
+  [4ec0a83e] + Unicode
+
+
+################################################################################
+# Testing: 2020-10-30T03:59:33.707
+#
+
+
+     Testing SolverLogging
+Status `/tmp/jl_H1XfT5/Project.toml`
+  [c2e08473] SolverLogging v0.1.0
+  [56ddb016] Logging
+  [8dfed614] Test
+Status `/tmp/jl_H1XfT5/Manifest.toml`
+  [59287772] Formatting v0.4.1
+  [c2e08473] SolverLogging v0.1.0
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [de0858da] Printf
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+  [4ec0a83e] Unicode
+     Testing Running tests...
+Logging: Error During Test at /home/pkgeval/.julia/packages/SolverLogging/yPxUC/test/runtests.jl:4
+  Got exception outside of a @test
+  LoadError: MethodError: no method matching parse(::String)
+  Closest candidates are:
+    parse(!Matched::Type{Sockets.IPAddr}, !Matched::AbstractString) at /workspace/srcdir/usr/share/julia/stdlib/v1.6/Sockets/src/IPAddr.jl:246
+    parse(!Matched::Type{T}, !Matched::AbstractChar; base) where T<:Integer at parse.jl:40
+    parse(!Matched::Type{T}, !Matched::AbstractString; base) where T<:Integer at parse.jl:240
+    ...
+  Stacktrace:
+    [1] checkfmt(fmt::String)
+      @ Formatting ~/.julia/packages/Formatting/LU9hd/src/cformat.jl:6
+    [2] generate_formatter(fmt::String)
+      @ Formatting ~/.julia/packages/Formatting/LU9hd/src/cformat.jl:17
+    [3] sprintf1(fmt::String, x::Int64)
+      @ Formatting ~/.julia/packages/Formatting/LU9hd/src/cformat.jl:3
+    [4] format(x::Int64; width::Int64, precision::Int64, leftjustified::Bool, zeropadding::Bool, commas::Bool, signed::Bool, positivespace::Bool, stripzeros::Bool, parens::Bool, alternative::Bool, mixedfraction::Bool, mixedfractionsep::String, fractionsep::String, fractionwidth::Int64, tryden::Int64, suffix::String, autoscale::Symbol, conversion::String)
+      @ Formatting ~/.julia/packages/Formatting/LU9hd/src/cformat.jl:247
+    [5] trim_entry(data::Int64, width::Int64; pad::Bool, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+      @ SolverLogging ~/.julia/packages/SolverLogging/yPxUC/src/logger.jl:0
+    [6] trim_entry(data::Int64, width::Int64)
+      @ SolverLogging ~/.julia/packages/SolverLogging/yPxUC/src/logger.jl:223
+    [7] #8
+      @ ~/.julia/packages/SolverLogging/yPxUC/src/logger.jl:183 [inlined]
+    [8] (::SolverLogging.var"#8#10"{LogData})(::Tuple{Symbol, Int64, Bool})
+      @ SolverLogging ./none:0
+    [9] iterate
+      @ ./generator.jl:47 [inlined]
+   [10] grow_to!(dest::Vector{String}, itr::Base.Generator{Base.Iterators.Filter{SolverLogging.var"#9#11", Base.Iterators.Zip{Tuple{Vector{Symbol}, Vector{Int64}, BitVector}}}, SolverLogging.var"#8#10"{LogData}})
+      @ Base ./array.jl:725
+   [11] collect
+      @ ./array.jl:662 [inlined]
+   [12] create_row(ldata::LogData)
+      @ SolverLogging ~/.julia/packages/SolverLogging/yPxUC/src/logger.jl:183
+   [13] top-level scope
+      @ ~/.julia/packages/SolverLogging/yPxUC/test/logger_tests.jl:35
+   [14] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [15] macro expansion
+      @ ~/.julia/packages/SolverLogging/yPxUC/test/runtests.jl:5 [inlined]
+   [16] macro expansion
+      @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+   [17] top-level scope
+      @ ~/.julia/packages/SolverLogging/yPxUC/test/runtests.jl:5
+   [18] include(fname::String)
+      @ Base.MainInclude ./client.jl:444
+   [19] top-level scope
+      @ none:6
+   [20] eval(m::Module, e::Any)
+      @ Core ./boot.jl:360
+   [21] exec_options(opts::Base.JLOptions)
+      @ Base ./client.jl:261
+   [22] _start()
+      @ Base ./client.jl:485
+  in expression starting at /home/pkgeval/.julia/packages/SolverLogging/yPxUC/test/logger_tests.jl:35
+Test Summary: | Pass  Error  Total
+Logging       |   15      1     16
+ERROR: LoadError: Some tests did not pass: 15 passed, 0 failed, 1 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/SolverLogging/yPxUC/test/runtests.jl:4
+
+PkgEval failed: Package SolverLogging errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-30T03:59:46.115
+CPU usage: 15.81s (14.62s user, 1.22s kernel)
+
+Network usage:
+- eth0: 78.116 KiB received, 8.715 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":200470528,"max_usage":503996416,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":195825664,"inactive_file":8192,"inactive_anon":147456,"total_pgfault":338944,"total_cache":389120,"total_rss_huge":0,"total_active_anon":196059136,"total_pgmajfault":0,"pgpgin":165692,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":117788,"hierarchical_memsw_limit":0,"cache":389120,"active_file":0,"pgfault":338944,"total_mapped_file":0,"total_pgpgout":117788,"total_writeback":0,"rss":195825664,"unevictable":0,"total_inactive_anon":147456,"total_pgpgin":165692,"active_anon":196059136,"total_active_file":0},"limit":540972998656},"name":"/SolverLogging-Ws5TNFhY","networks":{"eth0":{"rx_bytes":79991,"rx_packets":87,"tx_packets":59,"tx_bytes":8924,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"e5c0ddc5c9fdcb32d52b7fee8a82b812806dc2a415f2311a30282b087b80fc2a","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":112639044220000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":14620000000,"usage_in_kernelmode":1220000000,"total_usage":15814824165,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,15814824165,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-30T03:59:46.713141559Z"}

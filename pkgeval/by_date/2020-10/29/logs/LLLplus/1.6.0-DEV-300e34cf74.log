@@ -1,0 +1,952 @@
+################################################################################
+# PkgEval set-up: 2020-10-30T04:07:16.277
+#
+
+Julia Version 1.6.0-DEV.1380
+Commit 300e34cf74 (2020-10-30 02:28 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-30T04:07:17.652
+#
+
+   Resolving package versions...
+   Installed DocStringExtensions ─ v0.8.3
+   Installed Parsers ───────────── v1.0.11
+   Installed JSON ──────────────── v0.21.1
+   Installed LLLplus ───────────── v1.2.8
+   Installed Documenter ────────── v0.24.11
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [142c1900] + LLLplus v1.2.8
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [ffbed154] + DocStringExtensions v0.8.3
+  [e30172f5] + Documenter v0.24.11
+  [682c06a0] + JSON v0.21.1
+  [142c1900] + LLLplus v1.2.8
+  [69de0a69] + Parsers v1.0.11
+  [0dad84c5] + ArgTools
+  [56f22d72] + Artifacts
+  [2a0f44e3] + Base64
+  [ade2ca70] + Dates
+  [8bb1440f] + DelimitedFiles
+  [f43a241f] + Downloads
+  [b77e0a4c] + InteractiveUtils
+  [b27032c2] + LibCURL
+  [76f85450] + LibGit2
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [a63ad114] + Mmap
+  [44cfe95a] + Pkg
+  [de0858da] + Printf
+  [3fa0cd96] + REPL
+  [9a3f8284] + Random
+  [ea8e919c] + SHA
+  [9e88b42a] + Serialization
+  [6462fe0b] + Sockets
+  [fa267f1f] + TOML
+  [8dfed614] + Test
+  [cf7118a7] + UUIDs
+  [4ec0a83e] + Unicode
+  [deac9b47] + LibCURL_jll
+  [14a3606d] + MozillaCACerts_jll
+
+
+################################################################################
+# Testing: 2020-10-30T04:07:21.974
+#
+
+
+     Testing LLLplus
+Status `/tmp/jl_TRNad2/Project.toml`
+  [e30172f5] Documenter v0.24.11
+  [142c1900] LLLplus v1.2.8
+  [8bb1440f] DelimitedFiles
+  [37e2e46d] LinearAlgebra
+  [de0858da] Printf
+  [9a3f8284] Random
+  [8dfed614] Test
+Status `/tmp/jl_TRNad2/Manifest.toml`
+  [ffbed154] DocStringExtensions v0.8.3
+  [e30172f5] Documenter v0.24.11
+  [682c06a0] JSON v0.21.1
+  [142c1900] LLLplus v1.2.8
+  [69de0a69] Parsers v1.0.11
+  [0dad84c5] ArgTools
+  [56f22d72] Artifacts
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [8bb1440f] DelimitedFiles
+  [f43a241f] Downloads
+  [b77e0a4c] InteractiveUtils
+  [b27032c2] LibCURL
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [fa267f1f] TOML
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+  [deac9b47] LibCURL_jll
+  [14a3606d] MozillaCACerts_jll
+     Testing Running tests...
+tests with small matrices...
+...done
+
+In all the following tests, the first time includes the JIT compilation; 
+for the second execution the compilation is already done and the time
+should be faster.
+
+Testing LLL on 1000x1000 real matrix...
+  2.141443 seconds (1.94 M allocations: 157.311 MiB, 2.68% gc time, 77.48% compilation time)
+  0.464392 seconds (3.12 k allocations: 59.820 MiB, 1.08% gc time)
+
+Testing LLL on 10x10 complex matrix...
+  6.492875 seconds (7.75 M allocations: 393.015 MiB, 6.64% gc time, 99.96% compilation time)
+  0.000263 seconds (596 allocations: 101.266 KiB)
+Testing Seysen on same 10x10 complex matrix...
+  1.990843 seconds (2.46 M allocations: 138.800 MiB, 4.06% gc time, 99.92% compilation time)
+  0.000247 seconds (291 allocations: 129.719 KiB)
+Testing VBLAST on same 10x10 complex matrix...
+  1.462926 seconds (1.53 M allocations: 79.962 MiB, 3.66% gc time, 99.98% compilation time)
+  0.000214 seconds (181 allocations: 121.000 KiB)
+Testing Brun on real part of same 10x10 matrix...
+  1.609724 seconds (2.22 M allocations: 125.945 MiB, 2.63% gc time, 99.87% compilation time)
+  0.000139 seconds (24 allocations: 12.188 KiB)
+
+Testing sphere decoder on 100000 samples of 3x3 BPSK system...
+  1.666092 seconds (4.07 M allocations: 323.870 MiB, 6.35% gc time, 79.65% compilation time)
+  0.431452 seconds (2.00 M allocations: 209.987 MiB, 35.66% gc time)
+Error Rate is 0.00456. It should be zero or very small.
+
+Testing now with 200x200 matrix from latticechallenge.org.
+The min norm of the input should be 30, min norm of the reduced bases is hopefully smaller :-)
+min norm of input is 30.0
+  0.280230 seconds (107.84 k allocations: 75.597 MiB, 8.44% gc time)
+min norm of lll-reduced basis is 29.30870177950569
+  3.925281 seconds (4.02 M allocations: 1.224 GiB, 3.99% gc time, 77.11% compilation time)
+min norm of seysen-reduced basis is 30.0
+
+Running doctests...
+[ Info: SetupBuildDirectory: setting up build directory.
+[ Info: Doctest: running doctests.
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/applications.jl:335-343
+│ 
+│ ```jldoctest
+│ julia> x = [0.3912641745333527; 0.5455179974014548; 0.1908698210882469];
+│ 
+│ julia> rationalapprox(x,1e4,Int64)
+│ 3-element Array{Rational{Int64},1}:
+│  43//110
+│   6//11
+│  21//110
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ rationalapprox(x,1e4,Int64)
+│ 
+│ Evaluated output:
+│ 
+│ 3-element Vector{Rational{Int64}}:
+│  43//110
+│   6//11
+│  21//110
+│ 
+│ Expected output:
+│ 
+│ 3-element Array{Rational{Int64},1}:
+│  43//110
+│   6//11
+│  21//110
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    3-element Array{Rational{Int64},1}:
+│     Vector{Rational{Int64}}:
+│     43//110
+│      6//11
+│     21//110
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/latticegen.jl:30-35
+│ 
+│ ```jldoctest
+│ julia> Random.seed!(0); b=gen_qary_b(Int64,2,1,6)
+│ 2×2 Array{Int64,2}:
+│  1   0
+│  7  32
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ Random.seed!(0); b=gen_qary_b(Int64,2,1,6)
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Int64}:
+│   1   0
+│  47  57
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Int64,2}:
+│  1   0
+│  7  32
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Int64,2}:
+│     Matrix{Int64}:
+│      1   0
+│     7  3247  57
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/lll.jl:113-118
+│ 
+│ ```jldoctest
+│ julia> H = [1 2; 3 3]; B = gauss(H)
+│ 2×2 Array{Float64,2}:
+│  1.0  0.0
+│  0.0  3.0
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ H = [1 2; 3 3]; B = gauss(H)
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Float64}:
+│  1.0  0.0
+│  0.0  3.0
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Float64,2}:
+│  1.0  0.0
+│  0.0  3.0
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Float64,2}:
+│     Matrix{Float64}:
+│     1.0  0.0
+│     0.0  3.0
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/lll.jl:17-29
+│ 
+│ ```jldoctest
+│ julia> H= [1 2; 3 4];B,_ = lll(H); B
+│ 2×2 Array{Int64,2}:
+│  1  -1
+│  1   1
+│ 
+│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= lll(H); B
+│ 2×2 Array{Complex{BigFloat},2}:
+│  0.50+0.0im  0.0+1.0im
+│   1.0+0.0im  0.0+0.0im
+│ 
+│ julia> N=500;H = randn(N,N); B,T = lll(H);
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ H= [1 2; 3 4];B,_ = lll(H); B
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Int64}:
+│  1  -1
+│  1   1
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Int64,2}:
+│  1  -1
+│  1   1
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Int64,2}:
+│     Matrix{Int64}:
+│     1  -1
+│     1   1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/lll.jl:17-29
+│ 
+│ ```jldoctest
+│ julia> H= [1 2; 3 4];B,_ = lll(H); B
+│ 2×2 Array{Int64,2}:
+│  1  -1
+│  1   1
+│ 
+│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= lll(H); B
+│ 2×2 Array{Complex{BigFloat},2}:
+│  0.50+0.0im  0.0+1.0im
+│   1.0+0.0im  0.0+0.0im
+│ 
+│ julia> N=500;H = randn(N,N); B,T = lll(H);
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= lll(H); B
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Complex{BigFloat}}:
+│  0.50+0.0im  0.0+1.0im
+│   1.0+0.0im  0.0+0.0im
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Complex{BigFloat},2}:
+│  0.50+0.0im  0.0+1.0im
+│   1.0+0.0im  0.0+0.0im
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Complex{BigFloat},2}:
+│     Matrix{Complex{BigFloat}}:
+│     0.50+0.0im  0.0+1.0im
+│      1.0+0.0im  0.0+0.0im
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/seysen.jl:14-24
+│ 
+│ ```jldoctest
+│ julia> H= [1 2; 3 4];B,T = seysen(H); B
+│ 2×2 Array{Int64,2}:
+│  -1  1
+│   1  1
+│ 
+│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= seysen(H); B
+│ 2×2 Array{Complex{BigFloat},2}:
+│  0.0+1.0im  0.50+0.0im
+│  0.0+0.0im   1.0+0.0im
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ H= [1 2; 3 4];B,T = seysen(H); B
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Int64}:
+│  -1  1
+│   1  1
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Int64,2}:
+│  -1  1
+│   1  1
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Int64,2}:
+│     Matrix{Int64}:
+│     -1  1
+│      1  1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/seysen.jl:14-24
+│ 
+│ ```jldoctest
+│ julia> H= [1 2; 3 4];B,T = seysen(H); B
+│ 2×2 Array{Int64,2}:
+│  -1  1
+│   1  1
+│ 
+│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= seysen(H); B
+│ 2×2 Array{Complex{BigFloat},2}:
+│  0.0+1.0im  0.50+0.0im
+│  0.0+0.0im   1.0+0.0im
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= seysen(H); B
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Complex{BigFloat}}:
+│  0.0+1.0im  0.50+0.0im
+│  0.0+0.0im   1.0+0.0im
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Complex{BigFloat},2}:
+│  0.0+1.0im  0.50+0.0im
+│  0.0+0.0im   1.0+0.0im
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Complex{BigFloat},2}:
+│     Matrix{Complex{BigFloat}}:
+│     0.0+1.0im  0.50+0.0im
+│     0.0+0.0im   1.0+0.0im
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/applications.jl:20-41
+│ 
+│ ```jldoctest
+│ julia> A=[10 1 -9; 1 8 8]; xtrue=[0; 2; 9]; d=A*xtrue;
+│ 
+│ julia> integerfeasibility(A,d)
+│ 3-element Array{Int64,1}:
+│  0
+│  2
+│  9
+│ 
+│ julia> A=[10 1.1 -9.1; 1 8 8]; d=A*xtrue;
+│ 
+│ julia> integerfeasibility(A,d)
+│ 3-element Array{Float64,1}:
+│  0.0
+│  2.0
+│  9.0
+│ 
+│ julia> n=20;m=30; A = rand(-10:10,n,m); xtrue = rand(0:10,m); d=A*xtrue;
+│ 
+│ julia> sum(abs.(xtrue - integerfeasibility(A,d) ))
+│ 0
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ integerfeasibility(A,d)
+│ 
+│ Evaluated output:
+│ 
+│ 3-element Vector{Int64}:
+│  0
+│  2
+│  9
+│ 
+│ Expected output:
+│ 
+│ 3-element Array{Int64,1}:
+│  0
+│  2
+│  9
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    3-element Array{Int64,1}:
+│     Vector{Int64}:
+│     0
+│     2
+│     9
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/applications.jl:20-41
+│ 
+│ ```jldoctest
+│ julia> A=[10 1 -9; 1 8 8]; xtrue=[0; 2; 9]; d=A*xtrue;
+│ 
+│ julia> integerfeasibility(A,d)
+│ 3-element Array{Int64,1}:
+│  0
+│  2
+│  9
+│ 
+│ julia> A=[10 1.1 -9.1; 1 8 8]; d=A*xtrue;
+│ 
+│ julia> integerfeasibility(A,d)
+│ 3-element Array{Float64,1}:
+│  0.0
+│  2.0
+│  9.0
+│ 
+│ julia> n=20;m=30; A = rand(-10:10,n,m); xtrue = rand(0:10,m); d=A*xtrue;
+│ 
+│ julia> sum(abs.(xtrue - integerfeasibility(A,d) ))
+│ 0
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ integerfeasibility(A,d)
+│ 
+│ Evaluated output:
+│ 
+│ 3-element Vector{Float64}:
+│  0.0
+│  2.0
+│  9.0
+│ 
+│ Expected output:
+│ 
+│ 3-element Array{Float64,1}:
+│  0.0
+│  2.0
+│  9.0
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    3-element Array{Float64,1}:
+│     Vector{Float64}:
+│     0.0
+│     2.0
+│     9.0
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/cvp.jl:15-34
+│ 
+│ ```jldoctest
+│ julia> H=[1 2; 3 4]; Q,R=qr(H); uhat = cvp(Q'*[0,2],R)
+│ 2-element Array{Float64,1}:
+│   2.0
+│  -1.0
+│ 
+│ julia> n=100;H=randn(n,n);Q,R=qr(H);
+│ 
+│ julia> u=Int.(rand(0:1e10,n));y=H*u+rand(n)/100;
+│ 
+│ julia> uhat=cvp(Q'*y,R); sum(abs.(u-uhat))
+│ 0.0
+│ 
+│ julia> n=500;H=randn(n,n);Q,R=qr(H);
+│ 
+│ julia> u=Int.(rand(-1:1,n));y=H*u+rand(n)/10;
+│ 
+│ julia> uhat=cvp(Q'*y,R,Val{false},1); sum(abs.(u-uhat))
+│ 0.0
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ H=[1 2; 3 4]; Q,R=qr(H); uhat = cvp(Q'*[0,2],R)
+│ 
+│ Evaluated output:
+│ 
+│ 2-element Vector{Float64}:
+│   2.0
+│  -1.0
+│ 
+│ Expected output:
+│ 
+│ 2-element Array{Float64,1}:
+│   2.0
+│  -1.0
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2-element Array{Float64,1}:
+│      Vector{Float64}:
+│      2.0
+│     -1.0
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/hard_sphere.jl:26-31
+│ 
+│ ```jldoctest
+│ julia> X = hardsphere([1. 1]', [1. 2; 3 4],2)
+│ 2×1 Array{Int64,2}:
+│  -1
+│   1
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ X = hardsphere([1. 1]', [1. 2; 3 4],2)
+│ 
+│ Evaluated output:
+│ 
+│ 2×1 Matrix{Int64}:
+│  -1
+│   1
+│ 
+│ Expected output:
+│ 
+│ 2×1 Array{Int64,2}:
+│  -1
+│   1
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×1 Array{Int64,2}:
+│     Matrix{Int64}:
+│     -1
+│      1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/utilities.jl:10-16
+│ 
+│ ```jldoctest
+│ julia> H= [1 2; 3 4];B,T=lll(H);
+│ 
+│ julia> [orthogonalitydefect(H) orthogonalitydefect(B)]
+│ 1×2 Array{Float64,2}:
+│  7.07107  1.0
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ [orthogonalitydefect(H) orthogonalitydefect(B)]
+│ 
+│ Evaluated output:
+│ 
+│ 1×2 Matrix{Float64}:
+│  7.07107  1.0
+│ 
+│ Expected output:
+│ 
+│ 1×2 Array{Float64,2}:
+│  7.07107  1.0
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    1×2 Array{Float64,2}:
+│     Matrix{Float64}:
+│     7.07107  1.0
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/vblast.jl:16-26
+│ 
+│ ```jldoctest
+│ julia> H= [1. 2; 3 4];W,_ = vblast(H); W
+│ 2×2 Array{Float64,2}:
+│  1.5  -0.5
+│  0.1   0.3
+│ 
+│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; W,_= vblast(H); W
+│ 2×2 Array{Complex{BigFloat},2}:
+│       -2.0+3.0im            2.0-1.5im     
+│  0.0779221-0.103896im  0.155844-0.103896im
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ H= [1. 2; 3 4];W,_ = vblast(H); W
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Float64}:
+│  1.5  -0.5
+│  0.1   0.3
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Float64,2}:
+│  1.5  -0.5
+│  0.1   0.3
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Float64,2}:
+│     Matrix{Float64}:
+│     1.5  -0.5
+│     0.1   0.3
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/vblast.jl:16-26
+│ 
+│ ```jldoctest
+│ julia> H= [1. 2; 3 4];W,_ = vblast(H); W
+│ 2×2 Array{Float64,2}:
+│  1.5  -0.5
+│  0.1   0.3
+│ 
+│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; W,_= vblast(H); W
+│ 2×2 Array{Complex{BigFloat},2}:
+│       -2.0+3.0im            2.0-1.5im     
+│  0.0779221-0.103896im  0.155844-0.103896im
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ H= BigFloat.([1.5 2; 3 4]) .+ 2im; W,_= vblast(H); W
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Complex{BigFloat}}:
+│       -2.0+3.0im            2.0-1.5im
+│  0.0779221-0.103896im  0.155844-0.103896im
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Complex{BigFloat},2}:
+│       -2.0+3.0im            2.0-1.5im     
+│  0.0779221-0.103896im  0.155844-0.103896im
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Complex{BigFloat},2}:
+│          Matrix{Complex{BigFloat}}:
+│          -2.0+3.0im            2.0-1.5im     
+│     2.0-1.5im
+│     0.0779221-0.103896im  0.155844-0.103896im
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/lll.jl:194-206
+│ 
+│ ```jldoctest
+│ julia> H= [1 2; 3 4];B,_ = sizereduction(H); B
+│ 2×2 Array{Int64,2}:
+│  1  1
+│  3  1
+│ 
+│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= sizereduction(H); B
+│ 2×2 Array{Complex{BigFloat},2}:
+│  1.5+2.0im  0.50+0.0im
+│  3.0+2.0im   1.0+0.0im
+│ 
+│ julia> N=100;H = randn(N,N); B,T = sizereduction(H);
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ H= [1 2; 3 4];B,_ = sizereduction(H); B
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Int64}:
+│  1  1
+│  3  1
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Int64,2}:
+│  1  1
+│  3  1
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Int64,2}:
+│     Matrix{Int64}:
+│     1  1
+│     3  1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/lll.jl:194-206
+│ 
+│ ```jldoctest
+│ julia> H= [1 2; 3 4];B,_ = sizereduction(H); B
+│ 2×2 Array{Int64,2}:
+│  1  1
+│  3  1
+│ 
+│ julia> H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= sizereduction(H); B
+│ 2×2 Array{Complex{BigFloat},2}:
+│  1.5+2.0im  0.50+0.0im
+│  3.0+2.0im   1.0+0.0im
+│ 
+│ julia> N=100;H = randn(N,N); B,T = sizereduction(H);
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ H= BigFloat.([1.5 2; 3 4]) .+ 2im; B,_= sizereduction(H); B
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Complex{BigFloat}}:
+│  1.5+2.0im  0.50+0.0im
+│  3.0+2.0im   1.0+0.0im
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Complex{BigFloat},2}:
+│  1.5+2.0im  0.50+0.0im
+│  3.0+2.0im   1.0+0.0im
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Complex{BigFloat},2}:
+│     Matrix{Complex{BigFloat}}:
+│     1.5+2.0im  0.50+0.0im
+│     3.0+2.0im   1.0+0.0im
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/hard_sphere.jl:77-82
+│ 
+│ ```jldoctest
+│ julia> X = LLLplus.algIIsmart([5. 8]', [1. 2; 0 4],[4,4])
+│ 2×1 Array{Float64,2}:
+│  1.0
+│  2.0
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ X = LLLplus.algIIsmart([5. 8]', [1. 2; 0 4],[4,4])
+│ 
+│ Evaluated output:
+│ 
+│ 2×1 Matrix{Float64}:
+│  1.0
+│  2.0
+│ 
+│ Expected output:
+│ 
+│ 2×1 Array{Float64,2}:
+│  1.0
+│  2.0
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×1 Array{Float64,2}:
+│     Matrix{Float64}:
+│     1.0
+│     2.0
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/LLLplus/CFJFr/src/brun.jl:18-23
+│ 
+│ ```jldoctest
+│ julia> H=[1 2; 3 4]; B,T=brun(H); T
+│ 2×2 Array{Int64,2}:
+│   3  -1
+│  -2   1
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ H=[1 2; 3 4]; B,T=brun(H); T
+│ 
+│ Evaluated output:
+│ 
+│ 2×2 Matrix{Int64}:
+│   3  -1
+│  -2   1
+│ 
+│ Expected output:
+│ 
+│ 2×2 Array{Int64,2}:
+│   3  -1
+│  -2   1
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    2×2 Array{Int64,2}:
+│      Matrix{Int64}:
+│      3  -1
+│     -2   1
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/PLD7m/src/DocTests.jl:369
+┌ Error: Doctesting failed
+│   exception =
+│    `makedocs` encountered a doctest error. Terminating build
+│    Stacktrace:
+│      [1] error(s::String)
+│        @ Base ./error.jl:33
+│      [2] runner(#unused#::Type{Documenter.Builder.Doctest}, doc::Documenter.Documents.Document)
+│        @ Documenter.Builder ~/.julia/packages/Documenter/PLD7m/src/Builder.jl:204
+│      [3] dispatch(#unused#::Type{Documenter.Builder.DocumentPipeline}, x::Documenter.Documents.Document)
+│        @ Documenter.Utilities.Selectors ~/.julia/packages/Documenter/PLD7m/src/Utilities/Selectors.jl:167
+│      [4] #2
+│        @ ~/.julia/packages/Documenter/PLD7m/src/Documenter.jl:240 [inlined]
+│      [5] cd(f::Documenter.var"#2#3"{Documenter.Documents.Document}, dir::String)
+│        @ Base.Filesystem ./file.jl:104
+│      [6] makedocs(; debug::Bool, format::Documenter.Writers.HTMLWriter.HTML, kwargs::Base.Iterators.Pairs{Symbol, Any, NTuple{5, Symbol}, NamedTuple{(:root, :source, :sitename, :doctest, :modules), Tuple{String, String, String, Symbol, Vector{Module}}}})
+│        @ Documenter ~/.julia/packages/Documenter/PLD7m/src/Documenter.jl:239
+│      [7] (::Documenter.var"#all_doctests#30"{Bool, Vector{Module}})()
+│        @ Documenter ~/.julia/packages/Documenter/PLD7m/src/Documenter.jl:728
+│      [8] macro expansion
+│        @ ~/.julia/packages/Documenter/PLD7m/src/Documenter.jl:744 [inlined]
+│      [9] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [10] doctest(source::String, modules::Vector{Module}; fix::Bool, testset::String)
+│        @ Documenter ~/.julia/packages/Documenter/PLD7m/src/Documenter.jl:744
+│     [11] doctest(package::Module; manual::Bool, testset::Nothing, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+│        @ Documenter ~/.julia/packages/Documenter/PLD7m/src/Documenter.jl:687
+│     [12] doctest(package::Module)
+│        @ Documenter ~/.julia/packages/Documenter/PLD7m/src/Documenter.jl:674
+│     [13] top-level scope
+│        @ ~/.julia/packages/LLLplus/CFJFr/test/runtests.jl:127
+│     [14] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [15] top-level scope
+│        @ none:6
+│     [16] eval(m::Module, e::Any)
+│        @ Core ./boot.jl:360
+│     [17] exec_options(opts::Base.JLOptions)
+│        @ Base ./client.jl:261
+│     [18] _start()
+│        @ Base ./client.jl:485
+└ @ Documenter ~/.julia/packages/Documenter/PLD7m/src/Documenter.jl:737
+Doctests: LLLplus: Test Failed at /home/pkgeval/.julia/packages/Documenter/PLD7m/src/Documenter.jl:744
+  Expression: all_doctests()
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/Documenter/PLD7m/src/Documenter.jl:744 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] doctest(source::String, modules::Vector{Module}; fix::Bool, testset::String)
+   @ Documenter ~/.julia/packages/Documenter/PLD7m/src/Documenter.jl:744
+Test Summary:     | Fail  Total
+Doctests: LLLplus |    1      1
+ERROR: LoadError: Some tests did not pass: 0 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/LLLplus/CFJFr/test/runtests.jl:123
+
+PkgEval failed: Package LLLplus errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-30T04:09:58.119
+CPU usage: 157.68s (154.57s user, 3.33s kernel)
+
+Network usage:
+- eth0: 860.446 KiB received, 28.456 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":212467712,"max_usage":765280256,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":198959104,"inactive_file":8192,"inactive_anon":3043328,"total_pgfault":1054273,"total_cache":7626752,"total_rss_huge":0,"total_active_anon":203366400,"total_pgmajfault":0,"pgpgin":501514,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":12288,"total_unevictable":0,"total_dirty":12288,"writeback":0,"pgpgout":451078,"hierarchical_memsw_limit":0,"cache":7626752,"active_file":147456,"pgfault":1054272,"total_mapped_file":0,"total_pgpgout":451078,"total_writeback":0,"rss":198959104,"unevictable":0,"total_inactive_anon":3043328,"total_pgpgin":501514,"active_anon":203366400,"total_active_file":147456},"limit":540972998656},"name":"/LLLplus-deSVsvup","networks":{"eth0":{"rx_bytes":881097,"rx_packets":473,"tx_packets":245,"tx_bytes":29139,"tx_dropped":0,"rx_dropped":5,"tx_errors":0,"rx_errors":0}},"id":"20c64aa8591f9ee7ff565c30530ef32110044a84ff69183cdcba810af3271643","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":112717000410000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":154570000000,"usage_in_kernelmode":3330000000,"total_usage":157678798099,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,93020,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,157678700059,5020,0,0,0,0,0,0,0,0]}},"read":"2020-10-30T04:09:58.121830366Z"}

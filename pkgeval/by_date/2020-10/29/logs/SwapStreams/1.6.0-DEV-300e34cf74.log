@@ -1,0 +1,547 @@
+################################################################################
+# PkgEval set-up: 2020-10-30T05:00:26.416
+#
+
+Julia Version 1.6.0-DEV.1380
+Commit 300e34cf74 (2020-10-30 02:28 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-30T05:00:27.858
+#
+
+   Resolving package versions...
+   Installed SwapStreams ─────── v0.1.2
+   Installed MappedArrays ────── v0.3.0
+   Installed FixedPointNumbers ─ v0.8.4
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [0b152c4a] + SwapStreams v0.1.2
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [53c48c17] + FixedPointNumbers v0.8.4
+  [dbb5928d] + MappedArrays v0.3.0
+  [0b152c4a] + SwapStreams v0.1.2
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [2f01184e] + SparseArrays
+  [10745b16] + Statistics
+
+
+################################################################################
+# Testing: 2020-10-30T05:00:29.743
+#
+
+
+     Testing SwapStreams
+Status `/tmp/jl_0NxHx5/Project.toml`
+  [e30172f5] Documenter v0.25.3
+  [0b152c4a] SwapStreams v0.1.2
+  [8dfed614] Test
+Status `/tmp/jl_0NxHx5/Manifest.toml`
+  [ffbed154] DocStringExtensions v0.8.3
+  [e30172f5] Documenter v0.25.3
+  [53c48c17] FixedPointNumbers v0.8.4
+  [b5f81e59] IOCapture v0.1.1
+  [682c06a0] JSON v0.21.1
+  [dbb5928d] MappedArrays v0.3.0
+  [69de0a69] Parsers v1.0.11
+  [0b152c4a] SwapStreams v0.1.2
+  [0dad84c5] ArgTools
+  [56f22d72] Artifacts
+  [2a0f44e3] Base64
+  [ade2ca70] Dates
+  [f43a241f] Downloads
+  [b77e0a4c] InteractiveUtils
+  [b27032c2] LibCURL
+  [76f85450] LibGit2
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [a63ad114] Mmap
+  [44cfe95a] Pkg
+  [de0858da] Printf
+  [3fa0cd96] REPL
+  [9a3f8284] Random
+  [ea8e919c] SHA
+  [9e88b42a] Serialization
+  [6462fe0b] Sockets
+  [2f01184e] SparseArrays
+  [10745b16] Statistics
+  [fa267f1f] TOML
+  [8dfed614] Test
+  [cf7118a7] UUIDs
+  [4ec0a83e] Unicode
+  [deac9b47] LibCURL_jll
+  [14a3606d] MozillaCACerts_jll
+     Testing Running tests...
+Test Summary:     | Pass  Total
+AbstractArray I/O |    2      2
+Test Summary: |
+NTuple I/O    | No tests
+[ Info: SetupBuildDirectory: setting up build directory.
+[ Info: Doctest: running doctests.
+┌ Error: doctest failure in ~/.julia/packages/SwapStreams/b4Lvm/src/SwapStreams.jl:22-58
+│ 
+│ ```jldoctest README
+│ julia> using SwapStreams
+│ 
+│ julia> s = SwapStream(IOBuffer());  # assume byte swapping is necessary
+│ 
+│ julia> write(s, [1:10...]);         # byte swap each element before writing to buffer
+│ 
+│ julia> seek(s, 0);
+│ 
+│ julia> read!(s.io, Vector{Int}(undef, 10))  # raw data from buffer
+│ 10-element Array{Int64,1}:
+│   72057594037927936
+│  144115188075855872
+│  216172782113783808
+│  288230376151711744
+│  360287970189639680
+│  432345564227567616
+│  504403158265495552
+│  576460752303423488
+│  648518346341351424
+│  720575940379279360
+│ 
+│ julia> seek(s, 0);
+│ 
+│ julia> read!(s, Vector{Int}(undef, 10))  # byte swapped data from buffer
+│ 10-element Array{Int64,1}:
+│   1
+│   2
+│   3
+│   4
+│   5
+│   6
+│   7
+│   8
+│   9
+│  10
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ read!(s.io, Vector{Int}(undef, 10))  # raw data from buffer
+│ 
+│ Evaluated output:
+│ 
+│ 10-element Vector{Int64}:
+│   72057594037927936
+│  144115188075855872
+│  216172782113783808
+│  288230376151711744
+│  360287970189639680
+│  432345564227567616
+│  504403158265495552
+│  576460752303423488
+│  648518346341351424
+│  720575940379279360
+│ 
+│ Expected output:
+│ 
+│ 10-element Array{Int64,1}:
+│   72057594037927936
+│  144115188075855872
+│  216172782113783808
+│  288230376151711744
+│  360287970189639680
+│  432345564227567616
+│  504403158265495552
+│  576460752303423488
+│  648518346341351424
+│  720575940379279360
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    10-element Array{Int64,1}:
+│      Vector{Int64}:
+│      72057594037927936
+│     144115188075855872
+│     216172782113783808
+│     288230376151711744
+│     360287970189639680
+│     432345564227567616
+│     504403158265495552
+│     576460752303423488
+│     648518346341351424
+│     720575940379279360
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/SwapStreams/b4Lvm/src/SwapStreams.jl:22-58
+│ 
+│ ```jldoctest README
+│ julia> using SwapStreams
+│ 
+│ julia> s = SwapStream(IOBuffer());  # assume byte swapping is necessary
+│ 
+│ julia> write(s, [1:10...]);         # byte swap each element before writing to buffer
+│ 
+│ julia> seek(s, 0);
+│ 
+│ julia> read!(s.io, Vector{Int}(undef, 10))  # raw data from buffer
+│ 10-element Array{Int64,1}:
+│   72057594037927936
+│  144115188075855872
+│  216172782113783808
+│  288230376151711744
+│  360287970189639680
+│  432345564227567616
+│  504403158265495552
+│  576460752303423488
+│  648518346341351424
+│  720575940379279360
+│ 
+│ julia> seek(s, 0);
+│ 
+│ julia> read!(s, Vector{Int}(undef, 10))  # byte swapped data from buffer
+│ 10-element Array{Int64,1}:
+│   1
+│   2
+│   3
+│   4
+│   5
+│   6
+│   7
+│   8
+│   9
+│  10
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ read!(s, Vector{Int}(undef, 10))  # byte swapped data from buffer
+│ 
+│ Evaluated output:
+│ 
+│ 10-element Vector{Int64}:
+│   1
+│   2
+│   3
+│   4
+│   5
+│   6
+│   7
+│   8
+│   9
+│  10
+│ 
+│ Expected output:
+│ 
+│ 10-element Array{Int64,1}:
+│   1
+│   2
+│   3
+│   4
+│   5
+│   6
+│   7
+│   8
+│   9
+│  10
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    10-element Array{Int64,1}:
+│      Vector{Int64}:
+│      1
+│      2
+│      3
+│      4
+│      5
+│      6
+│      7
+│      8
+│      9
+│     10
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/SwapStreams/b4Lvm/src/SwapStreams.jl:22-58
+│ 
+│ ```jldoctest
+│ julia> using SwapStreams
+│ 
+│ julia> s = SwapStream(IOBuffer());  # assume byte swapping is necessary
+│ 
+│ julia> write(s, [1:10...]);         # byte swap each element before writing to buffer
+│ 
+│ julia> seek(s, 0);
+│ 
+│ julia> read!(s.io, Vector{Int}(undef, 10))  # raw data from buffer
+│ 10-element Array{Int64,1}:
+│   72057594037927936
+│  144115188075855872
+│  216172782113783808
+│  288230376151711744
+│  360287970189639680
+│  432345564227567616
+│  504403158265495552
+│  576460752303423488
+│  648518346341351424
+│  720575940379279360
+│ 
+│ julia> seek(s, 0);
+│ 
+│ julia> read!(s, Vector{Int}(undef, 10))  # byte swapped data from buffer
+│ 10-element Array{Int64,1}:
+│   1
+│   2
+│   3
+│   4
+│   5
+│   6
+│   7
+│   8
+│   9
+│  10
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ read!(s.io, Vector{Int}(undef, 10))  # raw data from buffer
+│ 
+│ Evaluated output:
+│ 
+│ 10-element Vector{Int64}:
+│   72057594037927936
+│  144115188075855872
+│  216172782113783808
+│  288230376151711744
+│  360287970189639680
+│  432345564227567616
+│  504403158265495552
+│  576460752303423488
+│  648518346341351424
+│  720575940379279360
+│ 
+│ Expected output:
+│ 
+│ 10-element Array{Int64,1}:
+│   72057594037927936
+│  144115188075855872
+│  216172782113783808
+│  288230376151711744
+│  360287970189639680
+│  432345564227567616
+│  504403158265495552
+│  576460752303423488
+│  648518346341351424
+│  720575940379279360
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    10-element Array{Int64,1}:
+│      Vector{Int64}:
+│      72057594037927936
+│     144115188075855872
+│     216172782113783808
+│     288230376151711744
+│     360287970189639680
+│     432345564227567616
+│     504403158265495552
+│     576460752303423488
+│     648518346341351424
+│     720575940379279360
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: doctest failure in ~/.julia/packages/SwapStreams/b4Lvm/src/SwapStreams.jl:22-58
+│ 
+│ ```jldoctest
+│ julia> using SwapStreams
+│ 
+│ julia> s = SwapStream(IOBuffer());  # assume byte swapping is necessary
+│ 
+│ julia> write(s, [1:10...]);         # byte swap each element before writing to buffer
+│ 
+│ julia> seek(s, 0);
+│ 
+│ julia> read!(s.io, Vector{Int}(undef, 10))  # raw data from buffer
+│ 10-element Array{Int64,1}:
+│   72057594037927936
+│  144115188075855872
+│  216172782113783808
+│  288230376151711744
+│  360287970189639680
+│  432345564227567616
+│  504403158265495552
+│  576460752303423488
+│  648518346341351424
+│  720575940379279360
+│ 
+│ julia> seek(s, 0);
+│ 
+│ julia> read!(s, Vector{Int}(undef, 10))  # byte swapped data from buffer
+│ 10-element Array{Int64,1}:
+│   1
+│   2
+│   3
+│   4
+│   5
+│   6
+│   7
+│   8
+│   9
+│  10
+│ 
+│ ```
+│ 
+│ Subexpression:
+│ 
+│ read!(s, Vector{Int}(undef, 10))  # byte swapped data from buffer
+│ 
+│ Evaluated output:
+│ 
+│ 10-element Vector{Int64}:
+│   1
+│   2
+│   3
+│   4
+│   5
+│   6
+│   7
+│   8
+│   9
+│  10
+│ 
+│ Expected output:
+│ 
+│ 10-element Array{Int64,1}:
+│   1
+│   2
+│   3
+│   4
+│   5
+│   6
+│   7
+│   8
+│   9
+│  10
+│ 
+│   diff =
+│    Warning: Diff output requires color.
+│    10-element Array{Int64,1}:
+│      Vector{Int64}:
+│      1
+│      2
+│      3
+│      4
+│      5
+│      6
+│      7
+│      8
+│      9
+│     10
+└ @ Documenter.DocTests ~/.julia/packages/Documenter/3Y8Kg/src/DocTests.jl:369
+┌ Error: Doctesting failed
+│   exception =
+│    `makedocs` encountered a doctest error. Terminating build
+│    Stacktrace:
+│      [1] error(s::String)
+│        @ Base ./error.jl:33
+│      [2] runner(#unused#::Type{Documenter.Builder.Doctest}, doc::Documenter.Documents.Document)
+│        @ Documenter.Builder ~/.julia/packages/Documenter/3Y8Kg/src/Builder.jl:217
+│      [3] dispatch(#unused#::Type{Documenter.Builder.DocumentPipeline}, x::Documenter.Documents.Document)
+│        @ Documenter.Utilities.Selectors ~/.julia/packages/Documenter/3Y8Kg/src/Utilities/Selectors.jl:170
+│      [4] #2
+│        @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:245 [inlined]
+│      [5] cd(f::Documenter.var"#2#3"{Documenter.Documents.Document}, dir::String)
+│        @ Base.Filesystem ./file.jl:104
+│      [6] makedocs(; debug::Bool, format::Documenter.Writers.HTMLWriter.HTML, kwargs::Base.Iterators.Pairs{Symbol, Any, NTuple{6, Symbol}, NamedTuple{(:root, :source, :sitename, :doctest, :modules, :doctestfilters), Tuple{String, String, String, Symbol, Vector{Module}, Vector{Regex}}}})
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:244
+│      [7] (::Documenter.var"#all_doctests#33"{Bool, Vector{Regex}, Vector{Module}})()
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:809
+│      [8] macro expansion
+│        @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826 [inlined]
+│      [9] macro expansion
+│        @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+│     [10] doctest(source::String, modules::Vector{Module}; fix::Bool, testset::String, doctestfilters::Vector{Regex})
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826
+│     [11] doctest(package::Module; manual::Bool, testset::Nothing, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:765
+│     [12] doctest(package::Module)
+│        @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:752
+│     [13] top-level scope
+│        @ ~/.julia/packages/SwapStreams/b4Lvm/test/runtests.jl:127
+│     [14] include(fname::String)
+│        @ Base.MainInclude ./client.jl:444
+│     [15] top-level scope
+│        @ none:6
+│     [16] eval(m::Module, e::Any)
+│        @ Core ./boot.jl:360
+│     [17] exec_options(opts::Base.JLOptions)
+│        @ Base ./client.jl:261
+│     [18] _start()
+│        @ Base ./client.jl:485
+└ @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:819
+Doctests: SwapStreams: Test Failed at /home/pkgeval/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826
+  Expression: all_doctests()
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826 [inlined]
+ [2] macro expansion
+   @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Test/src/Test.jl:1144 [inlined]
+ [3] doctest(source::String, modules::Vector{Module}; fix::Bool, testset::String, doctestfilters::Vector{Regex})
+   @ Documenter ~/.julia/packages/Documenter/3Y8Kg/src/Documenter.jl:826
+Test Summary:         | Fail  Total
+Doctests: SwapStreams |    1      1
+ERROR: LoadError: Some tests did not pass: 0 passed, 1 failed, 0 errored, 0 broken.
+in expression starting at /home/pkgeval/.julia/packages/SwapStreams/b4Lvm/test/runtests.jl:127
+
+PkgEval failed: Package SwapStreams errored during testing
+Stacktrace:
+  [1] pkgerror(msg::String)
+    @ Pkg.Types /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:52
+  [2] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, julia_args::Cmd, test_args::Cmd, test_fn::Nothing)
+    @ Pkg.Operations /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/Operations.jl:1651
+  [3] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec}; coverage::Bool, test_fn::Nothing, julia_args::Cmd, test_args::Cmd, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:334
+  [4] test(ctx::Pkg.Types.Context, pkgs::Vector{Pkg.Types.PackageSpec})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:321
+  [5] #test#62
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:71 [inlined]
+  [6] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:70 [inlined]
+  [7] #test#61
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [8] test
+    @ /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:68 [inlined]
+  [9] test(pkg::String; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [10] test(pkg::String)
+    @ Pkg.API /workspace/srcdir/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:67
+ [11] top-level scope
+    @ none:44
+ [12] eval
+    @ ./boot.jl:360 [inlined]
+ [13] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [14] top-level scope
+    @ none:1
+ [15] eval(m::Module, e::Any)
+    @ Core ./boot.jl:360
+ [16] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:261
+ [17] _start()
+    @ Base ./client.jl:485
+
+
+################################################################################
+# PkgEval teardown: 2020-10-30T05:01:03.789
+CPU usage: 37.30s (35.09s user, 2.28s kernel)
+
+Network usage:
+- eth0: 673.415 KiB received, 27.983 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":216207360,"max_usage":770162688,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":203243520,"inactive_file":8192,"inactive_anon":3133440,"total_pgfault":707781,"total_cache":7311360,"total_rss_huge":0,"total_active_anon":207351808,"total_pgmajfault":0,"pgpgin":359383,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":307978,"hierarchical_memsw_limit":0,"cache":7311360,"active_file":61440,"pgfault":707781,"total_mapped_file":0,"total_pgpgout":307978,"total_writeback":0,"rss":203243520,"unevictable":0,"total_inactive_anon":3133440,"total_pgpgin":359383,"active_anon":207351808,"total_active_file":61440},"limit":540972998656},"name":"/SwapStreams-gWJnSic8","networks":{"eth0":{"rx_bytes":689577,"rx_packets":277,"tx_packets":214,"tx_bytes":28655,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"ef376102dc3a8ae7ca282e74e725284c322669b9838be46f02f10c6977234472","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":113108171120000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":35090000000,"usage_in_kernelmode":2280000000,"total_usage":37298731022,"percpu_usage":[0,0,0,0,0,37298731022,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-30T05:01:04.571527405Z"}
