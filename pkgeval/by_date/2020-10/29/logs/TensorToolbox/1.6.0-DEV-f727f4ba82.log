@@ -1,0 +1,447 @@
+################################################################################
+# PkgEval set-up: 2020-10-30T03:56:14.020
+#
+
+Julia Version 1.6.0-DEV.1363
+Commit f727f4ba82 (2020-10-28 23:50 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-30T03:56:15.491
+#
+
+   Resolving package versions...
+   Installed TensorToolbox ─ v1.0.1
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [9c690861] + TensorToolbox v1.0.1
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [9c690861] + TensorToolbox v1.0.1
+  [2a0f44e3] + Base64
+  [b77e0a4c] + InteractiveUtils
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+  [56ddb016] + Logging
+  [d6f4376e] + Markdown
+  [9a3f8284] + Random
+  [9e88b42a] + Serialization
+  [8dfed614] + Test
+
+
+################################################################################
+# Testing: 2020-10-30T03:56:17.079
+#
+
+
+     Testing TensorToolbox
+Status `/tmp/jl_SM2ieY/Project.toml`
+  [9c690861] TensorToolbox v1.0.1
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_SM2ieY/Manifest.toml`
+  [9c690861] TensorToolbox v1.0.1
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+┌ Warning: `one(i::CartesianIndex)` is deprecated, use `oneunit(i)` instead.
+│   caller = neye(dims::Vector{Int64}) at tensor.jl:416
+└ @ TensorToolbox ~/.julia/packages/TensorToolbox/6LauI/src/tensor.jl:416
+┌ Warning: `one(i::CartesianIndex)` is deprecated, use `oneunit(i)` instead.
+│   caller = diagt(v::Vector{Int64}) at tensor.jl:164
+└ @ TensorToolbox ~/.julia/packages/TensorToolbox/6LauI/src/tensor.jl:164
+┌ Warning: `one(i::CartesianIndex)` is deprecated, use `oneunit(i)` instead.
+│   caller = tkron(X1::Array{Float64, 3}, X2::Array{Float64, 3}) at tensor.jl:592
+└ @ TensorToolbox ~/.julia/packages/TensorToolbox/6LauI/src/tensor.jl:592
+
+
+
+**** Testing tensor.jl
+
+**Test tensor X of size: (20, 10, 50, 5)
+
+...Testing functions matten and tenmat (by mode).
+Size of 1-mode matricization: [20, 2500]
+Check if it folds back correctly: true
+Size of 2-mode matricization: [10, 5000]
+Check if it folds back correctly: true
+Size of 3-mode matricization: [50, 1000]
+Check if it folds back correctly: true
+Size of 4-mode matricization: [5, 10000]
+Check if it folds back correctly: true
+
+...Testing functions matten and tenmat (by rows and columns).
+Size of R=[2, 1] and C=[4, 3] matricization: [200, 250]
+Check if it folds back correctly: true
+
+...Testing function ttm.
+Created 4 matrices with 5 rows and appropriate number of columns.
+Size of tensor Y=ttm(X,M): (5, 5, 5, 5)
+Multiplication error: 7.840271632433845e-12
+
+...Testing function ttv.
+Multiplying a tensor X by a vector v in mode 2.
+Size of tensor Y=ttv(X,v): (3, 2)
+
+...Testing function krontm.
+Created two tensors X and Y of order 3 and sizes (5, 4, 3) and (2, 5, 4).
+Multiplying tkron(X,Y) by random matrix in mode 3.
+Multiplication error: 1.4476175837450903e-14
+Multiplying tkron(X,Y) by random matrices in modes [3, 2].
+Multiplication error: 1.229541800332769e-13
+Multiplying tkron(X,Y) by random matrices in all modes.
+Multiplication error: 6.726273160988593e-13
+
+...Testing function mkrontv.
+Multiplying mode-1 matricized tkron(X,Y) by a random vector.
+Multiplication error: 2.5121479338940402e-14
+Multiplication error: 2.3278308554377244e-15
+
+...Testing function mttkrp.
+Multiplying mode-1 matricized tensor X by Khatri-Rao product of matrices.
+Multiplication error: 0.0
+
+...Testing function dropdims.
+Tensor X of size :(5, 4, 1, 3, 6, 1) squeezed to size :(5, 4, 3, 6).
+
+...Testing contraction (contract).
+Error: 0.0
+
+
+****Testing ttensor.jl
+
+...Test tensor X of size: (20, 10, 50, 5)
+
+...Testing hosvd.
+
+Creating exact decomposition with rank = size(X):
+Results:
+Type of output T: ttensor
+Core tensor size: (20, 10, 50, 5)
+Factor matrices sizes: (20, 20) (10, 10) (50, 50) (5, 5) 
+
+...Testing function full, i.e. n-mode multiplication (ttm): norm(full(T)-X) = 2.0588961866248322e-13
+
+...Testing ttm for ttensor T and array of matrices A : norm(full(ttm(T,A))-ttm(full(T),A)) = 1.414384888448407e-11
+
+...Testing hosvd with smaller multilinear rank: [5, 5, 5, 5]
+Results:
+Type of output T: ttensor
+Core tensor size: (5, 5, 5, 5)
+Factor matrices sizes: (20, 5) (10, 5) (50, 5) (5, 5) 
+
+...Testing size of ttensor T : (20, 10, 50, 5)
+
+...Testing ndims of ttensor T : 4
+
+...Testing nrank of ttensor T for mode 1: 5
+
+...Testing mrank of ttensor T: (5, 5, 5, 5)
+
+...Testing functions matten and tenmat (by mode).
+
+
+...Testing hosvd for tensor with noise.
+For ttensor T, X=full(T) tensor of size (60, 50, 40) and rank [5, 5, 5] , N noise tensor and S=hosvd(X+N,[5, 5, 5]).
+Error( norm(T-S) ): 0.013559615720277097. Noise norm: 0.17281547625252816.
+
+
+...Testing hosvd with eps_abs=1e-5 on function defined tensor X of size (20, 20, 20) and multlinear rank(13, 13, 13)
+Results:
+Type of output T: ttensor
+Core tensor size: (7, 7, 7)
+Factor matrices sizes: (20, 7) (20, 7) (20, 7) 
+
+...Testing hosvd with eps_rel=1e-5 on function defined tensor X of size (20, 20, 20)
+Results:
+Type of output T: ttensor
+Core tensor size: (6, 6, 6)
+Factor matrices sizes: (20, 6) (20, 6) (20, 6) 
+
+...Testing if factor matrices of ttensor T are orthogonal: true
+
+
+...Recompress Tucker tensor T to smaller rank: [3, 3, 3]
+Results:
+Type of output T: ttensor
+Core tensor size: (3, 3, 3)
+Factor matrices sizes: (20, 3) (20, 3) (20, 3) 
+
+...Testing orthogonal flag and reorthogonalization for random ttensor S of size (4, 5, 2).
+Has orthogonal factor matrices: false
+After reorthogonalization: true
+
+
+...Testing norm of ttensor T.
+|norm(T) - norm(full(T))| = 0.0
+
+
+...Testing scalar multiplication 3*T.
+norm(full(3*T) - 3*full(T)) = 3.11024972780411e-14
+
+
+...Creating two random ttensors X and Y of size (6, 8, 2, 5, 4).
+
+...Testing addition.
+norm(full(X+Y) - (full(X)+full(Y))) = 3.23786376445842e-13
+
+
+...Testing inner product.
+|innerprod(X,Y) - innerprod(full(X),full(Y))| = 9.549694368615746e-12
+
+
+...Testing Hadamard product.
+┌ Warning: `one(i::CartesianIndex)` is deprecated, use `oneunit(i)` instead.
+│   caller = tkron(X1::Array{Float64, 5}, X2::Array{Float64, 5}) at tensor.jl:592
+└ @ TensorToolbox ~/.julia/packages/TensorToolbox/6LauI/src/tensor.jl:592
+norm(full(ewprod(X,Y)) - full(X).*full(Y)) = 9.130742605539526e-12
+
+
+...Testing singular values of matricizations of Tucker Tensor.
+
+Singular values of matricizations of random Tucker tensor of size (10, 9, 8), rank [3, 3, 3] and norm 79.31211703059222.
+Mode-1 singular values error: 2.864289338439558e-14
+Mode-2 singular values error: 1.2306961192854808e-14
+Mode-3 singular values error: 2.9777166713245526e-14
+
+Singular values of matricizations of random Tucker tensor of size (20, 20, 20, 20), rank [5, 5, 5, 5] and norm 10329.341938154084.
+Mode-1 singular values error: 3.6662903532026344e-12
+Mode-2 singular values error: 4.247690797517272e-12
+Mode-3 singular values error: 3.4332672090707773e-12
+Mode-4 singular values error: 5.1448789686149945e-12
+
+...Testing function mhadtv.
+
+
+...Creating two random ttensors X and Y of size (5, 4, 3).
+Multiplying mode-1 matricized ewprod(X,Y) by a random vector.
+Multiplication error: 8.611209269944328e-15
+Multiplication error: 2.0083685956537425e-14
+Multiplication error: 4.696037092872503e-13
+
+...Testing function mttkrp.
+Multiplying mode-1 matricized tensor X by Khatri-Rao product of matrices.
+Multiplication error: 7.217971552635755e-15
+
+...Testing cp_als on ttensor.
+Test rank-1 ttensor T of size: (5, 4, 3)
+norm(full(Tcp)-T) = 3.87399136442475e-16
+
+
+****Testing ktensor.jl
+
+**Test rank-1 tensor X of size: (5, 4, 3)
+...Testing cp_als.
+norm(full(Xcp)-X) = 5.473308576763102e-16
+
+**Test ktensors X and Y of size: (4, 3, 2)
+
+...Testing function ndims.
+X is of order: 3
+...Testing function ttensor and full.
+...Testing scalar multiplication.
+norm(full(3*X) - 3*full(X)) = 8.847293810242669e-16
+...Testing functions plus and minus.
+norm(full(Z)-(full(X)+full(Y))) = 5.172153026307198e-16
+norm(full(Z)-(full(X)-full(Y))) = 6.826968921430001e-16
+...Testing function innerprod.
+norm(innerprod(X,Y)-innerprod(full(X),full(Y))) = 3.3306690738754696e-16
+...Testing function norm.
+...Testing functions arrange and arrange!.
+norm(full(X)-full(Z)) = 6.077773962014973e-16
+...Testing functions normalize and normalize!.
+norm(full(X)-full(Z)) = 3.6055550369691825e-16
+...Testing functions redistribute and redistribute!.
+norm(full(X)-full(Z)) = 5.206020470800069e-16
+...Testing functions fixsigns, fixsigns! and isequal.
+norm(full(X)-full(Z)) = 0.0
+...Testing functions ttm and ttv.
+
+...Testing function tocell.
+Is the output MatrixCell: true
+
+...Testing function tenmat by mode 2.
+
+...Testing function mttkrp.
+Multiplying mode-1 matricized tensor X by Khatri-Rao product of matrices.
+Multiplication error: 3.0792431378842496e-15
+
+
+****Testing dimtree.jl
+
+...Testing creating a dimtree.
+...Testing function non (number-of-nodes).
+
+...Created two dimtrees for tensor of order 5, with 9 nodes.
+
+...Testing functions:
+ - height
+ - children
+ - sibling
+ - parent
+ - is_leaf
+ - is_left
+ - is_right
+ - count_leaves
+ - dims
+ - lvl
+ - nodes_on_lvl
+ - node2ind
+ - subnodes
+ - left_child_length
+
+
+Testing truncation of tensor X of size (2, 2, 2, 2, 2) to htensor.
+norm(full(H)-X) = 1.1755977508314564e-13
+norm(full(H)-X) = 5.111706013773555e-14
+
+
+...Testing size of htensor H : (5, 4, 3, 2, 4, 2)
+
+...Testing ndims of htensor H : 6
+
+...Testing ttm for ttensor H and array of matrices A : norm(full(ttm(H,A))-ttm(full(H),A)) = 9.589539469616983e-13
+
+
+...Testing norm of htensor H.
+|norm(H) - norm(full(H))| = 0.0
+
+
+...Testing scalar multiplication 3*H.
+norm(full(3*H) - 3*full(H)) = 2.088267700235444e-14
+
+
+Testing functions plus and minus for htensors H1 and H2.
+norm(full(H1+H2) - (full(H1)+full(H2))) = 9.371360918460988e-16
+norm(full(H1+H2) - (full(H1)+full(H2))) = 9.016357726865127e-16
+
+
+...Testing inner product.
+|innerprod(H1,H2) - innerprod(full(H1),full(H2))| = 8.881784197001252e-15
+
+
+Testing function dropdims for squeezed tensor X and squeezed htensor Y.
+norm(full(Y)-dropdims(X,dims=1)) = 3.945199036621585e-15
+norm(full(Y)-dropdims(X,dims=2)) = 6.2328418954938855e-15
+norm(full(Y)-dropdims(X,dims=3)) = 4.348184657912272e-15
+norm(full(Y)-dropdims(X,dims=4)) = 5.319883302859856e-15
+norm(full(Y)-dropdims(X,dims=5)) = 7.459607911328246e-15
+
+
+...Testing reorthogonalization for random htensor H of size (4, 5, 2).
+Has orthogonal factor matrices: false
+After reorthogonalization: true
+Testing hrank: [1, 2, 2, 2, 2]
+
+
+****Testing TTtensor.jl
+
+...Test core tensors G of sizes: 
+(1, 4, 3)
+(3, 6, 4)
+(4, 3, 1)
+
+...Test size of TTtensor T: (4, 6, 3)
+
+...Test ndims of TTtensor T: 3
+
+...Test TTsvd of TTtensor T: (3, 4)
+
+...Test addition: 
+
+...Test dot product: 
+
+...Test tensor X of size: (5, 4, 3, 2)
+
+...Testing TTsvd.
+Results:
+Type of output T: TTtensor
+
+...Testing function full, i.e. contracted product (conprod): norm(full(T)-X) = 6.442227755843038e-15
+
+...Testing TTsvd with requested rank.
+Created tensor x of size (6, 5, 6, 5), with TTrank = (4, 4, 4).
+T1=TTsvd(X,reqrank=[4, 4, 4])
+norm(X-full(T1)) = 2.755608437066332e-13
+
+...Testing recompression.
+S=TTsvd(T): norm(full(S)-X) = 7.143558348793389e-14
+
+...Testing reorthogonalization - function reorth.
+Test TT-tensor T of size: (6, 5, 4, 3) with flags T.lorth = false and T.rorth = false.
+
+Performing (default) left orthogonalization: Tl=reorth(T).
+Flags: Tl.lorth = true, Tl.rorth = false.
+
+Performing right orthogonalization: Tr=reorth(T,"right").
+Flags: Tr.lorth = false, Tr.rorth = true.
+norm(Diagonal(ones(size(Gn, 1))) - Gn * Gn') = 4.670780312755876e-16
+norm(Diagonal(ones(size(Gn, 1))) - Gn * Gn') = 5.980771954028057e-16
+
+...Testing reorthogonalization with overwriting - function reorth!.
+
+Performing (default) left orthogonalization: reorth!(T)
+Flags: T.lorth = true, T.rorth = false.
+
+Performing right orthogonalization: reorth!(T,"right")
+Flags: T.lorth = true, T.rorth = true.
+
+...Testing TTsvd on TT-tensors.
+
+Fixed precision problem with ϵ = 1.0e-8.
+Created TT-tensor T of size (6, 5, 6, 5), with TTrank = (4, 4, 4), but its actual TT-rank is (2,2,2)
+T1=TTsvd(T,ϵ)
+TTrank(T1) = (2, 2, 2)
+norm(full(T)-full(T1)) = 8.586040507420957e-14
+
+Fixed rank problem with reqrank = [2, 2, 2].
+Created TT-tensor T of size (6, 5, 4, 3), with TTrank = (6, 12, 3).
+T1=TTsvd(T,reqrank=[2, 2, 2])
+TTrank(T1) = (2, 2, 2)
+
+... Testing contraction with vectors - function TTtv.
+┌ Warning: Assignment to `L` in soft scope is ambiguous because a global variable by the same name exists: `L` will be treated as a new local. Disambiguate by using `local L` to suppress this warning or `global L` to assign to the existing global variable.
+└ @ ~/.julia/packages/TensorToolbox/6LauI/test/TTtensorTest.jl:166
+┌ Warning: Assignment to `v` in soft scope is ambiguous because a global variable by the same name exists: `v` will be treated as a new local. Disambiguate by using `local v` to suppress this warning or `global v` to assign to the existing global variable.
+└ @ ~/.julia/packages/TensorToolbox/6LauI/test/TTtensorTest.jl:167
+┌ Warning: Assignment to `T` in soft scope is ambiguous because a global variable by the same name exists: `T` will be treated as a new local. Disambiguate by using `local T` to suppress this warning or `global T` to assign to the existing global variable.
+└ @ ~/.julia/packages/TensorToolbox/6LauI/test/TTtensorTest.jl:169
+
+... Testing transformation of ktensor to TTtensor - function kten2TT.
+Test ktensor T of size (5, 4, 3, 2), and k-rank = 3, transofrming to TTtensor Ttt.
+norm(full(T)-full(Ttt)) = 0.0
+
+... Testing contraction of full tensor to TTtensor - function contract.
+
+... Testing element-wise product of two TTtensor - function ewprod.
+
+
+
+     Testing TensorToolbox tests passed 
+
+PkgEval succeeded
+
+
+################################################################################
+# PkgEval teardown: 2020-10-30T04:15:45.684
+CPU usage: 1168.01s (1160.77s user, 9.30s kernel)
+
+Network usage:
+- eth0: 136.110 KiB received, 4.945 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":165064704,"max_usage":516952064,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":160227328,"inactive_file":8192,"inactive_anon":40960,"total_pgfault":1087784,"total_cache":827392,"total_rss_huge":0,"total_active_anon":161005568,"total_pgmajfault":0,"pgpgin":254774,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":215454,"hierarchical_memsw_limit":0,"cache":827392,"active_file":0,"pgfault":1087784,"total_mapped_file":0,"total_pgpgout":215454,"total_writeback":0,"rss":160227328,"unevictable":0,"total_inactive_anon":40960,"total_pgpgin":254774,"active_anon":161005568,"total_active_file":0},"limit":540972998656},"name":"/TensorToolbox-I37Xscu6","networks":{"eth0":{"rx_bytes":139377,"rx_packets":1683,"tx_packets":40,"tx_bytes":5064,"tx_dropped":0,"rx_dropped":39,"tx_errors":0,"rx_errors":0}},"id":"0d2cb87177b1fd0a4f567eb6f1a4a7ed426e64e64a2143a5eb19a60688d5baeb","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":112761363470000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":1160770000000,"usage_in_kernelmode":9300000000,"total_usage":1168009808700,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1168009808700,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-30T04:15:46.397980571Z"}

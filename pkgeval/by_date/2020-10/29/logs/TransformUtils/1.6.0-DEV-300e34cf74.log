@@ -1,0 +1,100 @@
+################################################################################
+# PkgEval set-up: 2020-10-30T05:02:20.739
+#
+
+Julia Version 1.6.0-DEV.1380
+Commit 300e34cf74 (2020-10-30 02:28 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: AMD EPYC 7502 32-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+Environment:
+  JULIA_DEPOT_PATH = ::/usr/local/share/julia
+  JULIA_MAX_NUM_PRECOMPILE_FILES = 9223372036854775807
+
+
+
+################################################################################
+# Installation: 2020-10-30T05:02:22.148
+#
+
+   Resolving package versions...
+   Installed TransformUtils ─ v0.2.6
+Updating `~/.julia/environments/v1.6/Project.toml`
+  [9b8138ad] + TransformUtils v0.2.6
+Updating `~/.julia/environments/v1.6/Manifest.toml`
+  [9b8138ad] + TransformUtils v0.2.6
+  [8f399da3] + Libdl
+  [37e2e46d] + LinearAlgebra
+
+
+################################################################################
+# Testing: 2020-10-30T05:02:23.962
+#
+
+
+     Testing TransformUtils
+Status `/tmp/jl_j9bXg2/Project.toml`
+  [9b8138ad] TransformUtils v0.2.6
+  [37e2e46d] LinearAlgebra
+  [8dfed614] Test
+Status `/tmp/jl_j9bXg2/Manifest.toml`
+  [9b8138ad] TransformUtils v0.2.6
+  [2a0f44e3] Base64
+  [b77e0a4c] InteractiveUtils
+  [8f399da3] Libdl
+  [37e2e46d] LinearAlgebra
+  [56ddb016] Logging
+  [d6f4376e] Markdown
+  [9a3f8284] Random
+  [9e88b42a] Serialization
+  [8dfed614] Test
+     Testing Running tests...
+Test Summary:                               |
+Constructors SO3, Quaternion, AngleAxis...  | No tests
+Test Summary:                           | Pass  Total
+Ensure basic quaternion operations hold |   10     10
+Test Summary:                                       | Pass  Total
+Comparison functions for SO3, Quaternion, AngleAxis |    5      5
+Test Summary:                                        | Pass  Total
+Trivial case quaterion -> SO3 -> Euler -> quaternion |    2      2
+┌ Warning: Need better coverage on convert function tests
+└ @ Main ~/.julia/packages/TransformUtils/cFZOw/test/runtests.jl:89
+dAA = AngleAxis(0.7853981633974483, [1.0, 0.0, 0.0])
+dAA = so3([0.0 -0.07930078986225628 -0.05637781193047884; 0.07930078986225628 0.0 0.1543467115764034; 0.05637781193047884 -0.1543467115764034 0.0])
+dAA = so3([0.0 0.009129645405815345 -0.028325752741480605; -0.009129645405815345 0.0 0.042437604699463484; 0.028325752741480605 -0.042437604699463484 0.0])
+dAA = so3([0.0 0.1372264483906437 0.038496547644434775; -0.1372264483906437 0.0 -0.25697226687923597; -0.038496547644434775 0.25697226687923597 0.0])
+dAA = Quaternion(0.9984987440975911, [0.04109968775311951, 0.018923625253741215, -0.030870213951078845])
+dAA = SO3([0.9872747522266536 -0.016212915019167388 -0.15819514847927818; 0.021281708533637995 0.9993112247290983 0.030400082439344236; 0.15759331361986423 -0.03337989689934501 0.986939780323653])
+Test Summary:                        | Pass  Total
+Compare SO3 and quaternion rotations |   24     24
+Test Summary:       | Pass  Total
+Basic SE3 mechanics |    4      4
+Compare operations on two different SE3 transforms
+xi = SE3(SO3([0.9972360623995534 0.026511529151531495 -0.06940730993116939; -0.01900905429674887 0.9941197953183831 0.10660435455871055; 0.07182542519593717 -0.10499033945170153 0.9918760693338857]), [-1.5434671157640338, -0.5637781193047884, 0.7930078986225627])
+xj = SE3(SO3([0.9836989929395541 0.1587540933359029 0.0844596302312689; -0.13844234496896626 0.9683443005691517 -0.20770900961377264; -0.11476065706156004 0.19263035431711165 0.9745376022434759]), [2.5697226687923593, 0.3849654764443477, -1.372264483906437])
+Dx = SE3(SO3([0.97536903536872 0.1537437546451113 0.15817111857579175; -0.09950015077570304 0.9466347253644726 -0.30656551784201364; -0.19686280715134008 0.283276463268224 0.9386157256932895]), [3.9282648565876324, 1.2795444225419206, -2.332027099335961])
+Test Summary:         | Pass  Total
+SE3 ⊕ and ⊖ mechanics |    6      6
+TransformUtils.convert(Euler, q) = Euler(0.7853981633974484, 0.0, 1.5707963267948963, Quaternion(1.0, [0.0, 0.0, 0.0]))
+Test Summary:              | Pass  Total
+Previous discovered issues |    3      3
+Test Summary:      | Pass  Total
+test SO3 logmap... |  301    301
+Test Summary:                              | Pass  Total
+test in-place and efficient inverse SE3... |    1      1
+     Testing TransformUtils tests passed 
+
+PkgEval succeeded
+
+
+################################################################################
+# PkgEval teardown: 2020-10-30T05:02:41.785
+CPU usage: 21.20s (20.22s user, 1.04s kernel)
+
+Network usage:
+- eth0: 24.395 KiB received, 4.343 KiB sent
+
+Raw statistics: {"blkio_stats":{"io_queue_recursive":[],"io_serviced_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":5,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":5,"op":"Async","minor":0},{"major":259,"value":5,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":5,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":5,"op":"Async","minor":2},{"major":253,"value":5,"op":"Total","minor":2}],"io_time_recursive":[],"sectors_recursive":[],"io_service_bytes_recursive":[{"major":259,"value":0,"op":"Read","minor":0},{"major":259,"value":20480,"op":"Write","minor":0},{"major":259,"value":0,"op":"Sync","minor":0},{"major":259,"value":20480,"op":"Async","minor":0},{"major":259,"value":20480,"op":"Total","minor":0},{"major":253,"value":0,"op":"Read","minor":2},{"major":253,"value":20480,"op":"Write","minor":2},{"major":253,"value":0,"op":"Sync","minor":2},{"major":253,"value":20480,"op":"Async","minor":2},{"major":253,"value":20480,"op":"Total","minor":2}],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_service_time_recursive":[]},"memory_stats":{"usage":178941952,"max_usage":392118272,"stats":{"hierarchical_memory_limit":9223372036854771712,"pgmajfault":0,"total_rss":174907392,"inactive_file":8192,"inactive_anon":24576,"total_pgfault":324498,"total_cache":176128,"total_rss_huge":0,"total_active_anon":175050752,"total_pgmajfault":0,"pgpgin":136944,"rss_huge":0,"mapped_file":0,"total_inactive_file":8192,"dirty":0,"total_unevictable":0,"total_dirty":0,"writeback":0,"pgpgout":94199,"hierarchical_memsw_limit":0,"cache":176128,"active_file":0,"pgfault":324498,"total_mapped_file":0,"total_pgpgout":94199,"total_writeback":0,"rss":174907392,"unevictable":0,"total_inactive_anon":24576,"total_pgpgin":136944,"active_anon":175050752,"total_active_file":0},"limit":540972998656},"name":"/TransformUtils-5krrbPXo","networks":{"eth0":{"rx_bytes":24980,"rx_packets":66,"tx_packets":29,"tx_bytes":4447,"tx_dropped":0,"rx_dropped":1,"tx_errors":0,"rx_errors":0}},"id":"a43abb285a0b3c2c5d5acb0489c1be97a964afeb71ddf045c564264163204200","preread":"0001-01-01T00:00:00Z","storage_stats":{},"precpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"cpu_usage":{"usage_in_usermode":0,"usage_in_kernelmode":0,"total_usage":0}},"pids_stats":{"current":38},"num_procs":0,"cpu_stats":{"throttling_data":{"throttled_periods":0,"throttled_time":0,"periods":0},"system_cpu_usage":113120669550000000,"online_cpus":128,"cpu_usage":{"usage_in_usermode":20220000000,"usage_in_kernelmode":1040000000,"total_usage":21200937924,"percpu_usage":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21200937924,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}},"read":"2020-10-30T05:02:42.613505586Z"}
