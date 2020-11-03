@@ -4,24 +4,41 @@
 
 *Commit(s):* [JuliaLang/julia@ce1cf9f4c52d688887c8e86eb719be5401874a4d](https://github.com/JuliaLang/julia/commit/ce1cf9f4c52d688887c8e86eb719be5401874a4d)
 
-*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/ce1cf9f4c52d688887c8e86eb719be5401874a4d#commitcomment-43834741)
+*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/ce1cf9f4c52d688887c8e86eb719be5401874a4d#commitcomment-43835062)
 
 *Package Selection:* `["JSON", "Crayons"]`
 
-## Error
+In total, 2 packages were tested, out of which 2 succeeded, 0 failed and 0 were skipped.
 
-The build could not finish due to an error:
+
+## :heavy_check_mark: Packages that passed tests
+
+2 packages passed tests.
+
+- [Crayons v4.0.4](https://s3.amazonaws.com/julialang-reports/nanosoldier/Crayons-1.6.0-DEV-ce1cf9f4c5.log)
+- [JSON v0.21.1](https://s3.amazonaws.com/julialang-reports/nanosoldier/JSON-1.6.0-DEV-ce1cf9f4c5.log)
+
+
+## Version Info
+
+#### Primary Build
 
 ```
-NanosoldierError: failed to run tests: UndefVarError: test not defined
-Stacktrace:
- [1] execute_tests!(::Nanosoldier.PkgEvalJob, ::Dict{String,Nanosoldier.BuildRef}, ::Dict{String,Array{String,1}}, ::Dict{Any,Any}) at /storage/pkgeval/Nanosoldier/src/jobs/PkgEvalJob.jl:240
- [2] run(::Nanosoldier.PkgEvalJob) at /storage/pkgeval/Nanosoldier/src/jobs/PkgEvalJob.jl:348
- [3] (::Distributed.var"#108#110"{Distributed.CallMsg{:call_fetch}})() at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.3/Distributed/src/process_messages.jl:294
- [4] run_work_thunk(::Distributed.var"#108#110"{Distributed.CallMsg{:call_fetch}}, ::Bool) at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.3/Distributed/src/process_messages.jl:79
- [5] macro expansion at /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.3/Distributed/src/process_messages.jl:294 [inlined]
- [6] (::Distributed.var"#107#109"{Distributed.CallMsg{:call_fetch},Distributed.MsgHeader,Sockets.TCPSocket})() at ./task.jl:333
+Julia Version 1.6.0-DEV.1408
+Commit ce1cf9f4c5 (2020-11-03 00:19 UTC)
+Platform Info:
+  OS: Linux (x86_64-pc-linux-gnu)
+  uname: Linux 4.15.0-121-generic #123-Ubuntu SMP Mon Oct 5 16:16:40 UTC 2020 x86_64 x86_64
+  CPU: AMD EPYC 7502 32-Core Processor: 
+                  speed         user         nice          sys         idle          irq
+       #1-128  1487 MHz  354341297 s    3425212 s   68408379 s  1134899621 s          0 s
+       
+  Memory: 503.8203659057617 GB (489320.5234375 MB free)
+  Uptime: 1.267716e6 sec
+  Load Avg:  0.99  0.65  0.43
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-11.0.0 (ORCJIT, znver2)
+
 ```
-
-Check the logs folder in this directory for more detailed output.
-
+<!-- Generated on 2020-11-03T09:50:12.3 -->
