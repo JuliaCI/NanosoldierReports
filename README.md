@@ -24,7 +24,7 @@ The test results of the latest daily is also used to generate a PkgEval badge. Y
 
 Use the following code to embed the PkgEval badge and a link to the latest report (changing `E/Example` to your package name, prefixed by its initial):
 
-```
+```markdown
 [pkgeval-img]: https://juliahub.com/docs/Example/pkgeval.svg
 [pkgeval-url]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.html
 
