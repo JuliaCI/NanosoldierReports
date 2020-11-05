@@ -25,7 +25,7 @@ The test results of the latest daily is also used to generate a PkgEval badge. Y
 Use the following code to embed the PkgEval badge and a link to the latest report (changing `E/Example` to your package name, prefixed by its initial):
 
 ```
-[pkgeval-img]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.svg
+[pkgeval-img]: https://juliahub.com/docs/Example/pkgeval.svg
 [pkgeval-url]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.html
 
 [![PkgEval][pkgeval-img]][pkgeval-url]
@@ -33,23 +33,12 @@ Use the following code to embed the PkgEval badge and a link to the latest repor
 
 The result will look as follows:
 
-[pkgeval-img-1]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.svg
-[pkgeval-url-1]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.html
-
-[![PkgEval][pkgeval-img-1]][pkgeval-url-1]
-
-Alternatively, you can embed a badge that includes the name of your package in the badge itself. Use the following code (changing `E/Example` to your package name, prefixed by its initial):
-
-```
-[pkgeval-img]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.named.svg
+[pkgeval-img]: https://juliahub.com/docs/Example/pkgeval.svg
 [pkgeval-url]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.html
 
 [![PkgEval][pkgeval-img]][pkgeval-url]
-```
 
-The result will look as follows:
 
-[pkgeval-img-2]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.named.svg
-[pkgeval-url-2]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.html
+### Acknowledgements
 
-[![PkgEval][pkgeval-img-2]][pkgeval-url-2]
+The PkgEval badges are powered by [JuliaHub](https://juliahub.com).
