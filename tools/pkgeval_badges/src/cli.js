@@ -10,24 +10,16 @@ const latest_date = fs.readlinkSync(input_dir)
 const input = path.resolve(input_dir, "db.json")
 const db = require(input)
 
-// find the git short hash to access logs
-build_sha = db.build["sha"]
-logs = []
-log_dir = path.resolve(input_dir, "logs", "Example")
-fs.readdirSync(log_dir).forEach(file => {
-    logs.push(file)
-});
-outer:
-    while (build_sha.length > 0) {
-        for (log of logs) {
-            if (log.indexOf(build_sha) > -1) {
-                break outer;
-            }
-        }
-        build_sha = build_sha.substring(0, build_sha.length-1)
-    }
-if (build_sha.length == 0)
-    throw 'Could not find log filename corresponding with build sha'
+// reconstruct the version number
+const first_test = Object.values(db.tests)[0]
+const julia = first_test.julia
+version = `${julia.major}.${julia.minor}.${julia.patch}`
+if (julia.prerelease.length > 0) {
+    version = version.concat("-", julia.prerelease.join('.'))
+}
+if (julia.build.length > 0) {
+    version = version.concat("+", julia.prerelease.join('.'))
+}
 
 // helper to generate redirecting HTML
 function redirect(url) {
@@ -81,16 +73,16 @@ for (var uuid in db.tests) {
         color: color,
         template: 'flat',
     }
-    
+
     svg_main_badge = bf.create(format_main_badge)
     svg_named_badge = bf.create(format_named_badge)
-    
+
     fs.writeFileSync(path.join(badge_dir, test.name + ".svg"), svg_main_badge)
     fs.writeFileSync(path.join(badge_dir, test.name + ".named.svg"), svg_named_badge)
 
     // generate a redirect to the log
     fs.writeFileSync(path.join(badge_dir, test.name + ".html"),
-                     redirect(`https://raw.githubusercontent.com/JuliaCI/NanosoldierReports/master/pkgeval/by_date/${latest_date}/logs/${test.name}/${log}`))
+                     redirect(`https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_date/${latest_date}/${test.name}.${version}.log`))
 }
 
 // generate a redirect to the report
