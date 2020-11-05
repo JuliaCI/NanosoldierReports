@@ -1,0 +1,33 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Set-up
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+
+      - name: Build
+        run: |
+          npm install tools/pkgeval_badges
+          node tools/pkgeval_badges/src/cli.js
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        if: github.ref == 'refs/heads/master'
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: public
+          CLEAN: false
