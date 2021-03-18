@@ -4,7 +4,7 @@
 
 *Commit:* [JuliaLang/julia@6bdba4375965056d75a71a9464001f5d0f946d2d](https://github.com/JuliaLang/julia/commit/6bdba4375965056d75a71a9464001f5d0f946d2d)
 
-*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/6bdba4375965056d75a71a9464001f5d0f946d2d#commitcomment-48383992)
+*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/6bdba4375965056d75a71a9464001f5d0f946d2d#commitcomment-48397851)
 
 *Tag Predicate:* `ALL`
 
@@ -15,7 +15,7 @@
 The build could not finish due to an error:
 
 ```
-NanosoldierError: failed to run benchmarks against primary commit: failed process: Process(`sudo /run/media/system/data/nanosoldier/cset/bin/cset shield -e su nanosoldier -- -c /run/media/system/data/nanosoldier/workdir/jl_QKSH8Y/benchscript.sh`, ProcessExited(1)) [1]
+NanosoldierError: failed to run benchmarks against primary commit: failed process: Process(`sudo /run/media/system/data/nanosoldier/cset/bin/cset shield -e su nanosoldier -- -c /run/media/system/data/nanosoldier/workdir/jl_CRz19X/benchscript.sh`, ProcessExited(1)) [1]
 
 Stacktrace:
  [1] pipeline_error at ./process.jl:525 [inlined]
