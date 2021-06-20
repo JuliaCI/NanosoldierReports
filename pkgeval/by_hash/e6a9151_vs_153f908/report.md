@@ -6,33 +6,61 @@
 
 *Comparison Diff:* [link](https://github.com/JuliaLang/julia/compare/153f908f147ad1ccf87fdc20b4f2cdd7b2b30461..e6a9151989f7521ab1796514054c94c515886cba)
 
-*Triggered By:* [link](https://github.com/JuliaLang/julia/pull/41288#issuecomment-864560826)
+*Triggered By:* [link](https://github.com/JuliaLang/julia/pull/41288#issuecomment-864565384)
 
-*Package Selection:* `"TaylorSeries"`
+*Package Selection:* `["TaylorSeries"]`
 
-## Error
+In total, 1 packages were tested, out of which 1 succeeded, 0 failed and 0 were skipped.
 
-The build could not finish due to an error:
+
+## :heavy_check_mark: Packages that passed tests
+
+**1 packages passed tests only on the current version.**
+
+- [TaylorSeries v0.11.0](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/e6a9151_vs_153f908/TaylorSeries.1.8.0-DEV-506352ed41.log) vs. [TaylorSeries v0.11.0](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/e6a9151_vs_153f908/TaylorSeries.1.8.0-DEV-153f908f14.log) (unsuccessful, package has test failures)
+
+
+## Version Info
+
+#### Primary Build
 
 ```
-NanosoldierError: failed to run tests: MethodError: no method matching read_pkgs(::String)
-Closest candidates are:
-  read_pkgs() at /storage/pkgeval/depot/packages/PkgEval/59AzU/src/registry.jl:39
-  read_pkgs(!Matched::Vector{String}; registry) at /storage/pkgeval/depot/packages/PkgEval/59AzU/src/registry.jl:39
-Stacktrace:
- [1] execute_tests!(job::Nanosoldier.PkgEvalJob, builds::Dict{String, Nanosoldier.BuildRef}, flags::Dict{String, Vector{String}}, results::Dict{Any, Any})
-   @ Nanosoldier /storage/pkgeval/Nanosoldier/src/jobs/PkgEvalJob.jl:226
- [2] run(job::Nanosoldier.PkgEvalJob)
-   @ Nanosoldier /storage/pkgeval/Nanosoldier/src/jobs/PkgEvalJob.jl:355
- [3] (::Distributed.var"#106#108"{Distributed.CallMsg{:call_fetch}})()
-   @ Distributed /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/process_messages.jl:278
- [4] run_work_thunk(thunk::Distributed.var"#106#108"{Distributed.CallMsg{:call_fetch}}, print_error::Bool)
-   @ Distributed /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/process_messages.jl:63
- [5] macro expansion
-   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/process_messages.jl:278 [inlined]
- [6] (::Distributed.var"#105#107"{Distributed.CallMsg{:call_fetch}, Distributed.MsgHeader, Sockets.TCPSocket})()
-   @ Distributed ./task.jl:411
+Julia Version 1.8.0-DEV.60
+Commit 506352ed41 (2021-06-20 13:28 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  uname: Linux 5.4.0-71-generic #79~18.04.1-Ubuntu SMP Thu Mar 25 05:45:39 UTC 2021 x86_64 unknown
+  CPU: AMD EPYC 7502 32-Core Processor: 
+                  speed         user         nice          sys         idle          irq
+       #1-128  1500 MHz  1590831822 s     170154 s   83510426 s  5829264693 s          0 s
+       
+  Memory: 503.81201934814453 GB (486177.84375 MB free)
+  Uptime: 5.864922e6 sec
+  Load Avg:  0.31  0.14  0.45
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-12.0.0 (ORCJIT, znver2)
+
 ```
 
-Check the logs folder in this directory for more detailed output.
+#### Comparison Build
 
+```
+Julia Version 1.8.0-DEV.58
+Commit 153f908f14 (2021-06-20 13:25 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  uname: Linux 5.4.0-71-generic #79~18.04.1-Ubuntu SMP Thu Mar 25 05:45:39 UTC 2021 x86_64 unknown
+  CPU: AMD EPYC 7502 32-Core Processor: 
+                  speed         user         nice          sys         idle          irq
+       #1-128  1496 MHz  1590831884 s     170154 s   83510447 s  5829272091 s          0 s
+       
+  Memory: 503.81201934814453 GB (486119.796875 MB free)
+  Uptime: 5.864927e6 sec
+  Load Avg:  0.36  0.16  0.46
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-12.0.0 (ORCJIT, znver2)
+
+```
+<!-- Generated on 2021-06-20T10:46:23.219 -->
