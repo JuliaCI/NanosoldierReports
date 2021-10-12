@@ -12,7 +12,7 @@ If you use Chrome to view these reports, it's recommended that you install the [
 
 ## PkgEval reports
 
-PkgEval reports run the tests of all registered packages using the [NewPkgEval.jl](https://github.com/JuliaComputing/NewPkgEval.jl) infrastructure. The reports are grouped in two folder: `by_date`, for daily evaluations of the current Julia master branch, and `by_hash` for specifically requested builds (e.g., on a pull request to determine breakage of a change).
+PkgEval reports run the tests of all registered packages using the [PkgEval.jl](https://github.com/JuliaCI/PkgEval.jl) infrastructure. The reports are grouped in two folder: `by_date`, for daily evaluations of the current Julia master branch, and `by_hash` for specifically requested builds (e.g., on a pull request to determine breakage of a change).
 
 Click [here](https://juliaci.github.io/NanosoldierReports/pkgeval_badges/report.html) to open the latest daily report.
 
