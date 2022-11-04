@@ -19,13 +19,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '14'
+          node-version: '19'
 
       - name: Build
         run: |
-          npm install tools/pkgeval_badges
+          npm install ./tools/pkgeval_badges
           node tools/pkgeval_badges/src/cli.js
-          
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/master'
