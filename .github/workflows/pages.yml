@@ -1,4 +1,4 @@
-name: github pages
+name: GitHub pages
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  pages:
     runs-on: ubuntu-latest
     steps:
       - name: Check out
@@ -21,10 +21,20 @@ jobs:
         with:
           node-version: '19'
 
-      - name: Build
+      - name: Generate badges
         run: |
           npm install ./tools/pkgeval_badges
-          node tools/pkgeval_badges/src/cli.js
+          node tools/pkgeval_badges/src/cli.js public/pkgeval_badges
+
+      - name: Set up Julia
+        uses: julia-actions/setup-julia@v1
+        with:
+          version: '1.8'
+
+      - name: Generate charts
+        run: |
+          julia --project=tools/pkgeval_charts -e 'using Pkg; Pkg.instantiate()'
+          julia --project=tools/pkgeval_charts tools/pkgeval_charts/main.jl public/pkgeval_charts
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

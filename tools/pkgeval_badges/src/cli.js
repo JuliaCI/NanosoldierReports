@@ -4,6 +4,12 @@ const fs = require('fs');
 const path = require('path');
 const { makeBadge, ValidationError } = require('badge-maker');
 
+const args = process.argv.slice(2);
+
+// where to write the images
+output_dir = path.resolve(args[0])
+fs.existsSync(output_dir) || fs.mkdirSync(output_dir, { recursive: true })
+
 // find the most recent database with pkgeval results
 const input_dir = path.resolve(__dirname, "../../../pkgeval/by_date/latest/")
 const latest_date = fs.readlinkSync(input_dir)
@@ -25,10 +31,6 @@ function redirect(url) {
 </html>
 `
 }
-
-// where to write the images
-output_dir = path.resolve(__dirname, "../../../public/pkgeval_badges")
-fs.existsSync(output_dir) || fs.mkdirSync(output_dir, { recursive: true })
 
 const formats = {
     'ok':   ['passing', 'brightgreen'],
