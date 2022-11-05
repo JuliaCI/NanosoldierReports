@@ -1,4 +1,4 @@
-name: github pages
+name: PkgEval charts
 
 on:
   push:
@@ -16,15 +16,15 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
+      - name: Set up Julia
+        uses: julia-actions/setup-julia@v1
         with:
-          node-version: '19'
+          version: '1.8'
 
-      - name: Build
+      - name: Generate
         run: |
-          npm install ./tools/pkgeval_badges
-          node tools/pkgeval_badges/src/cli.js
+          julia --project tools/pkgeval_charts -e 'using Pkg; Pkg.instantiate()'
+          julia --project tools/pkgeval_charts tools/pkgeval_charts/main.jl public/pkgeval_charts
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
