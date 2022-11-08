@@ -87,7 +87,7 @@ function main(output_dir)
     end
 
     plot = areaplot(dates, hcat(oks, fails, kills),
-                    labels = ["success" "failed" "killed"],
+                    labels = ["success: $(last(oks))" "failed: $(last(fails))" "killed: $(last(kills))"],
                     seriescolor = [:green :red :black],
                     fillalpha = 0.3,
                     legend=:topleft,
@@ -102,7 +102,7 @@ function main(output_dir)
                   text(" $(version.major).$(version.minor) dev", :gray50, :left, 9))
     end
     plot!(twinx(), dates, oks ./ totals,
-          label="success rate",
+          label="success rate: $(round(Int, 100*last(oks)/last(totals)))%",
           color=:purple,
           alpha=0.7,
           linewidth=2,
