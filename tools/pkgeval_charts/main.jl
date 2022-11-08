@@ -40,7 +40,7 @@ function main(output_dir)
     println("Generating performance chart...")
     # NOTE: we use the 'against' dataset since that doesn't run under rr
     plot = performance_plot(against)
-    savefig(plot, joinpath(output_dir, "performance.png"))
+    savefig(plot, joinpath(output_dir, "daily_time.png"))
 
     return
 end
