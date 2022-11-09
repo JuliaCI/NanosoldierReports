@@ -39,7 +39,7 @@ function main(output_dir)
 
     println("Generating performance chart...")
     # NOTE: we use the 'against' dataset since that doesn't run under rr
-    plot = performance_plot(against)
+    plot = simple_performance_plot(against)
     savefig(plot, joinpath(output_dir, "daily_time.png"))
 
     return
@@ -200,13 +200,16 @@ function success_plot(df)
     return plot
 end
 
-function performance_plot(df)
+# generate a plot showing the performance of each Julia build, by analyzing the test
+# duration each package. this only considers the latest version of each package, because the
+# test suites (and thus test duration) of packages is likely to change between releases.
+function simple_performance_plot(df)
     # we only care about successfull tests where we know the version of the package
     filter!(:status => isequal(:ok), df)
     filter!(:version => !isequal(missing), df)
 
     # PkgEval only recently started including accurate test durations
-    filter!(:date => >=(Date("2022-11-07")), df)
+    filter!(:date => >=(Date("2022-11-08")), df)
 
     # since we'll be using performance ratios, we should be comparing against a single Julia
     # version (i.e. the latest one). that implies we can only consider package versions that
