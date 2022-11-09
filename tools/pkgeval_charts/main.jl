@@ -299,7 +299,7 @@ function full_performance_plot(df; simple=false)
     df = filter(:version => !isequal(missing), df)
 
     # PkgEval only recently started including accurate test durations
-    df = filter(:date => >=(Date("2022-11-07")), df)
+    df = filter(:date => >=(Date("2022-11-08")), df)
 
     # convert dates to integers for easier indexing
     dates = sort(unique(df.date))
