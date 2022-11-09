@@ -124,6 +124,14 @@ function read_data(root)
             df.reason = map(missing_or_symbol, df.reason)
             df.version = map(missing_or_version, df.version)
 
+            # recover the new :crash status by looking at the reasons
+            crash_reasons = [:abort, :internal, :unreachable, :gc_corruption, :segfault]
+            for row in eachrow(df)
+                if row.reason !== missing && row.reason in crash_reasons
+                    row.status = :crash
+                end
+            end
+
             df.date .= date
 
             return
@@ -149,6 +157,7 @@ function success_plot(df)
     dates = []
     oks = []
     fails = []
+    crashes = []
     kills = []
     totals = []
 
@@ -159,7 +168,8 @@ function success_plot(df)
         ok = nrow(filter(:status => isequal(:ok), df′))
         kill = nrow(filter(:status => isequal(:kill), df′))
         fail = nrow(filter(:status => isequal(:fail), df′))
-        total = ok + kill + fail
+        crash = nrow(filter(:status => isequal(:crash), df′))
+        total = ok + fail + crash + kill
 
         if ok < total*0.5
             @debug "Too many failures on $date; probably a fluke"
@@ -171,16 +181,18 @@ function success_plot(df)
             continue
         end
 
+        push!(dates, date)
+
         push!(oks, ok)
         push!(fails, fail)
+        push!(crashes, crash)
         push!(kills, kill)
         push!(totals, total)
-        push!(dates, date)
     end
 
-    plot = areaplot(dates, hcat(oks, fails, kills),
-                    labels = ["success: $(last(oks))" "failed: $(last(fails))" "killed: $(last(kills))"],
-                    seriescolor = [:green :red :black],
+    plot = areaplot(dates, hcat(oks, fails, crashes, kills),
+                    labels = ["success: $(last(oks))" "failure: $(last(fails))" "crash: $(last(crashes))" "kill: $(last(kills))"],
+                    seriescolor = [:green :red :darkred :black],
                     fillalpha = 0.3,
                     legend=:topleft,
                     title = "Daily package evaluation",
