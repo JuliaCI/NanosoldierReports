@@ -31,8 +31,7 @@ end
 function main(output_dir)
     isdir(output_dir) || mkpath(output_dir)
 
-    root = joinpath(@__DIR__, "..", "..", "pkgeval", "by_date")
-    primary, against = read_data(root)
+    primary, against = read_data()
 
     println("Generating daily chart...")
     plot = success_plot(primary)
@@ -40,15 +39,16 @@ function main(output_dir)
 
     println("Generating performance chart...")
     # NOTE: we use the 'against' dataset since that doesn't run under rr
-    plot = simple_performance_plot(against)
-    savefig(plot, joinpath(output_dir, "daily_time.png"))
-    plot = full_performance_plot(against)
-    savefig(plot, joinpath(output_dir, "daily_time_full.png"))
+    # NOTE: PkgEval only recently started including accurate test durations
+    let df = filter(:date => >=(Date("2022-11-08")), against)
+        savefig(simple_performance_plot(df), joinpath(output_dir, "daily_time.png"))
+        savefig(full_performance_plot(df), joinpath(output_dir, "daily_time_full.png"))
+    end
 
     return
 end
 
-function read_data(root)
+function read_data(root=joinpath(@__DIR__, "..", "..", "pkgeval", "by_date"))
     months = filter(readdir(root)) do dir
         contains(dir, r"^\d\d\d\d-\d\d$")
     end
@@ -216,37 +216,31 @@ function success_plot(df)
 end
 
 # generate a plot showing the performance of each Julia build, by analyzing the test
-# duration each package. this only considers the latest version of each package, because the
-# test suites (and thus test duration) of packages is likely to change between releases.
+# duration each package. this only considers the latest version of each package, because
+# the test suites (and thus test duration) of packages is likely to change between releases.
 function simple_performance_plot(df)
     # we only care about successfull tests where we know the version of the package
     df = filter(:status => isequal(:ok), df)
     df = filter(:version => !isequal(missing), df)
 
-    # PkgEval only recently started including accurate test durations
-    df = filter(:date => >=(Date("2022-11-08")), df)
-
-    # since we'll be using performance ratios, we should be comparing against a single Julia
-    # version (i.e. the latest one). that implies we can only consider package versions that
-    # are available for the latest Julia version.
+    # select package versions that were evaluated on the latest Julia version
     last_date = last(df.date)
     candidates = df[df.date .== last_date, [:package, :version]]
     df = innerjoin(df, candidates, on = [:package, :version])
 
-    # then, determine the test duration of each package relative to the latest evaluation.
-    # we also keep track of the absolute duration in order to weigh the ratio later on.
+    # create a new dataframe where for each package version we save the test date, test
+    # duration, and reference duration (i.e., the duration of the same package version on
+    # the current Julia version)
     df = let
         new_df = DataFrame(date = Date[],
-                           weight = Float64[],
-                           duration = Float64[])
+                           duration = Float64[],
+                           reference_duration = Float64[])
         for group in groupby(df, [:package, :version])
             last_duration = last(group.duration)
             duration = group.duration
 
-            subdf = DataFrame(package = group.package,
-                              version = group.version,
-                              date = group.date,
-                              weight = last_duration,
+            subdf = DataFrame(date = group.date,
+                              reference_duration = last_duration,
                               duration = duration)
 
             append!(new_df, subdf; cols=:intersect)
@@ -254,8 +248,8 @@ function simple_performance_plot(df)
         new_df
     end
 
-    # now aggregate all of those relative test durations in order to determine a single
-    # number for every Julia version (i.e. every date), weighing each ratio accordingly.
+    # now aggregate all of those test durations in order to determine a single number
+    # for every Julia version (i.e. every date)
     df = let
         new_df = DataFrame(date = Date[],
                            ratio = Float64[],
@@ -263,8 +257,8 @@ function simple_performance_plot(df)
         for group in groupby(df, [:date])
             date = first(group.date)
 
-            total_weight = sum(group.weight)
-            ratio = sum(group.duration) / total_weight - 1
+            reference_duration = sum(group.reference_duration)
+            ratio = sum(group.duration) / reference_duration - 1
             push!(new_df, (date, ratio, nrow(group)))
         end
         new_df
@@ -273,32 +267,7 @@ function simple_performance_plot(df)
     # only consider dates where we could compare against at least 50% of the ecosystem
     filter!(:datapoints => >=(0.5 * maximum(df.datapoints)), df)
 
-    improvement = copy(df)
-    improvement.ratio = min.(0, improvement.ratio)
-    regression = copy(df)
-    regression.ratio = max.(0, regression.ratio)
-
-    plot = areaplot(regression.date, regression.ratio,
-                    label = "",
-                    seriescolor = [:red],
-                    fillalpha = 0.3,
-                    )
-    plot_branch_dates!() do date
-        if date < first(df.date)
-            return nothing
-        end
-        0.5
-    end
-    areaplot!(improvement.date, improvement.ratio,
-              label = "",
-              seriescolor = [:green],
-              fillalpha = 0.3,
-              yformatter=y->"$(100+round(Int, 100*y))%",
-              dpi=300
-              )
-    title!("Package test time")
-    ylabel!("Relative duration")
-    return plot
+    performance_plot(df)
 end
 
 # generate a plot showing the performance of each Julia build, by analyzing the test
@@ -310,18 +279,15 @@ function full_performance_plot(df; simple=false)
     df = filter(:status => isequal(:ok), df)
     df = filter(:version => !isequal(missing), df)
 
-    # PkgEval only recently started including accurate test durations
-    df = filter(:date => >=(Date("2022-11-08")), df)
-
     # convert dates to integers for easier indexing
     dates = sort(unique(df.date))
     date_map = Dict(date => idx for (idx, date) in enumerate(dates))
     date_idx(date) = @inbounds date_map[date]
 
-    # for each package × version, determine the test duration relative to the latest.
-    # this is not the very latest Julia version, but the latest one for which we have
-    # a test result for this specific package version. this results in an (upper triangular)
-    # matrix where each element compares two Julia versions.
+    # for each package version, determine the test duration relative to its latest test.
+    # this is not relative to he very latest Julia version, where this package version may
+    # not have been evaluated. store these results in an (upper triangular) matrix where
+    # each element compares two Julia versions (row/colum indices referring to dates).
     ratios = ones(length(dates), length(dates))
     weights = zeros(length(dates), length(dates))
     @showprogress for group in groupby(df, [:package, :version])
@@ -345,9 +311,9 @@ function full_performance_plot(df; simple=false)
         end
     end
 
-    # from the matrices comparing each Julia version to one another, aggregate into a
-    # vector where we only compare to the latest version, which is what we want to plot.
-    date_ratios = ones(length(dates))
+    # from the matrices comparing dates, aggregate into a vector where we only compare to
+    # a single date (the latest Julia version)
+    final_ratios = ones(length(dates))
     for date = length(dates)-1:-1:1
         # look up the entry that compares directly to the latest Julia version.
         # we can use this element directly. this is the only data that is considered by
@@ -369,10 +335,14 @@ function full_performance_plot(df; simple=false)
             end
         end
 
-        date_ratios[date] = duration / weight
+        final_ratios[date] = duration / weight
     end
-    df = DataFrame(date=dates, ratio = date_ratios.-1)
 
+    df = DataFrame(date=dates, ratio = final_ratios.-1)
+    performance_plot(df)
+end
+
+function performance_plot(df)
     improvement = copy(df)
     improvement.ratio = min.(0, improvement.ratio)
     regression = copy(df)
