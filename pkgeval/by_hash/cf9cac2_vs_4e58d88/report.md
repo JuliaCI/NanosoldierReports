@@ -6,7 +6,7 @@
 
 *Comparison Diff:* [link](https://github.com/JuliaLang/julia/compare/4e58d88381bad83af10cc89d77bd5c6ce9f5a80b..cf9cac25e350522d26b341e1d9293b18030b9090)
 
-*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/cf9cac25e350522d26b341e1d9293b18030b9090#commitcomment-89369509)
+*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/cf9cac25e350522d26b341e1d9293b18030b9090#commitcomment-89371380)
 
 *Package Selection:* `["GPUifyLoops", "Example"]`
 
@@ -15,19 +15,15 @@ In total, 2 packages were tested, out of which 1 succeeded, 1 crashed, 0 failed 
 Testing took 10 minutes, 56 seconds (or, sequentially, 30 seconds to execute 4 package tests suites).
 
 
-## ❗ Packages that crashed
+## ❗ Packages that crashed during testing
 
-<details><summary><strong>1 packages crashed on the previous version too.</strong></summary>
-<p>
+1 packages crashed during testing.
 
 <details open><summary>An internal error was encountered (1 packages):</summary>
 <p>
 
 
-- [GPUifyLoops v0.2.9](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/cf9cac2_vs_4e58d88/GPUifyLoops.primary.log)
-
-</p>
-</details>
+- GPUifyLoops v0.2.9: [bad](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/cf9cac2_vs_4e58d88/GPUifyLoops.primary.log) vs. [bad](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/cf9cac2_vs_4e58d88/GPUifyLoops.against.log)
 
 </p>
 </details>
@@ -56,10 +52,10 @@ Platform Info:
   uname: Linux 5.4.0-122-generic #138~18.04.1-Ubuntu SMP Fri Jun 24 14:14:03 UTC 2022 x86_64 unknown
   CPU: AMD EPYC 7502 32-Core Processor: 
                   speed         user         nice          sys         idle          irq
-       #1-128  1498 MHz  4417426589 s     364527 s  340803588 s  8034223199 s          0 s
-  Memory: 503.8059768676758 GB (507088.70703125 MB free)
-  Uptime: 1.000049806e7 sec
-  Load Avg:  0.16  0.28  0.39
+       #1-128  1486 MHz  4417433855 s     364527 s  340804761 s  8035567162 s          0 s
+  Memory: 503.8059768676758 GB (507411.90625 MB free)
+  Uptime: 1.000155488e7 sec
+  Load Avg:  0.73  0.51  0.58
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-14.0.6 (ORCJIT, znver2)
@@ -77,14 +73,14 @@ Platform Info:
   uname: Linux 5.4.0-122-generic #138~18.04.1-Ubuntu SMP Fri Jun 24 14:14:03 UTC 2022 x86_64 unknown
   CPU: AMD EPYC 7502 32-Core Processor: 
                   speed         user         nice          sys         idle          irq
-       #1-128  1499 MHz  4417426669 s     364527 s  340803668 s  8034238060 s          0 s
-  Memory: 503.8059768676758 GB (507097.40625 MB free)
-  Uptime: 1.000050981e7 sec
-  Load Avg:  0.29  0.3  0.4
+       #1-128  1492 MHz  4417433976 s     364555 s  340804844 s  8035580561 s          0 s
+  Memory: 503.8059768676758 GB (507275.85546875 MB free)
+  Uptime: 1.000156554e7 sec
+  Load Avg:  0.92  0.56  0.6
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-14.0.6 (ORCJIT, znver2)
   Threads: 1 on 128 virtual cores
 
 ```
-<!-- Generated on 2022-11-09T08:37:49.513 -->
+<!-- Generated on 2022-11-09T08:55:34.605 -->
