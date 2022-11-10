@@ -33,10 +33,11 @@ function redirect(url) {
 }
 
 const formats = {
-    'ok':   ['passing', 'brightgreen'],
-    'skip': ['skipped', 'gray'],
-    'fail': ['failing',  'red'],
-    'kill': ['killed',  'red'],
+    'ok':    ['passing', 'brightgreen'],
+    'skip':  ['skipped', 'gray'],
+    'fail':  ['failed',  'red'],
+    'crash': ['crashed', 'red'],
+    'kill':  ['killed',  'red'],
 }
 
 // generate badges for all packages
