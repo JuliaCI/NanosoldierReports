@@ -6,9 +6,9 @@
 
 *Comparison Diff:* [link](https://github.com/JuliaLang/julia/compare/1a7a1316a9df94eafef537be2eca6600fb422a13..5a323a6a99728fb03a5c37a4029dd529b5013495)
 
-*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/5a323a6a99728fb03a5c37a4029dd529b5013495#commitcomment-89698200)
+*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/5a323a6a99728fb03a5c37a4029dd529b5013495#commitcomment-89804772)
 
-*Tag Predicate:* `"ranges"`
+*Tag Predicate:* `"ranges" || "meteor_contest"`
 
 ## Results
 
@@ -31,21 +31,22 @@ benchmark results remained invariant between builds).
 
 | ID | time ratio | memory ratio |
 |----|------------|--------------|
-| `["random", "ranges", ("RangeGenerator", "Int128", "1:1")]` | 1.29 (25%) :x: | 1.00 (1%)  |
-| `["random", "ranges", ("RangeGenerator", "Int128", "1:18446744073709551615")]` | 1.29 (25%) :x: | 1.00 (1%)  |
+| `["random", "ranges", ("RangeGenerator", "Int128", "1:18446744073709551616")]` | 1.25 (25%) :x: | 1.00 (1%)  |
+| `["random", "ranges", ("RangeGenerator", "Int128", "1:4294967295")]` | 1.29 (25%) :x: | 1.00 (1%)  |
+| `["random", "ranges", ("RangeGenerator", "Int32", "1:1")]` | 1.37 (25%) :x: | 1.00 (1%)  |
 | `["random", "ranges", ("RangeGenerator", "Int8", "1:1")]` | 1.26 (25%) :x: | 1.00 (1%)  |
-| `["random", "ranges", ("RangeGenerator", "UInt128", "1:1")]` | 1.28 (25%) :x: | 1.00 (1%)  |
-| `["random", "ranges", ("RangeGenerator", "UInt128", "1:18446744073709551615")]` | 1.28 (25%) :x: | 1.00 (1%)  |
-| `["random", "ranges", ("RangeGenerator", "UInt128", "1:18446744073709551616")]` | 1.29 (25%) :x: | 1.00 (1%)  |
-| `["random", "ranges", ("RangeGenerator", "UInt32", "1:1")]` | 1.33 (25%) :x: | 1.00 (1%)  |
-| `["random", "ranges", ("RangeGenerator", "UInt32", "1:4294967295")]` | 1.34 (25%) :x: | 1.00 (1%)  |
-| `["random", "ranges", ("RangeGenerator", "UInt8", "1:1")]` | 1.38 (25%) :x: | 1.00 (1%)  |
+| `["random", "ranges", ("RangeGenerator", "UInt128", "1:170141183460469231731687303715884105728")]` | 1.29 (25%) :x: | 1.00 (1%)  |
+| `["random", "ranges", ("RangeGenerator", "UInt128", "1:4294967295")]` | 1.61 (25%) :x: | 1.00 (1%)  |
+| `["random", "ranges", ("RangeGenerator", "UInt128", "1:4294967297")]` | 1.29 (25%) :x: | 1.00 (1%)  |
+| `["random", "ranges", ("RangeGenerator", "UInt8", "1:1")]` | 1.26 (25%) :x: | 1.00 (1%)  |
+| `["shootout", "meteor_contest"]` | 1.10 (5%) :x: | 1.03 (1%) :x: |
 
 ## Benchmark Group List
 
 Here's a list of all the benchmark groups executed by this job:
 
 - `["random", "ranges"]`
+- `["shootout"]`
 
 ## Version Info
 
@@ -60,13 +61,13 @@ Platform Info:
   uname: Linux 5.4.0-122-generic #138-Ubuntu SMP Wed Jun 22 15:00:31 UTC 2022 x86_64 x86_64
   CPU: Intel(R) Xeon(R) CPU E3-1241 v3 @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3540 MHz     230013 s        337 s      51226 s   81507213 s          0 s
-       #2  3550 MHz    4279386 s        222 s     120210 s   77413713 s          0 s
-       #3  3532 MHz     244724 s        251 s      43219 s   81525993 s          0 s
-       #4  3559 MHz     191260 s        198 s      41632 s   81475912 s          0 s
-  Memory: 31.320838928222656 GB (16572.46875 MB free)
-  Uptime: 8.18789036e6 sec
-  Load Avg:  1.09  1.55  1.28
+       #1  3391 MHz     234091 s        338 s      51932 s   82808329 s          0 s
+       #2  3445 MHz    4285026 s        253 s     121074 s   78713774 s          0 s
+       #3  3623 MHz     250541 s        256 s      43928 s   82825995 s          0 s
+       #4  3324 MHz     194834 s        203 s      42317 s   82773919 s          0 s
+  Memory: 31.320838928222656 GB (16594.7578125 MB free)
+  Uptime: 8.31867056e6 sec
+  Load Avg:  1.02  1.47  1.22
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-14.0.6 (ORCJIT, haswell)
@@ -85,13 +86,13 @@ Platform Info:
   uname: Linux 5.4.0-122-generic #138-Ubuntu SMP Wed Jun 22 15:00:31 UTC 2022 x86_64 x86_64
   CPU: Intel(R) Xeon(R) CPU E3-1241 v3 @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3779 MHz     230422 s        337 s      51242 s   81509642 s          0 s
-       #2  3559 MHz    4280723 s        222 s     120306 s   77415140 s          0 s
-       #3  3512 MHz     245760 s        251 s      43238 s   81527796 s          0 s
-       #4  3566 MHz     191331 s        198 s      41638 s   81478686 s          0 s
-  Memory: 31.320838928222656 GB (16595.5859375 MB free)
-  Uptime: 8.18817627e6 sec
-  Load Avg:  1.03  1.24  1.22
+       #1  3775 MHz     234324 s        338 s      51944 s   82811044 s          0 s
+       #2  3509 MHz    4286311 s        253 s     121170 s   78715358 s          0 s
+       #3  3503 MHz     251529 s        256 s      43950 s   82827950 s          0 s
+       #4  3504 MHz     195284 s        203 s      42328 s   82776416 s          0 s
+  Memory: 31.320838928222656 GB (16586.421875 MB free)
+  Uptime: 8.31896718e6 sec
+  Load Avg:  1.01  1.18  1.16
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-14.0.6 (ORCJIT, haswell)
