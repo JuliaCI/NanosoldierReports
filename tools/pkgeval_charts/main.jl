@@ -9,22 +9,34 @@ using ProgressMeter
 using Statistics
 
 # https://github.com/JuliaLang/julia/commits/master/VERSION
-const branch_dates = Dict(
-    v"1.9" => Date(2022, 02, 07),
-    v"1.8" => Date(2021, 06, 09),
-    v"1.7" => Date(2020, 12, 09),
-    v"1.6" => Date(2020, 05, 08),
-    v"1.5" => Date(2019, 12, 31),
-)
+const branch_dates = [
+    v"1.5"  => Date(2019, 12, 31),
+    v"1.6"  => Date(2020, 05, 08),
+    v"1.7"  => Date(2020, 12, 09),
+    v"1.8"  => Date(2021, 06, 09),
+    v"1.9"  => Date(2022, 02, 07),
+    v"1.10" => Date(2022, 11, 15),
+]
 
 function plot_branch_dates!(f)
-    for (version, date) in branch_dates
-        y = f(date)
-        if y !== nothing
-            vline!([date], label="", color=:gray50)
-            annotate!(date, y,
-                      text(" $(version.major).$(version.minor) dev", :gray50, :left, 9))
+    for i in 1:length(branch_dates)
+        (version, date) = branch_dates[i]
+        f(date) === nothing && continue
+        vline!([date], label="", color=:gray50)
+
+        # annotate previous releases in text
+        if i < length(branch_dates)
+            (_, end_date) = branch_dates[i+1]
+            days = end_date - date
+            center_date = date + days ÷ 2
+
+            y = f(center_date)
+            if y !== nothing
+                annotate!(center_date, y,
+                        text("$(version.major).$(version.minor) dev", :gray50, :center, 9))
+            end
         end
+
     end
 end
 
@@ -194,24 +206,24 @@ function success_plot(df)
                     labels = ["success: $(last(oks))" "failure: $(last(fails))" "crash: $(last(crashes))" "kill: $(last(kills))"],
                     seriescolor = [:green :red :darkred :black],
                     fillalpha = 0.3,
-                    legend=:topleft,
+                    legend = :topleft,
                     title = "Daily package evaluation",
                     ylabel = "Packages",
-                    dpi=300
+                    dpi = 300
                     )
-    plot!(twinx(), dates, oks ./ totals,
-          label="success rate: $(round(Int, 100*last(oks)/last(totals)))%",
-          color=:purple,
-          alpha=0.7,
-          linewidth=2,
-          legend=:bottomright,
-          yformatter=y->"$(round(Int, 100*y))%",
-          ylims=(0,1)
-          )
     plot_branch_dates!() do date
         idx = searchsortedfirst(dates, date)
-        totals[idx]+1000
+        oks[idx] - 1000
     end
+    plot!(twinx(), dates, oks ./ totals,
+          label = "success rate: $(round(Int, 100*last(oks)/last(totals)))%",
+          color = :purple,
+          alpha = 0.7,
+          linewidth = 2,
+          legend = :bottomright,
+          yformatter = y->"$(round(Int, 100*y))%",
+          ylims = (0,1)
+          )
     return plot
 end
 
@@ -348,27 +360,30 @@ function performance_plot(df)
     regression = copy(df)
     regression.ratio = max.(0, regression.ratio)
 
-    plot = areaplot(regression.date, regression.ratio,
-                    label = "",
-                    seriescolor = [:red],
+    the_plot = plot(regression.date, regression.ratio,
+                    label = "version was slower",
+                    color = :red,
+                    fillrange = 0,
                     fillalpha = 0.3,
-                    )
+                    dpi = 300
+                   )
     plot_branch_dates!() do date
         if date < first(df.date)
             return nothing
         end
         0.5
     end
-    areaplot!(improvement.date, improvement.ratio,
-              label = "",
-              seriescolor = [:green],
-              fillalpha = 0.3,
-              yformatter=y->"$(100+round(Int, 100*y))%",
-              dpi=300
-              )
-    title!("Package test time")
+    plot!(improvement.date, improvement.ratio,
+          label = "version was faster",
+          color = :green,
+          fillrange = 0,
+          fillalpha = 0.3,
+          yformatter=y->"$(100+round(Int, 100*y))%",
+          legend = :bottomright
+         )
+    title!("Package test time\n(relative to latest nightly)")
     ylabel!("Relative duration")
-    return plot
+    return the_plot
 end
 
 isinteractive() || main(ARGS...)
