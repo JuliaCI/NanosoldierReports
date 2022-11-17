@@ -80,4 +80,4 @@ for (var package in db.tests) {
 
 // generate a redirect to the report
 fs.writeFileSync(path.join(output_dir, "report.html"),
-                 redirect(`https://github.com/JuliaCI/NanosoldierReports/blob/master/pkgeval/by_date/${latest_date}/report.md`))
+                 redirect(`https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_date/${latest_date}/report.html`))
