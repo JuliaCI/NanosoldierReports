@@ -122,7 +122,9 @@ function read_data(root=joinpath(@__DIR__, "..", "..", "pkgeval", "by_date"))
         end
 
         # make each sub-df consistent (upgrading the format, fixing types, etc)
-        function fixup_df!(df)
+        function fixup_df(df)
+            df = copy(df)
+
             if columnindex(df, :name) > 0
                 rename!(df, :name => :package)
             end
@@ -144,18 +146,32 @@ function read_data(root=joinpath(@__DIR__, "..", "..", "pkgeval", "by_date"))
                 end
             end
 
-            df.date .= date
+            # categorise unsatisfiable (uninstallable) and untestable packages as skipped,
+            # like we started doing around 2022-11
+            skip_reason = [:untestable, :unsatisfiable]
+            for row in eachrow(df)
+                if row.reason !== missing && row.reason in skip_reason
+                    row.status = :skip
+                end
+            end
 
-            return
+            # also get rid of JLL packages, which are totally uninteresting
+            # (PkgEval started ignoring those around 2022-11)
+            df = filter(row -> !endswith(row.package, "_jll"), df)
+
+            df.date .= date
+            # XXX: NO: against has different date
+
+            return df
         end
 
         if primary_df !== nothing
-            fixup_df!(primary_df)
+            primary_df = fixup_df(primary_df)
             append!(primary, primary_df; cols=:intersect)
         end
 
         if against_df !== nothing
-            fixup_df!(against_df)
+            against_df = fixup_df(against_df)
             append!(against, against_df; cols=:intersect)
         end
 
@@ -171,6 +187,7 @@ function success_plot(df)
     fails = []
     crashes = []
     kills = []
+    skips = []
     totals = []
 
     for df′ in groupby(df, :date; sort=true)
@@ -181,7 +198,8 @@ function success_plot(df)
         kill = nrow(filter(:status => isequal(:kill), df′))
         fail = nrow(filter(:status => isequal(:fail), df′))
         crash = nrow(filter(:status => isequal(:crash), df′))
-        total = ok + fail + crash + kill
+        skip = nrow(filter(:status => isequal(:skip), df′))
+        total = ok + fail + crash + kill + skip
 
         if ok < total*0.5
             @debug "Too many failures on $date; probably a fluke"
@@ -199,12 +217,13 @@ function success_plot(df)
         push!(fails, fail)
         push!(crashes, crash)
         push!(kills, kill)
+        push!(skips, skip)
         push!(totals, total)
     end
 
-    plot = areaplot(dates, hcat(oks, fails, crashes, kills),
-                    labels = ["success: $(last(oks))" "failure: $(last(fails))" "crash: $(last(crashes))" "kill: $(last(kills))"],
-                    seriescolor = [:green :red :darkred :black],
+    plot = areaplot(dates, hcat(oks, fails, crashes, kills, skips),
+                    labels = ["success: $(last(oks))" "failure: $(last(fails))" "crash: $(last(crashes))" "kill: $(last(kills))" "skip: $(last(skips))"],
+                    seriescolor = [:green :red :darkred :black :grey80],
                     fillalpha = 0.3,
                     legend = :topleft,
                     title = "Daily package evaluation",
