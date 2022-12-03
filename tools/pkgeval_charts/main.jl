@@ -374,6 +374,9 @@ function full_performance_plot(df; simple=false)
 end
 
 function performance_plot(df)
+    # PkgEval bug from 2022-11-25 -> 28
+    df = filter(:date => date -> !(Date(2022,11,25) <= date <= Date(2022,11,28)), df)
+
     improvement = copy(df)
     improvement.ratio = min.(0, improvement.ratio)
     regression = copy(df)
