@@ -7,6 +7,8 @@ using Tar
 using CodecZstd
 using ProgressMeter
 using Statistics
+using Pkg
+using TOML
 
 # https://github.com/JuliaLang/julia/commits/master/VERSION
 const branch_dates = [
@@ -41,20 +43,27 @@ function plot_branch_dates!(f)
 end
 
 function main(output_dir)
-    isdir(output_dir) || mkpath(output_dir)
+    mkpath(joinpath(output_dir, "pkgeval_charts"))
 
     primary, against = read_data()
 
     println("Generating daily chart...")
     plot = success_plot(primary)
-    savefig(plot, joinpath(output_dir, "daily.png"))
+    savefig(plot, joinpath(output_dir, "pkgeval_charts", "daily.png"))
 
     println("Generating performance chart...")
     # NOTE: we use the 'against' dataset since that doesn't run under rr
     # NOTE: PkgEval only recently started including accurate test durations
     let df = filter(:date => >=(Date("2022-11-08")), against)
-        savefig(simple_performance_plot(df), joinpath(output_dir, "daily_time.png"))
-        savefig(full_performance_plot(df), joinpath(output_dir, "daily_time_full.png"))
+        savefig(simple_performance_plot(df), joinpath(output_dir, "pkgeval_charts", "daily_time.png"))
+        savefig(full_performance_plot(df), joinpath(output_dir, "pkgeval_charts", "daily_time_full.png"))
+    end
+
+    println("Generating package blacklists...")
+    let unreliables = unreliable_packages(primary)
+        open(joinpath(output_dir, "pkgeval_blacklist.toml"), "w") do io
+            TOML.print(io, Dict("unreliable" => unreliables))
+        end
     end
 
     return
@@ -406,6 +415,53 @@ function performance_plot(df)
     title!("Package test time\n(relative to latest nightly)")
     ylabel!("Relative duration")
     return the_plot
+end
+
+# compute a blacklist of packages that fail often and should be considered unreliable.
+# this list is used by PkgEval invocations on PRs, where we expect a high SNR.
+# daily evaluations always test all packages.
+function unreliable_packages(df; window=Day(30), min_tests=5, min_failure_ratio=0.75)
+    # restrict the time window to avoid using stale information.
+    # even though we consider the package version, Julia and PkgEval also change.
+    df = filter(:date => >=(now() - window), df)
+
+    # we only care about tests passing, everything else (e.g. crashes, or installation
+    # failures) are deemed a failure, with the exception of explicitly skipped packages.
+    df = filter(row -> !(row.status == :skip && row.reason == :explicit), df)
+    # NOTE: we don't need to consider :unreliable, since the inputs here are from dailies.
+    df[df.status .!== :ok, :status] .= :fail
+
+    # determine the test failures and successes for the latest version of each package.
+    # TODO: make sure PkgEval gets the package version, even for uninstallable packages.
+    df = let
+        df2 = DataFrame(package=String[], tests=Int[], failures=Int[])
+        for package_tests in groupby(df, :package)
+            package = first(package_tests.package)
+
+            versions = unique(skipmissing(package_tests.version))
+            relevant_tests = if isempty(versions)
+                package_tests
+            else
+                last_version = maximum(versions)
+                row = findfirst(package_tests.version .=== last_version)
+                package_tests[row:end, :]
+            end
+
+            push!(df2, (package  = package,
+                        tests    = nrow(relevant_tests),
+                        failures = count(relevant_tests.status .== :fail),))
+        end
+        df2
+    end
+    df.failure_ratio = df.failures ./ df.tests
+
+    # only consider packages that were fully tested a sufficient number of times.
+    df = filter(:tests => >=(min_tests), df)
+
+    # finally, select packages that failed often
+    df = filter(:failure_ratio => >=(min_failure_ratio), df)
+
+    return df.package
 end
 
 isinteractive() || main(ARGS...)

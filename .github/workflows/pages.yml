@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: '19'
 
-      - name: Generate badges
+      - name: Generate PkgEval badges
         run: |
           npm install ./tools/pkgeval_badges
           node tools/pkgeval_badges/src/cli.js public/pkgeval_badges
@@ -31,10 +31,10 @@ jobs:
         with:
           version: '1.8'
 
-      - name: Generate charts
+      - name: Analyse PkgEval data
         run: |
-          julia --project=tools/pkgeval_charts -e 'using Pkg; Pkg.instantiate()'
-          julia --project=tools/pkgeval_charts tools/pkgeval_charts/main.jl public/pkgeval_charts
+          julia --project=tools/pkgeval_analysis -e 'using Pkg; Pkg.instantiate()'
+          julia --project=tools/pkgeval_analysis tools/pkgeval_analysis/main.jl public
         env:
           GKSwstype: "nul"
 
