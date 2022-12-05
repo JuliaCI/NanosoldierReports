@@ -59,9 +59,9 @@ function main(output_dir)
         savefig(full_performance_plot(df), joinpath(output_dir, "pkgeval_charts", "daily_time_full.png"))
     end
 
-    println("Generating package blacklists...")
+    println("Analyzing package results...")
     let unreliables = unreliable_packages(primary)
-        open(joinpath(output_dir, "pkgeval_blacklist.toml"), "w") do io
+        open(joinpath(output_dir, "pkgeval_packages.toml"), "w") do io
             TOML.print(io, Dict("unreliable" => unreliables))
         end
     end
@@ -161,6 +161,13 @@ function read_data(root=joinpath(@__DIR__, "..", "..", "pkgeval", "by_date"))
             for row in eachrow(df)
                 if row.reason !== missing && row.reason in skip_reason
                     row.status = :skip
+                end
+            end
+
+            # skip reason :explicit has been renamed to :blacklisted
+            for row in eachrow(df)
+                if row.reason === :explicit
+                    row.reason = :blacklisted
                 end
             end
 
@@ -417,7 +424,7 @@ function performance_plot(df)
     return the_plot
 end
 
-# compute a blacklist of packages that fail often and should be considered unreliable.
+# determine a list of packages that fail often and should be considered unreliable.
 # this list is used by PkgEval invocations on PRs, where we expect a high SNR.
 # daily evaluations always test all packages.
 function unreliable_packages(df; window=Day(30), min_tests=5, min_failure_ratio=0.75)
@@ -426,13 +433,11 @@ function unreliable_packages(df; window=Day(30), min_tests=5, min_failure_ratio=
     df = filter(:date => >=(now() - window), df)
 
     # we only care about tests passing, everything else (e.g. crashes, or installation
-    # failures) are deemed a failure, with the exception of explicitly skipped packages.
-    df = filter(row -> !(row.status == :skip && row.reason == :explicit), df)
-    # NOTE: we don't need to consider :unreliable, since the inputs here are from dailies.
+    # failures) are deemed a failure, with the exception of blacklisted packages.
+    df = filter(row -> !(row.status == :skip && row.reason == :blacklisted), df)
     df[df.status .!== :ok, :status] .= :fail
 
     # determine the test failures and successes for the latest version of each package.
-    # TODO: make sure PkgEval gets the package version, even for uninstallable packages.
     df = let
         df2 = DataFrame(package=String[], tests=Int[], failures=Int[])
         for package_tests in groupby(df, :package)
