@@ -6,7 +6,7 @@
 
 *Comparison Diff:* [link](https://github.com/JuliaLang/julia/compare/490fdcef06b21f51b6b1336883c8eff54cad36f8..67c2f053f142fee78d307f6583ea60f0f0c7fea3)
 
-*Triggered By:* [link](https://github.com/JuliaLang/julia/pull/47850#issuecomment-1344979397)
+*Triggered By:* [link](https://github.com/JuliaLang/julia/pull/47850#issuecomment-1345146465)
 
 *Tag Predicate:* `"inference"`
 
@@ -31,9 +31,6 @@ benchmark results remained invariant between builds).
 
 | ID | time ratio | memory ratio |
 |----|------------|--------------|
-| `["inference", "abstract interpretation", "abstract_call_gf_by_type"]` | 1.05 (5%) :x: | 1.00 (1%)  |
-| `["inference", "abstract interpretation", "construct_ssa!"]` | 1.05 (5%) :x: | 1.00 (1%)  |
-| `["inference", "abstract interpretation", "many_method_matches"]` | 1.06 (5%) :x: | 1.00 (1%)  |
 
 ## Benchmark Group List
 
@@ -56,13 +53,13 @@ Platform Info:
   uname: Linux 5.4.0-122-generic #138-Ubuntu SMP Wed Jun 22 15:00:31 UTC 2022 x86_64 x86_64
   CPU: Intel(R) Xeon(R) CPU E3-1241 v3 @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3494 MHz     418189 s        602 s      76288 s  105019655 s          0 s
-       #2  3506 MHz    5541236 s        351 s     151359 s   99868041 s          0 s
-       #3  3490 MHz     425095 s        367 s      57186 s  105079384 s          0 s
-       #4  3182 MHz     306978 s        332 s      54477 s  105021694 s          0 s
-  Memory: 31.320838928222656 GB (13589.05078125 MB free)
-  Uptime: 1.056455092e7 sec
-  Load Avg:  1.0  1.0  1.07
+       #1  3524 MHz     382206 s        668 s      76817 s  105156246 s          0 s
+       #2  3524 MHz    8096495 s        300 s     226220 s   97365591 s          0 s
+       #3  3504 MHz     386096 s        354 s      54973 s  105242259 s          0 s
+       #4  3609 MHz     283758 s        406 s      52815 s  105213456 s          0 s
+  Memory: 31.320838928222656 GB (19060.06640625 MB free)
+  Uptime: 1.05774641e7 sec
+  Load Avg:  1.0  1.02  1.06
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-14.0.6 (ORCJIT, haswell)
@@ -81,13 +78,13 @@ Platform Info:
   uname: Linux 5.4.0-122-generic #138-Ubuntu SMP Wed Jun 22 15:00:31 UTC 2022 x86_64 x86_64
   CPU: Intel(R) Xeon(R) CPU E3-1241 v3 @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3572 MHz     418291 s        602 s      76328 s  105036024 s          0 s
-       #2  3509 MHz    5557461 s        351 s     151402 s   99868357 s          0 s
-       #3  3185 MHz     425368 s        367 s      57198 s  105095676 s          0 s
-       #4  3485 MHz     307029 s        332 s      54485 s  105038176 s          0 s
-  Memory: 31.320838928222656 GB (13624.75 MB free)
-  Uptime: 1.056620949e7 sec
-  Load Avg:  1.0  1.01  1.0
+       #1  3506 MHz     382360 s        668 s      76847 s  105172596 s          0 s
+       #2  3522 MHz    8111418 s        300 s     226252 s   97367199 s          0 s
+       #3  3527 MHz     387113 s        354 s      54993 s  105257783 s          0 s
+       #4  3517 MHz     284291 s        406 s      52824 s  105229440 s          0 s
+  Memory: 31.320838928222656 GB (19050.5078125 MB free)
+  Uptime: 1.057912051e7 sec
+  Load Avg:  1.0  1.0  1.0
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-14.0.6 (ORCJIT, haswell)
