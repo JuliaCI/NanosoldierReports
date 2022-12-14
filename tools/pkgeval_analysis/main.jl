@@ -217,14 +217,17 @@ function success_plot(df)
         skip = nrow(filter(:status => isequal(:skip), df′))
         total = ok + fail + crash + kill + skip
 
-        if ok < total*0.5
-            @debug "Too many failures on $date; probably a fluke"
-            continue
-        end
+        # filter-out days with bad data (but keep the last, so that the chart is up to date)
+        if date != last(df.date)
+            if ok < total*0.5
+                @debug "Too many failures on $date; probably a fluke"
+                continue
+            end
 
-        if !isempty(totals) && total < totals[end]-100
-            @debug "Total number of packages decreased significantly on $date; probably a fluke"
-            continue
+            if !isempty(totals) && total < totals[end]-100
+                @debug "Total number of packages decreased significantly on $date; probably a fluke"
+                continue
+            end
         end
 
         push!(dates, date)
