@@ -4,9 +4,9 @@
 
 *Commit:* [maleadt/LLVM.jl@6e4d85e85374503500b67f512e5c2a321954ce2e](https://github.com/maleadt/LLVM.jl/commit/6e4d85e85374503500b67f512e5c2a321954ce2e)
 
-*Triggered By:* [link](https://github.com/maleadt/LLVM.jl/commit/6e4d85e85374503500b67f512e5c2a321954ce2e#commitcomment-95522971)
+*Triggered By:* [link](https://github.com/maleadt/LLVM.jl/commit/6e4d85e85374503500b67f512e5c2a321954ce2e#commitcomment-95539957)
 
-Testing took 29 minutes, 34 seconds (or, sequentially, 59 minutes, 24 seconds to execute 34 package tests suites).
+Testing took 14 minutes, 52 seconds (or, sequentially, 1 hour, 6 seconds to execute 34 package tests suites).
 
 In total, 17 packages were tested, out of which 10 succeeded, 0 crashed, 4 failed and 3 were skipped.
 
@@ -88,14 +88,35 @@ Platform Info:
   uname: Linux 5.4.0-135-generic #152~18.04.2-Ubuntu SMP Tue Nov 29 08:23:49 UTC 2022 x86_64 unknown
   CPU: AMD EPYC 7502 32-Core Processor: 
                   speed         user         nice          sys         idle          irq
-       #1-128  1494 MHz  1728320731 s     100732 s   88991753 s  1141244454 s          0 s
-  Memory: 503.8059997558594 GB (507602.671875 MB free)
-  Uptime: 2.3144777e6 sec
-  Load Avg:  0.79  0.31  0.12
+       #1-128  1799 MHz  1728398317 s     100877 s   88999285 s  1152352489 s          0 s
+  Memory: 503.8059997558594 GB (507566.20703125 MB free)
+  Uptime: 2.32325045e6 sec
+  Load Avg:  0.63  0.28  0.11
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-13.0.1 (ORCJIT, znver2)
   Threads: 1 on 128 virtual cores
 
 ```
-<!-- Generated on 2023-01-09T07:34:53.728 -->
+
+  #### Comparison Build
+
+  ```
+Julia Version 1.8.4
+Commit 00177ebc4fc (2022-12-23 21:32 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  uname: Linux 5.4.0-135-generic #152~18.04.2-Ubuntu SMP Tue Nov 29 08:23:49 UTC 2022 x86_64 unknown
+  CPU: AMD EPYC 7502 32-Core Processor: 
+                  speed         user         nice          sys         idle          irq
+       #1-128  1686 MHz  1728398344 s     100877 s   88999346 s  1152354102 s          0 s
+  Memory: 503.8059997558594 GB (507564.3359375 MB free)
+  Uptime: 2.32325178e6 sec
+  Load Avg:  0.63  0.28  0.11
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-13.0.1 (ORCJIT, znver2)
+  Threads: 1 on 128 virtual cores
+
+  ```
+  <!-- Generated on 2023-01-09T09:46:24.153 -->
