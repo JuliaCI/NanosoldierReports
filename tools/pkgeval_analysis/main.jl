@@ -420,7 +420,7 @@ function performance_plot(df)
           fillrange = 0,
           fillalpha = 0.3,
           yformatter=y->"$(100+round(Int, 100*y))%",
-          legend = :bottomright
+          legend = :topleft
          )
     title!("Package test time\n(relative to latest nightly)")
     ylabel!("Relative duration")
