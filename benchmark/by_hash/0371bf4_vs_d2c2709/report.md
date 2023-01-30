@@ -6,9 +6,9 @@
 
 *Comparison Diff:* [link](https://github.com/JuliaLang/julia/compare/d2c270960015deb92c19189ea64b2af26467501f..0371bf44bf6bfd6ee9fbfc32d478c2ff4c97b08b)
 
-*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/0371bf44bf6bfd6ee9fbfc32d478c2ff4c97b08b#commitcomment-98651297)
+*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/0371bf44bf6bfd6ee9fbfc32d478c2ff4c97b08b#commitcomment-98664260)
 
-*Tag Predicate:* `"blas" || "sparse" && "matmul"`
+*Tag Predicate:* `"inference" || ("blas" || "sparse" && "matmul")`
 
 ## Results
 
@@ -31,19 +31,52 @@ benchmark results remained invariant between builds).
 
 | ID | time ratio | memory ratio |
 |----|------------|--------------|
-| `["sparse", "matmul", ("A_mul_B", "sparse 50x500, dense 500x5 -> dense 50x5")]` | 0.66 (30%) :white_check_mark: | 1.00 (1%)  |
-| `["sparse", "matmul", ("Ac_mul_B", "dense 500x5, sparse 500x500 -> dense 5x500")]` | 0.69 (30%) :white_check_mark: | 1.00 (1%)  |
-| `["sparse", "matmul", ("Ac_mul_B", "dense 50x5, sparse 50x500 -> dense 5x500")]` | 0.68 (30%) :white_check_mark: | 1.00 (1%)  |
-| `["sparse", "matmul", ("Ac_mul_B", "dense 50x50, sparse 50x50 -> dense 50x50")]` | 0.68 (30%) :white_check_mark: | 1.00 (1%)  |
-| `["sparse", "matmul", ("Ac_mul_B", "dense 5x5, sparse 5x500 -> dense 5x500")]` | 0.70 (30%) :white_check_mark: | 1.00 (1%)  |
+| `["inference", "abstract interpretation", "Base.init_stdio(::Ptr{Cvoid})"]` | 1.03 (5%)  | 1.09 (1%) :x: |
+| `["inference", "abstract interpretation", "REPL.REPLCompletions.completions"]` | 1.00 (5%)  | 1.06 (1%) :x: |
+| `["inference", "abstract interpretation", "broadcasting"]` | 0.96 (5%)  | 1.04 (1%) :x: |
+| `["inference", "abstract interpretation", "many_const_calls"]` | 0.98 (5%)  | 1.04 (1%) :x: |
+| `["inference", "abstract interpretation", "many_global_refs"]` | 1.00 (5%)  | 1.14 (1%) :x: |
+| `["inference", "abstract interpretation", "many_invoke_calls"]` | 0.95 (5%) :white_check_mark: | 1.05 (1%) :x: |
+| `["inference", "abstract interpretation", "many_local_vars"]` | 0.99 (5%)  | 1.05 (1%) :x: |
+| `["inference", "abstract interpretation", "many_method_matches"]` | 0.97 (5%)  | 1.03 (1%) :x: |
+| `["inference", "abstract interpretation", "many_opaque_closures"]` | 1.00 (5%)  | 1.03 (1%) :x: |
+| `["inference", "abstract interpretation", "println(::QuoteNode)"]` | 0.98 (5%)  | 1.03 (1%) :x: |
+| `["inference", "abstract interpretation", "rand(Float64)"]` | 0.97 (5%)  | 1.04 (1%) :x: |
+| `["inference", "abstract interpretation", "sin(42)"]` | 0.95 (5%)  | 1.03 (1%) :x: |
+| `["inference", "allinference", "Base.init_stdio(::Ptr{Cvoid})"]` | 0.91 (5%) :white_check_mark: | 1.05 (1%) :x: |
+| `["inference", "allinference", "REPL.REPLCompletions.completions"]` | 0.94 (5%) :white_check_mark: | 1.04 (1%) :x: |
+| `["inference", "allinference", "broadcasting"]` | 0.91 (5%) :white_check_mark: | 1.01 (1%)  |
+| `["inference", "allinference", "many_const_calls"]` | 0.92 (5%) :white_check_mark: | 1.01 (1%) :x: |
+| `["inference", "allinference", "many_global_refs"]` | 1.00 (5%)  | 1.07 (1%) :x: |
+| `["inference", "allinference", "many_invoke_calls"]` | 0.88 (5%) :white_check_mark: | 1.01 (1%)  |
+| `["inference", "allinference", "many_local_vars"]` | 0.98 (5%)  | 1.01 (1%) :x: |
+| `["inference", "allinference", "many_method_matches"]` | 0.90 (5%) :white_check_mark: | 1.01 (1%)  |
+| `["inference", "allinference", "many_opaque_closures"]` | 0.95 (5%) :white_check_mark: | 1.01 (1%)  |
+| `["inference", "allinference", "println(::QuoteNode)"]` | 0.92 (5%) :white_check_mark: | 1.01 (1%)  |
+| `["inference", "allinference", "rand(Float64)"]` | 0.93 (5%) :white_check_mark: | 1.01 (1%)  |
+| `["inference", "allinference", "sin(42)"]` | 0.88 (5%) :white_check_mark: | 1.01 (1%)  |
+| `["inference", "optimization", "Base.init_stdio(::Ptr{Cvoid})"]` | 0.91 (5%) :white_check_mark: | 1.00 (1%)  |
+| `["inference", "optimization", "broadcasting"]` | 0.82 (5%) :white_check_mark: | 1.00 (1%)  |
+| `["inference", "optimization", "many_invoke_calls"]` | 0.80 (5%) :white_check_mark: | 1.00 (1%)  |
+| `["inference", "optimization", "many_local_vars"]` | 0.85 (5%) :white_check_mark: | 1.00 (1%)  |
+| `["inference", "optimization", "many_method_matches"]` | 0.78 (5%) :white_check_mark: | 1.00 (1%)  |
+| `["inference", "optimization", "many_opaque_closures"]` | 0.76 (5%) :white_check_mark: | 1.00 (1%)  |
+| `["inference", "optimization", "println(::QuoteNode)"]` | 0.92 (5%) :white_check_mark: | 1.00 (1%)  |
+| `["inference", "optimization", "rand(Float64)"]` | 0.68 (5%) :white_check_mark: | 1.00 (1%)  |
+| `["inference", "optimization", "sin(42)"]` | 0.90 (5%) :white_check_mark: | 1.00 (1%)  |
+| `["sparse", "matmul", ("Ac_mul_B", "dense 50x5, sparse 50x500 -> dense 5x500")]` | 0.69 (30%) :white_check_mark: | 1.00 (1%)  |
+| `["sparse", "matmul", ("Ac_mul_B", "dense 50x50, sparse 50x50 -> dense 50x50")]` | 0.69 (30%) :white_check_mark: | 1.00 (1%)  |
 | `["sparse", "matmul", ("Ac_mul_B", "sparse 500x500, dense 500x5 -> dense 500x5")]` | 0.64 (30%) :white_check_mark: | 1.00 (1%)  |
-| `["sparse", "matmul", ("Ac_mul_B", "sparse 50x50, dense 50x50 -> dense 50x50")]` | 0.67 (30%) :white_check_mark: | 1.00 (1%)  |
-| `["sparse", "matmul", ("At_mul_B!", "sparse 400x4000, dense 400x40 -> dense 4000x40")]` | 0.55 (30%) :white_check_mark: | 1.00 (1%)  |
+| `["sparse", "matmul", ("Ac_mul_B", "sparse 50x50, dense 50x50 -> dense 50x50")]` | 0.65 (30%) :white_check_mark: | 1.00 (1%)  |
+| `["sparse", "matmul", ("At_mul_B!", "sparse 400x4000, dense 400x40 -> dense 4000x40")]` | 0.59 (30%) :white_check_mark: | 1.00 (1%)  |
 
 ## Benchmark Group List
 
 Here's a list of all the benchmark groups executed by this job:
 
+- `["inference", "abstract interpretation"]`
+- `["inference", "allinference"]`
+- `["inference", "optimization"]`
 - `["linalg", "blas"]`
 - `["sparse", "matmul"]`
 
@@ -60,13 +93,13 @@ Platform Info:
   uname: Linux 5.4.0-122-generic #138-Ubuntu SMP Wed Jun 22 15:00:31 UTC 2022 x86_64 x86_64
   CPU: Intel(R) Xeon(R) CPU E3-1241 v3 @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3524 MHz     575472 s       1184 s     109851 s  149440526 s          0 s
-       #2  3663 MHz   11657926 s        649 s     321521 s  138245083 s          0 s
-       #3  3506 MHz     586898 s        604 s      81041 s  149545180 s          0 s
-       #4  3503 MHz     426296 s        617 s      77728 s  149442264 s          0 s
-  Memory: 31.320838928222656 GB (18276.80859375 MB free)
-  Uptime: 1.503548202e7 sec
-  Load Avg:  1.01  1.05  1.12
+       #1  3531 MHz     579938 s       1184 s     110060 s  149522129 s          0 s
+       #2  3687 MHz   11690933 s        649 s     321745 s  138298210 s          0 s
+       #3  3503 MHz     592692 s        604 s      81216 s  149625557 s          0 s
+       #4  3503 MHz     428797 s        617 s      77897 s  149525725 s          0 s
+  Memory: 31.320838928222656 GB (18238.82421875 MB free)
+  Uptime: 1.504412127e7 sec
+  Load Avg:  1.0  1.0  1.01
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-14.0.6 (ORCJIT, haswell)
@@ -85,13 +118,13 @@ Platform Info:
   uname: Linux 5.4.0-122-generic #138-Ubuntu SMP Wed Jun 22 15:00:31 UTC 2022 x86_64 x86_64
   CPU: Intel(R) Xeon(R) CPU E3-1241 v3 @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3778 MHz     576094 s       1184 s     109875 s  149450365 s          0 s
-       #2  3505 MHz   11666338 s        649 s     321556 s  138247135 s          0 s
-       #3  3506 MHz     588299 s        604 s      81063 s  149554254 s          0 s
-       #4  3503 MHz     426412 s        617 s      77740 s  149452616 s          0 s
-  Memory: 31.320838928222656 GB (18282.51953125 MB free)
-  Uptime: 1.503653198e7 sec
-  Load Avg:  1.17  1.05  1.04
+       #1  3500 MHz     580391 s       1184 s     110105 s  149543922 s          0 s
+       #2  3500 MHz   11711674 s        649 s     321794 s  138299744 s          0 s
+       #3  3499 MHz     593294 s        604 s      81229 s  149647263 s          0 s
+       #4  3499 MHz     429371 s        617 s      77916 s  149547411 s          0 s
+  Memory: 31.320838928222656 GB (18269.47265625 MB free)
+  Uptime: 1.504635382e7 sec
+  Load Avg:  1.0  1.0  1.0
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-14.0.6 (ORCJIT, haswell)
