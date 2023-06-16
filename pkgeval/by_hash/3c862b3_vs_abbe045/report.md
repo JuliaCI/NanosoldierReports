@@ -6,20 +6,31 @@
 
 *Comparison Diff:* [link](https://github.com/JuliaLang/julia/compare/abbe045609145711f9c4edc40c65294f5fde5ef0...3c862b3c826a9dcc12fc3e940511811bf9f8091a)
 
-*Triggered By:* [link](https://github.com/JuliaLang/julia/pull/50171#issuecomment-1593049379)
+*Triggered By:* [link](https://github.com/JuliaLang/julia/pull/50171#issuecomment-1593787707)
 
-*Package Selection:* `["SortingAlgorithms"]`
+*Package Selection:* `["DataFrames"]`
 
-Testing took 3 minutes, 55 seconds (or, sequentially, 23 seconds to execute 2 package tests suites).
+Testing took 34 minutes, 54 seconds (or, sequentially, 59 minutes, 33 seconds to execute 2 package tests suites).
 
-In total, 1 packages were tested, out of which 1 succeeded, 0 crashed, 0 failed and 0 were skipped.
+In total, 1 packages were tested, out of which 0 succeeded, 0 crashed, 1 failed and 0 were skipped.
 
 
-## ✔ Packages that passed tests
+## ✖ Packages that failed tests
 
-**1 packages passed tests only on the current version.**
+<details><summary><strong>1 packages failed tests on the previous version too.</strong></summary>
+<p>
 
-- SortingAlgorithms v1.1.1: [ok](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3c862b3_vs_abbe045/SortingAlgorithms.primary.log) vs. [fail](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3c862b3_vs_abbe045/SortingAlgorithms.against.log)
+<details open><summary>Package has test failures (1 packages):</summary>
+<p>
+
+
+- [DataFrames v1.5.0](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3c862b3_vs_abbe045/DataFrames.primary.log)
+
+</p>
+</details>
+
+</p>
+</details>
 
 
 ## Version Info
@@ -34,10 +45,10 @@ Platform Info:
   uname: Linux 5.15.0-69-generic #76-Ubuntu SMP Fri Mar 17 17:19:29 UTC 2023 x86_64 unknown
   CPU: AMD EPYC 7502 32-Core Processor: 
                   speed         user         nice          sys         idle          irq
-       #1-128  1528 MHz  3488159020 s     121893 s  242085187 s  3981655289 s          0 s
-  Memory: 32.0 GB (32627.37890625 MB free)
-  Uptime: 6.04219084e6 sec
-  Load Avg:  0.7  0.16  0.05
+       #1-128  1500 MHz  3524405643 s     122505 s  244847182 s  4004717359 s          0 s
+  Memory: 32.0 GB (32627.046875 MB free)
+  Uptime: 6.09089351e6 sec
+  Load Avg:  1.2  0.93  6.52
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-15.0.7 (ORCJIT, znver2)
@@ -55,14 +66,14 @@ Platform Info:
   uname: Linux 5.15.0-69-generic #76-Ubuntu SMP Fri Mar 17 17:19:29 UTC 2023 x86_64 unknown
   CPU: AMD EPYC 7502 32-Core Processor: 
                   speed         user         nice          sys         idle          irq
-       #1-128  1500 MHz  3488159195 s     121893 s  242085307 s  3981669685 s          0 s
-  Memory: 32.0 GB (32627.0625 MB free)
-  Uptime: 6.04220233e6 sec
-  Load Avg:  1.13  0.29  0.1
+       #1-128  1776 MHz  3524405791 s     122505 s  244847268 s  4004737004 s          0 s
+  Memory: 32.0 GB (32628.51953125 MB free)
+  Uptime: 6.09090905e6 sec
+  Load Avg:  1.23  0.96  6.44
   WORD_SIZE: 64
   LIBM: libopenlibm
   LLVM: libLLVM-15.0.7 (ORCJIT, znver2)
   Threads: 1 on 128 virtual cores
 
   ```
-  <!-- Generated on 2023-06-15T09:27:15.431 -->
+  <!-- Generated on 2023-06-15T23:30:01.845 -->
