@@ -425,6 +425,11 @@ function performance_plot(df)
          )
     title!("Package test time\n(relative to latest nightly)")
     ylabel!("Relative duration")
+
+    # annotate unrelated infrastructural changes
+    ## enabling assertions
+    vline!([Date("2023-07-12")], label="infrastructure change", color=:orange)
+
     return the_plot
 end
 
