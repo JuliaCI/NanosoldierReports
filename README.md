@@ -39,6 +39,12 @@ ecosystem and its compatibility with the current development version of Julia.
 ![Overview of daily PkgEval test
 results](https://github.com/JuliaCI/NanosoldierReports/raw/gh-pages/pkgeval_charts/daily.png)
 
+We also analyse the time it takes to test the ecosystem. The chart below visualizes the time
+it takes to test all packages, relative to the latest nightly.
+
+![Package test time
+visualization](https://github.com/JuliaCI/NanosoldierReports/raw/gh-pages/pkgeval_charts/daily_time_full.png)
+
 ### Badges
 
 The test results of the latest daily is also used to generate a PkgEval badge. You can use
