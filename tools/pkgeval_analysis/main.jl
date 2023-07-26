@@ -305,7 +305,7 @@ function simple_performance_plot(df)
         new_df = DataFrame(date = Date[],
                            ratio = Float64[],
                            datapoints = Int[])
-        for group in groupby(df, [:date])
+        for group in groupby(df, [:date]; sort=true)
             date = first(group.date)
 
             reference_duration = sum(group.reference_duration)
