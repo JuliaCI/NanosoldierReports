@@ -287,11 +287,11 @@ function simple_performance_plot(df)
                            duration = Float64[],
                            reference_duration = Float64[])
         for group in groupby(df, [:package, :version])
-            last_duration = last(group.duration)
+            reference_duration = last(group.duration)
             duration = group.duration
 
             subdf = DataFrame(date = group.date,
-                              reference_duration = last_duration,
+                              reference_duration = reference_duration,
                               duration = duration)
 
             append!(new_df, subdf; cols=:intersect)
@@ -309,7 +309,7 @@ function simple_performance_plot(df)
             date = first(group.date)
 
             reference_duration = sum(group.reference_duration)
-            ratio = sum(group.duration) / reference_duration - 1
+            ratio = sum(group.duration) / reference_duration
             push!(new_df, (date, ratio, nrow(group)))
         end
         new_df
@@ -344,26 +344,26 @@ function full_performance_plot(df; simple=false)
     @showprogress for group in groupby(df, [:package, :version])
         temp_df = DataFrame(idx = date_idx.(group.date),
                             duration = group.duration; copycols=false)
-        final_idx = last(temp_df.idx)
-        final_duration = last(temp_df.duration)
-        weight = final_duration
+        reference_idx = last(temp_df.idx)
+        reference_duration = last(temp_df.duration)
+        weight = reference_duration
         for i in 1:nrow(temp_df)-1
             idx = temp_df.idx[i]
 
             # incremental update of weighted ratio
-            old_ratio = ratios[idx, final_idx]
-            old_weight = weights[idx, final_idx]
-            ratio = temp_df.duration[i] / final_duration
+            old_ratio = ratios[idx, reference_idx]
+            old_weight = weights[idx, reference_idx]
+            ratio = temp_df.duration[i] / reference_duration
             new_weight = old_weight + weight
             new_ratio = (old_ratio * old_weight + ratio * weight) / new_weight
 
-            ratios[idx, final_idx] = new_ratio
-            weights[idx, final_idx] = new_weight
+            ratios[idx, reference_idx] = new_ratio
+            weights[idx, reference_idx] = new_weight
         end
     end
 
     # from the matrices comparing dates, aggregate into a vector where we only compare to
-    # a single date (the latest Julia version)
+    # a single reference date
     final_ratios = ones(length(dates))
     for date = length(dates)-1:-1:1
         # look up the entry that compares directly to the latest Julia version.
@@ -389,7 +389,7 @@ function full_performance_plot(df; simple=false)
         final_ratios[date] = duration / weight
     end
 
-    df = DataFrame(date=dates, ratio = final_ratios.-1)
+    df = DataFrame(date=dates, ratio = final_ratios)
     performance_plot(df)
 end
 
@@ -402,12 +402,12 @@ function performance_plot(df)
     regression = copy(df)
     regression.ratio = max.(0, regression.ratio)
 
-    the_plot = plot(regression.date, regression.ratio,
-                    label = "version was slower",
-                    color = :red,
-                    fillrange = 0,
-                    fillalpha = 0.3,
-                    dpi = 300
+    the_plot = plot(df.date, df.ratio,
+                    label = "",
+                    color = :gray,
+                    linewidth = 2,
+                    dpi = 300,
+                    legend = :topright,
                    )
     plot_branch_dates!() do date
         if date < first(df.date)
@@ -415,16 +415,8 @@ function performance_plot(df)
         end
         0.5
     end
-    plot!(improvement.date, improvement.ratio,
-          label = "version was faster",
-          color = :green,
-          fillrange = 0,
-          fillalpha = 0.3,
-          yformatter=y->"$(100+round(Int, 100*y))%",
-          legend = :topleft
-         )
-    title!("Package test time\n(relative to latest nightly)")
-    ylabel!("Relative duration")
+    title!("Package test time")
+    ylabel!("Duration")
 
     # annotate unrelated infrastructural changes
     ## enabling assertions
