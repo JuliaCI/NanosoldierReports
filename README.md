@@ -34,13 +34,13 @@ open the latest daily report.
 
 History test data is visualized in charts that are generated for every push to this
 repository, and are meant to make it easy to keep an eye on the state of the Julia package
-ecosystem and its compatibility with the current development version of Julia.
+ecosystem and its compatibility with the current development version of Julia:
 
 ![Overview of daily PkgEval test
 results](https://github.com/JuliaCI/NanosoldierReports/raw/gh-pages/pkgeval_charts/daily.png)
 
-We also analyse the time it takes to test the ecosystem. The chart below visualizes the time
-it takes to test all packages, relative to the latest nightly.
+We also keep track of the time it takes to test packages. The chart below visualizes the time
+it takes to test all packages, relative to the latest master:
 
 ![Package test time
 visualization](https://github.com/JuliaCI/NanosoldierReports/raw/gh-pages/pkgeval_charts/daily_time_full.png)
