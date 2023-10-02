@@ -419,8 +419,9 @@ function performance_plot(df)
     ylabel!("Duration")
 
     # annotate unrelated infrastructural changes
-    ## enabling assertions
-    vline!([Date("2023-07-12")], label="infrastructure change", color=:orange)
+    vline!([Date("2023-07-12"),    # enabling assertions
+            Date("2023-09-25")],   # enabling pkgimages again
+           label="infrastructure change", color=:orange)
 
     return the_plot
 end
