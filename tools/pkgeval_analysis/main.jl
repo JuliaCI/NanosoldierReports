@@ -397,11 +397,6 @@ function performance_plot(df)
     # PkgEval bug from 2022-11-25 -> 28
     df = filter(:date => date -> !(Date(2022,11,25) <= date <= Date(2022,11,28)), df)
 
-    improvement = copy(df)
-    improvement.ratio = min.(0, improvement.ratio)
-    regression = copy(df)
-    regression.ratio = max.(0, regression.ratio)
-
     the_plot = plot(df.date, df.ratio,
                     label = "",
                     color = :gray,
@@ -413,7 +408,7 @@ function performance_plot(df)
         if date < first(df.date)
             return nothing
         end
-        0.5
+        1.0
     end
     title!("Package test time")
     ylabel!("Duration")
