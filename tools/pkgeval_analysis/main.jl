@@ -274,6 +274,10 @@ function simple_performance_plot(df)
     df = filter(:status => isequal(:ok), df)
     df = filter(:version => !isequal(missing), df)
 
+    # sometimes, the duration is reported as 0 ("PkgEval terminated, but testing had
+    # completed; overriding"), which is not useful for our purposes. we filter those out.
+    df = filter(:duration => >(0), df)
+
     # select package versions that were evaluated on the latest Julia version
     last_date = last(df.date)
     candidates = df[df.date .== last_date, [:package, :version]]
@@ -329,6 +333,10 @@ function full_performance_plot(df; simple=false)
     # we only care about successfull tests where we know the version of the package
     df = filter(:status => isequal(:ok), df)
     df = filter(:version => !isequal(missing), df)
+
+    # sometimes, the duration is reported as 0 ("PkgEval terminated, but testing had
+    # completed; overriding"), which is not useful for our purposes. we filter those out.
+    df = filter(:duration => >(0), df)
 
     # convert dates to integers for easier indexing
     dates = sort(unique(df.date))
