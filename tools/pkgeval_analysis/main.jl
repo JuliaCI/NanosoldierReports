@@ -19,6 +19,7 @@ const branch_dates = [
     v"1.9"  => Date(2022, 02, 07),
     v"1.10" => Date(2022, 11, 15),
     v"1.11" => Date(2023, 07, 03),
+    v"1.12" => Date(2024, 02, 16),
 ]
 
 function plot_branch_dates!(f)
