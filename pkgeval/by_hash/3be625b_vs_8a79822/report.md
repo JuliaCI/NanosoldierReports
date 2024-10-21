@@ -6,11 +6,11 @@
 
 *Comparison Diff:* [link](https://github.com/JuliaLang/julia/compare/8a79822cbab84d8fe05e55cfb515b73c18db754c...3be625b524195564514473a144311797099acf03)
 
-*Triggered By:* [link](https://github.com/JuliaLang/julia/pull/55949#issuecomment-2419716517)
+*Triggered By:* [link](https://github.com/JuliaLang/julia/pull/55949#issuecomment-2425119536)
 
 *Package Selection:* `["SwapLiterals", "OverflowContexts", "Fuzzy", "HalfIntegers", "ArrayAllocators", "SafeREPL", "SaferIntegers", "ChangePrecision", "Abaco", "Baobzi", "Malt", "Distances", "Divergences", "DynamicQuantities", "GridWorlds", "PseudostableRecurrences", "TestTools", "FrechetDist", "StateSpaceEcon", "FHIRClient", "CaNNOLeS", "PolyChaos", "FeynmanDiagram", "DACE", "JUDI", "ElectronLiquid", "PlotRNA", "DistributedFactorGraphs", "IterativeLearningControl"]`
 
-Testing took 36 minutes, 0 second (or, sequentially, 3 hours, 10 minutes, 54 seconds to execute 58 package tests suites).
+Testing took 35 minutes, 57 seconds (or, sequentially, 3 hours, 10 minutes, 41 seconds to execute 58 package tests suites).
 
 In total, 29 packages were tested, out of which 14 succeeded, 0 crashed, 15 failed and 0 were skipped.
 
@@ -19,7 +19,7 @@ In total, 29 packages were tested, out of which 14 succeeded, 0 crashed, 15 fail
 <p>
 
 ```
-@nanosoldier `runtests(["Fuzzy", "Baobzi", "SaferIntegers", "Divergences", "ChangePrecision", "Abaco", "GridWorlds", "FrechetDist", "TestTools", "DACE", "FeynmanDiagram", "StateSpaceEcon", "ElectronLiquid", "JUDI"])`
+@nanosoldier `runtests(["Fuzzy", "Baobzi", "SaferIntegers", "ChangePrecision", "Divergences", "Abaco", "GridWorlds", "FrechetDist", "TestTools", "DACE", "FeynmanDiagram", "StateSpaceEcon", "ElectronLiquid", "JUDI"])`
 ```
 
 </p>
@@ -36,15 +36,15 @@ History Legend: ▁=skip, ▃=crash, ▅=fail, ▇=ok.
 <p>
 
 
-| Package | Version | Primary | Against | History (9-18 to 10-17) |
+| Package | Version | Primary | Against | History (9-21 to 10-20) |
 | ------- | ------- | ------- | ------- | ------- |
 | SaferIntegers | v3.4.4 | [fail](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/SaferIntegers.primary.log) | [ok](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/SaferIntegers.against.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | JUDI | v3.4.7 | [fail](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/JUDI.primary.log) | [ok](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/JUDI.against.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | FeynmanDiagram | v1.0.1 | [fail](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/FeynmanDiagram.primary.log) | [ok](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/FeynmanDiagram.against.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | Fuzzy | v0.3.1 | [fail](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/Fuzzy.primary.log) | [ok](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/Fuzzy.against.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | Baobzi | v0.9.6 | [fail](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/Baobzi.primary.log) | [ok](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/Baobzi.against.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
-| Divergences | v0.3.0 | [fail](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/Divergences.primary.log) | [ok](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/Divergences.against.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | ChangePrecision | v1.1.0 | [fail](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/ChangePrecision.primary.log) | [ok](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/ChangePrecision.against.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
+| Divergences | v0.3.0 | [fail](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/Divergences.primary.log) | [ok](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/Divergences.against.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | Abaco | v0.2.0 | [fail](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/Abaco.primary.log) | [ok](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/Abaco.against.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | FrechetDist | v2.0.0 | [fail](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/FrechetDist.primary.log) | [ok](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/FrechetDist.against.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | DACE | v0.1.0 | [fail](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/DACE.primary.log) | [ok](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/DACE.against.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
@@ -57,7 +57,7 @@ History Legend: ▁=skip, ▃=crash, ▅=fail, ▇=ok.
 <p>
 
 
-| Package | Version | Primary | Against | History (9-18 to 10-17) |
+| Package | Version | Primary | Against | History (9-21 to 10-20) |
 | ------- | ------- | ------- | ------- | ------- |
 | TestTools | v0.6.3 | [fail](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/TestTools.primary.log) | [ok](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/TestTools.against.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 
@@ -68,7 +68,7 @@ History Legend: ▁=skip, ▃=crash, ▅=fail, ▇=ok.
 <p>
 
 
-| Package | Version | Primary | Against | History (9-18 to 10-17) |
+| Package | Version | Primary | Against | History (9-21 to 10-20) |
 | ------- | ------- | ------- | ------- | ------- |
 | GridWorlds | v0.5.0 | [fail](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/GridWorlds.primary.log) | [ok](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/GridWorlds.against.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | StateSpaceEcon | v0.5.2 | [fail](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/StateSpaceEcon.primary.log) | [ok](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/StateSpaceEcon.against.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
@@ -83,9 +83,9 @@ History Legend: ▁=skip, ▃=crash, ▅=fail, ▇=ok.
 <p>
 
 
-| Package | History (9-18 to 10-17) |
+| Package | History (9-21 to 10-20) |
 | ------- | ------- |
-| [PseudostableRecurrences v0.0.6](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/PseudostableRecurrences.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▅</span> |
+| [PseudostableRecurrences v0.0.6](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/PseudostableRecurrences.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▅▅</span> |
 
 </p>
 </details>
@@ -99,12 +99,12 @@ History Legend: ▁=skip, ▃=crash, ▅=fail, ▇=ok.
 <details><summary><strong>14 packages passed tests on the previous version too.</strong></summary>
 <p>
 
-| Package | History (9-18 to 10-17) |
+| Package | History (9-21 to 10-20) |
 | ------- | ------- |
-| [Distances v0.10.11](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/Distances.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▅▅▇</span> |
+| [Distances v0.10.11](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/Distances.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▅▅▇▇</span> |
 | [HalfIntegers v1.6.0](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/HalfIntegers.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
-| [Malt v1.1.2](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/Malt.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
-| [DistributedFactorGraphs v0.24.1](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/DistributedFactorGraphs.primary.log) | <span class="history">▇▅▅▅▇▇▅▇▅▇▅▇▅</span> |
+| [Malt v1.1.2](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/Malt.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▅</span> |
+| [DistributedFactorGraphs v0.24.1](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/DistributedFactorGraphs.primary.log) | <span class="history">▅▅▅▇▇▅▇▅▇▅▇▅▅</span> |
 | [ArrayAllocators v0.3.0](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/ArrayAllocators.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | [PolyChaos v0.2.11](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/PolyChaos.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | [DynamicQuantities v1.1.0](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/DynamicQuantities.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
@@ -112,9 +112,9 @@ History Legend: ▁=skip, ▃=crash, ▅=fail, ▇=ok.
 | [FHIRClient v2.3.0](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/FHIRClient.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | [OverflowContexts v0.2.7](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/OverflowContexts.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | [SafeREPL v0.1.1](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/SafeREPL.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
-| [CaNNOLeS v0.7.7](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/CaNNOLeS.primary.log) | <span class="history">▇▃▃▃▇▇▇▇▇▇▅▅▅</span> |
-| [PlotRNA v0.3.2](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/PlotRNA.primary.log) | <span class="history">▇▃▃▃▇▇▇▇▇▇▅▇▇</span> |
-| [IterativeLearningControl v0.1.1](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/IterativeLearningControl.primary.log) | <span class="history">▇▅▅▅▇▇▇▇▇▅▅▇▇</span> |
+| [CaNNOLeS v0.7.7](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/CaNNOLeS.primary.log) | <span class="history">▃▃▃▇▇▇▇▇▇▅▅▅▅</span> |
+| [PlotRNA v0.3.2](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/PlotRNA.primary.log) | <span class="history">▃▃▃▇▇▇▇▇▇▅▇▇▇</span> |
+| [IterativeLearningControl v0.1.1](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/3be625b_vs_8a79822/IterativeLearningControl.primary.log) | <span class="history">▅▅▅▇▇▇▇▇▅▅▇▇▅</span> |
 
 </p>
 </details>
@@ -132,10 +132,10 @@ Platform Info:
   uname: Linux 5.15.0-102-generic #112-Ubuntu SMP Tue Mar 5 16:50:32 UTC 2024 x86_64 unknown
   CPU: AMD EPYC 7502 32-Core Processor: 
                   speed         user         nice          sys         idle          irq
-       #1-128  1498 MHz  7881071301 s     265942 s  579202795 s  11788941323 s          0 s
-  Memory: 32.0 GB (32615.19921875 MB free)
-  Uptime: 1.584504675e7 sec
-  Load Avg:  5.84  7.69  6.13
+       #1-128  1497 MHz  7959343767 s     272423 s  585492277 s  11979741005 s          0 s
+  Memory: 32.0 GB (32615.46875 MB free)
+  Uptime: 1.606051858e7 sec
+  Load Avg:  5.43  6.58  4.91
   WORD_SIZE: 64
   LLVM: libLLVM-18.1.7 (ORCJIT, znver2)
 Threads: 1 default, 0 interactive, 1 GC (on 128 virtual cores)
@@ -152,13 +152,13 @@ Platform Info:
   uname: Linux 5.15.0-102-generic #112-Ubuntu SMP Tue Mar 5 16:50:32 UTC 2024 x86_64 unknown
   CPU: AMD EPYC 7502 32-Core Processor: 
                   speed         user         nice          sys         idle          irq
-       #1-128  2830 MHz  7881111567 s     265942 s  579204271 s  11789999148 s          0 s
-  Memory: 32.0 GB (32615.1796875 MB free)
-  Uptime: 1.584590601e7 sec
-  Load Avg:  6.76  7.0  5.57
+       #1-128  1498 MHz  7959384208 s     272423 s  585493699 s  11980791534 s          0 s
+  Memory: 32.0 GB (32615.5703125 MB free)
+  Uptime: 1.606137236e7 sec
+  Load Avg:  8.74  8.99  5.99
   WORD_SIZE: 64
   LLVM: libLLVM-18.1.7 (ORCJIT, znver2)
 Threads: 1 default, 0 interactive, 1 GC (on 128 virtual cores)
 
   ```
-  <!-- Generated on 2024-10-18T16:03:42.627 -->
+  <!-- Generated on 2024-10-21T03:54:46.190 -->
