@@ -6,7 +6,7 @@
 
 *Comparison Diff:* [link](https://github.com/JuliaLang/julia/compare/f5937b432c51f6b8a5b28eaa5c1583f1350e12a3..b19a7c1721f623ae085354889b183622537543b0)
 
-*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/b19a7c1721f623ae085354889b183622537543b0#commitcomment-148362728)
+*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/b19a7c1721f623ae085354889b183622537543b0#commitcomment-148372720)
 
 *Tag Predicate:* `"inference"`
 
@@ -31,9 +31,6 @@ benchmark results remained invariant between builds).
 
 | ID | time ratio | memory ratio |
 |----|------------|--------------|
-| `["inference", "abstract interpretation", "many_global_refs"]` | 1.66 (5%) :x: | 1.11 (1%) :x: |
-| `["inference", "abstract interpretation", "many_invoke_calls"]` | 1.07 (5%) :x: | 1.00 (1%)  |
-| `["inference", "allinference", "many_global_refs"]` | 1.27 (5%) :x: | 1.05 (1%) :x: |
 
 ## Benchmark Group List
 
@@ -56,17 +53,17 @@ Platform Info:
   uname: Linux 5.15.0-112-generic #122-Ubuntu SMP Thu May 23 07:48:21 UTC 2024 x86_64 x86_64
   CPU: Intel(R) Xeon(R) CPU E3-1241 v3 @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3500 MHz     567244 s        188 s     150627 s  118143780 s          0 s
-       #2  3501 MHz    7580278 s        100 s     183238 s  111158194 s          0 s
-       #3  3501 MHz     429280 s        126 s      69577 s  118412280 s          0 s
-       #4  3500 MHz     421490 s        105 s      84441 s  118351820 s          0 s
-       #5  3504 MHz     355380 s         75 s      61595 s  118393114 s          0 s
-       #6  3502 MHz     388005 s         63 s      80565 s  117812218 s          0 s
-       #7  3501 MHz     416183 s        114 s      66662 s  118319692 s          0 s
-       #8  3503 MHz     364832 s         76 s      55187 s  118447915 s          0 s
-  Memory: 31.30148696899414 GB (18086.6640625 MB free)
-  Uptime: 1.189705969e7 sec
-  Load Avg:  1.0  1.08  2.09
+       #1  3500 MHz     573652 s        188 s     150967 s  118186103 s          0 s
+       #2  3500 MHz    7610558 s        100 s     183463 s  111176853 s          0 s
+       #3  3501 MHz     435087 s        126 s      69766 s  118455446 s          0 s
+       #4  3502 MHz     427228 s        105 s      84655 s  118395021 s          0 s
+       #5  3503 MHz     361475 s         75 s      61780 s  118435959 s          0 s
+       #6  3501 MHz     393351 s         63 s      80735 s  117855720 s          0 s
+       #7  3501 MHz     421741 s        114 s      66840 s  118363096 s          0 s
+       #8  3503 MHz     370628 s         76 s      55365 s  118491078 s          0 s
+  Memory: 31.30148696899414 GB (18061.84765625 MB free)
+  Uptime: 1.190197773e7 sec
+  Load Avg:  1.0  1.09  1.97
   WORD_SIZE: 64
   LLVM: libLLVM-18.1.7 (ORCJIT, haswell)
 Threads: 1 default, 0 interactive, 1 GC (on 8 virtual cores)
@@ -84,17 +81,17 @@ Platform Info:
   uname: Linux 5.15.0-112-generic #122-Ubuntu SMP Thu May 23 07:48:21 UTC 2024 x86_64 x86_64
   CPU: Intel(R) Xeon(R) CPU E3-1241 v3 @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3508 MHz     567467 s        188 s     150710 s  118156853 s          0 s
-       #2  3500 MHz    7592610 s        100 s     183260 s  111159251 s          0 s
-       #3  3499 MHz     429639 s        126 s      69588 s  118425319 s          0 s
-       #4  3501 MHz     421568 s        105 s      84445 s  118365146 s          0 s
-       #5  3501 MHz     355420 s         75 s      61597 s  118406470 s          0 s
-       #6  3501 MHz     388036 s         63 s      80566 s  117825573 s          0 s
-       #7  3501 MHz     416741 s        114 s      66674 s  118332530 s          0 s
-       #8  3504 MHz     364993 s         76 s      55191 s  118461159 s          0 s
-  Memory: 31.30148696899414 GB (18098.74609375 MB free)
-  Uptime: 1.189840079e7 sec
-  Load Avg:  1.0  1.0  1.24
+       #1  3500 MHz     573972 s        188 s     151053 s  118199058 s          0 s
+       #2  3501 MHz    7623015 s        100 s     183486 s  111177781 s          0 s
+       #3  3500 MHz     435176 s        126 s      69773 s  118468757 s          0 s
+       #4  3500 MHz     427272 s        105 s      84658 s  118408379 s          0 s
+       #5  3503 MHz     361552 s         75 s      61784 s  118449276 s          0 s
+       #6  3501 MHz     393471 s         63 s      80739 s  117868977 s          0 s
+       #7  3503 MHz     422340 s        114 s      66851 s  118375895 s          0 s
+       #8  3501 MHz     370706 s         76 s      55367 s  118504403 s          0 s
+  Memory: 31.30148696899414 GB (18070.91796875 MB free)
+  Uptime: 1.190331879e7 sec
+  Load Avg:  1.0  1.0  1.22
   WORD_SIZE: 64
   LLVM: libLLVM-18.1.7 (ORCJIT, haswell)
 Threads: 1 default, 0 interactive, 1 GC (on 8 virtual cores)
