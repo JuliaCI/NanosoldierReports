@@ -6,7 +6,7 @@
 
 *Comparison Diff:* [link](https://github.com/JuliaLang/julia/compare/b19a7c1721f623ae085354889b183622537543b0..c07a40f03c67bbd92db65add4964ee7415453ea4)
 
-*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/c07a40f03c67bbd92db65add4964ee7415453ea4#commitcomment-148362701)
+*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/c07a40f03c67bbd92db65add4964ee7415453ea4#commitcomment-148375494)
 
 *Tag Predicate:* `"inference"`
 
@@ -31,19 +31,10 @@ benchmark results remained invariant between builds).
 
 | ID | time ratio | memory ratio |
 |----|------------|--------------|
-| `["inference", "abstract interpretation", "Base.init_stdio(::Ptr{Cvoid})"]` | 1.06 (5%) :x: | 1.00 (1%)  |
-| `["inference", "abstract interpretation", "broadcasting"]` | 1.07 (5%) :x: | 1.00 (1%)  |
-| `["inference", "abstract interpretation", "many_global_refs"]` | 0.94 (5%) :white_check_mark: | 1.00 (1%)  |
-| `["inference", "abstract interpretation", "many_invoke_calls"]` | 1.13 (5%) :x: | 1.00 (1%)  |
-| `["inference", "abstract interpretation", "many_method_matches"]` | 1.09 (5%) :x: | 1.00 (1%)  |
-| `["inference", "abstract interpretation", "many_opaque_closures"]` | 1.05 (5%) :x: | 1.00 (1%)  |
-| `["inference", "abstract interpretation", "rand(Float64)"]` | 1.07 (5%) :x: | 1.00 (1%)  |
-| `["inference", "abstract interpretation", "sin(42)"]` | 1.14 (5%) :x: | 1.00 (1%)  |
-| `["inference", "allinference", "many_const_calls"]` | 1.06 (5%) :x: | 1.00 (1%)  |
-| `["inference", "allinference", "many_invoke_calls"]` | 1.07 (5%) :x: | 1.00 (1%)  |
-| `["inference", "allinference", "sin(42)"]` | 1.05 (5%) :x: | 1.01 (1%)  |
-| `["inference", "optimization", "many_global_refs"]` | 1.06 (5%) :x: | 1.00 (1%)  |
-| `["inference", "optimization", "many_invoke_calls"]` | 1.07 (5%) :x: | 1.00 (1%)  |
+| `["inference", "abstract interpretation", "many_global_refs"]` | 0.61 (5%) :white_check_mark: | 0.90 (1%) :white_check_mark: |
+| `["inference", "allinference", "many_global_refs"]` | 0.80 (5%) :white_check_mark: | 0.95 (1%) :white_check_mark: |
+| `["inference", "optimization", "many_local_vars"]` | 0.93 (5%) :white_check_mark: | 1.00 (1%)  |
+| `["inference", "optimization", "println(::QuoteNode)"]` | 0.94 (5%) :white_check_mark: | 1.00 (1%)  |
 
 ## Benchmark Group List
 
@@ -66,17 +57,17 @@ Platform Info:
   uname: Linux 5.15.0-112-generic #122-Ubuntu SMP Thu May 23 07:48:21 UTC 2024 x86_64 x86_64
   CPU: Intel(R) Xeon(R) CPU E3-1241 v3 @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3501 MHz     467592 s        165 s     143725 s  118241870 s          0 s
-       #2  3500 MHz    3288765 s        119 s     136086 s  115433549 s          0 s
-       #3  3496 MHz     326315 s        137 s      75684 s  118483642 s          0 s
-       #4  3499 MHz     311659 s         79 s      76856 s  118501368 s          0 s
-       #5  3502 MHz     267337 s         64 s      55362 s  118464817 s          0 s
-       #6  3501 MHz     278538 s        130 s      62369 s  117877890 s          0 s
-       #7  3501 MHz     315282 s         82 s      63006 s  118399652 s          0 s
-       #8  3500 MHz     311686 s         73 s      66423 s  118475920 s          0 s
-  Memory: 31.30147933959961 GB (19273.265625 MB free)
-  Uptime: 1.189548809e7 sec
-  Load Avg:  1.0  1.08  2.05
+       #1  3500 MHz     579941 s        188 s     151320 s  118229636 s          0 s
+       #2  3500 MHz    7641917 s        100 s     183671 s  111195566 s          0 s
+       #3  3500 MHz     441516 s        126 s      69978 s  118499062 s          0 s
+       #4  3500 MHz     432106 s        105 s      84844 s  118440200 s          0 s
+       #5  3503 MHz     367255 s         75 s      61939 s  118480260 s          0 s
+       #6  3501 MHz     399160 s         63 s      80903 s  117899850 s          0 s
+       #7  3503 MHz     427808 s        114 s      67041 s  118407097 s          0 s
+       #8  3501 MHz     375614 s         76 s      55558 s  118536165 s          0 s
+  Memory: 31.30148696899414 GB (18052.8359375 MB free)
+  Uptime: 1.190700814e7 sec
+  Load Avg:  1.02  1.1  2.01
   WORD_SIZE: 64
   LLVM: libLLVM-18.1.7 (ORCJIT, haswell)
 Threads: 1 default, 0 interactive, 1 GC (on 8 virtual cores)
@@ -94,17 +85,17 @@ Platform Info:
   uname: Linux 5.15.0-112-generic #122-Ubuntu SMP Thu May 23 07:48:21 UTC 2024 x86_64 x86_64
   CPU: Intel(R) Xeon(R) CPU E3-1241 v3 @ 3.50GHz: 
               speed         user         nice          sys         idle          irq
-       #1  3500 MHz     467792 s        165 s     143809 s  118255009 s          0 s
-       #2  3500 MHz    3301069 s        119 s     136105 s  115434681 s          0 s
-       #3  3501 MHz     326412 s        137 s      75692 s  118496989 s          0 s
-       #4  3499 MHz     311747 s         79 s      76858 s  118514732 s          0 s
-       #5  3503 MHz     267531 s         64 s      55366 s  118478060 s          0 s
-       #6  3464 MHz     278663 s        130 s      62373 s  117891185 s          0 s
-       #7  3500 MHz     315354 s         82 s      63010 s  118413030 s          0 s
-       #8  3503 MHz     312444 s         73 s      66438 s  118488599 s          0 s
-  Memory: 31.30147933959961 GB (19277.38671875 MB free)
-  Uptime: 1.189683357e7 sec
-  Load Avg:  1.0  1.0  1.24
+       #1  3500 MHz     580126 s        188 s     151408 s  118242779 s          0 s
+       #2  3500 MHz    7654283 s        100 s     183689 s  111196680 s          0 s
+       #3  3501 MHz     442368 s        126 s      69999 s  118511685 s          0 s
+       #4  3502 MHz     432220 s        105 s      84848 s  118453576 s          0 s
+       #5  3503 MHz     367328 s         75 s      61942 s  118493670 s          0 s
+       #6  3501 MHz     399228 s         63 s      80906 s  117913249 s          0 s
+       #7  3503 MHz     427857 s        114 s      67044 s  118420541 s          0 s
+       #8  3501 MHz     375778 s         76 s      55566 s  118549488 s          0 s
+  Memory: 31.30148696899414 GB (18062.81640625 MB free)
+  Uptime: 1.190835795e7 sec
+  Load Avg:  1.0  1.03  1.25
   WORD_SIZE: 64
   LLVM: libLLVM-18.1.7 (ORCJIT, haswell)
 Threads: 1 default, 0 interactive, 1 GC (on 8 virtual cores)
