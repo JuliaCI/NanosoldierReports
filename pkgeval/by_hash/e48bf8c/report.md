@@ -4,11 +4,11 @@
 
 *Commit:* [JuliaLang/julia@e48bf8cba9a9305050704e3f21b53431ae123e93](https://github.com/JuliaLang/julia/commit/e48bf8cba9a9305050704e3f21b53431ae123e93)
 
-*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/e48bf8cba9a9305050704e3f21b53431ae123e93#commitcomment-149938059)
+*Triggered By:* [link](https://github.com/JuliaLang/julia/commit/e48bf8cba9a9305050704e3f21b53431ae123e93#commitcomment-149952344)
 
 *Package Selection:* `["PackageCompiler"]`
 
-Testing took 2 hours, 21 minutes, 50 seconds (or, sequentially, 0 second to execute 1 package tests suites).
+Testing took 2 hours, 22 minutes, 2 seconds (or, sequentially, 0 second to execute 1 package tests suites).
 
 In total, 1 packages were tested, out of which 0 succeeded, 0 crashed, 1 failed and 0 were skipped.
 
@@ -43,13 +43,13 @@ Platform Info:
   uname: Linux 6.8.0-49-generic #49-Ubuntu SMP PREEMPT_DYNAMIC Mon Nov  4 02:06:24 UTC 2024 x86_64 unknown
   CPU: AMD EPYC 7502 32-Core Processor: 
                   speed         user         nice          sys         idle          irq
-       #1-128  1500 MHz   38163876 s          0 s    3105809 s   11574295 s          0 s
-  Memory: 32.0 GB (32597.58984375 MB free)
-  Uptime: 41419.61 sec
-  Load Avg:  6.93  9.28  7.05
+       #1-128  1500 MHz   38322271 s          0 s    3132370 s   26365514 s          0 s
+  Memory: 32.0 GB (32597.09375 MB free)
+  Uptime: 53185.69 sec
+  Load Avg:  7.4  9.8  4.89
   WORD_SIZE: 64
   LLVM: libLLVM-18.1.7 (ORCJIT, znver2)
 Threads: 1 default, 0 interactive, 1 GC (on 128 virtual cores)
 
 ```
-<!-- Generated on 2024-12-04T20:47:15.642 -->
+<!-- Generated on 2024-12-05T00:03:33.871 -->
