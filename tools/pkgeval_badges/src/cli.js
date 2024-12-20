@@ -33,7 +33,7 @@ function redirect(url) {
 }
 
 const formats = {
-    'ok':    ['passing', 'brightgreen'],
+    'test':  ['passing', 'brightgreen'],
     'skip':  ['skipped', 'gray'],
     'fail':  ['failed',  'red'],
     'crash': ['crashed', 'red'],

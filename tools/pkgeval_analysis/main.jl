@@ -166,10 +166,14 @@ function read_data(root=joinpath(@__DIR__, "..", "..", "pkgeval", "by_date"))
                 end
             end
 
-            # skip reason :explicit has been renamed to :blacklisted
             for row in eachrow(df)
+                # skip reason :explicit has been renamed to :blacklisted
                 if row.reason === :explicit
                     row.reason = :blacklisted
+
+                # :ok was renamed to :test
+                elseif row.status === :ok
+                    row.status = :test
                 end
             end
 
@@ -201,7 +205,7 @@ end
 
 function success_plot(df)
     dates = []
-    oks = []
+    tests = []
     fails = []
     crashes = []
     kills = []
@@ -212,16 +216,16 @@ function success_plot(df)
         date = first(df′.date)
 
         # count individual statusses (note that we ignore skipped packages)
-        ok = nrow(filter(:status => isequal(:ok), df′))
+        test = nrow(filter(:status => isequal(:test), df′))
         kill = nrow(filter(:status => isequal(:kill), df′))
         fail = nrow(filter(:status => isequal(:fail), df′))
         crash = nrow(filter(:status => isequal(:crash), df′))
         skip = nrow(filter(:status => isequal(:skip), df′))
-        total = ok + fail + crash + kill + skip
+        total = test + fail + crash + kill + skip
 
         # filter-out days with bad data (but keep the last, so that the chart is up to date)
         if date != last(df.date)
-            if ok < total*0.5
+            if test < total*0.5
                 @debug "Too many failures on $date; probably a fluke"
                 continue
             end
@@ -234,7 +238,7 @@ function success_plot(df)
 
         push!(dates, date)
 
-        push!(oks, ok)
+        push!(tests, test)
         push!(fails, fail)
         push!(crashes, crash)
         push!(kills, kill)
@@ -242,8 +246,8 @@ function success_plot(df)
         push!(totals, total)
     end
 
-    plot = areaplot(dates, hcat(oks, fails, crashes, kills, skips),
-                    labels = ["success: $(last(oks))" "failure: $(last(fails))" "crash: $(last(crashes))" "kill: $(last(kills))" "skip: $(last(skips))"],
+    plot = areaplot(dates, hcat(tests, fails, crashes, kills, skips),
+                    labels = ["success: $(last(tests))" "failure: $(last(fails))" "crash: $(last(crashes))" "kill: $(last(kills))" "skip: $(last(skips))"],
                     seriescolor = [:green :red :darkred :black :grey80],
                     fillalpha = 0.3,
                     legend = :topleft,
@@ -253,10 +257,10 @@ function success_plot(df)
                     )
     plot_branch_dates!() do date
         idx = searchsortedfirst(dates, date)
-        oks[idx] - 1000
+        tests[idx] - 1000
     end
-    plot!(twinx(), dates, oks ./ totals,
-          label = "success rate: $(round(Int, 100*last(oks)/last(totals)))%",
+    plot!(twinx(), dates, tests ./ totals,
+          label = "success rate: $(round(Int, 100*last(tests)/last(totals)))%",
           color = :purple,
           alpha = 0.7,
           linewidth = 2,
@@ -272,7 +276,7 @@ end
 # the test suites (and thus test duration) of packages is likely to change between releases.
 function simple_performance_plot(df)
     # we only care about successfull tests where we know the version of the package
-    df = filter(:status => isequal(:ok), df)
+    df = filter(:status => isequal(:test), df)
     df = filter(:version => !isequal(missing), df)
 
     # sometimes, the duration is reported as 0 ("PkgEval terminated, but testing had
@@ -332,7 +336,7 @@ end
 # not tested on the latest Julia version)
 function full_performance_plot(df; simple=false)
     # we only care about successfull tests where we know the version of the package
-    df = filter(:status => isequal(:ok), df)
+    df = filter(:status => isequal(:test), df)
     df = filter(:version => !isequal(missing), df)
 
     # sometimes, the duration is reported as 0 ("PkgEval terminated, but testing had
@@ -442,7 +446,7 @@ function unreliable_packages(df; window=Day(30), min_tests=5, min_failure_ratio=
     # we only care about tests passing, everything else (e.g. crashes, or installation
     # failures) are deemed a failure, with the exception of blacklisted packages.
     df = filter(row -> !(row.status == :skip && row.reason == :blacklisted), df)
-    df[df.status .!== :ok, :status] .= :fail
+    df[df.status .!== :test, :status] .= :fail
 
     # determine the test failures and successes for the latest version of each package.
     df = let
