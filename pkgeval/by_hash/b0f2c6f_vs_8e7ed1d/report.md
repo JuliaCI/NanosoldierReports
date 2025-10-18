@@ -6,21 +6,42 @@
 
 *Comparison Diff:* [link](https://github.com/JuliaLang/julia/compare/8e7ed1d5f06e7807681f696252b2b432c58690ce...b0f2c6f3b99eb2611f3343106498617117708df1)
 
-*Triggered By:* [link](https://github.com/JuliaLang/julia/pull/59543#issuecomment-3418705377)
+*Triggered By:* [link](https://github.com/JuliaLang/julia/pull/59543#issuecomment-3418773700)
 
 *Package Selection:* `["ArgTools", "Artifacts", "Base64", "CRC32c", "Dates", "Distributed", "Downloads", "FileWatching", "Future", "InteractiveUtils", "LazyArtifacts", "LibCURL", "LibGit2", "Libdl", "LinearAlgebra", "Logging", "Markdown", "Mmap", "NetworkOptions", "Pkg", "Printf", "Profile", "REPL", "Random", "SHA", "Serialization", "SharedArrays", "Sockets", "SparseArrays", "StyledStrings", "SuiteSparse", "TOML", "Tar", "Test", "UUIDs", "Unicode", "CSV", "DataFrames", "Example", "JSON", "Crayons"]`
 
-Testing took 35 minutes, 44 seconds (or, sequentially, 56 minutes, 37 seconds to evaluate 82 packages).
+Testing took 14 minutes, 34 seconds (or, sequentially, 56 minutes, 43 seconds to evaluate 82 packages).
 
-In total, 41 packages were evaluated, out of which 33 successfully tested, 8 were not tested but did load successfully, 0 crashed, 0 failed and 0 were skipped.
+In total, 41 packages were evaluated, out of which 32 successfully tested, 8 were not tested but did load successfully, 0 crashed, 1 failed and 0 were skipped.
+
+
+## ✖ Packages that failed
+
+<details><summary><strong>1 packages failed on the previous version too.</strong></summary>
+<p>
+
+<details open><summary>Package has test failures: 1 packages</summary>
+<p>
+
+
+| Package | History (9-17 to 10-16) |
+| ------- | ------- |
+| [Sockets v1.11.0](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/b0f2c6f_vs_8e7ed1d/Sockets.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
+
+</p>
+</details>
+
+
+</p>
+</details>
 
 
 ## ✔ Packages that passed tests
 
-<details><summary><strong>33 packages passed tests on the previous version too.</strong></summary>
+<details><summary><strong>32 packages passed tests on the previous version too.</strong></summary>
 <p>
 
-<details open><summary>Other: 33 packages</summary>
+<details open><summary>Other: 32 packages</summary>
 <p>
 
 
@@ -48,7 +69,6 @@ In total, 41 packages were evaluated, out of which 33 successfully tested, 8 wer
 | [Base64 v1.11.0](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/b0f2c6f_vs_8e7ed1d/Base64.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | [Crayons v4.1.1](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/b0f2c6f_vs_8e7ed1d/Crayons.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | [FileWatching v1.11.0](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/b0f2c6f_vs_8e7ed1d/FileWatching.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
-| [Sockets v1.11.0](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/b0f2c6f_vs_8e7ed1d/Sockets.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | [ArgTools v1.1.2](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/b0f2c6f_vs_8e7ed1d/ArgTools.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | [LibCURL v0.6.4](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/b0f2c6f_vs_8e7ed1d/LibCURL.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
 | [SharedArrays v1.11.0](https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_hash/b0f2c6f_vs_8e7ed1d/SharedArrays.primary.log) | <span class="history">▇▇▇▇▇▇▇▇▇▇▇▇▇</span> |
@@ -108,20 +128,37 @@ Platform Info:
   uname: Linux 6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025 x86_64 unknown
   CPU: AMD EPYC 7502 32-Core Processor: 
                   speed         user         nice          sys         idle          irq
-       #1-128  1500 MHz  2699708150 s     283783 s  276676205 s  2145267356 s          0 s
-  Memory: 32.0 GB (32601.36328125 MB free)
-  Uptime: 4.01259637e6 sec
-  Load Avg:  7.05  11.33  6.51
+       #1-128  1500 MHz  2700048130 s     283783 s  276724776 s  2153759154 s          0 s
+  Memory: 32.0 GB (32601.09765625 MB free)
+  Uptime: 4.01963335e6 sec
+  Load Avg:  7.81  11.45  6.56
   WORD_SIZE: 64
   LLVM: libLLVM-20.1.8 (ORCJIT, znver2)
   GC: Built with stock GC
 Threads: 1 default, 0 interactive, 1 GC (on 128 virtual cores)
 
 ```
+*Configuration*: `(goal = :test,)`
 
   #### Comparison Build
 
   ```
-retrieving versioninfo() failed; consult server logs for more details
+Julia Version 1.13.0-DEV.1332
+Commit 8e7ed1d5f0* (2025-10-18 01:19 UTC)
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  uname: Linux 6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025 x86_64 unknown
+  CPU: AMD EPYC 7502 32-Core Processor: 
+                  speed         user         nice          sys         idle          irq
+       #1-128  1500 MHz  2700129254 s     283783 s  276730056 s  2155251537 s          0 s
+  Memory: 32.0 GB (32600.45703125 MB free)
+  Uptime: 4.02086719e6 sec
+  Load Avg:  7.15  11.05  7.87
+  WORD_SIZE: 64
+  LLVM: libLLVM-20.1.8 (ORCJIT, znver2)
+  GC: Built with stock GC
+Threads: 1 default, 0 interactive, 1 GC (on 128 virtual cores)
+
   ```
-  <!-- Generated on 2025-10-18T15:18:33.717 -->
+  *Configuration*: `(goal = :test,)`
+<!-- Generated on 2025-10-18T16:54:46.198 -->
