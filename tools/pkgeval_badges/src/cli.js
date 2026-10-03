@@ -16,6 +16,11 @@ const latest_date = fs.readlinkSync(input_dir)
 const input = path.resolve(input_dir, "db.json")
 const db = require(input)
 
+// The flat badge with square corners. The gloss and the text shadow stay.
+function squareBadge(svg) {
+    return svg.replace(/rx="\d+"/g, 'rx="0"')
+}
+
 // helper to generate redirecting HTML
 function redirect(url) {
     return `<!DOCTYPE HTML>
@@ -72,6 +77,8 @@ for (var package in db.tests) {
 
     fs.writeFileSync(path.join(badge_dir, package + ".svg"), svg_main_badge)
     fs.writeFileSync(path.join(badge_dir, package + ".named.svg"), svg_named_badge)
+    fs.writeFileSync(path.join(badge_dir, package + ".square.svg"), squareBadge(svg_main_badge))
+    fs.writeFileSync(path.join(badge_dir, package + ".named.square.svg"), squareBadge(svg_named_badge))
 
     // generate a redirect to the log
     fs.writeFileSync(path.join(badge_dir, package + ".html"),

@@ -85,3 +85,16 @@ The result will look as follows:
 [pkgeval-url-2]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.html
 
 [![PkgEval][pkgeval-img-2]][pkgeval-url-2]
+
+The same badges are also written with square corners. The gloss, the label, the
+status text, the color, and the text shadow are unchanged, and the files above are left
+as they are.
+
+```
+[pkgeval-img]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.square.svg
+[pkgeval-url]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.html
+
+[![PkgEval][pkgeval-img]][pkgeval-url]
+```
+
+The form with the package name in the badge is `E/Example.named.square.svg`.
