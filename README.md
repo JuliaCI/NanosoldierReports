@@ -86,7 +86,7 @@ The result will look as follows:
 
 [![PkgEval][pkgeval-img-2]][pkgeval-url-2]
 
-The same badges are also written with square corners and no gloss. The label, the
+The same badges are also written with square corners. The gloss, the label, the
 status text, the color, and the text shadow are unchanged, and the files above are left
 as they are.
 

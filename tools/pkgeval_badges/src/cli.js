@@ -16,13 +16,9 @@ const latest_date = fs.readlinkSync(input_dir)
 const input = path.resolve(input_dir, "db.json")
 const db = require(input)
 
-// The flat badge, with square corners and the gloss removed.
-// badge-maker's flat-square style is a different drawing: it drops the text shadow.
+// The flat badge with square corners. The gloss and the text shadow stay.
 function squareBadge(svg) {
-    svg = svg.replace(/rx="\d+"/g, 'rx="0"')
-    svg = svg.replace(/<linearGradient[\s\S]*?<\/linearGradient>/g, '')
-    svg = svg.replace(/<rect[^>]*fill="url\(#s\)"[^>]*\/>/g, '')
-    return svg
+    return svg.replace(/rx="\d+"/g, 'rx="0"')
 }
 
 // helper to generate redirecting HTML
