@@ -16,6 +16,15 @@ const latest_date = fs.readlinkSync(input_dir)
 const input = path.resolve(input_dir, "db.json")
 const db = require(input)
 
+// The flat badge, with square corners and the gloss removed.
+// badge-maker's flat-square style is a different drawing: it drops the text shadow.
+function squareBadge(svg) {
+    svg = svg.replace(/rx="\d+"/g, 'rx="0"')
+    svg = svg.replace(/<linearGradient[\s\S]*?<\/linearGradient>/g, '')
+    svg = svg.replace(/<rect[^>]*fill="url\(#s\)"[^>]*\/>/g, '')
+    return svg
+}
+
 // helper to generate redirecting HTML
 function redirect(url) {
     return `<!DOCTYPE HTML>
@@ -67,28 +76,13 @@ for (var package in db.tests) {
         style: 'flat',
     }
 
-    format_main_badge_square = {
-        label: 'PkgEval',
-        message: text,
-        color: color,
-        style: 'flat-square',
-    }
-    format_named_badge_square = {
-        label: package,
-        message: text,
-        color: color,
-        style: 'flat-square',
-    }
-
     svg_main_badge = makeBadge(format_main_badge)
     svg_named_badge = makeBadge(format_named_badge)
-    svg_main_badge_square = makeBadge(format_main_badge_square)
-    svg_named_badge_square = makeBadge(format_named_badge_square)
 
     fs.writeFileSync(path.join(badge_dir, package + ".svg"), svg_main_badge)
     fs.writeFileSync(path.join(badge_dir, package + ".named.svg"), svg_named_badge)
-    fs.writeFileSync(path.join(badge_dir, package + ".flat-square.svg"), svg_main_badge_square)
-    fs.writeFileSync(path.join(badge_dir, package + ".named.flat-square.svg"), svg_named_badge_square)
+    fs.writeFileSync(path.join(badge_dir, package + ".square.svg"), squareBadge(svg_main_badge))
+    fs.writeFileSync(path.join(badge_dir, package + ".named.square.svg"), squareBadge(svg_named_badge))
 
     // generate a redirect to the log
     fs.writeFileSync(path.join(badge_dir, package + ".html"),
