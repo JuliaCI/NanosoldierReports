@@ -67,11 +67,28 @@ for (var package in db.tests) {
         style: 'flat',
     }
 
+    format_main_badge_square = {
+        label: 'PkgEval',
+        message: text,
+        color: color,
+        style: 'flat-square',
+    }
+    format_named_badge_square = {
+        label: package,
+        message: text,
+        color: color,
+        style: 'flat-square',
+    }
+
     svg_main_badge = makeBadge(format_main_badge)
     svg_named_badge = makeBadge(format_named_badge)
+    svg_main_badge_square = makeBadge(format_main_badge_square)
+    svg_named_badge_square = makeBadge(format_named_badge_square)
 
     fs.writeFileSync(path.join(badge_dir, package + ".svg"), svg_main_badge)
     fs.writeFileSync(path.join(badge_dir, package + ".named.svg"), svg_named_badge)
+    fs.writeFileSync(path.join(badge_dir, package + ".flat-square.svg"), svg_main_badge_square)
+    fs.writeFileSync(path.join(badge_dir, package + ".named.flat-square.svg"), svg_named_badge_square)
 
     // generate a redirect to the log
     fs.writeFileSync(path.join(badge_dir, package + ".html"),
