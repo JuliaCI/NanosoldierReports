@@ -73,11 +73,11 @@ for (var package in db.tests) {
     fs.writeFileSync(path.join(badge_dir, package + ".svg"), svg_main_badge)
     fs.writeFileSync(path.join(badge_dir, package + ".named.svg"), svg_named_badge)
 
-    // generate a redirect to the log
+    // generate a redirect to the log (PkgEval farm dailies record where their logs are)
     fs.writeFileSync(path.join(badge_dir, package + ".html"),
-                     redirect(`https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_date/${latest_date}/${package}.primary.log`))
+                     redirect(test.log || `https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_date/${latest_date}/${package}.primary.log`))
 }
 
 // generate a redirect to the report
 fs.writeFileSync(path.join(output_dir, "report.html"),
-                 redirect(`https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_date/${latest_date}/report.html`))
+                 redirect(db.report_url || `https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_date/${latest_date}/report.html`))

@@ -1,0 +1,51 @@
+name: Sync PkgEval farm dailies
+
+# The daily PkgEval runs moved from Nanosoldier to the PkgEval farm
+# (JuliaCI/PkgEvalFarm.jl). Copy their results into pkgeval/by_date in the format
+# Nanosoldier wrote, which perf.julialang.org and the badges read.
+
+on:
+  schedule:
+    - cron: '30 */2 * * *'
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: farm-daily
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.repository == 'JuliaCI/NanosoldierReports'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write # to push the new reports
+      actions: write  # to start the Pages build, which our own push does not trigger
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: tools
+
+      - name: Fetch new dailies
+        id: sync
+        run: |
+          added=$(tools/farm_daily/sync.sh)
+          echo "$added"
+          echo "added=$(echo $added)" >> "$GITHUB_OUTPUT"
+
+      - name: Commit
+        if: steps.sync.outputs.added != ''
+        env:
+          ADDED: ${{ steps.sync.outputs.added }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --sparse pkgeval/by_date
+          git commit -m "PkgEval daily: $ADDED"
+          git push
+          gh workflow run pages.yml --ref master
