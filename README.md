@@ -55,4 +55,4 @@ has the badge and the markdown to copy:
 ```
 
 The badges this repository used to serve, under `pkgeval_badges/`, now all read "badge
-moved", and their links open the package's page on perf.julialang.org.
+moved, needs updating", and their links open the package's page on perf.julialang.org.

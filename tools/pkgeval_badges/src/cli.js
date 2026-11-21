@@ -40,7 +40,7 @@ function redirect(url) {
 // files stay at their old addresses for the READMEs that still embed them: every
 // badge says it moved, and its link opens the package's page there, which shows
 // the new badge's markdown.
-const MOVED = ['badge moved', 'orange']
+const MOVED = ['badge moved, needs updating', 'orange']
 const NEW_SITE = 'https://perf.julialang.org'
 
 // generate badges for all packages
