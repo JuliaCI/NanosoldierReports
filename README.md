@@ -54,5 +54,5 @@ has the badge and the markdown to copy:
 [![PkgEval](https://perf.julialang.org/badges/pkgeval/Example.svg)](https://perf.julialang.org/pkgeval/Example)
 ```
 
-The badges this repository used to serve, under `pkgeval_badges/`, now all read "badge
-moved, needs updating", and their links open the package's page on perf.julialang.org.
+The badges this repository used to serve, under `pkgeval_badges/`, now all read "Moved.
+Update badge", and their links open the package's page on perf.julialang.org.
