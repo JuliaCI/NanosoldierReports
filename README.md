@@ -26,8 +26,8 @@ PkgEval reports run the tests of all registered packages using the
 [PkgEval.jl](https://github.com/JuliaCI/PkgEval.jl) infrastructure. Similar to benchmark
 reports, they are grouped in `by_date` and `by_hash` folders.
 
-Click [here](https://juliaci.github.io/NanosoldierReports/pkgeval_badges/report.html) to
-open the latest daily report.
+The latest daily results, and each package's history, are on
+[perf.julialang.org](https://perf.julialang.org/pkgeval).
 
 ### Charts
 
@@ -46,55 +46,13 @@ visualization](https://github.com/JuliaCI/NanosoldierReports/raw/gh-pages/pkgeva
 
 ### Badges
 
-The test results of the latest daily is also used to generate a PkgEval badge. You can use
-these badges in your package's README to keep track of PkgEval-compatibility, which is
-important to make sure that your package is taken into account when evaluating changes to
-Julia itself.
-
-Use the following code to embed the PkgEval badge and a link to the latest report (changing
-`E/Example` to your package name, prefixed by its initial):
+The PkgEval badges moved to [perf.julialang.org](https://perf.julialang.org), which shows
+the latest daily result. A package's page there, `https://perf.julialang.org/package/<Name>`,
+has the badge and the markdown to copy:
 
 ```
-[pkgeval-img]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.svg
-[pkgeval-url]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.html
-
-[![PkgEval][pkgeval-img]][pkgeval-url]
+[![PkgEval](https://perf.julialang.org/badges/pkgeval/Example.svg)](https://perf.julialang.org/pkgeval/Example)
 ```
 
-The result will look as follows:
-
-[pkgeval-img-1]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.svg
-[pkgeval-url-1]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.html
-
-[![PkgEval][pkgeval-img-1]][pkgeval-url-1]
-
-Alternatively, you can embed a badge that includes the name of your package in the badge
-itself. Use the following code (changing `E/Example` to your package name, prefixed by its
-initial):
-
-```
-[pkgeval-img]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.named.svg
-[pkgeval-url]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.html
-
-[![PkgEval][pkgeval-img]][pkgeval-url]
-```
-
-The result will look as follows:
-
-[pkgeval-img-2]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.named.svg
-[pkgeval-url-2]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.html
-
-[![PkgEval][pkgeval-img-2]][pkgeval-url-2]
-
-The same badges are also written with square corners. The gloss, the label, the
-status text, the color, and the text shadow are unchanged, and the files above are left
-as they are.
-
-```
-[pkgeval-img]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.square.svg
-[pkgeval-url]: https://juliaci.github.io/NanosoldierReports/pkgeval_badges/E/Example.html
-
-[![PkgEval][pkgeval-img]][pkgeval-url]
-```
-
-The form with the package name in the badge is `E/Example.named.square.svg`.
+The badges this repository used to serve, under `pkgeval_badges/`, now all read "badge
+moved", and their links open the package's page on perf.julialang.org.
