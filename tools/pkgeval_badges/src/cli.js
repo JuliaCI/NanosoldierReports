@@ -12,7 +12,6 @@ fs.existsSync(output_dir) || fs.mkdirSync(output_dir, { recursive: true })
 
 // find the most recent database with pkgeval results
 const input_dir = path.resolve(__dirname, "../../../pkgeval/by_date/latest/")
-const latest_date = fs.readlinkSync(input_dir)
 const input = path.resolve(input_dir, "db.json")
 const db = require(input)
 
@@ -37,17 +36,15 @@ function redirect(url) {
 `
 }
 
-const formats = {
-    'test':  ['passing', 'brightgreen'],
-    'skip':  ['skipped', 'gray'],
-    'fail':  ['failed',  'red'],
-    'crash': ['crashed', 'red'],
-    'kill':  ['killed',  'red'],
-}
+// The badges moved to perf.julialang.org, which the daily PkgEval feeds. These
+// files stay at their old addresses for the READMEs that still embed them: every
+// badge says it moved, and its link opens the package's page there, which shows
+// the new badge's markdown.
+const MOVED = ['Moved. Update badge', 'orange']
+const NEW_SITE = 'https://perf.julialang.org'
 
 // generate badges for all packages
 for (var package in db.tests) {
-    test = db.tests[package]
 
     // put the badges in directories grouped by the first letter of its name,
     // or GitHub prevents viewing the entire listing
@@ -56,7 +53,7 @@ for (var package in db.tests) {
     fs.existsSync(badge_dir) || fs.mkdirSync(badge_dir)
 
     var text, color
-    [text, color] = formats[test.status]
+    [text, color] = MOVED
 
     // generate the badges
     format_main_badge = {
@@ -80,11 +77,10 @@ for (var package in db.tests) {
     fs.writeFileSync(path.join(badge_dir, package + ".square.svg"), squareBadge(svg_main_badge))
     fs.writeFileSync(path.join(badge_dir, package + ".named.square.svg"), squareBadge(svg_named_badge))
 
-    // generate a redirect to the log
+    // generate a redirect to the package's page
     fs.writeFileSync(path.join(badge_dir, package + ".html"),
-                     redirect(`https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_date/${latest_date}/${package}.primary.log`))
+                     redirect(`${NEW_SITE}/package/${encodeURIComponent(package)}`))
 }
 
-// generate a redirect to the report
-fs.writeFileSync(path.join(output_dir, "report.html"),
-                 redirect(`https://s3.amazonaws.com/julialang-reports/nanosoldier/pkgeval/by_date/${latest_date}/report.html`))
+// generate a redirect to the PkgEval results
+fs.writeFileSync(path.join(output_dir, "report.html"), redirect(`${NEW_SITE}/pkgeval`))
